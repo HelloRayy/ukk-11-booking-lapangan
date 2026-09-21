@@ -14,13 +14,24 @@ export default function TimeSlotGrid({
   selectedSlots,
   onToggleSlot,
 }: Props) {
+  // MODE DEV: ubah ke true jika ingin simulasi jam manual (misal testing malam hari / demo UKK)
+  const isDevMode = true // true = pakai jam simulasi, false = pakai jam realtime
+  const jamSimulasi = 10 // atur jam simulasi di sini (contoh: 10 = jam 10:00 pagi)
+
   // cek apakah tanggal yang dipilih adalah hari ini
   const isToday = selectedDate === new Date().toISOString().split('T')[0]
-  const jamSekarang = new Date().getHours() // jam sekarang (format 0 - 23)
+  const jamSekarang = isDevMode ? jamSimulasi : new Date().getHours()
 
   return (
     <div>
-      <h3 className="font-bold mb-2">3. Pilih Jam Main:</h3>
+      <h3 className="font-bold mb-2">
+        3. Pilih Jam Main:
+        {isDevMode && (
+          <span className="text-xs text-orange-600 font-normal ml-2">
+            [Mode Dev Aktif: Simulasi Jam {jamSimulasi}:00]
+          </span>
+        )}
+      </h3>
       <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
         {DAFTAR_JAM.map((jam) => {
           const jamAngka = parseInt(jam.split(':')[0], 10) // '08:00' diambil angka 8
