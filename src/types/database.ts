@@ -14,9 +14,9 @@ export interface Booking {
   id: number
   lapangan_id: number
   nama_penyewa: string
-  no_hp: string
-  tgl_main: string
-  jam_slots: string[]
+  no_hp: string //int nanti 0 hilang
+  tgl_main: string //karna nanti "YYYY-MM-DD"
+  jam_slots: string[] //"output nanti: 14:00, "15:00""
   durasi_jam: number
   total_bayar: number
   nominal_dibayar: number
