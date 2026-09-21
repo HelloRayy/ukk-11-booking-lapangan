@@ -33,10 +33,12 @@ Dokumen ini berisi aturan wajib bagi seluruh AI agent yang bekerja di repositori
 
 ## 3. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)
 
-Setiap kali suatu tahapan fitur selesai dibuat, diperbaiki, atau diverifikasi, jalankan siklus git otomatis:
+Setiap kali suatu tahapan fitur selesai dibuat, diperbaiki, atau diedit, jalankan siklus git otomatis:
 1. `git add .`
 2. `git commit -m "<type>: <deskripsi bahasa indonesia santai khas anak smk>"`
 3. `git push`
+
+- **Dilarang Menjalankan `npm run build`**: AI DILARANG KERAS menjalankan perintah `npm run build` sebelum atau sesudah commit. Langsung lakukan git commit dan push tanpa proses build agar alur belajar cepat dan tidak membuang waktu.
 
 ### Standar Format Pesan Commit:
 Gunakan awalan conventional commits (`feat`, `fix`, `style`, `docs`, `refactor`), tetapi deskripsinya wajib memakai Bahasa Indonesia santai khas anak SMK:
