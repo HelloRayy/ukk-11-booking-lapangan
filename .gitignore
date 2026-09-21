@@ -28,3 +28,9 @@ dist-ssr
 
 # Private repository
 gatekeep-secret/
+
+# Playwright Visual Testing Artifacts
+test-results/
+playwright-report/
+thegrind-hero-extracted.html
+target-rendered.html

@@ -1,10 +1,25 @@
-// PERAN FILE: Komponen utama pembungkus aplikasi & pengatur navigasi tab (Pemesan vs Kasir)
-import { useState } from 'react'
+// PERAN FILE: Komponen utama pembungkus aplikasi & pengatur navigasi tab (Pemesan vs Kasir vs The Grind Preview)
+import { useState, useEffect } from 'react'
 import HalamanPemesan from './components/HalamanPemesan'
 import HalamanKasir from './components/HalamanKasir'
+import HeroTheGrind from './components/thegrind/HeroTheGrind'
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'pemesan' | 'kasir'>('pemesan')
+  const [activeTab, setActiveTab] = useState<'pemesan' | 'kasir' | 'thegrind'>('pemesan')
+  const [isStandaloneTheGrind, setIsStandaloneTheGrind] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('view') === 'thegrind') {
+      setIsStandaloneTheGrind(true)
+      setActiveTab('thegrind')
+    }
+  }, [])
+
+  // Mode Standalone murni untuk Visual Testing Playwright
+  if (isStandaloneTheGrind) {
+    return <HeroTheGrind />
+  }
 
   return (
     <div className="max-w-4xl mx-auto p-4 space-y-6 text-black bg-white min-h-screen">
@@ -16,7 +31,7 @@ export default function App() {
         </div>
 
         {/* Tab Navigasi Menu */}
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setActiveTab('pemesan')}
@@ -39,11 +54,28 @@ export default function App() {
           >
             Menu Kasir
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('thegrind')}
+            className={`px-3 py-1.5 rounded font-bold text-sm border ${
+              activeTab === 'thegrind'
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            Hero The Grind (1:1)
+          </button>
         </div>
       </header>
 
       {/* Konten Halaman Aktif */}
-      {activeTab === 'pemesan' ? <HalamanPemesan /> : <HalamanKasir />}
+      {activeTab === 'pemesan' && <HalamanPemesan />}
+      {activeTab === 'kasir' && <HalamanKasir />}
+      {activeTab === 'thegrind' && (
+        <div className="border rounded-xl overflow-hidden shadow-2xl">
+          <HeroTheGrind />
+        </div>
+      )}
     </div>
   )
 }
