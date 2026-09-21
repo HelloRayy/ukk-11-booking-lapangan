@@ -7,10 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "test:visual": "playwright test",
-    "capture:target": "node scripts/capture-thegrind.js",
-    "analyze:diff": "node scripts/analyze-diff.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",

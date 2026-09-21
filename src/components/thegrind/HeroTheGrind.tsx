@@ -1,7 +1,6 @@
 // Komponen Hero 1:1 The Grind Replica
 // Terisolasi dari sistem booking Supabase UKK
 import React, { useEffect } from 'react';
-import './thegrind-tuning.css';
 
 export const HeroTheGrind: React.FC = () => {
   useEffect(() => {
