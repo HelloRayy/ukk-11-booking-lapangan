@@ -11,12 +11,12 @@ export function usePemesanan() {
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date().toISOString().split('T')[0]
   )
-  const [selectedSlots, setSelectedSlots] = useState<string[]>([])
+  const [jamDipilih, setJamDipilih] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   // custom hook memantau slot terisi di database
-  const { bookedSlots, refreshJadwal } = useJadwal(selectedLapangan, selectedDate)
+  const { jamTerisi, refreshJadwal } = useJadwal(selectedLapangan, selectedDate)
 
   // ambil daftar lapangan saat pertama kali dibuka
   useEffect(() => {
@@ -37,28 +37,28 @@ export function usePemesanan() {
   // aksi ganti lapangan (reset slot yang sedang dipilih)
   const pilihLapangan = (id: number) => {
     setSelectedLapangan(id)
-    setSelectedSlots([])
+    setJamDipilih([])
   }
 
   // aksi ganti tanggal (reset slot yang sedang dipilih)
   const pilihTanggal = (date: string) => {
     setSelectedDate(date)
-    setSelectedSlots([])
+    setJamDipilih([])
   }
 
   // aksi pilih / lepas slot jam
   const toggleSlot = (jam: string) => {
-    if (selectedSlots.includes(jam)) {
-      setSelectedSlots(selectedSlots.filter((s) => s !== jam))
+    if (jamDipilih.includes(jam)) {
+      setJamDipilih(jamDipilih.filter((s) => s !== jam))
     } else {
-      setSelectedSlots([...selectedSlots, jam].sort())
+      setJamDipilih([...jamDipilih, jam].sort())
     }
   }
 
   // kalkulasi matematika biaya otomatis
   const courtAktif = lapangan.find((l) => l.id === selectedLapangan)
   const tarif = courtAktif?.tarif_per_jam || 0
-  const { totalBayar, nominalDP, sisaBayar } = hitungBiayaBooking(selectedSlots.length, tarif)
+  const { totalBayar, nominalDP, sisaBayar } = hitungBiayaBooking(jamDipilih.length, tarif)
 
   // kirim data transaksi booking ke Supabase
   const kirimBooking = async (dataPemesan: {
@@ -75,8 +75,8 @@ export function usePemesanan() {
         nama_penyewa: dataPemesan.nama,
         no_hp: dataPemesan.noHp,
         tgl_main: selectedDate,
-        jam_slots: selectedSlots,
-        durasi_jam: selectedSlots.length,
+        jam_slots: jamDipilih,
+        durasi_jam: jamDipilih.length,
         total_bayar: totalBayar,
         nominal_dibayar: dataPemesan.tipeBayar === 'DP' ? nominalDP : totalBayar,
         sisa_bayar: dataPemesan.tipeBayar === 'DP' ? sisaBayar : 0,
@@ -86,7 +86,7 @@ export function usePemesanan() {
 
       alert('Berhasil! Booking lapangan badminton sudah tersimpan.')
       await refreshJadwal()
-      setSelectedSlots([])
+      setJamDipilih([])
     } catch (err) {
       console.error(err)
       alert('Gagal menyimpan booking. Silakan coba lagi.')
@@ -100,8 +100,8 @@ export function usePemesanan() {
     loading,
     selectedLapangan,
     selectedDate,
-    selectedSlots,
-    bookedSlots,
+    jamDipilih,
+    jamTerisi,
     isSubmitting,
     totalBayar,
     nominalDP,

@@ -3,16 +3,16 @@ import { DAFTAR_JAM } from '../constants/jamOperasional'
 
 interface Props {
   selectedDate: string
-  bookedSlots: string[]
-  selectedSlots: string[]
+  jamTerisi: string[]
+  jamDipilih: string[]
   onToggleSlot: (jam: string) => void
 }
 
 // grid jam simpel - tombol otomatis terkunci kalau sudah lewat jamnya atau sudah dibooking
 export default function GridJam({
   selectedDate,
-  bookedSlots,
-  selectedSlots,
+  jamTerisi,
+  jamDipilih,
   onToggleSlot,
 }: Props) {
   // MODE DEV: ubah ke true jika ingin simulasi jam manual (misal testing malam hari / demo UKK)
@@ -37,9 +37,9 @@ export default function GridJam({
         {DAFTAR_JAM.map((jam) => {
           const jamAngka = parseInt(jam.split(':')[0], 10) // '08:00' diambil angka 8
           const isPast = isToday && jamAngka <= jamSekarang // jam yang sudah lewat hari ini
-          const isBooked = bookedSlots.includes(jam)
-          const isDisabled = isBooked || isPast
-          const isSelected = selectedSlots.includes(jam)
+          const sudahTerisi = jamTerisi.includes(jam)
+          const isDisabled = sudahTerisi || isPast
+          const sedangDipilih = jamDipilih.includes(jam)
 
           return (
             <button
@@ -48,11 +48,11 @@ export default function GridJam({
               disabled={isDisabled}
               onClick={() => onToggleSlot(jam)}
               className={`p-2 border rounded font-medium ${
-                isBooked
+                sudahTerisi
                   ? 'bg-gray-200 text-gray-400 line-through cursor-not-allowed'
                   : isPast
                   ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
-                  : isSelected
+                  : sedangDipilih
                   ? 'bg-blue-600 text-white font-bold'
                   : 'bg-white text-black hover:bg-gray-100'
               }`}

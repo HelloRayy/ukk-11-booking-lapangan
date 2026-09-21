@@ -11,8 +11,8 @@ export default function HalamanPemesan() {
     loading,
     selectedLapangan,
     selectedDate,
-    selectedSlots,
-    bookedSlots,
+    jamDipilih,
+    jamTerisi,
     isSubmitting,
     totalBayar,
     nominalDP,
@@ -50,22 +50,22 @@ export default function HalamanPemesan() {
       {/* 3. Grid Jam */}
       <GridJam
         selectedDate={selectedDate}
-        bookedSlots={bookedSlots}
-        selectedSlots={selectedSlots}
+        jamTerisi={jamTerisi}
+        jamDipilih={jamDipilih}
         onToggleSlot={toggleSlot}
       />
 
       {/* 4. Rincian Biaya */}
       <RingkasanBiaya
-        durasiJam={selectedSlots.length}
-        selectedSlots={selectedSlots}
+        durasiJam={jamDipilih.length}
+        jamDipilih={jamDipilih}
         totalBayar={totalBayar}
         nominalDP={nominalDP}
       />
 
       {/* 5. Form Data Pemesan & Tombol Submit */}
       <FormPemesan
-        durasiJam={selectedSlots.length}
+        durasiJam={jamDipilih.length}
         totalBayar={totalBayar}
         nominalDP={nominalDP}
         isSubmitting={isSubmitting}

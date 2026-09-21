@@ -1,7 +1,7 @@
 // PERAN FILE: Menampilkan rincian durasi jam, total biaya sewa, dan kalkulasi nominal DP 50%
 interface Props {
   durasiJam: number
-  selectedSlots: string[]
+  jamDipilih: string[]
   totalBayar: number
   nominalDP: number
 }
@@ -9,7 +9,7 @@ interface Props {
 // kartu rincian biaya sederhana
 export default function RingkasanBiaya({
   durasiJam,
-  selectedSlots,
+  jamDipilih,
   totalBayar,
   nominalDP,
 }: Props) {
@@ -17,7 +17,7 @@ export default function RingkasanBiaya({
     <div className="p-4 border rounded bg-gray-50 space-y-2">
       <h3 className="font-bold">4. Rincian Biaya:</h3>
       <div>
-        Durasi: {durasiJam > 0 ? `${durasiJam} Jam (${selectedSlots.join(', ')})` : 'Belum pilih jam'}
+        Durasi: {durasiJam > 0 ? `${durasiJam} Jam (${jamDipilih.join(', ')})` : 'Belum pilih jam'}
       </div>
       <div className="text-lg font-bold text-blue-600">
         Total Biaya: Rp {totalBayar.toLocaleString('id-ID')}

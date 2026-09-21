@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { getBookedSlots } from '../lib/api'
 
 export function useJadwal(lapanganId: number | null, tglMain: string) {
-  const [bookedSlots, setBookedSlots] = useState<string[]>([])
+  const [jamTerisi, setJamTerisi] = useState<string[]>([])
   const [loadingJadwal, setLoadingJadwal] = useState(false)
 
   // fungsi untuk refresh slot jam dari database
@@ -12,7 +12,7 @@ export function useJadwal(lapanganId: number | null, tglMain: string) {
     setLoadingJadwal(true)
     try {
       const data = await getBookedSlots(lapanganId, tglMain)
-      setBookedSlots(data)
+      setJamTerisi(data)
     } catch (err) {
       console.error('Gagal mengambil jadwal booked:', err)
     } finally {
@@ -25,5 +25,5 @@ export function useJadwal(lapanganId: number | null, tglMain: string) {
     refreshJadwal()
   }, [lapanganId, tglMain])
 
-  return { bookedSlots, refreshJadwal, loadingJadwal }
+  return { jamTerisi, refreshJadwal, loadingJadwal }
 }
