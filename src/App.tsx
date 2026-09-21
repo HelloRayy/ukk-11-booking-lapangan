@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { getLapangan, getBookedSlots } from './lib/api'
+import { getLapangan, getBookedSlots, createBooking } from './lib/api'
 import type { Lapangan } from './types/database'
 import CourtPicker from './components/CourtPicker'
 import TimeSlotGrid from './components/TimeSlotGrid'
 import BookingSummary from './components/BookingSummary'
+import BookingForm from './components/BookingForm'
 import { hitungBiayaBooking } from './utils/calculations'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
   const [bookedSlots, setBookedSlots] = useState<string[]>([])
   const [selectedSlots, setSelectedSlots] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // ambil data lapangan pas web dibuka
   useEffect(() => {
@@ -59,7 +61,45 @@ export default function App() {
 
   const courtAktif = lapangan.find((l) => l.id === selectedLapangan)
   const tarif = courtAktif?.tarif_per_jam || 0
-  const { totalBayar, nominalDP } = hitungBiayaBooking(selectedSlots.length, tarif)
+  const { totalBayar, nominalDP, sisaBayar } = hitungBiayaBooking(selectedSlots.length, tarif)
+
+  // fungsi kirim data booking ke database supabase
+  const handleKirimBooking = async (dataPemesan: {
+    nama: string
+    noHp: string
+    tipeBayar: 'Lunas' | 'DP'
+  }) => {
+    if (!selectedLapangan) return
+
+    setIsSubmitting(true)
+    try {
+      await createBooking({
+        lapangan_id: selectedLapangan,
+        nama_penyewa: dataPemesan.nama,
+        no_hp: dataPemesan.noHp,
+        tgl_main: selectedDate,
+        jam_slots: selectedSlots,
+        durasi_jam: selectedSlots.length,
+        total_bayar: totalBayar,
+        nominal_dibayar: dataPemesan.tipeBayar === 'DP' ? nominalDP : totalBayar,
+        sisa_bayar: dataPemesan.tipeBayar === 'DP' ? sisaBayar : 0,
+        tipe_bayar: dataPemesan.tipeBayar,
+        status: dataPemesan.tipeBayar === 'Lunas' ? 'Lunas' : 'Booked',
+      })
+
+      alert('Berhasil! Booking lapangan badminton sudah tersimpan.')
+
+      // refresh slot jam di hari itu biar tombol jam langsung kekunci
+      const booked = await getBookedSlots(selectedLapangan, selectedDate)
+      setBookedSlots(booked)
+      setSelectedSlots([]) // kosongkan pilihan jam setelah booking sukses
+    } catch (err) {
+      console.error(err)
+      alert('Gagal menyimpan booking. Silakan coba lagi.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   if (loading) {
     return <div className="p-6">Loading data lapangan...</div>
@@ -104,6 +144,15 @@ export default function App() {
         selectedSlots={selectedSlots}
         totalBayar={totalBayar}
         nominalDP={nominalDP}
+      />
+
+      {/* 5. Form Data Pemesan & Tombol Submit */}
+      <BookingForm
+        durasiJam={selectedSlots.length}
+        totalBayar={totalBayar}
+        nominalDP={nominalDP}
+        isSubmitting={isSubmitting}
+        onKirimData={handleKirimBooking}
       />
     </div>
   )
