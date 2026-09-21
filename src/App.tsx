@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import { getLapangan, createBooking, getAllBookings, updateStatusBooking } from './lib/api'
 import type { Lapangan, Booking } from './types/database'
 import { useJadwal } from './hooks/useJadwal'
-import CourtPicker from './components/CourtPicker'
-import TimeSlotGrid from './components/TimeSlotGrid'
-import BookingSummary from './components/BookingSummary'
-import BookingForm from './components/BookingForm'
+import PilihLapangan from './components/PilihLapangan'
+import GridJam from './components/GridJam'
+import RingkasanBiaya from './components/RingkasanBiaya'
+import FormPemesan from './components/FormPemesan'
 import TabelKasir from './components/TabelKasir'
-import { hitungBiayaBooking } from './utils/calculations'
+import { hitungBiayaBooking } from './utils/hitungBiaya'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'pemesan' | 'kasir'>('pemesan')
@@ -182,7 +182,7 @@ export default function App() {
       {activeTab === 'pemesan' ? (
         <div className="max-w-2xl space-y-6">
           {/* 1. Pilih Court */}
-          <CourtPicker
+          <PilihLapangan
             lapangan={lapangan}
             selectedId={selectedLapangan}
             onSelect={(id) => {
@@ -207,7 +207,7 @@ export default function App() {
           </div>
 
           {/* 3. Grid Jam */}
-          <TimeSlotGrid
+          <GridJam
             selectedDate={selectedDate}
             bookedSlots={bookedSlots}
             selectedSlots={selectedSlots}
@@ -215,7 +215,7 @@ export default function App() {
           />
 
           {/* 4. Rincian Biaya */}
-          <BookingSummary
+          <RingkasanBiaya
             durasiJam={selectedSlots.length}
             selectedSlots={selectedSlots}
             totalBayar={totalBayar}
@@ -223,7 +223,7 @@ export default function App() {
           />
 
           {/* 5. Form Data Pemesan & Tombol Submit */}
-          <BookingForm
+          <FormPemesan
             durasiJam={selectedSlots.length}
             totalBayar={totalBayar}
             nominalDP={nominalDP}

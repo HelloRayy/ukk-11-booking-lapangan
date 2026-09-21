@@ -1,3 +1,4 @@
+// PERAN FILE: Tombol pilihan lapangan/court badminton dan status aktif/tutup
 import type { Lapangan } from '../types/database'
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 // komponen pilih court - styling simpel border & background polos
-export default function CourtPicker({ lapangan, selectedId, onSelect }: Props) {
+export default function PilihLapangan({ lapangan, selectedId, onSelect }: Props) {
   return (
     <div>
       <h3 className="font-bold mb-2">1. Pilih Court:</h3>

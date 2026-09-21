@@ -1,3 +1,4 @@
+// PERAN FILE: Form input identitas penyewa, pilihan metode bayar (DP/Lunas), & validasi input
 import { useState } from 'react'
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 }
 
 // form input data pemesan & opsi pembayaran
-export default function BookingForm({
+export default function FormPemesan({
   durasiJam,
   totalBayar,
   nominalDP,

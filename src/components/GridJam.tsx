@@ -1,4 +1,5 @@
-import { DAFTAR_JAM } from '../constants/gor'
+// PERAN FILE: Menampilkan tombol jam main, validasi anti-bentrok, & jam lampau
+import { DAFTAR_JAM } from '../constants/jamOperasional'
 
 interface Props {
   selectedDate: string
@@ -8,7 +9,7 @@ interface Props {
 }
 
 // grid jam simpel - tombol otomatis terkunci kalau sudah lewat jamnya atau sudah dibooking
-export default function TimeSlotGrid({
+export default function GridJam({
   selectedDate,
   bookedSlots,
   selectedSlots,

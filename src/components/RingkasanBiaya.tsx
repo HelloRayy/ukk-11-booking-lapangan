@@ -1,3 +1,4 @@
+// PERAN FILE: Menampilkan rincian durasi jam, total biaya sewa, dan kalkulasi nominal DP 50%
 interface Props {
   durasiJam: number
   selectedSlots: string[]
@@ -6,7 +7,7 @@ interface Props {
 }
 
 // kartu rincian biaya sederhana
-export default function BookingSummary({
+export default function RingkasanBiaya({
   durasiJam,
   selectedSlots,
   totalBayar,

@@ -1,3 +1,4 @@
+// PERAN FILE: Logika matematika menghitung total biaya sewa (durasi x tarif) & kalkulasi DP 50%
 // fungsi hitung total sewa, dp 50 persen, sama sisa pelunasan
 export function hitungBiayaBooking(durasiJam: number, tarifPerJam: number) {
   const totalBayar = durasiJam * tarifPerJam
