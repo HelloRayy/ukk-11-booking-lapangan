@@ -1,91 +1,26 @@
-// PERAN FILE: Halaman utama pemesan - memuat langkah 1 sampai 5 pemesanan lapangan & simpan ke Supabase
-import { useState, useEffect } from 'react'
-import { getLapangan, createBooking } from '../lib/api'
-import type { Lapangan } from '../types/database'
-import { useJadwal } from '../hooks/useJadwal'
+// PERAN FILE: Halaman utama pemesan - murni menyusun komponen langkah 1 sampai 5
+import { usePemesanan } from '../hooks/usePemesanan'
 import PilihLapangan from './PilihLapangan'
 import GridJam from './GridJam'
 import RingkasanBiaya from './RingkasanBiaya'
 import FormPemesan from './FormPemesan'
-import { hitungBiayaBooking } from '../utils/hitungBiaya'
 
 export default function HalamanPemesan() {
-  const [lapangan, setLapangan] = useState<Lapangan[]>([])
-  const [selectedLapangan, setSelectedLapangan] = useState<number | null>(null)
-  const [selectedDate, setSelectedDate] = useState<string>(
-    new Date().toISOString().split('T')[0]
-  )
-  const [selectedSlots, setSelectedSlots] = useState<string[]>([])
-  const [loading, setLoading] = useState(true)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  // custom hook: mengelola slot jam yang sudah dipesan orang lain
-  const { bookedSlots, refreshJadwal } = useJadwal(selectedLapangan, selectedDate)
-
-  // ambil data lapangan saat halaman dibuka
-  useEffect(() => {
-    async function loadLapangan() {
-      try {
-        const data = await getLapangan()
-        setLapangan(data)
-        if (data.length > 0) setSelectedLapangan(data[0].id)
-      } catch (err) {
-        console.error('Gagal mengambil data lapangan:', err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadLapangan()
-  }, [])
-
-  // toggle klik slot jam
-  const handleToggleSlot = (jam: string) => {
-    if (selectedSlots.includes(jam)) {
-      setSelectedSlots(selectedSlots.filter((s) => s !== jam))
-    } else {
-      setSelectedSlots([...selectedSlots, jam].sort())
-    }
-  }
-
-  // kalkulasi biaya sewa otomatis
-  const courtAktif = lapangan.find((l) => l.id === selectedLapangan)
-  const tarif = courtAktif?.tarif_per_jam || 0
-  const { totalBayar, nominalDP, sisaBayar } = hitungBiayaBooking(selectedSlots.length, tarif)
-
-  // fungsi submit data pemesanan ke Supabase
-  const handleKirimBooking = async (dataPemesan: {
-    nama: string
-    noHp: string
-    tipeBayar: 'Lunas' | 'DP'
-  }) => {
-    if (!selectedLapangan) return
-
-    setIsSubmitting(true)
-    try {
-      await createBooking({
-        lapangan_id: selectedLapangan,
-        nama_penyewa: dataPemesan.nama,
-        no_hp: dataPemesan.noHp,
-        tgl_main: selectedDate,
-        jam_slots: selectedSlots,
-        durasi_jam: selectedSlots.length,
-        total_bayar: totalBayar,
-        nominal_dibayar: dataPemesan.tipeBayar === 'DP' ? nominalDP : totalBayar,
-        sisa_bayar: dataPemesan.tipeBayar === 'DP' ? sisaBayar : 0,
-        tipe_bayar: dataPemesan.tipeBayar,
-        status: dataPemesan.tipeBayar === 'Lunas' ? 'Lunas' : 'Booked',
-      })
-
-      alert('Berhasil! Booking lapangan badminton sudah tersimpan.')
-      await refreshJadwal()
-      setSelectedSlots([])
-    } catch (err) {
-      console.error(err)
-      alert('Gagal menyimpan booking. Silakan coba lagi.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  const {
+    lapangan,
+    loading,
+    selectedLapangan,
+    selectedDate,
+    selectedSlots,
+    bookedSlots,
+    isSubmitting,
+    totalBayar,
+    nominalDP,
+    pilihLapangan,
+    pilihTanggal,
+    toggleSlot,
+    kirimBooking,
+  } = usePemesanan()
 
   if (loading) {
     return <div className="p-4 border rounded text-center text-gray-500">Memuat data lapangan...</div>
@@ -97,10 +32,7 @@ export default function HalamanPemesan() {
       <PilihLapangan
         lapangan={lapangan}
         selectedId={selectedLapangan}
-        onSelect={(id) => {
-          setSelectedLapangan(id)
-          setSelectedSlots([])
-        }}
+        onSelect={pilihLapangan}
       />
 
       {/* 2. Pilih Tanggal */}
@@ -110,10 +42,7 @@ export default function HalamanPemesan() {
           type="date"
           value={selectedDate}
           min={new Date().toISOString().split('T')[0]}
-          onChange={(e) => {
-            setSelectedDate(e.target.value)
-            setSelectedSlots([])
-          }}
+          onChange={(e) => pilihTanggal(e.target.value)}
           className="border p-2 rounded"
         />
       </div>
@@ -123,7 +52,7 @@ export default function HalamanPemesan() {
         selectedDate={selectedDate}
         bookedSlots={bookedSlots}
         selectedSlots={selectedSlots}
-        onToggleSlot={handleToggleSlot}
+        onToggleSlot={toggleSlot}
       />
 
       {/* 4. Rincian Biaya */}
@@ -140,7 +69,7 @@ export default function HalamanPemesan() {
         totalBayar={totalBayar}
         nominalDP={nominalDP}
         isSubmitting={isSubmitting}
-        onKirimData={handleKirimBooking}
+        onKirimData={kirimBooking}
       />
     </div>
   )
