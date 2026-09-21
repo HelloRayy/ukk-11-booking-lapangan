@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peta Belajar Visual UKK RPL - Booking Lapangan Badminton</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .active-step { border-color: #2563eb; background-color: #eff6ff; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 p-4 md:p-8 antialiased">
+  <div class="max-w-5xl mx-auto space-y-8">
+    
+    <!-- Header -->
+    <header class="bg-white border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Modul Belajar Mandiri UKK SMK</span>
+        <h1 class="text-2xl md:text-3xl font-black mt-2">Peta Alur Data & Hubungan Seluruh File</h1>
+        <p class="text-gray-500 text-sm mt-1">Aplikasi Booking Lapangan Badminton (React 19 + TypeScript + Supabase)</p>
+      </div>
+      <a href="http://localhost:5173" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition shadow-sm">
+        Buka Aplikasi Web &rarr;
+      </a>
+    </header>
+
+    <!-- Navigasi Tab Belajar -->
+    <div class="flex border-b border-gray-200 gap-2">
+      <button onclick="pindahTab('simulator')" id="btn-tab-simulator" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-blue-600 text-blue-600">
+        1. Simulator Estafet Data (Interaktif)
+      </button>
+      <button onclick="pindahTab('arsitektur')" id="btn-tab-arsitektur" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-gray-900">
+        2. Pohon File & Kamus Peran
+      </button>
+      <button onclick="pindahTab('sidang')" id="btn-tab-sidang" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-gray-900">
+        3. Kisi-Kisi Sidang Penguji UKK
+      </button>
+    </div>
+
+    <!-- TAB 1: SIMULATOR ESTAFET DATA -->
+    <section id="konten-simulator" class="space-y-6">
+      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-lg font-bold flex items-center gap-2">
+          <span class="w-6 h-6 bg-blue-600 text-white rounded-full inline-flex items-center justify-center text-xs">A</span>
+          Klik Langkah di Bawah untuk Melihat File Mana yang Bekerja:
+        </h2>
+
+        <!-- Step Buttons -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
+          <button onclick="pilihStep(1)" id="step-btn-1" class="step-btn p-3 border rounded-xl text-left active-step transition">
+            <div class="text-xs text-gray-400 font-mono">LANGKAH 1</div>
+            <div class="font-bold text-sm mt-1">Pilih Court</div>
+          </button>
+          <button onclick="pilihStep(2)" id="step-btn-2" class="step-btn p-3 border rounded-xl text-left transition">
+            <div class="text-xs text-gray-400 font-mono">LANGKAH 2</div>
+            <div class="font-bold text-sm mt-1">Pilih Tanggal</div>
+          </button>
+          <button onclick="pilihStep(3)" id="step-btn-3" class="step-btn p-3 border rounded-xl text-left transition">
+            <div class="text-xs text-gray-400 font-mono">LANGKAH 3</div>
+            <div class="font-bold text-sm mt-1">Pilih Jam</div>
+          </button>
+          <button onclick="pilihStep(4)" id="step-btn-4" class="step-btn p-3 border rounded-xl text-left transition">
+            <div class="text-xs text-gray-400 font-mono">LANGKAH 4</div>
+            <div class="font-bold text-sm mt-1">Hitung Biaya</div>
+          </button>
+          <button onclick="pilihStep(5)" id="step-btn-5" class="step-btn p-3 border rounded-xl text-left transition">
+            <div class="text-xs text-gray-400 font-mono">LANGKAH 5</div>
+            <div class="font-bold text-sm mt-1">Isi Form</div>
+          </button>
+          <button onclick="pilihStep(6)" id="step-btn-6" class="step-btn p-3 border rounded-xl text-left transition bg-green-50">
+            <div class="text-xs text-green-600 font-mono">DATABASE</div>
+            <div class="font-bold text-sm mt-1">Masuk Supabase</div>
+          </button>
+          <button onclick="pilihStep(7)" id="step-btn-7" class="step-btn p-3 border rounded-xl text-left transition bg-yellow-50">
+            <div class="text-xs text-yellow-600 font-mono">KASIR</div>
+            <div class="font-bold text-sm mt-1">Pelunasan DP</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail Step Aktif -->
+      <div id="detail-step" class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
+        <!-- Akan diisi javascript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: POHON FILE -->
+    <section id="konten-arsitektur" class="hidden space-y-6">
+      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-lg font-bold">Struktur Lengkap Proyek (100% Bahasa Indonesia)</h2>
+        <p class="text-sm text-gray-500">Semua file memiliki satu tanggung jawab yang jelas (Single Responsibility Principle).</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 pt-2">
+          
+          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
+            <div class="font-bold text-blue-700 border-b pb-2">Komponen Halaman & Layout (`src/`)</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/App.tsx</span> (44 baris)
+                <p class="text-gray-500 text-xs">Pintu gerbang aplikasi. Hanya mengatur tombol pemindah tab: Menu Pemesan vs Menu Kasir.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/components/HalamanPemesan.tsx</span>
+                <p class="text-gray-500 text-xs">Wadah yang menyusun Langkah 1 sampai 5 pemesanan.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/components/HalamanKasir.tsx</span>
+                <p class="text-gray-500 text-xs">Wadah menu kasir yang memuat tabel transaksi dan aksi pelunasan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
+            <div class="font-bold text-green-700 border-b pb-2">Komponen 5 Langkah Pemesan (`src/components/`)</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">PilihLapangan.tsx</span> (Langkah 1)
+                <p class="text-gray-500 text-xs">Tombol pilihan Court 1, 2, 3 beserta tarif per jam.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">GridJam.tsx</span> (Langkah 3)
+                <p class="text-gray-500 text-xs">Kotak jam 08:00 - 21:00. Tombol otomatis terkunci jika sudah dibooking atau sudah lewat jamnya.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">RingkasanBiaya.tsx</span> (Langkah 4)
+                <p class="text-gray-500 text-xs">Tampilan durasi main, total biaya rupiah, dan nominal DP 50%.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">FormPemesan.tsx</span> (Langkah 5)
+                <p class="text-gray-500 text-xs">Form input nama, nomor HP, radio DP/Lunas, dan tombol simpan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
+            <div class="font-bold text-orange-700 border-b pb-2">Komponen Modul Kasir (`src/components/`)</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">TabelKasir.tsx</span>
+                <p class="text-gray-500 text-xs">Wadah tabel, judul laporan, tombol Refresh, dan tombol Cetak Rekap.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">BarisKasir.tsx</span>
+                <p class="text-gray-500 text-xs">Menampilkan satu baris transaksi dan tombol aksi Lunasi / Batal.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">BadgeStatus.tsx</span>
+                <p class="text-gray-500 text-xs">Label warna: Hijau untuk Lunas, Kuning untuk Booked, Merah untuk Batal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
+            <div class="font-bold text-purple-700 border-b pb-2">Otak Logika, Rumus & Database (`src/hooks, utils, lib`)</div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/hooks/usePemesanan.ts</span>
+                <p class="text-gray-500 text-xs">Otak data pemesanan. Mengelola state court, tanggal, jam, dan kirim booking.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/hooks/useJadwal.ts</span>
+                <p class="text-gray-500 text-xs">Menarik jadwal yang sudah dibooking dari Supabase agar tidak nabrak.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/utils/hitungBiaya.ts</span>
+                <p class="text-gray-500 text-xs">Rumus matematika: total = durasi x tarif, DP = 50% x total, sisa = total - DP.</p>
+              </div>
+              <div class="p-2 bg-white rounded border">
+                <span class="font-mono font-bold text-black">src/lib/api.ts</span>
+                <p class="text-gray-500 text-xs">Kumpulan perintah Supabase: getLapangan, getBookedSlots, createBooking, updateStatusBooking.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: KISI-KISI SIDANG PENGUJI -->
+    <section id="konten-sidang" class="hidden space-y-6">
+      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-lg font-bold">Bocoran Tanya Jawab Penguji UKK</h2>
+        <p class="text-sm text-gray-500">Hafalkan pola jawaban ini agar kamu percaya diri saat disidang penguji industri.</p>
+
+        <div class="space-y-4">
+          <div class="border rounded-xl p-4">
+            <div class="font-bold text-red-600 text-sm">TANYA 1: "Bagaimana cara sistem mencegah jadwal bentrok jika 2 orang pesan di jam yang sama?"</div>
+            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
+              <span class="font-semibold text-gray-900">Jawab:</span> "Di file <code class="bg-gray-200 px-1 rounded">useJadwal.ts</code>, fungsi <code class="bg-gray-200 px-1 rounded">getBookedSlots</code> mengambil seluruh jam yang sudah dipesan di lapangan dan tanggal tersebut dari Supabase. Kemudian di <code class="bg-gray-200 px-1 rounded">GridJam.tsx</code>, tombol jam dicocokkan menggunakan <code class="bg-gray-200 px-1 rounded">jamTerisi.includes(jam)</code>. Jika jam itu sudah ada di database, tombol otomatis diberi atribut <code class="bg-gray-200 px-1 rounded">disabled</code> sehingga tidak bisa diklik lagi."
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <div class="font-bold text-red-600 text-sm">TANYA 2: "Coba ubah aturan uang muka DP dari 50% menjadi 30% sekarang juga!" (Live Code Challenge)</div>
+            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
+              <span class="font-semibold text-gray-900">Jawab & Aksi:</span> "Buka file <code class="bg-gray-200 px-1 rounded font-bold">src/utils/hitungBiaya.ts</code>. Ubah baris <code class="bg-gray-200 px-1 rounded">const nominalDP = totalBayar * 0.5</code> menjadi <code class="bg-gray-200 px-1 rounded font-bold">const nominalDP = totalBayar * 0.3</code> lalu simpan file. Angka DP di browser otomatis berubah ke 30%."
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <div class="font-bold text-red-600 text-sm">TANYA 3: "Bagaimana alur pelunasan sisa bayar saat penyewa hanya bayar DP di awal?"</div>
+            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
+              <span class="font-semibold text-gray-900">Jawab:</span> "Saat pesan DP, transaksi tersimpan dengan status 'Booked' dan mencatat kolom 'sisa_bayar' sebesar 50%. Saat penyewa tiba di GOR, kasir membuka tab Menu Kasir (<code class="bg-gray-200 px-1 rounded">HalamanKasir.tsx</code>) dan menekan tombol 'Lunasi'. Sistem menjalankan <code class="bg-gray-200 px-1 rounded">updateStatusBooking(id, 'Lunas', 0)</code> yang mengubah status jadi Lunas dan mengosongkan sisa bayar menjadi 0."
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <div class="font-bold text-red-600 text-sm">TANYA 4: "Kenapa kodingannya dipecah menjadi banyak file dan komponen?"</div>
+            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
+              <span class="font-semibold text-gray-900">Jawab:</span> "Untuk mematuhi prinsip Clean Code (Separation of Concerns). Logika data dipisah ke dalam Custom Hook (<code class="bg-gray-200 px-1 rounded">usePemesanan</code>), rumus matematika dipisah ke utilitas (<code class="bg-gray-200 px-1 rounded">hitungBiaya</code>), dan komponen antarmuka murni menyusun layout. Ini membuat kode mudah di-maintain, mudah di-test, dan tidak menumpuk dalam satu file raksasa."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const dataSteps = {
+      1: {
+        judul: "Langkah 1: Pelanggan Memilih Court",
+        fileUtama: "src/components/PilihLapangan.tsx",
+        dipanggilDi: "src/components/HalamanPemesan.tsx",
+        penjelasan: "Pengguna mengklik salah satu tombol court (misal Court 1). Fungsi `onSelect(id)` dipanggil. State `selectedLapangan` di hook `usePemesanan.ts` terisi ID lapangan dan tarif per jamnya dicatat (misal Rp 50.000).",
+        inputData: "Props: `lapangan` (daftar court dari Supabase), `selectedId` (court yang aktif).",
+        outputData: "Menghasilkan ID lapangan yang dipilih (misal: `1`)."
+      },
+      2: {
+        judul: "Langkah 2: Pelanggan Menentukan Tanggal",
+        fileUtama: "Tag input tanggal di src/components/HalamanPemesan.tsx",
+        dipanggilDi: "src/components/HalamanPemesan.tsx",
+        penjelasan: "Pengguna memilih tanggal main lewat kalender HTML. Nilai tanggal disimpan ke state `selectedDate` (format YYYY-MM-DD).",
+        inputData: "Pilihan kalender pengguna (misal: 2026-09-22).",
+        outputData: "State `selectedDate` terisi string tanggal."
+      },
+      3: {
+        judul: "Langkah 3: Pelanggan Memilih Jam Main",
+        fileUtama: "src/components/GridJam.tsx & src/hooks/useJadwal.ts",
+        dipanggilDi: "src/components/HalamanPemesan.tsx",
+        penjelasan: "Kombinasi ID lapangan (Langkah 1) dan tanggal (Langkah 2) memicu hook `useJadwal.ts` untuk bertanya ke Supabase: 'Jam berapa saja yang sudah dibooking?'. Jam yang sudah ada di database dimasukkan ke `jamTerisi` dan tombolnya otomatis dikunci (`disabled`). Jam yang diklik pengguna dimasukkan ke array `jamDipilih`.",
+        inputData: "Props: `jamTerisi` (dari Supabase), `jamDipilih` (pilihan user).",
+        outputData: "Array `jamDipilih` (misal: `['09:00', '10:00']`) dan `durasiJam = 2`."
+      },
+      4: {
+        judul: "Langkah 4: Hitung Biaya Otomatis",
+        fileUtama: "src/utils/hitungBiaya.ts & src/components/RingkasanBiaya.tsx",
+        dipanggilDi: "src/hooks/usePemesanan.ts",
+        penjelasan: "Fungsi `hitungBiayaBooking(durasiJam, tarif)` menghitung secara matematika: totalBayar = 2 jam x 50.000 = 100.000, nominalDP = 50.000 (50%), sisaBayar = 50.000. Komponen `RingkasanBiaya.tsx` langsung menampilkannya di layar dengan format titik ribuan Rupiah.",
+        inputData: "Input: `durasiJam` (2), `tarifPerJam` (50000).",
+        outputData: "Objek: `{ totalBayar: 100000, nominalDP: 50000, sisaBayar: 50000 }`."
+      },
+      5: {
+        judul: "Langkah 5: Isi Form & Klik Booking",
+        fileUtama: "src/components/FormPemesan.tsx",
+        dipanggilDi: "src/components/HalamanPemesan.tsx",
+        penjelasan: "Pelanggan memasukkan nama, nomor HP, dan memilih radio 'Bayar DP 50%' atau 'Bayar Lunas'. Komponen melakukan validasi: nama tidak boleh kosong, no HP tidak boleh kosong, dan harus sudah pilih jam. Jika lolos, fungsi `onKirimData()` dipanggil.",
+        inputData: "State lokal: `nama`, `noHp`, `tipeBayar`.",
+        outputData: "Paket data pemesan yang siap ditembak ke database."
+      },
+      6: {
+        judul: "Langkah 6: Data Masuk ke Database Supabase",
+        fileUtama: "src/lib/api.ts (fungsi createBooking)",
+        dipanggilDi: "src/hooks/usePemesanan.ts (fungsi kirimBooking)",
+        penjelasan: "Fungsi `createBooking()` menyatukan data Langkah 1 sampai Langkah 5 menjadi 1 baris SQL INSERT ke tabel `bookings` di Supabase. Status awal disimpan sebagai 'Booked' (jika DP) atau 'Lunas' (jika bayar penuh).",
+        inputData: "Objek transaksi lengkap.",
+        outputData: "1 baris data baru tersimpan di tabel Supabase."
+      },
+      7: {
+        judul: "Langkah 7: Kasir Melakukan Pelunasan / Pembatalan",
+        fileUtama: "src/components/HalamanKasir.tsx & TabelKasir.tsx & BarisKasir.tsx",
+        dipanggilDi: "src/App.tsx (saat tab Menu Kasir diklik)",
+        penjelasan: "Kasir membuka tab Menu Kasir. Seluruh data booking ditarik via `getAllBookings()`. Kasir menekan tombol hijau 'Lunasi'. Fungsi `updateStatusBooking(id, 'Lunas', 0)` dipanggil. Status berubah jadi Lunas, sisa bayar jadi 0, dan tombol Lunasi hilang dari layar.",
+        inputData: "ID booking transaksi.",
+        outputData: "Data di Supabase diperbarui, kasir bisa klik 'Cetak Rekap'."
+      }
+    };
+
+    function pilihStep(step) {
+      document.querySelectorAll('.step-btn').forEach(btn => btn.classList.remove('active-step'));
+      const activeBtn = document.getElementById(`step-btn-${step}`);
+      if (activeBtn) activeBtn.classList.add('active-step');
+
+      const data = dataSteps[step];
+      const container = document.getElementById('detail-step');
+      container.innerHTML = `
+        <div class="border-b pb-3">
+          <span class="text-xs font-mono font-bold text-blue-600 uppercase">LANGKAH ${step} DARI 7</span>
+          <h3 class="text-xl font-bold mt-1 text-gray-900">${data.judul}</h3>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <div>
+              <div class="text-xs font-semibold text-gray-500 uppercase">Berkas yang Bekerja:</div>
+              <div class="font-mono text-sm font-bold text-blue-700 bg-blue-50 p-2 rounded mt-1 border border-blue-200">${data.fileUtama}</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-gray-500 uppercase">Penjelasan Bahasa Manusia:</div>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">${data.penjelasan}</p>
+            </div>
+          </div>
+
+          <div class="space-y-3 bg-gray-50 p-4 rounded-xl border">
+            <div>
+              <div class="text-xs font-semibold text-gray-500 uppercase">Masukan Data (Input):</div>
+              <div class="font-mono text-xs text-gray-800 bg-white p-2 rounded border mt-1">${data.inputData}</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-gray-500 uppercase">Keluaran Data (Output):</div>
+              <div class="font-mono text-xs text-green-700 bg-white p-2 rounded border mt-1">${data.outputData}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function pindahTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-blue-600', 'text-blue-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+      });
+      document.getElementById(`btn-tab-${tab}`).classList.remove('border-transparent', 'text-gray-500');
+      document.getElementById(`btn-tab-${tab}`).classList.add('border-blue-600', 'text-blue-600');
+
+      document.getElementById('konten-simulator').classList.add('hidden');
+      document.getElementById('konten-arsitektur').classList.add('hidden');
+      document.getElementById('konten-sidang').classList.add('hidden');
+
+      document.getElementById(`konten-${tab}`).classList.remove('hidden');
+    }
+
+    // inisialisasi awal
+    pilihStep(1);
+  </script>
+</body>
+</html>
