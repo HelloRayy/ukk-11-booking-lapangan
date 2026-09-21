@@ -42,7 +42,7 @@ export async function createBooking(
   return data
 }
 
-// 4.new status booking (Pelunasan di Kasir atau Pembatalan)
+// 4. new status booking (Pelunasan di Kasir atau Pembatalan)
 export async function updateStatusBooking(
   bookingId: number,
   status: StatusBooking,
@@ -55,3 +55,15 @@ export async function updateStatusBooking(
 
   if (error) throw new Error(`Gagal mengubah status: ${error.message}`)
 }
+
+// 5. ambil seluruh data transaksi booking untuk tabel kasir
+export async function getAllBookings(): Promise<Booking[]> {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*, lapangan(*)')
+    .order('created_at', { ascending: false })
+
+  if (error) throw new Error(`Gagal mengambil data kasir: ${error.message}`)
+  return (data as Booking[]) || []
+}
+

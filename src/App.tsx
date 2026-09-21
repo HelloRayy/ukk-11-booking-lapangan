@@ -1,13 +1,16 @@
+// PERAN FILE: Komponen utama penampung alur pemesanan lapangan & navigasi menu kasir
 import { useState, useEffect } from 'react'
-import { getLapangan, getBookedSlots, createBooking } from './lib/api'
-import type { Lapangan } from './types/database'
+import { getLapangan, getBookedSlots, createBooking, getAllBookings, updateStatusBooking } from './lib/api'
+import type { Lapangan, Booking } from './types/database'
 import CourtPicker from './components/CourtPicker'
 import TimeSlotGrid from './components/TimeSlotGrid'
 import BookingSummary from './components/BookingSummary'
 import BookingForm from './components/BookingForm'
+import TabelKasir from './components/TabelKasir'
 import { hitungBiayaBooking } from './utils/calculations'
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState<'pemesan' | 'kasir'>('pemesan')
   const [lapangan, setLapangan] = useState<Lapangan[]>([])
   const [selectedLapangan, setSelectedLapangan] = useState<number | null>(null)
   const [selectedDate, setSelectedDate] = useState<string>(
@@ -17,6 +20,10 @@ export default function App() {
   const [selectedSlots, setSelectedSlots] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // state untuk data tabel kasir
+  const [daftarBooking, setDaftarBooking] = useState<Booking[]>([])
+  const [loadingKasir, setLoadingKasir] = useState(false)
 
   // ambil data lapangan pas web dibuka
   useEffect(() => {
@@ -101,60 +108,149 @@ export default function App() {
     }
   }
 
+  // ambil data seluruh transaksi untuk tabel kasir
+  const handleLoadKasir = async () => {
+    setLoadingKasir(true)
+    try {
+      const data = await getAllBookings()
+      setDaftarBooking(data)
+    } catch (err) {
+      console.error(err)
+      alert('Gagal mengambil data booking.')
+    } finally {
+      setLoadingKasir(false)
+    }
+  }
+
+  // aksi kasir: pelunasan sisa bayar DP
+  const handleLunasi = async (id: number) => {
+    if (!window.confirm('Lunasi sisa pembayaran untuk transaksi ini?')) return
+    try {
+      await updateStatusBooking(id, 'Lunas', 0)
+      await handleLoadKasir()
+      alert('Berhasil dilunasi!')
+    } catch (err) {
+      console.error(err)
+      alert('Gagal melunasi transaksi.')
+    }
+  }
+
+  // aksi kasir: batalkan jadwal booking
+  const handleBatal = async (id: number) => {
+    if (!window.confirm('Batalkan jadwal booking ini? Slot jam akan otomatis dibuka kembali.')) return
+    try {
+      await updateStatusBooking(id, 'Batal')
+      await handleLoadKasir()
+      // sinkronkan kembali slot jam di form pemesan jika sedang di tanggal yang sama
+      if (selectedLapangan && selectedDate) {
+        const booked = await getBookedSlots(selectedLapangan, selectedDate)
+        setBookedSlots(booked)
+      }
+      alert('Booking berhasil dibatalkan.')
+    } catch (err) {
+      console.error(err)
+      alert('Gagal membatalkan booking.')
+    }
+  }
+
   if (loading) {
     return <div className="p-6">Loading data lapangan...</div>
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-4 space-y-6 text-black bg-white min-h-screen">
-      <header className="border-b pb-3">
-        <h1 className="text-2xl font-bold">Booking Lapangan Badminton</h1>
-        <p className="text-sm text-gray-500">Pilih court, tanggal, dan jam yang masih kosong.</p>
+    <div className="max-w-4xl mx-auto p-4 space-y-6 text-black bg-white min-h-screen">
+      <header className="border-b pb-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <div>
+          <h1 className="text-2xl font-bold">Booking Lapangan Badminton</h1>
+          <p className="text-sm text-gray-500">Aplikasi UKK RPL / PPLG - Sistem Reservasi & Kasir</p>
+        </div>
+
+        {/* Tab Navigasi Menu */}
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveTab('pemesan')}
+            className={`px-3 py-1.5 rounded font-bold text-sm border ${
+              activeTab === 'pemesan'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            Menu Pemesan
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab('kasir')
+              handleLoadKasir()
+            }}
+            className={`px-3 py-1.5 rounded font-bold text-sm border ${
+              activeTab === 'kasir'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            Menu Kasir
+          </button>
+        </div>
       </header>
 
-      {/* 1. Pilih Court */}
-      <CourtPicker
-        lapangan={lapangan}
-        selectedId={selectedLapangan}
-        onSelect={(id) => setSelectedLapangan(id)}
-      />
+      {activeTab === 'pemesan' ? (
+        <div className="max-w-2xl space-y-6">
+          {/* 1. Pilih Court */}
+          <CourtPicker
+            lapangan={lapangan}
+            selectedId={selectedLapangan}
+            onSelect={(id) => setSelectedLapangan(id)}
+          />
 
-      {/* 2. Pilih Tanggal */}
-      <div>
-        <h3 className="font-bold mb-2">2. Pilih Tanggal:</h3>
-        <input
-          type="date"
-          value={selectedDate}
-          min={new Date().toISOString().split('T')[0]}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className="border p-2 rounded"
+          {/* 2. Pilih Tanggal */}
+          <div>
+            <h3 className="font-bold mb-2">2. Pilih Tanggal:</h3>
+            <input
+              type="date"
+              value={selectedDate}
+              min={new Date().toISOString().split('T')[0]}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="border p-2 rounded"
+            />
+          </div>
+
+          {/* 3. Grid Jam */}
+          <TimeSlotGrid
+            selectedDate={selectedDate}
+            bookedSlots={bookedSlots}
+            selectedSlots={selectedSlots}
+            onToggleSlot={handleToggleSlot}
+          />
+
+          {/* 4. Rincian Biaya */}
+          <BookingSummary
+            durasiJam={selectedSlots.length}
+            selectedSlots={selectedSlots}
+            totalBayar={totalBayar}
+            nominalDP={nominalDP}
+          />
+
+          {/* 5. Form Data Pemesan & Tombol Submit */}
+          <BookingForm
+            durasiJam={selectedSlots.length}
+            totalBayar={totalBayar}
+            nominalDP={nominalDP}
+            isSubmitting={isSubmitting}
+            onKirimData={handleKirimBooking}
+          />
+        </div>
+      ) : (
+        <TabelKasir
+          daftarBooking={daftarBooking}
+          loading={loadingKasir}
+          onLunasi={handleLunasi}
+          onBatal={handleBatal}
+          onRefresh={handleLoadKasir}
         />
-      </div>
-
-      {/* 3. Grid Jam */}
-      <TimeSlotGrid
-        selectedDate={selectedDate}
-        bookedSlots={bookedSlots}
-        selectedSlots={selectedSlots}
-        onToggleSlot={handleToggleSlot}
-      />
-
-      {/* 4. Rincian Biaya */}
-      <BookingSummary
-        durasiJam={selectedSlots.length}
-        selectedSlots={selectedSlots}
-        totalBayar={totalBayar}
-        nominalDP={nominalDP}
-      />
-
-      {/* 5. Form Data Pemesan & Tombol Submit */}
-      <BookingForm
-        durasiJam={selectedSlots.length}
-        totalBayar={totalBayar}
-        nominalDP={nominalDP}
-        isSubmitting={isSubmitting}
-        onKirimData={handleKirimBooking}
-      />
+      )}
     </div>
   )
 }
+
