@@ -1,7 +1,8 @@
 // PERAN FILE: Komponen utama penampung alur pemesanan lapangan & navigasi menu kasir
 import { useState, useEffect } from 'react'
-import { getLapangan, getBookedSlots, createBooking, getAllBookings, updateStatusBooking } from './lib/api'
+import { getLapangan, createBooking, getAllBookings, updateStatusBooking } from './lib/api'
 import type { Lapangan, Booking } from './types/database'
+import { useJadwal } from './hooks/useJadwal'
 import CourtPicker from './components/CourtPicker'
 import TimeSlotGrid from './components/TimeSlotGrid'
 import BookingSummary from './components/BookingSummary'
@@ -16,10 +17,12 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date().toISOString().split('T')[0]
   )
-  const [bookedSlots, setBookedSlots] = useState<string[]>([])
   const [selectedSlots, setSelectedSlots] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // custom hook: mengelola jam yang sudah dibooking secara terpisah dari UI
+  const { bookedSlots, refreshJadwal } = useJadwal(selectedLapangan, selectedDate)
 
   // state untuk data tabel kasir
   const [daftarBooking, setDaftarBooking] = useState<Booking[]>([])
@@ -41,21 +44,6 @@ export default function App() {
     loadLapangan()
   }, [])
 
-  // ambil jam yang udah terisi pas ganti tanggal / court
-  useEffect(() => {
-    if (!selectedLapangan || !selectedDate) return
-
-    async function loadJadwal() {
-      try {
-        const booked = await getBookedSlots(selectedLapangan!, selectedDate)
-        setBookedSlots(booked)
-        setSelectedSlots([])
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    loadJadwal()
-  }, [selectedLapangan, selectedDate])
 
   // toggle pilih jam
   const handleToggleSlot = (jam: string) => {
@@ -96,9 +84,8 @@ export default function App() {
 
       alert('Berhasil! Booking lapangan badminton sudah tersimpan.')
 
-      // refresh slot jam di hari itu biar tombol jam langsung kekunci
-      const booked = await getBookedSlots(selectedLapangan, selectedDate)
-      setBookedSlots(booked)
+      // refresh slot jam otomatis via custom hook
+      await refreshJadwal()
       setSelectedSlots([]) // kosongkan pilihan jam setelah booking sukses
     } catch (err) {
       console.error(err)
@@ -141,11 +128,8 @@ export default function App() {
     try {
       await updateStatusBooking(id, 'Batal')
       await handleLoadKasir()
-      // sinkronkan kembali slot jam di form pemesan jika sedang di tanggal yang sama
-      if (selectedLapangan && selectedDate) {
-        const booked = await getBookedSlots(selectedLapangan, selectedDate)
-        setBookedSlots(booked)
-      }
+      // sinkronkan kembali slot jam via custom hook
+      await refreshJadwal()
       alert('Booking berhasil dibatalkan.')
     } catch (err) {
       console.error(err)
@@ -201,7 +185,10 @@ export default function App() {
           <CourtPicker
             lapangan={lapangan}
             selectedId={selectedLapangan}
-            onSelect={(id) => setSelectedLapangan(id)}
+            onSelect={(id) => {
+              setSelectedLapangan(id)
+              setSelectedSlots([])
+            }}
           />
 
           {/* 2. Pilih Tanggal */}
@@ -211,7 +198,10 @@ export default function App() {
               type="date"
               value={selectedDate}
               min={new Date().toISOString().split('T')[0]}
-              onChange={(e) => setSelectedDate(e.target.value)}
+              onChange={(e) => {
+                setSelectedDate(e.target.value)
+                setSelectedSlots([])
+              }}
               className="border p-2 rounded"
             />
           </div>
