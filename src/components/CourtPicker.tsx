@@ -6,6 +6,13 @@ interface Props {
   onSelect: (id: number) => void
 }
 
+// fungsi kecil buat styling biar kode tombol di bawah ga ribet dibaca
+function getCardStyle(isSelected: boolean, isTutup: boolean) {
+  if (isTutup) return 'border-slate-800 bg-slate-900/30 text-slate-600 cursor-not-allowed'
+  if (isSelected) return 'border-emerald-500 bg-emerald-950/40 text-white shadow-lg shadow-emerald-950'
+  return 'border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700'
+}
+
 // komponen buat milih lapangan badminton (court 1, 2, 3)
 export default function CourtPicker({ lapangan, selectedId, onSelect }: Props) {
   return (
@@ -24,13 +31,7 @@ export default function CourtPicker({ lapangan, selectedId, onSelect }: Props) {
               type="button"
               disabled={isTutup}
               onClick={() => onSelect(item.id)}
-              className={`p-4 rounded-xl border text-left transition-all ${
-                isTutup
-                  ? 'border-slate-800 bg-slate-900/30 text-slate-600 cursor-not-allowed'
-                  : isSelected
-                  ? 'border-emerald-500 bg-emerald-950/40 text-white shadow-lg shadow-emerald-950'
-                  : 'border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700'
-              }`}
+              className={`p-4 rounded-xl border text-left transition-all ${getCardStyle(isSelected, isTutup)}`}
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-base text-white">{item.nama_lapangan}</span>
