@@ -1,5 +1,5 @@
 // PERAN FILE: Tombol pilihan lapangan/court badminton dan status aktif/tutup
-import type { Lapangan } from '../types/database'
+import type { Lapangan } from '../../types/database'
 
 interface Props {
   lapangan: Lapangan[]

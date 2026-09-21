@@ -1,5 +1,5 @@
 // PERAN FILE: Menampilkan tabel daftar booking kasir dengan tombol cetak dan refresh
-import type { Booking } from '../types/database'
+import type { Booking } from '../../types/database'
 import BarisKasir from './BarisKasir'
 
 interface Props {

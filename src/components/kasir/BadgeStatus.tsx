@@ -1,5 +1,5 @@
 // PERAN FILE: Komponen kecil reusable untuk menampilkan label status (Lunas/Booked/Batal)
-import type { StatusBooking } from '../types/database'
+import type { StatusBooking } from '../../types/database'
 
 interface Props {
   status: StatusBooking

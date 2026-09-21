@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { getAllBookings, updateStatusBooking } from '../lib/api'
 import type { Booking } from '../types/database'
-import TabelKasir from './TabelKasir'
+import TabelKasir from './kasir/TabelKasir'
 
 export default function HalamanKasir() {
   const [daftarBooking, setDaftarBooking] = useState<Booking[]>([])

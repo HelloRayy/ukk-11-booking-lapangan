@@ -1,9 +1,9 @@
 // PERAN FILE: Halaman utama pemesan - murni menyusun komponen langkah 1 sampai 5
 import { usePemesanan } from '../hooks/usePemesanan'
-import PilihLapangan from './PilihLapangan'
-import GridJam from './GridJam'
-import RingkasanBiaya from './RingkasanBiaya'
-import FormPemesan from './FormPemesan'
+import PilihLapangan from './pemesan/PilihLapangan'
+import GridJam from './pemesan/GridJam'
+import RingkasanBiaya from './pemesan/RingkasanBiaya'
+import FormPemesan from './pemesan/FormPemesan'
 
 export default function HalamanPemesan() {
   const {

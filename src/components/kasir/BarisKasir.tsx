@@ -1,5 +1,5 @@
 // PERAN FILE: Menampilkan satu baris data transaksi di tabel kasir beserta tombol aksinya
-import type { Booking } from '../types/database'
+import type { Booking } from '../../types/database'
 import BadgeStatus from './BadgeStatus'
 
 interface Props {
