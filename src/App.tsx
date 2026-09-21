@@ -133,6 +133,7 @@ export default function App() {
 
       {/* 3. Grid Jam */}
       <TimeSlotGrid
+        selectedDate={selectedDate}
         bookedSlots={bookedSlots}
         selectedSlots={selectedSlots}
         onToggleSlot={handleToggleSlot}
