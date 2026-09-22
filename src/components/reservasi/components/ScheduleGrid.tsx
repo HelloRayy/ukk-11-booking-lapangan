@@ -14,8 +14,8 @@ interface ScheduleGridProps {
   selectedSlot: SlotRangeSelection | null
   customerName?: string
   rangeError: string | null
-  getSlotBooking?: (courtId: string, time: string) => BookingItem | undefined
-  isSlotInRange: (courtId: string, time: string) => boolean
+  getSlotBooking?: (courtId: number | string, time: string) => BookingItem | undefined
+  isSlotInRange: (courtId: number | string, time: string) => boolean
   isPastSlot: (time: string) => boolean
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
@@ -24,7 +24,7 @@ interface ScheduleGridProps {
 }
 
 interface HoveredSlotState {
-  courtId: string
+  courtId: number | string
   hour: number
   time: string
 }

@@ -46,3 +46,10 @@ export interface SlotRangeSelection {
 }
 
 export type RightPanelMode = 'empty' | 'inspect' | 'create' | 'receipt'
+
+export interface StoredCustomerInfo {
+  nama: string
+  whatsapp: string
+  email: string
+  isConfirmed: boolean
+}
