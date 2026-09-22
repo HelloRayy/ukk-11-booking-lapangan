@@ -1,6 +1,10 @@
-// PERAN FILE: Grid Kalender Bebas Distorsi & Bersih (Clean UI Tanpa Font Mono & Tanpa Teks Redundan)
+// PERAN FILE: Orkestrator Grid Kalender (Menghubungkan Toast, TimeColumn, dan Kolom Lapangan)
 import { useState, useMemo } from 'react'
 import type { BookingItem, Court, SlotRangeSelection } from '../types'
+import FloatingToast from './grid/FloatingToast'
+import TimeColumn from './grid/TimeColumn'
+import BookedSlotCard from './grid/BookedSlotCard'
+import ActiveSelectionCard from './grid/ActiveSelectionCard'
 
 interface ScheduleGridProps {
   courts: Court[]
@@ -48,7 +52,7 @@ export default function ScheduleGrid({
 
   const currentTimeTop = (10 - BASE_HOUR + 40 / 60) * SLOT_HEIGHT
 
-  // Cek apakah mode preview rentang hover aktif (ketika 1 slot sudah dipilih dan user hover jam lain pada lapangan yang sama)
+  // Cek apakah mode preview rentang hover aktif
   const isRangePreviewActive = Boolean(
     selectedSlot &&
       selectedSlot.totalHours === 1 &&
@@ -80,35 +84,10 @@ export default function ScheduleGrid({
 
   return (
     <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none font-aeonik">
-      {/* Toast Notifikasi Bentrok / Waktu Lampau (Floating Overlay Tanpa Menggeser Layout) */}
-      {rangeError && (
-        <div className="sticky top-4 z-50 h-0 pointer-events-none flex justify-center">
-          <div className="w-full max-w-md mx-4 p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-2xl backdrop-blur-md flex items-center justify-between pointer-events-auto border border-red-400/30 animate-in fade-in slide-in-from-top-2 duration-200">
-            <div className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-white">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              <span>{rangeError}</span>
-            </div>
-            {onClearError && (
-              <button
-                type="button"
-                onClick={onClearError}
-                className="w-5 h-5 rounded-full hover:bg-white/20 text-white flex items-center justify-center transition-colors ml-2 cursor-pointer shrink-0"
-                aria-label="Tutup pesan"
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-              </button>
-            )}
-          </div>
-        </div>
-      )}
+      {/* 1. Toast Notifikasi Melayang Tanpa Pergeseran Layout */}
+      <FloatingToast message={rangeError} onClose={onClearError} />
 
-      {/* Indicator Garis Waktu Berjalan (10:40) */}
+      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (10:40) */}
       <div
         style={{ top: `${currentTimeTop}px` }}
         className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
@@ -121,28 +100,17 @@ export default function ScheduleGrid({
         <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
       </div>
 
-      {/* Grid Container */}
+      {/* 3. Grid Container Kalender */}
       <div
         className="min-w-[720px] flex"
         onMouseLeave={() => setHoveredSlot(null)}
       >
-        {/* Kolom Sumbu Waktu Kiri */}
-        <div className="w-20 sm:w-24 shrink-0 border-r border-[#262626] bg-[#141414]">
-          {timeSlots.map((time) => {
-            const isPast = isPastSlot(time)
-            return (
-              <div
-                key={time}
-                style={{ height: `${SLOT_HEIGHT}px` }}
-                className={`p-3 text-right text-xs font-medium border-b border-[#222222] flex items-start justify-end ${
-                  isPast ? 'text-[#444444]' : 'text-[#8e8e8e]'
-                }`}
-              >
-                {time}
-              </div>
-            )
-          })}
-        </div>
+        {/* Kolom Sumbu Waktu Sisi Kiri */}
+        <TimeColumn
+          timeSlots={timeSlots}
+          isPastSlot={isPastSlot}
+          slotHeight={SLOT_HEIGHT}
+        />
 
         {/* 4 Kolom Lapangan Independen */}
         <div className="flex-1 grid grid-cols-4 divide-x divide-[#222222]">
@@ -155,7 +123,7 @@ export default function ScheduleGrid({
                 className="relative"
                 onMouseLeave={() => setHoveredSlot(null)}
               >
-                {/* 1. Background Grid Slot */}
+                {/* Background Grid Slot Baris per Jam */}
                 <div className="flex flex-col">
                   {timeSlots.map((time) => {
                     const slotHour = parseInt(time.split(':')[0], 10)
@@ -188,7 +156,7 @@ export default function ScheduleGrid({
                             : 'cursor-pointer group'
                         }`}
                       >
-                        {/* Hover Indicator Rounded untuk Single Slot (Mirip Active Card) */}
+                        {/* Hover Indicator Box */}
                         {!isPast && !inRange && !isRangePreviewActive && (
                           <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/30 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
                             <span className="text-xs font-semibold text-[#f2d953]">
@@ -204,203 +172,34 @@ export default function ScheduleGrid({
                   })}
                 </div>
 
-                {/* 2. Kartu Booking Absolute */}
-                {courtBookings.map((booking) => {
-                  const [startH, startM] = booking.startTime.split(':').map(Number)
-                  const [endH, endM] = booking.endTime.split(':').map(Number)
-                  const startDecimal = startH + (startM || 0) / 60
-                  const endDecimal = endH + (endM || 0) / 60
-                  const duration = Math.max(1, endDecimal - startDecimal)
+                {/* Kartu Booking Absolute (Booked & Maintenance) */}
+                {courtBookings.map((booking) => (
+                  <BookedSlotCard
+                    key={booking.id}
+                    booking={booking}
+                    isSelected={selectedBooking?.id === booking.id}
+                    slotHeight={SLOT_HEIGHT}
+                    baseHour={BASE_HOUR}
+                    onSelect={onSelectBooking}
+                  />
+                ))}
 
-                  const topOffset = (startDecimal - BASE_HOUR) * SLOT_HEIGHT + 3
-                  const cardHeight = duration * SLOT_HEIGHT - 6
-                  const isSelectedBooking = selectedBooking?.id === booking.id
-
-                  // Card Maintenance
-                  if (booking.status === 'maintenance') {
-                    return (
-                      <div
-                        key={booking.id}
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onSelectBooking(booking)
-                        }}
-                        style={{
-                          top: `${topOffset}px`,
-                          height: `${cardHeight}px`,
-                          backgroundImage:
-                            'repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #262626 10px, #262626 20px)',
-                        }}
-                        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#444444] flex flex-col justify-between cursor-pointer transition-all hover:brightness-110 shadow-md ${
-                          isSelectedBooking ? 'ring-2 ring-white/70' : ''
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="text-xs font-semibold text-[#d1d1d1]">
-                              Maintenance
-                            </span>
-                            <span className="w-2 h-2 rounded-full bg-amber-500" />
-                          </div>
-                          <span className="text-xs text-[#8e8e8e] block">
-                            {booking.startTime} - {booking.endTime}
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  }
-
-                  // Card Booking Terisi Normal
-                  return (
-                    <div
-                      key={booking.id}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onSelectBooking(booking)
-                      }}
-                      style={{
-                        top: `${topOffset}px`,
-                        height: `${cardHeight}px`,
-                      }}
-                      className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] bg-[#222222] border transition-all cursor-pointer flex flex-col justify-between group shadow-md ${
-                        isSelectedBooking
-                          ? 'border-[#f2d953] ring-1 ring-[#f2d953] shadow-[0_0_16px_rgba(242,217,83,0.25)]'
-                          : 'border-[#333333] hover:border-[#555555] hover:bg-[#282828]'
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between gap-1 mb-1">
-                          <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
-                            {booking.customerName}
-                          </span>
-                          <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-[#a3a3a3] font-medium">
-                            Booked
-                          </span>
-                        </div>
-
-                        <span className="text-xs text-[#8e8e8e] block">
-                          {booking.startTime} - {booking.endTime}
-                        </span>
-                      </div>
-
-                      <div className="text-[11px] text-[#737373] pt-1">
-                        {booking.courtName}
-                      </div>
-                    </div>
-                  )
-                })}
-
-                {/* 3. Kartu Choice / Seleksi Pengguna Aktif (Dynamic Height Stretching on Hover - User POV) */}
-                {selectedSlot &&
-                  selectedSlot.courtId === court.id &&
-                  (() => {
-                    const isCourtPreviewActive =
-                      isRangePreviewActive &&
-                      court.id === selectedSlot.courtId &&
-                      previewMinHour !== null &&
-                      previewMaxHour !== null
-
-                    // Jam mulai & durasi dinamis: melebar otomatis mengikuti arah gerakan kursor
-                    const activeStartHour = isCourtPreviewActive ? previewMinHour : selectedSlot.startHour
-                    const activeTotalHours = isCourtPreviewActive
-                      ? previewMaxHour - previewMinHour + 1
-                      : selectedSlot.totalHours
-
-                    const activeEndHour = activeStartHour + activeTotalHours
-                    const activeStartTimeStr = `${activeStartHour < 10 ? '0' : ''}${activeStartHour}:00`
-                    const activeEndTimeStr = `${activeEndHour < 10 ? '0' : ''}${activeEndHour}:00`
-                    const activeTotalPrice = activeTotalHours * court.pricePerHour
-
-                    const activeTopOffset = (activeStartHour - BASE_HOUR) * SLOT_HEIGHT + 3
-                    const activeCardHeight = activeTotalHours * SLOT_HEIGHT - 6
-
-                    const isBlocked = isCourtPreviewActive && previewHasCollision
-
-                    return (
-                      <div
-                        style={{
-                          top: `${activeTopOffset}px`,
-                          height: `${activeCardHeight}px`,
-                        }}
-                        onClick={(e) => {
-                          if (!isRangePreviewActive) {
-                            e.stopPropagation()
-                            const rect = e.currentTarget.getBoundingClientRect()
-                            const relativeY = e.clientY - rect.top
-                            const clickedHourOffset = Math.floor(relativeY / SLOT_HEIGHT)
-                            const targetHour = selectedSlot.startHour + clickedHourOffset
-                            const targetTime = `${targetHour < 10 ? '0' : ''}${targetHour}:00`
-                            onSelectEmptySlot(court, targetTime)
-                          }
-                        }}
-                        className={`absolute inset-x-1.5 z-20 p-3 rounded-[10px] bg-[#222222] border-2 transition-all duration-150 flex flex-col justify-between group shadow-lg select-none ${
-                          isBlocked
-                            ? 'border-red-500 shadow-[0_0_24px_rgba(239,68,68,0.25)]'
-                            : 'border-[#f2d953] ring-1 ring-[#f2d953]/30 shadow-[0_0_24px_rgba(242,217,83,0.22)]'
-                        } ${isRangePreviewActive ? 'pointer-events-none' : 'cursor-pointer'}`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors pr-2">
-                              {customerName || 'Sigma Person'}
-                            </span>
-                            <div className="flex items-center gap-1.5 shrink-0">
-                              <span
-                                className={`text-[10px] px-2 py-0.5 rounded font-semibold tracking-wide transition-opacity duration-150 ${
-                                  isBlocked
-                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                                    : 'bg-[#f2d953] text-black'
-                                } ${onClearSelection ? 'group-hover:opacity-0' : ''}`}
-                              >
-                                {isBlocked ? 'Bentrok' : 'Dipilih'}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Tombol Close 24px di Pojok Kanan Atas (Hanya Muncul Saat Hover) */}
-                          {onClearSelection && (
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                onClearSelection()
-                              }}
-                              title="Batalkan pilihan"
-                              aria-label="Batalkan pilihan"
-                              className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-[#2e2e2e] hover:bg-rose-500 text-[#a3a3a3] hover:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto shadow-md border border-white/10 cursor-pointer z-30 active:scale-90"
-                            >
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                <path d="M18 6 6 18M6 6l12 12" />
-                              </svg>
-                            </button>
-                          )}
-
-                          <span
-                            className={`text-xs block ${
-                              isBlocked ? 'text-red-400 font-medium' : 'text-[#d4d4d4]'
-                            }`}
-                          >
-                            {isBlocked
-                              ? `${activeStartTimeStr} - ${activeEndTimeStr} (Jadwal Bentrok)`
-                              : `${activeStartTimeStr} - ${activeEndTimeStr} (${activeTotalHours} jam)`}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] pt-1 border-t border-white/10">
-                          <span>{selectedSlot.courtName}</span>
-                          <span
-                            className={`font-semibold ${
-                              isBlocked ? 'text-red-400' : 'text-[#f2d953]'
-                            }`}
-                          >
-                            {isBlocked
-                              ? 'Tidak Tersedia'
-                              : `Rp ${activeTotalPrice.toLocaleString('id-ID')}`}
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  })()}
+                {/* Kartu Seleksi Pengguna Aktif */}
+                {selectedSlot && selectedSlot.courtId === court.id && (
+                  <ActiveSelectionCard
+                    selectedSlot={selectedSlot}
+                    court={court}
+                    customerName={customerName}
+                    slotHeight={SLOT_HEIGHT}
+                    baseHour={BASE_HOUR}
+                    isRangePreviewActive={isRangePreviewActive}
+                    previewMinHour={previewMinHour}
+                    previewMaxHour={previewMaxHour}
+                    previewHasCollision={previewHasCollision}
+                    onClearSelection={onClearSelection}
+                    onSelectEmptySlot={onSelectEmptySlot}
+                  />
+                )}
               </div>
             )
           })}

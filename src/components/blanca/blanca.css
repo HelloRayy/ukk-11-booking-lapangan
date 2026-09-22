@@ -685,3 +685,40 @@ p.body {
   color: #bfbfbf !important;
 }
 
+/* ============================================================== */
+/* GAYA CETAK STRUK PDF RESERVASI (@media print)                  */
+/* ============================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-receipt,
+  #printable-receipt * {
+    visibility: visible;
+  }
+
+  #printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 650px !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+

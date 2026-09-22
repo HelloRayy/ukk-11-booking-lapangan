@@ -1,6 +1,7 @@
 // PERAN FILE: Layar Pembayaran QRIS Dinamis (Full Cashless) di Right Panel
 import { useState, useEffect } from 'react'
 import type { SlotRangeSelection, PaymentType } from '../types'
+import { formatRupiah } from '../utils/formatters'
 
 interface QrisPaymentViewProps {
   selectedSlot: SlotRangeSelection
@@ -152,12 +153,12 @@ export default function QrisPaymentView({
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold text-[#8e8e8e]">Total Tagihan</span>
             <span className="text-lg font-bold text-[#f2d953]">
-              Rp {billAmount.toLocaleString('id-ID')}
+              {formatRupiah(billAmount)}
             </span>
           </div>
           {paymentType === 'dp' && (
             <div className="mt-2 pt-2 border-t border-white/5 text-[11px] text-[#8e8e8e]">
-              Sisa pelunasan <span className="text-white font-semibold">Rp {remainingAmount.toLocaleString('id-ID')}</span> dilunasi saat tiba di arena.
+              Sisa pelunasan <span className="text-white font-semibold">{formatRupiah(remainingAmount)}</span> dilunasi saat tiba di arena.
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 // PERAN FILE: Tampilan Bukti Reservasi / Struk Digital Resmi (Tahap 3) dengan Fitur Cetak PDF
 import type { BookingItem } from '../types'
+import { formatRupiah } from '../utils/formatters'
 
 interface BookingReceiptViewProps {
   booking: BookingItem
@@ -104,19 +105,19 @@ export default function BookingReceiptView({
             <div className="flex justify-between text-[#8e8e8e]">
               <span>Total Tagihan Sewa</span>
               <span className="text-white font-medium">
-                Rp {booking.totalPrice.toLocaleString('id-ID')}
+                {formatRupiah(booking.totalPrice)}
               </span>
             </div>
             <div className="flex justify-between text-[#8e8e8e]">
               <span>Dibayar Sekarang (QRIS)</span>
               <span className="text-emerald-400 font-semibold">
-                Rp {booking.paidAmount.toLocaleString('id-ID')}
+                {formatRupiah(booking.paidAmount)}
               </span>
             </div>
             {!isLunas && (
               <div className="flex justify-between pt-1 border-t border-white/5 text-amber-300 font-semibold">
                 <span>Sisa Pelunasan di Arena</span>
-                <span>Rp {booking.remainingAmount.toLocaleString('id-ID')}</span>
+                <span>{formatRupiah(booking.remainingAmount)}</span>
               </div>
             )}
           </div>
