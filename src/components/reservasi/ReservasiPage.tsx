@@ -30,10 +30,10 @@ export default function ReservasiPage() {
       {/* 1. Navbar Atas (Header & Date Selector) */}
       <ReservasiNavbar customerName={customer?.nama} />
 
-      {/* 2. Area Utama: Kalender & Push Right Panel */}
+      {/* 2. Area Utama: Kalender di Kiri, Panel Informasi & Booking di Kanan */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) - Otomatis tergeser saat panel terbuka */}
-        <div className="flex-1 flex flex-col overflow-hidden min-w-0 transition-all duration-300 ease-in-out">
+        {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) */}
+        <div className="flex-1 flex flex-col overflow-hidden min-w-0 border-r border-[#262626]">
           <ScheduleHeader courts={courts} />
           <ScheduleGrid
             courts={courts}

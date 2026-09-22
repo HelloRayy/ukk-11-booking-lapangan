@@ -1,4 +1,4 @@
-// PERAN FILE: Floating Slide-Over Drawer Tanpa Empty State (Muncul Mulus dari Kanan saat Slot Aktif)
+// PERAN FILE: Panel Samping Kanan Selalu Aktif (Informasi Booking saat Idle & Form Pembayaran saat Slot Terpilih)
 import { useState, useEffect } from 'react'
 import type { BookingItem, SlotRangeSelection, PaymentType, RightPanelMode } from '../types'
 import QrisPaymentView from './QrisPaymentView'
@@ -37,31 +37,16 @@ export default function RightPanelInspector({
     setExpiryTimestamp(null)
   }, [slotKey])
 
-  // Cache data terakhir agar saat transisi slide-out konten tidak menghilang tiba-tiba
-  const [cachedSlot, setCachedSlot] = useState(selectedSlot)
-  const [cachedBooking, setCachedBooking] = useState(selectedBooking)
-  const [cachedMode, setCachedMode] = useState<RightPanelMode>(panelMode)
-
-  useEffect(() => {
-    if (panelMode !== 'empty') {
-      setCachedMode(panelMode)
-      if (selectedSlot) setCachedSlot(selectedSlot)
-      if (selectedBooking) setCachedBooking(selectedBooking)
-    }
-  }, [panelMode, selectedSlot, selectedBooking])
-
-  const isOpen = panelMode !== 'empty' && (Boolean(selectedSlot) || Boolean(selectedBooking))
-
-  // Shortcut tombol Escape untuk menutup drawer
+  // Shortcut tombol Escape untuk membatalkan pemilihan slot
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape' && panelMode !== 'empty') {
         onClose()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, onClose])
+  }, [panelMode, onClose])
 
   const handleProceedToPayment = () => {
     if (!expiryTimestamp) {
@@ -91,33 +76,123 @@ export default function RightPanelInspector({
     onCreateBooking(paymentType, notes)
   }
 
-  const currentMode = isOpen ? panelMode : cachedMode
-  const activeSlot = isOpen ? selectedSlot : (cachedSlot || selectedSlot)
-  const activeBooking = isOpen ? selectedBooking : (cachedBooking || selectedBooking)
-
   const finalCustomerName = customerName || 'Raditya Rayhan'
   const finalWhatsapp = customerWhatsapp || '085799799857'
   const finalEmail = customerEmail || 'raditya.rayhan@gmail.com'
-  const dpAmount = activeSlot ? activeSlot.totalPrice * 0.5 : 0
+  const dpAmount = selectedSlot ? selectedSlot.totalPrice * 0.5 : 0
 
   return (
     <aside
-      aria-label="Panel Detail Reservasi"
-      className={`bg-[#1a1a1a] flex flex-col justify-between overflow-x-hidden overflow-y-auto select-none font-aeonik transition-all duration-300 ease-in-out shrink-0 ${
-        isOpen
-          ? 'w-[380px] xl:w-[420px] p-6 border-l border-[#262626] opacity-100'
-          : 'w-0 p-0 border-0 opacity-0 pointer-events-none'
-      }`}
+      aria-label="Panel Reservasi Lapangan"
+      className="w-full lg:w-[380px] xl:w-[420px] bg-[#1a1a1a] border-l border-[#262626] p-6 flex flex-col justify-between overflow-y-auto select-none font-aeonik shrink-0"
     >
-      {/* KONTEN 1: INSPECT EXISTING BOOKING */}
-      {currentMode === 'inspect' && activeBooking && (
-        <div className="w-[332px] xl:w-[372px] flex flex-col justify-between h-full shrink-0">
+      {/* ============================================================== */}
+      {/* KONTEN 0: INFORMASI PANDUAN BOOKING (Saat Idle / Belum Pilih Slot) */}
+      {/* ============================================================== */}
+      {panelMode === 'empty' && (
+        <div className="flex flex-col justify-between h-full animate-in fade-in duration-200">
+          <div>
+            {/* Header Informasi */}
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/5">
+              <span className="text-xs font-semibold text-[#8e8e8e] uppercase tracking-wider">
+                Panduan Reservasi
+              </span>
+              <span className="text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
+                Buka 08:00 - 23:00
+              </span>
+            </div>
+
+            <div className="mb-4">
+              <h2 className="text-xl font-bold text-white tracking-tight">
+                Informasi Booking Lapangan
+              </h2>
+              <p className="text-xs text-[#8e8e8e] mt-1 leading-relaxed">
+                Pilih jadwal bermain favorit Anda di tabel kalender sebelah kiri dengan 3 langkah mudah:
+              </p>
+            </div>
+
+            {/* 3 Langkah Cara Booking */}
+            <div className="space-y-2.5 mb-5">
+              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  1
+                </span>
+                <div>
+                  <span className="text-xs font-semibold text-white block mb-0.5">
+                    Pilih Jam Lapangan
+                  </span>
+                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
+                    Klik slot jam mulai pada lapangan yang kosong. Anda dapat memilih rentang beberapa jam sekaligus.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  2
+                </span>
+                <div>
+                  <span className="text-xs font-semibold text-white block mb-0.5">
+                    Tentukan Skema Pembayaran
+                  </span>
+                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
+                    Pilih opsi Bayar DP 50% atau Lunas 100% langsung di panel kanan ini.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  3
+                </span>
+                <div>
+                  <span className="text-xs font-semibold text-white block mb-0.5">
+                    Bayar QRIS / VA / Tunai Kasir
+                  </span>
+                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
+                    Selesaikan pembayaran dalam waktu 15 menit agar jadwal Anda langsung terkunci di sistem kalender.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Ketentuan Sewa */}
+            <div className="p-3.5 rounded-[12px] bg-white/[0.02] border border-white/5 space-y-2 mb-4">
+              <span className="text-xs font-semibold text-white block">Ketentuan Sewa Arena:</span>
+              <ul className="text-[11px] text-[#8e8e8e] space-y-1.5 list-disc list-inside">
+                <li>Wajib menggunakan sepatu khusus lapangan badminton/padel.</li>
+                <li>Sisa pembayaran DP 50% dilunasi saat tiba di kasir arena.</li>
+                <li>Penyewaan raket dan shuttlecock tersedia di meja kasir.</li>
+                <li>Pembatalan atau ubah jadwal maksimal H-1 sebelum jam sewa.</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Footer Callout */}
+          <div className="pt-3 border-t border-[#262626]">
+            <div className="p-3 rounded-[10px] bg-[#f2d953]/10 border border-[#f2d953]/20 text-center">
+              <span className="text-xs font-semibold text-[#f2d953] block mb-0.5">
+                Siap Bermain?
+              </span>
+              <span className="text-[11px] text-[#d4d4d4]">
+                Klik kotak jam kosong pada kalender untuk mulai reservasi.
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ============================================================== */}
+      {/* KONTEN 1: INSPECT EXISTING BOOKING (Jadwal Terisi) */}
+      {/* ============================================================== */}
+      {panelMode === 'inspect' && selectedBooking && (
+        <div className="flex flex-col justify-between h-full animate-in fade-in duration-200">
           <div>
             {/* Top Bar */}
             <div className="flex items-center justify-between mb-4">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={() => onClose()}
                 className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Tutup panel"
               >
@@ -126,7 +201,7 @@ export default function RightPanelInspector({
                 </svg>
               </button>
               <span className="text-xs text-[#8e8e8e]">
-                {activeBooking.status === 'maintenance' ? 'Maintenance' : 'Terisi'}
+                {selectedBooking.status === 'maintenance' ? 'Maintenance' : 'Terisi'}
               </span>
             </div>
 
@@ -134,12 +209,12 @@ export default function RightPanelInspector({
             <div className="relative h-[150px] rounded-[14px] overflow-hidden mb-6 border border-white/10 shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80"
-                alt={activeBooking.courtName}
+                alt={selectedBooking.courtName}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-3 text-xs px-2.5 py-1 rounded-[6px] bg-black/70 backdrop-blur-md text-white font-medium border border-white/15">
-                {activeBooking.courtName}
+                {selectedBooking.courtName}
               </span>
             </div>
 
@@ -150,15 +225,15 @@ export default function RightPanelInspector({
                   Jadwal Tidak Tersedia
                 </span>
                 <h2 className="text-2xl font-bold text-white tracking-tight mb-1">
-                  {activeBooking.customerName}
+                  {selectedBooking.customerName}
                 </h2>
                 <p className="text-sm text-[#8e8e8e]">
-                  {activeBooking.date}, {activeBooking.startTime}–{activeBooking.endTime}
+                  {selectedBooking.date}, {selectedBooking.startTime}–{selectedBooking.endTime}
                 </p>
               </div>
 
               <div className="w-12 h-12 rounded-[12px] bg-[#2a2a2a] border border-white/15 text-white flex items-center justify-center text-lg font-bold shrink-0">
-                {activeBooking.avatarInitials || 'BS'}
+                {selectedBooking.avatarInitials || 'BS'}
               </div>
             </div>
 
@@ -171,18 +246,20 @@ export default function RightPanelInspector({
           <div className="pt-4 border-t border-[#262626]">
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => onClose()}
               className="w-full h-12 rounded-[10px] bg-[#f2d953] hover:bg-[#e4cb34] text-[#161616] text-sm font-semibold transition-colors cursor-pointer shadow-md"
             >
-              Cari Slot Kosong Lain
+              Kembali ke Panduan
             </button>
           </div>
         </div>
       )}
 
-      {/* KONTEN 2: CREATE NEW BOOKING */}
-      {currentMode === 'create' && activeSlot && (
-        <div className="w-[332px] xl:w-[372px] flex flex-col justify-between h-full shrink-0">
+      {/* ============================================================== */}
+      {/* KONTEN 2: CREATE NEW BOOKING (Form Booking & Layar Bayar) */}
+      {/* ============================================================== */}
+      {panelMode === 'create' && selectedSlot && (
+        <div className="flex flex-col justify-between h-full">
           {/* SUB-STEP A: LOADING GENERATE PAYMENT (~800ms) */}
           {bookingStep === 'loading' && (
             <div className="flex flex-col items-center justify-center h-full text-center p-6 animate-in fade-in duration-200">
@@ -191,15 +268,15 @@ export default function RightPanelInspector({
                 Menyiapkan Kanal Pembayaran
               </h3>
               <p className="text-xs text-[#8e8e8e] max-w-[240px] leading-relaxed">
-                Menghubungkan ke gateway dan mengunci slot {activeSlot.courtName}...
+                Menghubungkan ke gateway dan mengunci slot {selectedSlot.courtName}...
               </p>
             </div>
           )}
 
-          {/* SUB-STEP B: QRIS PAYMENT SCREEN */}
+          {/* SUB-STEP B: MULTI-CHANNEL PAYMENT SCREEN */}
           {bookingStep === 'payment' && expiryTimestamp && (
             <QrisPaymentView
-              selectedSlot={activeSlot}
+              selectedSlot={selectedSlot}
               paymentType={paymentType}
               notes={notes}
               expiryTimestamp={expiryTimestamp}
@@ -217,7 +294,7 @@ export default function RightPanelInspector({
                 <div className="flex items-center justify-between mb-3">
                   <button
                     type="button"
-                    onClick={onClose}
+                    onClick={() => onClose()}
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center transition-colors cursor-pointer"
                     aria-label="Batal pemilihan"
                   >
@@ -235,7 +312,7 @@ export default function RightPanelInspector({
                     Konfirmasi Reservasi
                   </h2>
                   <p className="text-xs text-[#8e8e8e] mt-0.5">
-                    {activeSlot.date} • {activeSlot.courtName}
+                    {selectedSlot.date} • {selectedSlot.courtName}
                   </p>
                 </div>
 
@@ -244,15 +321,15 @@ export default function RightPanelInspector({
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-xs text-[#8e8e8e]">Waktu Bermain</span>
                     <span className="text-xs text-white font-medium">
-                      {activeSlot.totalHours} Jam
+                      {selectedSlot.totalHours} Jam
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-base font-bold text-white">
-                      {activeSlot.startTime} - {activeSlot.endTime}
+                      {selectedSlot.startTime} - {selectedSlot.endTime}
                     </span>
                     <span className="text-xs text-[#8e8e8e]">
-                      Rp {activeSlot.pricePerHour.toLocaleString('id-ID')} / jam
+                      Rp {selectedSlot.pricePerHour.toLocaleString('id-ID')} / jam
                     </span>
                   </div>
                 </div>
@@ -260,15 +337,15 @@ export default function RightPanelInspector({
                 {/* 2. Rincian Tagihan Transparan */}
                 <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e] mb-3">
                   <div className="flex justify-between text-xs text-[#8e8e8e] mb-2">
-                    <span>Sewa {activeSlot.courtName} ({activeSlot.totalHours} jam)</span>
+                    <span>Sewa {selectedSlot.courtName} ({selectedSlot.totalHours} jam)</span>
                     <span className="text-white font-medium">
-                      Rp {activeSlot.totalPrice.toLocaleString('id-ID')}
+                      Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm font-bold text-white pt-2 border-t border-white/10">
                     <span>Total Tagihan</span>
                     <span className="text-base text-[#f2d953]">
-                      Rp {activeSlot.totalPrice.toLocaleString('id-ID')}
+                      Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
                     </span>
                   </div>
                 </div>
@@ -291,7 +368,7 @@ export default function RightPanelInspector({
                         {paymentType === 'dp' ? 'Bayar DP 50%' : 'Bayar Lunas 100%'}
                       </span>
                       <span className="text-xs text-[#8e8e8e]">
-                        • Rp {(paymentType === 'dp' ? dpAmount : activeSlot.totalPrice).toLocaleString('id-ID')}
+                        • Rp {(paymentType === 'dp' ? dpAmount : selectedSlot.totalPrice).toLocaleString('id-ID')}
                       </span>
                     </div>
                     <svg
@@ -366,7 +443,7 @@ export default function RightPanelInspector({
                           </div>
                         </div>
                         <span className="text-xs font-bold text-emerald-400">
-                          Rp {activeSlot.totalPrice.toLocaleString('id-ID')}
+                          Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
                         </span>
                       </div>
                     </div>
@@ -418,7 +495,7 @@ export default function RightPanelInspector({
                     {paymentType === 'dp' ? 'Wajib Bayar Sekarang (DP 50%)' : 'Wajib Bayar Sekarang (Lunas)'}:
                   </span>
                   <span className="text-sm font-bold text-[#f2d953]">
-                    Rp {(paymentType === 'dp' ? dpAmount : activeSlot.totalPrice).toLocaleString('id-ID')}
+                    Rp {(paymentType === 'dp' ? dpAmount : selectedSlot.totalPrice).toLocaleString('id-ID')}
                   </span>
                 </div>
                 <button
