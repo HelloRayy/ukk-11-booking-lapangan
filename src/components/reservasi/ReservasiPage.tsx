@@ -1,18 +1,63 @@
-// PERAN FILE: Root Coordinator untuk Halaman /reservasi
-import { useReservasiSetup } from './hooks/useReservasiSetup'
-import ReservasiHeader from './components/ReservasiHeader'
-import ReservasiContent from './components/ReservasiContent'
+// PERAN FILE: Root Coordinator Halaman /reservasi 1:1 Persis Desain Referensi
+import { useReservasiSchedule } from './hooks/useReservasiSchedule'
+import ReservasiNavbar from './components/ReservasiNavbar'
+import ScheduleHeader from './components/ScheduleHeader'
+import ScheduleGrid from './components/ScheduleGrid'
+import RightPanelInspector from './components/RightPanelInspector'
+import BottomNavTab from './components/BottomNavTab'
 
 export default function ReservasiPage() {
-  const { customer, isLoading, handleBackToHome } = useReservasiSetup()
+  const {
+    courts,
+    timeSlots,
+    bookings,
+    customer,
+    panelMode,
+    selectedBooking,
+    selectedSlot,
+    getSlotBooking,
+    handleSelectBooking,
+    handleSelectEmptySlot,
+    handleClosePanel,
+    handleCreateBooking,
+  } = useReservasiSchedule()
 
   return (
-    <div className="min-h-screen bg-[#161616] text-[#fafafa] font-aeonik flex flex-col">
-      {/* 1. Header Navigasi */}
-      <ReservasiHeader onBack={handleBackToHome} />
+    <div className="h-screen w-screen bg-[#161616] text-[#fafafa] font-aeonik flex flex-col overflow-hidden select-none">
+      {/* 1. Navbar Atas (Header & Date Selector) */}
+      <ReservasiNavbar customerName={customer?.nama} />
 
-      {/* 2. Konten Utama Kerangka Reservasi */}
-      <ReservasiContent customer={customer} isLoading={isLoading} />
+      {/* 2. Split Area Utama: Kalender di Kiri, Inspector di Kanan */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Kolom Kiri: Tabel Kalender (Header Lapangan + Grid Jam) */}
+        <div className="flex-1 flex flex-col overflow-hidden border-r border-[#262626]">
+          <ScheduleHeader courts={courts} />
+          <ScheduleGrid
+            courts={courts}
+            timeSlots={timeSlots}
+            selectedBooking={selectedBooking}
+            selectedSlot={selectedSlot}
+            getSlotBooking={getSlotBooking}
+            onSelectBooking={handleSelectBooking}
+            onSelectEmptySlot={handleSelectEmptySlot}
+          />
+        </div>
+
+        {/* Kolom Kanan: Inspector Panel (Detail Pemesan / Form Booking Baru / Empty State) */}
+        <RightPanelInspector
+          panelMode={panelMode}
+          selectedBooking={selectedBooking}
+          selectedSlot={selectedSlot}
+          customerName={customer?.nama}
+          customerWhatsapp={customer?.whatsapp}
+          customerEmail={customer?.email}
+          onClose={handleClosePanel}
+          onCreateBooking={handleCreateBooking}
+        />
+      </div>
+
+      {/* 3. Baris Navigasi Bawah (Dashboard, Calendar, Register, Messages) */}
+      <BottomNavTab bookingCount={bookings.filter((b) => b.status === 'booked').length} />
     </div>
   )
 }
