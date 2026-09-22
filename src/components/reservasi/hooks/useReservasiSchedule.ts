@@ -1,17 +1,12 @@
 // PERAN FILE: Custom Hook State Kalender Jadwal dengan Integrasi Supabase & Form LP (User POV)
 import { useState, useEffect, useCallback } from 'react'
 import type { BookingItem, Court, SlotRangeSelection, PaymentType, RightPanelMode, StoredCustomerInfo } from '../types'
-import { MOCK_COURTS, TIME_SLOTS, INITIAL_BOOKINGS } from '../data/mockScheduleData'
+import { TIME_SLOTS, CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
 import { getLapangan, getAllBookings, createBooking } from '../../../lib/api'
 import { getTodayISODate, getInitials } from '../utils/formatters'
 import type { Booking as DbBooking } from '../../../types/database'
 
-// Jam acuan kalender saat ini (sinkron dengan indikator garis biru 10:40)
-export const CALENDAR_CURRENT_TIME = {
-  hour: 10,
-  minute: 40,
-  display: '10:40',
-}
+export { CALENDAR_CURRENT_TIME, TIME_SLOTS } from '../constants/scheduleConfig'
 
 const COURT_STYLE_MAP: Record<number, { type: string; image: string }> = {
   1: {
@@ -103,8 +98,8 @@ function mapDbBookingsToItems(
 
 export function useReservasiSchedule() {
   const [selectedDate, setSelectedDate] = useState<string>(getTodayISODate())
-  const [courts, setCourts] = useState<Court[]>(MOCK_COURTS)
-  const [bookings, setBookings] = useState<BookingItem[]>(INITIAL_BOOKINGS)
+  const [courts, setCourts] = useState<Court[]>([])
+  const [bookings, setBookings] = useState<BookingItem[]>([])
   const [allDbBookings, setAllDbBookings] = useState<DbBooking[]>([])
   const [panelMode, setPanelMode] = useState<RightPanelMode>('empty')
   const [selectedBooking, setSelectedBooking] = useState<BookingItem | null>(null)
@@ -154,7 +149,7 @@ export function useReservasiSchedule() {
           setCourts(mapped)
         }
       } catch (err) {
-        console.warn('Gagal memuat data lapangan Supabase, menggunakan mock courts:', err)
+        console.warn('Gagal memuat data lapangan Supabase:', err)
       }
     }
 
@@ -176,7 +171,7 @@ export function useReservasiSchedule() {
           setAllDbBookings(data)
         }
       } catch (err) {
-        console.warn('Gagal memuat data bookings Supabase, menggunakan initial bookings:', err)
+        console.warn('Gagal memuat data bookings Supabase:', err)
       } finally {
         if (isMounted) {
           setIsLoading(false)
@@ -196,8 +191,7 @@ export function useReservasiSchedule() {
       const mapped = mapDbBookingsToItems(allDbBookings, selectedDate, courts)
       setBookings(mapped)
     } else {
-      const fallback = INITIAL_BOOKINGS.filter((b) => b.date === selectedDate)
-      setBookings(fallback.length > 0 ? fallback : [])
+      setBookings([])
     }
   }, [selectedDate, allDbBookings, courts])
 
