@@ -4,7 +4,6 @@ import ReservasiNavbar from './components/ReservasiNavbar'
 import ScheduleHeader from './components/ScheduleHeader'
 import ScheduleGrid from './components/ScheduleGrid'
 import RightPanelInspector from './components/RightPanelInspector'
-import BottomNavTab from './components/BottomNavTab'
 
 export default function ReservasiPage() {
   const {
@@ -64,9 +63,6 @@ export default function ReservasiPage() {
           onCreateBooking={handleCreateBooking}
         />
       </div>
-
-      {/* 3. Baris Navigasi Bawah (User POV: Ringkasan Durasi & Total Biaya) */}
-      <BottomNavTab selectedSlot={selectedSlot} />
     </div>
   )
 }
