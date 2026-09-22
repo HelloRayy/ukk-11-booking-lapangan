@@ -193,41 +193,70 @@ export default function HeroBlanca() {
             </div>
 
             {/* Sisi Tengah: Nav Links Desktop */}
-            <nav className="hidden lg:flex items-center" aria-label="primary">
-              <ul className="header__links">
-                <li>
-                  <a className="header__link" href="/collections/racquets">
-                    <span>Racquets</span>
+            <nav className="hidden lg:flex items-center header__nav" aria-label="primary">
+              <ul className="flex items-center justify-center py-2 px-3 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all">
+                <li className="h-[27.9818px] w-[93.4635px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[93.4635px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/collections/racquets"
+                  >
+                    <span className="leading-tight transition-all">Racquets</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/collections/bundle">
-                    <span>Bundles</span>
+                <li className="h-[27.9818px] w-[83.5677px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[83.5677px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/collections/bundle"
+                  >
+                    <span className="leading-tight transition-all">Bundles</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/collections/accessories">
-                    <span>Accessories</span>
+                <li className="h-[27.9818px] w-[112.539px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[112.539px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/collections/accessories"
+                  >
+                    <span className="leading-tight transition-all">Accessories</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/collections/apparel">
-                    <span>Apparel</span>
+                <li className="h-[27.9818px] w-[81.3281px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[81.3281px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/collections/apparel"
+                  >
+                    <span className="leading-tight transition-all">Apparel</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/pages/find-a-club">
-                    <span>Trial our gear</span>
+                <li className="h-[27.9818px] w-[118.164px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[118.164px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/pages/find-a-club"
+                  >
+                    <span className="leading-tight transition-all">Trial our gear</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/pages/about-us">
-                    <span>About us</span>
+                <li className="h-[27.9818px] w-[90.9375px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[90.9375px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/pages/about-us"
+                  >
+                    <span className="leading-tight transition-all">About us</span>
                   </a>
                 </li>
-                <li>
-                  <a className="header__link" href="/pages/players">
-                    <span>Players</span>
+                <li className="h-[27.9818px] w-[76.8099px] leading-normal transition-all">
+                  <a
+                    className="flex items-center justify-between py-1.5 pl-3 pr-4 font-light rounded h-[27.9818px] w-[76.8099px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/pages/players"
+                  >
+                    <span className="leading-tight transition-all">Players</span>
+                  </a>
+                </li>
+                <li className="leading-normal transition-all">
+                  <a
+                    className="hidden py-1.5 pl-3 pr-4 font-light rounded leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="/account"
+                  >
+                    <span className="leading-tight transition-all">Your account</span>
                   </a>
                 </li>
               </ul>
