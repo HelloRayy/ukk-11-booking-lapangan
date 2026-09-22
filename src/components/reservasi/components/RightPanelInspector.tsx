@@ -87,98 +87,20 @@ export default function RightPanelInspector({
       className="w-full lg:w-[380px] xl:w-[420px] bg-[#1a1a1a] border-l border-[#262626] p-6 flex flex-col justify-between overflow-y-auto select-none font-aeonik shrink-0"
     >
       {/* ============================================================== */}
-      {/* KONTEN 0: INFORMASI PANDUAN BOOKING (Saat Idle / Belum Pilih Slot) */}
+      {/* KONTEN 0: EMPTY STATE MINIMALIS (Saat Idle / Belum Pilih Slot) */}
       {/* ============================================================== */}
       {panelMode === 'empty' && (
-        <div className="flex flex-col justify-between h-full animate-in fade-in duration-200">
-          <div>
-            {/* Header Informasi */}
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/5">
-              <span className="text-xs font-semibold text-[#8e8e8e] uppercase tracking-wider">
-                Panduan Reservasi
-              </span>
-              <span className="text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
-                Buka 08:00 - 23:00
-              </span>
-            </div>
-
-            <div className="mb-4">
-              <h2 className="text-xl font-bold text-white tracking-tight">
-                Informasi Booking Lapangan
-              </h2>
-              <p className="text-xs text-[#8e8e8e] mt-1 leading-relaxed">
-                Pilih jadwal bermain favorit Anda di tabel kalender sebelah kiri dengan 3 langkah mudah:
-              </p>
-            </div>
-
-            {/* 3 Langkah Cara Booking */}
-            <div className="space-y-2.5 mb-5">
-              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  1
-                </span>
-                <div>
-                  <span className="text-xs font-semibold text-white block mb-0.5">
-                    Pilih Jam Lapangan
-                  </span>
-                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
-                    Klik slot jam mulai pada lapangan yang kosong. Anda dapat memilih rentang beberapa jam sekaligus.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  2
-                </span>
-                <div>
-                  <span className="text-xs font-semibold text-white block mb-0.5">
-                    Tentukan Skema Pembayaran
-                  </span>
-                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
-                    Pilih opsi Bayar DP 50% atau Lunas 100% langsung di panel kanan ini.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#f2d953]/20 text-[#f2d953] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  3
-                </span>
-                <div>
-                  <span className="text-xs font-semibold text-white block mb-0.5">
-                    Bayar QRIS / VA / Tunai Kasir
-                  </span>
-                  <p className="text-[11px] text-[#8e8e8e] leading-relaxed">
-                    Selesaikan pembayaran dalam waktu 15 menit agar jadwal Anda langsung terkunci di sistem kalender.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Ketentuan Sewa */}
-            <div className="p-3.5 rounded-[12px] bg-white/[0.02] border border-white/5 space-y-2 mb-4">
-              <span className="text-xs font-semibold text-white block">Ketentuan Sewa Arena:</span>
-              <ul className="text-[11px] text-[#8e8e8e] space-y-1.5 list-disc list-inside">
-                <li>Wajib menggunakan sepatu khusus lapangan badminton/padel.</li>
-                <li>Sisa pembayaran DP 50% dilunasi saat tiba di kasir arena.</li>
-                <li>Penyewaan raket dan shuttlecock tersedia di meja kasir.</li>
-                <li>Pembatalan atau ubah jadwal maksimal H-1 sebelum jam sewa.</li>
-              </ul>
-            </div>
+        <div className="flex flex-col justify-center items-center text-center h-full select-none font-aeonik p-6 animate-in fade-in duration-150">
+          <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#f2d953] mb-3">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
           </div>
-
-          {/* Footer Callout */}
-          <div className="pt-3 border-t border-[#262626]">
-            <div className="p-3 rounded-[10px] bg-[#f2d953]/10 border border-[#f2d953]/20 text-center">
-              <span className="text-xs font-semibold text-[#f2d953] block mb-0.5">
-                Siap Bermain?
-              </span>
-              <span className="text-[11px] text-[#d4d4d4]">
-                Klik kotak jam kosong pada kalender untuk mulai reservasi.
-              </span>
-            </div>
-          </div>
+          <h3 className="text-base font-semibold text-white mb-1">Pilih Jam Bermain</h3>
+          <p className="text-xs text-[#8e8e8e] max-w-[240px] leading-relaxed">
+            Klik slot jam mulai dan jam selesai pada tabel kalender untuk menentukan jadwal sewa lapangan Anda.
+          </p>
         </div>
       )}
 
