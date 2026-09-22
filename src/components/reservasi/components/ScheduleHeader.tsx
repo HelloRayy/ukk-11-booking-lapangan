@@ -20,7 +20,10 @@ export default function ScheduleHeader({ courts }: ScheduleHeaderProps) {
       </div>
 
       {/* Kolom Header Masing-Masing Lapangan (Clean Typography Tanpa Gambar Berulang) */}
-      <div className="flex-1 grid grid-cols-4 divide-x divide-[#262626]">
+      <div
+        style={{ gridTemplateColumns: `repeat(${courts.length || 1}, minmax(0, 1fr))` }}
+        className="flex-1 grid divide-x divide-[#262626]"
+      >
         {courts.map((court) => (
           <div
             key={court.id}

@@ -112,10 +112,13 @@ export default function ScheduleGrid({
           slotHeight={SLOT_HEIGHT}
         />
 
-        {/* 4 Kolom Lapangan Independen */}
-        <div className="flex-1 grid grid-cols-4 divide-x divide-[#222222]">
+        {/* Kolom Lapangan Independen */}
+        <div
+          style={{ gridTemplateColumns: `repeat(${courts.length || 1}, minmax(0, 1fr))` }}
+          className="flex-1 grid divide-x divide-[#222222]"
+        >
           {courts.map((court) => {
-            const courtBookings = bookings.filter((b) => b.courtId === court.id)
+            const courtBookings = bookings.filter((b) => String(b.courtId) === String(court.id))
 
             return (
               <div
@@ -185,7 +188,7 @@ export default function ScheduleGrid({
                 ))}
 
                 {/* Kartu Seleksi Pengguna Aktif */}
-                {selectedSlot && selectedSlot.courtId === court.id && (
+                {selectedSlot && String(selectedSlot.courtId) === String(court.id) && (
                   <ActiveSelectionCard
                     selectedSlot={selectedSlot}
                     court={court}

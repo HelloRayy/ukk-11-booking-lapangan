@@ -83,9 +83,9 @@ export default function ReservationSidePanel({
 
       {/* Kontainer Drawer Samping Kanan (Smooth Slide-in & Slide-out Transition) */}
       <div
-        className={`fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-white text-[#161616] rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+        className={`fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-[#161616] text-[#f5f5f5] border-l border-white/10 rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
           isActive
-            ? 'translate-x-0 shadow-[-24px_0_60px_rgba(0,0,0,0.35)]'
+            ? 'translate-x-0 shadow-[-24px_0_60px_rgba(0,0,0,0.7)]'
             : 'translate-x-full shadow-none pointer-events-none'
         }`}
       >
@@ -99,7 +99,7 @@ export default function ReservationSidePanel({
           <button
             type="button"
             onClick={isSubmitted ? onReset : onClose}
-            className="w-10 h-10 rounded-[8px] border border-[#e5e5e5] hover:border-black flex items-center justify-center text-[#161616] transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-[8px] border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30 flex items-center justify-center text-[#f5f5f5] transition-colors cursor-pointer"
             aria-label="Kembali"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
@@ -109,17 +109,17 @@ export default function ReservationSidePanel({
 
           {/* Indikator Dashes Tengah (Khas Typeform Mockup Blanca) */}
           <div className="flex items-center gap-1.5" aria-hidden="true">
-            <span className="w-5 h-[2.5px] rounded-full bg-[#161616]" />
-            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
-            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
-            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
+            <span className="w-5 h-[2.5px] rounded-full bg-[#f2d953]" />
+            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
+            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
+            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
           </div>
 
           {/* Tombol Close X di Kanan */}
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-[8px] border border-[#e5e5e5] hover:border-black flex items-center justify-center text-[#161616] transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-[8px] border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30 flex items-center justify-center text-[#f5f5f5] transition-colors cursor-pointer"
             aria-label="Tutup panel"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
@@ -129,7 +129,7 @@ export default function ReservationSidePanel({
         </div>
 
         {/* Body Area Formulir (Spacious & Clean Typography) */}
-        <div className="flex-1 overflow-y-auto px-6 md:px-10 pb-8 flex flex-col justify-between">
+        <div className="flex-1 min-h-0 overflow-y-auto px-6 md:px-10 pb-8 flex flex-col justify-between">
           {!isSubmitted ? (
             <form onSubmit={onSubmit} className="flex flex-col justify-between h-full min-h-[460px]">
               <div>
@@ -145,7 +145,7 @@ export default function ReservationSidePanel({
 
                   <h2
                     id="side-panel-title"
-                    className="text-[34px] sm:text-[40px] font-normal leading-[1.08] tracking-[-1px] text-[#161616] mb-8"
+                    className="text-[34px] sm:text-[40px] font-normal leading-[1.08] tracking-[-1px] text-[#f5f5f5] mb-8"
                   >
                     What’s your contact info?
                   </h2>
@@ -159,7 +159,7 @@ export default function ReservationSidePanel({
                 >
                   {/* 1. Nama Lengkap */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="nama_penyewa" className="text-sm font-normal text-[#161616]">
+                    <label htmlFor="nama_penyewa" className="text-sm font-normal text-[#d4d4d4]">
                       Full name
                     </label>
                     <input
@@ -168,14 +168,14 @@ export default function ReservationSidePanel({
                       value={customerInfo.nama}
                       onChange={(e) => onUpdateField('nama', e.target.value)}
                       placeholder="e.g. Budi Santoso"
-                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      className="w-full h-[64px] px-5 rounded-[12px] bg-[#222222] border border-white/15 text-[17px] text-[#f5f5f5] placeholder:text-[#666666] font-light focus:outline-none focus:border-[#f2d953] transition-colors"
                       required
                     />
                   </div>
 
                   {/* 2. Nomor WhatsApp / HP */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="whatsapp_penyewa" className="text-sm font-normal text-[#161616]">
+                    <label htmlFor="whatsapp_penyewa" className="text-sm font-normal text-[#d4d4d4]">
                       WhatsApp number
                     </label>
                     <input
@@ -184,14 +184,14 @@ export default function ReservationSidePanel({
                       value={customerInfo.whatsapp}
                       onChange={(e) => onUpdateField('whatsapp', e.target.value)}
                       placeholder="e.g. 08123456789"
-                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      className="w-full h-[64px] px-5 rounded-[12px] bg-[#222222] border border-white/15 text-[17px] text-[#f5f5f5] placeholder:text-[#666666] font-light focus:outline-none focus:border-[#f2d953] transition-colors"
                       required
                     />
                   </div>
 
                   {/* 3. Alamat Email */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email_penyewa" className="text-sm font-normal text-[#161616]">
+                    <label htmlFor="email_penyewa" className="text-sm font-normal text-[#d4d4d4]">
                       Email
                     </label>
                     <input
@@ -200,7 +200,7 @@ export default function ReservationSidePanel({
                       value={customerInfo.email}
                       onChange={(e) => onUpdateField('email', e.target.value)}
                       placeholder="e.g. budi@gmail.com"
-                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      className="w-full h-[64px] px-5 rounded-[12px] bg-[#222222] border border-white/15 text-[17px] text-[#f5f5f5] placeholder:text-[#666666] font-light focus:outline-none focus:border-[#f2d953] transition-colors"
                       required
                     />
                   </div>
@@ -211,10 +211,11 @@ export default function ReservationSidePanel({
                       id="confirm_checkbox"
                       checked={customerInfo.isConfirmed}
                       onCheckedChange={(checked) => onUpdateField('isConfirmed', checked === true)}
+                      className="border-white/30 data-[state=checked]:bg-[#f2d953] data-[state=checked]:border-[#f2d953] data-[state=checked]:text-[#161616] focus-visible:ring-[#f2d953]"
                     />
                     <label
                       htmlFor="confirm_checkbox"
-                      className="text-sm text-[#4a4a4a] group-hover:text-[#161616] transition-colors leading-tight cursor-pointer"
+                      className="text-sm text-[#a3a3a3] group-hover:text-[#f5f5f5] transition-colors leading-tight cursor-pointer"
                     >
                       Saya menyatakan data yang diisi sudah benar dan bersedia dihubungi arena.
                     </label>
@@ -233,17 +234,17 @@ export default function ReservationSidePanel({
                   disabled={!isFormValid}
                   className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-300 select-none ${
                     isFormValid
-                      ? 'bg-[#f2d953] hover:bg-[#e4cb34] active:bg-[#d6bc28] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.35)] hover:shadow-[0_8px_28px_rgba(228,203,52,0.45)] border border-black/10 active:scale-[0.98]'
-                      : 'bg-[#f0f0f0] border border-[#e5e5e5] text-[#737373] cursor-not-allowed'
+                      ? 'bg-[#f2d953] hover:bg-[#e4cb34] active:bg-[#d6bc28] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.3)] hover:shadow-[0_8px_28px_rgba(228,203,52,0.4)] border border-[#f2d953]/30 active:scale-[0.98]'
+                      : 'bg-[#222222] border border-white/10 text-[#666666] cursor-not-allowed'
                   }`}
                   aria-label={isFormValid ? 'Submit form data' : 'Form belum lengkap'}
                 >
                   {/* Kotak Ikon yang Meluncur dari Kiri ke Kanan Saat Ter-unlock */}
                   <span
-                    className={`absolute top-2 w-[48px] h-[48px] rounded-[8px] bg-white border border-black/10 flex items-center justify-center text-[#161616] shadow-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                    className={`absolute top-2 w-[48px] h-[48px] rounded-[8px] flex items-center justify-center shadow-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                       isFormValid
-                        ? 'left-[calc(100%-56px)] scale-100 shadow-md'
-                        : 'left-2 scale-95 opacity-80'
+                        ? 'left-[calc(100%-56px)] scale-100 bg-[#161616] text-[#f2d953] border border-black/20 shadow-md'
+                        : 'left-2 scale-95 opacity-60 bg-[#2c2c2c] text-[#737373] border border-white/5'
                     }`}
                     aria-hidden="true"
                   >
@@ -272,7 +273,7 @@ export default function ReservationSidePanel({
                     className={`text-[16px] tracking-tight transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                       isFormValid
                         ? 'pr-[56px] pl-4 font-medium text-[#161616]'
-                        : 'pl-[56px] pr-4 font-normal text-[#737373]'
+                        : 'pl-[56px] pr-4 font-normal text-[#666666]'
                     }`}
                   >
                     See our recommendations
@@ -284,25 +285,25 @@ export default function ReservationSidePanel({
             /* Tampilan Review / Konfirmasi Setelah Data Diisi */
             <div className="flex flex-col justify-between h-full min-h-[460px] py-6">
               <div>
-                <span className="text-[13px] text-emerald-600 font-medium block mb-2">
+                <span className="text-[13px] text-emerald-400 font-medium block mb-2">
                   Completed • Ready for next step
                 </span>
-                <h3 className="text-[34px] font-normal tracking-[-1px] text-[#161616] mb-6">
+                <h3 className="text-[34px] font-normal tracking-[-1px] text-[#f5f5f5] mb-6">
                   Customer verified
                 </h3>
 
-                <div className="p-6 rounded-[14px] bg-[#f8f8f8] border border-[#e5e5e5] flex flex-col gap-4">
+                <div className="p-6 rounded-[14px] bg-[#222222] border border-white/10 flex flex-col gap-4">
                   <div>
                     <span className="text-xs text-[#8e8e8e] block font-light">NAMA PEMESAN</span>
-                    <span className="text-base text-[#161616] font-medium">{customerInfo.nama}</span>
+                    <span className="text-base text-[#f5f5f5] font-medium">{customerInfo.nama}</span>
                   </div>
                   <div>
                     <span className="text-xs text-[#8e8e8e] block font-light">WHATSAPP</span>
-                    <span className="text-base text-[#161616] font-medium">{customerInfo.whatsapp}</span>
+                    <span className="text-base text-[#f5f5f5] font-medium">{customerInfo.whatsapp}</span>
                   </div>
                   <div>
                     <span className="text-xs text-[#8e8e8e] block font-light">EMAIL</span>
-                    <span className="text-base text-[#161616] font-medium">{customerInfo.email}</span>
+                    <span className="text-base text-[#f5f5f5] font-medium">{customerInfo.email}</span>
                   </div>
                 </div>
               </div>
@@ -311,7 +312,7 @@ export default function ReservationSidePanel({
                 <button
                   type="button"
                   onClick={onReset}
-                  className="w-full h-[56px] rounded-[10px] border border-[#d1d1d1] hover:border-black text-sm font-medium text-[#161616] transition-colors cursor-pointer"
+                  className="w-full h-[56px] rounded-[10px] border border-white/20 hover:border-white text-sm font-medium text-[#f5f5f5] bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   Edit information
                 </button>
