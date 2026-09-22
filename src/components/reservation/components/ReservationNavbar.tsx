@@ -51,13 +51,21 @@ export default function ReservationNavbar({ customerName, selectedDate, onDateCh
         </label>
       </div>
 
-      {/* Kanan: Info Akun Pemesan Bersih */}
-      {customerName && (
-        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
-          <span className="text-white font-medium">{customerName}</span>
-        </div>
-      )}
+      {/* Kanan: Portal Kasir & Info Pemesan */}
+      <div className="flex items-center gap-3">
+        <a
+          href="/kasir"
+          className="px-3 py-1.5 rounded-[8px] bg-white/5 hover:bg-white/10 text-xs text-[#a3a3a3] hover:text-white transition-colors border border-white/10"
+        >
+          Portal Kasir
+        </a>
+        {customerName && (
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+            <span className="text-white font-medium">{customerName}</span>
+          </div>
+        )}
+      </div>
     </header>
   )
 }

@@ -85,4 +85,81 @@ export function subscribeToBookings(onUpdate: () => void) {
   }
 }
 
+// 7. tambah master lapangan baru (Poin 10 Kisi-Kisi UKK)
+export async function createLapangan(
+  lapanganData: Omit<Lapangan, 'id' | 'created_at'>
+): Promise<Lapangan> {
+  const { data, error } = await supabase
+    .from('lapangan')
+    .insert([lapanganData])
+    .select()
+    .single()
+
+  if (error) throw new Error(`Gagal menambah lapangan: ${error.message}`)
+  return data
+}
+
+// 8. edit tarif atau status master lapangan (Poin 11 Kisi-Kisi UKK)
+export async function updateLapangan(
+  id: number,
+  lapanganData: Partial<Omit<Lapangan, 'id' | 'created_at'>>
+): Promise<Lapangan> {
+  const { data, error } = await supabase
+    .from('lapangan')
+    .update(lapanganData)
+    .eq('id', id)
+    .select()
+    .single()
+
+  if (error) throw new Error(`Gagal mengubah data lapangan: ${error.message}`)
+  return data
+}
+
+// 9. hapus master lapangan dari database (Poin 12 Kisi-Kisi UKK)
+export async function deleteLapangan(id: number): Promise<void> {
+  // Validasi relasi database: cegah hapus lapangan jika ada jadwal booking yang aktif
+  const { data: activeBookings, error: checkError } = await supabase
+    .from('bookings')
+    .select('id')
+    .eq('lapangan_id', id)
+    .neq('status', 'Batal')
+
+  if (checkError) throw new Error(`Gagal memeriksa riwayat booking: ${checkError.message}`)
+
+  if (activeBookings && activeBookings.length > 0) {
+    throw new Error('Lapangan tidak dapat dihapus karena masih memiliki transaksi booking aktif. Nonaktifkan status lapangan menjadi Tutup.')
+  }
+
+  const { error } = await supabase
+    .from('lapangan')
+    .delete()
+    .eq('id', id)
+
+  if (error) throw new Error(`Gagal menghapus lapangan: ${error.message}`)
+}
+
+// 10. cari dan filter transaksi booking (Poin 13 Kisi-Kisi UKK)
+export async function searchBookings(
+  keyword: string = '',
+  status?: StatusBooking | 'Semua'
+): Promise<Booking[]> {
+  let query = supabase
+    .from('bookings')
+    .select('*, lapangan(*)')
+    .order('created_at', { ascending: false })
+
+  if (status && status !== 'Semua') {
+    query = query.eq('status', status)
+  }
+
+  if (keyword.trim()) {
+    query = query.or(`nama_penyewa.ilike.%${keyword.trim()}%,no_hp.ilike.%${keyword.trim()}%`)
+  }
+
+  const { data, error } = await query
+
+  if (error) throw new Error(`Gagal mencari data booking: ${error.message}`)
+  return (data as Booking[]) || []
+}
+
 
