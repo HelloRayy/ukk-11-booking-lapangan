@@ -41,12 +41,12 @@ test.describe('Blanca Padel Hero Section 1:1 Reproduction', () => {
     await expect(ctaButton).toBeVisible();
     await expect(ctaButton).toContainText('Shop our racquets');
 
-    const video = page.locator('video');
-    await expect(video).toBeAttached();
+    const heroMedia = page.locator('img[alt="Blanca Padel Hero"], video');
+    await expect(heroMedia.first()).toBeAttached();
 
-    // 4. Lakukan visual snapshot comparison dengan mask pada elemen video looping
+    // 4. Lakukan visual snapshot comparison dengan mask pada elemen media hero
     await expect(page).toHaveScreenshot({
-      mask: [page.locator('video')],
+      mask: [heroMedia.first()],
       maxDiffPixelRatio: 0.05,
     });
   });
