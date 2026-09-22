@@ -146,29 +146,6 @@ export default function ScheduleGrid({
                     const isPast = isPastSlot(time)
                     const inRange = isSlotInRange(court.id, time)
 
-                    // Cek status hover rentang
-                    const isSlotInHoverRange = Boolean(
-                      isRangePreviewActive &&
-                        court.id === selectedSlot?.courtId &&
-                        previewMinHour !== null &&
-                        previewMaxHour !== null &&
-                        slotHour >= previewMinHour &&
-                        slotHour <= previewMaxHour &&
-                        slotHour !== selectedSlot?.startHour,
-                    )
-
-                    const isTargetHoverSlot = isSlotInHoverRange && slotHour === hoveredSlot?.hour
-                    const isIntermediateHoverSlot = isSlotInHoverRange && slotHour !== hoveredSlot?.hour
-
-                    // Durasi & estimasi harga rentang hover
-                    const previewHours =
-                      previewMaxHour !== null && previewMinHour !== null
-                        ? previewMaxHour - previewMinHour + 1
-                        : 1
-                    const previewPrice = previewHours * court.pricePerHour
-                    const previewEndHour = previewMaxHour !== null ? previewMaxHour + 1 : slotHour + 1
-                    const previewEndTimeStr = `${previewEndHour < 10 ? '0' : ''}${previewEndHour}:00`
-
                     return (
                       <div
                         key={time}
@@ -192,67 +169,18 @@ export default function ScheduleGrid({
                             ? 'opacity-25 cursor-not-allowed'
                             : inRange
                             ? 'bg-[#1a1a1a] cursor-pointer'
-                            : isSlotInHoverRange
-                            ? previewHasCollision
-                              ? 'bg-red-500/10 border-x-2 border-dashed border-red-500/40 cursor-not-allowed'
-                              : isTargetHoverSlot
-                              ? 'bg-[#f2d953]/25 border-x-2 border-dashed border-[#f2d953] cursor-pointer'
-                              : 'bg-[#f2d953]/15 border-x-2 border-dashed border-[#f2d953]/40 cursor-pointer'
-                            : 'hover:bg-[#f2d953]/5 cursor-pointer group'
+                            : 'cursor-pointer group'
                         }`}
                       >
-                        {/* 1. Target Hover Slot: Card Preview dengan Durasi & Estimasi Harga */}
-                        {isTargetHoverSlot && !isPast && (
-                          previewHasCollision ? (
-                            <div className="absolute inset-x-2 top-2 bottom-2 p-2 rounded-[8px] bg-[#1c1c1c]/95 border border-red-500/50 shadow-lg flex items-center justify-center gap-2 pointer-events-none z-10 animate-in fade-in zoom-in-95 duration-100">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="15" y1="9" x2="9" y2="15" />
-                                <line x1="9" y1="9" x2="15" y2="15" />
-                              </svg>
-                              <span className="text-xs font-medium text-red-400">Jadwal Bentrok</span>
-                            </div>
-                          ) : (
-                            <div className="absolute inset-x-2 top-2 bottom-2 p-2.5 rounded-[8px] bg-[#1a1a1a]/95 border border-[#f2d953]/70 shadow-lg flex flex-col justify-between pointer-events-none z-10 animate-in fade-in zoom-in-95 duration-100">
-                              <div className="flex items-center justify-between gap-1">
-                                <span className="text-xs font-semibold text-[#f2d953]">
-                                  {slotHour > (selectedSlot?.startHour ?? 0) ? 'Pilih Jam Selesai' : 'Pilih Jam Mulai'}
-                                </span>
-                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f2d953]/20 text-[#f2d953] font-semibold border border-[#f2d953]/30">
-                                  +{previewHours - 1} Jam
-                                </span>
-                              </div>
-
-                              <div className="flex items-center justify-between text-[11px] text-[#e5e5e5]">
-                                <span>Sampai {previewEndTimeStr} ({previewHours} Jam)</span>
-                                <span className="font-semibold text-[#f2d953]">
-                                  Rp {previewPrice.toLocaleString('id-ID')}
-                                </span>
-                              </div>
-                            </div>
-                          )
-                        )}
-
-                        {/* 2. Intermediate Hover Slots: Indikator Terhubung Ringkas */}
-                        {isIntermediateHoverSlot && !isPast && (
-                          <div className="absolute inset-x-3 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none">
-                            <span className={`text-[11px] font-medium ${previewHasCollision ? 'text-red-400/80' : 'text-[#f2d953]/80'}`}>
-                              {time}
-                            </span>
-                            <span className={`text-[10px] ${previewHasCollision ? 'text-red-400/60' : 'text-[#8e8e8e]'}`}>
-                              • • •
-                            </span>
-                          </div>
-                        )}
-
-                        {/* 3. Hover Prompt Normal (ketika tidak dalam mode range preview) */}
-                        {!inRange && !isPast && !isSlotInHoverRange && (
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                            <span className="text-xs text-[#f2d953] font-medium bg-[#1a1a1a] px-2.5 py-1 rounded-[6px] border border-[#f2d953]/30 shadow-sm">
+                        {/* Hover Indicator Rounded untuk Single Slot (Mirip Active Card) */}
+                        {!isPast && !inRange && !isRangePreviewActive && (
+                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-dashed border-[#f2d953]/40 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
+                            <span className="text-xs font-semibold text-[#f2d953]">
                               {selectedSlot && selectedSlot.courtId === court.id
                                 ? 'Pilih Selesai'
                                 : 'Pilih Slot'}
                             </span>
+                            <span className="text-[11px] text-[#8e8e8e]">{time}</span>
                           </div>
                         )}
                       </div>
@@ -346,7 +274,103 @@ export default function ScheduleGrid({
                   )
                 })}
 
-                {/* 3. Kartu Choice / Seleksi Pengguna Aktif (User POV) */}
+                {/* 3. Kartu Ghost Preview Rentang Hover (Radius rounded-[10px] Mirip Active Card) */}
+                {(() => {
+                  if (
+                    !isRangePreviewActive ||
+                    court.id !== selectedSlot?.courtId ||
+                    previewMinHour === null ||
+                    previewMaxHour === null
+                  ) {
+                    return null
+                  }
+
+                  const previewHours = previewMaxHour - previewMinHour + 1
+                  const previewPrice = previewHours * court.pricePerHour
+                  const previewEndHour = previewMaxHour + 1
+                  const previewEndTimeStr = `${previewEndHour < 10 ? '0' : ''}${previewEndHour}:00`
+
+                  return (
+                    <div
+                      style={{
+                        top: `${(previewMinHour - BASE_HOUR) * SLOT_HEIGHT + 3}px`,
+                        height: `${(previewMaxHour - previewMinHour + 1) * SLOT_HEIGHT - 6}px`,
+                      }}
+                      className={`absolute inset-x-1.5 z-15 rounded-[10px] border-2 border-dashed pointer-events-none transition-all duration-150 flex flex-col justify-between p-3 animate-in fade-in zoom-in-95 ${
+                        previewHasCollision
+                          ? 'border-red-500/80 bg-red-500/10 shadow-[0_0_24px_rgba(239,68,68,0.2)]'
+                          : 'border-[#f2d953] bg-[#f2d953]/10 shadow-[0_0_24px_rgba(242,217,83,0.18)]'
+                      }`}
+                    >
+                      {/* Header jika kursor mengarah ke jam lebih awal dari slot terpilih */}
+                      {hoveredSlot && hoveredSlot.hour < selectedSlot.startHour ? (
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={`text-xs font-semibold ${
+                              previewHasCollision ? 'text-red-400' : 'text-[#f2d953]'
+                            }`}
+                          >
+                            {previewHasCollision ? 'Jadwal Bentrok' : 'Pilih Jam Mulai'}
+                          </span>
+                          <span
+                            className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
+                              previewHasCollision
+                                ? 'bg-red-500/20 text-red-400'
+                                : 'bg-[#f2d953]/20 text-[#f2d953]'
+                            }`}
+                          >
+                            +{previewHours - 1} Jam
+                          </span>
+                        </div>
+                      ) : (
+                        <div />
+                      )}
+
+                      {/* Footer Info Preview di Ujung Rentang */}
+                      {previewHasCollision ? (
+                        <div className="p-2.5 rounded-[8px] bg-[#1c1c1c]/95 border border-red-500/50 shadow-lg flex items-center justify-center gap-2">
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#ef4444"
+                            strokeWidth="2"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="15" y1="9" x2="9" y2="15" />
+                            <line x1="9" y1="9" x2="15" y2="15" />
+                          </svg>
+                          <span className="text-xs font-medium text-red-400">
+                            Jadwal Bentrok - Tidak Bisa Dipilih
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="p-2.5 rounded-[8px] bg-[#1a1a1a]/95 border border-[#f2d953]/60 shadow-lg">
+                          <div className="flex items-center justify-between gap-1 mb-1">
+                            <span className="text-xs font-semibold text-[#f2d953]">
+                              {hoveredSlot && hoveredSlot.hour > selectedSlot.startHour
+                                ? 'Pilih Jam Selesai'
+                                : 'Pilih Jam Mulai'}
+                            </span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f2d953]/20 text-[#f2d953] font-semibold border border-[#f2d953]/30">
+                              +{previewHours - 1} Jam (Total {previewHours} Jam)
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-between text-[11px] text-[#e5e5e5]">
+                            <span>Sampai {previewEndTimeStr}</span>
+                            <span className="font-semibold text-[#f2d953]">
+                              Rp {previewPrice.toLocaleString('id-ID')}
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
+
+                {/* 4. Kartu Choice / Seleksi Pengguna Aktif (User POV) */}
                 {selectedSlot && selectedSlot.courtId === court.id && (
                   <div
                     style={{
