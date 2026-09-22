@@ -14,6 +14,7 @@ export default function ReservasiPage() {
     panelMode,
     selectedBooking,
     selectedSlot,
+    selectedDate,
     rangeError,
     getSlotBooking,
     isSlotInRange,
@@ -23,12 +24,17 @@ export default function ReservasiPage() {
     handleClosePanel,
     handleCreateBooking,
     handleClearError,
+    handleDateChange,
   } = useReservasiSchedule()
 
   return (
     <div className="h-screen w-screen bg-[#161616] text-[#fafafa] font-aeonik flex flex-col overflow-hidden select-none">
       {/* 1. Navbar Atas (Header & Date Selector) */}
-      <ReservasiNavbar customerName={customer?.nama} />
+      <ReservasiNavbar
+        customerName={customer?.nama}
+        selectedDate={selectedDate}
+        onDateChange={handleDateChange}
+      />
 
       {/* 2. Area Utama: Kalender di Kiri, Panel Informasi & Booking di Kanan */}
       <div className="flex-1 flex overflow-hidden">

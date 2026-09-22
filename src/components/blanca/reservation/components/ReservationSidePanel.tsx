@@ -107,14 +107,6 @@ export default function ReservationSidePanel({
             </svg>
           </button>
 
-          {/* Indikator Dashes Tengah (Khas Typeform Mockup Blanca) */}
-          <div className="flex items-center gap-1.5" aria-hidden="true">
-            <span className="w-5 h-[2.5px] rounded-full bg-[#f2d953]" />
-            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
-            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
-            <span className="w-5 h-[2.5px] rounded-full bg-white/20" />
-          </div>
-
           {/* Tombol Close X di Kanan */}
           <button
             type="button"
