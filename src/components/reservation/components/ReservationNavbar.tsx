@@ -8,7 +8,7 @@ interface ReservationNavbarProps {
 
 export default function ReservationNavbar({ customerName, selectedDate, onDateChange }: ReservationNavbarProps) {
   const handleBack = () => {
-    window.location.href = '/blanca.html'
+    window.location.href = '/'
   }
 
   const displayDate = selectedDate ? formatDisplayDate(selectedDate) : 'Wednesday, October 14'

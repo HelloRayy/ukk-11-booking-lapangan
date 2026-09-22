@@ -20,7 +20,7 @@ export function useReservationSetup() {
   }, [])
 
   const handleBackToHome = () => {
-    window.location.href = '/blanca.html'
+    window.location.href = '/'
   }
 
   return {

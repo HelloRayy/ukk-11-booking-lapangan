@@ -13,10 +13,15 @@ export default defineConfig({
         server.middlewares.use((req, _res, next) => {
           if (req.url) {
             const urlPath = req.url.split('?')[0]
+            const query = req.url.includes('?') ? '?' + req.url.split('?')[1] : ''
             if (urlPath === '/reservasi') {
-              req.url = '/reservasi.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '')
+              req.url = '/reservasi.html' + query
             } else if (urlPath === '/blanca') {
-              req.url = '/blanca.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '')
+              req.url = '/index.html' + query
+            } else if (urlPath === '/kasir') {
+              req.url = '/kasir.html' + query
+            } else if (urlPath === '/prototype') {
+              req.url = '/prototype.html' + query
             }
           }
           next()
