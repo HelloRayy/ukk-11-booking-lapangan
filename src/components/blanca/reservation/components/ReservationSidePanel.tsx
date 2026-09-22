@@ -1,4 +1,5 @@
-// PERAN FILE: Pure UI Side Panel Drawer dari Kanan 1:1 Persis Desain Website Blanca
+// PERAN FILE: Pure UI Side Panel Drawer dari Kanan dengan Motion Halus & Staggered Reveal
+import { useState, useEffect } from 'react'
 import type { CustomerInfo } from '../types'
 
 interface ReservationSidePanelProps {
@@ -22,25 +23,77 @@ export default function ReservationSidePanel({
   onSubmit,
   onReset,
 }: ReservationSidePanelProps) {
-  if (!isOpen) return null
+  const [isRendered, setIsRendered] = useState(isOpen)
+  const [isActive, setIsActive] = useState(false)
+
+  // Sinkronisasi motion buka & tutup dengan transisi CSS halus
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    if (isOpen) {
+      setIsRendered(true)
+      // Jalankan state aktif setelah frame browser siap
+      const rafId = requestAnimationFrame(() => {
+        setIsActive(true)
+      })
+      document.body.style.overflow = 'hidden'
+      return () => cancelAnimationFrame(rafId)
+    } else {
+      setIsActive(false)
+      document.body.style.overflow = ''
+      // Tunggu durasi animasi selesai (450ms) sebelum melepaskan dari DOM
+      timeoutId = setTimeout(() => {
+        setIsRendered(false)
+      }, 450)
+    }
+    return () => {
+      clearTimeout(timeoutId)
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  // Dukungan aksesibilitas tombol keyboard Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, onClose])
+
+  if (!isRendered) return null
 
   return (
     <div
-      className="fixed inset-0 z-50 overflow-hidden font-aeonik"
+      className="fixed inset-0 z-50 overflow-hidden font-aeonik select-none"
       role="dialog"
       aria-modal="true"
       aria-labelledby="side-panel-title"
     >
-      {/* Backdrop Gelap dengan Blur */}
+      {/* Backdrop Gelap dengan Transisi Fade & Soft Blur (Cubic Deceleration) */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-[6px] transition-opacity duration-300"
+        className={`fixed inset-0 bg-black/60 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isActive ? 'opacity-100 backdrop-blur-[8px]' : 'opacity-0 backdrop-blur-none pointer-events-none'
+        }`}
         onClick={onClose}
+        aria-hidden="true"
       />
 
-      {/* Kontainer Drawer Samping Kanan (White Crisp dengan Rounded-L 24px Khas Blanca) */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-white text-[#161616] rounded-none sm:rounded-l-[24px] shadow-2xl flex flex-col z-50 animate-in slide-in-from-right duration-300 ease-out">
+      {/* Kontainer Drawer Samping Kanan (Smooth Slide-in & Slide-out Transition) */}
+      <div
+        className={`fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-white text-[#161616] rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+          isActive
+            ? 'translate-x-0 shadow-[-24px_0_60px_rgba(0,0,0,0.35)]'
+            : 'translate-x-full shadow-none pointer-events-none'
+        }`}
+      >
         {/* Top Bar Navigasi (Back Button, Dashes Indicator, Close Button) */}
-        <div className="p-6 md:px-10 md:pt-8 md:pb-6 flex items-center justify-between shrink-0">
+        <div
+          className={`p-6 md:px-10 md:pt-8 md:pb-6 flex items-center justify-between shrink-0 transition-all duration-500 ease-out ${
+            isActive ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 -translate-y-2'
+          }`}
+        >
           {/* Tombol Back di Kiri */}
           <button
             type="button"
@@ -79,21 +132,30 @@ export default function ReservationSidePanel({
           {!isSubmitted ? (
             <form onSubmit={onSubmit} className="flex flex-col justify-between h-full min-h-[460px]">
               <div>
-                {/* Subtitle / Step Indicator */}
-                <span className="text-[13px] text-[#8e8e8e] font-light block mb-2">
-                  Question 1 • Personal details
-                </span>
-
-                {/* Big Headline */}
-                <h2
-                  id="side-panel-title"
-                  className="text-[34px] sm:text-[40px] font-normal leading-[1.08] tracking-[-1px] text-[#161616] mb-8"
+                {/* Subtitle / Step Indicator & Big Headline (Staggered Entrance) */}
+                <div
+                  className={`transition-all duration-500 ease-out ${
+                    isActive ? 'opacity-100 translate-y-0 delay-150' : 'opacity-0 translate-y-3'
+                  }`}
                 >
-                  What’s your contact info?
-                </h2>
+                  <span className="text-[13px] text-[#8e8e8e] font-light block mb-2">
+                    Question 1 • Personal details
+                  </span>
 
-                {/* 3 Parameter Input Utama (Tall, Spacious & Modern) */}
-                <div className="flex flex-col gap-6">
+                  <h2
+                    id="side-panel-title"
+                    className="text-[34px] sm:text-[40px] font-normal leading-[1.08] tracking-[-1px] text-[#161616] mb-8"
+                  >
+                    What’s your contact info?
+                  </h2>
+                </div>
+
+                {/* 3 Parameter Input Utama (Staggered Entrance) */}
+                <div
+                  className={`flex flex-col gap-6 transition-all duration-500 ease-out ${
+                    isActive ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'
+                  }`}
+                >
                   {/* 1. Nama Lengkap */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="nama_penyewa" className="text-sm font-normal text-[#161616]">
@@ -162,7 +224,11 @@ export default function ReservationSidePanel({
               </div>
 
               {/* Bottom Action Button dengan Motion Unlock Khas Blanca */}
-              <div className="pt-8 pb-2 mt-auto">
+              <div
+                className={`pt-8 pb-2 mt-auto transition-all duration-500 ease-out ${
+                  isActive ? 'opacity-100 translate-y-0 delay-250' : 'opacity-0 translate-y-4'
+                }`}
+              >
                 <button
                   type="submit"
                   disabled={!isFormValid}
