@@ -41,12 +41,14 @@ export default function ReservasiPage() {
             bookings={bookings}
             selectedBooking={selectedBooking}
             selectedSlot={selectedSlot}
+            customerName={customer?.nama}
             rangeError={rangeError}
             getSlotBooking={getSlotBooking}
             isSlotInRange={isSlotInRange}
             isPastSlot={isPastSlot}
             onSelectBooking={handleSelectBooking}
             onSelectEmptySlot={handleSelectEmptySlot}
+            onClearSelection={handleClosePanel}
           />
         </div>
 

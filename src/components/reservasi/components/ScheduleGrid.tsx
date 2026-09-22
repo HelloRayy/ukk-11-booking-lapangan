@@ -7,11 +7,13 @@ interface ScheduleGridProps {
   bookings: BookingItem[]
   selectedBooking: BookingItem | null
   selectedSlot: SlotRangeSelection | null
+  customerName?: string
   rangeError: string | null
   isSlotInRange: (courtId: string, time: string) => boolean
   isPastSlot: (time: string) => boolean
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
+  onClearSelection?: () => void
 }
 
 const BASE_HOUR = 8 // Jam operasional awal: 08:00
@@ -23,11 +25,13 @@ export default function ScheduleGrid({
   bookings,
   selectedBooking,
   selectedSlot,
+  customerName,
   rangeError,
   isSlotInRange,
   isPastSlot,
   onSelectBooking,
   onSelectEmptySlot,
+  onClearSelection,
 }: ScheduleGridProps) {
   const currentTimeTop = (10 - BASE_HOUR + 40 / 60) * SLOT_HEIGHT
 
@@ -92,12 +96,6 @@ export default function ScheduleGrid({
                   {timeSlots.map((time) => {
                     const isPast = isPastSlot(time)
                     const inRange = isSlotInRange(court.id, time)
-                    const isFirst =
-                      selectedSlot?.courtId === court.id && selectedSlot?.selectedHours[0] === time
-                    const isLast =
-                      selectedSlot?.courtId === court.id &&
-                      selectedSlot?.selectedHours[selectedSlot.selectedHours.length - 1] === time
-                    const isSingle = selectedSlot?.courtId === court.id && selectedSlot?.totalHours === 1
 
                     return (
                       <div
@@ -116,33 +114,10 @@ export default function ScheduleGrid({
                           isPast
                             ? 'opacity-25 cursor-not-allowed'
                             : inRange
-                            ? isSingle
-                              ? 'bg-[#f2d953]/25 border-x-2 border-[#f2d953] cursor-pointer'
-                              : `bg-[#f2d953]/20 border-x-2 border-[#f2d953] cursor-pointer ${
-                                  isFirst ? 'border-t-2' : ''
-                                } ${isLast ? 'border-b-2' : ''}`
+                            ? 'bg-[#1a1a1a] cursor-pointer'
                             : 'hover:bg-[#f2d953]/5 cursor-pointer group'
                         }`}
                       >
-                        {/* Label Rentang Terpilih */}
-                        {inRange && !isPast && (
-                          <div className="absolute inset-x-2 top-2 flex justify-between items-center pointer-events-none z-0">
-                            <span className="text-[11px] font-semibold text-white bg-[#161616] px-2 py-0.5 rounded border border-[#f2d953]/40">
-                              {time}
-                            </span>
-                            {isFirst && (
-                              <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
-                                Mulai
-                              </span>
-                            )}
-                            {isLast && !isSingle && (
-                              <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
-                                Selesai
-                              </span>
-                            )}
-                          </div>
-                        )}
-
                         {/* Hover Prompt Minimal */}
                         {!inRange && !isPast && (
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -243,6 +218,63 @@ export default function ScheduleGrid({
                     </div>
                   )
                 })}
+
+                {/* 3. Kartu Choice / Seleksi Pengguna Aktif (User POV) */}
+                {selectedSlot && selectedSlot.courtId === court.id && (
+                  <div
+                    style={{
+                      top: `${(selectedSlot.startHour - BASE_HOUR) * SLOT_HEIGHT + 3}px`,
+                      height: `${selectedSlot.totalHours * SLOT_HEIGHT - 6}px`,
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const rect = e.currentTarget.getBoundingClientRect()
+                      const relativeY = e.clientY - rect.top
+                      const clickedHourOffset = Math.floor(relativeY / SLOT_HEIGHT)
+                      const targetHour = selectedSlot.startHour + clickedHourOffset
+                      const targetTime = `${targetHour < 10 ? '0' : ''}${targetHour}:00`
+                      onSelectEmptySlot(court, targetTime)
+                    }}
+                    className="absolute inset-x-1.5 z-20 p-3 rounded-[10px] bg-[#222222] border-2 border-[#f2d953] ring-1 ring-[#f2d953]/40 shadow-[0_0_20px_rgba(242,217,83,0.22)] transition-all cursor-pointer flex flex-col justify-between group animate-in fade-in zoom-in-95 duration-150"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
+                          {customerName || 'Pilihan Anda'}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#f2d953] text-black font-semibold tracking-wide">
+                            Dipilih
+                          </span>
+                          {onClearSelection && (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                onClearSelection()
+                              }}
+                              title="Batalkan pilihan"
+                              className="w-4 h-4 rounded-full bg-white/10 hover:bg-white/20 text-[#a3a3a3] hover:text-white flex items-center justify-center text-[10px] transition-colors"
+                            >
+                              ✕
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <span className="text-xs text-[#d4d4d4] block">
+                        {selectedSlot.startTime} - {selectedSlot.endTime} ({selectedSlot.totalHours} jam)
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] pt-1 border-t border-white/10">
+                      <span>{selectedSlot.courtName}</span>
+                      <span className="font-semibold text-[#f2d953]">
+                        Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}
