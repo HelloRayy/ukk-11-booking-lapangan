@@ -7,9 +7,6 @@ export default function BlancaCta({ onOpenReservation }: BlancaCtaProps) {
   return (
     <section id="cta" className="mt-[64px] mdw:mt-[120px] relative text-[#fcfcfc] overflow-hidden">
       <div className="container">
-        {/* Garis Pembatas Atas */}
-        <div className="fancy-spacer mb-[64px] mdw:mb-[120px]" />
-
         {/* Card CTA Utama dengan Glassmorphism Khas Blanca */}
         <div className="relative w-full rounded-[8px] bg-[#D9D9D9]/[0.12] border border-white/[0.08] backdrop-blur-[7px] py-[64px] px-[24px] md:px-[48px] mdw:py-[96px] text-center overflow-hidden">
           {/* Radial Glow di tengah card */}
