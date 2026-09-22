@@ -25,7 +25,7 @@ export default function RightPanelInspector({
 }: RightPanelInspectorProps) {
   const [paymentType, setPaymentType] = useState<PaymentType>('dp')
   const [notes, setNotes] = useState('')
-  const [isDropdownOpen, setIsDropdownOpen] = useState(true)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   // Case 1: Empty State (Clean Minimalist Placeholder)
   if (panelMode === 'empty') {
@@ -124,6 +124,7 @@ export default function RightPanelInspector({
   if (panelMode === 'create' && selectedSlot) {
     const finalCustomerName = customerName || 'Raditya Rayhan'
     const finalWhatsapp = customerWhatsapp || '085799799857'
+    const finalEmail = customerEmail || 'raditya.rayhan@gmail.com'
     const dpAmount = selectedSlot.totalPrice * 0.5
 
     return (
@@ -189,8 +190,8 @@ export default function RightPanelInspector({
             </div>
           </div>
 
-          {/* 3. Metode Pembayaran: Dropdown dengan Open State UI */}
-          <div className="mb-4">
+          {/* 3. Metode Pembayaran: Dropdown Standar Ringkas */}
+          <div className="relative mb-3.5">
             <label className="text-xs text-[#8e8e8e] block mb-1.5 font-medium">
               Metode Pembayaran
             </label>
@@ -199,14 +200,14 @@ export default function RightPanelInspector({
             <button
               type="button"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="w-full h-11 px-3.5 rounded-[10px] bg-[#222222] border border-[#333333] hover:border-[#555555] flex items-center justify-between transition-colors text-left cursor-pointer"
+              className="w-full h-11 px-3.5 rounded-[10px] bg-[#222222] border border-[#333333] hover:border-[#555555] flex items-center justify-between transition-colors text-left cursor-pointer focus:outline-none focus:border-[#f2d953]"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <span className={`w-2 h-2 rounded-full ${paymentType === 'dp' ? 'bg-[#f2d953]' : 'bg-emerald-400'}`} />
                 <span className="text-xs font-semibold text-white">
                   {paymentType === 'dp' ? 'Bayar DP 50%' : 'Bayar Lunas 100%'}
                 </span>
-                <span className="text-xs text-[#f2d953] font-medium">
+                <span className="text-xs text-[#8e8e8e]">
                   • Rp {(paymentType === 'dp' ? dpAmount : selectedSlot.totalPrice).toLocaleString('id-ID')}
                 </span>
               </div>
@@ -223,73 +224,104 @@ export default function RightPanelInspector({
               </svg>
             </button>
 
-            {/* Dropdown Menu (Open State UI) */}
+            {/* Dropdown Popover Menu */}
             {isDropdownOpen && (
-              <div className="mt-2 p-2 rounded-[12px] bg-[#1c1c1c] border border-[#333333] shadow-2xl space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
+              <div className="absolute left-0 right-0 top-full mt-1.5 z-30 p-1.5 rounded-[10px] bg-[#1e1e1e] border border-[#333333] shadow-2xl space-y-1 animate-in fade-in zoom-in-95 duration-100">
                 {/* Opsi 1: DP 50% */}
                 <div
-                  onClick={() => setPaymentType('dp')}
-                  className={`p-3 rounded-[10px] border transition-all cursor-pointer flex items-center justify-between ${
+                  onClick={() => {
+                    setPaymentType('dp')
+                    setIsDropdownOpen(false)
+                  }}
+                  className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
                     paymentType === 'dp'
-                      ? 'bg-[#f2d953]/10 border-[#f2d953] shadow-sm'
-                      : 'bg-[#222222] border-[#2f2f2f] hover:border-[#444444]'
+                      ? 'bg-[#f2d953]/15 text-white'
+                      : 'hover:bg-white/5 text-[#d4d4d4]'
                   }`}
                 >
-                  <div>
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-xs font-semibold text-white">Bayar DP 50%</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#f2d953]/20 text-[#f2d953] font-semibold">
-                        Rekomendasi
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
+                      paymentType === 'dp' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
+                    }`}>
+                      {paymentType === 'dp' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold flex items-center gap-1.5">
+                        <span>Bayar DP 50%</span>
+                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#f2d953]/20 text-[#f2d953] font-medium">
+                          Rekomendasi
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#8e8e8e] block">
+                        Sisa Rp {dpAmount.toLocaleString('id-ID')} di arena
                       </span>
                     </div>
-                    <span className="text-[11px] text-[#8e8e8e] block">
-                      Sisa Rp {dpAmount.toLocaleString('id-ID')} dilunasi saat tiba di arena
-                    </span>
                   </div>
-                  <div className="text-right shrink-0 ml-3">
-                    <span className="text-sm font-bold text-[#f2d953] block">
-                      Rp {dpAmount.toLocaleString('id-ID')}
-                    </span>
-                    <span className="text-[10px] text-[#737373]">Tagihan awal</span>
-                  </div>
+                  <span className="text-xs font-bold text-[#f2d953]">
+                    Rp {dpAmount.toLocaleString('id-ID')}
+                  </span>
                 </div>
 
                 {/* Opsi 2: Lunas 100% */}
                 <div
-                  onClick={() => setPaymentType('lunas')}
-                  className={`p-3 rounded-[10px] border transition-all cursor-pointer flex items-center justify-between ${
+                  onClick={() => {
+                    setPaymentType('lunas')
+                    setIsDropdownOpen(false)
+                  }}
+                  className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
                     paymentType === 'lunas'
-                      ? 'bg-emerald-500/10 border-emerald-500 shadow-sm'
-                      : 'bg-[#222222] border-[#2f2f2f] hover:border-[#444444]'
+                      ? 'bg-emerald-500/15 text-white'
+                      : 'hover:bg-white/5 text-[#d4d4d4]'
                   }`}
                 >
-                  <div>
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-xs font-semibold text-white">Bayar Lunas 100%</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-semibold">
-                        Bebas Antre
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
+                      paymentType === 'lunas' ? 'border-emerald-400 bg-emerald-400' : 'border-white/20'
+                    }`}>
+                      {paymentType === 'lunas' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold flex items-center gap-1.5">
+                        <span>Bayar Lunas 100%</span>
+                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-medium">
+                          Bebas Antre
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#8e8e8e] block">
+                        Langsung masuk lapangan
                       </span>
                     </div>
-                    <span className="text-[11px] text-[#8e8e8e] block">
-                      Tanpa repot pelunasan, langsung masuk lapangan
-                    </span>
                   </div>
-                  <div className="text-right shrink-0 ml-3">
-                    <span className="text-sm font-bold text-emerald-400 block">
-                      Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
-                    </span>
-                    <span className="text-[10px] text-[#737373]">Lunas penuh</span>
-                  </div>
+                  <span className="text-xs font-bold text-emerald-400">
+                    Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
+                  </span>
                 </div>
               </div>
             )}
           </div>
 
-          {/* 4. Info Pemesan Ringkas */}
-          <div className="p-3 rounded-[10px] bg-[#222222] border border-[#2e2e2e] mb-3 text-xs">
-            <div className="flex justify-between items-center text-white">
-              <span className="text-[#8e8e8e]">Pemesan:</span>
-              <span className="font-medium">{finalCustomerName} ({finalWhatsapp})</span>
+          {/* 4. Data Pemesan Lengkap (Nama, Nomor WhatsApp, Email) */}
+          <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e] mb-3.5 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-white/5">
+              <span className="text-xs font-semibold text-[#8e8e8e]">Informasi Pemesan</span>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
+                Terverifikasi
+              </span>
+            </div>
+
+            <div className="space-y-2 text-xs">
+              <div className="flex justify-between items-center">
+                <span className="text-[#8e8e8e]">Nama Lengkap</span>
+                <span className="font-semibold text-white">{finalCustomerName}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-[#8e8e8e]">No. WhatsApp</span>
+                <span className="font-medium text-white">{finalWhatsapp}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-[#8e8e8e]">Alamat Email</span>
+                <span className="font-medium text-[#d4d4d4]">{finalEmail}</span>
+              </div>
             </div>
           </div>
 
