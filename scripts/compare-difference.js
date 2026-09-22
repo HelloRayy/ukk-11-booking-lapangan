@@ -10,17 +10,17 @@ const LOCAL_SNAPSHOT = 'tests/snapshots/difference-section-local.png';
 const DIFF_SNAPSHOT = 'tests/snapshots/difference-section-diff.png';
 
 async function main() {
-  console.log('1. Memulai server Vite lokal...');
-  const vite = spawn('npx', ['vite', '--port', '5173'], { stdio: 'pipe' });
+  console.log('1. Memeriksa server Vite lokal...');
+  let vite = null;
+  const isServerRunning = await fetch('http://localhost:5173/blanca.html')
+    .then((res) => res.ok)
+    .catch(() => false);
 
-  await new Promise((resolve) => {
-    vite.stdout.on('data', (data) => {
-      if (data.toString().includes('Local:') || data.toString().includes('localhost')) {
-        resolve();
-      }
-    });
-    setTimeout(resolve, 3000);
-  });
+  if (!isServerRunning) {
+    console.log('Menjalankan server Vite...');
+    vite = spawn('npx', ['vite', '--port', '5173'], { stdio: 'pipe' });
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+  }
 
   console.log('2. Membuka Playwright browser...');
   const browser = await chromium.launch({ headless: true });
@@ -28,8 +28,12 @@ async function main() {
 
   try {
     await page.goto('http://localhost:5173/blanca.html', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
     await page.evaluate(async () => {
       await document.fonts.ready;
+      document.querySelectorAll('.fixed, [class*="fixed"]').forEach((el) => {
+        el.style.display = 'none';
+      });
       document.querySelectorAll('video').forEach((v) => {
         v.pause();
         v.currentTime = 0;
@@ -38,7 +42,7 @@ async function main() {
 
     const section = page.locator('#shopify-section-template--17894129991737__common_large_card_6W9JdB');
     await section.scrollIntoViewIfNeeded();
-    await new Promise((r) => setTimeout(r, 1500));
+    await new Promise((r) => setTimeout(r, 1000));
 
     await section.screenshot({ path: LOCAL_SNAPSHOT });
     console.log('3. Berhasil mengambil screenshot lokal:', LOCAL_SNAPSHOT);
@@ -88,7 +92,7 @@ async function main() {
     }
   } finally {
     await browser.close();
-    vite.kill();
+    if (vite) vite.kill();
   }
 }
 

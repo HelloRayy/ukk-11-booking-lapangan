@@ -13,6 +13,15 @@ export default function HeroBlanca() {
   const videoRef = useRef<HTMLDivElement>(null)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [quizOpen, setQuizOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Logika handler spotlight interaktif berbasis CSS variables native
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -175,16 +184,16 @@ export default function HeroBlanca() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative h-screen min-h-screen max-h-screen bg-[#161616] text-[#fcfcfc] overflow-hidden font-aeonik"
+      className="relative z-40 h-screen min-h-screen max-h-screen bg-[#161616] text-[#fcfcfc] overflow-hidden font-aeonik"
     >
       {/* Background Static Radial Glow Circle */}
       <div className="absolute inset-x-0 top-[-446px] lg:top-[-523px] w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="background-circle background-circle--static left-1/2 top-0 w-screen min-w-[1286px] max-w-[1440px] h-[751px] lg:h-[841px] -translate-x-1/2" />
       </div>
 
-      {/* Header Sticky Navigation */}
-      <header className="sticky top-0 z-20 w-full" ref={headerRef}>
-        <div className="header">
+      {/* Header Fixed Navigation (Mengikuti Viewport Saat Scroll) */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full" ref={headerRef}>
+        <div className={`header ${isScrolled ? 'header--scrolled' : ''}`}>
           <div className="header__bar">
             {/* Sisi Kiri: Logo Header */}
             <div className="flex-1 flex flex-row items-center">
@@ -223,61 +232,48 @@ export default function HeroBlanca() {
               </a>
             </div>
 
-            {/* Sisi Tengah: Nav Links Desktop */}
+            {/* Sisi Tengah: Nav Links Desktop Pill (Racquets, Bundles, Accessories, Apparel, Trial our gear, About us, Players) */}
             <nav className="hidden lg:flex items-center header__nav px-4 h-full" aria-label="primary">
-              <ul className="header__links flex items-center justify-center py-2 px-4 gap-x-1 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#about"
-                  >
-                    <span className="leading-tight transition-all">About</span>
+              <ul className="header__links flex items-center justify-center gap-x-1 text-[#fcfcfc] text-base leading-normal">
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/collections/racquets">
+                    <span className="leading-tight transition-all">Racquets</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#showcase"
-                  >
-                    <span className="leading-tight transition-all">Showcase</span>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/collections/bundle">
+                    <span className="leading-tight transition-all">Bundles</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#amenities"
-                  >
-                    <span className="leading-tight transition-all">Amenities</span>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/collections/accessories">
+                    <span className="leading-tight transition-all">Accessories</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#rates"
-                  >
-                    <span className="leading-tight transition-all">Rates</span>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/collections/apparel">
+                    <span className="leading-tight transition-all">Apparel</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#location"
-                  >
-                    <span className="leading-tight transition-all">Location</span>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/pages/find-a-club">
+                    <span className="leading-tight transition-all">Trial our gear</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#reservation"
-                  >
-                    <span className="leading-tight transition-all">Reservation</span>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/pages/about-us">
+                    <span className="leading-tight transition-all">About us</span>
+                  </a>
+                </li>
+                <li className="h-[28px] leading-normal transition-all">
+                  <a className="header__link" href="/pages/players">
+                    <span className="leading-tight transition-all">Players</span>
                   </a>
                 </li>
               </ul>
             </nav>
 
-            {/* Sisi Kanan: Menu Hamburger Mobile, Account & Cart */}
+            {/* Sisi Kanan: Menu Hamburger Mobile, Account & Cart Buttons */}
             <div className="flex-1 flex flex-row items-center justify-end gap-x-2">
               <button
                 type="button"
@@ -309,14 +305,18 @@ export default function HeroBlanca() {
               >
                 <svg
                   aria-hidden="true"
-                  width="22"
-                  height="22"
+                  width="20"
+                  height="20"
                   fill="none"
+                  viewBox="0 0 22 22"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M18.33 19.25v-1.83a3.67 3.67 0 0 0-3.66-3.67H7.33a3.67 3.67 0 0 0-3.66 3.67v1.83M11 10.08a3.67 3.67 0 1 0 0-7.33 3.67 3.67 0 0 0 0 7.33Z"
                     stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </a>
@@ -327,17 +327,83 @@ export default function HeroBlanca() {
                   width="19"
                   height="19"
                   fill="none"
+                  viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M12.83 6.5a3.6 3.6 0 0 1-.97 2.47A3.25 3.25 0 0 1 9.5 10c-.88 0-1.73-.37-2.36-1.03a3.6 3.6 0 0 1-.97-2.47M2 3v12.25c0 .96.75 1.75 1.67 1.75h11.66c.45 0 .87-.18 1.18-.51.31-.33.49-.78.49-1.24V3H2Z"
                     stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </a>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown Panel */}
+        {mobileMenu && (
+          <div className="lg:hidden bg-[#161616]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex flex-col gap-3">
+            <a
+              href="/collections/racquets"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Racquets
+            </a>
+            <a
+              href="/collections/bundle"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Bundles
+            </a>
+            <a
+              href="/collections/accessories"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Accessories
+            </a>
+            <a
+              href="/collections/apparel"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Apparel
+            </a>
+            <a
+              href="/pages/find-a-club"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Trial our gear
+            </a>
+            <a
+              href="/pages/about-us"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              About us
+            </a>
+            <a
+              href="/pages/players"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] border-b border-white/5 hover:text-white"
+            >
+              Players
+            </a>
+            <a
+              href="/account"
+              onClick={() => setMobileMenu(false)}
+              className="py-2 text-base font-light text-[#fcfcfc] hover:text-white"
+            >
+              Your account
+            </a>
+          </div>
+        )}
       </header>
 
       {/* Center Flying Logo Animation (Initial GSAP Position) */}
@@ -374,7 +440,7 @@ export default function HeroBlanca() {
       </div>
 
       {/* Hero Content Section */}
-      <section className="relative isolate h-[100vh] flex flex-row items-center justify-center mt-[-76px] lg:mt-[-92px] sm:pt-[76px] pt-[112px]">
+      <section className="relative isolate h-[100vh] flex flex-row items-center justify-center sm:pt-[76px] pt-[112px]">
         <div className="container h-full flex flex-col gap-[64px] z-10">
           {/* Spacer Atas */}
           <div className="grow basis-0 sm:block hidden" />
