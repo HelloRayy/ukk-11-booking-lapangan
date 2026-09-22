@@ -34,9 +34,9 @@ const slides: SlideData[] = [
     productSubtitle: 'Diamond shaped aggressive racquet',
     productLink: '/products/del-mar',
     racquetImg: '/assets/blanca/del-mar-front.png',
-    heading: 'We are carbon fiber obsessed',
+    heading: 'Diamond shape aggressive power',
     description:
-      "We love carbon fiber for it's famous tensile strength, curious light weight nature and of course aesthetic. Our racquets are made with anywhere from 3K to 18K carbon fiber, the same used by professional padel players and utilized in aerospace and race car parts. ALL of our racquets are reinforced with carbon fiber tubing for added durability.",
+      'A high-performance racquet combining explosive power, maneuverability, and a buttery smooth feel. Its diamond shape positions the sweet spot higher for offensive overhead smashes, backed by durable 12K carbon fiber and shock-absorbing EVA core.',
   },
 ]
 
