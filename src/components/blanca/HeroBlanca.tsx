@@ -97,7 +97,6 @@ export default function HeroBlanca() {
         onComplete: () => {
           headerLogo.style.opacity = '1'
           centerLogo.style.opacity = '0'
-          document.documentElement.classList.remove('noscroll')
         },
       },
       '+=0.3s',
@@ -252,14 +251,6 @@ export default function HeroBlanca() {
                     href="/collections/apparel"
                   >
                     <span className="leading-tight transition-all">Apparel</span>
-                  </a>
-                </li>
-                <li className="h-[27.9818px] w-[118.151px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[118.151px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/pages/find-a-club"
-                  >
-                    <span className="leading-tight transition-all">Trial our gear</span>
                   </a>
                 </li>
                 <li className="h-[27.9818px] w-[90.9375px] leading-normal transition-all">
@@ -471,7 +462,7 @@ export default function HeroBlanca() {
                       viewBox="0 0 12 12"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      className="transition-transform duration-200 group-hover:rotate-45 origin-center"
                     >
                       <path d="M1 11 11 1m0 0v10m0-10H1" stroke="currentColor" />
                     </svg>

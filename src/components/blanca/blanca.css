@@ -36,16 +36,17 @@
   --font-aeonik: 'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Hilangkan vertical bar / scrollbar saat awal masuk (splashscreen) */
-html.noscroll,
-html.noscroll body {
+/* Hilangkan vertical bar / scrollbar */
+html,
+body {
   overflow: hidden !important;
   scrollbar-width: none !important; /* Firefox */
   -ms-overflow-style: none !important; /* IE/Edge */
 }
 
-html.noscroll::-webkit-scrollbar,
-html.noscroll body::-webkit-scrollbar {
+::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   display: none !important; /* Chrome, Safari, Opera */
   width: 0 !important;
   height: 0 !important;
@@ -313,6 +314,11 @@ p.body {
   font-size: 1rem;
 }
 
+.icon-button__icon svg {
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
 .icon-button:hover .icon-button__icon svg {
-  transform: translate(2px, -2px);
+  transform: rotate(45deg);
 }
