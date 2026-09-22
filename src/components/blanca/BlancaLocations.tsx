@@ -37,11 +37,52 @@ const VENUE_DATA: ArenaVenue = {
   googleMapsUrl: 'https://maps.google.com/?q=-6.2255,106.8550',
 }
 
+interface ContactCardItem {
+  id: string
+  title: string
+  address: string
+  image: string
+  href: string
+  isMapAction?: boolean
+}
+
+const CONTACT_ITEMS: ContactCardItem[] = [
+  {
+    id: 'whatsapp',
+    title: 'WhatsApp Admin Booking',
+    address: '+62 812-3456-7890 • Konfirmasi DP 50%, jadwal kosong & kasir arena',
+    image: '/assets/blanca/difference-poster.jpg',
+    href: `https://wa.me/${VENUE_DATA.whatsapp}?text=Halo%20Admin%20Blanca%2C%20saya%20ingin%20reservasi%20lapangan%20badminton`,
+  },
+  {
+    id: 'instagram',
+    title: 'Instagram @blanca.arena',
+    address: 'Info turnamen mingguan, update jadwal sparring & highlight pemain',
+    image: '/assets/blanca/tech-lifestyle.jpg',
+    href: 'https://instagram.com',
+  },
+  {
+    id: 'email',
+    title: 'Email Reservasi & Event',
+    address: 'booking@blanca-arena.id • Sewa hall penuh, event kantor & invoice resmi',
+    image: '/assets/blanca/orang-1.webp',
+    href: `mailto:${VENUE_DATA.email}`,
+  },
+  {
+    id: 'venue',
+    title: 'Blanca Badminton Arena',
+    address: 'Jl. Boulevard Raya No. 88, Tebet, Jakarta Selatan 12810',
+    image: '/assets/blanca/tech-carbon.png',
+    href: VENUE_DATA.googleMapsUrl,
+    isMapAction: true,
+  },
+]
+
 export default function BlancaLocations() {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<L.Map | null>(null)
   const markerRef = useRef<L.Marker | null>(null)
-  const [copiedField, setCopiedField] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
 
   // Inisialisasi Peta Leaflet dengan Dark Matter Tiles
   useEffect(() => {
@@ -117,12 +158,10 @@ export default function BlancaLocations() {
     }
   }
 
-  // Fungsi salin ke clipboard
-  const handleCopy = (text: string, field: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedField(field)
-    setTimeout(() => setCopiedField(null), 2000)
-  }
+  const filteredContacts = CONTACT_ITEMS.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.address.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
   return (
     <section
@@ -149,9 +188,9 @@ export default function BlancaLocations() {
         </div>
 
         {/* Layout Kontainer Utama (Peta di Kiri, Panel Kontak Person Lengkap di Kanan) */}
-        <div className="col-span-12 flex flex-col md:flex-row gap-[12px] mdw:gap-[16px] h-auto md:h-[650px] items-stretch">
+        <div className="col-span-12 flex flex-col lg:flex-row gap-[16px] h-auto lg:h-[680px] items-stretch">
           {/* Sisi Kiri: Peta Interaktif Leaflet Real-time */}
-          <div className="bg-[#141517] border border-white/[0.08] grow w-full md:max-w-[calc(100%-380px)] mdw:max-w-[calc(100%-510px)] h-[360px] md:h-full rounded-[8px] overflow-hidden relative shadow-2xl">
+          <div className="bg-[#141517] border border-white/[0.08] grow w-full lg:w-[56%] h-[360px] lg:h-full rounded-[8px] overflow-hidden relative shadow-2xl">
             <div ref={mapContainerRef} className="w-full h-full z-0" />
 
             {/* Tombol Cepat Fokus Arena di Peta */}
@@ -170,13 +209,13 @@ export default function BlancaLocations() {
             </div>
           </div>
 
-          {/* Sisi Kanan: Panel Info Kontak Person & Operasional Lengkap */}
-          <div className="w-full md:max-w-[380px] mdw:max-w-[504px] shrink-0 h-auto md:h-full flex flex-col bg-[#1c1c1c]/90 border border-white/[0.08] backdrop-blur-[7px] rounded-[8px] overflow-hidden shadow-2xl">
-            {/* Header Panel Kontak */}
-            <div className="p-5 sm:p-6 border-b border-white/[0.08] bg-[#222]/40">
-              <div className="flex items-center justify-between gap-2">
+          {/* Sisi Kanan: Panel Info Kontak Person & Operasional 1:1 Khas Blanca */}
+          <div className="w-full lg:w-[44%] lg:max-w-[560px] shrink-0 h-[600px] lg:h-full flex flex-col bg-[#1c1c1c]/90 border border-white/[0.08] backdrop-blur-[7px] rounded-[8px] overflow-hidden shadow-2xl">
+            {/* Header & Search Bar Panel */}
+            <div className="p-4 sm:p-6 border-b border-[#444444] bg-[#222]/40 shrink-0">
+              <div className="flex items-center justify-between gap-2 mb-3">
                 <h3 className="text-xl sm:text-2xl font-normal text-white">
-                  Contact & Operational Info
+                  Find a Club / Contact
                 </h3>
                 {/* Badge Status Jam Operasional (Hijau Aktif) */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -184,144 +223,111 @@ export default function BlancaLocations() {
                   <span>Buka Setiap Hari</span>
                 </span>
               </div>
-              <p className="text-xs text-[#8e8e8e] mt-1.5">
-                {VENUE_DATA.hours}
-              </p>
-            </div>
-
-            {/* Daftar Kontak Person & Alamat (Scrollable jika layar kecil) */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-5 flex flex-col gap-3.5 divide-y divide-white/[0.06]">
-              {/* 1. WhatsApp Admin Kasir (Prioritas Reservasi) */}
-              <div className="pt-2 first:pt-0 flex flex-col gap-2">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-[6px] bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center text-[#25D366] shrink-0">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-white">WhatsApp Admin Booking</h4>
-                      <p className="text-xs text-[#bfbfbf] font-mono mt-0.5">{VENUE_DATA.phone}</p>
-                    </div>
-                  </div>
-
-                  <a
-                    href={`https://wa.me/${VENUE_DATA.whatsapp}?text=Halo%20Admin%20Blanca%2C%20saya%20ingin%20reservasi%20lapangan%20badminton`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-[#f2d953] hover:bg-[#fcfbf6] text-[#161616] text-xs font-semibold rounded-[4px] transition-all cursor-pointer active:scale-95"
-                  >
-                    <span>Chat WA</span>
-                    <span className="text-[10px]">&rarr;</span>
-                  </a>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] pl-[52px]">
-                  Fast response untuk konfirmasi DP 50%, jadwal kosong, dan bukti transfer kasir.
-                </p>
-              </div>
-
-              {/* 2. Instagram Resmi Komunitas & Dokumentasi */}
-              <div className="pt-3.5 flex flex-col gap-2">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-[6px] bg-[#E1306C]/10 border border-[#E1306C]/20 flex items-center justify-center text-[#E1306C] shrink-0">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-white">Instagram Resmi</h4>
-                      <p className="text-xs text-[#bfbfbf] font-mono mt-0.5">{VENUE_DATA.instagram}</p>
-                    </div>
-                  </div>
-
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold rounded-[4px] transition-all cursor-pointer"
-                  >
-                    <span>Follow</span>
-                    <span className="text-[10px]">&rarr;</span>
-                  </a>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] pl-[52px]">
-                  Cek foto turnamen mingguan, jadwal sparring terbuka, dan highlight pemain.
-                </p>
-              </div>
-
-              {/* 3. Email Resmi Kemitraan & Event Perusahaan */}
-              <div className="pt-3.5 flex flex-col gap-2">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-[6px] bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                        <polyline points="22,6 12,13 2,6" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-white">Email Reservasi & Event</h4>
-                      <p className="text-xs text-[#bfbfbf] font-mono mt-0.5">{VENUE_DATA.email}</p>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => handleCopy(VENUE_DATA.email, 'email')}
-                    className="shrink-0 flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold rounded-[4px] transition-all cursor-pointer"
-                  >
-                    <span>{copiedField === 'email' ? 'Tersalin' : 'Salin'}</span>
-                  </button>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] pl-[52px]">
-                  Untuk sewa satu hall penuh, event gathering kantor, dan invoice penagihan resmi.
-                </p>
-              </div>
-
-              {/* 4. Alamat Fisik Venue & Navigasi */}
-              <div className="pt-3.5 flex flex-col gap-2">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-[6px] bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-[#f2d953] shrink-0">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-white">Alamat Venue Arena</h4>
-                      <p className="text-xs text-[#bfbfbf] mt-0.5 max-w-[220px] leading-snug">{VENUE_DATA.address}</p>
-                    </div>
-                  </div>
-
-                  <a
-                    href={VENUE_DATA.googleMapsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-[#f2d953] hover:bg-[#fcfbf6] text-[#161616] text-xs font-semibold rounded-[4px] transition-all cursor-pointer"
-                  >
-                    <span>Rute</span>
-                    <span className="text-[10px]">&rarr;</span>
-                  </a>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] pl-[52px]">
-                  Fasilitas: 6 Lapangan BWF, Parkir Luas, Hot Shower, Kantin & Player Lounge.
-                </p>
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari kontak, WhatsApp, Instagram, arena..."
+                  className="w-full bg-[#141414] border border-[#333] rounded-[6px] py-2.5 pl-9 pr-3 text-xs sm:text-sm text-white placeholder-[#777] focus:outline-none focus:border-[#f2d953] transition-colors"
+                />
+                <svg
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-[#777]"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
               </div>
             </div>
 
-            {/* Footer Kartu: Hotline Bantuan Langsung */}
-            <div className="p-4 border-t border-white/[0.08] bg-[#141517] flex items-center justify-between text-xs">
+            {/* Daftar Kontak Person 1:1 Kartu Blanca */}
+            <ul id="map-results" className="flex-1 overflow-y-auto divide-y divide-[#444444]">
+              {filteredContacts.length === 0 ? (
+                <li className="p-8 text-center text-[#8e8e8e] text-sm">
+                  Tidak ada kontak atau venue yang cocok dengan pencarian "{searchQuery}".
+                </li>
+              ) : (
+                filteredContacts.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex items-center gap-x-4 sm:gap-x-6 py-6 px-5 sm:py-8 sm:px-8 text-[#fcfcfc] text-base border-b border-[#444444] last:border-b-0 leading-normal transition-all hover:bg-white/[0.02]"
+                  >
+                    {/* Thumbnail 96x96 rounded-lg */}
+                    <div className="rounded-lg h-[84px] w-[84px] sm:h-[96px] sm:w-[96px] overflow-hidden shrink-0 bg-[#242424] leading-normal transition-all">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-cover rounded-lg leading-normal transition-all"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Tengah: Judul & Alamat / Deskripsi */}
+                    <div className="flex-1 flex flex-col items-start gap-y-2 leading-normal transition-all min-w-0">
+                      <h3 className="leading-normal transition-all w-full truncate">
+                        {item.isMapAction ? (
+                          <button
+                            type="button"
+                            onClick={focusOnMap}
+                            className="inline-block text-left font-medium text-white text-base leading-normal hover:text-[#f2d953] transition-colors cursor-pointer truncate"
+                          >
+                            {item.title}
+                          </button>
+                        ) : (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-block text-left font-medium text-white text-base leading-normal hover:text-[#f2d953] transition-colors cursor-pointer truncate"
+                          >
+                            {item.title}
+                          </a>
+                        )}
+                      </h3>
+                      <address className="text-[#bfbfbf] font-light leading-snug transition-all not-italic text-xs sm:text-sm line-clamp-2">
+                        {item.address}
+                      </address>
+                      {/* Tombol Go versi Mobile */}
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('http') || item.href.startsWith('mailto') ? '_blank' : undefined}
+                        rel="noreferrer"
+                        onClick={item.isMapAction ? focusOnMap : undefined}
+                        className="flex sm:hidden items-center justify-center px-4 bg-[#f2d953] text-[#161616] text-center rounded h-9 text-xs font-semibold leading-normal transition-all duration-150 hover:bg-[#e1ca4d] active:scale-[0.98] mt-1 cursor-pointer"
+                      >
+                        Go
+                      </a>
+                    </div>
+
+                    {/* Tombol Go Khas Blanca di Sisi Kanan (Desktop) */}
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') || item.href.startsWith('mailto') ? '_blank' : undefined}
+                      rel="noreferrer"
+                      onClick={item.isMapAction ? focusOnMap : undefined}
+                      className="hidden sm:flex shrink-0 items-center justify-center px-4 bg-[#f2d953] text-[#161616] text-center rounded h-10 w-[78px] leading-normal transition-all duration-150 hover:bg-[#e1ca4d] active:scale-[0.98] font-semibold text-sm cursor-pointer ml-auto"
+                    >
+                      <span className="text-center leading-normal transition-all">Go</span>
+                    </a>
+                  </li>
+                ))
+              )}
+            </ul>
+
+            {/* Footer Hotline Bantuan Kasir */}
+            <div className="p-4 border-t border-[#444444] bg-[#141517] flex items-center justify-between text-xs shrink-0">
               <span className="text-[#8e8e8e]">Butuh bantuan cepat kasir?</span>
               <a
                 href={`tel:${VENUE_DATA.phone.replace(/[^0-9+]/g, '')}`}
                 className="text-[#f2d953] hover:underline font-medium flex items-center gap-1"
               >
-                <span>Telepon Kasir</span>
+                <span>Telepon Kasir ({VENUE_DATA.phone})</span>
                 <span>&rarr;</span>
               </a>
             </div>
@@ -331,3 +337,4 @@ export default function BlancaLocations() {
     </section>
   )
 }
+
