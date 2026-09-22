@@ -65,13 +65,15 @@ export default function RightPanelInspector({
   return (
     <aside
       aria-label="Panel Detail Reservasi"
-      className={`absolute top-0 right-0 bottom-0 z-40 w-full sm:w-[400px] lg:w-[420px] bg-[#1a1a1a] border-l border-[#262626] shadow-[-16px_0_48px_rgba(0,0,0,0.65)] p-6 flex flex-col justify-between overflow-y-auto select-none font-aeonik transition-transform duration-300 ease-in-out ${
-        isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+      className={`bg-[#1a1a1a] flex flex-col justify-between overflow-x-hidden overflow-y-auto select-none font-aeonik transition-all duration-300 ease-in-out shrink-0 ${
+        isOpen
+          ? 'w-[380px] xl:w-[420px] p-6 border-l border-[#262626] opacity-100'
+          : 'w-0 p-0 border-0 opacity-0 pointer-events-none'
       }`}
     >
       {/* KONTEN 1: INSPECT EXISTING BOOKING */}
       {currentMode === 'inspect' && activeBooking && (
-        <div className="flex flex-col justify-between h-full">
+        <div className="w-[332px] xl:w-[372px] flex flex-col justify-between h-full shrink-0">
           <div>
             {/* Top Bar */}
             <div className="flex items-center justify-between mb-4">
@@ -142,7 +144,7 @@ export default function RightPanelInspector({
 
       {/* KONTEN 2: CREATE NEW BOOKING */}
       {currentMode === 'create' && activeSlot && (
-        <div className="flex flex-col justify-between h-full">
+        <div className="w-[332px] xl:w-[372px] flex flex-col justify-between h-full shrink-0">
           <div>
             {/* Top Bar: Navigasi & Judul */}
             <div className="flex items-center justify-between mb-3">
