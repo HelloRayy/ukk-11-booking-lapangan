@@ -183,15 +183,15 @@ export default function RightPanelInspector({
       {/* KONTEN 2: CREATE NEW BOOKING */}
       {currentMode === 'create' && activeSlot && (
         <div className="w-[332px] xl:w-[372px] flex flex-col justify-between h-full shrink-0">
-          {/* SUB-STEP A: LOADING GENERATE QRIS (~800ms) */}
+          {/* SUB-STEP A: LOADING GENERATE PAYMENT (~800ms) */}
           {bookingStep === 'loading' && (
             <div className="flex flex-col items-center justify-center h-full text-center p-6 animate-in fade-in duration-200">
               <div className="w-12 h-12 rounded-full border-2 border-white/10 border-t-[#f2d953] animate-spin mb-4" />
               <h3 className="text-base font-bold text-white mb-1.5">
-                Menyiapkan QRIS Dinamis
+                Menyiapkan Kanal Pembayaran
               </h3>
               <p className="text-xs text-[#8e8e8e] max-w-[240px] leading-relaxed">
-                Menghubungkan ke gateway pembayaran dan mengunci slot {activeSlot.courtName}...
+                Menghubungkan ke gateway dan mengunci slot {activeSlot.courtName}...
               </p>
             </div>
           )}
@@ -426,7 +426,7 @@ export default function RightPanelInspector({
                   onClick={handleProceedToPayment}
                   className="w-full h-12 rounded-[10px] bg-[#f2d953] hover:bg-[#e4cb34] text-[#161616] text-sm font-bold transition-all cursor-pointer shadow-lg active:scale-[0.98] flex items-center justify-center gap-2"
                 >
-                  <span>Lanjut ke Pembayaran QRIS</span>
+                  <span>Lanjut ke Pembayaran</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
