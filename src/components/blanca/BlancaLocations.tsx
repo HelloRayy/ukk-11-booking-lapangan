@@ -336,9 +336,10 @@ export default function BlancaLocations() {
 
   return (
     <section
-      id="find-a-club"
-      className="locations relative w-full bg-[#161616] text-[#fcfcfc] overflow-hidden pt-[64px] mdw:pt-[110px] pb-[80px] mdw:pb-[140px] font-aeonik"
+      id="locations"
+      className="locations relative w-full text-[#fcfcfc] overflow-hidden pt-[64px] mdw:pt-[110px] pb-[80px] mdw:pb-[140px] font-aeonik"
     >
+      <div id="find-a-club" className="absolute -top-[80px]" />
       <div className="container site-grid gap-y-[40px] mdw:gap-y-[80px] overflow-hidden">
         {/* Header Sisi Kiri: Judul Utama */}
         <div className="col-span-12 mdw:col-span-8">
