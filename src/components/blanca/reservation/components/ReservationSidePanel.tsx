@@ -29,7 +29,7 @@ export default function ReservationSidePanel({
 
   // Sinkronisasi motion buka & tutup dengan transisi CSS halus
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: ReturnType<typeof setTimeout>
     if (isOpen) {
       setIsRendered(true)
       // Jalankan state aktif setelah frame browser siap

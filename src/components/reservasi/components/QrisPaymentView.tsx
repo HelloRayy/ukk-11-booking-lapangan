@@ -47,7 +47,7 @@ export default function QrisPaymentView({
   const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
 
   const isUrgent = secondsRemaining < 120 // Kurang dari 2 menit
-  const billAmount = paymentType === 'dp' ? selectedSlot.totalPrice * 0.5 : selectedSlot.totalPrice
+  const billAmount = paymentType === 'DP' ? selectedSlot.totalPrice * 0.5 : selectedSlot.totalPrice
   const remainingAmount = selectedSlot.totalPrice - billAmount
 
   return (
@@ -147,7 +147,7 @@ export default function QrisPaymentView({
         {/* 7. Rincian Nominal Tagihan (Selalu Tampil Sinkron) */}
         <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e] mb-3">
           <div className="flex items-center justify-between text-xs text-[#8e8e8e] mb-1">
-            <span>Wajib Dibayar Sekarang ({paymentType === 'dp' ? 'DP 50%' : 'Lunas 100%'})</span>
+            <span>Wajib Dibayar Sekarang ({paymentType === 'DP' ? 'DP 50%' : 'Lunas 100%'})</span>
             <span className="text-white font-medium">{selectedSlot.courtName}</span>
           </div>
           <div className="flex items-center justify-between">
@@ -156,7 +156,7 @@ export default function QrisPaymentView({
               {formatRupiah(billAmount)}
             </span>
           </div>
-          {paymentType === 'dp' && (
+          {paymentType === 'DP' && (
             <div className="mt-2 pt-2 border-t border-white/5 text-[11px] text-[#8e8e8e]">
               Sisa pelunasan <span className="text-white font-semibold">{formatRupiah(remainingAmount)}</span> dilunasi saat tiba di arena.
             </div>

@@ -2,7 +2,7 @@
 import type { CourtFeature } from '../types'
 
 export const COMMUNITY_STORY = {
-  image: '/assets/orang-1.webp',
+  image: '/assets/blanca/orang-1.webp',
   alt: 'Blanca Badminton Community',
   description:
     'Blanca Arena was founded by a passionate community of players who wanted premium, tournament-grade courts with seamless booking and an inclusive atmosphere for everyone from beginners to competitive athletes.',

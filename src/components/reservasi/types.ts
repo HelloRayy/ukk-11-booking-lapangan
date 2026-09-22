@@ -1,9 +1,9 @@
 // PERAN FILE: Definisi tipe data & antarmuka untuk jadwal reservasi & panel inspektor (User POV)
-export type PaymentType = 'dp' | 'lunas'
+export type PaymentType = 'DP' | 'Lunas'
 export type SlotStatus = 'available' | 'booked' | 'maintenance'
 
 export interface Court {
-  id: string
+  id: number | string
   name: string
   type: string
   image: string
@@ -12,7 +12,7 @@ export interface Court {
 
 export interface BookingItem {
   id: string
-  courtId: string
+  courtId: number | string
   courtName: string
   customerName: string
   customerWhatsapp: string
@@ -32,7 +32,7 @@ export interface BookingItem {
 }
 
 export interface SlotRangeSelection {
-  courtId: string
+  courtId: number | string
   courtName: string
   date: string
   startHour: number

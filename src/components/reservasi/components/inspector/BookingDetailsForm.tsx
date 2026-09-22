@@ -31,7 +31,7 @@ export default function BookingDetailsForm({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const dpAmount = selectedSlot.totalPrice * 0.5
-  const currentPayAmount = paymentType === 'dp' ? dpAmount : selectedSlot.totalPrice
+  const currentPayAmount = paymentType === 'DP' ? dpAmount : selectedSlot.totalPrice
 
   return (
     <div className="flex flex-col justify-between h-full animate-in fade-in duration-150 select-none font-aeonik">
@@ -111,9 +111,9 @@ export default function BookingDetailsForm({
             className="w-full h-11 px-3.5 rounded-[10px] bg-[#222222] border border-[#333333] hover:border-[#555555] flex items-center justify-between transition-colors text-left cursor-pointer focus:outline-none focus:border-[#f2d953]"
           >
             <div className="flex items-center gap-2.5">
-              <span className={`w-2 h-2 rounded-full ${paymentType === 'dp' ? 'bg-[#f2d953]' : 'bg-emerald-400'}`} />
+              <span className={`w-2 h-2 rounded-full ${paymentType === 'DP' ? 'bg-[#f2d953]' : 'bg-emerald-400'}`} />
               <span className="text-xs font-semibold text-white">
-                {paymentType === 'dp' ? 'Bayar DP 50%' : 'Bayar Lunas 100%'}
+                {paymentType === 'DP' ? 'Bayar DP 50%' : 'Bayar Lunas 100%'}
               </span>
               <span className="text-xs text-[#8e8e8e]">
                 • {formatRupiah(currentPayAmount)}
@@ -138,20 +138,20 @@ export default function BookingDetailsForm({
               {/* Opsi 1: DP 50% */}
               <div
                 onClick={() => {
-                  onPaymentTypeChange('dp')
+                  onPaymentTypeChange('DP')
                   setIsDropdownOpen(false)
                 }}
                 className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
-                  paymentType === 'dp'
+                  paymentType === 'DP'
                     ? 'bg-[#f2d953]/15 text-white'
                     : 'hover:bg-white/5 text-[#d4d4d4]'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                    paymentType === 'dp' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
+                    paymentType === 'DP' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
                   }`}>
-                    {paymentType === 'dp' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                    {paymentType === 'DP' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-white block">Bayar DP 50%</span>
@@ -168,20 +168,20 @@ export default function BookingDetailsForm({
               {/* Opsi 2: Lunas 100% */}
               <div
                 onClick={() => {
-                  onPaymentTypeChange('lunas')
+                  onPaymentTypeChange('Lunas')
                   setIsDropdownOpen(false)
                 }}
                 className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
-                  paymentType === 'lunas'
+                  paymentType === 'Lunas'
                     ? 'bg-[#f2d953]/15 text-white'
                     : 'hover:bg-white/5 text-[#d4d4d4]'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                    paymentType === 'lunas' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
+                    paymentType === 'Lunas' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
                   }`}>
-                    {paymentType === 'lunas' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                    {paymentType === 'Lunas' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-white block">Bayar Lunas 100%</span>
@@ -241,7 +241,7 @@ export default function BookingDetailsForm({
       <div className="pt-3 border-t border-[#262626]">
         <div className="flex justify-between items-center mb-2 px-1">
           <span className="text-xs text-[#8e8e8e]">
-            {paymentType === 'dp' ? 'Wajib Bayar Sekarang (DP 50%)' : 'Wajib Bayar Sekarang (Lunas)'}:
+            {paymentType === 'DP' ? 'Wajib Bayar Sekarang (DP 50%)' : 'Wajib Bayar Sekarang (Lunas)'}:
           </span>
           <span className="text-sm font-bold text-[#f2d953]">
             {formatRupiah(currentPayAmount)}

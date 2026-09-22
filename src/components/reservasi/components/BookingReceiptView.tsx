@@ -11,7 +11,7 @@ export default function BookingReceiptView({
   booking,
   onClose,
 }: BookingReceiptViewProps) {
-  const isLunas = booking.paymentType === 'lunas'
+  const isLunas = booking.paymentType === 'Lunas'
 
   const handlePrint = () => {
     window.print()

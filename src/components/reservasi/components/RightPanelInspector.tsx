@@ -29,7 +29,7 @@ export default function RightPanelInspector({
   onClose,
   onCreateBooking,
 }: RightPanelInspectorProps) {
-  const [paymentType, setPaymentType] = useState<PaymentType>('dp')
+  const [paymentType, setPaymentType] = useState<PaymentType>('DP')
   const [notes, setNotes] = useState('')
   const [bookingStep, setBookingStep] = useState<'details' | 'loading' | 'payment'>('details')
   const [expiryTimestamp, setExpiryTimestamp] = useState<number | null>(null)
