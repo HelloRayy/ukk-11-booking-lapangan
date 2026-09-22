@@ -66,19 +66,18 @@ export default function QrisPaymentView({
             <span>Rincian</span>
           </button>
 
-          {/* Indikator Hitung Mundur */}
-          <div
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border transition-colors ${
-              isUrgent
-                ? 'bg-red-500/15 text-red-400 border-red-500/30 animate-pulse'
-                : 'bg-[#f2d953]/15 text-[#f2d953] border-[#f2d953]/30'
-            }`}
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span>{formattedTime}</span>
+          {/* Indikator Hitung Mundur (Label Bersih & Font Besar) */}
+          <div className="flex flex-col items-end text-right">
+            <span className="text-[10px] uppercase font-semibold text-[#8e8e8e] tracking-wider">
+              Sisa Waktu
+            </span>
+            <span
+              className={`text-2xl font-bold tracking-tight leading-none mt-1 tabular-nums ${
+                isUrgent ? 'text-red-400 animate-pulse' : 'text-[#f2d953]'
+              }`}
+            >
+              {formattedTime}
+            </span>
           </div>
         </div>
 
