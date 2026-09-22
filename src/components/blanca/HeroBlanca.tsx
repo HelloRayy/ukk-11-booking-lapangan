@@ -226,60 +226,60 @@ export default function HeroBlanca() {
             {/* Sisi Tengah: Nav Links Desktop */}
             <nav className="hidden lg:flex items-center header__nav px-4 h-full" aria-label="primary">
               <ul className="header__links flex items-center justify-center py-2 px-4 gap-x-1 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
-                <li className="h-[27.9818px] w-[93.4505px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[93.4505px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/collections/racquets"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#courts"
                   >
-                    <span className="leading-tight transition-all">Racquets</span>
+                    <span className="leading-tight transition-all">Courts</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[83.5547px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[83.5547px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/collections/bundle"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#schedule"
                   >
-                    <span className="leading-tight transition-all">Bundles</span>
+                    <span className="leading-tight transition-all">Schedule</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[112.526px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[112.526px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/collections/accessories"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#pricing"
                   >
-                    <span className="leading-tight transition-all">Accessories</span>
+                    <span className="leading-tight transition-all">Rates</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[81.3151px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[81.3151px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/collections/apparel"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#check-booking"
                   >
-                    <span className="leading-tight transition-all">Apparel</span>
+                    <span className="leading-tight transition-all">Check Booking</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[90.9375px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[90.9375px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/pages/about-us"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#amenities"
                   >
-                    <span className="leading-tight transition-all">About us</span>
+                    <span className="leading-tight transition-all">Amenities</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[76.8099px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[76.8099px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/pages/players"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#location"
                   >
-                    <span className="leading-tight transition-all">Players</span>
+                    <span className="leading-tight transition-all">Location</span>
                   </a>
                 </li>
-                <li className="h-[31.9792px] w-[120.456px] leading-normal transition-all">
+                <li className="h-[27.9818px] leading-normal transition-all">
                   <a
-                    className="header__link hidden py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[31.9792px] w-[120.456px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="/account"
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#about"
                   >
-                    <span className="leading-tight transition-all">Your account</span>
+                    <span className="leading-tight transition-all">About</span>
                   </a>
                 </li>
               </ul>
