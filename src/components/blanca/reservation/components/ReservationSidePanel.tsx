@@ -1,6 +1,7 @@
 // PERAN FILE: Pure UI Side Panel Drawer dari Kanan dengan Motion Halus & Staggered Reveal
 import { useState, useEffect } from 'react'
 import type { CustomerInfo } from '../types'
+import { Checkbox } from '../../../ui/checkbox'
 
 interface ReservationSidePanelProps {
   isOpen: boolean
@@ -204,26 +205,24 @@ export default function ReservationSidePanel({
                     />
                   </div>
 
-                  {/* Checkbox Konfirmasi Kebenaran Data */}
-                  <label
-                    htmlFor="confirm_checkbox"
-                    className="flex items-center gap-3 pt-2 cursor-pointer select-none group"
-                  >
-                    <input
+                  {/* Checkbox Konfirmasi Kebenaran Data (shadcn UI Checkbox) */}
+                  <div className="flex items-center gap-3 pt-2 select-none group">
+                    <Checkbox
                       id="confirm_checkbox"
-                      type="checkbox"
                       checked={customerInfo.isConfirmed}
-                      onChange={(e) => onUpdateField('isConfirmed', e.target.checked)}
-                      className="w-5 h-5 rounded-[4px] border-[#c0c0c0] text-[#161616] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#161616]"
+                      onCheckedChange={(checked) => onUpdateField('isConfirmed', checked === true)}
                     />
-                    <span className="text-sm text-[#666666] group-hover:text-[#161616] transition-colors leading-tight">
+                    <label
+                      htmlFor="confirm_checkbox"
+                      className="text-sm text-[#4a4a4a] group-hover:text-[#161616] transition-colors leading-tight cursor-pointer"
+                    >
                       Saya menyatakan data yang diisi sudah benar dan bersedia dihubungi arena.
-                    </span>
-                  </label>
+                    </label>
+                  </div>
                 </div>
               </div>
 
-              {/* Bottom Action Button dengan Motion Unlock Khas Blanca */}
+              {/* Bottom Action Button dengan Motion Unlock Khas Blanca (WCAG Compliant) */}
               <div
                 className={`pt-8 pb-2 mt-auto transition-all duration-500 ease-out ${
                   isActive ? 'opacity-100 translate-y-0 delay-250' : 'opacity-0 translate-y-4'
@@ -232,16 +231,16 @@ export default function ReservationSidePanel({
                 <button
                   type="submit"
                   disabled={!isFormValid}
-                  className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-500 select-none ${
+                  className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-300 select-none ${
                     isFormValid
-                      ? 'bg-[#f2d953] hover:bg-[#fcfbf6] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.35)] active:scale-[0.98]'
-                      : 'bg-[#f0f0f0] border border-[#e5e5e5] text-[#999999] cursor-not-allowed'
+                      ? 'bg-[#f2d953] hover:bg-[#e4cb34] active:bg-[#d6bc28] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.35)] hover:shadow-[0_8px_28px_rgba(228,203,52,0.45)] border border-black/10 active:scale-[0.98]'
+                      : 'bg-[#f0f0f0] border border-[#e5e5e5] text-[#737373] cursor-not-allowed'
                   }`}
                   aria-label={isFormValid ? 'Submit form data' : 'Form belum lengkap'}
                 >
                   {/* Kotak Ikon yang Meluncur dari Kiri ke Kanan Saat Ter-unlock */}
                   <span
-                    className={`absolute top-2 w-[48px] h-[48px] rounded-[8px] bg-white flex items-center justify-center text-[#161616] shadow-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                    className={`absolute top-2 w-[48px] h-[48px] rounded-[8px] bg-white border border-black/10 flex items-center justify-center text-[#161616] shadow-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                       isFormValid
                         ? 'left-[calc(100%-56px)] scale-100 shadow-md'
                         : 'left-2 scale-95 opacity-80'
@@ -273,7 +272,7 @@ export default function ReservationSidePanel({
                     className={`text-[16px] tracking-tight transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                       isFormValid
                         ? 'pr-[56px] pl-4 font-medium text-[#161616]'
-                        : 'pl-[56px] pr-4 font-normal text-[#8e8e8e]'
+                        : 'pl-[56px] pr-4 font-normal text-[#737373]'
                     }`}
                   >
                     See our recommendations
