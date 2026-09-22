@@ -281,8 +281,13 @@ p.body {
 }
 
 .icon-button--dark:hover {
-  background-color: rgb(252, 252, 252);
+  background-color: #fcfbf6;
   color: rgb(22, 22, 22);
+}
+
+.icon-button--dark:hover .icon-button__icon {
+  background-color: #1e1e1e;
+  color: #f4f4f4;
 }
 
 .icon-button--right .icon-button__icon {

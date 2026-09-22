@@ -220,43 +220,43 @@ export default function HeroBlanca() {
             </div>
 
             {/* Sisi Tengah: Nav Links Desktop */}
-            <nav className="hidden lg:flex items-center header__nav" aria-label="primary">
-              <ul className="header__links flex items-center justify-center py-2 px-3 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
-                <li className="h-[27.9818px] w-[93.4635px] leading-normal transition-all">
+            <nav className="hidden lg:flex items-center header__nav px-4" aria-label="primary">
+              <ul className="header__links flex items-center justify-center py-2 px-3 gap-x-1 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
+                <li className="h-[27.9818px] w-[93.4505px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[93.4635px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[93.4505px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/collections/racquets"
                   >
                     <span className="leading-tight transition-all">Racquets</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[83.5677px] leading-normal transition-all">
+                <li className="h-[27.9818px] w-[83.5547px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[83.5677px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[83.5547px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/collections/bundle"
                   >
                     <span className="leading-tight transition-all">Bundles</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[112.539px] leading-normal transition-all">
+                <li className="h-[27.9818px] w-[112.526px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[112.539px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[112.526px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/collections/accessories"
                   >
                     <span className="leading-tight transition-all">Accessories</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[81.3281px] leading-normal transition-all">
+                <li className="h-[27.9818px] w-[81.3151px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[81.3281px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[81.3151px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/collections/apparel"
                   >
                     <span className="leading-tight transition-all">Apparel</span>
                   </a>
                 </li>
-                <li className="h-[27.9818px] w-[118.164px] leading-normal transition-all">
+                <li className="h-[27.9818px] w-[118.151px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[118.164px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[118.151px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/pages/find-a-club"
                   >
                     <span className="leading-tight transition-all">Trial our gear</span>
@@ -264,7 +264,7 @@ export default function HeroBlanca() {
                 </li>
                 <li className="h-[27.9818px] w-[90.9375px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[90.9375px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[90.9375px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/pages/about-us"
                   >
                     <span className="leading-tight transition-all">About us</span>
@@ -272,15 +272,15 @@ export default function HeroBlanca() {
                 </li>
                 <li className="h-[27.9818px] w-[76.8099px] leading-normal transition-all">
                   <a
-                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[76.8099px] leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[76.8099px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/pages/players"
                   >
                     <span className="leading-tight transition-all">Players</span>
                   </a>
                 </li>
-                <li className="leading-normal transition-all">
+                <li className="h-[31.9792px] w-[120.456px] leading-normal transition-all">
                   <a
-                    className="header__link hidden py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded leading-tight transition-all duration-150 hover:bg-[rgba(217,217,217,0.12)] active:scale-[0.98]"
+                    className="header__link hidden py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[31.9792px] w-[120.456px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="/account"
                   >
                     <span className="leading-tight transition-all">Your account</span>
@@ -457,11 +457,11 @@ export default function HeroBlanca() {
 
               <div>
                 <a
-                  className="icon-button relative flex items-center justify-center px-6 bg-[#f2d953] text-[#161616] text-center rounded-lg h-[55.9896px] w-[227.93px] leading-normal transition-all duration-150 hover:bg-[#e1ca4d] active:scale-[0.98] w-full md:w-[227.93px] max-md:justify-center cursor-pointer"
+                  className="group icon-button icon-button--dark icon-button--right relative flex items-center justify-center px-6 bg-[#f2d953] text-[#161616] text-base text-center rounded-lg h-[55.9896px] w-[227.93px] leading-normal transition-all duration-150 hover:bg-[#fcfbf6] active:scale-[0.98] w-full md:w-[227.93px] max-md:justify-center cursor-pointer"
                   href="/collections/racquets"
                 >
                   <span
-                    className="absolute right-2 top-2 bottom-2 flex items-center justify-center bg-[#fcfcfc] text-center rounded w-10 h-10 leading-normal transition-all"
+                    className="icon-button__icon absolute right-2 top-2 bottom-2 flex items-center justify-center bg-[#fcfcfc] text-[#161616] group-hover:bg-[#1e1e1e] group-hover:text-[#f4f4f4] text-center rounded w-10 h-10 leading-normal transition-all duration-150"
                     aria-hidden="true"
                   >
                     <svg
@@ -471,11 +471,12 @@ export default function HeroBlanca() {
                       viewBox="0 0 12 12"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     >
                       <path d="M1 11 11 1m0 0v10m0-10H1" stroke="currentColor" />
                     </svg>
                   </span>
-                  <span className="pr-12 text-center leading-normal transition-all">Shop our racquets</span>
+                  <span className="icon-button__text pr-12 text-center leading-normal transition-all">Shop our racquets</span>
                 </a>
               </div>
             </div>
