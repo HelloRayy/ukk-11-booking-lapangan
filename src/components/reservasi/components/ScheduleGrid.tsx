@@ -1,4 +1,5 @@
 // PERAN FILE: Grid Kalender Bebas Distorsi & Bersih (Clean UI Tanpa Font Mono & Tanpa Teks Redundan)
+import { useState, useMemo } from 'react'
 import type { BookingItem, Court, SlotRangeSelection } from '../types'
 
 interface ScheduleGridProps {
@@ -9,11 +10,18 @@ interface ScheduleGridProps {
   selectedSlot: SlotRangeSelection | null
   customerName?: string
   rangeError: string | null
+  getSlotBooking?: (courtId: string, time: string) => BookingItem | undefined
   isSlotInRange: (courtId: string, time: string) => boolean
   isPastSlot: (time: string) => boolean
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
   onClearSelection?: () => void
+}
+
+interface HoveredSlotState {
+  courtId: string
+  hour: number
+  time: string
 }
 
 const BASE_HOUR = 8 // Jam operasional awal: 08:00
@@ -27,13 +35,46 @@ export default function ScheduleGrid({
   selectedSlot,
   customerName,
   rangeError,
+  getSlotBooking,
   isSlotInRange,
   isPastSlot,
   onSelectBooking,
   onSelectEmptySlot,
   onClearSelection,
 }: ScheduleGridProps) {
+  const [hoveredSlot, setHoveredSlot] = useState<HoveredSlotState | null>(null)
+
   const currentTimeTop = (10 - BASE_HOUR + 40 / 60) * SLOT_HEIGHT
+
+  // Cek apakah mode preview rentang hover aktif (ketika 1 slot sudah dipilih dan user hover jam lain pada lapangan yang sama)
+  const isRangePreviewActive = Boolean(
+    selectedSlot &&
+      selectedSlot.totalHours === 1 &&
+      hoveredSlot &&
+      hoveredSlot.courtId === selectedSlot.courtId &&
+      hoveredSlot.hour !== selectedSlot.startHour,
+  )
+
+  const previewMinHour = isRangePreviewActive
+    ? Math.min(selectedSlot!.startHour, hoveredSlot!.hour)
+    : null
+  const previewMaxHour = isRangePreviewActive
+    ? Math.max(selectedSlot!.startHour, hoveredSlot!.hour)
+    : null
+
+  // Cek apakah ada tabrakan jadwal atau slot lampau di dalam rentang hover
+  const previewHasCollision = useMemo(() => {
+    if (!isRangePreviewActive || previewMinHour === null || previewMaxHour === null || !selectedSlot) {
+      return false
+    }
+
+    for (let h = previewMinHour; h <= previewMaxHour; h++) {
+      const timeStr = `${h < 10 ? '0' : ''}${h}:00`
+      if (isPastSlot(timeStr)) return true
+      if (getSlotBooking && getSlotBooking(selectedSlot.courtId, timeStr)) return true
+    }
+    return false
+  }, [isRangePreviewActive, previewMinHour, previewMaxHour, isPastSlot, getSlotBooking, selectedSlot])
 
   return (
     <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none font-aeonik">
@@ -65,7 +106,10 @@ export default function ScheduleGrid({
       </div>
 
       {/* Grid Container */}
-      <div className="min-w-[720px] flex">
+      <div
+        className="min-w-[720px] flex"
+        onMouseLeave={() => setHoveredSlot(null)}
+      >
         {/* Kolom Sumbu Waktu Kiri */}
         <div className="w-20 sm:w-24 shrink-0 border-r border-[#262626] bg-[#141414]">
           {timeSlots.map((time) => {
@@ -90,12 +134,40 @@ export default function ScheduleGrid({
             const courtBookings = bookings.filter((b) => b.courtId === court.id)
 
             return (
-              <div key={court.id} className="relative">
+              <div
+                key={court.id}
+                className="relative"
+                onMouseLeave={() => setHoveredSlot(null)}
+              >
                 {/* 1. Background Grid Slot */}
                 <div className="flex flex-col">
                   {timeSlots.map((time) => {
+                    const slotHour = parseInt(time.split(':')[0], 10)
                     const isPast = isPastSlot(time)
                     const inRange = isSlotInRange(court.id, time)
+
+                    // Cek status hover rentang
+                    const isSlotInHoverRange = Boolean(
+                      isRangePreviewActive &&
+                        court.id === selectedSlot?.courtId &&
+                        previewMinHour !== null &&
+                        previewMaxHour !== null &&
+                        slotHour >= previewMinHour &&
+                        slotHour <= previewMaxHour &&
+                        slotHour !== selectedSlot?.startHour,
+                    )
+
+                    const isTargetHoverSlot = isSlotInHoverRange && slotHour === hoveredSlot?.hour
+                    const isIntermediateHoverSlot = isSlotInHoverRange && slotHour !== hoveredSlot?.hour
+
+                    // Durasi & estimasi harga rentang hover
+                    const previewHours =
+                      previewMaxHour !== null && previewMinHour !== null
+                        ? previewMaxHour - previewMinHour + 1
+                        : 1
+                    const previewPrice = previewHours * court.pricePerHour
+                    const previewEndHour = previewMaxHour !== null ? previewMaxHour + 1 : slotHour + 1
+                    const previewEndTimeStr = `${previewEndHour < 10 ? '0' : ''}${previewEndHour}:00`
 
                     return (
                       <div
@@ -109,17 +181,72 @@ export default function ScheduleGrid({
                               }
                             : {}),
                         }}
+                        onMouseEnter={() => {
+                          if (!isPast) {
+                            setHoveredSlot({ courtId: court.id, hour: slotHour, time })
+                          }
+                        }}
                         onClick={() => onSelectEmptySlot(court, time)}
                         className={`border-b border-[#222222] transition-colors relative select-none ${
                           isPast
                             ? 'opacity-25 cursor-not-allowed'
                             : inRange
                             ? 'bg-[#1a1a1a] cursor-pointer'
+                            : isSlotInHoverRange
+                            ? previewHasCollision
+                              ? 'bg-red-500/10 border-x-2 border-dashed border-red-500/40 cursor-not-allowed'
+                              : isTargetHoverSlot
+                              ? 'bg-[#f2d953]/25 border-x-2 border-dashed border-[#f2d953] cursor-pointer'
+                              : 'bg-[#f2d953]/15 border-x-2 border-dashed border-[#f2d953]/40 cursor-pointer'
                             : 'hover:bg-[#f2d953]/5 cursor-pointer group'
                         }`}
                       >
-                        {/* Hover Prompt Minimal */}
-                        {!inRange && !isPast && (
+                        {/* 1. Target Hover Slot: Card Preview dengan Durasi & Estimasi Harga */}
+                        {isTargetHoverSlot && !isPast && (
+                          previewHasCollision ? (
+                            <div className="absolute inset-x-2 top-2 bottom-2 p-2 rounded-[8px] bg-[#1c1c1c]/95 border border-red-500/50 shadow-lg flex items-center justify-center gap-2 pointer-events-none z-10 animate-in fade-in zoom-in-95 duration-100">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="15" y1="9" x2="9" y2="15" />
+                                <line x1="9" y1="9" x2="15" y2="15" />
+                              </svg>
+                              <span className="text-xs font-medium text-red-400">Jadwal Bentrok</span>
+                            </div>
+                          ) : (
+                            <div className="absolute inset-x-2 top-2 bottom-2 p-2.5 rounded-[8px] bg-[#1a1a1a]/95 border border-[#f2d953]/70 shadow-lg flex flex-col justify-between pointer-events-none z-10 animate-in fade-in zoom-in-95 duration-100">
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="text-xs font-semibold text-[#f2d953]">
+                                  {slotHour > (selectedSlot?.startHour ?? 0) ? 'Pilih Jam Selesai' : 'Pilih Jam Mulai'}
+                                </span>
+                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f2d953]/20 text-[#f2d953] font-semibold border border-[#f2d953]/30">
+                                  +{previewHours - 1} Jam
+                                </span>
+                              </div>
+
+                              <div className="flex items-center justify-between text-[11px] text-[#e5e5e5]">
+                                <span>Sampai {previewEndTimeStr} ({previewHours} Jam)</span>
+                                <span className="font-semibold text-[#f2d953]">
+                                  Rp {previewPrice.toLocaleString('id-ID')}
+                                </span>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                        {/* 2. Intermediate Hover Slots: Indikator Terhubung Ringkas */}
+                        {isIntermediateHoverSlot && !isPast && (
+                          <div className="absolute inset-x-3 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none">
+                            <span className={`text-[11px] font-medium ${previewHasCollision ? 'text-red-400/80' : 'text-[#f2d953]/80'}`}>
+                              {time}
+                            </span>
+                            <span className={`text-[10px] ${previewHasCollision ? 'text-red-400/60' : 'text-[#8e8e8e]'}`}>
+                              • • •
+                            </span>
+                          </div>
+                        )}
+
+                        {/* 3. Hover Prompt Normal (ketika tidak dalam mode range preview) */}
+                        {!inRange && !isPast && !isSlotInHoverRange && (
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                             <span className="text-xs text-[#f2d953] font-medium bg-[#1a1a1a] px-2.5 py-1 rounded-[6px] border border-[#f2d953]/30 shadow-sm">
                               {selectedSlot && selectedSlot.courtId === court.id
