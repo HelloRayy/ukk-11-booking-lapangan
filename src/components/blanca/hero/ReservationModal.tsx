@@ -11,7 +11,7 @@ export default function ReservationModal() {
 
         <div
           onClick={() => setQuizOpen(true)}
-          className="pt-[11.008px] pb-[13.008px] pl-5 pr-[111.008px] bg-[#d9d9d9]/[0.12] hover:bg-[#d9d9d9]/[0.22] rounded-t-[8px] relative group backdrop-blur-md h-[60px] leading-normal transition-all duration-200 cursor-pointer pointer-events-auto select-none"
+          className="pt-[4px] pb-[6px] pl-5 pr-[111.008px] bg-[#d9d9d9]/[0.12] hover:bg-[#d9d9d9]/[0.22] rounded-t-[8px] relative group backdrop-blur-md h-[60px] leading-normal transition-all duration-200 cursor-pointer pointer-events-auto select-none"
         >
           <div className="absolute -top-[15px] right-[10px] bottom-0 w-[89px] h-auto pointer-events-none group-hover:scale-[1.075] transition-transform duration-300 origin-bottom">
             <img
@@ -22,14 +22,14 @@ export default function ReservationModal() {
               height="144"
             />
           </div>
-          <div className="flex flex-col items-start h-auto gap-1 w-auto leading-tight transition-all">
+          <div className="flex flex-col items-start h-auto my-[2px] gap-[4px] w-auto leading-tight transition-all">
             <button
               type="button"
-              className="text-left text-xl text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              className="text-left text-[20px] text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               Reserve your court
             </button>
-            <span className="text-[#bfbfbf] text-sm font-light leading-tight transition-all mt-0.5 whitespace-nowrap">
+            <span className="text-[#bfbfbf] text-sm font-light leading-tight transition-all whitespace-nowrap">
               check available slots
             </span>
           </div>
