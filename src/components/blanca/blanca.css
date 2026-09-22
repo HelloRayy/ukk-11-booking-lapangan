@@ -120,10 +120,19 @@ body, html {
 .header__links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.header__links:has(:focus-visible),
+.header__links:hover {
+  backdrop-filter: blur(1.25rem);
+  -webkit-backdrop-filter: blur(1.25rem);
+  background-color: rgba(217, 217, 217, 0.12);
 }
 
 .header__link {
@@ -131,16 +140,49 @@ body, html {
   line-height: 16px;
   font-weight: 300;
   color: #fcfcfc;
-  padding: 6px 16px 6px 12px;
   border-radius: 4px;
   text-decoration: none;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
-  display: inline-flex;
+  transition: all 0.15s ease;
+  display: flex;
   align-items: center;
 }
 
 .header__link:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(217, 217, 217, 0.12);
+}
+
+@supports (anchor-name: --anchor) {
+  .header li:has(.header__link:is(:hover, :focus-visible)) {
+    anchor-name: --anchor;
+  }
+
+  .header__links::before {
+    --transition: 0.18s;
+    backdrop-filter: blur(1.25rem);
+    -webkit-backdrop-filter: blur(1.25rem);
+    background-color: rgba(217, 217, 217, 0.12);
+    border-radius: 0.25rem;
+    content: "";
+    opacity: var(--intent, 0);
+    pointer-events: none;
+    position: fixed;
+    transition: top var(--transition), left var(--transition), height var(--transition), opacity var(--transition), width var(--transition);
+    z-index: -1;
+    height: anchor-size(--anchor height);
+    left: anchor(--anchor left);
+    top: anchor(--anchor top);
+    width: calc(-0.25rem + anchor-size(--anchor width));
+  }
+
+  .header__links:has(.header__link:is(:focus-visible, :hover)) {
+    --intent: 1;
+  }
+
+  .header__links .header__link:focus-visible,
+  .header__links .header__link:hover {
+    backdrop-filter: none !important;
+    background-color: transparent !important;
+  }
 }
 
 .header__button {
