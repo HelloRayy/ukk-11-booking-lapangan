@@ -25,6 +25,7 @@ export default function RightPanelInspector({
 }: RightPanelInspectorProps) {
   const [paymentType, setPaymentType] = useState<PaymentType>('dp')
   const [notes, setNotes] = useState('')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true)
 
   // Case 1: Empty State (Clean Minimalist Placeholder)
   if (panelMode === 'empty') {
@@ -124,7 +125,6 @@ export default function RightPanelInspector({
     const finalCustomerName = customerName || 'Raditya Rayhan'
     const finalWhatsapp = customerWhatsapp || '085799799857'
     const dpAmount = selectedSlot.totalPrice * 0.5
-    const [isDropdownOpen, setIsDropdownOpen] = useState(true)
 
     return (
       <aside className="w-full lg:w-[380px] xl:w-[420px] bg-[#1a1a1a] border-l border-[#262626] p-6 flex flex-col justify-between overflow-y-auto shrink-0 animate-in fade-in duration-200 select-none font-aeonik">
