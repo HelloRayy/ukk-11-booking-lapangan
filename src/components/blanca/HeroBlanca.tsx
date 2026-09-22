@@ -3,7 +3,7 @@ import HeaderNav from './hero/HeaderNav'
 import CenterFlyingLogo from './hero/CenterFlyingLogo'
 import HeroTitle from './hero/HeroTitle'
 import HeroMedia from './hero/HeroMedia'
-import ReservationModal from './hero/ReservationModal'
+import ReservationDrawer from './reservation/ReservationDrawer'
 
 export default function HeroBlanca() {
   const {
@@ -52,8 +52,8 @@ export default function HeroBlanca() {
         <HeroMedia videoRef={videoRef} />
       </section>
 
-      {/* Reservation FAB & Modal */}
-      <ReservationModal />
+      {/* Reservation FAB & Side Panel Drawer */}
+      <ReservationDrawer />
     </div>
   )
 }
