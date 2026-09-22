@@ -33,8 +33,14 @@ export function useReservationDrawer() {
     e.preventDefault()
     if (!isFormValid) return
     setIsSubmitted(true)
-    // Mode UI murni: simpan di state lokal tanpa kirim ke BE
-    console.log('Data Calon Penyewa Terverifikasi:', customerInfo)
+    // Simpan data calon penyewa ke sessionStorage agar terbaca di rute /reservasi
+    try {
+      sessionStorage.setItem('blanca_customer_info', JSON.stringify(customerInfo))
+    } catch (err) {
+      console.error('Gagal menyimpan customer info ke sessionStorage:', err)
+    }
+    // Arahkan calon penyewa ke rute /reservasi
+    window.location.href = '/reservasi'
   }
 
   const resetForm = () => {
