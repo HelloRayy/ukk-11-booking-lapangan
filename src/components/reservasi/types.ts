@@ -1,4 +1,4 @@
-// PERAN FILE: Definisi tipe data & antarmuka untuk jadwal reservasi & panel inspektor
+// PERAN FILE: Definisi tipe data & antarmuka untuk jadwal reservasi & panel inspektor (User POV)
 export type PaymentType = 'dp' | 'lunas'
 export type SlotStatus = 'available' | 'booked' | 'maintenance'
 
@@ -29,13 +29,18 @@ export interface BookingItem {
   avatarInitials?: string
 }
 
-export interface EmptySlotSelection {
+export interface SlotRangeSelection {
   courtId: string
   courtName: string
   date: string
+  startHour: number
+  endHour: number
   startTime: string
   endTime: string
+  selectedHours: string[]
+  totalHours: number
   pricePerHour: number
+  totalPrice: number
 }
 
 export type RightPanelMode = 'empty' | 'inspect' | 'create'

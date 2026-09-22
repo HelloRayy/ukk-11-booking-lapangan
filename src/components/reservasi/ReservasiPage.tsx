@@ -1,4 +1,4 @@
-// PERAN FILE: Root Coordinator Halaman /reservasi 1:1 Persis Desain Referensi
+// PERAN FILE: Root Coordinator Halaman /reservasi dengan Multi-Slot Range Selection (User POV)
 import { useReservasiSchedule } from './hooks/useReservasiSchedule'
 import ReservasiNavbar from './components/ReservasiNavbar'
 import ScheduleHeader from './components/ScheduleHeader'
@@ -10,12 +10,13 @@ export default function ReservasiPage() {
   const {
     courts,
     timeSlots,
-    bookings,
     customer,
     panelMode,
     selectedBooking,
     selectedSlot,
+    rangeError,
     getSlotBooking,
+    isSlotInRange,
     handleSelectBooking,
     handleSelectEmptySlot,
     handleClosePanel,
@@ -37,13 +38,15 @@ export default function ReservasiPage() {
             timeSlots={timeSlots}
             selectedBooking={selectedBooking}
             selectedSlot={selectedSlot}
+            rangeError={rangeError}
             getSlotBooking={getSlotBooking}
+            isSlotInRange={isSlotInRange}
             onSelectBooking={handleSelectBooking}
             onSelectEmptySlot={handleSelectEmptySlot}
           />
         </div>
 
-        {/* Kolom Kanan: Inspector Panel (Detail Pemesan / Form Booking Baru / Empty State) */}
+        {/* Kolom Kanan: Inspector Panel (User POV: Detail Pemesan / Form Booking Baru / Empty State) */}
         <RightPanelInspector
           panelMode={panelMode}
           selectedBooking={selectedBooking}
@@ -56,8 +59,8 @@ export default function ReservasiPage() {
         />
       </div>
 
-      {/* 3. Baris Navigasi Bawah (Dashboard, Calendar, Register, Messages) */}
-      <BottomNavTab bookingCount={bookings.filter((b) => b.status === 'booked').length} />
+      {/* 3. Baris Navigasi Bawah (User POV: Ringkasan Durasi & Total Biaya) */}
+      <BottomNavTab selectedSlot={selectedSlot} />
     </div>
   )
 }

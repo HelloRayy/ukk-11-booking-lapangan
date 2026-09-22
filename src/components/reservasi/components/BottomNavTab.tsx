@@ -1,49 +1,45 @@
-// PERAN FILE: Bottom Navigation Tab Bar Khas Referensi Tablet/Desktop App
+// PERAN FILE: Bottom Navigation Bar Berorientasi Pembeli (User POV)
+import type { SlotRangeSelection } from '../types'
+
 interface BottomNavTabProps {
-  bookingCount: number
+  selectedSlot: SlotRangeSelection | null
 }
 
-export default function BottomNavTab({ bookingCount }: BottomNavTabProps) {
+export default function BottomNavTab({ selectedSlot }: BottomNavTabProps) {
   return (
     <nav className="h-14 border-t border-[#262626] bg-[#161616] px-6 flex items-center justify-between shrink-0 select-none">
-      <div className="flex items-center gap-8 text-sm">
-        {/* Tab 1: Dashboard */}
-        <button
-          type="button"
-          className="text-[#737373] hover:text-white transition-colors cursor-pointer py-1 font-medium"
-        >
-          Dashboard
-        </button>
-
-        {/* Tab 2: Calendar (Active with Blue Underline) */}
+      {/* Kiri: Label Menu Pembeli */}
+      <div className="flex items-center gap-6 text-sm">
         <div className="relative py-4 text-white font-medium flex items-center gap-2 cursor-pointer">
-          <span>Calendar</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0091ff]" />
-          <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0091ff]" />
+          <span>Pilih Jadwal</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+          <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#f2d953]" />
         </div>
 
-        {/* Tab 3: Register / Kasir */}
-        <button
-          type="button"
-          onClick={() => window.location.href = '/'}
-          className="text-[#737373] hover:text-white transition-colors cursor-pointer py-1 font-medium"
-        >
-          Kasir UKK
-        </button>
-
-        {/* Tab 4: Messages / Notifikasi Booking */}
-        <div className="flex items-center gap-1.5 text-[#737373] hover:text-white transition-colors cursor-pointer py-1 font-medium">
-          <span>Bookings</span>
-          <span className="px-1.5 py-0.2 rounded-full bg-[#0091ff] text-white text-[10px] font-bold font-mono">
-            {bookingCount}
-          </span>
-        </div>
+        <span className="text-xs text-[#737373] hidden sm:inline">
+          Sistem Otomatis Mengurutkan Rentang Jam (Contoh: Jam 1 sampai Jam 5)
+        </span>
       </div>
 
-      <div className="hidden sm:flex items-center gap-2 text-xs text-[#525252] font-mono">
-        <span>MODE MOCK FE</span>
-        <span>•</span>
-        <span>NO BACKEND REQUIRED</span>
+      {/* Kanan: Ringkasan Seleksi Aktif Pembeli */}
+      <div className="flex items-center gap-3">
+        {selectedSlot ? (
+          <div className="flex items-center gap-2 px-3 py-1 rounded-[8px] bg-[#f2d953]/15 border border-[#f2d953]/30 text-xs">
+            <span className="text-white font-semibold">{selectedSlot.courtName}</span>
+            <span className="text-[#8e8e8e]">•</span>
+            <span className="text-[#f2d953] font-mono font-medium">
+              {selectedSlot.startTime} - {selectedSlot.endTime} ({selectedSlot.totalHours} Jam)
+            </span>
+            <span className="text-[#8e8e8e]">•</span>
+            <span className="text-white font-bold font-mono">
+              Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
+            </span>
+          </div>
+        ) : (
+          <span className="text-xs text-[#737373] font-light hidden md:inline">
+            Belum ada slot yang dipilih
+          </span>
+        )}
       </div>
     </nav>
   )

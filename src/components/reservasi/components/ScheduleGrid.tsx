@@ -1,12 +1,14 @@
-// PERAN FILE: Grid Kalender Jadwal Interaktif 1:1 Persis Desain Referensi
-import type { BookingItem, Court, EmptySlotSelection } from '../types'
+// PERAN FILE: Grid Kalender Jadwal dengan Dukungan Multi-Slot Range Selection (User POV)
+import type { BookingItem, Court, SlotRangeSelection } from '../types'
 
 interface ScheduleGridProps {
   courts: Court[]
   timeSlots: string[]
   selectedBooking: BookingItem | null
-  selectedSlot: EmptySlotSelection | null
+  selectedSlot: SlotRangeSelection | null
+  rangeError: string | null
   getSlotBooking: (courtId: string, time: string) => BookingItem | undefined
+  isSlotInRange: (courtId: string, time: string) => boolean
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
 }
@@ -16,13 +18,29 @@ export default function ScheduleGrid({
   timeSlots,
   selectedBooking,
   selectedSlot,
+  rangeError,
   getSlotBooking,
+  isSlotInRange,
   onSelectBooking,
   onSelectEmptySlot,
 }: ScheduleGridProps) {
   return (
     <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none">
-      {/* Indicator Waktu Berjalan (Blue Line 10:40 Khas Referensi) */}
+      {/* Toast Peringatan Bentrok Jadwal jika Range Overlap */}
+      {rangeError && (
+        <div className="sticky top-2 z-30 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/90 text-white text-xs font-medium shadow-lg backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" x2="12" y1="8" y2="12" />
+              <line x1="12" x2="12.01" y1="16" y2="16" />
+            </svg>
+            <span>{rangeError}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Indicator Waktu Berjalan (Blue Line 10:40) */}
       <div className="absolute top-[280px] left-0 right-0 z-20 pointer-events-none flex items-center">
         <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
           <span className="px-2 py-0.5 rounded bg-[#0091ff] text-white text-[11px] font-mono font-bold shadow-md">
@@ -45,13 +63,12 @@ export default function ScheduleGrid({
             <div className="flex-1 grid grid-cols-4 divide-x divide-[#222222]">
               {courts.map((court) => {
                 const booking = getSlotBooking(court.id, time)
-                const isSelectedSlot =
-                  selectedSlot?.courtId === court.id && selectedSlot?.startTime === time
+                const inRange = isSlotInRange(court.id, time)
                 const isSelectedBooking = selectedBooking?.id === booking?.id
 
-                // Kasus 1: Slot memiliki data Booking
+                // Kasus 1: Slot memiliki data Booking (Jadwal Terisi / Maintenance)
                 if (booking) {
-                  // Cek apakah slot ini adalah permulaan booking (agar card multi-jam tidak double)
+                  // Cek apakah slot ini adalah permulaan booking
                   if (booking.startTime !== time) {
                     return (
                       <div
@@ -62,12 +79,11 @@ export default function ScheduleGrid({
                     )
                   }
 
-                  // Hitung durasi jam untuk tinggi card
                   const startH = parseInt(booking.startTime.split(':')[0], 10)
                   const endH = parseInt(booking.endTime.split(':')[0], 10)
                   const durationHours = Math.max(1, endH - startH)
 
-                  // Render Maintenance Slot
+                  // Slot Maintenance
                   if (booking.status === 'maintenance') {
                     return (
                       <div
@@ -93,12 +109,12 @@ export default function ScheduleGrid({
                             {booking.startTime} - {booking.endTime}
                           </span>
                         </div>
-                        <span className="text-[10px] text-[#666666] italic">Perawatan Lapangan</span>
+                        <span className="text-[10px] text-[#666666] italic">Pemeliharaan Rutin</span>
                       </div>
                     )
                   }
 
-                  // Render Booked Slot Normal
+                  // Slot Booked Normal (User POV: Mengetahui slot ini sudah terisi)
                   return (
                     <div
                       key={court.id}
@@ -112,18 +128,14 @@ export default function ScheduleGrid({
                           : 'border-[#333333] hover:border-[#555555] hover:bg-[#282828]'
                       }`}
                     >
-                      {/* Atas: Nama Pemesan & Status Badge */}
                       <div>
                         <div className="flex items-center justify-between gap-1 mb-1">
                           <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
                             {booking.customerName}
                           </span>
-                          <span
-                            className={`w-2 h-2 rounded-full shrink-0 ${
-                              booking.paymentType === 'lunas' ? 'bg-emerald-400' : 'bg-amber-400'
-                            }`}
-                            title={booking.paymentType === 'lunas' ? 'Lunas' : 'DP 50%'}
-                          />
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-[#a3a3a3] font-medium">
+                            Booked
+                          </span>
                         </div>
 
                         <span className="text-[11px] text-[#8e8e8e] block font-light">
@@ -131,42 +143,77 @@ export default function ScheduleGrid({
                         </span>
                       </div>
 
-                      {/* Bawah: Meta info & Payment Badge */}
-                      <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                        <span className="text-[10px] text-[#737373] uppercase tracking-wider">
-                          {booking.courtName}
-                        </span>
-
-                        <span
-                          className={`text-[10px] px-2 py-0.5 rounded font-mono font-medium ${
-                            booking.paymentType === 'lunas'
-                              ? 'bg-emerald-500/15 text-emerald-300'
-                              : 'bg-amber-500/15 text-amber-300'
-                          }`}
-                        >
-                          {booking.paymentType === 'lunas' ? 'LUNAS' : 'DP 50%'}
-                        </span>
+                      <div className="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] text-[#737373]">
+                        <span>{booking.courtName}</span>
+                        <span className="italic">Tidak Tersedia</span>
                       </div>
                     </div>
                   )
                 }
 
-                // Kasus 2: Slot Kosong (Available)
+                // Kasus 2: Slot Masuk Rentang Pilihan Multi-Slot User (Range Active)
+                if (inRange && selectedSlot) {
+                  const isFirst = selectedSlot.selectedHours[0] === time
+                  const isLast = selectedSlot.selectedHours[selectedSlot.selectedHours.length - 1] === time
+                  const isSingle = selectedSlot.totalHours === 1
+
+                  return (
+                    <div
+                      key={court.id}
+                      onClick={() => onSelectEmptySlot(court, time)}
+                      className={`p-2 relative flex flex-col justify-between cursor-pointer transition-all ${
+                        isSingle
+                          ? 'bg-[#f2d953]/25 border-2 border-[#f2d953] rounded-[10px] m-1'
+                          : `bg-[#f2d953]/20 border-x-2 border-[#f2d953] ${
+                              isFirst ? 'border-t-2 rounded-t-[10px] mt-1' : ''
+                            } ${isLast ? 'border-b-2 rounded-b-[10px] mb-1' : ''}`
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-white bg-[#161616] px-2 py-0.5 rounded border border-[#f2d953]/40 font-mono">
+                          {time}
+                        </span>
+                        {isFirst && (
+                          <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
+                            Mulai
+                          </span>
+                        )}
+                        {isLast && !isSingle && (
+                          <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
+                            Selesai ({selectedSlot.endTime})
+                          </span>
+                        )}
+                      </div>
+
+                      {isSingle ? (
+                        <span className="text-[11px] text-[#f2d953] font-medium block text-center">
+                          Klik jam lain untuk memperpanjang rentang
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-[#f2d953]/80 font-mono text-center">
+                          Terpilih dalam rentang ({selectedSlot.totalHours} Jam)
+                        </span>
+                      )}
+                    </div>
+                  )
+                }
+
+                // Kasus 3: Slot Kosong Normal (Siap Diklik untuk Memilih Range)
                 return (
                   <div
                     key={court.id}
                     onClick={() => onSelectEmptySlot(court, time)}
-                    className={`p-2 transition-all cursor-pointer flex items-center justify-center relative group ${
-                      isSelectedSlot
-                        ? 'bg-[#f2d953]/15 border-2 border-[#f2d953]'
-                        : 'hover:bg-[#f2d953]/5 hover:border hover:border-[#f2d953]/30'
-                    }`}
+                    className="p-2 transition-all cursor-pointer flex items-center justify-center relative group hover:bg-[#f2d953]/5 hover:border hover:border-[#f2d953]/30"
                   >
                     <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono text-[#f2d953] flex items-center gap-1 bg-[#1a1a1a] px-2.5 py-1 rounded-[6px] border border-[#f2d953]/30 shadow-md">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M12 5v14M5 12h14" />
                       </svg>
-                      <span>Booking Slot</span>
+                      <span>
+                        {selectedSlot && selectedSlot.courtId === court.id
+                          ? 'Pilih Jam Selesai'
+                          : 'Pilih Jam'}
+                      </span>
                     </span>
                   </div>
                 )
