@@ -1,4 +1,4 @@
-import { DAFTAR_JAM } from '../../constants/operationalHours'
+import { DAFTAR_JAM, isDevMode, jamSimulasi } from '../../constants/operationalHours'
 
 interface Props {
   selectedDate: string
@@ -14,10 +14,6 @@ export default function GridJam({
   jamDipilih,
   onToggleSlot,
 }: Props) {
-  // MODE DEV: ubah ke true jika ingin simulasi jam manual (misal testing malam hari / demo UKK)
-  const isDevMode = true // true = pakai jam simulasi, false = pakai jam realtime
-  const jamSimulasi = 18 // atur jam simulasi di sini (contoh: 10 = jam 10:00 pagi)
-
   // cek apakah tanggal yang dipilih adalah hari ini
   const isToday = selectedDate === new Date().toISOString().split('T')[0]
   const jamSekarang = isDevMode ? jamSimulasi : new Date().getHours()

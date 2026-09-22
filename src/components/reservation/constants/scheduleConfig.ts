@@ -1,26 +1,12 @@
 // PERAN FILE: Konfigurasi jam operasional dan waktu acuan kalender reservasi
+import {
+  isDevMode,
+  jamSimulasi,
+  menitSimulasi,
+  TIME_SLOTS,
+} from '../../../constants/operationalHours'
 
-// MODE DEV: ubah ke true jika ingin simulasi jam manual (misal testing malam hari / demo UKK)
-export const isDevMode = true // true = pakai jam simulasi, false = pakai jam realtime
-export const jamSimulasi = 6 // atur jam simulasi di sini (contoh: 6 = jam 06:00, 10 = jam 10:00 pagi)
-export const menitSimulasi = 0 // atur menit simulasi (contoh: 0 atau 30)
-
-export const TIME_SLOTS: string[] = [
-  '08:00',
-  '09:00',
-  '10:00',
-  '11:00',
-  '12:00',
-  '13:00',
-  '14:00',
-  '15:00',
-  '16:00',
-  '17:00',
-  '18:00',
-  '19:00',
-  '20:00',
-  '21:00',
-]
+export { isDevMode, jamSimulasi, menitSimulasi, TIME_SLOTS }
 
 // Fungsi mendapatkan waktu kalender acuan (mendukung Dev Mode & Realtime)
 export function getCalendarCurrentTime() {
