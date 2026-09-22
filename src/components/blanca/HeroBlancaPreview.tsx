@@ -1,6 +1,7 @@
 import HeroBlanca from './HeroBlanca'
 import BlancaDifference from './BlancaDifference'
 import BlancaTechnology from './BlancaTechnology'
+import BlancaFaq from './BlancaFaq'
 import BlancaLocations from './BlancaLocations'
 
 export default function HeroBlancaPreview() {
@@ -9,6 +10,7 @@ export default function HeroBlancaPreview() {
       <HeroBlanca />
       <BlancaDifference />
       <BlancaTechnology />
+      <BlancaFaq />
       <BlancaLocations />
     </div>
   )
