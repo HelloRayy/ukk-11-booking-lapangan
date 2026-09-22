@@ -157,6 +157,11 @@ export default function HeroBlanca() {
       '<',
     )
 
+    // Kembalikan scroll setelah seluruh sekuens timeline selesai
+    tl.eventCallback('onComplete', () => {
+      document.documentElement.classList.remove('noscroll')
+    })
+
     // Simpan instance ke window agar Playwright bisa mengontrol timeline secara deterministik
     ;(window as unknown as { __BLANCA_TL__?: gsap.core.Timeline }).__BLANCA_TL__ = tl
 
@@ -170,7 +175,7 @@ export default function HeroBlanca() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen bg-[#161616] text-[#fcfcfc] overflow-x-hidden font-aeonik"
+      className="relative h-screen min-h-screen max-h-screen bg-[#161616] text-[#fcfcfc] overflow-hidden font-aeonik"
     >
       {/* Background Static Radial Glow Circle */}
       <div className="absolute inset-x-0 top-[-446px] lg:top-[-523px] w-full h-full overflow-hidden pointer-events-none z-0">
