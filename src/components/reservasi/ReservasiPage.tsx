@@ -29,10 +29,10 @@ export default function ReservasiPage() {
       {/* 1. Navbar Atas (Header & Date Selector) */}
       <ReservasiNavbar customerName={customer?.nama} />
 
-      {/* 2. Split Area Utama: Kalender di Kiri, Inspector di Kanan */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Kolom Kiri: Tabel Kalender (Header Lapangan + Grid Jam) */}
-        <div className="flex-1 flex flex-col overflow-hidden border-r border-[#262626]">
+      {/* 2. Area Utama: Kalender Full Width & Floating Inspector */}
+      <div className="flex-1 relative flex overflow-hidden">
+        {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) Full Width */}
+        <div className="flex-1 flex flex-col overflow-hidden">
           <ScheduleHeader courts={courts} />
           <ScheduleGrid
             courts={courts}
@@ -51,7 +51,7 @@ export default function ReservasiPage() {
           />
         </div>
 
-        {/* Kolom Kanan: Inspector Panel (User POV: Detail Pemesan / Form Booking Baru / Empty State) */}
+        {/* Floating Slide-Over Drawer dari Kanan (Tanpa Empty State) */}
         <RightPanelInspector
           panelMode={panelMode}
           selectedBooking={selectedBooking}
