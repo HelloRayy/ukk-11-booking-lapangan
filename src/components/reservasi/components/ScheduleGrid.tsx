@@ -1,4 +1,4 @@
-// PERAN FILE: Grid Kalender Bebas Distorsi Baris dengan Penempatan Kartu Independen (User POV)
+// PERAN FILE: Grid Kalender Bebas Distorsi dengan Proteksi Waktu Lampau (< Jam Sekarang)
 import type { BookingItem, Court, SlotRangeSelection } from '../types'
 
 interface ScheduleGridProps {
@@ -9,6 +9,7 @@ interface ScheduleGridProps {
   selectedSlot: SlotRangeSelection | null
   rangeError: string | null
   isSlotInRange: (courtId: string, time: string) => boolean
+  isPastSlot: (time: string) => boolean
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
 }
@@ -24,6 +25,7 @@ export default function ScheduleGrid({
   selectedSlot,
   rangeError,
   isSlotInRange,
+  isPastSlot,
   onSelectBooking,
   onSelectEmptySlot,
 }: ScheduleGridProps) {
@@ -32,9 +34,9 @@ export default function ScheduleGrid({
 
   return (
     <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none">
-      {/* Toast Peringatan Bentrok Jadwal */}
+      {/* Toast Peringatan Bentrok Jadwal / Waktu Lampau */}
       {rangeError && (
-        <div className="sticky top-2 z-40 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/90 text-white text-xs font-medium shadow-lg backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="sticky top-2 z-40 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-xl backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" />
@@ -52,8 +54,9 @@ export default function ScheduleGrid({
         className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
       >
         <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
-          <span className="px-2 py-0.5 rounded bg-[#0091ff] text-white text-[11px] font-mono font-bold shadow-md">
-            10:40
+          <span className="px-2 py-0.5 rounded bg-[#0091ff] text-white text-[11px] font-mono font-bold shadow-md flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span>10:40</span>
           </span>
         </div>
         <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
@@ -63,15 +66,20 @@ export default function ScheduleGrid({
       <div className="min-w-[720px] flex">
         {/* Kolom Sumbu Waktu Kiri (Tinggi Baku Per Jam) */}
         <div className="w-20 sm:w-24 shrink-0 border-r border-[#262626] bg-[#141414]">
-          {timeSlots.map((time) => (
-            <div
-              key={time}
-              style={{ height: `${SLOT_HEIGHT}px` }}
-              className="p-3 text-right text-xs font-mono text-[#666666] border-b border-[#222222] flex items-start justify-end"
-            >
-              {time}
-            </div>
-          ))}
+          {timeSlots.map((time) => {
+            const isPast = isPastSlot(time)
+            return (
+              <div
+                key={time}
+                style={{ height: `${SLOT_HEIGHT}px` }}
+                className={`p-3 text-right text-xs font-mono border-b border-[#222222] flex items-start justify-end ${
+                  isPast ? 'text-[#444444]' : 'text-[#8e8e8e]'
+                }`}
+              >
+                {time}
+              </div>
+            )
+          })}
         </div>
 
         {/* 4 Kolom Lapangan Independen (Side-by-Side Bebas Distorsi) */}
@@ -84,6 +92,7 @@ export default function ScheduleGrid({
                 {/* 1. Background Grid Slot (Setiap Slot Terkunci 88px) */}
                 <div className="flex flex-col">
                   {timeSlots.map((time) => {
+                    const isPast = isPastSlot(time)
                     const inRange = isSlotInRange(court.id, time)
                     const isFirst =
                       selectedSlot?.courtId === court.id && selectedSlot?.selectedHours[0] === time
@@ -95,20 +104,39 @@ export default function ScheduleGrid({
                     return (
                       <div
                         key={time}
-                        style={{ height: `${SLOT_HEIGHT}px` }}
+                        style={{
+                          height: `${SLOT_HEIGHT}px`,
+                          ...(isPast
+                            ? {
+                                backgroundImage:
+                                  'repeating-linear-gradient(-45deg, #141414, #141414 8px, #1a1a1a 8px, #1a1a1a 16px)',
+                              }
+                            : {}),
+                        }}
                         onClick={() => onSelectEmptySlot(court, time)}
-                        className={`border-b border-[#222222] transition-colors relative cursor-pointer group ${
-                          inRange
+                        className={`border-b border-[#222222] transition-colors relative select-none ${
+                          isPast
+                            ? 'opacity-35 cursor-not-allowed group'
+                            : inRange
                             ? isSingle
-                              ? 'bg-[#f2d953]/25 border-x-2 border-[#f2d953]'
-                              : `bg-[#f2d953]/20 border-x-2 border-[#f2d953] ${isFirst ? 'border-t-2' : ''} ${
-                                  isLast ? 'border-b-2' : ''
-                                }`
-                            : 'hover:bg-[#f2d953]/5'
+                              ? 'bg-[#f2d953]/25 border-x-2 border-[#f2d953] cursor-pointer'
+                              : `bg-[#f2d953]/20 border-x-2 border-[#f2d953] cursor-pointer ${
+                                  isFirst ? 'border-t-2' : ''
+                                } ${isLast ? 'border-b-2' : ''}`
+                            : 'hover:bg-[#f2d953]/5 cursor-pointer group'
                         }`}
                       >
+                        {/* Jika Waktu Lampau (< 10:40) */}
+                        {isPast && (
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span className="text-[10px] font-mono text-[#555555] group-hover:text-red-400 transition-colors">
+                              Lewat Waktu
+                            </span>
+                          </div>
+                        )}
+
                         {/* Label Panduan Seleksi Jam */}
-                        {inRange && (
+                        {inRange && !isPast && (
                           <div className="absolute inset-x-2 top-2 flex justify-between items-center pointer-events-none z-0">
                             <span className="text-[10px] font-mono text-white bg-[#161616] px-1.5 py-0.5 rounded border border-[#f2d953]/40">
                               {time}
@@ -126,8 +154,8 @@ export default function ScheduleGrid({
                           </div>
                         )}
 
-                        {/* Hover Prompt */}
-                        {!inRange && (
+                        {/* Hover Prompt untuk Slot Masa Depan yang Tersedia */}
+                        {!inRange && !isPast && (
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                             <span className="text-[11px] font-mono text-[#f2d953] bg-[#1a1a1a] px-2 py-0.5 rounded border border-[#f2d953]/30 shadow-sm">
                               {selectedSlot && selectedSlot.courtId === court.id
@@ -141,7 +169,7 @@ export default function ScheduleGrid({
                   })}
                 </div>
 
-                {/* 2. Kartu Booking yang Diposisikan Absolute (Hanya Memanjang di Lapangan Sendiri) */}
+                {/* 2. Kartu Booking yang Diposisikan Absolute */}
                 {courtBookings.map((booking) => {
                   const [startH, startM] = booking.startTime.split(':').map(Number)
                   const [endH, endM] = booking.endTime.split(':').map(Number)

@@ -1,5 +1,5 @@
-// PERAN FILE: Custom Hook State Kalender Jadwal dengan Multi-Slot Range Selection (User POV)
-import { useState, useEffect, useMemo, useCallback } from 'react'
+// PERAN FILE: Custom Hook State Kalender Jadwal dengan Multi-Slot Range Selection & Proteksi Waktu Lampau (User POV)
+import { useState, useEffect, useCallback } from 'react'
 import type { BookingItem, Court, SlotRangeSelection, PaymentType, RightPanelMode } from '../types'
 import { MOCK_COURTS, TIME_SLOTS, INITIAL_BOOKINGS } from '../data/mockScheduleData'
 
@@ -8,6 +8,13 @@ interface StoredCustomer {
   whatsapp: string
   email: string
   isConfirmed: boolean
+}
+
+// Jam acuan kalender saat ini (sinkron dengan indikator garis biru 10:40)
+export const CALENDAR_CURRENT_TIME = {
+  hour: 10,
+  minute: 40,
+  display: '10:40',
 }
 
 export function useReservasiSchedule() {
@@ -28,6 +35,14 @@ export function useReservasiSchedule() {
     } catch (e) {
       console.error('Gagal membaca data customer dari sessionStorage:', e)
     }
+  }, [])
+
+  // Fungsi pengecekan apakah suatu jam slot sudah lewat dari jam sekarang (< 10:40)
+  const isPastSlot = useCallback((time: string): boolean => {
+    const slotHour = parseInt(time.split(':')[0], 10)
+    if (slotHour < CALENDAR_CURRENT_TIME.hour) return true
+    if (slotHour === CALENDAR_CURRENT_TIME.hour && CALENDAR_CURRENT_TIME.minute > 0) return true
+    return false
   }, [])
 
   // Cari booking pada lapangan dan jam tertentu
@@ -61,13 +76,21 @@ export function useReservasiSchedule() {
     setPanelMode('inspect')
   }
 
-  // Aksi pemilihan slot kosong (Logika Range: Klik jam 1 lalu klik jam 5 -> otomatis 1 2 3 4 5)
+  // Aksi pemilihan slot kosong dengan validasi waktu lampau & logika multi-slot range
   const handleSelectEmptySlot = (court: Court, clickedTime: string) => {
     setRangeError(null)
+
+    // 1. Validasi waktu lampau: DILARANG booking < dari jam sekarang (10:40)
+    if (isPastSlot(clickedTime)) {
+      setRangeError(
+        `Slot jam ${clickedTime} tidak dapat dipilih karena sudah lewat dari jam sekarang (${CALENDAR_CURRENT_TIME.display}).`,
+      )
+      return
+    }
+
     const clickedHour = parseInt(clickedTime.split(':')[0], 10)
 
-    // Jika belum ada pilihan, atau user klik di lapangan yang berbeda, atau pilihan sebelumnya sudah berupa rentang (>1 jam):
-    // Kita mulai pilihan baru 1 slot awal.
+    // Jika belum ada pilihan, atau user klik di lapangan berbeda, atau pilihan sebelumnya sudah berupa rentang (>1 jam):
     if (!selectedSlot || selectedSlot.courtId !== court.id || selectedSlot.totalHours > 1) {
       const endHour = clickedHour + 1
       const endTime = `${endHour < 10 ? '0' : ''}${endHour}:00`
@@ -90,23 +113,29 @@ export function useReservasiSchedule() {
       return
     }
 
-    // Jika user mengklik slot jam yang sama persis dengan yang sudah terpilih:
+    // Jika user mengklik slot jam yang sama persis:
     if (selectedSlot.startHour === clickedHour) {
-      // Biarkan tetap terpilih 1 jam
       return
     }
 
-    // Jika user mengklik slot kedua pada lapangan yang sama:
-    // Urutkan nilai min dan max secara otomatis (misal klik jam 1 dan jam 5 -> min 1, max 5)
+    // Urutkan nilai min dan max secara otomatis (misal klik jam 13:00 dan jam 17:00 -> min 13, max 17)
     const minH = Math.min(selectedSlot.startHour, clickedHour)
     const maxH = Math.max(selectedSlot.startHour, clickedHour)
 
     // Bentuk array seluruh slot jam di antara minH dan maxH
     const hoursInRange: string[] = []
     let hasCollision = false
+    let hasPastHour = false
 
     for (let h = minH; h <= maxH; h++) {
       const timeString = `${h < 10 ? '0' : ''}${h}:00`
+
+      // Validasi waktu lampau di dalam rentang
+      if (isPastSlot(timeString)) {
+        hasPastHour = true
+        break
+      }
+
       // Validasi tabrakan jadwal (collision check)
       const existing = getSlotBooking(court.id, timeString)
       if (existing) {
@@ -116,7 +145,11 @@ export function useReservasiSchedule() {
       hoursInRange.push(timeString)
     }
 
-    // Jika ada jadwal orang lain yang bertabrakan di tengah rentang:
+    if (hasPastHour) {
+      setRangeError(`Rentang jam tidak valid karena memuat jam yang sudah lewat (< ${CALENDAR_CURRENT_TIME.display}).`)
+      return
+    }
+
     if (hasCollision) {
       setRangeError('Rentang waktu tidak valid karena bertabrakan dengan jadwal yang sudah terisi.')
       // Reset pilihan ke slot yang baru saja diklik
@@ -222,8 +255,10 @@ export function useReservasiSchedule() {
     selectedBooking,
     selectedSlot,
     rangeError,
+    currentTime: CALENDAR_CURRENT_TIME,
     getSlotBooking,
     isSlotInRange,
+    isPastSlot,
     handleSelectBooking,
     handleSelectEmptySlot,
     handleClosePanel,

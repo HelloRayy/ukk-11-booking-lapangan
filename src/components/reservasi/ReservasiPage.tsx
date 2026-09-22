@@ -18,6 +18,7 @@ export default function ReservasiPage() {
     rangeError,
     getSlotBooking,
     isSlotInRange,
+    isPastSlot,
     handleSelectBooking,
     handleSelectEmptySlot,
     handleClosePanel,
@@ -43,6 +44,7 @@ export default function ReservasiPage() {
             rangeError={rangeError}
             getSlotBooking={getSlotBooking}
             isSlotInRange={isSlotInRange}
+            isPastSlot={isPastSlot}
             onSelectBooking={handleSelectBooking}
             onSelectEmptySlot={handleSelectEmptySlot}
           />
