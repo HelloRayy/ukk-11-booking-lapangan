@@ -107,7 +107,7 @@ export default function BlancaFooter() {
         {/* Baris Bawah: Copyright */}
         <div className="mt-12 pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8e8e8e]">
           <p>© {new Date().getFullYear()} Blanca Arena. Hak Cipta Dilindungi Undang-Undang.</p>
-          <p className="font-mono">React 19 • Vite • Tailwind CSS v4 • Supabase</p>
+          <p>React 19 • Vite • Tailwind CSS v4 • Supabase</p>
         </div>
       </div>
     </footer>

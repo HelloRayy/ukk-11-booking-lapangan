@@ -30,9 +30,9 @@ export default function ReservasiHeader({ onBack }: ReservasiHeaderProps) {
         </div>
 
         {/* Route Badge */}
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#f2d953]/10 border border-[#f2d953]/30 text-[#f2d953] text-xs font-mono">
-          <span className="w-2 h-2 rounded-full bg-[#f2d953] animate-pulse" />
-          <span>/reservasi</span>
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#f2d953]/10 border border-[#f2d953]/30 text-[#f2d953] text-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953] animate-pulse" />
+          <span>PORTAL RESERVASI</span>
         </div>
       </div>
     </header>

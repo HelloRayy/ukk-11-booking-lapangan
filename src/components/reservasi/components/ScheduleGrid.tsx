@@ -1,4 +1,4 @@
-// PERAN FILE: Grid Kalender Bebas Distorsi dengan Proteksi Waktu Lampau (< Jam Sekarang)
+// PERAN FILE: Grid Kalender Bebas Distorsi & Bersih (Clean UI Tanpa Font Mono & Tanpa Teks Redundan)
 import type { BookingItem, Court, SlotRangeSelection } from '../types'
 
 interface ScheduleGridProps {
@@ -29,34 +29,32 @@ export default function ScheduleGrid({
   onSelectBooking,
   onSelectEmptySlot,
 }: ScheduleGridProps) {
-  // Hitung posisi indikator waktu berjalan (10:40)
   const currentTimeTop = (10 - BASE_HOUR + 40 / 60) * SLOT_HEIGHT
 
   return (
-    <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none">
-      {/* Toast Peringatan Bentrok Jadwal / Waktu Lampau */}
+    <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none font-aeonik">
+      {/* Toast Notifikasi Bentrok / Waktu Lampau */}
       {rangeError && (
-        <div className="sticky top-2 z-40 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-xl backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="sticky top-3 z-40 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-xl backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" />
-              <line x1="12" x2="12" y1="8" y2="12" />
-              <line x1="12" x2="12.01" y1="16" y2="16" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
             <span>{rangeError}</span>
           </div>
         </div>
       )}
 
-      {/* Indicator Garis Waktu Berjalan (10:40) Melintasi Seluruh Kolom */}
+      {/* Indicator Garis Waktu Berjalan (10:40) */}
       <div
         style={{ top: `${currentTimeTop}px` }}
         className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
       >
         <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
-          <span className="px-2 py-0.5 rounded bg-[#0091ff] text-white text-[11px] font-mono font-bold shadow-md flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-            <span>10:40</span>
+          <span className="px-2.5 py-0.5 rounded bg-[#0091ff] text-white text-xs font-semibold shadow-md">
+            10:40
           </span>
         </div>
         <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
@@ -64,7 +62,7 @@ export default function ScheduleGrid({
 
       {/* Grid Container */}
       <div className="min-w-[720px] flex">
-        {/* Kolom Sumbu Waktu Kiri (Tinggi Baku Per Jam) */}
+        {/* Kolom Sumbu Waktu Kiri */}
         <div className="w-20 sm:w-24 shrink-0 border-r border-[#262626] bg-[#141414]">
           {timeSlots.map((time) => {
             const isPast = isPastSlot(time)
@@ -72,7 +70,7 @@ export default function ScheduleGrid({
               <div
                 key={time}
                 style={{ height: `${SLOT_HEIGHT}px` }}
-                className={`p-3 text-right text-xs font-mono border-b border-[#222222] flex items-start justify-end ${
+                className={`p-3 text-right text-xs font-medium border-b border-[#222222] flex items-start justify-end ${
                   isPast ? 'text-[#444444]' : 'text-[#8e8e8e]'
                 }`}
               >
@@ -82,14 +80,14 @@ export default function ScheduleGrid({
           })}
         </div>
 
-        {/* 4 Kolom Lapangan Independen (Side-by-Side Bebas Distorsi) */}
+        {/* 4 Kolom Lapangan Independen */}
         <div className="flex-1 grid grid-cols-4 divide-x divide-[#222222]">
           {courts.map((court) => {
             const courtBookings = bookings.filter((b) => b.courtId === court.id)
 
             return (
               <div key={court.id} className="relative">
-                {/* 1. Background Grid Slot (Setiap Slot Terkunci 88px) */}
+                {/* 1. Background Grid Slot */}
                 <div className="flex flex-col">
                   {timeSlots.map((time) => {
                     const isPast = isPastSlot(time)
@@ -109,14 +107,14 @@ export default function ScheduleGrid({
                           ...(isPast
                             ? {
                                 backgroundImage:
-                                  'repeating-linear-gradient(-45deg, #141414, #141414 8px, #1a1a1a 8px, #1a1a1a 16px)',
+                                  'repeating-linear-gradient(-45deg, #131313, #131313 8px, #181818 8px, #181818 16px)',
                               }
                             : {}),
                         }}
                         onClick={() => onSelectEmptySlot(court, time)}
                         className={`border-b border-[#222222] transition-colors relative select-none ${
                           isPast
-                            ? 'opacity-35 cursor-not-allowed group'
+                            ? 'opacity-25 cursor-not-allowed'
                             : inRange
                             ? isSingle
                               ? 'bg-[#f2d953]/25 border-x-2 border-[#f2d953] cursor-pointer'
@@ -126,41 +124,32 @@ export default function ScheduleGrid({
                             : 'hover:bg-[#f2d953]/5 cursor-pointer group'
                         }`}
                       >
-                        {/* Jika Waktu Lampau (< 10:40) */}
-                        {isPast && (
-                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-[10px] font-mono text-[#555555] group-hover:text-red-400 transition-colors">
-                              Lewat Waktu
-                            </span>
-                          </div>
-                        )}
-
-                        {/* Label Panduan Seleksi Jam */}
+                        {/* Label Rentang Terpilih */}
                         {inRange && !isPast && (
                           <div className="absolute inset-x-2 top-2 flex justify-between items-center pointer-events-none z-0">
-                            <span className="text-[10px] font-mono text-white bg-[#161616] px-1.5 py-0.5 rounded border border-[#f2d953]/40">
+                            <span className="text-[11px] font-semibold text-white bg-[#161616] px-2 py-0.5 rounded border border-[#f2d953]/40">
                               {time}
                             </span>
                             {isFirst && (
-                              <span className="text-[9px] font-semibold text-[#f2d953] bg-[#161616] px-1.5 py-0.5 rounded">
+                              <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
                                 Mulai
                               </span>
                             )}
                             {isLast && !isSingle && (
-                              <span className="text-[9px] font-semibold text-[#f2d953] bg-[#161616] px-1.5 py-0.5 rounded">
+                              <span className="text-[10px] font-semibold text-[#f2d953] bg-[#161616] px-2 py-0.5 rounded">
                                 Selesai
                               </span>
                             )}
                           </div>
                         )}
 
-                        {/* Hover Prompt untuk Slot Masa Depan yang Tersedia */}
+                        {/* Hover Prompt Minimal */}
                         {!inRange && !isPast && (
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                            <span className="text-[11px] font-mono text-[#f2d953] bg-[#1a1a1a] px-2 py-0.5 rounded border border-[#f2d953]/30 shadow-sm">
+                            <span className="text-xs text-[#f2d953] font-medium bg-[#1a1a1a] px-2.5 py-1 rounded-[6px] border border-[#f2d953]/30 shadow-sm">
                               {selectedSlot && selectedSlot.courtId === court.id
                                 ? 'Pilih Selesai'
-                                : 'Pilih Jam'}
+                                : 'Pilih Slot'}
                             </span>
                           </div>
                         )}
@@ -169,7 +158,7 @@ export default function ScheduleGrid({
                   })}
                 </div>
 
-                {/* 2. Kartu Booking yang Diposisikan Absolute */}
+                {/* 2. Kartu Booking Absolute */}
                 {courtBookings.map((booking) => {
                   const [startH, startM] = booking.startTime.split(':').map(Number)
                   const [endH, endM] = booking.endTime.split(':').map(Number)
@@ -203,20 +192,19 @@ export default function ScheduleGrid({
                         <div>
                           <div className="flex items-center justify-between gap-1 mb-1">
                             <span className="text-xs font-semibold text-[#d1d1d1]">
-                              Block • Maintenance
+                              Maintenance
                             </span>
                             <span className="w-2 h-2 rounded-full bg-amber-500" />
                           </div>
-                          <span className="text-[11px] text-[#8e8e8e] font-mono block">
+                          <span className="text-xs text-[#8e8e8e] block">
                             {booking.startTime} - {booking.endTime}
                           </span>
                         </div>
-                        <span className="text-[10px] text-[#737373] italic">Pemeliharaan Rutin</span>
                       </div>
                     )
                   }
 
-                  // Card Booking Terisi Normal (User POV)
+                  // Card Booking Terisi Normal
                   return (
                     <div
                       key={booking.id}
@@ -244,14 +232,13 @@ export default function ScheduleGrid({
                           </span>
                         </div>
 
-                        <span className="text-[11px] text-[#8e8e8e] block font-light font-mono">
+                        <span className="text-xs text-[#8e8e8e] block">
                           {booking.startTime} - {booking.endTime}
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] text-[#737373]">
-                        <span>{booking.courtName}</span>
-                        <span className="italic text-[#8e8e8e]">Tidak Tersedia</span>
+                      <div className="text-[11px] text-[#737373] pt-1">
+                        {booking.courtName}
                       </div>
                     </div>
                   )

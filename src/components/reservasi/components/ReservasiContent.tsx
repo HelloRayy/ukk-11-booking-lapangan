@@ -13,7 +13,7 @@ export default function ReservasiContent({ customer, isLoading }: ReservasiConte
       <div className="p-8 rounded-[20px] bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
           <span className="w-3 h-3 rounded-full bg-emerald-400" />
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">
+          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">
             Route Setup Aktif
           </span>
         </div>
@@ -22,7 +22,7 @@ export default function ReservasiContent({ customer, isLoading }: ReservasiConte
           Halaman Reservasi Lapangan
         </h1>
         <p className="text-base text-[#a3a3a3] font-light max-w-2xl leading-relaxed">
-          Rute <code className="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-sm">/reservasi</code> telah berhasil disiapkan secara modular. Sesuai instruksi, form dan opsi pembayaran belum diisi dan siap untuk tahap pengembangan berikutnya.
+          Rute <code className="px-2 py-0.5 rounded bg-white/10 text-white text-sm">/reservasi</code> telah berhasil disiapkan secara modular. Sesuai instruksi, form dan opsi pembayaran belum diisi dan siap untuk tahap pengembangan berikutnya.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function ReservasiContent({ customer, isLoading }: ReservasiConte
             </div>
             <div className="p-4 rounded-[12px] bg-white/[0.04] border border-white/5">
               <span className="text-xs text-[#8e8e8e] block mb-1">WHATSAPP</span>
-              <span className="text-base text-[#fcfcfc] font-medium font-mono">{customer.whatsapp}</span>
+              <span className="text-base text-[#fcfcfc] font-medium">{customer.whatsapp}</span>
             </div>
             <div className="p-4 rounded-[12px] bg-white/[0.04] border border-white/5">
               <span className="text-xs text-[#8e8e8e] block mb-1">EMAIL</span>

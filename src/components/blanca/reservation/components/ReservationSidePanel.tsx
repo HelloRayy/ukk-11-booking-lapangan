@@ -298,7 +298,7 @@ export default function ReservationSidePanel({
                   </div>
                   <div>
                     <span className="text-xs text-[#8e8e8e] block font-light">WHATSAPP</span>
-                    <span className="text-base text-[#161616] font-medium font-mono">{customerInfo.whatsapp}</span>
+                    <span className="text-base text-[#161616] font-medium">{customerInfo.whatsapp}</span>
                   </div>
                   <div>
                     <span className="text-xs text-[#8e8e8e] block font-light">EMAIL</span>

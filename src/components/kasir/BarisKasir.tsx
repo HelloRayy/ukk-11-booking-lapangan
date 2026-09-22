@@ -30,19 +30,19 @@ export default function BarisKasir({ booking, onLunasi, onBatal }: Props) {
       {/* 3. Tanggal & Jam Main */}
       <td className="p-2 border-r">
         <div>{booking.tgl_main}</div>
-        <div className="text-xs text-gray-600 font-mono">
+        <div className="text-xs text-gray-600">
           {booking.jam_slots.join(', ')} ({booking.durasi_jam} jam)
         </div>
       </td>
 
       {/* 4. Total Bayar & Tipe Bayar */}
-      <td className="p-2 border-r font-mono">
+      <td className="p-2 border-r">
         {formatRupiah(booking.total_bayar)}
         <div className="text-xs text-gray-500">Tipe: {booking.tipe_bayar}</div>
       </td>
 
       {/* 5. Sisa Bayar (Merah jika masih ada sisa) */}
-      <td className="p-2 border-r font-mono font-bold text-red-600">
+      <td className="p-2 border-r font-bold text-red-600">
         {sisa > 0 ? formatRupiah(sisa) : '-'}
       </td>
 
