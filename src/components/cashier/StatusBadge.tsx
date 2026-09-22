@@ -5,7 +5,7 @@ interface Props {
   status: StatusBooking
 }
 
-export default function BadgeStatus({ status }: Props) {
+export default function StatusBadge({ status }: Props) {
   const warna = {
     Lunas: 'bg-green-100 text-green-800',
     Booked: 'bg-yellow-100 text-yellow-800',

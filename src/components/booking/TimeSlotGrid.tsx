@@ -1,5 +1,4 @@
-// PERAN FILE: Menampilkan tombol jam main, validasi anti-bentrok, & jam lampau
-import { DAFTAR_JAM } from '../../constants/jamOperasional'
+import { DAFTAR_JAM } from '../../constants/operationalHours'
 
 interface Props {
   selectedDate: string

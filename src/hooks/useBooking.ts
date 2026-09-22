@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react'
 import { getLapangan, createBooking } from '../lib/api'
 import type { Lapangan } from '../types/database'
-import { useJadwal } from './useJadwal'
-import { hitungBiayaBooking } from '../utils/hitungBiaya'
+import { useSchedule } from './useSchedule'
+import { hitungBiayaBooking } from '../utils/costCalculation'
 
 export function usePemesanan() {
   const [lapangan, setLapangan] = useState<Lapangan[]>([])

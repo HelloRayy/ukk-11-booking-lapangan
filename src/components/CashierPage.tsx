@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react'
 import { getAllBookings, updateStatusBooking } from '../lib/api'
 import type { Booking } from '../types/database'
-import TabelKasir from './kasir/TabelKasir'
+import CashierTable from './cashier/CashierTable'
 
-export default function HalamanKasir() {
+export default function CashierPage() {
   const [daftarBooking, setDaftarBooking] = useState<Booking[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -54,7 +54,7 @@ export default function HalamanKasir() {
   }
 
   return (
-    <TabelKasir
+    <CashierTable
       daftarBooking={daftarBooking}
       loading={loading}
       onLunasi={handleLunasi}

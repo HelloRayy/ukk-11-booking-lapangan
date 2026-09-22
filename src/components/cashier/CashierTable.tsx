@@ -1,6 +1,6 @@
 // PERAN FILE: Menampilkan tabel daftar booking kasir dengan tombol cetak dan refresh
 import type { Booking } from '../../types/database'
-import BarisKasir from './BarisKasir'
+import CashierTableRow from './CashierTableRow'
 
 interface Props {
   daftarBooking: Booking[]
@@ -10,7 +10,7 @@ interface Props {
   onRefresh: () => void
 }
 
-export default function TabelKasir({
+export default function CashierTable({
   daftarBooking,
   loading,
   onLunasi,
@@ -64,7 +64,7 @@ export default function TabelKasir({
             </thead>
             <tbody>
               {daftarBooking.map((item) => (
-                <BarisKasir
+                <CashierTableRow
                   key={item.id}
                   booking={item}
                   onLunasi={onLunasi}

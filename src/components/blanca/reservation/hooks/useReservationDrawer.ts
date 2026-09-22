@@ -24,7 +24,8 @@ export function useReservationDrawer() {
   // Validasi lokal form: semua field wajib terisi dan checkbox dicentang
   const isFormValid = useMemo(() => {
     const isNamaValid = customerInfo.nama.trim().length >= 3
-    const isWaValid = customerInfo.whatsapp.trim().length >= 10
+    // Strict 08: harus diawali 08 dengan total 10 sampai 13 digit angka
+    const isWaValid = /^08[0-9]{8,11}$/.test(customerInfo.whatsapp.trim())
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerInfo.email.trim())
     return isNamaValid && isWaValid && isEmailValid && customerInfo.isConfirmed
   }, [customerInfo])

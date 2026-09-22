@@ -1,6 +1,6 @@
 // PERAN FILE: Menampilkan satu baris data transaksi di tabel kasir beserta tombol aksinya
 import type { Booking } from '../../types/database'
-import BadgeStatus from './BadgeStatus'
+import StatusBadge from './StatusBadge'
 
 interface Props {
   booking: Booking
@@ -8,7 +8,7 @@ interface Props {
   onBatal: (id: number) => void
 }
 
-export default function BarisKasir({ booking, onLunasi, onBatal }: Props) {
+export default function CashierTableRow({ booking, onLunasi, onBatal }: Props) {
   const formatRupiah = (nominal: number) => `Rp ${nominal.toLocaleString('id-ID')}`
   const sisa = booking.sisa_bayar || 0
   const isLunas = booking.status === 'Lunas'
@@ -48,7 +48,7 @@ export default function BarisKasir({ booking, onLunasi, onBatal }: Props) {
 
       {/* 6. Label Status */}
       <td className="p-2 border-r">
-        <BadgeStatus status={booking.status} />
+        <StatusBadge status={booking.status} />
       </td>
 
       {/* 7. Tombol Aksi Kasir */}

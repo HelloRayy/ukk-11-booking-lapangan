@@ -1,7 +1,7 @@
 // PERAN FILE: Komponen utama pembungkus aplikasi & pengatur navigasi tab (Pemesan vs Kasir)
 import { useState } from 'react'
-import HalamanPemesan from './components/HalamanPemesan'
-import HalamanKasir from './components/HalamanKasir'
+import CustomerBookingPage from './components/CustomerBookingPage'
+import CashierPage from './components/CashierPage'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'pemesan' | 'kasir'>('pemesan')
@@ -43,7 +43,7 @@ export default function App() {
       </header>
 
       {/* Konten Halaman Aktif */}
-      {activeTab === 'pemesan' ? <HalamanPemesan /> : <HalamanKasir />}
+      {activeTab === 'pemesan' ? <CustomerBookingPage /> : <CashierPage />}
     </div>
   )
 }

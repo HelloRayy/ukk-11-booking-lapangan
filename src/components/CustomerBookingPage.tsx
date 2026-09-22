@@ -1,11 +1,11 @@
 // PERAN FILE: Halaman utama pemesan - murni menyusun komponen langkah 1 sampai 5
-import { usePemesanan } from '../hooks/usePemesanan'
-import PilihLapangan from './pemesan/PilihLapangan'
-import GridJam from './pemesan/GridJam'
-import RingkasanBiaya from './pemesan/RingkasanBiaya'
-import FormPemesan from './pemesan/FormPemesan'
+import { usePemesanan } from '../hooks/useBooking'
+import CourtSelector from './booking/CourtSelector'
+import TimeSlotGrid from './booking/TimeSlotGrid'
+import CostSummary from './booking/CostSummary'
+import CustomerForm from './booking/CustomerForm'
 
-export default function HalamanPemesan() {
+export default function CustomerBookingPage() {
   const {
     lapangan,
     loading,
@@ -23,13 +23,13 @@ export default function HalamanPemesan() {
   } = usePemesanan()
 
   if (loading) {
-    return <div className="p-4 border rounded text-center text-gray-500">Memuat data lapangan...</div>
+    return <div className="p-8 text-center text-gray-500">Memuat data lapangan...</div>
   }
 
   return (
     <div className="max-w-2xl space-y-6">
       {/* 1. Pilih Court */}
-      <PilihLapangan
+      <CourtSelector
         lapangan={lapangan}
         selectedId={selectedLapangan}
         onSelect={pilihLapangan}
@@ -48,7 +48,7 @@ export default function HalamanPemesan() {
       </div>
 
       {/* 3. Grid Jam */}
-      <GridJam
+      <TimeSlotGrid
         selectedDate={selectedDate}
         jamTerisi={jamTerisi}
         jamDipilih={jamDipilih}
@@ -56,7 +56,7 @@ export default function HalamanPemesan() {
       />
 
       {/* 4. Rincian Biaya */}
-      <RingkasanBiaya
+      <CostSummary
         durasiJam={jamDipilih.length}
         jamDipilih={jamDipilih}
         totalBayar={totalBayar}
@@ -64,7 +64,7 @@ export default function HalamanPemesan() {
       />
 
       {/* 5. Form Data Pemesan & Tombol Submit */}
-      <FormPemesan
+      <CustomerForm
         durasiJam={jamDipilih.length}
         totalBayar={totalBayar}
         nominalDP={nominalDP}
