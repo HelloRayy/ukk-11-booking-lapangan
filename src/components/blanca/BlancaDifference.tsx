@@ -40,9 +40,9 @@ export default function BlancaDifference() {
             <div className="absolute inset-0 bg-black/10 pointer-events-none" />
           </div>
           <div className="body text-[#bfbfbf] w-full max-w-[334px]" ref={textRef}>
-            Blanca Padel was born in 2022, in sunny ☀️🌴 San Diego, California. Built for a community
-            of crazy padel friends (the best kind) who demanded high-performance padel gear that would
-            fit their modern style and didn't break the bank.
+            Blanca Arena was founded by a passionate community of players who wanted premium,
+            tournament-grade courts with seamless booking and an inclusive atmosphere for everyone
+            from beginners to competitive athletes.
           </div>
         </div>
 
@@ -102,23 +102,23 @@ export default function BlancaDifference() {
           {/* Fancy Spacer Garis Pemisah */}
           <div className="max-mdw:hidden fancy-spacer my-[40px]" />
 
-          {/* 3 Fitur Unggulan (Minimal, All Levels, Quality) */}
+          {/* 3 Fitur Unggulan Lapangan (Tournament Grade, All Levels, Full Amenities) */}
           <div className="flex flex-col md:flex-row items-stretch">
-            {/* 1. Minimal */}
+            {/* 1. Tournament Grade */}
             <div className="flex-1 flex flex-col items-start gap-y-[24px] md:gap-y-[32px] max-mdw:mb-[32px]">
               <div className="w-[24px] md:w-[32px] h-[24px] md:h-[32px] md:mt-[8px] shrink-0">
                 <img
                   src="/assets/blanca/icon-minimal.svg"
-                  alt="Minimal"
+                  alt="Tournament Grade"
                   className="w-full h-full object-contain object-center"
                 />
               </div>
               <div className="flex flex-col gap-[12px]">
-                <p className="big-body font-medium text-[#fcfcfc]">Minimal</p>
+                <p className="big-body font-medium text-[#fcfcfc]">Tournament Grade</p>
                 <div className="flex-1 flex flex-row items-stretch gap-x-[24px]">
                   <div className="body text-[#bfbfbf] mdw:pr-[64px]">
-                    Our racquets feature a sleek, minimal design, perfect for those who prefer performance
-                    with subtle branding.
+                    Certified shock-absorption court turf with 500+ lux anti-glare LED lighting
+                    built for tournament-level gameplay.
                   </div>
                 </div>
               </div>
@@ -137,29 +137,28 @@ export default function BlancaDifference() {
                 <p className="big-body font-medium text-[#fcfcfc]">All Levels</p>
                 <div className="flex-1 flex flex-row items-stretch gap-x-[24px]">
                   <div className="body text-[#bfbfbf] mdw:pr-[64px]">
-                    All our products are suitable for all levels and playstyles, from beginners to advanced
-                    players.
+                    Designed for all playstyles, whether you’re booking a casual friendly match
+                    or training for competitive leagues.
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 3. Quality */}
+            {/* 3. Full Amenities */}
             <div className="flex-1 flex flex-col items-start gap-y-[24px] md:gap-y-[32px]">
               <div className="w-[24px] md:w-[32px] h-[24px] md:h-[32px] md:mt-[8px] shrink-0">
                 <img
                   src="/assets/blanca/icon-quality.svg"
-                  alt="Quality"
+                  alt="Full Amenities"
                   className="w-full h-full object-contain object-center"
                 />
               </div>
               <div className="flex flex-col gap-[12px]">
-                <p className="big-body font-medium text-[#fcfcfc]">Quality</p>
+                <p className="big-body font-medium text-[#fcfcfc]">Full Amenities</p>
                 <div className="flex-1 flex flex-row items-stretch gap-x-[24px]">
                   <div className="body text-[#bfbfbf] mdw:pr-[64px]">
-                    Our suite of racquets feature the same modern quality materials used in professional
-                    grade paddles e.g. 3k-&gt;18k carbon, multi-eva foam and a reinforced carbon fiber tube
-                    frame.
+                    Includes secure lockers, clean hot shower facilities, equipment rental,
+                    and a players lounge to relax post-match.
                   </div>
                 </div>
               </div>
