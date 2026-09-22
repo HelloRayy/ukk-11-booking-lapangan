@@ -161,25 +161,36 @@ export default function ReservationSidePanel({
                 </div>
               </div>
 
-              {/* Bottom Action Button (Persis 1:1 Layout Mockup Blanca) */}
+              {/* Bottom Action Button dengan Motion Unlock Khas Blanca */}
               <div className="pt-8 pb-2 mt-auto">
                 <button
                   type="submit"
                   disabled={!isFormValid}
-                  className={`w-full h-[64px] rounded-[10px] flex items-center justify-between px-2 transition-all duration-200 select-none ${
+                  className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-500 select-none ${
                     isFormValid
-                      ? 'bg-[#e5e5e5] hover:bg-[#d8d8d8] text-[#161616] cursor-pointer shadow-sm'
-                      : 'bg-[#f0f0f0] text-[#a3a3a3] cursor-not-allowed'
+                      ? 'bg-[#f2d953] hover:bg-[#fcfbf6] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.35)] active:scale-[0.98]'
+                      : 'bg-[#f0f0f0] border border-[#e5e5e5] text-[#999999] cursor-not-allowed'
                   }`}
+                  aria-label={isFormValid ? 'Submit form data' : 'Form belum lengkap'}
                 >
-                  {/* Kotak Putih Ikon Panah Diagonal di Kiri */}
-                  <span className="w-[48px] h-[48px] rounded-[8px] bg-white flex items-center justify-center text-[#161616] shadow-sm shrink-0">
+                  {/* Kotak Ikon yang Meluncur dari Kiri ke Kanan Saat Ter-unlock */}
+                  <span
+                    className={`absolute top-2 w-[48px] h-[48px] rounded-[8px] bg-white flex items-center justify-center text-[#161616] shadow-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                      isFormValid
+                        ? 'left-[calc(100%-56px)] scale-100 shadow-md'
+                        : 'left-2 scale-95 opacity-80'
+                    }`}
+                    aria-hidden="true"
+                  >
                     <svg
                       width="15"
                       height="15"
                       viewBox="0 0 15 15"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      className={`transition-transform duration-500 ease-out ${
+                        isFormValid ? 'rotate-45 scale-110' : 'rotate-0 scale-100'
+                      }`}
                     >
                       <path
                         d="M3.5 11.5L11.5 3.5M11.5 3.5H5.5M11.5 3.5V9.5"
@@ -191,8 +202,14 @@ export default function ReservationSidePanel({
                     </svg>
                   </span>
 
-                  {/* Teks Tombol Tengah */}
-                  <span className="text-[16px] font-normal tracking-tight text-center flex-1 pr-12 text-[#161616]">
+                  {/* Teks Label yang Bergeser Halus Menyesuaikan Posisi Ikon */}
+                  <span
+                    className={`text-[16px] tracking-tight transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                      isFormValid
+                        ? 'pr-[56px] pl-4 font-medium text-[#161616]'
+                        : 'pl-[56px] pr-4 font-normal text-[#8e8e8e]'
+                    }`}
+                  >
                     See our recommendations
                   </span>
                 </button>
