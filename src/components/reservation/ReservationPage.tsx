@@ -41,7 +41,7 @@ export default function ReservationPage() {
       <div className="flex-1 flex overflow-hidden">
         {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) atau Skeleton Loader */}
         <div className="flex-1 flex flex-col overflow-hidden min-w-0 border-r border-[#262626] relative">
-          {isLoading ? (
+          {isLoading && courts.length === 0 ? (
             <ReservationSkeletonLoader />
           ) : (
             <>
