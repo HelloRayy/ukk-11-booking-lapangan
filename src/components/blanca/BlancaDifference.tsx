@@ -62,6 +62,7 @@ export default function BlancaDifference() {
               poster="/assets/blanca/difference-poster.jpg"
               preload="metadata"
             >
+              <source src="/assets/blanca/difference-video.webm" type="video/webm" />
               <source src="/assets/blanca/difference-video.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-black/[0.02] pointer-events-none" />
