@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import heroSvg from '../../assets/hero.svg'
+import heroVideo from '../../assets/hero-video.webm'
 
 export default function HeroBlanca() {
   const headerRef = useRef<HTMLDivElement>(null)
@@ -561,12 +561,17 @@ export default function HeroBlanca() {
             }}
           />
 
-          {/* Hero SVG Image */}
-          <img
-            src={heroSvg}
-            alt="Blanca Padel Hero"
-            className="relative z-[1] w-full h-full object-contain sm:object-cover mix-blend-screen opacity-70 select-none"
-          />
+          {/* Hero Video (Seamless Loop 24fps) */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="relative z-[1] w-full h-full object-contain sm:object-cover mix-blend-screen opacity-90 select-none pointer-events-none"
+          >
+            <source src={heroVideo} type="video/webm" />
+          </video>
         </div>
       </section>
 
@@ -576,7 +581,7 @@ export default function HeroBlanca() {
 
         <div
           onClick={() => setQuizOpen(true)}
-          className="pt-[11.008px] pb-[13.008px] pl-5 pr-[111.008px] bg-[#d9d9d9]/[0.12] hover:bg-[#d9d9d9]/[0.22] rounded-t-[8px] relative group backdrop-blur-md h-[54.0104px] leading-normal transition-all duration-200 cursor-pointer pointer-events-auto select-none"
+          className="pt-[11.008px] pb-[13.008px] pl-5 pr-[111.008px] bg-[#d9d9d9]/[0.12] hover:bg-[#d9d9d9]/[0.22] rounded-t-[8px] relative group backdrop-blur-md h-[60px] leading-normal transition-all duration-200 cursor-pointer pointer-events-auto select-none"
         >
           <div className="absolute -top-[15px] right-[10px] bottom-0 w-[89px] h-auto pointer-events-none group-hover:scale-[1.075] transition-transform duration-300 origin-bottom">
             <img
@@ -587,10 +592,10 @@ export default function HeroBlanca() {
               height="144"
             />
           </div>
-          <div className="flex flex-col items-start h-[30px] w-auto leading-tight transition-all">
+          <div className="flex flex-col items-start h-auto gap-1 w-auto leading-tight transition-all">
             <button
               type="button"
-              className="text-left h-[16.0026px] text-base text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              className="text-left text-xl text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               Reserve your court
             </button>
