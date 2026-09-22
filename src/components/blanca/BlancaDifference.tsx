@@ -24,7 +24,7 @@ export default function BlancaDifference() {
         <div className="col-start-5 col-span-6 flex flex-col items-start gap-y-[24px] mdw:gap-y-[32px] mb-[32px] mdw:mb-[80px]">
           <span className="block preheading">The Blanca difference</span>
           <h2 className="h2-mobile mdw:h2">
-            Game. Set. Unmatched. Meet Blanca Padel.
+            Smash. Rally. Unmatched. Meet Blanca Badminton.
           </h2>
         </div>
 
@@ -33,7 +33,7 @@ export default function BlancaDifference() {
           <div className="w-full h-auto aspect-[448/337] rounded-[8px] overflow-hidden mb-[40px] relative">
             <img
               src="/assets/blanca/difference-people.png"
-              alt="Blanca Padel Community"
+              alt="Blanca Badminton Community"
               className="w-full h-full object-cover object-center"
               loading="lazy"
             />
