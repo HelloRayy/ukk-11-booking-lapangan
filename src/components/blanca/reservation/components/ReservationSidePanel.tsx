@@ -1,4 +1,4 @@
-// PERAN FILE: Pure UI Side Panel Drawer dari Kanan (Persis Mockup Gambar Blanca)
+// PERAN FILE: Pure UI Side Panel Drawer dari Kanan 1:1 Persis Desain Website Blanca
 import type { CustomerInfo } from '../types'
 
 interface ReservationSidePanelProps {
@@ -37,209 +37,203 @@ export default function ReservationSidePanel({
         onClick={onClose}
       />
 
-      {/* Kontainer Drawer Samping Kanan (Putih Khas Mockup Blanca) */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-[480px] bg-white text-[#161616] shadow-2xl flex flex-col z-50 animate-in slide-in-from-right duration-300 ease-out">
-        {/* Top Bar Navigasi (Back, Progress Dashes, Close Button) */}
-        <div className="px-6 py-5 border-b border-neutral-100 flex items-center justify-between shrink-0">
+      {/* Kontainer Drawer Samping Kanan (White Crisp dengan Rounded-L 24px Khas Blanca) */}
+      <div className="fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-white text-[#161616] rounded-none sm:rounded-l-[24px] shadow-2xl flex flex-col z-50 animate-in slide-in-from-right duration-300 ease-out">
+        {/* Top Bar Navigasi (Back Button, Dashes Indicator, Close Button) */}
+        <div className="p-6 md:px-10 md:pt-8 md:pb-6 flex items-center justify-between shrink-0">
           {/* Tombol Back di Kiri */}
           <button
             type="button"
             onClick={isSubmitted ? onReset : onClose}
-            className="w-10 h-10 rounded-[8px] border border-neutral-200 hover:border-black hover:bg-neutral-50 flex items-center justify-center text-neutral-700 transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-[8px] border border-[#e5e5e5] hover:border-black flex items-center justify-center text-[#161616] transition-colors cursor-pointer"
             aria-label="Kembali"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
           {/* Indikator Dashes Tengah (Khas Typeform Mockup Blanca) */}
           <div className="flex items-center gap-1.5" aria-hidden="true">
-            <span className="w-4 h-[3px] rounded-full bg-neutral-900" />
-            <span className="w-4 h-[3px] rounded-full bg-neutral-300" />
-            <span className="w-4 h-[3px] rounded-full bg-neutral-300" />
+            <span className="w-5 h-[2.5px] rounded-full bg-[#161616]" />
+            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
+            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
+            <span className="w-5 h-[2.5px] rounded-full bg-[#e5e5e5]" />
           </div>
 
           {/* Tombol Close X di Kanan */}
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-[8px] border border-neutral-200 hover:border-black hover:bg-neutral-50 flex items-center justify-center text-neutral-700 transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-[8px] border border-[#e5e5e5] hover:border-black flex items-center justify-center text-[#161616] transition-colors cursor-pointer"
             aria-label="Tutup panel"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 6 6 18M6 6l12 12" />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <path d="M18 6 6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
 
-        {/* Body Area Formulir (Scrollable) */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 md:px-8 flex flex-col justify-between">
+        {/* Body Area Formulir (Spacious & Clean Typography) */}
+        <div className="flex-1 overflow-y-auto px-6 md:px-10 pb-8 flex flex-col justify-between">
           {!isSubmitted ? (
-            <form onSubmit={onSubmit} className="flex flex-col gap-6">
-              {/* Header Teks Form */}
+            <form onSubmit={onSubmit} className="flex flex-col justify-between h-full min-h-[460px]">
               <div>
-                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-2">
-                  Langkah 1 • Data Calon Penyewa
+                {/* Subtitle / Step Indicator */}
+                <span className="text-[13px] text-[#8e8e8e] font-light block mb-2">
+                  Question 1 • Personal details
                 </span>
+
+                {/* Big Headline */}
                 <h2
                   id="side-panel-title"
-                  className="text-[28px] sm:text-[32px] font-normal tracking-[-0.5px] leading-tight text-[#161616]"
+                  className="text-[34px] sm:text-[40px] font-normal leading-[1.08] tracking-[-1px] text-[#161616] mb-8"
                 >
-                  Lengkapi data diri Anda
+                  What’s your contact info?
                 </h2>
-                <p className="text-sm text-neutral-500 mt-2 leading-relaxed">
-                  Data ini digunakan pihak arena untuk konfirmasi reservasi jadwal, invoice pembayaran kasir, dan pengiriman e-tiket.
-                </p>
-              </div>
 
-              {/* 3 Parameter Input Utama */}
-              <div className="flex flex-col gap-4">
-                {/* 1. Nama Lengkap */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="nama_penyewa" className="text-xs font-medium text-neutral-700">
-                    Nama Pemesan <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="nama_penyewa"
-                    type="text"
-                    value={customerInfo.nama}
-                    onChange={(e) => onUpdateField('nama', e.target.value)}
-                    placeholder="Contoh: Budi Santoso"
-                    className="w-full px-4 py-3 rounded-[8px] border border-neutral-300 text-[#161616] text-sm sm:text-base placeholder:text-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
-                    required
-                  />
-                </div>
+                {/* 3 Parameter Input Utama (Tall, Spacious & Modern) */}
+                <div className="flex flex-col gap-6">
+                  {/* 1. Nama Lengkap */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="nama_penyewa" className="text-sm font-normal text-[#161616]">
+                      Full name
+                    </label>
+                    <input
+                      id="nama_penyewa"
+                      type="text"
+                      value={customerInfo.nama}
+                      onChange={(e) => onUpdateField('nama', e.target.value)}
+                      placeholder="e.g. Budi Santoso"
+                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      required
+                    />
+                  </div>
 
-                {/* 2. Nomor WhatsApp / HP */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="whatsapp_penyewa" className="text-xs font-medium text-neutral-700">
-                    Nomor WhatsApp / HP <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="whatsapp_penyewa"
-                    type="tel"
-                    value={customerInfo.whatsapp}
-                    onChange={(e) => onUpdateField('whatsapp', e.target.value)}
-                    placeholder="Contoh: 08123456789"
-                    className="w-full px-4 py-3 rounded-[8px] border border-neutral-300 text-[#161616] text-sm sm:text-base placeholder:text-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
-                    required
-                  />
-                  <span className="text-[11px] text-neutral-400">
-                    Pastikan nomor terhubung dengan WhatsApp aktif.
-                  </span>
-                </div>
+                  {/* 2. Nomor WhatsApp / HP */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="whatsapp_penyewa" className="text-sm font-normal text-[#161616]">
+                      WhatsApp number
+                    </label>
+                    <input
+                      id="whatsapp_penyewa"
+                      type="tel"
+                      value={customerInfo.whatsapp}
+                      onChange={(e) => onUpdateField('whatsapp', e.target.value)}
+                      placeholder="e.g. 08123456789"
+                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      required
+                    />
+                  </div>
 
-                {/* 3. Alamat Email */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email_penyewa" className="text-xs font-medium text-neutral-700">
-                    Alamat Email <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="email_penyewa"
-                    type="email"
-                    value={customerInfo.email}
-                    onChange={(e) => onUpdateField('email', e.target.value)}
-                    placeholder="Contoh: budi@gmail.com"
-                    className="w-full px-4 py-3 rounded-[8px] border border-neutral-300 text-[#161616] text-sm sm:text-base placeholder:text-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
-                    required
-                  />
-                </div>
+                  {/* 3. Alamat Email */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email_penyewa" className="text-sm font-normal text-[#161616]">
+                      Email
+                    </label>
+                    <input
+                      id="email_penyewa"
+                      type="email"
+                      value={customerInfo.email}
+                      onChange={(e) => onUpdateField('email', e.target.value)}
+                      placeholder="e.g. budi@gmail.com"
+                      className="w-full h-[64px] px-5 rounded-[12px] border border-[#d1d1d1] text-[17px] text-[#161616] placeholder:text-[#a3a3a3] font-light focus:outline-none focus:border-[#161616] transition-colors"
+                      required
+                    />
+                  </div>
 
-                {/* Checkbox Konfirmasi Kebenaran Data */}
-                <div className="pt-2">
+                  {/* Checkbox Konfirmasi Kebenaran Data */}
                   <label
                     htmlFor="confirm_checkbox"
-                    className="flex items-start gap-3 p-3.5 rounded-[8px] border border-neutral-200 hover:border-neutral-300 bg-neutral-50/60 cursor-pointer select-none transition-colors"
+                    className="flex items-center gap-3 pt-2 cursor-pointer select-none group"
                   >
                     <input
                       id="confirm_checkbox"
                       type="checkbox"
                       checked={customerInfo.isConfirmed}
                       onChange={(e) => onUpdateField('isConfirmed', e.target.checked)}
-                      className="w-4 h-4 mt-0.5 rounded border-neutral-300 text-black focus:ring-black cursor-pointer accent-black"
+                      className="w-5 h-5 rounded-[4px] border-[#c0c0c0] text-[#161616] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#161616]"
                     />
-                    <span className="text-xs text-neutral-700 leading-snug">
-                      Saya menyatakan bahwa data yang diisi sudah benar dan bersedia dihubungi oleh pihak arena untuk konfirmasi booking.
+                    <span className="text-sm text-[#666666] group-hover:text-[#161616] transition-colors leading-tight">
+                      Saya menyatakan data yang diisi sudah benar dan bersedia dihubungi arena.
                     </span>
                   </label>
                 </div>
               </div>
 
-              {/* Action Button Bawah (Sesuai Layout Mockup Blanca) */}
-              <div className="pt-4 mt-auto">
+              {/* Bottom Action Button (Persis 1:1 Layout Mockup Blanca) */}
+              <div className="pt-8 pb-2 mt-auto">
                 <button
                   type="submit"
                   disabled={!isFormValid}
-                  className={`w-full h-[52px] rounded-[8px] flex items-center justify-between px-3 transition-all duration-200 select-none ${
+                  className={`w-full h-[64px] rounded-[10px] flex items-center justify-between px-2 transition-all duration-200 select-none ${
                     isFormValid
-                      ? 'bg-[#161616] text-white hover:bg-black active:scale-[0.99] cursor-pointer shadow-md'
-                      : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
+                      ? 'bg-[#e5e5e5] hover:bg-[#d8d8d8] text-[#161616] cursor-pointer shadow-sm'
+                      : 'bg-[#f0f0f0] text-[#a3a3a3] cursor-not-allowed'
                   }`}
                 >
-                  {/* Kotak Ikon Panah Kiri */}
-                  <span
-                    className={`w-8 h-8 rounded-[6px] flex items-center justify-center transition-colors ${
-                      isFormValid ? 'bg-white/10 text-white' : 'bg-neutral-300/80 text-neutral-400'
-                    }`}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  {/* Kotak Putih Ikon Panah Diagonal di Kiri */}
+                  <span className="w-[48px] h-[48px] rounded-[8px] bg-white flex items-center justify-center text-[#161616] shadow-sm shrink-0">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.5 11.5L11.5 3.5M11.5 3.5H5.5M11.5 3.5V9.5"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </span>
 
                   {/* Teks Tombol Tengah */}
-                  <span className="text-sm font-medium pr-8">
-                    Lanjutkan ke Pembayaran
+                  <span className="text-[16px] font-normal tracking-tight text-center flex-1 pr-12 text-[#161616]">
+                    See our recommendations
                   </span>
-
-                  <span className="w-8" aria-hidden="true" />
                 </button>
               </div>
             </form>
           ) : (
             /* Tampilan Review / Konfirmasi Setelah Data Diisi */
-            <div className="flex flex-col gap-6 my-auto text-center">
-              <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center border border-emerald-500/20">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              </div>
-
+            <div className="flex flex-col justify-between h-full min-h-[460px] py-6">
               <div>
-                <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider block mb-1">
-                  Data Terverifikasi
+                <span className="text-[13px] text-emerald-600 font-medium block mb-2">
+                  Completed • Ready for next step
                 </span>
-                <h3 className="text-2xl font-normal text-neutral-900">
-                  Data Calon Penyewa Tersimpan
+                <h3 className="text-[34px] font-normal tracking-[-1px] text-[#161616] mb-6">
+                  Customer verified
                 </h3>
-                <p className="text-xs text-neutral-500 mt-1">
-                  (Mode preview antarmuka UI - belum dikirim ke backend)
-                </p>
-              </div>
 
-              <div className="p-4 rounded-[8px] bg-neutral-50 border border-neutral-200 text-left text-xs flex flex-col gap-2.5 font-mono">
-                <div>
-                  <span className="text-neutral-400 block text-[10px] font-sans">NAMA PEMESAN:</span>
-                  <span className="text-neutral-900 font-semibold text-sm">{customerInfo.nama}</span>
-                </div>
-                <div>
-                  <span className="text-neutral-400 block text-[10px] font-sans">WHATSAPP:</span>
-                  <span className="text-neutral-900 font-semibold text-sm">{customerInfo.whatsapp}</span>
-                </div>
-                <div>
-                  <span className="text-neutral-400 block text-[10px] font-sans">EMAIL:</span>
-                  <span className="text-neutral-900 font-semibold text-sm">{customerInfo.email}</span>
+                <div className="p-6 rounded-[14px] bg-[#f8f8f8] border border-[#e5e5e5] flex flex-col gap-4">
+                  <div>
+                    <span className="text-xs text-[#8e8e8e] block font-light">NAMA PEMESAN</span>
+                    <span className="text-base text-[#161616] font-medium">{customerInfo.nama}</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#8e8e8e] block font-light">WHATSAPP</span>
+                    <span className="text-base text-[#161616] font-medium font-mono">{customerInfo.whatsapp}</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#8e8e8e] block font-light">EMAIL</span>
+                    <span className="text-base text-[#161616] font-medium">{customerInfo.email}</span>
+                  </div>
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={onReset}
-                className="w-full h-11 rounded-[8px] border border-neutral-300 hover:bg-neutral-100 text-xs font-medium text-neutral-800 transition-all cursor-pointer"
-              >
-                Ubah / Isi Ulang Data
-              </button>
+              <div className="pt-8 flex flex-col gap-3">
+                <button
+                  type="button"
+                  onClick={onReset}
+                  className="w-full h-[56px] rounded-[10px] border border-[#d1d1d1] hover:border-black text-sm font-medium text-[#161616] transition-colors cursor-pointer"
+                >
+                  Edit information
+                </button>
+              </div>
             </div>
           )}
         </div>
