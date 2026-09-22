@@ -220,14 +220,19 @@ body, html {
 .h1 {
   font-family: var(--font-aeonik);
   font-weight: 400;
-  font-size: 88px;
+  font-size: 120px;
   line-height: 0.95;
-  letter-spacing: -0.88px;
+  letter-spacing: -1.2px;
   color: #fcfcfc;
 }
 
+.word {
+  font-size: 120px;
+}
+
 @media (max-width: 1023px) {
-  .h1 {
+  .h1,
+  .word {
     font-size: 56px;
     line-height: 1;
     letter-spacing: -0.56px;
