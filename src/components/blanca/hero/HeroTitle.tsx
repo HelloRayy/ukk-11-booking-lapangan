@@ -68,16 +68,14 @@ export default function HeroTitle({ titleRef, wordsRef, outroRef }: HeroTitlePro
           className="w-full mt-auto flex md:flex-row flex-col items-center justify-between gap-5 text-[#fcfcfc] text-base leading-normal transition-all opacity-0"
         >
           <p className="body text-[#bfbfbf] font-light leading-snug transition-all w-full max-w-[524px] max-md:text-center">
-            At Blanca, we’re not about flash. We’re about the game. Our equipment is designed
-            to be functional and cool but doesn’t need to shout. We’re for the players who prefer
-            style in subtlety, and we’re bringing an accessible lineup that doesn’t compromise on
-            quality.
+            At Blanca Arena, premium tournament-grade badminton courts meet effortless online booking.
+            Designed for players who value speed, quality, and an unmatched playing experience.
           </p>
 
           <div>
             <a
               className="group icon-button icon-button--dark icon-button--right relative flex items-center justify-center px-6 bg-[#f2d953] text-[#161616] text-base text-center rounded-lg h-[55.9896px] w-[227.93px] leading-normal transition-all duration-150 hover:bg-[#fcfbf6] active:scale-[0.98] w-full md:w-[227.93px] max-md:justify-center cursor-pointer"
-              href="/collections/racquets"
+              href="#courts"
             >
               <span
                 className="icon-button__icon absolute right-2 top-2 bottom-2 flex items-center justify-center bg-[#fcfcfc] text-[#161616] group-hover:bg-[#1e1e1e] group-hover:text-[#f4f4f4] text-center rounded w-10 h-10 leading-normal transition-all duration-150"
@@ -96,7 +94,7 @@ export default function HeroTitle({ titleRef, wordsRef, outroRef }: HeroTitlePro
                 </svg>
               </span>
               <span className="icon-button__text pr-12 text-center leading-normal transition-all">
-                Shop our racquets
+                Book your court
               </span>
             </a>
           </div>
