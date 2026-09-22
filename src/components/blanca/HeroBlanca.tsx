@@ -12,6 +12,7 @@ export default function HeroBlanca() {
   const outroRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
   const [mobileMenu, setMobileMenu] = useState(false)
+  const [quizOpen, setQuizOpen] = useState(false)
 
   // Logika handler spotlight interaktif berbasis CSS variables native
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -513,6 +514,85 @@ export default function HeroBlanca() {
           />
         </div>
       </section>
+
+      {/* Bottom Floating Action Button (FAB): Quiz Popup */}
+      <div className="fixed z-30 left-0 bottom-0 w-full flex flex-row items-center justify-center pointer-events-none">
+        <div className="absolute left-0 bottom-0 w-full h-[88px] md:h-[200px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
+
+        <div
+          onClick={() => setQuizOpen(true)}
+          className="pt-[11.008px] pb-[13.008px] pl-5 pr-[111.008px] bg-[#d9d9d9]/[0.12] hover:bg-[#d9d9d9]/[0.22] rounded-t-[8px] relative group backdrop-blur-md h-[54.0104px] leading-normal transition-all duration-200 cursor-pointer pointer-events-auto select-none"
+        >
+          <div className="absolute -top-[15px] right-[10px] bottom-0 w-[89px] h-auto pointer-events-none group-hover:scale-[1.075] transition-transform duration-300 origin-bottom">
+            <img
+              className="h-[67.0964px] w-[88.9974px] object-contain object-bottom leading-normal transition-all"
+              alt="Find your racquet"
+              src="/assets/blanca/quiz-button.png"
+              width="191"
+              height="144"
+            />
+          </div>
+          <div className="flex flex-col items-start h-[30px] w-[124.01px] leading-tight transition-all">
+            <button
+              type="button"
+              className="text-left h-[16.0026px] text-base text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer"
+            >
+              Find your racquet
+            </button>
+            <span className="text-[#bfbfbf] text-sm font-light leading-tight transition-all mt-0.5">
+              and get a discount
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Quiz Modal */}
+      {quizOpen && (
+        <div
+          className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="fixed inset-0 bg-[#161616]/[0.6] backdrop-blur-[7px] transition-opacity duration-300"
+            onClick={() => setQuizOpen(false)}
+          />
+          <div className="relative w-full md:max-w-[586px] max-md:rounded-t-[8px] md:rounded-[8px] bg-[#fcfcfc] text-[#161616] p-6 md:p-8 z-10 shadow-2xl transition-all duration-300">
+            <button
+              type="button"
+              onClick={() => setQuizOpen(false)}
+              className="absolute top-4 md:top-6 right-4 md:right-6 w-10 h-10 flex items-center justify-center rounded-[8px] border border-neutral-300 hover:border-black hover:bg-neutral-100 transition-colors text-neutral-800 cursor-pointer"
+              aria-label="Close quiz"
+            >
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m6 6 12 12M6 18 18 6" />
+              </svg>
+            </button>
+            <div className="flex flex-col gap-4">
+              <span className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Quiz</span>
+              <h2 className="text-2xl md:text-3xl font-medium tracking-tight">Find your perfect racquet</h2>
+              <p className="text-neutral-600 text-sm md:text-base">
+                And get 10% off on your purchase
+              </p>
+              <div className="pt-4 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/collections/racquets"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[#161616] text-[#fcfcfc] rounded-md font-normal hover:bg-neutral-800 transition-colors text-center"
+                >
+                  Take the quiz
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setQuizOpen(false)}
+                  className="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 rounded-md font-normal hover:bg-neutral-100 transition-colors text-neutral-700 cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
