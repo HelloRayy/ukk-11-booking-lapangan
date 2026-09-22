@@ -1,6 +1,6 @@
-// PERAN FILE: Komponen Hero Section 1:1 Blanca Padel dengan animasi GSAP timeline
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import heroSvg from '../../assets/hero.svg'
 
 export default function HeroBlanca() {
   const headerRef = useRef<HTMLDivElement>(null)
@@ -12,6 +12,24 @@ export default function HeroBlanca() {
   const outroRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
   const [mobileMenu, setMobileMenu] = useState(false)
+
+  // Logika handler spotlight interaktif berbasis CSS variables native
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const heroMedia = videoRef.current
+    if (!heroMedia) return
+    const rect = heroMedia.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    heroMedia.style.setProperty('--spotlight-x', `${x}px`)
+    heroMedia.style.setProperty('--spotlight-y', `${y}px`)
+    heroMedia.style.setProperty('--spotlight-opacity', '1')
+  }
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.style.setProperty('--spotlight-opacity', '0.4')
+    }
+  }
 
   useEffect(() => {
     const headerLogo = headerLogoRef.current
@@ -25,9 +43,10 @@ export default function HeroBlanca() {
 
     if (!headerLogo || !centerLogo || !ball || !header || !video || !title || !outro) return
 
-    // Sembunyikan header dan headerLogo pada awal animasi
+    // Sembunyikan header, headerLogo, dan hilangkan vertical bar/scrollbar saat splashscreen awal
     header.style.opacity = '0'
     headerLogo.style.opacity = '0'
+    document.documentElement.classList.add('noscroll')
 
     // Ambil koordinat target logo di header
     const rect = headerLogo.getBoundingClientRect()
@@ -35,6 +54,7 @@ export default function HeroBlanca() {
     const tl = gsap.timeline({
       onStart: () => {
         header.style.opacity = '0'
+        document.documentElement.classList.add('noscroll')
       },
     })
 
@@ -76,6 +96,7 @@ export default function HeroBlanca() {
         onComplete: () => {
           headerLogo.style.opacity = '1'
           centerLogo.style.opacity = '0'
+          document.documentElement.classList.remove('noscroll')
         },
       },
       '+=0.3s',
@@ -140,12 +161,17 @@ export default function HeroBlanca() {
     ;(window as unknown as { __BLANCA_TL__?: gsap.core.Timeline }).__BLANCA_TL__ = tl
 
     return () => {
+      document.documentElement.classList.remove('noscroll')
       tl.kill()
     }
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-[#161616] text-[#fcfcfc] overflow-x-hidden font-aeonik">
+    <div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative min-h-screen bg-[#161616] text-[#fcfcfc] overflow-x-hidden font-aeonik"
+    >
       {/* Background Static Radial Glow Circle */}
       <div className="absolute inset-x-0 top-[-446px] lg:top-[-523px] w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="background-circle background-circle--static left-1/2 top-0 w-screen min-w-[1286px] max-w-[1440px] h-[751px] lg:h-[841px] -translate-x-1/2" />
@@ -419,9 +445,9 @@ export default function HeroBlanca() {
           <div className="flex items-end grow basis-0 sm:pb-[40px] pb-[20px]">
             <div
               ref={outroRef}
-              className="w-full mt-auto flex md:flex-row flex-col items-center justify-between gap-[20px] opacity-0"
+              className="w-full mt-auto flex md:flex-row flex-col items-center justify-between gap-5 text-[#fcfcfc] text-base leading-normal transition-all opacity-0"
             >
-              <p className="body text-[#bfbfbf] w-full max-w-[335px] max-md:text-center">
+              <p className="body text-[#bfbfbf] font-light leading-snug transition-all w-full max-w-[335px] max-md:text-center">
                 At Blanca, we’re not about flash. We’re about the game. Our equipment is designed
                 to be functional and cool but doesn’t need to shout. We’re for the players who prefer
                 style in subtlety, and we’re bringing an accessible lineup that doesn’t compromise on
@@ -430,10 +456,13 @@ export default function HeroBlanca() {
 
               <div>
                 <a
-                  className="icon-button icon-button--dark icon-button--right w-full md:w-fit md:ml-auto max-md:pl-[16px] max-md:justify-start max-md:mx-auto md:max-w-[307px]"
+                  className="icon-button relative flex items-center justify-center px-6 bg-[#f2d953] text-[#161616] text-center rounded-lg h-[55.9896px] w-[227.93px] leading-normal transition-all duration-150 hover:bg-[#e1ca4d] active:scale-[0.98] w-full md:w-[227.93px] max-md:justify-center cursor-pointer"
                   href="/collections/racquets"
                 >
-                  <span className="icon-button__icon" aria-hidden="true">
+                  <span
+                    className="absolute right-2 top-2 bottom-2 flex items-center justify-center bg-[#fcfcfc] text-center rounded w-10 h-10 leading-normal transition-all"
+                    aria-hidden="true"
+                  >
                     <svg
                       aria-hidden="true"
                       width="12"
@@ -445,7 +474,7 @@ export default function HeroBlanca() {
                       <path d="M1 11 11 1m0 0v10m0-10H1" stroke="currentColor" />
                     </svg>
                   </span>
-                  <span className="icon-button__text">Shop our racquets</span>
+                  <span className="pr-12 text-center leading-normal transition-all">Shop our racquets</span>
                 </a>
               </div>
             </div>
