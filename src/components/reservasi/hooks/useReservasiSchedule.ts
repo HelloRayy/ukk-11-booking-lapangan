@@ -204,12 +204,16 @@ export function useReservasiSchedule() {
     setPanelMode('create')
   }
 
-  // Tutup panel samping kanan
-  const handleClosePanel = () => {
+  // Tutup panel samping kanan (dengan opsi pesan alert jika expired)
+  const handleClosePanel = (expiredMessage?: string) => {
     setPanelMode('empty')
     setSelectedBooking(null)
     setSelectedSlot(null)
-    setRangeError(null)
+    if (expiredMessage) {
+      setRangeError(expiredMessage)
+    } else {
+      setRangeError(null)
+    }
   }
 
   // Konfirmasi pembuatan booking baru oleh calon penyewa (User POV)
