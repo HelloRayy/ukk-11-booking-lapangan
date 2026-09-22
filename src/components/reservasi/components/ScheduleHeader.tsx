@@ -8,31 +8,31 @@ interface ScheduleHeaderProps {
 export default function ScheduleHeader({ courts }: ScheduleHeaderProps) {
   return (
     <div className="flex border-b border-[#262626] bg-[#1a1a1a] sticky top-0 z-10 select-none font-aeonik">
-      {/* Kolom Pojok Kiri Atas */}
+      {/* Kolom Pojok Kiri Atas (Label Jam) */}
       <div className="w-20 sm:w-24 shrink-0 flex items-center justify-center border-r border-[#262626] p-2 text-[#737373]">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-          <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-          <line x1="16" x2="16" y1="2" y2="6" />
-          <line x1="8" x2="8" y1="2" y2="6" />
-        </svg>
+        <div className="flex items-center gap-1.5 text-[#737373]">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span className="text-[11px] font-medium tracking-wider uppercase">Jam</span>
+        </div>
       </div>
 
-      {/* Kolom Header Masing-Masing Lapangan */}
+      {/* Kolom Header Masing-Masing Lapangan (Clean Typography Tanpa Gambar Berulang) */}
       <div className="flex-1 grid grid-cols-4 divide-x divide-[#262626]">
         {courts.map((court) => (
           <div
             key={court.id}
-            className="p-3 flex items-center gap-2.5 hover:bg-white/[0.02] transition-colors min-w-0"
+            className="py-3 px-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors min-w-0"
           >
-            <img
-              src={court.image}
-              alt={court.name}
-              className="w-8 h-8 rounded-[8px] object-cover border border-white/10 shrink-0"
-            />
             <div className="truncate">
-              <span className="text-sm font-medium text-white block truncate">{court.name}</span>
+              <span className="text-sm font-semibold text-white block truncate">{court.name}</span>
               <span className="text-[11px] text-[#8e8e8e] block truncate">{court.type}</span>
             </div>
+            <span className="text-xs text-[#737373] hidden md:block shrink-0">
+              Rp {(court.pricePerHour / 1000).toLocaleString('id-ID')}k/jam
+            </span>
           </div>
         ))}
       </div>
