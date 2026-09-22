@@ -22,6 +22,7 @@ export default function ReservasiPage() {
     handleSelectEmptySlot,
     handleClosePanel,
     handleCreateBooking,
+    handleClearError,
   } = useReservasiSchedule()
 
   return (
@@ -48,6 +49,7 @@ export default function ReservasiPage() {
             onSelectBooking={handleSelectBooking}
             onSelectEmptySlot={handleSelectEmptySlot}
             onClearSelection={handleClosePanel}
+            onClearError={handleClearError}
           />
         </div>
 

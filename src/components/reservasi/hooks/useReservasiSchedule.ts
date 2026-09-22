@@ -25,6 +25,15 @@ export function useReservasiSchedule() {
   const [customer, setCustomer] = useState<StoredCustomer | null>(null)
   const [rangeError, setRangeError] = useState<string | null>(null)
 
+  // Auto-dismiss pesan error setelah 4 detik
+  useEffect(() => {
+    if (!rangeError) return
+    const timer = setTimeout(() => {
+      setRangeError(null)
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [rangeError])
+
   // Baca calon penyewa yang disimpan saat submit side panel
   useEffect(() => {
     try {
@@ -246,6 +255,11 @@ export function useReservasiSchedule() {
     setPanelMode('inspect')
   }
 
+  // Hapus pesan error bentrok/waktu lampau
+  const handleClearError = useCallback(() => {
+    setRangeError(null)
+  }, [])
+
   return {
     courts: MOCK_COURTS,
     timeSlots: TIME_SLOTS,
@@ -263,5 +277,6 @@ export function useReservasiSchedule() {
     handleSelectEmptySlot,
     handleClosePanel,
     handleCreateBooking,
+    handleClearError,
   }
 }

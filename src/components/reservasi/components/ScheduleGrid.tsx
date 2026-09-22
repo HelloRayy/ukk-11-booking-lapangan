@@ -16,6 +16,7 @@ interface ScheduleGridProps {
   onSelectBooking: (booking: BookingItem) => void
   onSelectEmptySlot: (court: Court, time: string) => void
   onClearSelection?: () => void
+  onClearError?: () => void
 }
 
 interface HoveredSlotState {
@@ -41,6 +42,7 @@ export default function ScheduleGrid({
   onSelectBooking,
   onSelectEmptySlot,
   onClearSelection,
+  onClearError,
 }: ScheduleGridProps) {
   const [hoveredSlot, setHoveredSlot] = useState<HoveredSlotState | null>(null)
 
@@ -78,16 +80,30 @@ export default function ScheduleGrid({
 
   return (
     <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none font-aeonik">
-      {/* Toast Notifikasi Bentrok / Waktu Lampau */}
+      {/* Toast Notifikasi Bentrok / Waktu Lampau (Floating Overlay Tanpa Menggeser Layout) */}
       {rangeError && (
-        <div className="sticky top-3 z-40 mx-auto max-w-md p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-xl backdrop-blur-md flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-            <span>{rangeError}</span>
+        <div className="sticky top-4 z-50 h-0 pointer-events-none flex justify-center">
+          <div className="w-full max-w-md mx-4 p-3 rounded-[10px] bg-red-500/95 text-white text-xs font-medium shadow-2xl backdrop-blur-md flex items-center justify-between pointer-events-auto border border-red-400/30 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-white">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <span>{rangeError}</span>
+            </div>
+            {onClearError && (
+              <button
+                type="button"
+                onClick={onClearError}
+                className="w-5 h-5 rounded-full hover:bg-white/20 text-white flex items-center justify-center transition-colors ml-2 cursor-pointer shrink-0"
+                aria-label="Tutup pesan"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       )}
