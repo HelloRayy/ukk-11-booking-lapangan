@@ -5,6 +5,7 @@ import FloatingToast from './grid/FloatingToast'
 import TimeColumn from './grid/TimeColumn'
 import BookedSlotCard from './grid/BookedSlotCard'
 import ActiveSelectionCard from './grid/ActiveSelectionCard'
+import { CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
 
 interface ScheduleGridProps {
   courts: Court[]
@@ -49,8 +50,10 @@ export default function ScheduleGrid({
   onClearError,
 }: ScheduleGridProps) {
   const [hoveredSlot, setHoveredSlot] = useState<HoveredSlotState | null>(null)
-
-  const currentTimeTop = (10 - BASE_HOUR + 40 / 60) * SLOT_HEIGHT
+  const currentTimeTop =
+    (CALENDAR_CURRENT_TIME.hour - BASE_HOUR + CALENDAR_CURRENT_TIME.minute / 60) * SLOT_HEIGHT
+  const isTimeWithinBounds =
+    CALENDAR_CURRENT_TIME.hour >= BASE_HOUR && CALENDAR_CURRENT_TIME.hour <= 22
 
   // Cek apakah mode preview rentang hover aktif
   const isRangePreviewActive = Boolean(
@@ -87,18 +90,23 @@ export default function ScheduleGrid({
       {/* 1. Toast Notifikasi Melayang Tanpa Pergeseran Layout */}
       <FloatingToast message={rangeError} onClose={onClearError} />
 
-      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (10:40) */}
-      <div
-        style={{ top: `${currentTimeTop}px` }}
-        className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
-      >
-        <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
-          <span className="px-2.5 py-0.5 rounded bg-[#0091ff] text-white text-xs font-semibold shadow-md">
-            10:40
-          </span>
+      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (Dinamis: Dev Mode / Realtime) */}
+      {isTimeWithinBounds && (
+        <div
+          style={{ top: `${currentTimeTop}px` }}
+          className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
+        >
+          <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
+            <span className="px-2.5 py-0.5 rounded bg-[#0091ff] text-white text-xs font-semibold shadow-md flex items-center gap-1">
+              <span>{CALENDAR_CURRENT_TIME.display}</span>
+              {CALENDAR_CURRENT_TIME.isDevMode && (
+                <span className="text-[9px] bg-white/20 px-1 rounded font-normal">Dev</span>
+              )}
+            </span>
+          </div>
+          <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
         </div>
-        <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
-      </div>
+      )}
 
       {/* 3. Grid Container Kalender */}
       <div
