@@ -6,6 +6,7 @@ import TimeColumn from './grid/TimeColumn'
 import BookedSlotCard from './grid/BookedSlotCard'
 import ActiveSelectionCard from './grid/ActiveSelectionCard'
 import { CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
+import { formatRupiah } from '../utils/formatters'
 
 interface ScheduleGridProps {
   courts: Court[]
@@ -167,15 +168,31 @@ export default function ScheduleGrid({
                             : 'cursor-pointer group'
                         }`}
                       >
-                        {/* Hover Indicator Box */}
+                        {/* Hover Preview Card: Tampilan Identik dengan ActiveSelectionCard */}
                         {!isPast && !inRange && !isRangePreviewActive && (
-                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/30 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
-                            <span className="text-xs font-semibold text-[#f2d953]">
-                              {selectedSlot && selectedSlot.courtId === court.id
-                                ? 'Pilih Selesai'
-                                : 'Pilih Slot'}
-                            </span>
-                            <span className="text-[11px] text-[#8e8e8e]">{time}</span>
+                          <div className="absolute inset-x-1.5 inset-y-1 p-2.5 rounded-[10px] bg-[#222222]/95 border-2 border-dashed border-[#f2d953]/80 ring-1 ring-[#f2d953]/25 shadow-[0_0_24px_rgba(242,217,83,0.18)] opacity-0 group-hover:opacity-100 transition-all duration-150 pointer-events-none flex flex-col justify-between select-none z-10 font-aeonik">
+                            <div>
+                              <div className="flex items-center justify-between gap-1 mb-0.5">
+                                <span className="text-sm font-semibold text-[#fcfcfc] truncate block pr-2">
+                                  {customerName || 'Calon Penyewa'}
+                                </span>
+                                <span className="text-[10px] px-2 py-0.5 rounded font-semibold tracking-wide bg-[#f2d953] text-black shrink-0">
+                                  {selectedSlot && String(selectedSlot.courtId) === String(court.id)
+                                    ? 'Pilih Selesai'
+                                    : '+ Pilih'}
+                                </span>
+                              </div>
+                              <span className="text-xs block text-[#d4d4d4]">
+                                {time} - {`${slotHour + 1 < 10 ? '0' : ''}${slotHour + 1}:00`} (1 jam)
+                              </span>
+                            </div>
+
+                            <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] pt-1 border-t border-white/10">
+                              <span>{court.name}</span>
+                              <span className="font-semibold text-[#f2d953]">
+                                {formatRupiah(court.pricePerHour)}
+                              </span>
+                            </div>
                           </div>
                         )}
                       </div>
