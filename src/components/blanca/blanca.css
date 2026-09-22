@@ -37,6 +37,10 @@
 }
 
 /* Hilangkan horizontal scrollbar dan sembunyikan scrollbar visual */
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
   overflow-x: hidden;
