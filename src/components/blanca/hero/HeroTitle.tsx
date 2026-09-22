@@ -67,9 +67,11 @@ export default function HeroTitle({ titleRef, wordsRef, outroRef }: HeroTitlePro
           ref={outroRef}
           className="w-full mt-auto flex md:flex-row flex-col items-center justify-between gap-5 text-[#fcfcfc] text-base leading-normal transition-all opacity-0"
         >
-          <p className="body text-[#bfbfbf] font-light leading-snug transition-all w-full max-w-[524px] max-md:text-center">
-            At Blanca Arena, premium tournament-grade badminton courts meet effortless online booking.
-            Designed for players who value speed, quality, and an unmatched playing experience.
+          <p className="body text-[32px] text-[#bfbfbf] font-light leading-snug transition-all w-full max-w-[524px] max-md:text-center">
+            At Blanca, we’re not about flash. We’re about the game. Our equipment is designed
+            to be functional and cool but doesn’t need to shout. We’re for the players who prefer
+            style in subtlety, and we’re bringing an accessible lineup that doesn’t compromise on
+            quality.
           </p>
 
           <div>

@@ -65,6 +65,19 @@ body, html {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  background-image: url('/assets/blanca/background-dots.png');
+  background-repeat: repeat;
+  background-size: 33.206rem 33.206rem;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-dots {
+  background-image: url('/assets/blanca/background-dots.png');
+  background-repeat: repeat;
+  background-size: 33.206rem 33.206rem;
+}
+
 .font-aeonik {
   font-family: var(--font-aeonik);
 }
@@ -561,6 +574,26 @@ p.body {
   .mdw\:h-\[1278px\] {
     height: 1278px;
   }
+  .mdw\:pt-\[128px\] {
+    padding-top: 128px;
+  }
+  .mdw\:mt-\[128px\] {
+    margin-top: 128px;
+  }
+  .mdw\:min-h-\[593px\] {
+    min-height: 593px;
+  }
+  .mdw\:left-\[32px\] {
+    left: 32px;
+  }
+}
+
+.h4-mobile {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.24px;
+  font-weight: 400;
+  color: #fcfcfc;
 }
 
 @media not all and (min-width: 64rem) {
@@ -572,5 +605,21 @@ p.body {
   }
   .max-mdw\:mb-\[40px\] {
     margin-bottom: 40px;
+  }
+  .max-mdw\:px-\[24px\] {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .max-mdw\:p-\[40px_24px_40px\] {
+    padding: 40px 24px 40px;
+  }
+  .max-mdw\:p-\[8px\] {
+    padding: 8px;
+  }
+  .max-mdw\:aspect-\[327\/262\] {
+    aspect-ratio: 327 / 262;
+  }
+  .max-mdw\:max-h-\[360px\] {
+    max-height: 360px;
   }
 }

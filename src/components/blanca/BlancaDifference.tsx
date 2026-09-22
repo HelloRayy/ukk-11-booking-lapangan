@@ -11,7 +11,7 @@ export default function BlancaDifference() {
     <section
       id="courts"
       data-section-id="shopify-section-template--17894129991737__common_large_card_6W9JdB"
-      className="relative w-full bg-[#161616] text-[#fcfcfc] overflow-hidden"
+      className="relative w-full text-[#fcfcfc] overflow-hidden"
     >
       {/* Anchor cadangan untuk ID Shopify lama */}
       <div id="shopify-section-template--17894129991737__common_large_card_6W9JdB" className="absolute -top-[80px]" />

@@ -1,12 +1,15 @@
-// PERAN FILE: Wrapper preview terisolasi untuk pengujian visual Hero Blanca Padel
 import HeroBlanca from './HeroBlanca'
 import BlancaDifference from './BlancaDifference'
+import BlancaTechnology from './BlancaTechnology'
+import BlancaLocations from './BlancaLocations'
 
 export default function HeroBlancaPreview() {
   return (
-    <div className="w-full min-h-screen bg-[#161616] text-[#fcfcfc]">
+    <div className="w-full min-h-screen text-[#fcfcfc] bg-dots">
       <HeroBlanca />
       <BlancaDifference />
+      <BlancaTechnology />
+      <BlancaLocations />
     </div>
   )
 }
