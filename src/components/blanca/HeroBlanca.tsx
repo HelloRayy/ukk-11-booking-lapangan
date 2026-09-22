@@ -224,8 +224,8 @@ export default function HeroBlanca() {
             </div>
 
             {/* Sisi Tengah: Nav Links Desktop */}
-            <nav className="hidden lg:flex items-center header__nav px-4" aria-label="primary">
-              <ul className="header__links flex items-center justify-center py-2 px-3 gap-x-1 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
+            <nav className="hidden lg:flex items-center header__nav px-4 h-full" aria-label="primary">
+              <ul className="header__links flex items-center justify-center py-2 px-4 gap-x-1 text-[#fcfcfc] text-base rounded-lg h-[43.9714px] leading-normal transition-all duration-300 hover:bg-[rgba(217,217,217,0.12)] hover:backdrop-blur-xl">
                 <li className="h-[27.9818px] w-[93.4505px] leading-normal transition-all">
                   <a
                     className="header__link flex items-center justify-between py-1.5 pl-3 pr-4 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] w-[93.4505px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"

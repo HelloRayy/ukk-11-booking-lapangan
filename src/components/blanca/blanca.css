@@ -118,13 +118,16 @@ body, html {
   text-decoration: none;
 }
 
+.header__nav {
+  height: 100%;
+}
+
 .header__links {
   display: flex;
   align-items: center;
-  gap: 0;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 16px;
   position: relative;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
