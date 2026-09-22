@@ -21,23 +21,6 @@ export function useHeroAnimation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Efek spotlight interaktif mengikuti kursor kustom
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const heroMedia = videoRef.current
-    if (!heroMedia) return
-    const rect = heroMedia.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    heroMedia.style.setProperty('--spotlight-x', `${x}px`)
-    heroMedia.style.setProperty('--spotlight-y', `${y}px`)
-    heroMedia.style.setProperty('--spotlight-opacity', '1')
-  }
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.style.setProperty('--spotlight-opacity', '0.4')
-    }
-  }
 
   // Timeline GSAP Intro Splashscreen
   useEffect(() => {
@@ -185,7 +168,5 @@ export function useHeroAnimation() {
     wordsRef,
     outroRef,
     isScrolled,
-    handleMouseMove,
-    handleMouseLeave,
   }
 }

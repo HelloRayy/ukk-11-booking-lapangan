@@ -19,15 +19,6 @@ export default function HeroMedia({ videoRef }: HeroMediaProps) {
         }}
       />
 
-      {/* Spotlight Interaktif (Mengikuti Kursor Mouse Native) */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0 transition-opacity duration-300"
-        style={{
-          opacity: 'var(--spotlight-opacity, 0.5)',
-          background:
-            'radial-gradient(450px circle at var(--spotlight-x, 50%) var(--spotlight-y, 45%), rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 45%, transparent 75%)',
-        }}
-      />
 
       {/* Hero Video (Seamless Loop 24fps) */}
       <video

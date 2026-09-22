@@ -16,14 +16,10 @@ export default function HeroBlanca() {
     wordsRef,
     outroRef,
     isScrolled,
-    handleMouseMove,
-    handleMouseLeave,
   } = useHeroAnimation()
 
   return (
     <div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative z-40 h-screen min-h-screen max-h-screen bg-[#161616] text-[#fcfcfc] overflow-hidden font-aeonik"
     >
       {/* Background Static Radial Glow Circle */}
