@@ -229,33 +229,17 @@ export default function HeroBlanca() {
                 <li className="h-[27.9818px] leading-normal transition-all">
                   <a
                     className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#courts"
+                    href="#about"
                   >
-                    <span className="leading-tight transition-all">Courts</span>
+                    <span className="leading-tight transition-all">About</span>
                   </a>
                 </li>
                 <li className="h-[27.9818px] leading-normal transition-all">
                   <a
                     className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#schedule"
+                    href="#showcase"
                   >
-                    <span className="leading-tight transition-all">Schedule</span>
-                  </a>
-                </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#pricing"
-                  >
-                    <span className="leading-tight transition-all">Rates</span>
-                  </a>
-                </li>
-                <li className="h-[27.9818px] leading-normal transition-all">
-                  <a
-                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#check-booking"
-                  >
-                    <span className="leading-tight transition-all">Check Booking</span>
+                    <span className="leading-tight transition-all">Showcase</span>
                   </a>
                 </li>
                 <li className="h-[27.9818px] leading-normal transition-all">
@@ -269,6 +253,14 @@ export default function HeroBlanca() {
                 <li className="h-[27.9818px] leading-normal transition-all">
                   <a
                     className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
+                    href="#rates"
+                  >
+                    <span className="leading-tight transition-all">Rates</span>
+                  </a>
+                </li>
+                <li className="h-[27.9818px] leading-normal transition-all">
+                  <a
+                    className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
                     href="#location"
                   >
                     <span className="leading-tight transition-all">Location</span>
@@ -277,9 +269,9 @@ export default function HeroBlanca() {
                 <li className="h-[27.9818px] leading-normal transition-all">
                   <a
                     className="header__link flex items-center justify-between py-1.5 px-3.5 text-[#fcfcfc] text-base font-light rounded h-[27.9818px] leading-tight transition-all duration-150 hover:bg-black/5 active:scale-[0.98]"
-                    href="#about"
+                    href="#reservation"
                   >
-                    <span className="leading-tight transition-all">About</span>
+                    <span className="leading-tight transition-all">Reservation</span>
                   </a>
                 </li>
               </ul>
