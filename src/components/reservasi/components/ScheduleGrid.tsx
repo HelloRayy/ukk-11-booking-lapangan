@@ -325,34 +325,39 @@ export default function ScheduleGrid({
                       >
                         <div>
                           <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
+                            <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors pr-2">
                               {customerName || 'Sigma Person'}
                             </span>
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 shrink-0">
                               <span
-                                className={`text-[10px] px-2 py-0.5 rounded font-semibold tracking-wide ${
+                                className={`text-[10px] px-2 py-0.5 rounded font-semibold tracking-wide transition-opacity duration-150 ${
                                   isBlocked
                                     ? 'bg-red-500/20 text-red-400 border border-red-500/30'
                                     : 'bg-[#f2d953] text-black'
-                                }`}
+                                } ${onClearSelection ? 'group-hover:opacity-0' : ''}`}
                               >
                                 {isBlocked ? 'Bentrok' : 'Dipilih'}
                               </span>
-                              {onClearSelection && (
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    onClearSelection()
-                                  }}
-                                  title="Batalkan pilihan"
-                                  className="w-4 h-4 rounded-full bg-white/10 hover:bg-white/20 text-[#a3a3a3] hover:text-white flex items-center justify-center text-[10px] transition-colors pointer-events-auto"
-                                >
-                                  ✕
-                                </button>
-                              )}
                             </div>
                           </div>
+
+                          {/* Tombol Close 24px di Pojok Kanan Atas (Hanya Muncul Saat Hover) */}
+                          {onClearSelection && (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                onClearSelection()
+                              }}
+                              title="Batalkan pilihan"
+                              aria-label="Batalkan pilihan"
+                              className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-[#2e2e2e] hover:bg-rose-500 text-[#a3a3a3] hover:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto shadow-md border border-white/10 cursor-pointer z-30 active:scale-90"
+                            >
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <path d="M18 6 6 18M6 6l12 12" />
+                              </svg>
+                            </button>
+                          )}
 
                           <span
                             className={`text-xs block ${
