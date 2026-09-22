@@ -234,8 +234,18 @@ export function useReservasiSchedule() {
       .map((part) => part.charAt(0).toUpperCase())
       .join('')
 
+    const now = new Date()
+    const invoiceNumber = `INV-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`
+    const createdAt = `${now.toLocaleDateString('id-ID', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    })}, ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} WIB`
+
     const newBooking: BookingItem = {
       id: `book-${Date.now()}`,
+      invoiceNumber,
+      createdAt,
       courtId: selectedSlot.courtId,
       courtName: selectedSlot.courtName,
       customerName,
@@ -256,7 +266,7 @@ export function useReservasiSchedule() {
     setBookings((prev) => [...prev, newBooking])
     setSelectedBooking(newBooking)
     setSelectedSlot(null)
-    setPanelMode('inspect')
+    setPanelMode('receipt')
   }
 
   // Hapus pesan error bentrok/waktu lampau

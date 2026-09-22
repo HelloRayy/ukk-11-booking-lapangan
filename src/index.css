@@ -1,1 +1,40 @@
 @import "tailwindcss";
+
+/* ============================================================== */
+/* GAYA CETAK STRUK PDF (@media print)                            */
+/* ============================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Sembunyikan seluruh UI website (navbar, kalender, dll) */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Hanya tampilkan elemen struk reservasi */
+  #printable-receipt,
+  #printable-receipt * {
+    visibility: visible;
+  }
+
+  #printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

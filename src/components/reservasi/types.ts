@@ -27,6 +27,8 @@ export interface BookingItem {
   remainingAmount: number
   notes?: string
   avatarInitials?: string
+  invoiceNumber?: string
+  createdAt?: string
 }
 
 export interface SlotRangeSelection {
@@ -43,4 +45,4 @@ export interface SlotRangeSelection {
   totalPrice: number
 }
 
-export type RightPanelMode = 'empty' | 'inspect' | 'create'
+export type RightPanelMode = 'empty' | 'inspect' | 'create' | 'receipt'
