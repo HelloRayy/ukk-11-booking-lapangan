@@ -1,5 +1,6 @@
 // PERAN FILE: Komponen Section 1:1 'The Blanca difference' Blanca Padel
 import { useRef } from 'react'
+import orang1Img from '../../assets/orang-1.webp'
 
 export default function BlancaDifference() {
   const columnRef = useRef<HTMLDivElement>(null)
@@ -8,9 +9,13 @@ export default function BlancaDifference() {
 
   return (
     <section
-      id="shopify-section-template--17894129991737__common_large_card_6W9JdB"
+      id="courts"
+      data-section-id="shopify-section-template--17894129991737__common_large_card_6W9JdB"
       className="relative w-full bg-[#161616] text-[#fcfcfc] overflow-hidden"
     >
+      {/* Anchor cadangan untuk ID Shopify lama */}
+      <div id="shopify-section-template--17894129991737__common_large_card_6W9JdB" className="absolute -top-[80px]" />
+
       {/* Background Glow Circle */}
       <div className="absolute inset-0 size-full overflow-hidden pointer-events-none">
         <div className="background-circle top-[92px] mdw:top-[-23px] right-[-300px] mdw:right-[-340px] w-[491px] mdw:w-[841px] h-[497px] mdw:h-[1278px] mdw:rotate-[-20.43deg]" />
@@ -24,7 +29,7 @@ export default function BlancaDifference() {
         <div className="col-start-5 col-span-6 flex flex-col items-start gap-y-[24px] mdw:gap-y-[32px] mb-[32px] mdw:mb-[80px]">
           <span className="block preheading">The Blanca difference</span>
           <h2 className="h2-mobile mdw:h2">
-            Smash. Rally. Unmatched. Meet Blanca Badminton.
+            Game. Set. Unmatched. Meet Blanca Padel.
           </h2>
         </div>
 
@@ -32,7 +37,7 @@ export default function BlancaDifference() {
         <div className="max-mdw:hidden col-start-1 col-span-4 mdw:sticky top-[80px] pb-[285px]">
           <div className="w-full h-auto aspect-[448/337] rounded-[8px] overflow-hidden mb-[40px] relative">
             <img
-              src="/assets/blanca/difference-people.png"
+              src={orang1Img}
               alt="Blanca Badminton Community"
               className="w-full h-full object-cover object-center"
               loading="lazy"
