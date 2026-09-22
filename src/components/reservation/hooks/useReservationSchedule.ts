@@ -96,7 +96,7 @@ function mapDbBookingsToItems(
   return items
 }
 
-export function useReservasiSchedule() {
+export function useReservationSchedule() {
   const [selectedDate, setSelectedDate] = useState<string>(getTodayISODate())
   const [courts, setCourts] = useState<Court[]>([])
   const [bookings, setBookings] = useState<BookingItem[]>([])

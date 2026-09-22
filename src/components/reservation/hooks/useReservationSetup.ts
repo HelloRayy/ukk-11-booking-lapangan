@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import type { StoredCustomerInfo } from '../types'
 
-export function useReservasiSetup() {
+export function useReservationSetup() {
   const [customer, setCustomer] = useState<StoredCustomerInfo | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 

@@ -1,12 +1,12 @@
 import { formatDisplayDate } from '../utils/formatters'
 
-interface ReservasiNavbarProps {
+interface ReservationNavbarProps {
   customerName?: string
   selectedDate?: string
   onDateChange?: (date: string) => void
 }
 
-export default function ReservasiNavbar({ customerName, selectedDate, onDateChange }: ReservasiNavbarProps) {
+export default function ReservationNavbar({ customerName, selectedDate, onDateChange }: ReservationNavbarProps) {
   const handleBack = () => {
     window.location.href = '/blanca.html'
   }

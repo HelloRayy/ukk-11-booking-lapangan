@@ -1,11 +1,10 @@
-// PERAN FILE: Root Coordinator Halaman /reservasi dengan Multi-Slot Range Selection (User POV)
-import { useReservasiSchedule } from './hooks/useReservasiSchedule'
-import ReservasiNavbar from './components/ReservasiNavbar'
+import { useReservationSchedule } from './hooks/useReservationSchedule'
+import ReservationNavbar from './components/ReservationNavbar'
 import ScheduleHeader from './components/ScheduleHeader'
 import ScheduleGrid from './components/ScheduleGrid'
 import RightPanelInspector from './components/RightPanelInspector'
 
-export default function ReservasiPage() {
+export default function ReservationPage() {
   const {
     courts,
     timeSlots,
@@ -25,12 +24,12 @@ export default function ReservasiPage() {
     handleCreateBooking,
     handleClearError,
     handleDateChange,
-  } = useReservasiSchedule()
+  } = useReservationSchedule()
 
   return (
     <div className="h-screen w-screen bg-[#161616] text-[#fafafa] font-aeonik flex flex-col overflow-hidden select-none">
       {/* 1. Navbar Atas (Header & Date Selector) */}
-      <ReservasiNavbar
+      <ReservationNavbar
         customerName={customer?.nama}
         selectedDate={selectedDate}
         onDateChange={handleDateChange}

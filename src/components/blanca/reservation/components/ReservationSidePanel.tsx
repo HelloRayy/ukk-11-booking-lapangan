@@ -186,15 +186,10 @@ export default function ReservationSidePanel({
                   </div>
 
                   {/* 2. Nomor WhatsApp / HP dengan Validasi Strict 08 & Error State */}
-                  <div className="flex flex-col gap-1.5">
-                    <div className="flex items-center justify-between">
-                      <label htmlFor="whatsapp_penyewa" className="text-sm font-normal text-[#d4d4d4]">
-                        WhatsApp number
-                      </label>
-                      <span className="text-[11px] text-[#8e8e8e] font-mono tracking-tight">
-                        Wajib 08 • 10–13 Digit
-                      </span>
-                    </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="whatsapp_penyewa" className="text-sm font-normal text-[#d4d4d4]">
+                      WhatsApp number
+                    </label>
 
                     <div className="relative">
                       <input
@@ -204,25 +199,16 @@ export default function ReservationSidePanel({
                         value={customerInfo.whatsapp}
                         onChange={handleWaChange}
                         onBlur={() => setIsWaTouched(true)}
-                        placeholder="081234567890"
-                        className={`w-full h-[64px] px-5 pr-12 rounded-[12px] bg-[#222222] text-[17px] text-[#f5f5f5] placeholder:text-[#666666] font-mono tracking-wide transition-all focus:outline-none ${
+                        placeholder="e.g. 08123456789"
+                        className={`w-full h-[64px] px-5 ${
+                          waValidation.error ? 'pr-12' : ''
+                        } rounded-[12px] bg-[#222222] text-[17px] text-[#f5f5f5] placeholder:text-[#666666] font-light transition-all focus:outline-none ${
                           waValidation.error
                             ? 'border-2 border-rose-500/80 bg-rose-500/5 focus:border-rose-500 text-rose-100'
-                            : waValidation.isValid
-                            ? 'border border-emerald-500/60 focus:border-emerald-500'
                             : 'border border-white/15 focus:border-[#f2d953]'
                         }`}
                         required
                       />
-
-                      {/* Ikon Status Validasi di Kanan Input */}
-                      {waValidation.isValid && (
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center pointer-events-none">
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                        </span>
-                      )}
 
                       {waValidation.error && (
                         <span className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-400 flex items-center justify-center pointer-events-none">
@@ -243,14 +229,6 @@ export default function ReservationSidePanel({
                           <line x1="12" y1="16" x2="12.01" y2="16" />
                         </svg>
                         <span>{waValidation.error}</span>
-                      </div>
-                    )}
-
-                    {/* Feedback Pesan Sukses Valid */}
-                    {waValidation.isValid && (
-                      <div className="flex items-center gap-1.5 text-[12px] text-emerald-400/90 mt-0.5 animate-in fade-in duration-150">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                        <span>Nomor valid • Terhubung ke <span className="font-mono text-white/90">wa.me/62{customerInfo.whatsapp.slice(1)}</span></span>
                       </div>
                     )}
                   </div>
