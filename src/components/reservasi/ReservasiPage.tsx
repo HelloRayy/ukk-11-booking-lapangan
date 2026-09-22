@@ -10,6 +10,7 @@ export default function ReservasiPage() {
   const {
     courts,
     timeSlots,
+    bookings,
     customer,
     panelMode,
     selectedBooking,
@@ -36,6 +37,7 @@ export default function ReservasiPage() {
           <ScheduleGrid
             courts={courts}
             timeSlots={timeSlots}
+            bookings={bookings}
             selectedBooking={selectedBooking}
             selectedSlot={selectedSlot}
             rangeError={rangeError}
