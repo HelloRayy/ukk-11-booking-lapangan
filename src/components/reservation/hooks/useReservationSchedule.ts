@@ -5,6 +5,7 @@ import { TIME_SLOTS, CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
 import { getLapangan, getAllBookings, createBooking } from '../../../lib/api'
 import { getTodayISODate, getInitials } from '../utils/formatters'
 import type { Booking as DbBooking } from '../../../types/database'
+import { FIXTURE_COURTS } from '../__mocks__/scheduleFixtures'
 
 export { CALENDAR_CURRENT_TIME, TIME_SLOTS } from '../constants/scheduleConfig'
 
@@ -129,14 +130,27 @@ export function useReservationSchedule() {
     }
   }, [])
 
-  // 1. Ambil data lapangan aktif dari Supabase saat awal mount
+  // 1. Ambil data lapangan dan seluruh transaksi booking secara terkoordinasi
   useEffect(() => {
     let isMounted = true
 
-    async function loadCourts() {
+    async function initializeSchedule() {
       try {
-        const dbCourts = await getLapangan()
-        if (isMounted && dbCourts && dbCourts.length > 0) {
+        setIsLoading(true)
+        const [dbCourts, dbBookings] = await Promise.all([
+          getLapangan().catch((err) => {
+            console.warn('Gagal memuat data lapangan Supabase:', err)
+            return []
+          }),
+          getAllBookings().catch((err) => {
+            console.warn('Gagal memuat data bookings Supabase:', err)
+            return []
+          }),
+        ])
+
+        if (!isMounted) return
+
+        if (dbCourts && dbCourts.length > 0) {
           const mapped: Court[] = dbCourts.map((c) => ({
             id: c.id,
             name: c.nama_lapangan,
@@ -147,31 +161,19 @@ export function useReservationSchedule() {
             pricePerHour: c.tarif_per_jam,
           }))
           setCourts(mapped)
+        } else {
+          // Fallback ke fixtures jika database kosong / offline
+          setCourts(FIXTURE_COURTS)
+        }
+
+        if (dbBookings && dbBookings.length > 0) {
+          setAllDbBookings(dbBookings)
         }
       } catch (err) {
-        console.warn('Gagal memuat data lapangan Supabase:', err)
-      }
-    }
-
-    loadCourts()
-    return () => {
-      isMounted = false
-    }
-  }, [])
-
-  // 2. Ambil data seluruh transaksi booking dari Supabase
-  useEffect(() => {
-    let isMounted = true
-
-    async function loadBookings() {
-      try {
-        setIsLoading(true)
-        const data = await getAllBookings()
+        console.warn('Gagal menginisialisasi jadwal reservasi:', err)
         if (isMounted) {
-          setAllDbBookings(data)
+          setCourts(FIXTURE_COURTS)
         }
-      } catch (err) {
-        console.warn('Gagal memuat data bookings Supabase:', err)
       } finally {
         if (isMounted) {
           setIsLoading(false)
@@ -179,7 +181,8 @@ export function useReservationSchedule() {
       }
     }
 
-    loadBookings()
+    initializeSchedule()
+
     return () => {
       isMounted = false
     }

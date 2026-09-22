@@ -5,7 +5,7 @@ import type { Lapangan } from '../types/database'
 import { useSchedule } from './useSchedule'
 import { hitungBiayaBooking } from '../utils/costCalculation'
 
-export function usePemesanan() {
+export function useBooking() {
   const [lapangan, setLapangan] = useState<Lapangan[]>([])
   const [selectedLapangan, setSelectedLapangan] = useState<number | null>(null)
   const [selectedDate, setSelectedDate] = useState<string>(
@@ -16,7 +16,7 @@ export function usePemesanan() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   // custom hook memantau slot terisi di database
-  const { jamTerisi, refreshJadwal } = useJadwal(selectedLapangan, selectedDate)
+  const { jamTerisi, refreshJadwal } = useSchedule(selectedLapangan, selectedDate)
 
   // ambil daftar lapangan saat pertama kali dibuka
   useEffect(() => {
@@ -112,3 +112,6 @@ export function usePemesanan() {
     kirimBooking,
   }
 }
+
+export const usePemesanan = useBooking
+

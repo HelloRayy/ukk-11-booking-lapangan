@@ -3,6 +3,7 @@ import ReservationNavbar from './components/ReservationNavbar'
 import ScheduleHeader from './components/ScheduleHeader'
 import ScheduleGrid from './components/ScheduleGrid'
 import RightPanelInspector from './components/RightPanelInspector'
+import ReservationSkeletonLoader from './components/ReservationSkeletonLoader'
 
 export default function ReservationPage() {
   const {
@@ -15,6 +16,7 @@ export default function ReservationPage() {
     selectedSlot,
     selectedDate,
     rangeError,
+    isLoading,
     getSlotBooking,
     isSlotInRange,
     isPastSlot,
@@ -37,25 +39,31 @@ export default function ReservationPage() {
 
       {/* 2. Area Utama: Kalender di Kiri, Panel Informasi & Booking di Kanan */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) */}
-        <div className="flex-1 flex flex-col overflow-hidden min-w-0 border-r border-[#262626]">
-          <ScheduleHeader courts={courts} />
-          <ScheduleGrid
-            courts={courts}
-            timeSlots={timeSlots}
-            bookings={bookings}
-            selectedBooking={selectedBooking}
-            selectedSlot={selectedSlot}
-            customerName={customer?.nama}
-            rangeError={rangeError}
-            getSlotBooking={getSlotBooking}
-            isSlotInRange={isSlotInRange}
-            isPastSlot={isPastSlot}
-            onSelectBooking={handleSelectBooking}
-            onSelectEmptySlot={handleSelectEmptySlot}
-            onClearSelection={handleClosePanel}
-            onClearError={handleClearError}
-          />
+        {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) atau Skeleton Loader */}
+        <div className="flex-1 flex flex-col overflow-hidden min-w-0 border-r border-[#262626] relative">
+          {isLoading ? (
+            <ReservationSkeletonLoader />
+          ) : (
+            <>
+              <ScheduleHeader courts={courts} />
+              <ScheduleGrid
+                courts={courts}
+                timeSlots={timeSlots}
+                bookings={bookings}
+                selectedBooking={selectedBooking}
+                selectedSlot={selectedSlot}
+                customerName={customer?.nama}
+                rangeError={rangeError}
+                getSlotBooking={getSlotBooking}
+                isSlotInRange={isSlotInRange}
+                isPastSlot={isPastSlot}
+                onSelectBooking={handleSelectBooking}
+                onSelectEmptySlot={handleSelectEmptySlot}
+                onClearSelection={handleClosePanel}
+                onClearError={handleClearError}
+              />
+            </>
+          )}
         </div>
 
         {/* Floating Slide-Over Drawer dari Kanan (Tanpa Empty State) */}

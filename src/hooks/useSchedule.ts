@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { getBookedSlots } from '../lib/api'
 
-export function useJadwal(lapanganId: number | null, tglMain: string) {
+export function useSchedule(lapanganId: number | null, tglMain: string) {
   const [jamTerisi, setJamTerisi] = useState<string[]>([])
   const [loadingJadwal, setLoadingJadwal] = useState(false)
 
@@ -27,3 +27,6 @@ export function useJadwal(lapanganId: number | null, tglMain: string) {
 
   return { jamTerisi, refreshJadwal, loadingJadwal }
 }
+
+export const useJadwal = useSchedule
+

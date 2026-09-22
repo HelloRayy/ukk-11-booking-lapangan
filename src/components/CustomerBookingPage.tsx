@@ -1,5 +1,4 @@
-// PERAN FILE: Halaman utama pemesan - murni menyusun komponen langkah 1 sampai 5
-import { usePemesanan } from '../hooks/useBooking'
+import { useBooking } from '../hooks/useBooking'
 import CourtSelector from './booking/CourtSelector'
 import TimeSlotGrid from './booking/TimeSlotGrid'
 import CostSummary from './booking/CostSummary'
@@ -20,7 +19,7 @@ export default function CustomerBookingPage() {
     pilihTanggal,
     toggleSlot,
     kirimBooking,
-  } = usePemesanan()
+  } = useBooking()
 
   if (loading) {
     return <div className="p-8 text-center text-gray-500">Memuat data lapangan...</div>
