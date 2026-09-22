@@ -142,7 +142,7 @@ export default function RightPanelInspector({
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
             </button>
-            <span className="text-xs text-[#f2d953] font-semibold">
+            <span className="text-xs text-[#8e8e8e] font-medium">
               Rincian Pembayaran
             </span>
           </div>
@@ -160,7 +160,7 @@ export default function RightPanelInspector({
           <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e] mb-3">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs text-[#8e8e8e]">Waktu Bermain</span>
-              <span className="text-xs px-2 py-0.5 rounded bg-[#f2d953]/15 text-[#f2d953] font-bold">
+              <span className="text-xs text-white font-medium">
                 {selectedSlot.totalHours} Jam
               </span>
             </div>
@@ -246,12 +246,7 @@ export default function RightPanelInspector({
                       {paymentType === 'dp' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                     </div>
                     <div>
-                      <div className="text-xs font-semibold flex items-center gap-1.5">
-                        <span>Bayar DP 50%</span>
-                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#f2d953]/20 text-[#f2d953] font-medium">
-                          Rekomendasi
-                        </span>
-                      </div>
+                      <span className="text-xs font-semibold text-white block">Bayar DP 50%</span>
                       <span className="text-[11px] text-[#8e8e8e] block">
                         Sisa Rp {dpAmount.toLocaleString('id-ID')} di arena
                       </span>
@@ -281,12 +276,7 @@ export default function RightPanelInspector({
                       {paymentType === 'lunas' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                     </div>
                     <div>
-                      <div className="text-xs font-semibold flex items-center gap-1.5">
-                        <span>Bayar Lunas 100%</span>
-                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-medium">
-                          Bebas Antre
-                        </span>
-                      </div>
+                      <span className="text-xs font-semibold text-white block">Bayar Lunas 100%</span>
                       <span className="text-[11px] text-[#8e8e8e] block">
                         Langsung masuk lapangan
                       </span>
@@ -302,11 +292,8 @@ export default function RightPanelInspector({
 
           {/* 4. Data Pemesan Lengkap (Nama, Nomor WhatsApp, Email) */}
           <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e] mb-3.5 space-y-2.5">
-            <div className="flex items-center justify-between pb-2 border-b border-white/5">
+            <div className="pb-2 border-b border-white/5">
               <span className="text-xs font-semibold text-[#8e8e8e]">Informasi Pemesan</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
-                Terverifikasi
-              </span>
             </div>
 
             <div className="space-y-2 text-xs">
