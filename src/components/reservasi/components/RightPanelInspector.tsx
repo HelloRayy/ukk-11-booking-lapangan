@@ -314,16 +314,16 @@ export default function RightPanelInspector({
 
           {/* 5. Catatan Opsional */}
           <div className="mb-2">
-            <label htmlFor="user_booking_notes" className="text-xs text-[#8e8e8e] block mb-1">
+            <label htmlFor="user_booking_notes" className="text-xs text-[#8e8e8e] block mb-1.5 font-medium">
               Catatan (Opsional)
             </label>
-            <input
+            <textarea
               id="user_booking_notes"
-              type="text"
+              rows={4}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Siapkan raket sewa / shuttlecock"
-              className="w-full h-10 px-3 rounded-[8px] bg-[#222222] border border-[#333333] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors"
+              placeholder="e.g. Siapkan raket sewa / shuttlecock tambahan..."
+              className="w-full h-24 p-3 rounded-[10px] bg-[#222222] border border-[#333333] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors resize-none leading-relaxed"
             />
           </div>
         </div>
