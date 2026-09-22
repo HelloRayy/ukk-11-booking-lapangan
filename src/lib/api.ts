@@ -67,3 +67,22 @@ export async function getAllBookings(): Promise<Booking[]> {
   return (data as Booking[]) || []
 }
 
+// 6. langganan perubahan data booking secara realtime
+export function subscribeToBookings(onUpdate: () => void) {
+  const channel = supabase
+    .channel('bookings-realtime-sync')
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'bookings' },
+      () => {
+        onUpdate()
+      }
+    )
+    .subscribe()
+
+  return () => {
+    supabase.removeChannel(channel)
+  }
+}
+
+

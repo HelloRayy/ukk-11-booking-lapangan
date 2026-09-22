@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { BookingItem, Court, SlotRangeSelection, PaymentType, RightPanelMode, StoredCustomerInfo } from '../types'
 import { TIME_SLOTS, CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
-import { getLapangan, getAllBookings, createBooking } from '../../../lib/api'
+import { getLapangan, getAllBookings, createBooking, subscribeToBookings } from '../../../lib/api'
 import { getTodayISODate, getInitials } from '../utils/formatters'
 import type { Booking as DbBooking } from '../../../types/database'
 import { FIXTURE_COURTS } from '../__mocks__/scheduleFixtures'
@@ -183,8 +183,20 @@ export function useReservationSchedule() {
 
     initializeSchedule()
 
+    const unsubscribe = subscribeToBookings(async () => {
+      try {
+        const freshBookings = await getAllBookings()
+        if (isMounted) {
+          setAllDbBookings(freshBookings)
+        }
+      } catch (err) {
+        console.warn('Gagal sinkronisasi realtime booking:', err)
+      }
+    })
+
     return () => {
       isMounted = false
+      unsubscribe()
     }
   }, [])
 
@@ -385,9 +397,9 @@ export function useReservationSchedule() {
     const paidAmount = paymentType === 'DP' ? totalPrice * 0.5 : totalPrice
     const remainingAmount = totalPrice - paidAmount
 
-    const customerName = customer?.nama || 'Calon Penyewa'
-    const customerWhatsapp = customer?.whatsapp || '08123456789'
-    const customerEmail = customer?.email || 'penyewa@example.com'
+    const customerName = customer?.nama || 'Raditya Rayhan'
+    const customerWhatsapp = customer?.whatsapp || '085799799857'
+    const customerEmail = customer?.email || 'raditya.rayhan@gmail.com'
 
     const avatarInitials = getInitials(customerName)
 
