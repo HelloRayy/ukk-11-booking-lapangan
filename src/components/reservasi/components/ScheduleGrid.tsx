@@ -174,7 +174,7 @@ export default function ScheduleGrid({
                       >
                         {/* Hover Indicator Rounded untuk Single Slot (Mirip Active Card) */}
                         {!isPast && !inRange && !isRangePreviewActive && (
-                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-dashed border-[#f2d953]/40 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
+                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/30 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
                             <span className="text-xs font-semibold text-[#f2d953]">
                               {selectedSlot && selectedSlot.courtId === court.id
                                 ? 'Pilih Selesai'
@@ -274,158 +274,112 @@ export default function ScheduleGrid({
                   )
                 })}
 
-                {/* 3. Kartu Ghost Preview Rentang Hover (Radius rounded-[10px] Mirip Active Card) */}
-                {(() => {
-                  if (
-                    !isRangePreviewActive ||
-                    court.id !== selectedSlot?.courtId ||
-                    previewMinHour === null ||
-                    previewMaxHour === null
-                  ) {
-                    return null
-                  }
+                {/* 3. Kartu Choice / Seleksi Pengguna Aktif (Dynamic Height Stretching on Hover - User POV) */}
+                {selectedSlot &&
+                  selectedSlot.courtId === court.id &&
+                  (() => {
+                    const isCourtPreviewActive =
+                      isRangePreviewActive &&
+                      court.id === selectedSlot.courtId &&
+                      previewMinHour !== null &&
+                      previewMaxHour !== null
 
-                  const previewHours = previewMaxHour - previewMinHour + 1
-                  const previewPrice = previewHours * court.pricePerHour
-                  const previewEndHour = previewMaxHour + 1
-                  const previewEndTimeStr = `${previewEndHour < 10 ? '0' : ''}${previewEndHour}:00`
+                    // Jam mulai & durasi dinamis: melebar otomatis mengikuti arah gerakan kursor
+                    const activeStartHour = isCourtPreviewActive ? previewMinHour : selectedSlot.startHour
+                    const activeTotalHours = isCourtPreviewActive
+                      ? previewMaxHour - previewMinHour + 1
+                      : selectedSlot.totalHours
 
-                  return (
-                    <div
-                      style={{
-                        top: `${(previewMinHour - BASE_HOUR) * SLOT_HEIGHT + 3}px`,
-                        height: `${(previewMaxHour - previewMinHour + 1) * SLOT_HEIGHT - 6}px`,
-                      }}
-                      className={`absolute inset-x-1.5 z-15 rounded-[10px] border-2 border-dashed pointer-events-none transition-all duration-150 flex flex-col justify-between p-3 animate-in fade-in zoom-in-95 ${
-                        previewHasCollision
-                          ? 'border-red-500/80 bg-red-500/10 shadow-[0_0_24px_rgba(239,68,68,0.2)]'
-                          : 'border-[#f2d953] bg-[#f2d953]/10 shadow-[0_0_24px_rgba(242,217,83,0.18)]'
-                      }`}
-                    >
-                      {/* Header jika kursor mengarah ke jam lebih awal dari slot terpilih */}
-                      {hoveredSlot && hoveredSlot.hour < selectedSlot.startHour ? (
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-xs font-semibold ${
-                              previewHasCollision ? 'text-red-400' : 'text-[#f2d953]'
-                            }`}
-                          >
-                            {previewHasCollision ? 'Jadwal Bentrok' : 'Pilih Jam Mulai'}
-                          </span>
-                          <span
-                            className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
-                              previewHasCollision
-                                ? 'bg-red-500/20 text-red-400'
-                                : 'bg-[#f2d953]/20 text-[#f2d953]'
-                            }`}
-                          >
-                            +{previewHours - 1} Jam
-                          </span>
-                        </div>
-                      ) : (
-                        <div />
-                      )}
+                    const activeEndHour = activeStartHour + activeTotalHours
+                    const activeStartTimeStr = `${activeStartHour < 10 ? '0' : ''}${activeStartHour}:00`
+                    const activeEndTimeStr = `${activeEndHour < 10 ? '0' : ''}${activeEndHour}:00`
+                    const activeTotalPrice = activeTotalHours * court.pricePerHour
 
-                      {/* Footer Info Preview di Ujung Rentang */}
-                      {previewHasCollision ? (
-                        <div className="p-2.5 rounded-[8px] bg-[#1c1c1c]/95 border border-red-500/50 shadow-lg flex items-center justify-center gap-2">
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#ef4444"
-                            strokeWidth="2"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="15" y1="9" x2="9" y2="15" />
-                            <line x1="9" y1="9" x2="15" y2="15" />
-                          </svg>
-                          <span className="text-xs font-medium text-red-400">
-                            Jadwal Bentrok - Tidak Bisa Dipilih
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="p-2.5 rounded-[8px] bg-[#1a1a1a]/95 border border-[#f2d953]/60 shadow-lg">
+                    const activeTopOffset = (activeStartHour - BASE_HOUR) * SLOT_HEIGHT + 3
+                    const activeCardHeight = activeTotalHours * SLOT_HEIGHT - 6
+
+                    const isBlocked = isCourtPreviewActive && previewHasCollision
+
+                    return (
+                      <div
+                        style={{
+                          top: `${activeTopOffset}px`,
+                          height: `${activeCardHeight}px`,
+                        }}
+                        onClick={(e) => {
+                          if (!isRangePreviewActive) {
+                            e.stopPropagation()
+                            const rect = e.currentTarget.getBoundingClientRect()
+                            const relativeY = e.clientY - rect.top
+                            const clickedHourOffset = Math.floor(relativeY / SLOT_HEIGHT)
+                            const targetHour = selectedSlot.startHour + clickedHourOffset
+                            const targetTime = `${targetHour < 10 ? '0' : ''}${targetHour}:00`
+                            onSelectEmptySlot(court, targetTime)
+                          }
+                        }}
+                        className={`absolute inset-x-1.5 z-20 p-3 rounded-[10px] bg-[#222222] border-2 transition-all duration-150 flex flex-col justify-between group shadow-lg select-none ${
+                          isBlocked
+                            ? 'border-red-500 shadow-[0_0_24px_rgba(239,68,68,0.25)]'
+                            : 'border-[#f2d953] ring-1 ring-[#f2d953]/30 shadow-[0_0_24px_rgba(242,217,83,0.22)]'
+                        } ${isRangePreviewActive ? 'pointer-events-none' : 'cursor-pointer'}`}
+                      >
+                        <div>
                           <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="text-xs font-semibold text-[#f2d953]">
-                              {hoveredSlot && hoveredSlot.hour > selectedSlot.startHour
-                                ? 'Pilih Jam Selesai'
-                                : 'Pilih Jam Mulai'}
+                            <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
+                              {customerName || 'Sigma Person'}
                             </span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f2d953]/20 text-[#f2d953] font-semibold border border-[#f2d953]/30">
-                              +{previewHours - 1} Jam (Total {previewHours} Jam)
-                            </span>
+                            <div className="flex items-center gap-1.5">
+                              <span
+                                className={`text-[10px] px-2 py-0.5 rounded font-semibold tracking-wide ${
+                                  isBlocked
+                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                    : 'bg-[#f2d953] text-black'
+                                }`}
+                              >
+                                {isBlocked ? 'Bentrok' : 'Dipilih'}
+                              </span>
+                              {onClearSelection && (
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    onClearSelection()
+                                  }}
+                                  title="Batalkan pilihan"
+                                  className="w-4 h-4 rounded-full bg-white/10 hover:bg-white/20 text-[#a3a3a3] hover:text-white flex items-center justify-center text-[10px] transition-colors pointer-events-auto"
+                                >
+                                  ✕
+                                </button>
+                              )}
+                            </div>
                           </div>
 
-                          <div className="flex items-center justify-between text-[11px] text-[#e5e5e5]">
-                            <span>Sampai {previewEndTimeStr}</span>
-                            <span className="font-semibold text-[#f2d953]">
-                              Rp {previewPrice.toLocaleString('id-ID')}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )
-                })()}
-
-                {/* 4. Kartu Choice / Seleksi Pengguna Aktif (User POV) */}
-                {selectedSlot && selectedSlot.courtId === court.id && (
-                  <div
-                    style={{
-                      top: `${(selectedSlot.startHour - BASE_HOUR) * SLOT_HEIGHT + 3}px`,
-                      height: `${selectedSlot.totalHours * SLOT_HEIGHT - 6}px`,
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      const rect = e.currentTarget.getBoundingClientRect()
-                      const relativeY = e.clientY - rect.top
-                      const clickedHourOffset = Math.floor(relativeY / SLOT_HEIGHT)
-                      const targetHour = selectedSlot.startHour + clickedHourOffset
-                      const targetTime = `${targetHour < 10 ? '0' : ''}${targetHour}:00`
-                      onSelectEmptySlot(court, targetTime)
-                    }}
-                    className="absolute inset-x-1.5 z-20 p-3 rounded-[10px] bg-[#222222] border-2 border-[#f2d953] ring-1 ring-[#f2d953]/40 shadow-[0_0_20px_rgba(242,217,83,0.22)] transition-all cursor-pointer flex flex-col justify-between group animate-in fade-in zoom-in-95 duration-150"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="text-sm font-semibold text-[#fcfcfc] truncate block group-hover:text-[#f2d953] transition-colors">
-                          {customerName || 'Pilihan Anda'}
-                        </span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#f2d953] text-black font-semibold tracking-wide">
-                            Dipilih
+                          <span
+                            className={`text-xs block ${
+                              isBlocked ? 'text-red-400 font-medium' : 'text-[#d4d4d4]'
+                            }`}
+                          >
+                            {isBlocked
+                              ? `${activeStartTimeStr} - ${activeEndTimeStr} (Jadwal Bentrok)`
+                              : `${activeStartTimeStr} - ${activeEndTimeStr} (${activeTotalHours} jam)`}
                           </span>
-                          {onClearSelection && (
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                onClearSelection()
-                              }}
-                              title="Batalkan pilihan"
-                              className="w-4 h-4 rounded-full bg-white/10 hover:bg-white/20 text-[#a3a3a3] hover:text-white flex items-center justify-center text-[10px] transition-colors"
-                            >
-                              ✕
-                            </button>
-                          )}
+                        </div>
+
+                        <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] pt-1 border-t border-white/10">
+                          <span>{selectedSlot.courtName}</span>
+                          <span
+                            className={`font-semibold ${
+                              isBlocked ? 'text-red-400' : 'text-[#f2d953]'
+                            }`}
+                          >
+                            {isBlocked
+                              ? 'Tidak Tersedia'
+                              : `Rp ${activeTotalPrice.toLocaleString('id-ID')}`}
+                          </span>
                         </div>
                       </div>
-
-                      <span className="text-xs text-[#d4d4d4] block">
-                        {selectedSlot.startTime} - {selectedSlot.endTime} ({selectedSlot.totalHours} jam)
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] pt-1 border-t border-white/10">
-                      <span>{selectedSlot.courtName}</span>
-                      <span className="font-semibold text-[#f2d953]">
-                        Rp {selectedSlot.totalPrice.toLocaleString('id-ID')}
-                      </span>
-                    </div>
-                  </div>
-                )}
+                    )
+                  })()}
               </div>
             )
           })}
