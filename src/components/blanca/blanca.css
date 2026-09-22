@@ -36,10 +36,10 @@
   --font-aeonik: 'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Hilangkan vertical bar / scrollbar */
+/* Hilangkan horizontal scrollbar dan sembunyikan scrollbar visual */
 html,
 body {
-  overflow: hidden !important;
+  overflow-x: hidden;
   scrollbar-width: none !important; /* Firefox */
   -ms-overflow-style: none !important; /* IE/Edge */
 }
@@ -324,4 +324,113 @@ p.body {
 
 .icon-button:hover .icon-button__icon svg {
   transform: rotate(45deg);
+}
+
+/* Site Grid & Typography from Blanca Difference */
+.site-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0px, 1fr));
+  column-gap: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mdw\:site-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0px, 1fr));
+    column-gap: 0.5rem;
+  }
+}
+
+.preheading {
+  font-family: var(--font-aeonik);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 300;
+  color: #fcfcfc;
+  padding-left: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.preheading::before {
+  content: "";
+  background-color: rgb(242, 217, 83);
+  width: 2px;
+  height: 13px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 1.5px;
+}
+
+.h2 {
+  font-family: var(--font-aeonik);
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.64px;
+  font-weight: 400;
+  color: #fcfcfc;
+}
+
+@media (max-width: 1023px) {
+  .h2-mobile {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.4px;
+  }
+}
+
+.h3 {
+  font-family: var(--font-aeonik);
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.32px;
+  font-weight: 400;
+  color: #fcfcfc;
+}
+
+.big-body {
+  font-family: var(--font-aeonik);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: #fcfcfc;
+}
+
+/* Fancy Spacer */
+.fancy-spacer {
+  --fancy-spacer-colour: #444;
+  display: block;
+  height: 1rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.fancy-spacer::before {
+  border-color: var(--fancy-spacer-colour);
+  border-left-width: 0.063rem;
+  border-right-width: 0.063rem;
+  border-style: solid;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  height: 0.563rem;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.fancy-spacer::after {
+  background-color: var(--fancy-spacer-colour);
+  height: 0.063rem;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
 }

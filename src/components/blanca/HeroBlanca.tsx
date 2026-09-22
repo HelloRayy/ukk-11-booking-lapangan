@@ -504,7 +504,7 @@ export default function HeroBlanca() {
         </div>
       </section>
 
-      {/* Bottom Floating Action Button (FAB): Quiz Popup */}
+      {/* Bottom Floating Action Button (FAB): Reservation Popup */}
       <div className="fixed z-30 left-0 bottom-0 w-full flex flex-row items-center justify-center pointer-events-none">
         <div className="absolute left-0 bottom-0 w-full h-[88px] md:h-[200px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
@@ -515,27 +515,27 @@ export default function HeroBlanca() {
           <div className="absolute -top-[15px] right-[10px] bottom-0 w-[89px] h-auto pointer-events-none group-hover:scale-[1.075] transition-transform duration-300 origin-bottom">
             <img
               className="h-[67.0964px] w-[88.9974px] object-contain object-bottom leading-normal transition-all"
-              alt="Find your racquet"
+              alt="Reserve your court"
               src="/assets/blanca/quiz-button.png"
               width="191"
               height="144"
             />
           </div>
-          <div className="flex flex-col items-start h-[30px] w-[124.01px] leading-tight transition-all">
+          <div className="flex flex-col items-start h-[30px] w-auto leading-tight transition-all">
             <button
               type="button"
-              className="text-left h-[16.0026px] text-base text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer"
+              className="text-left h-[16.0026px] text-base text-[#fcfcfc] font-normal leading-tight transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
-              Find your racquet
+              Reserve your court
             </button>
-            <span className="text-[#bfbfbf] text-sm font-light leading-tight transition-all mt-0.5">
-              and get a discount
+            <span className="text-[#bfbfbf] text-sm font-light leading-tight transition-all mt-0.5 whitespace-nowrap">
+              check available slots
             </span>
           </div>
         </div>
       </div>
 
-      {/* Quiz Modal */}
+      {/* Reservation Modal */}
       {quizOpen && (
         <div
           className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-4"
@@ -551,24 +551,25 @@ export default function HeroBlanca() {
               type="button"
               onClick={() => setQuizOpen(false)}
               className="absolute top-4 md:top-6 right-4 md:right-6 w-10 h-10 flex items-center justify-center rounded-[8px] border border-neutral-300 hover:border-black hover:bg-neutral-100 transition-colors text-neutral-800 cursor-pointer"
-              aria-label="Close quiz"
+              aria-label="Close modal"
             >
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m6 6 12 12M6 18 18 6" />
               </svg>
             </button>
             <div className="flex flex-col gap-4">
-              <span className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Quiz</span>
-              <h2 className="text-2xl md:text-3xl font-medium tracking-tight">Find your perfect racquet</h2>
+              <span className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Reservation</span>
+              <h2 className="text-2xl md:text-3xl font-medium tracking-tight">Reserve your court now</h2>
               <p className="text-neutral-600 text-sm md:text-base">
-                And get 10% off on your purchase
+                Check real-time schedule availability and book your preferred court in minutes.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="/collections/racquets"
+                  href="/#reservation"
+                  onClick={() => setQuizOpen(false)}
                   className="inline-flex items-center justify-center px-6 py-3 bg-[#161616] text-[#fcfcfc] rounded-md font-normal hover:bg-neutral-800 transition-colors text-center"
                 >
-                  Take the quiz
+                  Start booking
                 </a>
                 <button
                   type="button"
