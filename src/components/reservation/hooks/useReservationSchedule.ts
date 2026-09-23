@@ -1,120 +1,36 @@
-// PERAN FILE: Custom Hook State Kalender Jadwal dengan Integrasi Supabase & Form LP (User POV)
+// PERAN FILE: Custom Hook Utama Pengatur Alur Interaksi Kalender & Checkout (Orkestrator)
 import { useState, useEffect, useCallback } from 'react'
 import type { BookingItem, Court, SlotRangeSelection, PaymentType, RightPanelMode, StoredCustomerInfo } from '../types'
 import { TIME_SLOTS, CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
-import { getLapangan, getAllBookings, createBooking, subscribeToBookings } from '../../../lib/api'
+import { createBooking } from '../../../lib/api'
 import { getTodayISODate, getInitials } from '../utils/formatters'
-import type { Booking as DbBooking } from '../../../types/database'
-import { FIXTURE_COURTS } from '../__mocks__/scheduleFixtures'
+import { useReservationData } from './useReservationData'
+import { useSlotValidation } from './useSlotValidation'
 
 export { CALENDAR_CURRENT_TIME, TIME_SLOTS } from '../constants/scheduleConfig'
 
-const COURT_STYLE_MAP: Record<number, { type: string; image: string }> = {
-  1: {
-    type: 'Panoramic Glass',
-    image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80',
-  },
-  2: {
-    type: 'Pro Championship',
-    image: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80',
-  },
-  3: {
-    type: 'VIP Indoor AC',
-    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80',
-  },
-  4: {
-    type: 'Training Ground',
-    image: 'https://images.unsplash.com/photo-1521537634581-0dced2fedc2a?auto=format&fit=crop&w=600&q=80',
-  },
-}
-
-// Konversi data booking dari tabel Supabase ke struktur BookingItem tampilan kalender
-function mapDbBookingsToItems(
-  dbBookings: DbBooking[],
-  targetDate: string,
-  courtList: Court[],
-): BookingItem[] {
-  const matching = dbBookings.filter(
-    (b) => b.tgl_main === targetDate && b.status !== 'Batal',
-  )
-
-  const items: BookingItem[] = []
-
-  matching.forEach((b) => {
-    const slots = b.jam_slots || []
-    if (slots.length === 0) return
-
-    // Kelompokkan slot jam yang bersambung (contiguous)
-    const sorted = [...slots].sort((x, y) => parseInt(x, 10) - parseInt(y, 10))
-    const contiguousGroups: string[][] = []
-    let currentGroup: string[] = [sorted[0]]
-
-    for (let i = 1; i < sorted.length; i++) {
-      const prevH = parseInt(sorted[i - 1].split(':')[0], 10)
-      const currH = parseInt(sorted[i].split(':')[0], 10)
-      if (currH === prevH + 1) {
-        currentGroup.push(sorted[i])
-      } else {
-        contiguousGroups.push(currentGroup)
-        currentGroup = [sorted[i]]
-      }
-    }
-    contiguousGroups.push(currentGroup)
-
-    const courtObj = courtList.find((c) => String(c.id) === String(b.lapangan_id))
-    const courtName = courtObj?.name || b.lapangan?.nama_lapangan || `Court ${b.lapangan_id}`
-    const initials = getInitials(b.nama_penyewa)
-
-    contiguousGroups.forEach((grp, idx) => {
-      const startTime = grp[0]
-      const lastSlot = grp[grp.length - 1]
-      const lastH = parseInt(lastSlot.split(':')[0], 10) + 1
-      const endTime = `${lastH < 10 ? '0' : ''}${lastH}:00`
-
-      items.push({
-        id: `db-${b.id}-${idx}`,
-        invoiceNumber: `INV-${b.id}`,
-        createdAt: b.created_at || 'Baru saja',
-        courtId: b.lapangan_id,
-        courtName,
-        customerName: b.nama_penyewa,
-        customerWhatsapp: b.no_hp,
-        customerEmail: 'penyewa@example.com',
-        date: b.tgl_main,
-        startTime,
-        endTime,
-        status: 'booked',
-        paymentType: b.tipe_bayar,
-        totalPrice: b.total_bayar,
-        paidAmount: b.nominal_dibayar,
-        remainingAmount: b.sisa_bayar,
-        notes: `Booking transaksi #${b.id}`,
-        avatarInitials: initials,
-      })
-    })
-  })
-
-  return items
-}
-
 export function useReservationSchedule() {
   const [selectedDate, setSelectedDate] = useState<string>(getTodayISODate())
-  const [courts, setCourts] = useState<Court[]>([])
-  const [bookings, setBookings] = useState<BookingItem[]>([])
-  const [allDbBookings, setAllDbBookings] = useState<DbBooking[]>([])
   const [panelMode, setPanelMode] = useState<RightPanelMode>('empty')
   const [selectedBooking, setSelectedBooking] = useState<BookingItem | null>(null)
   const [selectedSlot, setSelectedSlot] = useState<SlotRangeSelection | null>(null)
   const [customer, setCustomer] = useState<StoredCustomerInfo | null>(null)
   const [rangeError, setRangeError] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+
+  // 1. Modul Penarikan Data & Realtime Supabase
+  const { courts, bookings, isLoading, setAllDbBookings, setBookings } = useReservationData({ selectedDate })
+
+  // 2. Modul Validasi Jam Lampau & Deteksi Bentrok
+  const { isPastSlot, getSlotBooking, isSlotInRange } = useSlotValidation({
+    selectedDate,
+    bookings,
+    selectedSlot,
+  })
 
   // Auto-dismiss pesan error setelah 4 detik
   useEffect(() => {
     if (!rangeError) return
-    const timer = setTimeout(() => {
-      setRangeError(null)
-    }, 4000)
+    const timer = setTimeout(() => setRangeError(null), 4000)
     return () => clearTimeout(timer)
   }, [rangeError])
 
@@ -122,133 +38,13 @@ export function useReservationSchedule() {
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem('blanca_customer_info')
-      if (raw) {
-        setCustomer(JSON.parse(raw))
-      }
+      if (raw) setCustomer(JSON.parse(raw))
     } catch (e) {
       console.error('Gagal membaca data customer dari sessionStorage:', e)
     }
   }, [])
 
-  // 1. Ambil data lapangan dan seluruh transaksi booking secara terkoordinasi
-  useEffect(() => {
-    let isMounted = true
-
-    async function initializeSchedule() {
-      try {
-        setIsLoading(true)
-        const [dbCourts, dbBookings] = await Promise.all([
-          getLapangan().catch((err) => {
-            console.warn('Gagal memuat data lapangan Supabase:', err)
-            return []
-          }),
-          getAllBookings().catch((err) => {
-            console.warn('Gagal memuat data bookings Supabase:', err)
-            return []
-          }),
-        ])
-
-        if (!isMounted) return
-
-        if (dbCourts && dbCourts.length > 0) {
-          const mapped: Court[] = dbCourts.map((c) => ({
-            id: c.id,
-            name: c.nama_lapangan,
-            type: COURT_STYLE_MAP[c.id]?.type || 'Standard Court',
-            image:
-              COURT_STYLE_MAP[c.id]?.image ||
-              'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80',
-            pricePerHour: c.tarif_per_jam,
-          }))
-          setCourts(mapped)
-        } else {
-          // Fallback ke fixtures jika database kosong / offline
-          setCourts(FIXTURE_COURTS)
-        }
-
-        if (dbBookings && dbBookings.length > 0) {
-          setAllDbBookings(dbBookings)
-        }
-      } catch (err) {
-        console.warn('Gagal menginisialisasi jadwal reservasi:', err)
-        if (isMounted) {
-          setCourts(FIXTURE_COURTS)
-        }
-      } finally {
-        if (isMounted) {
-          setIsLoading(false)
-        }
-      }
-    }
-
-    initializeSchedule()
-
-    const unsubscribe = subscribeToBookings(async () => {
-      try {
-        const freshBookings = await getAllBookings()
-        if (isMounted) {
-          setAllDbBookings(freshBookings)
-        }
-      } catch (err) {
-        console.warn('Gagal sinkronisasi realtime booking:', err)
-      }
-    })
-
-    return () => {
-      isMounted = false
-      unsubscribe()
-    }
-  }, [])
-
-  // 3. Sinkronkan booking ke grid saat selectedDate, allDbBookings, atau courts berubah
-  useEffect(() => {
-    if (allDbBookings.length > 0) {
-      const mapped = mapDbBookingsToItems(allDbBookings, selectedDate, courts)
-      setBookings(mapped)
-    } else {
-      setBookings([])
-    }
-  }, [selectedDate, allDbBookings, courts])
-
-  // Fungsi pengecekan apakah suatu jam slot sudah lewat dari jam sekarang
-  const isPastSlot = useCallback(
-    (time: string): boolean => {
-      const today = getTodayISODate()
-      if (selectedDate < today) return true
-      if (selectedDate > today) return false
-
-      const slotHour = parseInt(time.split(':')[0], 10)
-      if (slotHour < CALENDAR_CURRENT_TIME.hour) return true
-      if (slotHour === CALENDAR_CURRENT_TIME.hour && CALENDAR_CURRENT_TIME.minute > 0) return true
-      return false
-    },
-    [selectedDate],
-  )
-
-  // Cari booking pada lapangan dan jam tertentu
-  const getSlotBooking = useCallback(
-    (courtId: number | string, time: string): BookingItem | undefined => {
-      const targetHour = parseInt(time.split(':')[0], 10)
-      return bookings.find((b) => {
-        if (String(b.courtId) !== String(courtId)) return false
-        const startHour = parseInt(b.startTime.split(':')[0], 10)
-        const endHour = parseInt(b.endTime.split(':')[0], 10)
-        return targetHour >= startHour && targetHour < endHour
-      })
-    },
-    [bookings],
-  )
-
-  // Cek apakah suatu slot termasuk dalam rentang pilihan aktif
-  const isSlotInRange = useCallback(
-    (courtId: number | string, time: string): boolean => {
-      if (!selectedSlot || String(selectedSlot.courtId) !== String(courtId)) return false
-      return selectedSlot.selectedHours.includes(time)
-    },
-    [selectedSlot],
-  )
-
-  // Aksi ketika user mengklik booking yang sudah ada (hanya melihat info - User POV)
+  // Aksi ketika user mengklik booking yang sudah ada (Hanya melihat rincian sewa)
   const handleSelectBooking = (booking: BookingItem) => {
     setSelectedBooking(booking)
     setSelectedSlot(null)
@@ -256,11 +52,11 @@ export function useReservationSchedule() {
     setPanelMode('inspect')
   }
 
-  // Aksi pemilihan slot kosong dengan validasi waktu lampau & logika multi-slot range
+  // Aksi pemilihan slot kosong dengan validasi jam lampau & rentang waktu dinamis
   const handleSelectEmptySlot = (court: Court, clickedTime: string) => {
     setRangeError(null)
 
-    // 1. Validasi waktu lampau: DILARANG booking < dari jam sekarang (10:40 jika hari ini)
+    // Validasi jam lampau: DILARANG booking jam yang sudah lewat
     if (isPastSlot(clickedTime)) {
       const today = getTodayISODate()
       const errorMsg =
@@ -273,7 +69,7 @@ export function useReservationSchedule() {
 
     const clickedHour = parseInt(clickedTime.split(':')[0], 10)
 
-    // Jika belum ada pilihan, atau user klik di lapangan berbeda, atau pilihan sebelumnya sudah berupa rentang (>1 jam):
+    // Jika belum ada pilihan, atau user klik di lapangan lain, atau pilihan sebelumnya sudah berupa rentang (>1 jam):
     if (!selectedSlot || String(selectedSlot.courtId) !== String(court.id) || selectedSlot.totalHours > 1) {
       const endHour = clickedHour + 1
       const endTime = `${endHour < 10 ? '0' : ''}${endHour}:00`
@@ -296,32 +92,26 @@ export function useReservationSchedule() {
       return
     }
 
-    // Jika user mengklik slot jam yang sama persis:
-    if (selectedSlot.startHour === clickedHour) {
-      return
-    }
+    if (selectedSlot.startHour === clickedHour) return
 
-    // Urutkan nilai min dan max secara otomatis
+    // Urutkan rentang min dan max
     const minH = Math.min(selectedSlot.startHour, clickedHour)
     const maxH = Math.max(selectedSlot.startHour, clickedHour)
 
-    // Bentuk array seluruh slot jam di antara minH dan maxH
     const hoursInRange: string[] = []
     let hasCollision = false
     let hasPastHour = false
 
+    // Loop verifikasi setiap jam di dalam rentang
     for (let h = minH; h <= maxH; h++) {
       const timeString = `${h < 10 ? '0' : ''}${h}:00`
 
-      // Validasi waktu lampau di dalam rentang
       if (isPastSlot(timeString)) {
         hasPastHour = true
         break
       }
 
-      // Validasi tabrakan jadwal (collision check)
-      const existing = getSlotBooking(court.id, timeString)
-      if (existing) {
+      if (getSlotBooking(court.id, timeString)) {
         hasCollision = true
         break
       }
@@ -353,7 +143,7 @@ export function useReservationSchedule() {
       return
     }
 
-    // Rentang valid: otomatis rangkum seluruh jam terpilih
+    // Rentang valid: set data rentang jam terpilih
     const totalHours = maxH - minH + 1
     const startTime = `${minH < 10 ? '0' : ''}${minH}:00`
     const finalEndHour = maxH + 1
@@ -377,19 +167,15 @@ export function useReservationSchedule() {
     setPanelMode('create')
   }
 
-  // Tutup panel samping kanan (dengan opsi pesan alert jika expired)
+  // Tutup panel samping kanan
   const handleClosePanel = (expiredMessage?: string) => {
     setPanelMode('empty')
     setSelectedBooking(null)
     setSelectedSlot(null)
-    if (expiredMessage) {
-      setRangeError(expiredMessage)
-    } else {
-      setRangeError(null)
-    }
+    setRangeError(expiredMessage || null)
   }
 
-  // Konfirmasi pembuatan booking baru oleh calon penyewa (User POV) & simpan ke Supabase
+  // Konfirmasi pembuatan booking baru & simpan ke Supabase
   const handleCreateBooking = async (paymentType: PaymentType, notes?: string) => {
     if (!selectedSlot) return
 
@@ -400,7 +186,6 @@ export function useReservationSchedule() {
     const customerName = customer?.nama || 'Raditya Rayhan'
     const customerWhatsapp = customer?.whatsapp || '085799799857'
     const customerEmail = customer?.email || 'raditya.rayhan@gmail.com'
-
     const avatarInitials = getInitials(customerName)
 
     const now = new Date()
@@ -459,7 +244,6 @@ export function useReservationSchedule() {
       setPanelMode('receipt')
     } catch (error) {
       console.error('Gagal menyimpan booking ke Supabase:', error)
-      // Fallback lokal agar UX tetap lancar jika offline
       const fallbackBooking: BookingItem = {
         id: `book-${Date.now()}`,
         invoiceNumber,
@@ -496,10 +280,7 @@ export function useReservationSchedule() {
     setRangeError(null)
   }
 
-  // Hapus pesan error bentrok/waktu lampau
-  const handleClearError = useCallback(() => {
-    setRangeError(null)
-  }, [])
+  const handleClearError = useCallback(() => setRangeError(null), [])
 
   return {
     courts,
@@ -524,4 +305,3 @@ export function useReservationSchedule() {
     handleDateChange,
   }
 }
-
