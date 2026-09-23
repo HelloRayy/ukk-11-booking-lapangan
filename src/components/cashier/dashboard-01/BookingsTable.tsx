@@ -34,6 +34,7 @@ import {
 } from '../../ui/table'
 import { Button } from '../../ui/button'
 import { Input } from '../../ui/input'
+import { formatSlotRange } from '../../../lib/utils'
 
 interface BookingsTableProps {
   bookings: Booking[]
@@ -176,7 +177,7 @@ export default function BookingsTable({
       `'${b.no_hp}`,
       `"${b.lapangan?.nama_lapangan || '-'}"`,
       b.tgl_main,
-      `"${(b.jam_slots || []).join(', ')}"`,
+      `"${formatSlotRange(b.jam_slots)}"`,
       b.total_bayar,
       b.sisa_bayar,
       b.status,
@@ -680,8 +681,11 @@ export default function BookingsTable({
                           />
                           <span className="leading-snug transition-all">{item.tgl_main}</span>
                         </div>
-                        <span className="text-xs text-[oklch(0.65_0.002_230.81)]">
-                          • {item.jam_slots.join(', ')}
+                        <span
+                          className="text-xs text-[oklch(0.75_0.002_230.81)] font-medium"
+                          title={`Durasi: ${item.durasi_jam} Jam (${item.jam_slots.join(', ')})`}
+                        >
+                          • {formatSlotRange(item.jam_slots)}
                         </span>
                       </div>
                     </TableCell>

@@ -13,6 +13,7 @@ import {
   Trash2,
 } from 'lucide-react'
 import type { Booking } from '../../../types/database'
+import { formatSlotRange } from '../../../lib/utils'
 
 interface BookingDetailSheetProps {
   booking: Booking | null
@@ -45,7 +46,7 @@ export default function BookingDetailSheet({
     `Invoice: INV-${booking.id}\n` +
     `Penyewa: ${booking.nama_penyewa}\n` +
     `Lapangan: ${courtName}\n` +
-    `Tanggal: ${booking.tgl_main} (${booking.jam_slots.join(', ')})\n` +
+    `Tanggal: ${booking.tgl_main} (${formatSlotRange(booking.jam_slots)})\n` +
     `Total: ${formatRupiah(booking.total_bayar)}\n` +
     `Status: ${booking.status} (${isLunas ? 'LUNAS' : `Sisa ${formatRupiah(sisa)}`})\n\n` +
     `Tunjukkan pesan ini saat tiba di resepsionis arena. Terima kasih!`
@@ -150,9 +151,9 @@ export default function BookingDetailSheet({
                 <span className="font-medium text-white">{booking.tgl_main}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#8e8e8e]">Slot Jam</span>
-                <span className="font-medium text-emerald-400">
-                  {booking.jam_slots.join(', ')}
+                <span className="text-[#8e8e8e]">Rentang Jam</span>
+                <span className="font-semibold text-emerald-400">
+                  {formatSlotRange(booking.jam_slots)}
                 </span>
               </div>
               <div className="flex items-center justify-between">
