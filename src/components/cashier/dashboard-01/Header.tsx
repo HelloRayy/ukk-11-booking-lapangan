@@ -1,4 +1,4 @@
-// PERAN FILE: Komponen Top Header Bar Kasir Linear-Style (Sesuai Snippet Referensi)
+// PERAN FILE: Komponen Top Header Bar Kasir Linear-Style (Inter Sans Bebas Mono)
 import { Search, Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProps) {
   return (
-    <header className="h-[44px] shrink-0 border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] px-[21.6px] flex items-center justify-between gap-4 select-none text-[oklch(0.9235_0.001733_230.685)]">
+    <header className="h-[44px] shrink-0 border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] px-5 flex items-center justify-between gap-4 select-none text-[oklch(0.9235_0.001733_230.685)]">
       {/* 1. Sisi Kiri: Breadcrumb Linear (... 💻 road-to-ukk / Work items) */}
       <div className="flex items-center gap-2">
         <button
@@ -41,7 +41,7 @@ export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProp
             placeholder="Cari transaksi..."
             className="w-full h-7 pl-8 pr-10 rounded-md bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] text-xs text-[oklch(0.9235_0.001733_230.685)] placeholder:text-[oklch(0.55_0.002_230.81)] focus:outline-none focus:border-[oklch(0.35_0.0033_230.84)] transition-colors"
           />
-          <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[9px] font-mono px-1 py-0.5 rounded bg-white/10 text-[oklch(0.65_0.002_230.81)] pointer-events-none">
+          <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/10 text-[oklch(0.65_0.002_230.81)] pointer-events-none">
             ⌘K
           </kbd>
         </div>

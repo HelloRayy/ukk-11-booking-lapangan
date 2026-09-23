@@ -1,4 +1,4 @@
-// PERAN FILE: Komponen Sidebar Kasir Linear-Style (Sesuai Referensi Styling OKLCH)
+// PERAN FILE: Komponen Sidebar Kasir Linear-Style (Full Height & Inter Sans)
 import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck } from 'lucide-react'
 
 interface SidebarProps {
@@ -8,9 +8,9 @@ interface SidebarProps {
 
 export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
   return (
-    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] p-3.5 select-none min-h-[calc(100vh-2rem)] text-[oklch(0.9235_0.001733_230.685)]">
+    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] p-3.5 select-none h-screen text-[oklch(0.9235_0.001733_230.685)]">
       {/* 1. Brand & Workspace Bar */}
-      <div className="space-y-5">
+      <div className="space-y-4">
         <div className="flex items-center gap-2.5 px-2 py-1">
           <div className="w-6 h-6 rounded-md bg-white text-black flex items-center justify-center font-bold text-xs shadow-xs">
             B

@@ -1,4 +1,4 @@
-// PERAN FILE: Tabel Transaksi Kasir Linear-Style (Sesuai Referensi Styling OKLCH & Shadcn Primitives)
+// PERAN FILE: Tabel Transaksi Kasir Linear-Style (Inter Sans Murni, Bebas Mono & AI Slop)
 import { useState, useMemo } from 'react'
 import {
   Search,
@@ -32,7 +32,6 @@ import {
 } from '../../ui/table'
 import { Button } from '../../ui/button'
 import { Input } from '../../ui/input'
-import { Badge } from '../../ui/badge'
 
 interface BookingsTableProps {
   bookings: Booking[]
@@ -149,11 +148,11 @@ export default function BookingsTable({
   const getLabelDotColor = (courtName: string) => {
     if (courtName.toLowerCase().includes('badminton')) return 'bg-cyan-400'
     if (courtName.toLowerCase().includes('futsal')) return 'bg-amber-400'
-    return 'bg-pink-400'
+    return 'bg-emerald-400'
   }
 
   return (
-    <div className="space-y-3 p-4 sm:p-5 select-none relative font-sans text-[oklch(0.9235_0.001733_230.685)]">
+    <div className="flex flex-col h-full select-none relative font-sans text-[oklch(0.9235_0.001733_230.685)]">
       {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
@@ -163,8 +162,8 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Menggunakan OKLCH Palette */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
+      {/* Top Filter Bar Linear */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-3 border-b border-[oklch(0.2593_0.0033_230.84)]">
         <div className="flex items-center gap-2.5">
           <div className="relative flex-1 sm:w-72">
             <Search className="w-3.5 h-3.5 text-[oklch(0.55_0.002_230.81)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -195,7 +194,7 @@ export default function BookingsTable({
                   onStatusChange(tab.value)
                   setCurrentPage(1)
                 }}
-                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
                   selectedStatus === tab.value
                     ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
                     : 'text-[oklch(0.65_0.002_230.81)] hover:text-white'
@@ -231,8 +230,8 @@ export default function BookingsTable({
         </div>
       </div>
 
-      {/* Tabel Menggunakan Shadcn Table Component & Border OKLCH */}
-      <div className="rounded-lg border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] overflow-hidden shadow-xs">
+      {/* Tabel Data Full Width Tanpa Box Terjepit */}
+      <div className="flex-1 overflow-x-auto min-h-0 bg-[oklch(0.1932_0.002_230.81)]">
         <Table>
           {/* Header Shadcn Table */}
           <TableHeader>
@@ -240,18 +239,18 @@ export default function BookingsTable({
               {/* 1. Transaksi / Work items */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[280px]"
+                className="cursor-pointer hover:text-white transition-colors min-w-[280px] pl-5"
               >
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-white/90">Work items</span>
-                  <span className="text-[10px] text-[oklch(0.55_0.002_230.81)] font-mono">({sortedBookings.length})</span>
+                  <span className="text-xs text-[oklch(0.55_0.002_230.81)]">({sortedBookings.length})</span>
                 </div>
               </TableHead>
 
               {/* 2. State */}
               <TableHead
                 onClick={() => handleSort('status')}
-                className="cursor-pointer hover:text-white transition-colors w-32"
+                className="cursor-pointer hover:text-white transition-colors w-36"
               >
                 <div className="flex items-center gap-1.5">
                   <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
@@ -292,7 +291,7 @@ export default function BookingsTable({
               {/* 5. Labels / Jadwal Main */}
               <TableHead
                 onClick={() => handleSort('tgl_main')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[200px]"
+                className="cursor-pointer hover:text-white transition-colors min-w-[220px]"
               >
                 <div className="flex items-center gap-1.5">
                   <Tag className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
@@ -302,7 +301,7 @@ export default function BookingsTable({
               </TableHead>
 
               {/* 6. Settings / Options */}
-              <TableHead className="text-right w-12 px-3">
+              <TableHead className="text-right w-14 pr-5">
                 <div className="flex items-center justify-end text-[oklch(0.65_0.002_230.81)]">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
@@ -342,17 +341,17 @@ export default function BookingsTable({
                     onClick={() => setSelectedBooking(item)}
                     className="cursor-pointer group h-10 border-b border-[oklch(0.2593_0.0033_230.84)]/60 hover:bg-white/[0.04]"
                   >
-                    {/* 1. Identifier (Mono) + Title (Penyewa & No HP) */}
-                    <TableCell>
+                    {/* 1. Identifier (Sans) + Title (Penyewa & No HP) */}
+                    <TableCell className="pl-5">
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-[11px] text-[oklch(0.65_0.002_230.81)] font-medium tracking-wide shrink-0">
+                        <span className="text-xs text-[oklch(0.65_0.002_230.81)] font-medium tracking-wide shrink-0">
                           {invoiceCode}
                         </span>
                         <span className="text-[oklch(0.9235_0.001733_230.685)] text-xs font-medium group-hover:text-white transition-colors truncate">
                           {item.nama_penyewa}
                         </span>
                         {item.no_hp && (
-                          <span className="text-[11px] text-[oklch(0.55_0.002_230.81)] font-mono hidden md:inline">
+                          <span className="text-xs text-[oklch(0.55_0.002_230.81)] hidden md:inline">
                             • {item.no_hp}
                           </span>
                         )}
@@ -422,35 +421,35 @@ export default function BookingsTable({
                       )}
                     </TableCell>
 
-                    {/* 4. Assignees / Lapangan */}
+                    {/* 4. Assignees / Lapangan (Sesuai Persis Referensi User) */}
                     <TableCell className="whitespace-nowrap">
-                      <Badge variant="outline" className="border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] gap-1.5 py-0.5 px-2 font-normal">
-                        <span className="w-3.5 h-3.5 rounded-full bg-white/10 flex items-center justify-center text-[9px] text-emerald-400 font-bold">
+                      <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
+                        <span className="flex items-center justify-center w-3.5 h-3.5 bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.1)] text-[oklch(0.765_0.177_163.223)] text-xs font-bold rounded-full leading-snug transition-all">
                           {courtName.charAt(0)}
                         </span>
-                        <span className="truncate">{courtName}</span>
-                      </Badge>
+                        <span className="leading-snug transition-all">{courtName}</span>
+                      </div>
                     </TableCell>
 
                     {/* 5. Labels / Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] gap-1.5 py-0.5 px-2 font-normal">
+                        <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${getLabelDotColor(
                               courtName
                             )}`}
                           />
-                          <span>{item.tgl_main}</span>
-                        </Badge>
-                        <span className="text-[11px] text-[oklch(0.65_0.002_230.81)]">
+                          <span className="leading-snug transition-all">{item.tgl_main}</span>
+                        </div>
+                        <span className="text-xs text-[oklch(0.65_0.002_230.81)]">
                           • {item.jam_slots.join(', ')}
                         </span>
                       </div>
                     </TableCell>
 
                     {/* 6. Aksi Tiga Titik & Quick Action */}
-                    <TableCell className="text-right px-3">
+                    <TableCell className="text-right pr-5">
                       <div className="flex items-center justify-end gap-1 relative">
                         {!isLunas && !isBatal && (
                           <Button
@@ -569,55 +568,55 @@ export default function BookingsTable({
         {/* Row Baris Bawah: + Add work item */}
         <div
           onClick={onOpenManualModal}
-          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[oklch(0.2593_0.0033_230.84)]"
+          className="flex items-center gap-2 py-2.5 px-5 text-xs text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[oklch(0.2593_0.0033_230.84)]"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>+ Add work item</span>
         </div>
+      </div>
 
-        {/* Footer Navigasi Baris & Halaman */}
-        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] text-[11px] text-[oklch(0.65_0.002_230.81)]">
-          <div className="flex items-center gap-2">
-            <span>Baris per halaman:</span>
-            <select
-              value={rowsPerPage}
-              onChange={(e) => {
-                setRowsPerPage(Number(e.target.value))
-                setCurrentPage(1)
-              }}
-              className="bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded px-1.5 py-0.5 text-white text-[11px] cursor-pointer focus:outline-none"
+      {/* Footer Navigasi Baris & Halaman Full Width */}
+      <div className="flex items-center justify-between px-5 py-2.5 border-t border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] text-xs text-[oklch(0.65_0.002_230.81)] shrink-0">
+        <div className="flex items-center gap-2">
+          <span>Baris per halaman:</span>
+          <select
+            value={rowsPerPage}
+            onChange={(e) => {
+              setRowsPerPage(Number(e.target.value))
+              setCurrentPage(1)
+            }}
+            className="bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded px-1.5 py-0.5 text-white text-xs cursor-pointer focus:outline-none"
+          >
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={30}>30</option>
+            <option value={50}>50</option>
+          </select>
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          <span>
+            Halaman {currentPage} dari {totalPages}
+          </span>
+          <div className="flex items-center gap-1 ml-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             >
-              <option value={10}>10</option>
-              <option value={15}>15</option>
-              <option value={30}>30</option>
-              <option value={50}>50</option>
-            </select>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <span>
-              Halaman {currentPage} dari {totalPages}
-            </span>
-            <div className="flex items-center gap-1 ml-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              >
-                <ChevronLeft className="w-3 h-3" />
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              >
-                <ChevronRight className="w-3 h-3" />
-              </Button>
-            </div>
+              <ChevronLeft className="w-3 h-3" />
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            >
+              <ChevronRight className="w-3 h-3" />
+            </Button>
           </div>
         </div>
       </div>
