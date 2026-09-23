@@ -2,10 +2,11 @@
 import { Search, Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
+  currentTab: 'overview' | 'bookings'
   onToggleMobileSidebar?: () => void
 }
 
-export default function Header({ onToggleMobileSidebar }: HeaderProps) {
+export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProps) {
   return (
     <header className="h-16 shrink-0 border-b border-[#262626] bg-[#141414]/80 backdrop-blur-md px-6 flex items-center justify-between gap-4 select-none">
       {/* 1. Sisi Kiri: Breadcrumb & Mobile Trigger */}
@@ -13,7 +14,7 @@ export default function Header({ onToggleMobileSidebar }: HeaderProps) {
         <button
           type="button"
           onClick={onToggleMobileSidebar}
-          className="md:hidden p-2 rounded-lg bg-white/5 text-[#8e8e8e] hover:text-white"
+          className="md:hidden p-2 rounded-lg bg-white/5 text-[#8e8e8e] hover:text-white cursor-pointer"
         >
           <Menu className="w-4 h-4" />
         </button>
@@ -21,11 +22,13 @@ export default function Header({ onToggleMobileSidebar }: HeaderProps) {
         <div className="flex items-center gap-2 text-xs">
           <span className="text-[#8e8e8e]">Dashboard</span>
           <span className="text-[#555]">/</span>
-          <span className="text-white font-semibold">Overview</span>
+          <span className="text-white font-semibold">
+            {currentTab === 'overview' ? 'Overview' : 'Operasional (Tabel)'}
+          </span>
         </div>
       </div>
 
-      {/* 2. Sisi Tengah/Kanan: Search Bar Input Mockup */}
+      {/* 2. Sisi Tengah/Kanan: Search Bar Input Mockup & Status Kasir */}
       <div className="flex items-center gap-4">
         <div className="relative hidden sm:block w-64 md:w-80">
           <Search className="w-3.5 h-3.5 text-[#737373] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -39,7 +42,7 @@ export default function Header({ onToggleMobileSidebar }: HeaderProps) {
           </kbd>
         </div>
 
-        {/* 3. Tombol Notifikasi & Profil Kasir */}
+        {/* Tombol Notifikasi & Profil Kasir */}
         <div className="flex items-center gap-2.5">
           <button
             type="button"

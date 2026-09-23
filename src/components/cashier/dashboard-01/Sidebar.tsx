@@ -1,12 +1,12 @@
 // PERAN FILE: Komponen Sidebar Minimalis Kasir ala Shadcn UI
-import { LayoutDashboard, Calendar, ArrowUpRight, ShieldCheck } from 'lucide-react'
+import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck } from 'lucide-react'
 
 interface SidebarProps {
-  currentTab: 'overview'
-  onTabChange?: (tab: 'overview') => void
+  currentTab: 'overview' | 'bookings'
+  onTabChange?: (tab: 'overview' | 'bookings') => void
 }
 
-export default function Sidebar({ currentTab = 'overview' }: SidebarProps) {
+export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
   return (
     <aside className="w-64 shrink-0 hidden md:flex flex-col justify-between border-r border-[#262626] bg-[#141414] p-5 select-none min-h-[calc(100vh-4rem)]">
       {/* 1. Header Brand & Nama Arena */}
@@ -21,10 +21,12 @@ export default function Sidebar({ currentTab = 'overview' }: SidebarProps) {
           </div>
         </div>
 
-        {/* 2. Menu Navigasi Sesuai Pilihan Pengguna (Minimalis) */}
+        {/* 2. Menu Navigasi Sesuai Pilihan Pengguna */}
         <nav className="space-y-1">
+          {/* Menu Overview */}
           <button
             type="button"
+            onClick={() => onTabChange?.('overview')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               currentTab === 'overview'
                 ? 'bg-white/10 text-white shadow-xs border border-white/10'
@@ -33,6 +35,20 @@ export default function Sidebar({ currentTab = 'overview' }: SidebarProps) {
           >
             <LayoutDashboard className="w-4 h-4 text-emerald-400" />
             <span>Overview</span>
+          </button>
+
+          {/* Menu Operasional Tabel */}
+          <button
+            type="button"
+            onClick={() => onTabChange?.('bookings')}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              currentTab === 'bookings'
+                ? 'bg-white/10 text-white shadow-xs border border-white/10'
+                : 'text-[#8e8e8e] hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <ReceiptText className="w-4 h-4 text-[#f2d953]" />
+            <span>Operasional (Tabel)</span>
           </button>
 
           {/* Link ke Kalender Publik */}
