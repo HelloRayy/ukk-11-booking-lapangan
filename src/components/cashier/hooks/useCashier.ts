@@ -1,6 +1,6 @@
-// PERAN FILE: Custom Hook Logic untuk Mengelola State, Database, Realtime, dan Filter Kasir
-import { useState, useEffect, useCallback, useMemo } from 'react'
-import { getAllBookings, getLapangan, updateStatusBooking, subscribeToBookings } from '../../../lib/api'
+// PERAN FILE: Custom Hook Logic untuk Mengelola State, Database, Realtime, dan Server-side Search Kasir
+import { useState, useEffect, useCallback } from 'react'
+import { searchBookings, getLapangan, updateStatusBooking, subscribeToBookings } from '../../../lib/api'
 import type { Booking, Lapangan } from '../../../types/database'
 
 export function useCashier() {
@@ -10,19 +10,29 @@ export function useCashier() {
 
   // State Kontrol Pencarian & Filter
   const [searchKeyword, setSearchKeyword] = useState('')
+  const [debouncedKeyword, setDebouncedKeyword] = useState('')
   const [selectedStatus, setSelectedStatus] = useState<string>('Semua')
 
   // State Modal Dialog
   const [isManualModalOpen, setIsManualModalOpen] = useState(false)
   const [isCourtModalOpen, setIsCourtModalOpen] = useState(false)
 
-  // 1. Ambil data booking dan master lapangan secara paralel dari Supabase
+  // 1. Debounce 300ms untuk input search agar tidak membebani database setiap keystroke
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedKeyword(searchKeyword)
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [searchKeyword])
+
+  // 2. Server-side Query ke Supabase via Single JOIN Query (Bebas N+1)
   const loadDataKasir = useCallback(async () => {
     setLoading(true)
     try {
       const [bookingsData, courtsData] = await Promise.all([
-        getAllBookings().catch((err) => {
-          console.error('Gagal mengambil data booking:', err)
+        searchBookings(debouncedKeyword, selectedStatus).catch((err) => {
+          console.error('Gagal mencari data booking:', err)
           return []
         }),
         getLapangan().catch((err) => {
@@ -35,12 +45,15 @@ export function useCashier() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [debouncedKeyword, selectedStatus])
 
-  // 2. Inisialisasi data & pasang pendengar WebSocket Supabase Realtime
+  // 3. Trigger server-side search saat debouncedKeyword atau selectedStatus berubah
   useEffect(() => {
     loadDataKasir()
+  }, [loadDataKasir])
 
+  // 4. Pasang WebSocket Supabase Realtime Listener
+  useEffect(() => {
     const unsubscribe = subscribeToBookings(() => {
       loadDataKasir()
     })
@@ -50,31 +63,7 @@ export function useCashier() {
     }
   }, [loadDataKasir])
 
-  // 3. Logika penyaringan instan berdasarkan search bar (Poin 13) dan status
-  const filteredBookings = useMemo(() => {
-    return daftarBooking.filter((b) => {
-      // Filter Status
-      if (selectedStatus === 'Belum Lunas') {
-        if (b.status !== 'Booked' || (b.sisa_bayar || 0) === 0) return false
-      } else if (selectedStatus !== 'Semua' && b.status !== selectedStatus) {
-        return false
-      }
-
-      // Filter Search Keyword (Poin 13)
-      if (searchKeyword.trim()) {
-        const q = searchKeyword.toLowerCase().trim()
-        const matchName = b.nama_penyewa.toLowerCase().includes(q)
-        const matchPhone = (b.no_hp || '').toLowerCase().includes(q)
-        const matchInvoice = `inv-${b.id}`.toLowerCase().includes(q) || String(b.id).includes(q)
-        const matchCourt = (b.lapangan?.nama_lapangan || '').toLowerCase().includes(q)
-        return matchName || matchPhone || matchInvoice || matchCourt
-      }
-
-      return true
-    })
-  }, [daftarBooking, selectedStatus, searchKeyword])
-
-  // 4. Aksi pelunasan sisa bayar DP
+  // 5. Aksi pelunasan sisa bayar DP
   const handleLunasi = async (id: number) => {
     if (!window.confirm('Lunasi sisa pembayaran untuk transaksi ini?')) return
     try {
@@ -87,7 +76,7 @@ export function useCashier() {
     }
   }
 
-  // 5. Aksi pembatalan jadwal booking
+  // 6. Aksi pembatalan jadwal booking
   const handleBatal = async (id: number) => {
     if (!window.confirm('Batalkan jadwal booking ini? Slot jam akan otomatis dibuka kembali untuk pelanggan lain.')) return
     try {
@@ -102,7 +91,7 @@ export function useCashier() {
 
   return {
     daftarBooking,
-    filteredBookings,
+    filteredBookings: daftarBooking, // Langsung hasil server-side search dari Supabase
     courts,
     loading,
     searchKeyword,

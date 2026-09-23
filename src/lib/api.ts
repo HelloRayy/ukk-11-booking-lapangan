@@ -138,22 +138,36 @@ export async function deleteLapangan(id: number): Promise<void> {
   if (error) throw new Error(`Gagal menghapus lapangan: ${error.message}`)
 }
 
-// 10. cari dan filter transaksi booking (Poin 13 Kisi-Kisi UKK)
+// 10. cari dan filter transaksi booking (Poin 13 Kisi-Kisi UKK - Single Query JOIN Bebas N+1)
 export async function searchBookings(
   keyword: string = '',
-  status?: StatusBooking | 'Semua'
+  status?: string
 ): Promise<Booking[]> {
   let query = supabase
     .from('bookings')
     .select('*, lapangan(*)')
     .order('created_at', { ascending: false })
 
+  // 1. Filter status di level SQL Supabase
   if (status && status !== 'Semua') {
-    query = query.eq('status', status)
+    if (status === 'Belum Lunas') {
+      query = query.eq('status', 'Booked').gt('sisa_bayar', 0)
+    } else {
+      query = query.eq('status', status)
+    }
   }
 
+  // 2. Filter keyword pencarian di level SQL Supabase (Nama, No HP, atau Invoice ID)
   if (keyword.trim()) {
-    query = query.or(`nama_penyewa.ilike.%${keyword.trim()}%,no_hp.ilike.%${keyword.trim()}%`)
+    const q = keyword.trim()
+    const numericPart = q.toLowerCase().startsWith('inv-') ? q.slice(4) : q
+    const isId = /^\d+$/.test(numericPart)
+
+    if (isId) {
+      query = query.or(`id.eq.${numericPart},nama_penyewa.ilike.%${q}%,no_hp.ilike.%${q}%`)
+    } else {
+      query = query.or(`nama_penyewa.ilike.%${q}%,no_hp.ilike.%${q}%`)
+    }
   }
 
   const { data, error } = await query
