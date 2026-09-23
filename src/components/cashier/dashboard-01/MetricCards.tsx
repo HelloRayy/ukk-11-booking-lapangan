@@ -31,7 +31,7 @@ export default function MetricCards({ metrics }: MetricCardsProps) {
         >
           {/* Baris Atas: Judul Metrik & Icon */}
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-[#8e8e8e] uppercase tracking-wider">
+            <span className="text-sm font-medium text-[#8e8e8e]">
               {item.title}
             </span>
             <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center group-hover:scale-105 transition-transform">

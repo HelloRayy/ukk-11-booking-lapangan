@@ -12,7 +12,7 @@ export default function Sidebar({ currentTab = 'overview' }: SidebarProps) {
       {/* 1. Header Brand & Nama Arena */}
       <div className="space-y-6">
         <div className="flex items-center gap-3 px-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm">
+          <div className="w-7 h-7 rounded-md bg-white text-[#121212] flex items-center justify-center font-bold text-xs shadow-xs">
             B
           </div>
           <div>
@@ -58,7 +58,7 @@ export default function Sidebar({ currentTab = 'overview' }: SidebarProps) {
           <div>
             <div className="text-xs font-semibold text-white">Admin Kasir</div>
             <div className="flex items-center gap-1.5 text-[10px] text-emerald-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>Online</span>
             </div>
           </div>

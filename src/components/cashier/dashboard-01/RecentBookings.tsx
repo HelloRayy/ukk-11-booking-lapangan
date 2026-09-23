@@ -46,31 +46,26 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
 
               {/* Info Pelanggan & Lapangan */}
               <div className="flex-1 min-w-0 pr-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white truncate block">
-                    {item.customerName}
-                  </span>
-                  <span
-                    className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider ${
-                      isLunas
-                        ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
-                        : 'bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/20'
-                    }`}
-                  >
-                    {item.status}
-                  </span>
+                <div className="text-sm font-medium text-white truncate leading-none">
+                  {item.customerName}
                 </div>
-                <p className="text-[11px] text-[#8e8e8e] truncate mt-0.5">
+                <p className="text-xs text-[#8e8e8e] truncate mt-1">
                   {item.courtName} • {item.schedule}
                 </p>
               </div>
 
-              {/* Nominal Pembayaran */}
+              {/* Nominal Pembayaran & Status Text Bersih */}
               <div className="text-right shrink-0">
-                <span className="text-xs font-bold text-white block">
+                <span className="text-sm font-semibold text-white block">
                   {formatRupiah(item.amount)}
                 </span>
-                <span className="text-[10px] text-[#737373]">{item.id}</span>
+                <span
+                  className={`text-[11px] font-medium ${
+                    isLunas ? 'text-emerald-400' : 'text-[#f2d953]'
+                  }`}
+                >
+                  {item.status}
+                </span>
               </div>
             </div>
           )
