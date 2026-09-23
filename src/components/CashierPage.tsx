@@ -71,6 +71,7 @@ export default function CashierPage() {
             /* Tab 2: Tabel Operasional Linear (Work items) Full Width */
             <BookingsTable
               bookings={filteredBookings}
+              courts={courts}
               loading={loading}
               searchKeyword={searchKeyword}
               selectedStatus={selectedStatus}

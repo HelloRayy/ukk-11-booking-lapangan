@@ -1,5 +1,5 @@
 // PERAN FILE: Tabel Transaksi Kasir Linear-Style dengan UX Copy Kasir yang Alami
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import {
   Search,
   Plus,
@@ -20,8 +20,9 @@ import {
   CreditCard,
   MapPin,
   SlidersHorizontal,
+  Download,
 } from 'lucide-react'
-import type { Booking } from '../../../types/database'
+import type { Booking, Lapangan } from '../../../types/database'
 import BookingDetailSheet from './BookingDetailSheet'
 import {
   Table,
@@ -36,6 +37,7 @@ import { Input } from '../../ui/input'
 
 interface BookingsTableProps {
   bookings: Booking[]
+  courts?: Lapangan[]
   loading: boolean
   searchKeyword: string
   selectedStatus: string
@@ -52,6 +54,7 @@ type SortOrder = 'asc' | 'desc'
 
 export default function BookingsTable({
   bookings,
+  courts = [],
   loading,
   searchKeyword,
   selectedStatus,
@@ -80,11 +83,59 @@ export default function BookingsTable({
   // Helper Format Rupiah
   const formatRupiah = (val: number) => `Rp ${val.toLocaleString('id-ID')}`
 
+  // State Filter Tambahan: Lapangan & Tanggal
+  const [selectedCourt, setSelectedCourt] = useState<string>('Semua')
+  const [selectedDate, setSelectedDate] = useState<string>('all')
+
+  // State Dropdown Aktif di Toolbar (Status, Lapangan, Tanggal)
+  const [openDropdown, setOpenDropdown] = useState<'status' | 'court' | 'date' | null>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Tutup dropdown saat klik di luar area toolbar
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Helper kalkulasi tanggal lokal WIB (YYYY-MM-DD)
+  const getLocalDateString = (offsetDays: number = 0) => {
+    const d = new Date()
+    d.setDate(d.getDate() + offsetDays)
+    const year = d.getFullYear()
+    const month = String(d.getMonth() + 1).padStart(2, '0')
+    const date = String(d.getDate()).padStart(2, '0')
+    return `${year}-${month}-${date}`
+  }
+
+  // Filter Data Transaksi berdasarkan Lapangan & Tanggal
+  const filteredBookingsList = useMemo(() => {
+    return bookings.filter((b) => {
+      // 1. Filter Lapangan
+      if (selectedCourt !== 'Semua' && String(b.lapangan_id) !== selectedCourt) {
+        return false
+      }
+
+      // 2. Filter Tanggal Main
+      if (selectedDate === 'today') {
+        if (b.tgl_main !== getLocalDateString(0)) return false
+      } else if (selectedDate === 'tomorrow') {
+        if (b.tgl_main !== getLocalDateString(1)) return false
+      }
+
+      return true
+    })
+  }, [bookings, selectedCourt, selectedDate])
+
   // Data Terurut
   const sortedBookings = useMemo(() => {
-    if (!sortField) return bookings
+    if (!sortField) return filteredBookingsList
 
-    return [...bookings].sort((a, b) => {
+    return [...filteredBookingsList].sort((a, b) => {
       let aVal: string | number = ''
       let bVal: string | number = ''
 
@@ -109,7 +160,39 @@ export default function BookingsTable({
       if (aVal > bVal) return sortOrder === 'asc' ? 1 : -1
       return 0
     })
-  }, [bookings, sortField, sortOrder])
+  }, [filteredBookingsList, sortField, sortOrder])
+
+  // Fitur Ekspor Rekap Transaksi ke CSV
+  const handleExportCSV = () => {
+    if (sortedBookings.length === 0) {
+      alert('Tidak ada data transaksi untuk diekspor.')
+      return
+    }
+
+    const headers = ['ID Invoice', 'Nama Penyewa', 'No HP', 'Lapangan', 'Tanggal Main', 'Slot Jam', 'Total Bayar', 'Sisa Bayar', 'Status']
+    const rows = sortedBookings.map((b) => [
+      `INV-${String(b.id).padStart(4, '0')}`,
+      `"${b.nama_penyewa.replace(/"/g, '""')}"`,
+      `'${b.no_hp}`,
+      `"${b.lapangan?.nama_lapangan || '-'}"`,
+      b.tgl_main,
+      `"${(b.jam_slots || []).join(', ')}"`,
+      b.total_bayar,
+      b.sisa_bayar,
+      b.status,
+    ])
+
+    const csvContent = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n')
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', `rekap-transaksi-${getLocalDateString(0)}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
 
   // Pagination Slice
   const totalPages = Math.max(1, Math.ceil(sortedBookings.length / rowsPerPage))
@@ -163,10 +246,11 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Linear dengan UX Copy Alami */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-3 border-b border-[oklch(0.2593_0.0033_230.84)]">
-        <div className="flex items-center gap-2.5">
-          <div className="relative flex-1 sm:w-72">
+      {/* Top Filter Bar Linear dengan UX Copy Alami & Fitur Kasir Lengkap */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)]">
+        {/* Sisi Kiri: Search Input & Badge Filter */}
+        <div className="flex items-center gap-2 flex-1 max-w-sm">
+          <div className="relative w-full">
             <Search className="w-3.5 h-3.5 text-[oklch(0.55_0.002_230.81)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <Input
               type="text"
@@ -175,55 +259,222 @@ export default function BookingsTable({
                 onSearchChange(e.target.value)
                 setCurrentPage(1)
               }}
-              placeholder="Cari transaksi, nama penyewa, no HP..."
-              className="pl-8"
+              placeholder="Cari transaksi, penyewa, no HP..."
+              className="pl-8 h-8 text-xs bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)]"
             />
           </div>
 
-          {/* Segmented Status Filter */}
-          <div className="flex items-center gap-0.5 bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded-md p-0.5">
-            {[
-              { label: 'Semua', value: 'Semua' },
-              { label: 'Belum Lunas', value: 'Belum Lunas' },
-              { label: 'Lunas', value: 'Lunas' },
-              { label: 'Batal', value: 'Batal' },
-            ].map((tab) => (
-              <button
-                key={tab.value}
-                type="button"
-                onClick={() => {
-                  onStatusChange(tab.value)
-                  setCurrentPage(1)
-                }}
-                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
-                  selectedStatus === tab.value
-                    ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
-                    : 'text-[oklch(0.65_0.002_230.81)] hover:text-white'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+          {(selectedStatus !== 'Semua' || selectedCourt !== 'Semua' || selectedDate !== 'all') && (
+            <button
+              type="button"
+              onClick={() => {
+                onStatusChange('Semua')
+                setSelectedCourt('Semua')
+                setSelectedDate('all')
+                setCurrentPage(1)
+              }}
+              className="text-[11px] text-[oklch(0.65_0.002_230.81)] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
+              title="Reset semua filter"
+            >
+              Reset Filter
+            </button>
+          )}
         </div>
 
-        <div className="flex items-center gap-2 self-end sm:self-auto">
+        {/* Sisi Kanan: Dropdowns & Action Buttons (Terletak di Kanan Samping Button Refresh) */}
+        <div ref={dropdownRef} className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end">
+          {/* 1. Dropdown Filter Status (Pengganti Tab Switch) */}
+          <div className="relative">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setOpenDropdown(openDropdown === 'status' ? null : 'status')}
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
+                selectedStatus !== 'Semua' ? 'border-emerald-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              }`}
+            >
+              <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <span>Status: <strong className="font-semibold text-white">{selectedStatus}</strong></span>
+              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+            </Button>
+
+            {openDropdown === 'status' && (
+              <div className="absolute right-0 top-full mt-1.5 w-44 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30">
+                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+                  Filter Status
+                </div>
+                {[
+                  { label: 'Semua Status', value: 'Semua' },
+                  { label: 'Belum Lunas (DP)', value: 'Belum Lunas' },
+                  { label: 'Lunas', value: 'Lunas' },
+                  { label: 'Batal', value: 'Batal' },
+                ].map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => {
+                      onStatusChange(item.value)
+                      setOpenDropdown(null)
+                      setCurrentPage(1)
+                    }}
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                  >
+                    <span>{item.label}</span>
+                    {selectedStatus === item.value && (
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 2. Dropdown Filter Lapangan (Fitur Tambahan) */}
+          <div className="relative">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setOpenDropdown(openDropdown === 'court' ? null : 'court')}
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
+                selectedCourt !== 'Semua' ? 'border-cyan-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <span>
+                {selectedCourt === 'Semua'
+                  ? 'Semua Lapangan'
+                  : courts.find((c) => String(c.id) === selectedCourt)?.nama_lapangan || 'Lapangan'}
+              </span>
+              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+            </Button>
+
+            {openDropdown === 'court' && (
+              <div className="absolute right-0 top-full mt-1.5 w-48 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30 max-h-56 overflow-y-auto">
+                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+                  Filter Lapangan
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCourt('Semua')
+                    setOpenDropdown(null)
+                    setCurrentPage(1)
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                >
+                  <span>Semua Lapangan</span>
+                  {selectedCourt === 'Semua' && (
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  )}
+                </button>
+                {courts.map((c) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedCourt(String(c.id))
+                      setOpenDropdown(null)
+                      setCurrentPage(1)
+                    }}
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                  >
+                    <span>{c.nama_lapangan}</span>
+                    {selectedCourt === String(c.id) && (
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 3. Dropdown Filter Tanggal (Fitur Tambahan) */}
+          <div className="relative">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setOpenDropdown(openDropdown === 'date' ? null : 'date')}
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
+                selectedDate !== 'all' ? 'border-amber-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              }`}
+            >
+              <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <span>
+                {selectedDate === 'all'
+                  ? 'Semua Tanggal'
+                  : selectedDate === 'today'
+                  ? 'Hari Ini'
+                  : 'Besok'}
+              </span>
+              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+            </Button>
+
+            {openDropdown === 'date' && (
+              <div className="absolute right-0 top-full mt-1.5 w-40 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30">
+                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+                  Filter Tanggal
+                </div>
+                {[
+                  { label: 'Semua Tanggal', value: 'all' },
+                  { label: 'Hari Ini', value: 'today' },
+                  { label: 'Besok', value: 'tomorrow' },
+                ].map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => {
+                      setSelectedDate(item.value)
+                      setOpenDropdown(null)
+                      setCurrentPage(1)
+                    }}
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                  >
+                    <span>{item.label}</span>
+                    {selectedDate === item.value && (
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 4. Fitur Ekspor CSV (Fitur Tambahan Praktis Kasir) */}
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={handleExportCSV}
+            className="h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] text-[oklch(0.75_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer"
+            title="Ekspor CSV rekap transaksi"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span className="hidden xl:inline">Ekspor</span>
+          </Button>
+
+          {/* 5. Button Refresh (Sesuai Posisi Permintaan User di Samping Filter) */}
           <Button
             type="button"
             variant="outline"
             size="sm"
             onClick={onRefresh}
-            title="Refresh data"
+            title="Refresh data transaksi"
+            className="h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </Button>
 
+          {/* 6. Primary Action Button Walk-in */}
           <Button
             type="button"
             variant="default"
             size="sm"
             onClick={onOpenManualModal}
+            className="h-8 text-xs gap-1.5 px-3 font-semibold cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>+ Walk-in</span>
