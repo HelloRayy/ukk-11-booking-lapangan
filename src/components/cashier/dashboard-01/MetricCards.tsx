@@ -41,12 +41,12 @@ export default function MetricCards({ metrics }: MetricCardsProps) {
 
           {/* Baris Bawah: Angka Nilai Utama & Indikator Tren */}
           <div className="mt-3">
-            <div className="text-2xl font-black text-white tracking-tight">
+            <div className="text-2xl font-bold text-white tracking-tight">
               {item.value}
             </div>
-            <p className="text-[11px] text-[#8e8e8e] mt-1 flex items-center gap-1.5">
+            <p className="text-xs text-[#8e8e8e] mt-1 flex items-center gap-1.5">
               <span
-                className={`font-semibold ${
+                className={`font-medium ${
                   item.trendPositive ? 'text-emerald-400' : 'text-amber-400'
                 }`}
               >

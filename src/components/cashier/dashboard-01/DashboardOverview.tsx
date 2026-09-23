@@ -15,12 +15,9 @@ export default function DashboardOverview() {
       {/* 1. Baris Judul & Filter Rentang Tanggal ala Shadcn */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">
-            Dashboard Kasir
+          <h1 className="text-xl font-bold text-white tracking-tight">
+            Dashboard
           </h1>
-          <p className="text-xs text-[#8e8e8e] mt-0.5">
-            Ringkasan pendapatan, utilisasi lapangan, dan transaksi reservasi aktif.
-          </p>
         </div>
 
         <div className="flex items-center gap-2.5">

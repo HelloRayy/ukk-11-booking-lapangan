@@ -26,14 +26,11 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const item = payload[0].payload
     return (
-      <div className="rounded-lg border border-[#262626] bg-[#141414] p-3 shadow-2xl text-xs select-none">
-        <p className="text-[#8e8e8e] font-medium">{item.month} 2026</p>
+      <div className="rounded-lg border border-[#262626] bg-[#141414] px-3 py-2 shadow-2xl text-xs select-none">
+        <p className="text-[#8e8e8e]">{item.month} 2026</p>
         <p className="font-bold text-white text-sm mt-0.5">
           Rp {item.total.toLocaleString('id-ID')}
         </p>
-        <span className="text-[10px] text-emerald-400 font-semibold block mt-1">
-          Target Tercapai
-        </span>
       </div>
     )
   }
@@ -44,11 +41,8 @@ export default function OverviewChart({ data }: OverviewChartProps) {
   return (
     <div className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-6 shadow-xs flex flex-col justify-between h-full">
       {/* 1. Header Kartu */}
-      <div className="mb-6">
-        <h3 className="text-base font-bold text-white tracking-tight">Overview</h3>
-        <p className="text-xs text-[#8e8e8e] mt-0.5">
-          Tren akumulasi pendapatan sewa lapangan tahun berjalan (Recharts)
-        </p>
+      <div className="mb-4">
+        <h3 className="text-base font-semibold text-white tracking-tight">Overview</h3>
       </div>
 
       {/* 2. Komponen Recharts Resmi Shadcn */}

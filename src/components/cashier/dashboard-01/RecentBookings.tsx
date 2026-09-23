@@ -12,11 +12,11 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
     <div className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-6 shadow-xs flex flex-col justify-between">
       {/* 1. Header Kartu */}
       <div className="mb-4">
-        <h3 className="text-base font-bold text-white tracking-tight">
-          Aktivitas Booking Terkini
+        <h3 className="text-base font-semibold text-white tracking-tight">
+          Booking Terkini
         </h3>
         <p className="text-xs text-[#8e8e8e] mt-0.5">
-          {bookings.length} transaksi pemesanan terbaru hari ini
+          {bookings.length} transaksi hari ini
         </p>
       </div>
 
