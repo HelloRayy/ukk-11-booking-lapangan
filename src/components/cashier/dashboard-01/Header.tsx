@@ -2,7 +2,7 @@
 import { Search, Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
-  currentTab: 'overview' | 'bookings'
+  currentTab: 'overview' | 'bookings' | 'schedule'
   searchKeyword?: string
   onSearchChange?: (val: string) => void
   onToggleMobileSidebar?: () => void
@@ -33,7 +33,11 @@ export default function Header({
           </span>
           <span className="text-[oklch(0.4_0.002_230.81)]">/</span>
           <span className="text-white font-semibold">
-            {currentTab === 'overview' ? 'Overview' : 'Transaksi'}
+            {currentTab === 'overview'
+              ? 'Overview'
+              : currentTab === 'schedule'
+              ? 'Jadwal Lapangan'
+              : 'Transaksi'}
           </span>
         </div>
       </div>

@@ -84,9 +84,10 @@ export default function BookingsTable({
   // Helper Format Rupiah
   const formatRupiah = (val: number) => `Rp ${val.toLocaleString('id-ID')}`
 
-  // State Filter Tambahan: Lapangan & Tanggal
+  // State Filter Tambahan: Lapangan & Tanggal (Default: 'today' sesuai best practice kasir)
   const [selectedCourt, setSelectedCourt] = useState<string>('Semua')
-  const [selectedDate, setSelectedDate] = useState<string>('all')
+  const [selectedDate, setSelectedDate] = useState<string>('today')
+  const [customDatePicker, setCustomDatePicker] = useState<string>('')
 
   // State Dropdown Aktif di Toolbar (Status, Lapangan, Tanggal)
   const [openDropdown, setOpenDropdown] = useState<'status' | 'court' | 'date' | null>(null)
@@ -126,6 +127,9 @@ export default function BookingsTable({
         if (b.tgl_main !== getLocalDateString(0)) return false
       } else if (selectedDate === 'tomorrow') {
         if (b.tgl_main !== getLocalDateString(1)) return false
+      } else if (selectedDate !== 'all') {
+        // Specific custom date string (e.g. '2026-09-23')
+        if (b.tgl_main !== selectedDate) return false
       }
 
       return true
@@ -391,7 +395,7 @@ export default function BookingsTable({
             )}
           </div>
 
-          {/* 3. Dropdown Filter Tanggal (Fitur Tambahan) */}
+          {/* 3. Dropdown Filter Tanggal (Default: Hari Ini + Date Picker) */}
           <div className="relative">
             <Button
               type="button"
@@ -407,21 +411,23 @@ export default function BookingsTable({
                 {selectedDate === 'all'
                   ? 'Semua Tanggal'
                   : selectedDate === 'today'
-                  ? 'Hari Ini'
-                  : 'Besok'}
+                  ? `Hari Ini (${getLocalDateString(0)})`
+                  : selectedDate === 'tomorrow'
+                  ? `Besok (${getLocalDateString(1)})`
+                  : selectedDate}
               </span>
               <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
             </Button>
 
             {openDropdown === 'date' && (
-              <div className="absolute right-0 top-full mt-1.5 w-40 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30">
-                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+              <div className="absolute right-0 top-full mt-1.5 w-52 p-1.5 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30 space-y-1">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
                   Filter Tanggal
                 </div>
                 {[
-                  { label: 'Semua Tanggal', value: 'all' },
-                  { label: 'Hari Ini', value: 'today' },
+                  { label: 'Hari Ini (Default)', value: 'today' },
                   { label: 'Besok', value: 'tomorrow' },
+                  { label: 'Semua Tanggal', value: 'all' },
                 ].map((item) => (
                   <button
                     key={item.value}
@@ -431,7 +437,7 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer text-left"
                   >
                     <span>{item.label}</span>
                     {selectedDate === item.value && (
@@ -439,6 +445,26 @@ export default function BookingsTable({
                     )}
                   </button>
                 ))}
+
+                <div className="pt-1.5 mt-1 border-t border-[oklch(0.2593_0.0033_230.84)] px-2 pb-1">
+                  <span className="text-[10px] text-[oklch(0.6_0.002_230.81)] block mb-1">
+                    Pilih Tanggal Tertentu:
+                  </span>
+                  <input
+                    type="date"
+                    value={customDatePicker}
+                    onChange={(e) => {
+                      const val = e.target.value
+                      setCustomDatePicker(val)
+                      if (val) {
+                        setSelectedDate(val)
+                        setOpenDropdown(null)
+                        setCurrentPage(1)
+                      }
+                    }}
+                    className="w-full h-7 px-2 text-xs bg-[oklch(0.14_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded text-white focus:outline-none focus:border-amber-400/60 cursor-pointer"
+                  />
+                </div>
               </div>
             )}
           </div>
@@ -571,7 +597,28 @@ export default function BookingsTable({
             ) : paginatedBookings.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={6} className="py-16 text-center text-[oklch(0.65_0.002_230.81)]">
-                  Tidak ada transaksi yang cocok.
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="text-xs">
+                      {selectedDate === 'all'
+                        ? 'Tidak ada data transaksi yang cocok dengan pencarian / filter ini.'
+                        : `Tidak ada transaksi untuk ${
+                            selectedDate === 'today'
+                              ? `hari ini (${getLocalDateString(0)})`
+                              : selectedDate === 'tomorrow'
+                              ? `besok (${getLocalDateString(1)})`
+                              : `tanggal ${selectedDate}`
+                          }.`}
+                    </p>
+                    {selectedDate !== 'all' && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedDate('all')}
+                        className="px-3 py-1 rounded bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 text-xs font-medium border border-emerald-500/20 transition-colors cursor-pointer"
+                      >
+                        Tampilkan Semua Tanggal
+                      </button>
+                    )}
+                  </div>
                 </TableCell>
               </TableRow>
             ) : (

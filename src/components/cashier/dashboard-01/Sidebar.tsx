@@ -1,9 +1,9 @@
 // PERAN FILE: Komponen Sidebar Kasir Linear-Style (Full Height & Inter Sans)
-import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck } from 'lucide-react'
+import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck, CalendarDays } from 'lucide-react'
 
 interface SidebarProps {
-  currentTab: 'overview' | 'bookings'
-  onTabChange?: (tab: 'overview' | 'bookings') => void
+  currentTab: 'overview' | 'bookings' | 'schedule'
+  onTabChange?: (tab: 'overview' | 'bookings' | 'schedule') => void
 }
 
 export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
@@ -41,6 +41,27 @@ export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
             <div className="flex items-center gap-1.5 leading-normal transition-all">
               {currentTab === 'overview' && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              )}
+            </div>
+          </button>
+
+          {/* Tab Baru: Jadwal Lapangan (Matriks Visual Kasir) */}
+          <button
+            type="button"
+            onClick={() => onTabChange?.('schedule')}
+            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[30px] leading-normal transition-all cursor-pointer outline-none select-none ${
+              currentTab === 'schedule'
+                ? 'bg-[oklch(1_0_0_/_0.08)] text-white shadow-xs'
+                : 'text-[oklch(0.8455_0.0035_230.72)] hover:bg-[oklch(1_0_0_/_0.05)] hover:text-white'
+            }`}
+          >
+            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
+              <CalendarDays className="w-4 h-4 text-sky-400 shrink-0" />
+              <p className="text-sm font-medium leading-normal transition-all">Jadwal Lapangan</p>
+            </div>
+            <div className="flex items-center gap-1.5 leading-normal transition-all">
+              {currentTab === 'schedule' && (
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
               )}
             </div>
           </button>

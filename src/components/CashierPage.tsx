@@ -4,12 +4,18 @@ import Sidebar from './cashier/dashboard-01/Sidebar'
 import Header from './cashier/dashboard-01/Header'
 import DashboardOverview from './cashier/dashboard-01/DashboardOverview'
 import BookingsTable from './cashier/dashboard-01/BookingsTable'
+import CourtScheduleGrid from './cashier/dashboard-01/CourtScheduleGrid'
 import ManualBookingModal from './cashier/ManualBookingModal'
 import { useCashier } from './cashier/hooks/useCashier'
 
 export default function CashierPage() {
-  const [currentTab, setCurrentTab] = useState<'overview' | 'bookings'>('bookings')
+  const [currentTab, setCurrentTab] = useState<'overview' | 'bookings' | 'schedule'>('schedule')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [manualModalDefaults, setManualModalDefaults] = useState<{
+    courtId?: number
+    date?: string
+    hour?: string
+  }>({})
 
   // Ambil state dan aksi riil Supabase dari custom hook useCashier
   const {
@@ -27,6 +33,16 @@ export default function CashierPage() {
     handleBatal,
     loadDataKasir,
   } = useCashier()
+
+  const handleOpenManualWithSlot = (courtId: number, date: string, hour: string) => {
+    setManualModalDefaults({ courtId, date, hour })
+    setIsManualModalOpen(true)
+  }
+
+  const handleCloseManualModal = () => {
+    setIsManualModalOpen(false)
+    setManualModalDefaults({})
+  }
 
   return (
     <div className="h-screen w-full flex overflow-hidden bg-[oklch(0.1932_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] font-['Inter_Variable',sans-serif] select-none antialiased">
@@ -74,8 +90,19 @@ export default function CashierPage() {
                 loading={loading}
               />
             </div>
+          ) : currentTab === 'schedule' ? (
+            /* Tab 2: Visualisasi Matriks Kalender Lapangan Kasir */
+            <CourtScheduleGrid
+              bookings={allBookings}
+              courts={courts}
+              loading={loading}
+              onLunasi={handleLunasi}
+              onBatal={handleBatal}
+              onRefresh={loadDataKasir}
+              onOpenManualModalWithSlot={handleOpenManualWithSlot}
+            />
           ) : (
-            /* Tab 2: Tabel Operasional Linear (Work items) Full Width */
+            /* Tab 3: Tabel Operasional Linear (Work items) Full Width */
             <BookingsTable
               bookings={filteredBookings}
               courts={courts}
@@ -87,7 +114,10 @@ export default function CashierPage() {
               onLunasi={handleLunasi}
               onBatal={handleBatal}
               onRefresh={loadDataKasir}
-              onOpenManualModal={() => setIsManualModalOpen(true)}
+              onOpenManualModal={() => {
+                setManualModalDefaults({})
+                setIsManualModalOpen(true)
+              }}
             />
           )}
         </main>
@@ -97,8 +127,11 @@ export default function CashierPage() {
       <ManualBookingModal
         courts={courts}
         isOpen={isManualModalOpen}
-        onClose={() => setIsManualModalOpen(false)}
+        onClose={handleCloseManualModal}
         onBookingCreated={loadDataKasir}
+        initialCourtId={manualModalDefaults.courtId}
+        initialDate={manualModalDefaults.date}
+        initialHour={manualModalDefaults.hour}
       />
     </div>
   )

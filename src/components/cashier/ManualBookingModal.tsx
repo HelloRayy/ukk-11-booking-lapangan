@@ -8,6 +8,9 @@ interface ManualBookingModalProps {
   isOpen: boolean
   onClose: () => void
   onBookingCreated: () => void
+  initialCourtId?: number
+  initialDate?: string
+  initialHour?: string
 }
 
 const AVAILABLE_HOURS = [
@@ -21,6 +24,9 @@ export default function ManualBookingModal({
   isOpen,
   onClose,
   onBookingCreated,
+  initialCourtId,
+  initialDate,
+  initialHour,
 }: ManualBookingModalProps) {
   const today = new Date().toISOString().split('T')[0]
 
@@ -34,6 +40,15 @@ export default function ManualBookingModal({
   const [isLoadingSlots, setIsLoadingSlots] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  // Sinkronisasi nilai inisial saat modal dibuka
+  useEffect(() => {
+    if (isOpen) {
+      if (initialCourtId) setSelectedCourtId(initialCourtId)
+      if (initialDate) setSelectedDate(initialDate)
+      if (initialHour) setSelectedHours([initialHour])
+    }
+  }, [isOpen, initialCourtId, initialDate, initialHour])
 
   // Cek ketersediaan slot jam setiap kali lapangan atau tanggal berubah
   useEffect(() => {
