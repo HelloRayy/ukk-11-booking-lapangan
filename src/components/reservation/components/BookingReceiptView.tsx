@@ -13,6 +13,22 @@ export default function BookingReceiptView({
 }: BookingReceiptViewProps) {
   const isLunas = booking.paymentType === 'Lunas'
 
+  // Normalisasi nomor HP WhatsApp untuk share struk online (ROADTOUKK-20)
+  const cleanPhone = (booking.customerWhatsapp || '').replace(/[^0-9]/g, '')
+  const intlPhone = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
+  const waReceiptText = encodeURIComponent(
+    `*BUKTI RESERVASI RESMI - BLANCA PADEL ARENA*\n` +
+    `No. Invoice: ${booking.invoiceNumber || booking.id}\n` +
+    `Nama: ${booking.customerName}\n` +
+    `Lapangan: ${booking.courtName}\n` +
+    `Tanggal: ${booking.date}\n` +
+    `Waktu: ${booking.startTime} - ${booking.endTime}\n` +
+    `Total Biaya: ${formatRupiah(booking.totalPrice)}\n` +
+    `Status Bayar: ${isLunas ? 'LUNAS 100%' : `DP 50% (Sisa ${formatRupiah(booking.remainingAmount || 0)})`}\n\n` +
+    `Tunjukkan invoice ini di resepsionis saat check-in. Terima kasih!`
+  )
+  const waReceiptUrl = `https://wa.me/${intlPhone}?text=${waReceiptText}`
+
   const handlePrint = () => {
     window.print()
   }
@@ -185,6 +201,21 @@ export default function BookingReceiptView({
 
       {/* 3. Tombol Aksi Bawah (no-print) */}
       <div className="pt-3 border-t border-[#262626] space-y-2 no-print">
+        {/* Tombol Kirim ke WhatsApp (ROADTOUKK-20) */}
+        {cleanPhone.length >= 9 && (
+          <a
+            href={waReceiptUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-10 rounded-[10px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-2.148-.541-1.861-.772-3.055-2.664-3.148-2.787-.093-.122-.756-.998-.756-1.903 0-.905.474-1.349.643-1.534.169-.185.37-.231.493-.231.123 0 .247.002.355.008.113.006.265-.043.415.318.155.372.531 1.298.578 1.393.047.095.078.207.016.33-.062.123-.093.2-.185.308-.092.108-.194.24-.277.323-.092.092-.188.192-.081.376.107.184.477.787 1.025 1.275.706.629 1.301.824 1.486.916.185.093.293.077.401-.046.108-.124.463-.539.587-.724.123-.185.246-.154.415-.092.17.061 1.08.509 1.266.601.185.093.308.139.355.216.046.077.046.447-.098.852z"/>
+            </svg>
+            <span>Kirim Bukti ke WhatsApp</span>
+          </a>
+        )}
+
         <button
           type="button"
           onClick={handlePrint}
