@@ -21,9 +21,8 @@ export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProp
 
         <div className="flex items-center gap-2 text-xs">
           <span className="text-[oklch(0.65_0.002_230.81)]">...</span>
-          <span className="flex items-center gap-1.5 font-medium text-[oklch(0.9235_0.001733_230.685)]">
-            <span>💻</span>
-            <span>road-to-ukk</span>
+          <span className="font-medium text-[oklch(0.9235_0.001733_230.685)]">
+            Blanca Arena
           </span>
           <span className="text-[oklch(0.4_0.002_230.81)]">/</span>
           <span className="text-white font-semibold">

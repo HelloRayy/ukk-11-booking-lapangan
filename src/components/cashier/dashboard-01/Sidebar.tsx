@@ -16,11 +16,10 @@ export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
             B
           </div>
           <div className="flex flex-col">
-            <span className="text-xs font-semibold text-white tracking-tight flex items-center gap-1.5">
-              <span>💻</span>
-              <span>road-to-ukk</span>
+            <span className="text-xs font-semibold text-white tracking-tight">
+              Blanca Arena
             </span>
-            <span className="text-[10px] text-[oklch(0.65_0.002_230.81)]">Blanca Arena</span>
+            <span className="text-[10px] text-[oklch(0.65_0.002_230.81)]">Kasir & Reservasi</span>
           </div>
         </div>
 
