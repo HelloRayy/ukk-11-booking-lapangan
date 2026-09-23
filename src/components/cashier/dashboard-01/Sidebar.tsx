@@ -28,38 +28,54 @@ export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
           <button
             type="button"
             onClick={() => onTabChange?.('overview')}
-            className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[30px] leading-normal transition-all cursor-pointer outline-none select-none ${
               currentTab === 'overview'
-                ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
-                : 'text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5'
+                ? 'bg-[oklch(1_0_0_/_0.08)] text-white shadow-xs'
+                : 'text-[oklch(0.8455_0.0035_230.72)] hover:bg-[oklch(1_0_0_/_0.05)] hover:text-white'
             }`}
           >
-            <LayoutDashboard className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Overview</span>
+            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
+              <LayoutDashboard className="w-4 h-4 text-emerald-400 shrink-0" />
+              <p className="text-sm font-medium leading-normal transition-all">Overview</p>
+            </div>
+            <div className="flex items-center gap-1.5 leading-normal transition-all">
+              {currentTab === 'overview' && (
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              )}
+            </div>
           </button>
 
           <button
             type="button"
             onClick={() => onTabChange?.('bookings')}
-            className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[30px] leading-normal transition-all cursor-pointer outline-none select-none ${
               currentTab === 'bookings'
-                ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
-                : 'text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5'
+                ? 'bg-[oklch(1_0_0_/_0.08)] text-white shadow-xs'
+                : 'text-[oklch(0.8455_0.0035_230.72)] hover:bg-[oklch(1_0_0_/_0.05)] hover:text-white'
             }`}
           >
-            <ReceiptText className="w-3.5 h-3.5 text-[#f2d953]" />
-            <span>Transaksi</span>
+            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
+              <ReceiptText className="w-4 h-4 text-[#f2d953] shrink-0" />
+              <p className="text-sm font-medium leading-normal transition-all">Transaksi</p>
+            </div>
+            <div className="flex items-center gap-1.5 leading-normal transition-all">
+              {currentTab === 'bookings' && (
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+              )}
+            </div>
           </button>
 
           <a
             href="/reservasi"
-            className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors"
+            className="w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[30px] text-[oklch(0.8455_0.0035_230.72)] hover:bg-[oklch(1_0_0_/_0.05)] hover:text-white leading-normal transition-all cursor-pointer outline-none group select-none"
           >
-            <div className="flex items-center gap-2.5">
-              <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
-              <span>Kalender Publik</span>
+            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
+              <Calendar className="w-4 h-4 text-[oklch(0.65_0.002_230.81)] group-hover:text-white shrink-0 transition-colors" />
+              <p className="text-sm font-medium leading-normal transition-all">Kalender Publik</p>
             </div>
-            <ArrowUpRight className="w-3 h-3 text-[oklch(0.45_0.002_230.81)]" />
+            <div className="flex items-center gap-1.5 leading-normal transition-all">
+              <ArrowUpRight className="w-3.5 h-3.5 text-[oklch(0.45_0.002_230.81)] group-hover:text-white transition-colors" />
+            </div>
           </a>
         </nav>
       </div>
