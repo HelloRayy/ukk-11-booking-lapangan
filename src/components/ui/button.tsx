@@ -11,18 +11,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const variantStyles = {
       default: 'bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-xs active:scale-95',
       destructive: 'bg-rose-600 hover:bg-rose-500 text-white font-semibold shadow-xs active:scale-95',
-      outline: 'border border-[#262626] bg-white/5 hover:bg-white/10 text-white',
-      secondary: 'bg-white/10 text-white hover:bg-white/15',
-      ghost: 'hover:bg-white/10 text-[#8e8e8e] hover:text-white',
+      outline: 'border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] hover:bg-white/10 text-[oklch(0.9235_0.001733_230.685)]',
+      secondary: 'bg-[oklch(0.2593_0.0033_230.84)] text-white hover:bg-white/20',
+      ghost: 'hover:bg-white/10 text-[oklch(0.65_0.002_230.81)] hover:text-white',
       link: 'text-emerald-400 underline-offset-4 hover:underline',
       emerald: 'bg-emerald-600 hover:bg-emerald-500 text-white font-semibold active:scale-95',
       gold: 'bg-[#f2d953] hover:bg-[#e2ca48] text-black font-semibold active:scale-95',
     }
 
     const sizeStyles = {
-      default: 'h-8.5 px-3.5 py-1.5 text-xs rounded-lg',
+      default: 'h-8 px-3 py-1.5 text-xs rounded-md',
       sm: 'h-7 rounded-md px-2.5 text-[11px]',
-      lg: 'h-10 rounded-lg px-6 text-sm',
+      lg: 'h-10 rounded-md px-6 text-sm',
       icon: 'h-7 w-7 rounded-md p-0 flex items-center justify-center',
     }
 

@@ -1,4 +1,4 @@
-// PERAN FILE: Tabel Transaksi Kasir Linear-Style Konsisten dengan Desain Blanca Dark Theme
+// PERAN FILE: Tabel Transaksi Kasir Linear-Style (Sesuai Referensi Styling OKLCH & Shadcn Primitives)
 import { useState, useMemo } from 'react'
 import {
   Search,
@@ -145,15 +145,15 @@ export default function BookingsTable({
     window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank')
   }
 
-  // Label Dot Color Konsisten dengan Blanca Theme
+  // Label Dot Color
   const getLabelDotColor = (courtName: string) => {
-    if (courtName.toLowerCase().includes('badminton')) return 'bg-emerald-400'
-    if (courtName.toLowerCase().includes('futsal')) return 'bg-[#f2d953]'
-    return 'bg-blue-400'
+    if (courtName.toLowerCase().includes('badminton')) return 'bg-cyan-400'
+    if (courtName.toLowerCase().includes('futsal')) return 'bg-amber-400'
+    return 'bg-pink-400'
   }
 
   return (
-    <div className="space-y-3.5 animate-fadeIn p-4 sm:p-6 select-none relative font-sans text-white">
+    <div className="space-y-3 p-4 sm:p-5 select-none relative font-sans text-[oklch(0.9235_0.001733_230.685)]">
       {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
@@ -163,11 +163,11 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Konsisten Blanca Theme */}
+      {/* Top Filter Bar Menggunakan OKLCH Palette */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
-        <div className="flex items-center gap-3">
-          <div className="relative flex-1 sm:w-80">
-            <Search className="w-3.5 h-3.5 text-[#737373] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="flex items-center gap-2.5">
+          <div className="relative flex-1 sm:w-72">
+            <Search className="w-3.5 h-3.5 text-[oklch(0.55_0.002_230.81)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <Input
               type="text"
               value={searchKeyword}
@@ -180,8 +180,8 @@ export default function BookingsTable({
             />
           </div>
 
-          {/* Segmented Status Filter dengan Border & Background Konsisten */}
-          <div className="flex items-center gap-1 bg-black/40 border border-[#262626] rounded-lg p-1">
+          {/* Segmented Status Filter */}
+          <div className="flex items-center gap-0.5 bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded-md p-0.5">
             {[
               { label: 'Semua', value: 'Semua' },
               { label: 'Belum Lunas', value: 'Belum Lunas' },
@@ -195,10 +195,10 @@ export default function BookingsTable({
                   onStatusChange(tab.value)
                   setCurrentPage(1)
                 }}
-                className={`px-3 py-1 rounded-md text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer whitespace-nowrap ${
                   selectedStatus === tab.value
-                    ? 'bg-white/15 text-white font-semibold'
-                    : 'text-[#8e8e8e] hover:text-white'
+                    ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
+                    : 'text-[oklch(0.65_0.002_230.81)] hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -226,17 +226,17 @@ export default function BookingsTable({
             onClick={onOpenManualModal}
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>+ Walk-in</span>
+            <span>+ Add work item</span>
           </Button>
         </div>
       </div>
 
-      {/* Tabel Menggunakan Shadcn Table Component & Blanca Dark Border/Surface */}
-      <div className="rounded-xl border border-[#262626] bg-[#141414] overflow-hidden shadow-xs">
+      {/* Tabel Menggunakan Shadcn Table Component & Border OKLCH */}
+      <div className="rounded-lg border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] overflow-hidden shadow-xs">
         <Table>
           {/* Header Shadcn Table */}
           <TableHeader>
-            <TableRow className="border-b border-[#262626] bg-[#181818] hover:bg-[#181818]">
+            <TableRow className="border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] hover:bg-[oklch(0.1932_0.002_230.81)]">
               {/* 1. Transaksi / Work items */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
@@ -244,7 +244,7 @@ export default function BookingsTable({
               >
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-white/90">Work items</span>
-                  <span className="text-[10px] text-[#737373] font-mono">({sortedBookings.length})</span>
+                  <span className="text-[10px] text-[oklch(0.55_0.002_230.81)] font-mono">({sortedBookings.length})</span>
                 </div>
               </TableHead>
 
@@ -254,9 +254,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-32"
               >
                 <div className="flex items-center gap-1.5">
-                  <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
+                  <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
                   <span>State</span>
-                  <ChevronDown className="w-3 h-3 text-[#737373]" />
+                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
@@ -268,12 +268,12 @@ export default function BookingsTable({
                 <div className="flex items-center gap-1.5">
                   {/* Signal Bars Icon */}
                   <div className="flex items-end gap-0.5 h-3 w-3">
-                    <span className="w-0.5 h-1 rounded-xs bg-[#8e8e8e]" />
-                    <span className="w-0.5 h-2 rounded-xs bg-[#8e8e8e]" />
-                    <span className="w-0.5 h-3 rounded-xs bg-[#8e8e8e]" />
+                    <span className="w-0.5 h-1 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
+                    <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
+                    <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
                   </div>
                   <span>Priority</span>
-                  <ChevronDown className="w-3 h-3 text-[#737373]" />
+                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
@@ -283,9 +283,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-[#8e8e8e]" />
+                  <Users className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
                   <span>Assignees</span>
-                  <ChevronDown className="w-3 h-3 text-[#737373]" />
+                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
@@ -295,15 +295,15 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors min-w-[200px]"
               >
                 <div className="flex items-center gap-1.5">
-                  <Tag className="w-3.5 h-3.5 text-[#8e8e8e]" />
+                  <Tag className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
                   <span>Labels</span>
-                  <ChevronDown className="w-3 h-3 text-[#737373]" />
+                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
               {/* 6. Settings / Options */}
               <TableHead className="text-right w-12 px-3">
-                <div className="flex items-center justify-end text-[#737373]">
+                <div className="flex items-center justify-end text-[oklch(0.65_0.002_230.81)]">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
               </TableHead>
@@ -314,7 +314,7 @@ export default function BookingsTable({
           <TableBody>
             {loading && bookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
+                <TableCell colSpan={6} className="py-16 text-center text-[oklch(0.65_0.002_230.81)]">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <RefreshCw className="w-4 h-4 animate-spin text-emerald-400" />
                     <span>Memuat data transaksi...</span>
@@ -323,7 +323,7 @@ export default function BookingsTable({
               </TableRow>
             ) : paginatedBookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
+                <TableCell colSpan={6} className="py-16 text-center text-[oklch(0.65_0.002_230.81)]">
                   Tidak ada transaksi yang cocok.
                 </TableCell>
               </TableRow>
@@ -340,58 +340,58 @@ export default function BookingsTable({
                   <TableRow
                     key={item.id}
                     onClick={() => setSelectedBooking(item)}
-                    className="cursor-pointer group h-10 border-b border-[#262626]/40 hover:bg-white/[0.03]"
+                    className="cursor-pointer group h-10 border-b border-[oklch(0.2593_0.0033_230.84)]/60 hover:bg-white/[0.04]"
                   >
                     {/* 1. Identifier (Mono) + Title (Penyewa & No HP) */}
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-[11px] text-[#8e8e8e] font-medium tracking-wide shrink-0">
+                        <span className="font-mono text-[11px] text-[oklch(0.65_0.002_230.81)] font-medium tracking-wide shrink-0">
                           {invoiceCode}
                         </span>
-                        <span className="text-white text-xs font-semibold group-hover:text-emerald-400 transition-colors truncate">
+                        <span className="text-[oklch(0.9235_0.001733_230.685)] text-xs font-medium group-hover:text-white transition-colors truncate">
                           {item.nama_penyewa}
                         </span>
                         {item.no_hp && (
-                          <span className="text-[11px] text-[#737373] font-mono hidden md:inline">
+                          <span className="text-[11px] text-[oklch(0.55_0.002_230.81)] font-mono hidden md:inline">
                             • {item.no_hp}
                           </span>
                         )}
                       </div>
                     </TableCell>
 
-                    {/* 2. State (Linear-style Status dengan Warna Konsisten Blanca) */}
+                    {/* 2. State (Linear-style Status) */}
                     <TableCell className="whitespace-nowrap">
                       {isLunas ? (
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="text-emerald-400 text-xs font-medium">Done</span>
+                          <span className="text-emerald-400 text-xs font-normal">Done</span>
                         </div>
                       ) : isBatal ? (
                         <div className="flex items-center gap-2">
                           <XCircle className="w-3.5 h-3.5 text-rose-400" />
-                          <span className="text-rose-400 text-xs font-medium">Canceled</span>
+                          <span className="text-rose-400 text-xs font-normal">Canceled</span>
                         </div>
                       ) : isDP ? (
                         <div className="flex items-center gap-2">
                           <span className="w-3.5 h-3.5 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                           </span>
-                          <span className="text-amber-300 text-xs font-medium">In Progress</span>
+                          <span className="text-amber-300 text-xs font-normal">In Progress</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#737373] shrink-0" />
-                          <span className="text-[#8e8e8e] text-xs font-medium">Todo</span>
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[oklch(0.55_0.002_230.81)] shrink-0" />
+                          <span className="text-[oklch(0.65_0.002_230.81)] text-xs font-normal">Todo</span>
                         </div>
                       )}
                     </TableCell>
 
-                    {/* 3. Priority / Tagihan (Blanca Theme Accent Colors) */}
+                    {/* 3. Priority / Tagihan */}
                     <TableCell className="whitespace-nowrap">
                       {!isLunas && !isBatal && sisa > 0 ? (
                         <div className="flex items-center gap-2">
                           {/* Urgent Icon */}
-                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/40 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold">
+                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/30 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold">
                             !
                           </div>
                           <span className="text-amber-300 text-xs font-medium">
@@ -403,28 +403,28 @@ export default function BookingsTable({
                           {/* Signal Bars */}
                           <div className="flex items-end gap-0.5 h-3 w-3">
                             <span className="w-0.5 h-1 rounded-xs bg-emerald-400" />
-                            <span className="w-0.5 h-2 rounded-xs bg-white/20" />
-                            <span className="w-0.5 h-3 rounded-xs bg-white/20" />
+                            <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
+                            <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
                           </div>
-                          <span className="text-white text-xs font-medium">
+                          <span className="text-[oklch(0.85_0.001733_230.685)] text-xs font-normal">
                             {formatRupiah(item.total_bayar)}
                           </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
                           <div className="flex items-end gap-0.5 h-3 w-3">
-                            <span className="w-0.5 h-1 rounded-xs bg-[#737373]" />
-                            <span className="w-0.5 h-2 rounded-xs bg-white/10" />
-                            <span className="w-0.5 h-3 rounded-xs bg-white/10" />
+                            <span className="w-0.5 h-1 rounded-xs bg-[oklch(0.55_0.002_230.81)]" />
+                            <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
+                            <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
                           </div>
-                          <span className="text-[#737373] text-xs font-normal">Batal</span>
+                          <span className="text-[oklch(0.55_0.002_230.81)] text-xs font-normal">Batal</span>
                         </div>
                       )}
                     </TableCell>
 
                     {/* 4. Assignees / Lapangan */}
                     <TableCell className="whitespace-nowrap">
-                      <Badge variant="outline" className="border-[#262626] bg-white/5 text-white gap-1.5 py-0.5 px-2 font-normal">
+                      <Badge variant="outline" className="border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] gap-1.5 py-0.5 px-2 font-normal">
                         <span className="w-3.5 h-3.5 rounded-full bg-white/10 flex items-center justify-center text-[9px] text-emerald-400 font-bold">
                           {courtName.charAt(0)}
                         </span>
@@ -435,7 +435,7 @@ export default function BookingsTable({
                     {/* 5. Labels / Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="border-[#262626] bg-white/5 text-white gap-1.5 py-0.5 px-2 font-normal">
+                        <Badge variant="outline" className="border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] gap-1.5 py-0.5 px-2 font-normal">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${getLabelDotColor(
                               courtName
@@ -443,7 +443,7 @@ export default function BookingsTable({
                           />
                           <span>{item.tgl_main}</span>
                         </Badge>
-                        <span className="text-[11px] text-[#8e8e8e]">
+                        <span className="text-[11px] text-[oklch(0.65_0.002_230.81)]">
                           • {item.jam_slots.join(', ')}
                         </span>
                       </div>
@@ -480,11 +480,11 @@ export default function BookingsTable({
                           <MoreHorizontal className="w-3.5 h-3.5" />
                         </Button>
 
-                        {/* Dropdown Menu Tiga Titik Sesuai Blanca Palette */}
+                        {/* Dropdown Menu Tiga Titik */}
                         {activeMenuId === item.id && (
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-[#262626] bg-[#1a1a1a] shadow-xl p-1.5 z-30 text-xs text-white animate-fadeIn"
+                            className="absolute right-0 top-full mt-1 w-44 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-2xl p-1 z-30 text-xs text-[oklch(0.9235_0.001733_230.685)] animate-fadeIn"
                           >
                             <button
                               type="button"
@@ -492,7 +492,7 @@ export default function BookingsTable({
                                 setSelectedBooking(item)
                                 setActiveMenuId(null)
                               }}
-                              className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
+                              className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
                             >
                               <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
                               <span>Detail Transaksi</span>
@@ -506,7 +506,7 @@ export default function BookingsTable({
                                     handleOpenWhatsApp(item.no_hp, item.nama_penyewa, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-emerald-400"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-emerald-400"
                                 >
                                   <MessageCircle className="w-3.5 h-3.5" />
                                   <span>Kirim WhatsApp</span>
@@ -518,7 +518,7 @@ export default function BookingsTable({
                                     handleCopyPhone(item.no_hp, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#8e8e8e] hover:text-white"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[oklch(0.65_0.002_230.81)] hover:text-white"
                                 >
                                   <Copy className="w-3.5 h-3.5" />
                                   <span>
@@ -535,7 +535,7 @@ export default function BookingsTable({
                                   onLunasi(item.id)
                                   setActiveMenuId(null)
                                 }}
-                                className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-emerald-600/20 text-emerald-400 transition flex items-center gap-2 cursor-pointer"
+                                className="w-full text-left px-2 py-1.5 rounded hover:bg-emerald-600/20 text-emerald-400 transition flex items-center gap-2 cursor-pointer"
                               >
                                 <Check className="w-3.5 h-3.5" />
                                 <span>Tandai Lunas</span>
@@ -549,7 +549,7 @@ export default function BookingsTable({
                                   onBatal(item.id)
                                   setActiveMenuId(null)
                                 }}
-                                className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-rose-600/20 text-rose-400 transition flex items-center gap-2 cursor-pointer"
+                                className="w-full text-left px-2 py-1.5 rounded hover:bg-rose-600/20 text-rose-400 transition flex items-center gap-2 cursor-pointer"
                               >
                                 <ShieldAlert className="w-3.5 h-3.5" />
                                 <span>Batalkan Booking</span>
@@ -566,17 +566,17 @@ export default function BookingsTable({
           </TableBody>
         </Table>
 
-        {/* Row Baris Bawah: + Add work item konsisten tema */}
+        {/* Row Baris Bawah: + Add work item */}
         <div
           onClick={onOpenManualModal}
-          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[#262626]"
+          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[oklch(0.2593_0.0033_230.84)]"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>+ Add work item</span>
         </div>
 
-        {/* Footer Navigasi Baris & Halaman dengan Blanca Palette */}
-        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[#262626] bg-[#161616] text-[11px] text-[#8e8e8e]">
+        {/* Footer Navigasi Baris & Halaman */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] text-[11px] text-[oklch(0.65_0.002_230.81)]">
           <div className="flex items-center gap-2">
             <span>Baris per halaman:</span>
             <select
@@ -585,12 +585,12 @@ export default function BookingsTable({
                 setRowsPerPage(Number(e.target.value))
                 setCurrentPage(1)
               }}
-              className="bg-white/5 border border-[#262626] rounded-md px-2 py-0.5 text-white text-[11px] cursor-pointer focus:outline-none"
+              className="bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded px-1.5 py-0.5 text-white text-[11px] cursor-pointer focus:outline-none"
             >
-              <option value={10} className="bg-[#181818]">10</option>
-              <option value={15} className="bg-[#181818]">15</option>
-              <option value={30} className="bg-[#181818]">30</option>
-              <option value={50} className="bg-[#181818]">50</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={30}>30</option>
+              <option value={50}>50</option>
             </select>
           </div>
 

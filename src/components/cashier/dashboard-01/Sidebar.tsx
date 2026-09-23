@@ -1,4 +1,4 @@
-// PERAN FILE: Komponen Sidebar Minimalis Kasir ala Shadcn UI
+// PERAN FILE: Komponen Sidebar Kasir Linear-Style (Sesuai Referensi Styling OKLCH)
 import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck } from 'lucide-react'
 
 interface SidebarProps {
@@ -8,61 +8,67 @@ interface SidebarProps {
 
 export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
   return (
-    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-[#262626] bg-[#141414] p-4 select-none min-h-[calc(100vh-4rem)]">
-      {/* 1. Brand Logo */}
-      <div className="space-y-6">
-        <div className="flex items-center gap-2.5 px-2">
-          <div className="w-6 h-6 rounded-md bg-white text-[#121212] flex items-center justify-center font-black text-xs">
+    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] p-3.5 select-none min-h-[calc(100vh-2rem)] text-[oklch(0.9235_0.001733_230.685)]">
+      {/* 1. Brand & Workspace Bar */}
+      <div className="space-y-5">
+        <div className="flex items-center gap-2.5 px-2 py-1">
+          <div className="w-6 h-6 rounded-md bg-white text-black flex items-center justify-center font-bold text-xs shadow-xs">
             B
           </div>
-          <span className="text-sm font-bold text-white tracking-tight">BLANCA ARENA</span>
+          <div className="flex flex-col">
+            <span className="text-xs font-semibold text-white tracking-tight flex items-center gap-1.5">
+              <span>💻</span>
+              <span>road-to-ukk</span>
+            </span>
+            <span className="text-[10px] text-[oklch(0.65_0.002_230.81)]">Blanca Arena</span>
+          </div>
         </div>
 
-        {/* 2. Menu Navigasi Bersih */}
-        <nav className="space-y-1">
+        {/* 2. Menu Navigasi Linear */}
+        <nav className="space-y-0.5">
           <button
             type="button"
             onClick={() => onTabChange?.('overview')}
-            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+            className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
               currentTab === 'overview'
-                ? 'bg-white/10 text-white font-semibold'
-                : 'text-[#8e8e8e] hover:text-white hover:bg-white/5'
+                ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
+                : 'text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5'
             }`}
           >
-            <LayoutDashboard className="w-4 h-4 text-emerald-400" />
+            <LayoutDashboard className="w-3.5 h-3.5 text-emerald-400" />
             <span>Overview</span>
           </button>
 
           <button
             type="button"
             onClick={() => onTabChange?.('bookings')}
-            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+            className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
               currentTab === 'bookings'
-                ? 'bg-white/10 text-white font-semibold'
-                : 'text-[#8e8e8e] hover:text-white hover:bg-white/5'
+                ? 'bg-[oklch(0.2593_0.0033_230.84)] text-white font-semibold'
+                : 'text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5'
             }`}
           >
-            <ReceiptText className="w-4 h-4 text-[#f2d953]" />
-            <span>Transaksi</span>
+            <ReceiptText className="w-3.5 h-3.5 text-[#f2d953]" />
+            <span>Work items</span>
           </button>
 
           <a
             href="/reservasi"
-            className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-[#8e8e8e] hover:text-white hover:bg-white/5 transition-all"
+            className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <Calendar className="w-4 h-4 text-[#8e8e8e]" />
-              <span>Kalender</span>
+              <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <span>Kalender Publik</span>
             </div>
-            <ArrowUpRight className="w-3 h-3 text-[#555]" />
+            <ArrowUpRight className="w-3 h-3 text-[oklch(0.45_0.002_230.81)]" />
           </a>
         </nav>
       </div>
 
-      {/* 3. Footer Profil Kasir */}
-      <div className="pt-3 border-t border-[#262626] flex items-center justify-between px-2">
+      {/* 3. Footer Profil Kasir Linear */}
+      <div className="pt-3 border-t border-[oklch(0.2593_0.0033_230.84)] flex items-center justify-between px-2">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[11px] font-bold text-white">
+          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
             AK
           </div>
           <div>
@@ -74,7 +80,7 @@ export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
           </div>
         </div>
 
-        <ShieldCheck className="w-4 h-4 text-[#555]" />
+        <ShieldCheck className="w-3.5 h-3.5 text-[oklch(0.45_0.002_230.81)]" />
       </div>
     </aside>
   )

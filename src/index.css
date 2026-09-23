@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@font-face { font-family: 'Inter Variable'; src: url('/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2'); font-weight: 100 900; }
+@font-face { font-family: 'Inter Variable'; src: url('/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2'); font-weight: 100 900; }
+@font-face { font-family: 'Inter Variable'; src: url('/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2'); font-weight: 100 900; }
+
 /* ============================================================== */
 /* GAYA CETAK STRUK PDF (@media print)                            */
 /* ============================================================== */
