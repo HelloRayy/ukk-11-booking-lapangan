@@ -81,10 +81,11 @@ export default function OverviewChart({ data }: OverviewChartProps) {
               tickFormatter={(val: number) => `Rp ${(val / 1000000).toFixed(0)}Jt`}
             />
 
-            {/* Tooltip Hover Modern */}
+            {/* Tooltip Hover Tanpa Animasi Mengikuti Kursor */}
             <Tooltip
               content={<CustomTooltip />}
               cursor={{ fill: 'rgba(255, 255, 255, 0.04)' }}
+              isAnimationActive={false}
             />
 
             {/* Batang Bar Emerald Khas Blanca Arena */}
