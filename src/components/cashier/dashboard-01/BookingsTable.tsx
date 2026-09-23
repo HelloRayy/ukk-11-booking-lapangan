@@ -1,4 +1,4 @@
-// PERAN FILE: Tabel Transaksi Kasir Menggunakan Komponen Resmi Shadcn UI (Table, Button, Input, Badge)
+// PERAN FILE: Tabel Transaksi Kasir Linear-Style Konsisten dengan Desain Blanca Dark Theme
 import { useState, useMemo } from 'react'
 import {
   Search,
@@ -141,20 +141,19 @@ export default function BookingsTable({
     e.stopPropagation()
     const cleanPhone = phone.replace(/\D/g, '')
     const waNumber = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
-    const text = encodeURIComponent(`Halo Kak ${name}, kami dari pengelola Gelora Arena terkait booking lapangan Anda.`)
+    const text = encodeURIComponent(`Halo Kak ${name}, kami dari pengelola Blanca Arena terkait booking lapangan Anda.`)
     window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank')
   }
 
-  // Label Dot Color Generator berdasarkan Lapangan
+  // Label Dot Color Konsisten dengan Blanca Theme
   const getLabelDotColor = (courtName: string) => {
-    if (courtName.toLowerCase().includes('badminton')) return 'bg-cyan-400'
-    if (courtName.toLowerCase().includes('futsal')) return 'bg-emerald-400'
-    if (courtName.toLowerCase().includes('vinyl')) return 'bg-amber-400'
-    return 'bg-pink-400'
+    if (courtName.toLowerCase().includes('badminton')) return 'bg-emerald-400'
+    if (courtName.toLowerCase().includes('futsal')) return 'bg-[#f2d953]'
+    return 'bg-blue-400'
   }
 
   return (
-    <div className="space-y-3 animate-fadeIn p-4 sm:p-6 select-none relative font-sans text-[#ededed]">
+    <div className="space-y-3.5 animate-fadeIn p-4 sm:p-6 select-none relative font-sans text-white">
       {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
@@ -164,11 +163,11 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Menggunakan Shadcn Input & Button */}
+      {/* Top Filter Bar Konsisten Blanca Theme */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
         <div className="flex items-center gap-3">
           <div className="relative flex-1 sm:w-80">
-            <Search className="w-3.5 h-3.5 text-[#71767b] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-[#737373] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <Input
               type="text"
               value={searchKeyword}
@@ -181,8 +180,8 @@ export default function BookingsTable({
             />
           </div>
 
-          {/* Segmented Status Filter */}
-          <div className="flex items-center gap-1 bg-[#131417] border border-[#22242a] rounded-md p-0.5">
+          {/* Segmented Status Filter dengan Border & Background Konsisten */}
+          <div className="flex items-center gap-1 bg-black/40 border border-[#262626] rounded-lg p-1">
             {[
               { label: 'Semua', value: 'Semua' },
               { label: 'Belum Lunas', value: 'Belum Lunas' },
@@ -196,10 +195,10 @@ export default function BookingsTable({
                   onStatusChange(tab.value)
                   setCurrentPage(1)
                 }}
-                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-1 rounded-md text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                   selectedStatus === tab.value
-                    ? 'bg-[#22242a] text-white font-semibold'
-                    : 'text-[#8a8f98] hover:text-[#ededed]'
+                    ? 'bg-white/15 text-white font-semibold'
+                    : 'text-[#8e8e8e] hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -225,7 +224,6 @@ export default function BookingsTable({
             variant="default"
             size="sm"
             onClick={onOpenManualModal}
-            className="shadow-xs active:scale-95"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>+ Walk-in</span>
@@ -233,12 +231,12 @@ export default function BookingsTable({
         </div>
       </div>
 
-      {/* Tabel Menggunakan Shadcn Table Component */}
-      <div className="rounded-lg border border-[#1e2025] bg-[#0c0d0e] overflow-hidden shadow-2xl">
+      {/* Tabel Menggunakan Shadcn Table Component & Blanca Dark Border/Surface */}
+      <div className="rounded-xl border border-[#262626] bg-[#141414] overflow-hidden shadow-xs">
         <Table>
           {/* Header Shadcn Table */}
           <TableHeader>
-            <TableRow className="border-b border-[#1c1d22] bg-[#0c0d0e] hover:bg-[#0c0d0e]">
+            <TableRow className="border-b border-[#262626] bg-[#181818] hover:bg-[#181818]">
               {/* 1. Transaksi / Work items */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
@@ -246,7 +244,7 @@ export default function BookingsTable({
               >
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-white/90">Work items</span>
-                  <span className="text-[10px] text-[#555a64] font-mono">({sortedBookings.length})</span>
+                  <span className="text-[10px] text-[#737373] font-mono">({sortedBookings.length})</span>
                 </div>
               </TableHead>
 
@@ -256,9 +254,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-32"
               >
                 <div className="flex items-center gap-1.5">
-                  <CircleDot className="w-3.5 h-3.5 text-[#71767b]" />
+                  <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>State</span>
-                  <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  <ChevronDown className="w-3 h-3 text-[#737373]" />
                 </div>
               </TableHead>
 
@@ -268,14 +266,14 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-36"
               >
                 <div className="flex items-center gap-1.5">
-                  {/* Linear Signal Bars Icon */}
+                  {/* Signal Bars Icon */}
                   <div className="flex items-end gap-0.5 h-3 w-3">
-                    <span className="w-0.5 h-1 rounded-xs bg-[#71767b]" />
-                    <span className="w-0.5 h-2 rounded-xs bg-[#71767b]" />
-                    <span className="w-0.5 h-3 rounded-xs bg-[#71767b]" />
+                    <span className="w-0.5 h-1 rounded-xs bg-[#8e8e8e]" />
+                    <span className="w-0.5 h-2 rounded-xs bg-[#8e8e8e]" />
+                    <span className="w-0.5 h-3 rounded-xs bg-[#8e8e8e]" />
                   </div>
                   <span>Priority</span>
-                  <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  <ChevronDown className="w-3 h-3 text-[#737373]" />
                 </div>
               </TableHead>
 
@@ -285,9 +283,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-[#71767b]" />
+                  <Users className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Assignees</span>
-                  <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  <ChevronDown className="w-3 h-3 text-[#737373]" />
                 </div>
               </TableHead>
 
@@ -297,15 +295,15 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors min-w-[200px]"
               >
                 <div className="flex items-center gap-1.5">
-                  <Tag className="w-3.5 h-3.5 text-[#71767b]" />
+                  <Tag className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Labels</span>
-                  <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  <ChevronDown className="w-3 h-3 text-[#737373]" />
                 </div>
               </TableHead>
 
               {/* 6. Settings / Options */}
               <TableHead className="text-right w-12 px-3">
-                <div className="flex items-center justify-end text-[#71767b]">
+                <div className="flex items-center justify-end text-[#737373]">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
               </TableHead>
@@ -316,16 +314,16 @@ export default function BookingsTable({
           <TableBody>
             {loading && bookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[#71767b]">
+                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <RefreshCw className="w-4 h-4 animate-spin text-[#8a8f98]" />
+                    <RefreshCw className="w-4 h-4 animate-spin text-emerald-400" />
                     <span>Memuat data transaksi...</span>
                   </div>
                 </TableCell>
               </TableRow>
             ) : paginatedBookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[#71767b]">
+                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
                   Tidak ada transaksi yang cocok.
                 </TableCell>
               </TableRow>
@@ -342,102 +340,102 @@ export default function BookingsTable({
                   <TableRow
                     key={item.id}
                     onClick={() => setSelectedBooking(item)}
-                    className="cursor-pointer group h-10 border-b border-[#18191d]"
+                    className="cursor-pointer group h-10 border-b border-[#262626]/40 hover:bg-white/[0.03]"
                   >
                     {/* 1. Identifier (Mono) + Title (Penyewa & No HP) */}
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-[11px] text-[#71767b] font-medium tracking-wide shrink-0">
+                        <span className="font-mono text-[11px] text-[#8e8e8e] font-medium tracking-wide shrink-0">
                           {invoiceCode}
                         </span>
-                        <span className="text-[#ededed] text-xs font-medium group-hover:text-white transition-colors truncate">
+                        <span className="text-white text-xs font-semibold group-hover:text-emerald-400 transition-colors truncate">
                           {item.nama_penyewa}
                         </span>
                         {item.no_hp && (
-                          <span className="text-[11px] text-[#555a64] font-mono hidden md:inline">
+                          <span className="text-[11px] text-[#737373] font-mono hidden md:inline">
                             • {item.no_hp}
                           </span>
                         )}
                       </div>
                     </TableCell>
 
-                    {/* 2. State (Linear-style Status) */}
+                    {/* 2. State (Linear-style Status dengan Warna Konsisten Blanca) */}
                     <TableCell className="whitespace-nowrap">
                       {isLunas ? (
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#38c793]" />
-                          <span className="text-[#38c793] text-xs font-normal">Done</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400 text-xs font-medium">Done</span>
                         </div>
                       ) : isBatal ? (
                         <div className="flex items-center gap-2">
-                          <XCircle className="w-3.5 h-3.5 text-[#e5484d]" />
-                          <span className="text-[#e5484d] text-xs font-normal">Canceled</span>
+                          <XCircle className="w-3.5 h-3.5 text-rose-400" />
+                          <span className="text-rose-400 text-xs font-medium">Canceled</span>
                         </div>
                       ) : isDP ? (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#f1a83b] flex items-center justify-center shrink-0">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#f1a83b]" />
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                           </span>
-                          <span className="text-[#f1a83b] text-xs font-normal">In Progress</span>
+                          <span className="text-amber-300 text-xs font-medium">In Progress</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#71767b] shrink-0" />
-                          <span className="text-[#8a8f98] text-xs font-normal">Todo</span>
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#737373] shrink-0" />
+                          <span className="text-[#8e8e8e] text-xs font-medium">Todo</span>
                         </div>
                       )}
                     </TableCell>
 
-                    {/* 3. Priority / Tagihan (Linear Signal Bars / Urgent Badge) */}
+                    {/* 3. Priority / Tagihan (Blanca Theme Accent Colors) */}
                     <TableCell className="whitespace-nowrap">
                       {!isLunas && !isBatal && sisa > 0 ? (
                         <div className="flex items-center gap-2">
                           {/* Urgent Icon */}
-                          <div className="w-3.5 h-3.5 rounded-xs border border-[#e5484d] flex items-center justify-center text-[9px] text-[#e5484d] font-bold">
+                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/40 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold">
                             !
                           </div>
-                          <span className="text-[#e5484d] text-xs font-medium">
+                          <span className="text-amber-300 text-xs font-medium">
                             Sisa {formatRupiah(sisa)}
                           </span>
                         </div>
                       ) : isLunas ? (
                         <div className="flex items-center gap-2">
-                          {/* Low 1 Bar Icon */}
+                          {/* Signal Bars */}
                           <div className="flex items-end gap-0.5 h-3 w-3">
-                            <span className="w-0.5 h-1 rounded-xs bg-[#3b82f6]" />
-                            <span className="w-0.5 h-2 rounded-xs bg-[#22242a]" />
-                            <span className="w-0.5 h-3 rounded-xs bg-[#22242a]" />
+                            <span className="w-0.5 h-1 rounded-xs bg-emerald-400" />
+                            <span className="w-0.5 h-2 rounded-xs bg-white/20" />
+                            <span className="w-0.5 h-3 rounded-xs bg-white/20" />
                           </div>
-                          <span className="text-[#8a8f98] text-xs font-normal">
+                          <span className="text-white text-xs font-medium">
                             {formatRupiah(item.total_bayar)}
                           </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
                           <div className="flex items-end gap-0.5 h-3 w-3">
-                            <span className="w-0.5 h-1 rounded-xs bg-[#555a64]" />
-                            <span className="w-0.5 h-2 rounded-xs bg-[#22242a]" />
-                            <span className="w-0.5 h-3 rounded-xs bg-[#22242a]" />
+                            <span className="w-0.5 h-1 rounded-xs bg-[#737373]" />
+                            <span className="w-0.5 h-2 rounded-xs bg-white/10" />
+                            <span className="w-0.5 h-3 rounded-xs bg-white/10" />
                           </div>
-                          <span className="text-[#555a64] text-xs font-normal">Batal</span>
+                          <span className="text-[#737373] text-xs font-normal">Batal</span>
                         </div>
                       )}
                     </TableCell>
 
                     {/* 4. Assignees / Lapangan */}
                     <TableCell className="whitespace-nowrap">
-                      <Badge variant="outline" className="border-[#22242a] bg-[#131417] text-[#c5c8d0] gap-1.5 py-0.5 px-2 font-normal">
-                        <span className="w-3.5 h-3.5 rounded-full bg-[#1e2025] flex items-center justify-center text-[9px] text-[#ededed]">
+                      <Badge variant="outline" className="border-[#262626] bg-white/5 text-white gap-1.5 py-0.5 px-2 font-normal">
+                        <span className="w-3.5 h-3.5 rounded-full bg-white/10 flex items-center justify-center text-[9px] text-emerald-400 font-bold">
                           {courtName.charAt(0)}
                         </span>
                         <span className="truncate">{courtName}</span>
                       </Badge>
                     </TableCell>
 
-                    {/* 5. Labels / Jadwal Main (Dot Tag Linear) */}
+                    {/* 5. Labels / Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="border-[#22242a] bg-[#131417] text-[#c5c8d0] gap-1.5 py-0.5 px-2 font-normal">
+                        <Badge variant="outline" className="border-[#262626] bg-white/5 text-white gap-1.5 py-0.5 px-2 font-normal">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${getLabelDotColor(
                               courtName
@@ -445,13 +443,13 @@ export default function BookingsTable({
                           />
                           <span>{item.tgl_main}</span>
                         </Badge>
-                        <span className="text-[11px] text-[#555a64]">
+                        <span className="text-[11px] text-[#8e8e8e]">
                           • {item.jam_slots.join(', ')}
                         </span>
                       </div>
                     </TableCell>
 
-                    {/* 6. Aksi Tiga Titik & Quick Action menggunakan Shadcn Button */}
+                    {/* 6. Aksi Tiga Titik & Quick Action */}
                     <TableCell className="text-right px-3">
                       <div className="flex items-center justify-end gap-1 relative">
                         {!isLunas && !isBatal && (
@@ -482,11 +480,11 @@ export default function BookingsTable({
                           <MoreHorizontal className="w-3.5 h-3.5" />
                         </Button>
 
-                        {/* Dropdown Menu Tiga Titik */}
+                        {/* Dropdown Menu Tiga Titik Sesuai Blanca Palette */}
                         {activeMenuId === item.id && (
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute right-0 top-full mt-1 w-44 rounded-md border border-[#22242a] bg-[#121316] shadow-2xl p-1 z-30 text-xs text-[#ededed] animate-fadeIn"
+                            className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-[#262626] bg-[#1a1a1a] shadow-xl p-1.5 z-30 text-xs text-white animate-fadeIn"
                           >
                             <button
                               type="button"
@@ -494,7 +492,7 @@ export default function BookingsTable({
                                 setSelectedBooking(item)
                                 setActiveMenuId(null)
                               }}
-                              className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer"
+                              className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
                             >
                               <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
                               <span>Detail Transaksi</span>
@@ -508,7 +506,7 @@ export default function BookingsTable({
                                     handleOpenWhatsApp(item.no_hp, item.nama_penyewa, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer text-[#38c793]"
+                                  className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-emerald-400"
                                 >
                                   <MessageCircle className="w-3.5 h-3.5" />
                                   <span>Kirim WhatsApp</span>
@@ -520,7 +518,7 @@ export default function BookingsTable({
                                     handleCopyPhone(item.no_hp, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer text-[#8a8f98]"
+                                  className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#8e8e8e] hover:text-white"
                                 >
                                   <Copy className="w-3.5 h-3.5" />
                                   <span>
@@ -537,7 +535,7 @@ export default function BookingsTable({
                                   onLunasi(item.id)
                                   setActiveMenuId(null)
                                 }}
-                                className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a3826] text-[#38c793] transition flex items-center gap-2 cursor-pointer"
+                                className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-emerald-600/20 text-emerald-400 transition flex items-center gap-2 cursor-pointer"
                               >
                                 <Check className="w-3.5 h-3.5" />
                                 <span>Tandai Lunas</span>
@@ -551,7 +549,7 @@ export default function BookingsTable({
                                   onBatal(item.id)
                                   setActiveMenuId(null)
                                 }}
-                                className="w-full text-left px-2 py-1.5 rounded hover:bg-[#381a1d] text-[#e5484d] transition flex items-center gap-2 cursor-pointer"
+                                className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-rose-600/20 text-rose-400 transition flex items-center gap-2 cursor-pointer"
                               >
                                 <ShieldAlert className="w-3.5 h-3.5" />
                                 <span>Batalkan Booking</span>
@@ -568,17 +566,17 @@ export default function BookingsTable({
           </TableBody>
         </Table>
 
-        {/* Row Baris Bawah: + Add work item persis di screenshot */}
+        {/* Row Baris Bawah: + Add work item konsisten tema */}
         <div
           onClick={onOpenManualModal}
-          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[#8a8f98] hover:text-[#ededed] hover:bg-[#141518] cursor-pointer transition-colors border-t border-[#1c1d22]"
+          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[#262626]"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>+ Add work item</span>
         </div>
 
-        {/* Footer Navigasi Baris & Halaman dengan Shadcn Button */}
-        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[#1c1d22] bg-[#0c0d0e] text-[11px] text-[#71767b]">
+        {/* Footer Navigasi Baris & Halaman dengan Blanca Palette */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[#262626] bg-[#161616] text-[11px] text-[#8e8e8e]">
           <div className="flex items-center gap-2">
             <span>Baris per halaman:</span>
             <select
@@ -587,12 +585,12 @@ export default function BookingsTable({
                 setRowsPerPage(Number(e.target.value))
                 setCurrentPage(1)
               }}
-              className="bg-[#131417] border border-[#22242a] rounded px-1.5 py-0.5 text-[#ededed] text-[11px] cursor-pointer focus:outline-none"
+              className="bg-white/5 border border-[#262626] rounded-md px-2 py-0.5 text-white text-[11px] cursor-pointer focus:outline-none"
             >
-              <option value={10}>10</option>
-              <option value={15}>15</option>
-              <option value={30}>30</option>
-              <option value={50}>50</option>
+              <option value={10} className="bg-[#181818]">10</option>
+              <option value={15} className="bg-[#181818]">15</option>
+              <option value={30} className="bg-[#181818]">30</option>
+              <option value={50} className="bg-[#181818]">50</option>
             </select>
           </div>
 

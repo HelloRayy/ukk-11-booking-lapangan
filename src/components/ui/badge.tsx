@@ -2,23 +2,24 @@ import * as React from 'react'
 import { cn } from '../../lib/utils'
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'
+  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning' | 'gold'
 }
 
 function Badge({ className, variant = 'default', ...props }: BadgeProps) {
   const variantStyles = {
-    default: 'border-transparent bg-white text-black hover:bg-white/80',
-    secondary: 'border-transparent bg-[#22242a] text-[#ededed] hover:bg-[#22242a]/80',
-    destructive: 'border-[#e5484d]/30 bg-[#e5484d]/10 text-[#e5484d]',
-    outline: 'border-[#22242a] text-[#8a8f98]',
-    success: 'border-[#2b593f] bg-[#1d3527]/50 text-[#38c793]',
-    warning: 'border-[#f1a83b]/30 bg-[#f1a83b]/10 text-[#f1a83b]',
+    default: 'border-transparent bg-emerald-600 text-white',
+    secondary: 'border-transparent bg-white/10 text-white',
+    destructive: 'border-rose-500/20 bg-rose-500/10 text-rose-400',
+    outline: 'border-[#262626] bg-white/5 text-[#8e8e8e]',
+    success: 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400',
+    warning: 'border-amber-500/20 bg-amber-500/10 text-amber-300',
+    gold: 'border-[#f2d953]/20 bg-[#f2d953]/10 text-[#f2d953]',
   }
 
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-ring',
+        'inline-flex items-center gap-1.5 rounded-md border px-2.5 py-0.5 text-[11px] font-medium transition-colors',
         variantStyles[variant],
         className
       )}
