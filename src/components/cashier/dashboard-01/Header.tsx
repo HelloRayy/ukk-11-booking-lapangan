@@ -27,7 +27,7 @@ export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProp
           </span>
           <span className="text-[oklch(0.4_0.002_230.81)]">/</span>
           <span className="text-white font-semibold">
-            {currentTab === 'overview' ? 'Overview' : 'Work items'}
+            {currentTab === 'overview' ? 'Overview' : 'Transaksi'}
           </span>
         </div>
       </div>

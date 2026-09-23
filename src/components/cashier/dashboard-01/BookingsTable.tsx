@@ -1,4 +1,4 @@
-// PERAN FILE: Tabel Transaksi Kasir Linear-Style (Inter Sans Murni, Bebas Mono & AI Slop)
+// PERAN FILE: Tabel Transaksi Kasir Linear-Style dengan UX Copy Kasir yang Alami
 import { useState, useMemo } from 'react'
 import {
   Search,
@@ -16,9 +16,10 @@ import {
   ShieldAlert,
   MessageCircle,
   CircleDot,
-  Tag,
+  Calendar,
+  CreditCard,
+  MapPin,
   SlidersHorizontal,
-  Users,
 } from 'lucide-react'
 import type { Booking } from '../../../types/database'
 import BookingDetailSheet from './BookingDetailSheet'
@@ -162,7 +163,7 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Linear */}
+      {/* Top Filter Bar Linear dengan UX Copy Alami */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-3 border-b border-[oklch(0.2593_0.0033_230.84)]">
         <div className="flex items-center gap-2.5">
           <div className="relative flex-1 sm:w-72">
@@ -174,7 +175,7 @@ export default function BookingsTable({
                 onSearchChange(e.target.value)
                 setCurrentPage(1)
               }}
-              placeholder="Cari transaksi, penyewa, atau no HP..."
+              placeholder="Cari transaksi, nama penyewa, no HP..."
               className="pl-8"
             />
           </div>
@@ -225,7 +226,7 @@ export default function BookingsTable({
             onClick={onOpenManualModal}
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>+ Add work item</span>
+            <span>+ Walk-in</span>
           </Button>
         </div>
       </div>
@@ -233,69 +234,64 @@ export default function BookingsTable({
       {/* Tabel Data Full Width Tanpa Box Terjepit */}
       <div className="flex-1 overflow-x-auto min-h-0 bg-[oklch(0.1932_0.002_230.81)]">
         <Table>
-          {/* Header Shadcn Table */}
+          {/* Header Shadcn Table dengan UX Copy Kontekstual Kasir */}
           <TableHeader>
             <TableRow className="border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] hover:bg-[oklch(0.1932_0.002_230.81)]">
-              {/* 1. Transaksi / Work items */}
+              {/* 1. Kolom Penyewa & Invoice */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
                 className="cursor-pointer hover:text-white transition-colors min-w-[280px] pl-5"
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-white/90">Work items</span>
+                  <span className="font-semibold text-white/90">Penyewa</span>
                   <span className="text-xs text-[oklch(0.55_0.002_230.81)]">({sortedBookings.length})</span>
                 </div>
               </TableHead>
 
-              {/* 2. State */}
+              {/* 2. Kolom Status */}
               <TableHead
                 onClick={() => handleSort('status')}
                 className="cursor-pointer hover:text-white transition-colors w-36"
               >
                 <div className="flex items-center gap-1.5">
                   <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
-                  <span>State</span>
+                  <span>Status</span>
                   <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
-              {/* 3. Priority / Tagihan */}
+              {/* 3. Kolom Tagihan (Sebelumnya 'Priority') */}
               <TableHead
                 onClick={() => handleSort('total_bayar')}
-                className="cursor-pointer hover:text-white transition-colors w-36"
+                className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  {/* Signal Bars Icon */}
-                  <div className="flex items-end gap-0.5 h-3 w-3">
-                    <span className="w-0.5 h-1 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
-                    <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
-                    <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.65_0.002_230.81)]" />
-                  </div>
-                  <span>Priority</span>
+                  <CreditCard className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <span>Tagihan</span>
                   <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
-              {/* 4. Assignees / Lapangan */}
+              {/* 4. Kolom Lapangan (Sebelumnya 'Assignees') */}
               <TableHead
                 onClick={() => handleSort('lapangan')}
                 className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
-                  <span>Assignees</span>
+                  <MapPin className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <span>Lapangan</span>
                   <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
 
-              {/* 5. Labels / Jadwal Main */}
+              {/* 5. Kolom Jadwal Main (Sebelumnya 'Labels') */}
               <TableHead
                 onClick={() => handleSort('tgl_main')}
                 className="cursor-pointer hover:text-white transition-colors min-w-[220px]"
               >
                 <div className="flex items-center gap-1.5">
-                  <Tag className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
-                  <span>Labels</span>
+                  <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <span>Jadwal Main</span>
                   <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
                 </div>
               </TableHead>
@@ -358,70 +354,61 @@ export default function BookingsTable({
                       </div>
                     </TableCell>
 
-                    {/* 2. State (Linear-style Status) */}
+                    {/* 2. Status (UX Copy Alami: Lunas, DP 50%, Batal, Booked) */}
                     <TableCell className="whitespace-nowrap">
                       {isLunas ? (
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="text-emerald-400 text-xs font-normal">Done</span>
+                          <span className="text-emerald-400 text-xs font-medium">Lunas</span>
                         </div>
                       ) : isBatal ? (
                         <div className="flex items-center gap-2">
                           <XCircle className="w-3.5 h-3.5 text-rose-400" />
-                          <span className="text-rose-400 text-xs font-normal">Canceled</span>
+                          <span className="text-rose-400 text-xs font-medium">Batal</span>
                         </div>
                       ) : isDP ? (
                         <div className="flex items-center gap-2">
                           <span className="w-3.5 h-3.5 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                           </span>
-                          <span className="text-amber-300 text-xs font-normal">In Progress</span>
+                          <span className="text-amber-300 text-xs font-medium">DP 50%</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
                           <span className="w-3.5 h-3.5 rounded-full border-2 border-[oklch(0.55_0.002_230.81)] shrink-0" />
-                          <span className="text-[oklch(0.65_0.002_230.81)] text-xs font-normal">Todo</span>
+                          <span className="text-[oklch(0.65_0.002_230.81)] text-xs font-medium">Booked</span>
                         </div>
                       )}
                     </TableCell>
 
-                    {/* 3. Priority / Tagihan */}
+                    {/* 3. Tagihan (Nominal Total atau Sisa Pelunasan) */}
                     <TableCell className="whitespace-nowrap">
                       {!isLunas && !isBatal && sisa > 0 ? (
                         <div className="flex items-center gap-2">
-                          {/* Urgent Icon */}
-                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/30 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold">
+                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/30 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold shrink-0">
                             !
                           </div>
-                          <span className="text-amber-300 text-xs font-medium">
+                          <span className="text-amber-300 text-xs font-semibold">
                             Sisa {formatRupiah(sisa)}
                           </span>
                         </div>
                       ) : isLunas ? (
                         <div className="flex items-center gap-2">
-                          {/* Signal Bars */}
-                          <div className="flex items-end gap-0.5 h-3 w-3">
-                            <span className="w-0.5 h-1 rounded-xs bg-emerald-400" />
-                            <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
-                            <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
-                          </div>
-                          <span className="text-[oklch(0.85_0.001733_230.685)] text-xs font-normal">
+                          <Check className="w-3 h-3 text-emerald-400 shrink-0" />
+                          <span className="text-[oklch(0.9235_0.001733_230.685)] text-xs font-medium">
                             {formatRupiah(item.total_bayar)}
                           </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <div className="flex items-end gap-0.5 h-3 w-3">
-                            <span className="w-0.5 h-1 rounded-xs bg-[oklch(0.55_0.002_230.81)]" />
-                            <span className="w-0.5 h-2 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
-                            <span className="w-0.5 h-3 rounded-xs bg-[oklch(0.2593_0.0033_230.84)]" />
-                          </div>
-                          <span className="text-[oklch(0.55_0.002_230.81)] text-xs font-normal">Batal</span>
+                          <span className="text-[oklch(0.55_0.002_230.81)] text-xs font-normal">
+                            - Batal
+                          </span>
                         </div>
                       )}
                     </TableCell>
 
-                    {/* 4. Assignees / Lapangan (Sesuai Persis Referensi User) */}
+                    {/* 4. Lapangan (Badge Pill Sesuai Referensi Pengguna) */}
                     <TableCell className="whitespace-nowrap">
                       <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
                         <span className="flex items-center justify-center w-3.5 h-3.5 bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.1)] text-[oklch(0.765_0.177_163.223)] text-xs font-bold rounded-full leading-snug transition-all">
@@ -431,7 +418,7 @@ export default function BookingsTable({
                       </div>
                     </TableCell>
 
-                    {/* 5. Labels / Jadwal Main */}
+                    {/* 5. Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
@@ -565,13 +552,13 @@ export default function BookingsTable({
           </TableBody>
         </Table>
 
-        {/* Row Baris Bawah: + Add work item */}
+        {/* Row Baris Bawah: + Tambah Transaksi (Walk-in) */}
         <div
           onClick={onOpenManualModal}
           className="flex items-center gap-2 py-2.5 px-5 text-xs text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[oklch(0.2593_0.0033_230.84)]"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>+ Add work item</span>
+          <span>+ Tambah Transaksi (Walk-in)</span>
         </div>
       </div>
 

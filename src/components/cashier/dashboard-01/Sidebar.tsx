@@ -49,7 +49,7 @@ export default function Sidebar({ currentTab, onTabChange }: SidebarProps) {
             }`}
           >
             <ReceiptText className="w-3.5 h-3.5 text-[#f2d953]" />
-            <span>Work items</span>
+            <span>Transaksi</span>
           </button>
 
           <a
