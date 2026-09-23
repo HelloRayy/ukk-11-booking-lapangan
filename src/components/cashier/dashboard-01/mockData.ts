@@ -11,7 +11,7 @@ export interface MetricCardItem {
 
 export interface ChartMonthData {
   month: string
-  value: number // Dalam juta rupiah
+  total: number // Nilai nominal riil rupiah
   formatted: string
 }
 
@@ -64,18 +64,18 @@ export const MOCK_DASHBOARD_METRICS: MetricCardItem[] = [
 
 // 2. Data Grafik Pendapatan Bulanan (Shadcn Overview Bar Chart)
 export const MOCK_REVENUE_CHART: ChartMonthData[] = [
-  { month: 'Jan', value: 3.2, formatted: 'Rp 3.2M' },
-  { month: 'Feb', value: 4.8, formatted: 'Rp 4.8M' },
-  { month: 'Mar', value: 6.5, formatted: 'Rp 6.5M' },
-  { month: 'Apr', value: 5.1, formatted: 'Rp 5.1M' },
-  { month: 'May', value: 7.4, formatted: 'Rp 7.4M' },
-  { month: 'Jun', value: 8.9, formatted: 'Rp 8.9M' },
-  { month: 'Jul', value: 9.6, formatted: 'Rp 9.6M' },
-  { month: 'Aug', value: 11.2, formatted: 'Rp 11.2M' },
-  { month: 'Sep', value: 10.4, formatted: 'Rp 10.4M' },
-  { month: 'Oct', value: 12.8, formatted: 'Rp 12.8M' },
-  { month: 'Nov', value: 13.5, formatted: 'Rp 13.5M' },
-  { month: 'Dec', value: 14.8, formatted: 'Rp 14.8M' },
+  { month: 'Jan', total: 3200000, formatted: 'Rp 3.200.000' },
+  { month: 'Feb', total: 4800000, formatted: 'Rp 4.800.000' },
+  { month: 'Mar', total: 6500000, formatted: 'Rp 6.500.000' },
+  { month: 'Apr', total: 5100000, formatted: 'Rp 5.100.000' },
+  { month: 'May', total: 7400000, formatted: 'Rp 7.400.000' },
+  { month: 'Jun', total: 8900000, formatted: 'Rp 8.900.000' },
+  { month: 'Jul', total: 9600000, formatted: 'Rp 9.600.000' },
+  { month: 'Aug', total: 11200000, formatted: 'Rp 11.200.000' },
+  { month: 'Sep', total: 10400000, formatted: 'Rp 10.400.000' },
+  { month: 'Oct', total: 12800000, formatted: 'Rp 12.800.000' },
+  { month: 'Nov', total: 13500000, formatted: 'Rp 13.500.000' },
+  { month: 'Dec', total: 14850000, formatted: 'Rp 14.850.000' },
 ]
 
 // 3. Data Transaksi Pemesanan Terkini (Shadcn Recent Sales)

@@ -1,70 +1,101 @@
-// PERAN FILE: Komponen Bar Chart Pendapatan ala Shadcn Overview
+// PERAN FILE: Komponen Bar Chart Pendapatan Resmi Shadcn UI Menggunakan Recharts
+import {
+  BarChart,
+  Bar,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from 'recharts'
 import type { ChartMonthData } from './mockData'
 
 interface OverviewChartProps {
   data: ChartMonthData[]
 }
 
-export default function OverviewChart({ data }: OverviewChartProps) {
-  const maxValue = Math.max(...data.map((d) => d.value), 1)
+interface CustomTooltipProps {
+  active?: boolean
+  payload?: Array<{
+    value: number
+    payload: ChartMonthData
+  }>
+}
 
+function CustomTooltip({ active, payload }: CustomTooltipProps) {
+  if (active && payload && payload.length) {
+    const item = payload[0].payload
+    return (
+      <div className="rounded-lg border border-[#262626] bg-[#141414] p-3 shadow-2xl text-xs select-none">
+        <p className="text-[#8e8e8e] font-medium">{item.month} 2026</p>
+        <p className="font-bold text-white text-sm mt-0.5">
+          Rp {item.total.toLocaleString('id-ID')}
+        </p>
+        <span className="text-[10px] text-emerald-400 font-semibold block mt-1">
+          Target Tercapai
+        </span>
+      </div>
+    )
+  }
+  return null
+}
+
+export default function OverviewChart({ data }: OverviewChartProps) {
   return (
-    <div className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-6 shadow-xs flex flex-col justify-between">
+    <div className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-6 shadow-xs flex flex-col justify-between h-full">
       {/* 1. Header Kartu */}
       <div className="mb-6">
         <h3 className="text-base font-bold text-white tracking-tight">Overview</h3>
         <p className="text-xs text-[#8e8e8e] mt-0.5">
-          Tren akumulasi pendapatan sewa lapangan tahun ini
+          Tren akumulasi pendapatan sewa lapangan tahun berjalan (Recharts)
         </p>
       </div>
 
-      {/* 2. Visualisasi Bar Chart Vertikal Responsif */}
-      <div className="relative pt-6">
-        {/* Garis Grid Horizontal Tipis */}
-        <div className="absolute inset-x-0 top-0 flex flex-col justify-between h-48 pointer-events-none opacity-20">
-          <div className="border-b border-dashed border-white w-full" />
-          <div className="border-b border-dashed border-white w-full" />
-          <div className="border-b border-dashed border-white w-full" />
-        </div>
+      {/* 2. Komponen Recharts Resmi Shadcn */}
+      <div className="w-full h-80 pt-2">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+            {/* Grid Horizontal Garis Halus */}
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="#262626"
+              vertical={false}
+            />
 
-        {/* Batang Bar untuk Tiap Bulan */}
-        <div className="flex items-end justify-between gap-1.5 sm:gap-3 h-52 relative z-10 px-1">
-          {data.map((item, index) => {
-            const heightPercent = Math.round((item.value / maxValue) * 100)
-            const isCurrentMonth = index === data.length - 1
+            {/* Sumbu X (Nama Bulan) */}
+            <XAxis
+              dataKey="month"
+              stroke="#737373"
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+              dy={8}
+            />
 
-            return (
-              <div
-                key={item.month}
-                className="flex-1 flex flex-col items-center justify-end h-full group relative cursor-pointer"
-              >
-                {/* Tooltip Hover Nilai Nominal */}
-                <div className="absolute -top-8 hidden group-hover:flex px-2 py-0.5 rounded bg-black/90 border border-white/20 text-[10px] font-bold text-white whitespace-nowrap shadow-lg pointer-events-none z-20">
-                  {item.formatted}
-                </div>
+            {/* Sumbu Y (Nilai Rupiah) */}
+            <YAxis
+              stroke="#737373"
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={(val: number) => `Rp ${(val / 1000000).toFixed(0)}Jt`}
+            />
 
-                {/* Batang Bar dengan Transisi Halus */}
-                <div
-                  style={{ height: `${heightPercent}%` }}
-                  className={`w-full max-w-[28px] rounded-t-md transition-all duration-300 ${
-                    isCurrentMonth
-                      ? 'bg-gradient-to-t from-emerald-600 to-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.35)]'
-                      : 'bg-white/15 group-hover:bg-white/30'
-                  }`}
-                />
+            {/* Tooltip Hover Modern */}
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{ fill: 'rgba(255, 255, 255, 0.04)' }}
+            />
 
-                {/* Label Bulan */}
-                <span
-                  className={`text-[10px] mt-2 font-medium transition-colors ${
-                    isCurrentMonth ? 'text-emerald-400 font-bold' : 'text-[#737373] group-hover:text-white'
-                  }`}
-                >
-                  {item.month}
-                </span>
-              </div>
-            )
-          })}
-        </div>
+            {/* Batang Bar Emerald Khas Blanca Arena */}
+            <Bar
+              dataKey="total"
+              fill="#10b981"
+              radius={[4, 4, 0, 0]}
+              maxBarSize={32}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   )
