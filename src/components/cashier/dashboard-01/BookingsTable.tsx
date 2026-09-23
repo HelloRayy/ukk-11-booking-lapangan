@@ -1,24 +1,24 @@
-// PERAN FILE: Tabel Transaksi Kasir Enterprise Multi-Kolom (Layout Sesuai Referensi Gambar)
+// PERAN FILE: Tabel Transaksi Kasir Linear-Style (Sesuai Referensi Gambar Issue Tracker)
 import { useState, useMemo } from 'react'
 import {
   Search,
   Plus,
   RefreshCw,
   CheckCircle2,
-  Clock,
   XCircle,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  ArrowUpDown,
-  ArrowUp,
-  ArrowDown,
   MoreHorizontal,
   Copy,
   ExternalLink,
   ShieldAlert,
   MessageCircle,
+  CircleDot,
+  Tag,
+  SlidersHorizontal,
+  Users,
 } from 'lucide-react'
 import type { Booking } from '../../../types/database'
 import BookingDetailSheet from './BookingDetailSheet'
@@ -36,7 +36,7 @@ interface BookingsTableProps {
   onOpenManualModal: () => void
 }
 
-type SortField = 'nama_penyewa' | 'no_hp' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
+type SortField = 'nama_penyewa' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
 type SortOrder = 'asc' | 'desc'
 
 export default function BookingsTable({
@@ -51,28 +51,25 @@ export default function BookingsTable({
   onRefresh,
   onOpenManualModal,
 }: BookingsTableProps) {
-  // 1. State Right Detail Panel Sheet
+  // State Panel Detail Kanan
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
 
-  // 2. State Checkbox Massal (Selection)
-  const [selectedIds, setSelectedIds] = useState<number[]>([])
-
-  // 3. State Sorting Kolom
+  // State Sorting Kolom
   const [sortField, setSortField] = useState<SortField | null>(null)
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
 
-  // 4. State Pagination
+  // State Pagination
   const [currentPage, setCurrentPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [rowsPerPage, setRowsPerPage] = useState(15)
 
-  // 5. State Dropdown Tiga Titik (... menu)
+  // State Menu Tiga Titik & Salin Kontak
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null)
   const [copiedPhone, setCopiedPhone] = useState<string | null>(null)
 
   // Helper Format Rupiah
   const formatRupiah = (val: number) => `Rp ${val.toLocaleString('id-ID')}`
 
-  // Helper Sortir Data
+  // Data Terurut
   const sortedBookings = useMemo(() => {
     if (!sortField) return bookings
 
@@ -83,9 +80,6 @@ export default function BookingsTable({
       if (sortField === 'nama_penyewa') {
         aVal = a.nama_penyewa.toLowerCase()
         bVal = b.nama_penyewa.toLowerCase()
-      } else if (sortField === 'no_hp') {
-        aVal = a.no_hp || ''
-        bVal = b.no_hp || ''
       } else if (sortField === 'lapangan') {
         aVal = a.lapangan?.nama_lapangan || ''
         bVal = b.lapangan?.nama_lapangan || ''
@@ -106,12 +100,11 @@ export default function BookingsTable({
     })
   }, [bookings, sortField, sortOrder])
 
-  // Data Terpotong Pagination
+  // Pagination Slice
   const totalPages = Math.max(1, Math.ceil(sortedBookings.length / rowsPerPage))
   const startIndex = (currentPage - 1) * rowsPerPage
   const paginatedBookings = sortedBookings.slice(startIndex, startIndex + rowsPerPage)
 
-  // Handler Ganti Sortir
   const handleSort = (field: SortField) => {
     if (sortField === field) {
       if (sortOrder === 'asc') {
@@ -126,31 +119,6 @@ export default function BookingsTable({
     }
   }
 
-  // Checkbox: Toggle Satu Baris
-  const handleToggleSelectRow = (id: number, e: React.MouseEvent) => {
-    e.stopPropagation()
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    )
-  }
-
-  // Checkbox: Toggle Pilih Semua di Halaman Aktif
-  const isAllPageSelected =
-    paginatedBookings.length > 0 &&
-    paginatedBookings.every((item) => selectedIds.includes(item.id))
-
-  const handleToggleSelectAllPage = () => {
-    if (isAllPageSelected) {
-      const pageIds = paginatedBookings.map((b) => b.id)
-      setSelectedIds((prev) => prev.filter((id) => !pageIds.includes(id)))
-    } else {
-      const pageIds = paginatedBookings.map((b) => b.id)
-      const combined = Array.from(new Set([...selectedIds, ...pageIds]))
-      setSelectedIds(combined)
-    }
-  }
-
-  // Salin Nomor HP
   const handleCopyPhone = (phone: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation()
     navigator.clipboard.writeText(phone)
@@ -158,7 +126,6 @@ export default function BookingsTable({
     setTimeout(() => setCopiedPhone(null), 2000)
   }
 
-  // Buka WhatsApp
   const handleOpenWhatsApp = (phone: string, name: string, e: React.MouseEvent) => {
     e.stopPropagation()
     const cleanPhone = phone.replace(/\D/g, '')
@@ -167,32 +134,17 @@ export default function BookingsTable({
     window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank')
   }
 
-  // Salin Semua Nomor HP yang Dipilih
-  const handleCopySelectedPhones = () => {
-    const phones = bookings
-      .filter((b) => selectedIds.includes(b.id))
-      .map((b) => `${b.nama_penyewa}: ${b.no_hp}`)
-      .join('\n')
-    navigator.clipboard.writeText(phones)
-    alert(`Berhasil menyalin ${selectedIds.length} kontak terpilih ke clipboard!`)
-  }
-
-  // Helper Warna Avatar
-  const getAvatarBg = (name: string) => {
-    const colors = [
-      'bg-blue-500/20 text-blue-300 border-blue-500/30',
-      'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-      'bg-purple-500/20 text-purple-300 border-purple-500/30',
-      'bg-amber-500/20 text-amber-300 border-amber-500/30',
-      'bg-teal-500/20 text-teal-300 border-teal-500/30',
-    ]
-    const idx = (name.charCodeAt(0) || 0) % colors.length
-    return colors[idx]
+  // Label Dot Color Generator berdasarkan Lapangan / Jadwal
+  const getLabelDotColor = (courtName: string) => {
+    if (courtName.toLowerCase().includes('badminton')) return 'bg-cyan-400'
+    if (courtName.toLowerCase().includes('futsal')) return 'bg-emerald-400'
+    if (courtName.toLowerCase().includes('vinyl')) return 'bg-amber-400'
+    return 'bg-pink-400'
   }
 
   return (
-    <div className="space-y-4 animate-fadeIn p-6 select-none relative">
-      {/* Overlay penutup dropdown jika aktif */}
+    <div className="space-y-3 animate-fadeIn p-4 sm:p-6 select-none relative font-sans text-[#ededed]">
+      {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
           role="presentation"
@@ -201,32 +153,64 @@ export default function BookingsTable({
         />
       )}
 
-      {/* 1. Header & Tombol Aksi */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold text-white tracking-tight">Tabel Transaksi</h1>
-          <p className="text-xs text-[#8e8e8e] mt-0.5">
-            Kelola jadwal, pelunasan tagihan, dan kontak pelanggan dalam tampilan data terstruktur.
-          </p>
+      {/* Top Filter Bar ala Linear */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-2">
+        <div className="flex items-center gap-3">
+          <div className="relative flex-1 sm:w-80">
+            <Search className="w-3.5 h-3.5 text-[#71767b] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchKeyword}
+              onChange={(e) => {
+                onSearchChange(e.target.value)
+                setCurrentPage(1)
+              }}
+              placeholder="Cari transaksi, penyewa, atau no HP..."
+              className="w-full h-8 pl-8 pr-3 rounded-md bg-[#131417] border border-[#22242a] text-xs text-[#ededed] placeholder:text-[#71767b] focus:outline-none focus:border-[#383b45] transition-colors"
+            />
+          </div>
+
+          <div className="flex items-center gap-1 bg-[#131417] border border-[#22242a] rounded-md p-0.5">
+            {[
+              { label: 'Semua', value: 'Semua' },
+              { label: 'Belum Lunas', value: 'Belum Lunas' },
+              { label: 'Lunas', value: 'Lunas' },
+              { label: 'Batal', value: 'Batal' },
+            ].map((tab) => (
+              <button
+                key={tab.value}
+                type="button"
+                onClick={() => {
+                  onStatusChange(tab.value)
+                  setCurrentPage(1)
+                }}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
+                  selectedStatus === tab.value
+                    ? 'bg-[#22242a] text-white font-semibold'
+                    : 'text-[#8a8f98] hover:text-[#ededed]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Tombol Refresh */}
+        <div className="flex items-center gap-2 self-end sm:self-auto">
           <button
             type="button"
             onClick={onRefresh}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-[#262626] text-xs font-medium transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-[#131417] hover:bg-[#1a1b20] text-[#8a8f98] hover:text-white border border-[#22242a] text-xs font-medium transition-colors cursor-pointer"
             title="Refresh data"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
 
-          {/* Tombol + Walk-in */}
           <button
             type="button"
             onClick={onOpenManualModal}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-all cursor-pointer shadow-sm active:scale-95"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-[#ededed] text-black text-xs font-semibold transition-colors cursor-pointer shadow-xs active:scale-95"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>+ Walk-in</span>
@@ -234,483 +218,330 @@ export default function BookingsTable({
         </div>
       </div>
 
-      {/* 2. Search Bar & Status Filter */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="w-3.5 h-3.5 text-[#737373] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="text"
-            value={searchKeyword}
-            onChange={(e) => {
-              onSearchChange(e.target.value)
-              setCurrentPage(1)
-            }}
-            placeholder="Cari nama, invoice, atau no HP..."
-            className="w-full h-8.5 pl-8 pr-3 rounded-lg bg-white/5 border border-[#262626] text-xs text-white placeholder:text-[#737373] focus:outline-none focus:border-white/20 transition-colors"
-          />
-        </div>
-
-        <div className="flex items-center gap-1 overflow-x-auto p-1 rounded-lg bg-black/40 border border-[#262626]">
-          {[
-            { label: 'Semua', value: 'Semua' },
-            { label: 'Belum Lunas', value: 'Belum Lunas' },
-            { label: 'Lunas', value: 'Lunas' },
-            { label: 'Batal', value: 'Batal' },
-          ].map((tab) => (
-            <button
-              key={tab.value}
-              type="button"
-              onClick={() => {
-                onStatusChange(tab.value)
-                setCurrentPage(1)
-              }}
-              className={`px-3 py-1 rounded-md text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
-                selectedStatus === tab.value
-                  ? 'bg-white/15 text-white font-semibold'
-                  : 'text-[#8e8e8e] hover:text-white'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 3. Bar Aksi Massal (Muncul jika ada baris dicentang) */}
-      {selectedIds.length > 0 && (
-        <div className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-200 animate-fadeIn">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-semibold">{selectedIds.length} booking dipilih</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handleCopySelectedPhones}
-              className="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition cursor-pointer flex items-center gap-1.5"
-            >
-              <Copy className="w-3 h-3" />
-              <span>Salin Kontak</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setSelectedIds([])}
-              className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-xs transition cursor-pointer"
-            >
-              Batal Pilih
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* 4. Enterprise Data Table (Layout Persis Gambar Referensi) */}
-      <div className="rounded-xl border border-[#262626] bg-[#141414] shadow-sm overflow-hidden">
-        <div className="overflow-x-auto min-h-[380px]">
+      {/* Tabel Linear Dark Grid */}
+      <div className="rounded-lg border border-[#1e2025] bg-[#0c0d0e] overflow-hidden shadow-2xl">
+        <div className="overflow-x-auto min-h-[420px]">
           <table className="w-full text-left text-xs border-collapse">
+            {/* Header Linear */}
             <thead>
-              <tr className="border-b border-[#262626] bg-[#181818] text-[#8e8e8e] text-[11px] font-semibold">
-                {/* Kolom 1: Checkbox */}
-                <th className="py-3.5 px-3.5 w-10 text-center">
-                  <input
-                    type="checkbox"
-                    checked={isAllPageSelected}
-                    onChange={handleToggleSelectAllPage}
-                    className="w-4 h-4 rounded bg-[#262626] border-[#404040] text-emerald-600 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-emerald-500"
-                    title="Pilih semua baris pada halaman ini"
-                  />
-                </th>
-
-                {/* Kolom 2: Customer (Penyewa) */}
+              <tr className="border-b border-[#1c1d22] bg-[#0c0d0e] text-[#8a8f98] text-[11px] font-medium h-9">
+                {/* 1. Transaksi / Work items */}
                 <th
                   onClick={() => handleSort('nama_penyewa')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
+                  className="py-2 px-4 cursor-pointer hover:text-white transition-colors min-w-[280px]"
                 >
-                  <div className="flex items-center gap-1.5">
-                    <span>Customer</span>
-                    {sortField === 'nama_penyewa' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-white/90">Work items</span>
+                    <span className="text-[10px] text-[#555a64] font-mono">({sortedBookings.length})</span>
                   </div>
                 </th>
 
-                {/* Kolom 3: Phone */}
-                <th
-                  onClick={() => handleSort('no_hp')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <span>Phone</span>
-                    {sortField === 'no_hp' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
-                  </div>
-                </th>
-
-                {/* Kolom 4: Lapangan */}
-                <th
-                  onClick={() => handleSort('lapangan')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <span>Lapangan</span>
-                    {sortField === 'lapangan' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
-                  </div>
-                </th>
-
-                {/* Kolom 5: Jadwal & Jam */}
-                <th
-                  onClick={() => handleSort('tgl_main')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <span>Jadwal Main</span>
-                    {sortField === 'tgl_main' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
-                  </div>
-                </th>
-
-                {/* Kolom 6: Balance / Tagihan */}
-                <th
-                  onClick={() => handleSort('total_bayar')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <span>Balance</span>
-                    {sortField === 'total_bayar' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
-                  </div>
-                </th>
-
-                {/* Kolom 7: Status */}
+                {/* 2. State */}
                 <th
                   onClick={() => handleSort('status')}
-                  className="py-3.5 px-4 font-semibold text-white/90 cursor-pointer hover:text-white transition-colors"
+                  className="py-2 px-4 cursor-pointer hover:text-white transition-colors w-32"
                 >
                   <div className="flex items-center gap-1.5">
-                    <span>Status</span>
-                    {sortField === 'status' ? (
-                      sortOrder === 'asc' ? (
-                        <ArrowUp className="w-3 h-3 text-emerald-400" />
-                      ) : (
-                        <ArrowDown className="w-3 h-3 text-emerald-400" />
-                      )
-                    ) : (
-                      <ArrowUpDown className="w-3 h-3 text-[#737373]" />
-                    )}
+                    <CircleDot className="w-3.5 h-3.5 text-[#71767b]" />
+                    <span>State</span>
+                    <ChevronDown className="w-3 h-3 text-[#555a64]" />
                   </div>
                 </th>
 
-                {/* Kolom 8: Aksi */}
-                <th className="py-3.5 px-4 text-right font-semibold text-white/90 w-36">
-                  Aksi
+                {/* 3. Priority / Tagihan */}
+                <th
+                  onClick={() => handleSort('total_bayar')}
+                  className="py-2 px-4 cursor-pointer hover:text-white transition-colors w-36"
+                >
+                  <div className="flex items-center gap-1.5">
+                    {/* Linear Signal Bars Icon */}
+                    <div className="flex items-end gap-0.5 h-3 w-3">
+                      <span className="w-0.5 h-1 rounded-xs bg-[#71767b]" />
+                      <span className="w-0.5 h-2 rounded-xs bg-[#71767b]" />
+                      <span className="w-0.5 h-3 rounded-xs bg-[#71767b]" />
+                    </div>
+                    <span>Priority</span>
+                    <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  </div>
+                </th>
+
+                {/* 4. Assignees / Lapangan */}
+                <th
+                  onClick={() => handleSort('lapangan')}
+                  className="py-2 px-4 cursor-pointer hover:text-white transition-colors w-40"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Users className="w-3.5 h-3.5 text-[#71767b]" />
+                    <span>Assignees</span>
+                    <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  </div>
+                </th>
+
+                {/* 5. Labels / Jadwal Main */}
+                <th
+                  onClick={() => handleSort('tgl_main')}
+                  className="py-2 px-4 cursor-pointer hover:text-white transition-colors min-w-[200px]"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Tag className="w-3.5 h-3.5 text-[#71767b]" />
+                    <span>Labels</span>
+                    <ChevronDown className="w-3 h-3 text-[#555a64]" />
+                  </div>
+                </th>
+
+                {/* 6. Settings / Options */}
+                <th className="py-2 px-3 text-right w-12">
+                  <div className="flex items-center justify-end text-[#71767b]">
+                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                  </div>
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#262626]/50">
+
+            {/* Body Baris Linear */}
+            <tbody className="divide-y divide-[#18191d]">
               {loading && bookings.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-16 text-center text-[#8e8e8e]">
+                  <td colSpan={6} className="py-16 text-center text-[#71767b]">
                     <div className="flex flex-col items-center justify-center gap-2">
-                      <RefreshCw className="w-5 h-5 animate-spin text-emerald-400" />
+                      <RefreshCw className="w-4 h-4 animate-spin text-[#8a8f98]" />
                       <span>Memuat data transaksi...</span>
                     </div>
                   </td>
                 </tr>
               ) : paginatedBookings.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-16 text-center text-[#8e8e8e]">
-                    Tidak ada transaksi yang cocok dengan filter.
+                  <td colSpan={6} className="py-16 text-center text-[#71767b]">
+                    Tidak ada transaksi yang cocok.
                   </td>
                 </tr>
               ) : (
                 paginatedBookings.map((item) => {
                   const isLunas = item.status === 'Lunas'
                   const isBatal = item.status === 'Batal'
-                  const isSelected = selectedIds.includes(item.id)
+                  const isDP = item.status === 'Booked' || item.tipe_bayar === 'DP'
                   const sisa = item.sisa_bayar || 0
                   const courtName = item.lapangan?.nama_lapangan || `Court ${item.lapangan_id}`
-                  const initials = item.nama_penyewa
-                    .split(' ')
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join('')
-                    .toUpperCase()
+                  const invoiceCode = `INV-${String(item.id).padStart(4, '0')}`
 
                   return (
                     <tr
                       key={item.id}
                       onClick={() => setSelectedBooking(item)}
-                      className={`hover:bg-white/[0.03] transition-colors cursor-pointer group ${
-                        isSelected ? 'bg-white/[0.04]' : ''
-                      }`}
+                      className="hover:bg-[#141518] transition-colors cursor-pointer group h-10"
                     >
-                      {/* 1. Checkbox */}
-                      <td
-                        onClick={(e) => handleToggleSelectRow(item.id, e)}
-                        className="py-3.5 px-3.5 text-center"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={isSelected}
-                          onChange={() => {}}
-                          className="w-4 h-4 rounded bg-[#262626] border-[#404040] text-emerald-600 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-emerald-500"
-                        />
-                      </td>
-
-                      {/* 2. Customer: Avatar + Nama + Subtitle INV */}
-                      <td className="py-3.5 px-4">
+                      {/* 1. Identifier (Mono) + Title (Penyewa & No HP) */}
+                      <td className="py-2.5 px-4">
                         <div className="flex items-center gap-3">
-                          <div
-                            className={`w-8 h-8 rounded-full border flex items-center justify-center text-[11px] font-bold shrink-0 ${getAvatarBg(
-                              item.nama_penyewa
-                            )}`}
-                          >
-                            {initials}
-                          </div>
-                          <div>
-                            <span className="font-semibold text-white block text-xs group-hover:text-emerald-400 transition-colors">
-                              {item.nama_penyewa}
-                            </span>
-                            <span className="text-[10px] text-[#737373] font-mono block mt-0.5">
-                              INV-{String(item.id).padStart(4, '0')}
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* 3. Phone */}
-                      <td className="py-3.5 px-4 text-xs font-mono text-[#a3a3a3]">
-                        <div className="flex items-center gap-1.5">
-                          <span>{item.no_hp || '-'}</span>
+                          <span className="font-mono text-[11px] text-[#71767b] font-medium tracking-wide shrink-0">
+                            {invoiceCode}
+                          </span>
+                          <span className="text-[#ededed] text-xs font-medium group-hover:text-white transition-colors truncate">
+                            {item.nama_penyewa}
+                          </span>
                           {item.no_hp && (
-                            <button
-                              type="button"
-                              onClick={(e) => handleCopyPhone(item.no_hp, e)}
-                              className="text-[#737373] hover:text-white transition p-0.5 rounded cursor-pointer"
-                              title="Salin nomor"
-                            >
-                              <Copy className="w-3 h-3" />
-                            </button>
+                            <span className="text-[11px] text-[#555a64] font-mono hidden md:inline">
+                              • {item.no_hp}
+                            </span>
                           )}
                         </div>
-                        {copiedPhone === item.no_hp && (
-                          <span className="text-[10px] text-emerald-400 block">Tersalin!</span>
+                      </td>
+
+                      {/* 2. State (Linear-style Status) */}
+                      <td className="py-2.5 px-4 whitespace-nowrap">
+                        {isLunas ? (
+                          <div className="flex items-center gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#38c793]" />
+                            <span className="text-[#38c793] text-xs font-normal">Done</span>
+                          </div>
+                        ) : isBatal ? (
+                          <div className="flex items-center gap-2">
+                            <XCircle className="w-3.5 h-3.5 text-[#e5484d]" />
+                            <span className="text-[#e5484d] text-xs font-normal">Canceled</span>
+                          </div>
+                        ) : isDP ? (
+                          <div className="flex items-center gap-2">
+                            <span className="w-3.5 h-3.5 rounded-full border-2 border-[#f1a83b] flex items-center justify-center shrink-0">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#f1a83b]" />
+                            </span>
+                            <span className="text-[#f1a83b] text-xs font-normal">In Progress</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <span className="w-3.5 h-3.5 rounded-full border-2 border-[#71767b] shrink-0" />
+                            <span className="text-[#8a8f98] text-xs font-normal">Todo</span>
+                          </div>
                         )}
                       </td>
 
-                      {/* 4. Lapangan Badge */}
-                      <td className="py-3.5 px-4">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-white font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                          <span>{courtName}</span>
-                        </span>
-                      </td>
-
-                      {/* 5. Jadwal & Jam */}
-                      <td className="py-3.5 px-4 text-xs text-[#d4d4d4]">
-                        <div className="flex flex-col">
-                          <span className="font-medium text-white text-[11px]">
-                            {item.tgl_main}
-                          </span>
-                          <span className="text-[10px] text-[#8e8e8e]">
-                            {item.jam_slots.join(', ')} ({item.jam_slots.length} Jam)
-                          </span>
-                        </div>
-                      </td>
-
-                      {/* 6. Tagihan (Balance) */}
-                      <td className="py-3.5 px-4">
-                        <div className="flex flex-col">
-                          <span className="font-semibold text-white text-xs">
-                            {formatRupiah(item.total_bayar)}
-                          </span>
-                          {!isLunas && !isBatal && sisa > 0 && (
-                            <span className="text-[10px] text-amber-400 font-medium">
+                      {/* 3. Priority / Tagihan (Linear Signal Bars / Urgent Badge) */}
+                      <td className="py-2.5 px-4 whitespace-nowrap">
+                        {!isLunas && !isBatal && sisa > 0 ? (
+                          <div className="flex items-center gap-2">
+                            {/* Urgent Icon */}
+                            <div className="w-3.5 h-3.5 rounded-xs border border-[#e5484d] flex items-center justify-center text-[9px] text-[#e5484d] font-bold">
+                              !
+                            </div>
+                            <span className="text-[#e5484d] text-xs font-medium">
                               Sisa {formatRupiah(sisa)}
                             </span>
-                          )}
-                          {isLunas && (
-                            <span className="text-[10px] text-emerald-400 font-medium">
-                              Lunas
+                          </div>
+                        ) : isLunas ? (
+                          <div className="flex items-center gap-2">
+                            {/* Low 1 Bar Icon */}
+                            <div className="flex items-end gap-0.5 h-3 w-3">
+                              <span className="w-0.5 h-1 rounded-xs bg-[#3b82f6]" />
+                              <span className="w-0.5 h-2 rounded-xs bg-[#22242a]" />
+                              <span className="w-0.5 h-3 rounded-xs bg-[#22242a]" />
+                            </div>
+                            <span className="text-[#8a8f98] text-xs font-normal">
+                              {formatRupiah(item.total_bayar)}
                             </span>
-                          )}
-                        </div>
-                      </td>
-
-                      {/* 7. Status Pill */}
-                      <td className="py-3.5 px-4">
-                        {isLunas ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            <span>Lunas</span>
-                          </span>
-                        ) : isBatal ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[11px] font-medium">
-                            <XCircle className="w-3.5 h-3.5" />
-                            <span>Batal</span>
-                          </span>
+                          </div>
                         ) : (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[11px] font-medium">
-                            <Clock className="w-3.5 h-3.5 text-amber-400" />
-                            <span>DP 50%</span>
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-end gap-0.5 h-3 w-3">
+                              <span className="w-0.5 h-1 rounded-xs bg-[#555a64]" />
+                              <span className="w-0.5 h-2 rounded-xs bg-[#22242a]" />
+                              <span className="w-0.5 h-3 rounded-xs bg-[#22242a]" />
+                            </div>
+                            <span className="text-[#555a64] text-xs font-normal">Batal</span>
+                          </div>
                         )}
                       </td>
 
-                      {/* 8. Tombol Aksi + Three Dots Dropdown */}
-                      <td className="py-3.5 px-4 text-right">
-                        <div className="flex items-center justify-end gap-1.5 relative">
-                          {/* Tombol Cepat: Lunasi (Jika DP) atau Detail */}
-                          {!isLunas && !isBatal ? (
+                      {/* 4. Assignees / Lapangan */}
+                      <td className="py-2.5 px-4 whitespace-nowrap">
+                        <div className="flex items-center gap-2 text-[#8a8f98]">
+                          <span className="w-4 h-4 rounded-full bg-[#1e2025] border border-[#2a2d34] flex items-center justify-center text-[9px] text-[#ededed] font-semibold">
+                            {courtName.charAt(0)}
+                          </span>
+                          <span className="text-xs text-[#c5c8d0] truncate">{courtName}</span>
+                        </div>
+                      </td>
+
+                      {/* 5. Labels / Jadwal Main (Dot Tag Linear) */}
+                      <td className="py-2.5 px-4 whitespace-nowrap">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex items-center gap-1.5 text-xs text-[#c5c8d0]">
+                            <span
+                              className={`w-2 h-2 rounded-full ${getLabelDotColor(
+                                courtName
+                              )}`}
+                            />
+                            <span>{item.tgl_main}</span>
+                          </span>
+                          <span className="text-[11px] text-[#555a64]">
+                            • {item.jam_slots.join(', ')}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* 6. Aksi Tiga Titik & Quick Action */}
+                      <td className="py-2.5 px-3 text-right">
+                        <div className="flex items-center justify-end gap-1 relative">
+                          {!isLunas && !isBatal && (
                             <button
                               type="button"
                               onClick={(e) => {
                                 e.stopPropagation()
                                 onLunasi(item.id)
                               }}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold transition-all cursor-pointer shadow-xs active:scale-95"
+                              className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-0.5 rounded text-[11px] font-medium bg-[#1d3527] text-[#38c793] border border-[#2b593f] hover:bg-[#234632] cursor-pointer"
                               title="Lunasi sisa pembayaran"
                             >
-                              <Check className="w-3 h-3" />
-                              <span>Lunasi</span>
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setSelectedBooking(item)
-                              }}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-[#333] hover:border-[#555] bg-white/5 hover:bg-white/10 text-white text-[11px] font-medium transition-all cursor-pointer"
-                            >
-                              <span>Detail</span>
+                              Lunasi
                             </button>
                           )}
 
-                          {/* Tombol Three Dots (...) */}
-                          <div className="relative">
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setActiveMenuId(activeMenuId === item.id ? null : item.id)
-                              }}
-                              className="w-7 h-7 rounded-md border border-[#333] bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#8e8e8e] hover:text-white transition-colors cursor-pointer"
-                              title="Menu opsi lainnya"
-                            >
-                              <MoreHorizontal className="w-3.5 h-3.5" />
-                            </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setActiveMenuId(activeMenuId === item.id ? null : item.id)
+                            }}
+                            className="w-6 h-6 rounded flex items-center justify-center text-[#555a64] hover:text-[#ededed] hover:bg-[#1e2025] transition-colors cursor-pointer"
+                          >
+                            <MoreHorizontal className="w-3.5 h-3.5" />
+                          </button>
 
-                            {/* Dropdown Menu Tiga Titik */}
-                            {activeMenuId === item.id && (
-                              <div
-                                onClick={(e) => e.stopPropagation()}
-                                className="absolute right-0 top-full mt-1.5 w-48 rounded-lg border border-[#262626] bg-[#1a1a1a] shadow-xl p-1.5 z-30 text-xs text-white animate-fadeIn"
+                          {/* Dropdown Menu Tiga Titik */}
+                          {activeMenuId === item.id && (
+                            <div
+                              onClick={(e) => e.stopPropagation()}
+                              className="absolute right-0 top-full mt-1 w-44 rounded-md border border-[#22242a] bg-[#121316] shadow-2xl p-1 z-30 text-xs text-[#ededed] animate-fadeIn"
+                            >
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedBooking(item)
+                                  setActiveMenuId(null)
+                                }}
+                                className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer"
                               >
+                                <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
+                                <span>Detail Transaksi</span>
+                              </button>
+
+                              {item.no_hp && (
+                                <>
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      handleOpenWhatsApp(item.no_hp, item.nama_penyewa, e)
+                                      setActiveMenuId(null)
+                                    }}
+                                    className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer text-[#38c793]"
+                                  >
+                                    <MessageCircle className="w-3.5 h-3.5" />
+                                    <span>Kirim WhatsApp</span>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      handleCopyPhone(item.no_hp, e)
+                                      setActiveMenuId(null)
+                                    }}
+                                    className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a1b20] transition flex items-center gap-2 cursor-pointer text-[#8a8f98]"
+                                  >
+                                    <Copy className="w-3.5 h-3.5" />
+                                    <span>
+                                      {copiedPhone === item.no_hp ? 'Tersalin!' : 'Salin Nomor HP'}
+                                    </span>
+                                  </button>
+                                </>
+                              )}
+
+                              {!isLunas && !isBatal && (
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setSelectedBooking(item)
+                                    onLunasi(item.id)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-[#1a3826] text-[#38c793] transition flex items-center gap-2 cursor-pointer"
                                 >
-                                  <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
-                                  <span>Buka Panel Detail</span>
+                                  <Check className="w-3.5 h-3.5" />
+                                  <span>Tandai Lunas</span>
                                 </button>
+                              )}
 
-                                {item.no_hp && (
-                                  <>
-                                    <button
-                                      type="button"
-                                      onClick={(e) => {
-                                        handleOpenWhatsApp(item.no_hp, item.nama_penyewa, e)
-                                        setActiveMenuId(null)
-                                      }}
-                                      className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-emerald-400"
-                                    >
-                                      <MessageCircle className="w-3.5 h-3.5" />
-                                      <span>Kirim WhatsApp</span>
-                                    </button>
-
-                                    <button
-                                      type="button"
-                                      onClick={(e) => {
-                                        handleCopyPhone(item.no_hp, e)
-                                        setActiveMenuId(null)
-                                      }}
-                                      className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
-                                    >
-                                      <Copy className="w-3.5 h-3.5 text-amber-400" />
-                                      <span>Salin Nomor HP</span>
-                                    </button>
-                                  </>
-                                )}
-
-                                {!isLunas && !isBatal && (
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      onLunasi(item.id)
-                                      setActiveMenuId(null)
-                                    }}
-                                    className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-emerald-600/20 text-emerald-400 transition flex items-center gap-2 cursor-pointer"
-                                  >
-                                    <Check className="w-3.5 h-3.5" />
-                                    <span>Tandai Lunas</span>
-                                  </button>
-                                )}
-
-                                {!isBatal && (
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      onBatal(item.id)
-                                      setActiveMenuId(null)
-                                    }}
-                                    className="w-full text-left px-2.5 py-1.5 rounded-md hover:bg-rose-600/20 text-rose-400 transition flex items-center gap-2 cursor-pointer"
-                                  >
-                                    <ShieldAlert className="w-3.5 h-3.5" />
-                                    <span>Batalkan Booking</span>
-                                  </button>
-                                )}
-                              </div>
-                            )}
-                          </div>
+                              {!isBatal && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    onBatal(item.id)
+                                    setActiveMenuId(null)
+                                  }}
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-[#381a1d] text-[#e5484d] transition flex items-center gap-2 cursor-pointer"
+                                >
+                                  <ShieldAlert className="w-3.5 h-3.5" />
+                                  <span>Batalkan Booking</span>
+                                </button>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </td>
                     </tr>
@@ -721,90 +552,61 @@ export default function BookingsTable({
           </table>
         </div>
 
-        {/* 5. Footer Pagination (Sesuai Referensi Gambar) */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t border-[#262626] bg-[#161616] text-xs text-[#8e8e8e]">
-          {/* Sisi Kiri: Row Per Page Selector */}
+        {/* Row Baris Bawah: + Add work item persis di screenshot */}
+        <div
+          onClick={onOpenManualModal}
+          className="flex items-center gap-2 py-2.5 px-4 text-xs text-[#8a8f98] hover:text-[#ededed] hover:bg-[#141518] cursor-pointer transition-colors border-t border-[#1c1d22]"
+        >
+          <Plus className="w-3.5 h-3.5" />
+          <span>+ Add work item</span>
+        </div>
+
+        {/* Footer Navigasi Baris & Halaman */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[#1c1d22] bg-[#0c0d0e] text-[11px] text-[#71767b]">
           <div className="flex items-center gap-2">
-            <span>Row Per Page</span>
-            <div className="relative">
-              <select
-                value={rowsPerPage}
-                onChange={(e) => {
-                  setRowsPerPage(Number(e.target.value))
-                  setCurrentPage(1)
-                }}
-                className="appearance-none bg-white/5 border border-[#333] rounded-md px-2.5 py-1 pr-6 text-white text-xs cursor-pointer focus:outline-none focus:border-white/20"
-              >
-                <option value={5} className="bg-[#181818]">5</option>
-                <option value={10} className="bg-[#181818]">10</option>
-                <option value={20} className="bg-[#181818]">20</option>
-                <option value={50} className="bg-[#181818]">50</option>
-              </select>
-              <ChevronDown className="w-3 h-3 text-[#8e8e8e] absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-            <span>Entries (Total {sortedBookings.length} data)</span>
+            <span>Baris per halaman:</span>
+            <select
+              value={rowsPerPage}
+              onChange={(e) => {
+                setRowsPerPage(Number(e.target.value))
+                setCurrentPage(1)
+              }}
+              className="bg-[#131417] border border-[#22242a] rounded px-1.5 py-0.5 text-[#ededed] text-[11px] cursor-pointer focus:outline-none"
+            >
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={30}>30</option>
+              <option value={50}>50</option>
+            </select>
           </div>
 
-          {/* Sisi Kanan: Page Navigation (Numbered Buttons ala Referensi) */}
-          <div className="flex items-center gap-1">
-            <button
-              type="button"
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              className="w-7 h-7 rounded-md border border-[#333] bg-white/5 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-white cursor-pointer transition-colors"
-              title="Halaman sebelumnya"
-            >
-              <ChevronLeft className="w-3.5 h-3.5" />
-            </button>
-
-            {Array.from({ length: totalPages }).map((_, i) => {
-              const pageNum = i + 1
-              if (
-                totalPages > 7 &&
-                pageNum !== 1 &&
-                pageNum !== totalPages &&
-                Math.abs(pageNum - currentPage) > 2
-              ) {
-                if (Math.abs(pageNum - currentPage) === 3) {
-                  return (
-                    <span key={pageNum} className="w-5 text-center text-[#737373]">
-                      ...
-                    </span>
-                  )
-                }
-                return null
-              }
-
-              return (
-                <button
-                  key={pageNum}
-                  type="button"
-                  onClick={() => setCurrentPage(pageNum)}
-                  className={`w-7 h-7 rounded-md text-xs font-semibold transition-all cursor-pointer ${
-                    currentPage === pageNum
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'border border-[#333] bg-white/5 hover:bg-white/10 text-[#8e8e8e] hover:text-white'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              )
-            })}
-
-            <button
-              type="button"
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              className="w-7 h-7 rounded-md border border-[#333] bg-white/5 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-white cursor-pointer transition-colors"
-              title="Halaman berikutnya"
-            >
-              <ChevronRight className="w-3.5 h-3.5" />
-            </button>
+          <div className="flex items-center gap-1.5">
+            <span>
+              Halaman {currentPage} dari {totalPages}
+            </span>
+            <div className="flex items-center gap-0.5 ml-2">
+              <button
+                type="button"
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                className="w-5 h-5 rounded border border-[#22242a] bg-[#131417] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-[#ededed] hover:bg-[#1a1b20] cursor-pointer"
+              >
+                <ChevronLeft className="w-3 h-3" />
+              </button>
+              <button
+                type="button"
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                className="w-5 h-5 rounded border border-[#22242a] bg-[#131417] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-[#ededed] hover:bg-[#1a1b20] cursor-pointer"
+              >
+                <ChevronRight className="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 6. Right Detail Panel Sheet saat baris diklik */}
+      {/* Right Detail Panel Sheet saat baris diklik */}
       <BookingDetailSheet
         booking={selectedBooking}
         isOpen={Boolean(selectedBooking)}
