@@ -14,6 +14,7 @@ export default function CashierPage() {
   // Ambil state dan aksi riil Supabase dari custom hook useCashier
   const {
     filteredBookings,
+    allBookings,
     courts,
     loading,
     searchKeyword,
@@ -58,6 +59,8 @@ export default function CashierPage() {
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         <Header
           currentTab={currentTab}
+          searchKeyword={searchKeyword}
+          onSearchChange={setSearchKeyword}
           onToggleMobileSidebar={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         />
 
@@ -65,7 +68,11 @@ export default function CashierPage() {
           {currentTab === 'overview' ? (
             /* Tab 1: Ringkasan Analitik */
             <div className="p-6 max-w-7xl mx-auto">
-              <DashboardOverview />
+              <DashboardOverview
+                bookings={allBookings}
+                courts={courts}
+                loading={loading}
+              />
             </div>
           ) : (
             /* Tab 2: Tabel Operasional Linear (Work items) Full Width */

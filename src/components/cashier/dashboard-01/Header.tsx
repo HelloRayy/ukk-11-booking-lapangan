@@ -3,10 +3,17 @@ import { Search, Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
   currentTab: 'overview' | 'bookings'
+  searchKeyword?: string
+  onSearchChange?: (val: string) => void
   onToggleMobileSidebar?: () => void
 }
 
-export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProps) {
+export default function Header({
+  currentTab,
+  searchKeyword = '',
+  onSearchChange,
+  onToggleMobileSidebar,
+}: HeaderProps) {
   return (
     <header className="h-[44px] shrink-0 border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] px-5 flex items-center justify-between gap-4 select-none text-[oklch(0.9235_0.001733_230.685)]">
       {/* 1. Sisi Kiri: Breadcrumb Linear (... 💻 road-to-ukk / Work items) */}
@@ -37,6 +44,8 @@ export default function Header({ currentTab, onToggleMobileSidebar }: HeaderProp
           <Search className="w-3.5 h-3.5 text-[oklch(0.55_0.002_230.81)] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
+            value={searchKeyword}
+            onChange={(e) => onSearchChange?.(e.target.value)}
             placeholder="Cari transaksi..."
             className="w-full h-7 pl-8 pr-10 rounded-md bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] text-xs text-[oklch(0.9235_0.001733_230.685)] placeholder:text-[oklch(0.55_0.002_230.81)] focus:outline-none focus:border-[oklch(0.35_0.0033_230.84)] transition-colors"
           />

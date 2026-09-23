@@ -16,13 +16,18 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
           Booking Terkini
         </h3>
         <p className="text-xs text-[#8e8e8e] mt-0.5">
-          {bookings.length} transaksi hari ini
+          {bookings.length} transaksi terbaru
         </p>
       </div>
 
       {/* 2. Daftar Transaksi Terkini */}
       <div className="space-y-4">
-        {bookings.map((item) => {
+        {bookings.length === 0 ? (
+          <div className="py-8 text-center text-xs text-[#8e8e8e]">
+            Belum ada transaksi booking tercatat.
+          </div>
+        ) : (
+          bookings.map((item) => {
           const initials = item.customerName
             .split(' ')
             .map((n) => n[0])
@@ -69,7 +74,7 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
               </div>
             </div>
           )
-        })}
+        }))}
       </div>
     </div>
   )

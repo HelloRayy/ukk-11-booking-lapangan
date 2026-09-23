@@ -1,10 +1,10 @@
-// PERAN FILE: Custom Hook Logic untuk Mengelola State, Database, Realtime, dan Server-side Search Kasir
 import { useState, useEffect, useCallback } from 'react'
-import { searchBookings, getLapangan, updateStatusBooking, subscribeToBookings } from '../../../lib/api'
+import { searchBookings, getAllBookings, getLapangan, updateStatusBooking, subscribeToBookings } from '../../../lib/api'
 import type { Booking, Lapangan } from '../../../types/database'
 
 export function useCashier() {
   const [daftarBooking, setDaftarBooking] = useState<Booking[]>([])
+  const [allBookings, setAllBookings] = useState<Booking[]>([])
   const [courts, setCourts] = useState<Lapangan[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -30,18 +30,26 @@ export function useCashier() {
   const loadDataKasir = useCallback(async () => {
     setLoading(true)
     try {
-      const [bookingsData, courtsData] = await Promise.all([
-        searchBookings(debouncedKeyword, selectedStatus).catch((err) => {
-          console.error('Gagal mencari data booking:', err)
+      const [allData, courtsData, filteredData] = await Promise.all([
+        getAllBookings().catch((err) => {
+          console.error('Gagal mengambil semua data booking:', err)
           return []
         }),
         getLapangan().catch((err) => {
           console.error('Gagal mengambil data lapangan:', err)
           return []
         }),
+        (debouncedKeyword.trim() || selectedStatus !== 'Semua')
+          ? searchBookings(debouncedKeyword, selectedStatus).catch((err) => {
+              console.error('Gagal mencari data booking:', err)
+              return []
+            })
+          : Promise.resolve(null),
       ])
-      setDaftarBooking(bookingsData)
+
+      setAllBookings(allData)
       setCourts(courtsData)
+      setDaftarBooking(filteredData !== null ? filteredData : allData)
     } finally {
       setLoading(false)
     }
@@ -92,6 +100,7 @@ export function useCashier() {
   return {
     daftarBooking,
     filteredBookings: daftarBooking, // Langsung hasil server-side search dari Supabase
+    allBookings,
     courts,
     loading,
     searchKeyword,
