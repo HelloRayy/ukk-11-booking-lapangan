@@ -34,13 +34,13 @@ export function useReservationSchedule() {
     return () => clearTimeout(timer)
   }, [rangeError])
 
-  // Baca data calon penyewa yang disimpan saat submit formulir Landing Page
+  // Baca data calon penyewa yang disimpan dari localStorage (fallback sessionStorage)
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem('blanca_customer_info')
+      const raw = localStorage.getItem('blanca_customer_info') || sessionStorage.getItem('blanca_customer_info')
       if (raw) setCustomer(JSON.parse(raw))
     } catch (e) {
-      console.error('Gagal membaca data customer dari sessionStorage:', e)
+      console.error('Gagal membaca data customer:', e)
     }
   }, [])
 
@@ -233,7 +233,7 @@ export function useReservationSchedule() {
         totalPrice,
         paidAmount,
         remainingAmount,
-        notes: notes || 'Booking lapangan via Blanca Padel.',
+        notes: notes || 'Booking lapangan via Blanca Badminton Arena.',
         avatarInitials,
       }
 
@@ -242,6 +242,11 @@ export function useReservationSchedule() {
       setSelectedBooking(newBookingItem)
       setSelectedSlot(null)
       setPanelMode('receipt')
+      try {
+        localStorage.setItem('blanca_latest_booking', JSON.stringify(newBookingItem))
+      } catch (err) {
+        console.error('Gagal menyimpan booking ke localStorage:', err)
+      }
     } catch (error) {
       console.error('Gagal menyimpan booking ke Supabase:', error)
       const fallbackBooking: BookingItem = {
@@ -261,7 +266,7 @@ export function useReservationSchedule() {
         totalPrice,
         paidAmount,
         remainingAmount,
-        notes: notes || 'Booking lapangan via Blanca Padel (Offline).',
+        notes: notes || 'Booking lapangan via Blanca Badminton Arena (Offline).',
         avatarInitials,
       }
       setBookings((prev) => [...prev, fallbackBooking])

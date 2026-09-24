@@ -45,7 +45,7 @@ export default function OverviewPanel({
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span className="text-white font-medium">Jaya Padel, Arena Utama</span>
+            <span className="text-white font-medium">Blanca Badminton Arena, Hall Utama</span>
           </div>
 
           {/* Badge Waktu Terakhir Diperbarui */}

@@ -1,30 +1,35 @@
-// PERAN FILE: Data Statis Pertanyaan & Jawaban Resmi Blanca Padel
+// PERAN FILE: Data Statis Pertanyaan & Jawaban Resmi Booking Lapangan Blanca Badminton Arena
 import type { FaqItem } from '../types'
 
 export const FAQ_DATA: FaqItem[] = [
   {
     number: '01',
-    question:
-      'Can you tell us how we can customize balls and racquets with Blanca? We have seen this on your Instagram page.',
+    question: 'Bagaimana alur pemesanan lapangan badminton di Blanca Arena?',
     answer:
-      'If you are a club and looking to collaborate on racquets, balls or clothing send us a message. Minimums on racquets can vary, but we do not offer one off customizations. The minimum for custom balls is 100 cases of balls (each with 24 cans).',
+      'Pilih tanggal dan slot jam yang Anda inginkan di halaman Reservasi Lapangan. Anda dapat memilih metode pembayaran DP 50% atau Lunas 100%, lalu lakukan pembayaran instan via QRIS Dinamis. Bukti booking (invoice) resmi akan langsung diterbitkan secara real-time.',
   },
   {
     number: '02',
-    question: 'How can we trial Blanca gear?',
+    question: 'Apakah bisa membayar DP (Down Payment) 50% terlebih dahulu?',
     answer:
-      'You can use our store/padel club locator map to locate places where we have demo racquets you can test out. If your closest club is not on there, be sure to tell them you would like to demo our racquets and have them message us at: hola@blancapadel.com',
+      'Bisa! Kami menyediakan opsi Down Payment (DP) 50% saat booking online untuk mengunci jadwal lapangan Anda. Sisa pembayaran 50% dapat dilunasi secara tunai atau QRIS di meja kasir saat Anda tiba di arena sebelum bermain.',
   },
   {
     number: '03',
-    question: 'Where are your products made?',
+    question: 'Berapa jumlah lapangan dan apa spesifikasi lantai yang digunakan?',
     answer:
-      'Our sourcing and development team scours the earth to find you the best possible products and materials for the most accessible pricing. Our racquets are hand made in China. Our balls are made in China. Our clothing and accessories are made in Hong Kong, China, Vietnam, Mexico and the United States! If you are a vendor and think you have a product or materials that may be a good fit for Blanca, message us at: hola@blancapadel.com',
+      'Blanca Badminton Arena memiliki 4 lapangan badminton berstandar BWF dengan karpet Vinyl Pro anti-slip, peredam kejut lutut (shock-absorption), serta pencahayaan LED turnamen 500+ lux yang nyaman di mata.',
   },
   {
     number: '04',
-    question: 'Where is Blanca based?',
+    question: 'Fasilitas apa saja yang disediakan di arena?',
     answer:
-      'Blanca Padel is headquartered in the Tampa Bay Area, St. Petersburg, Florida in the United States to be specific. Our brand was founded in San Diego, California.',
+      'Setiap pemesanan sudah termasuk akses fasilitas loker pemain, kamar bilas air hangat, toilet bersih, kantin lounge, musholla, area parkir luas, dan pro-shop yang menyediakan sewa raket serta pembelian shuttlecock resmi.',
+  },
+  {
+    number: '05',
+    question: 'Bagaimana jika saya ingin reschedule atau membatalkan booking?',
+    answer:
+      'Pengajuan reschedule jadwal main dapat dilakukan maksimal 6 jam sebelum jam mulai pertandingan dengan menghubungi WhatsApp admin kasir yang tertera pada invoice bukti pemesanan Anda.',
   },
 ]

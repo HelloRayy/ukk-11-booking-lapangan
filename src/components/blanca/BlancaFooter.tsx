@@ -41,8 +41,8 @@ export default function BlancaFooter() {
             <h4 className="text-base font-medium text-white">Contact</h4>
             <ul className="flex flex-col gap-y-2.5 text-[#bfbfbf]">
               <li>
-                <a href="mailto:hola@blancapadel.com" className="hover:text-white transition-colors">
-                  hola@blancapadel.com
+                <a href="mailto:booking@blanca-arena.id" className="hover:text-white transition-colors">
+                  booking@blanca-arena.id
                 </a>
               </li>
               <li>

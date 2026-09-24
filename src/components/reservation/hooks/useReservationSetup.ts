@@ -8,7 +8,7 @@ export function useReservationSetup() {
 
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem('blanca_customer_info')
+      const raw = localStorage.getItem('blanca_customer_info') || sessionStorage.getItem('blanca_customer_info')
       if (raw) {
         setCustomer(JSON.parse(raw))
       }

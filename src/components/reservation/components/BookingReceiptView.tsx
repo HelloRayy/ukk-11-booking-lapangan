@@ -17,7 +17,7 @@ export default function BookingReceiptView({
   const cleanPhone = (booking.customerWhatsapp || '').replace(/[^0-9]/g, '')
   const intlPhone = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
   const waReceiptText = encodeURIComponent(
-    `*BUKTI RESERVASI RESMI - BLANCA PADEL ARENA*\n` +
+    `*BUKTI RESERVASI RESMI - BLANCA BADMINTON ARENA*\n` +
     `No. Invoice: ${booking.invoiceNumber || booking.id}\n` +
     `Nama: ${booking.customerName}\n` +
     `Lapangan: ${booking.courtName}\n` +
@@ -61,10 +61,10 @@ export default function BookingReceiptView({
           {/* Header Brand Struk */}
           <div className="text-center pb-2.5 border-b border-dashed border-white/15">
             <h2 className="text-sm font-bold tracking-tight text-white uppercase">
-              BLANCA PADEL ARENA
+              BLANCA BADMINTON ARENA
             </h2>
             <p className="text-[10px] text-[#8e8e8e] mt-0.5">
-              Sports Hub • Jl. Padel Utama No. 88, Jakarta Selatan
+              Sports Hub • Jl. Boulevard Raya No. 88, Tebet, Jakarta Selatan
             </p>
             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5 text-[11px]">
               <span className="text-[#8e8e8e]">No. Invoice:</span>

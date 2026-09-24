@@ -34,11 +34,12 @@ export function useReservationDrawer() {
     e.preventDefault()
     if (!isFormValid) return
     setIsSubmitted(true)
-    // Simpan data calon penyewa ke sessionStorage agar terbaca di rute /reservasi
+    // Simpan data calon penyewa ke localStorage & sessionStorage agar persisten meski tab ditutup
     try {
+      localStorage.setItem('blanca_customer_info', JSON.stringify(customerInfo))
       sessionStorage.setItem('blanca_customer_info', JSON.stringify(customerInfo))
     } catch (err) {
-      console.error('Gagal menyimpan customer info ke sessionStorage:', err)
+      console.error('Gagal menyimpan customer info:', err)
     }
     // Arahkan calon penyewa ke rute /reservasi
     window.location.href = '/reservasi'

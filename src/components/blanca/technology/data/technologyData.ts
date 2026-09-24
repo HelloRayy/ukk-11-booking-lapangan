@@ -7,23 +7,23 @@ export const TECHNOLOGY_SLIDES: SlideData[] = [
     imgSrc: '/assets/blanca/tech-lifestyle.jpg',
     alt: 'Blanca Lifestyle Coronado',
     productName: 'Coronado',
-    productSubtitle: 'Control round shape racquet',
+    productSubtitle: 'All-round control badminton racquet',
     productLink: '/products/coronado',
     racquetImg: '/assets/blanca/coronado-front.png',
     heading: 'We are carbon fiber obsessed',
     description:
-      "We love carbon fiber for it's famous tensile strength, curious light weight nature and of course aesthetic. Our racquets are made with anywhere from 3K to 18K carbon fiber, the same used by professional padel players and utilized in aerospace and race car parts. ALL of our racquets are reinforced with carbon fiber tubing for added durability.",
+      "We love carbon fiber for it's famous tensile strength, curious light weight nature and of course aesthetic. Our racquets are made with anywhere from 3K to 18K carbon fiber, the same used by professional badminton players and utilized in aerospace and race car parts. ALL of our racquets are reinforced with carbon fiber tubing for added durability.",
   },
   {
     id: 'del-mar',
     imgSrc: '/assets/blanca/tech-carbon.png',
     alt: 'Del Mar Carbon Fiber',
     productName: 'Del Mar',
-    productSubtitle: 'Diamond shaped aggressive racquet',
+    productSubtitle: 'Aerodynamic power badminton racquet',
     productLink: '/products/del-mar',
     racquetImg: '/assets/blanca/del-mar-front.png',
-    heading: 'Diamond shape aggressive power',
+    heading: 'Aerodynamic explosive power',
     description:
-      'A high-performance racquet combining explosive power, maneuverability, and a buttery smooth feel. Its diamond shape positions the sweet spot higher for offensive overhead smashes, backed by durable 12K carbon fiber and shock-absorbing EVA core.',
+      'A high-performance badminton racquet combining explosive power, rapid maneuverability, and crisp smash control. Engineered with high-modulus 12K carbon fiber frame and isometric head geometry for maximum sweet spot coverage.',
   },
 ]

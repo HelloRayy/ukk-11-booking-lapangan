@@ -7,7 +7,7 @@ export default function PaymentLoadingView() {
         Menyiapkan Kanal Pembayaran
       </h3>
       <p className="text-xs text-[#8e8e8e] max-w-[220px]">
-        Menghubungkan ke sistem QRIS Dinamis Blanca Padel...
+        Menghubungkan ke sistem QRIS Dinamis Blanca Badminton Arena...
       </p>
     </div>
   )

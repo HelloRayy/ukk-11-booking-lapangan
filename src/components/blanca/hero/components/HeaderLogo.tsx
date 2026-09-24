@@ -12,7 +12,7 @@ export default function HeaderLogo({ headerLogoRef }: HeaderLogoProps) {
         ref={headerLogoRef}
         className="header__logo cursor-pointer"
         href="/"
-        aria-label="Blanca Padel Home"
+        aria-label="Blanca Badminton Arena Home"
       >
         <svg
           aria-hidden="true"

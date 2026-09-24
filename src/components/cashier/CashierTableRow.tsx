@@ -19,7 +19,7 @@ export default function CashierTableRow({ booking, onLunasi, onBatal }: Props) {
   const intlPhone = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
   const courtName = booking.lapangan?.nama_lapangan || `Court ${booking.lapangan_id}`
   const waMessage = encodeURIComponent(
-    `Halo Kak ${booking.nama_penyewa}, konfirmasi booking ${courtName} di Blanca Padel Arena:\nTanggal: ${booking.tgl_main}\nJam: ${booking.jam_slots.join(', ')}\nTotal: ${formatRupiah(booking.total_bayar)}\nStatus: ${booking.status} (${booking.tipe_bayar})\nSisa Bayar: ${sisa > 0 ? formatRupiah(sisa) : 'Lunas'}.\nTerima kasih!`
+    `Halo Kak ${booking.nama_penyewa}, konfirmasi booking ${courtName} di Blanca Badminton Arena:\nTanggal: ${booking.tgl_main}\nJam: ${booking.jam_slots.join(', ')}\nTotal: ${formatRupiah(booking.total_bayar)}\nStatus: ${booking.status} (${booking.tipe_bayar})\nSisa Bayar: ${sisa > 0 ? formatRupiah(sisa) : 'Lunas'}.\nTerima kasih!`
   )
   const waUrl = `https://wa.me/${intlPhone}?text=${waMessage}`
 

@@ -139,7 +139,7 @@ export default function QrisPaymentView({
           </div>
 
           <div className="w-full text-center mt-2 pt-2 border-t border-gray-100">
-            <span className="text-xs font-bold text-gray-900 block">BLANCA PADEL ARENA</span>
+            <span className="text-xs font-bold text-gray-900 block">BLANCA BADMINTON ARENA</span>
             <span className="text-[10px] text-gray-500 block">NMID: ID1020039201948</span>
           </div>
         </div>

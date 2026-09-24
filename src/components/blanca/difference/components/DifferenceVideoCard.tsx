@@ -30,14 +30,14 @@ export default function DifferenceVideoCard() {
           </span>
         </a>
         <span className="font-light text-[12px] mdw:caption text-[#bfbfbf] !leading-[1]">
-          Control round shape racquet
+          All-round control badminton racquet
         </span>
 
         {/* Racquet Image Overlay */}
         <div className="absolute -top-[10px] mdw:-top-[16px] bottom-0 right-0 w-[58px] mdw:w-[96px] px-[9px] mdw:px-[14px] overflow-hidden pointer-events-none">
           <img
             src="/assets/blanca/coronado-front.png"
-            alt="Coronado Racquet"
+            alt="Coronado Badminton Racquet"
             className="w-auto h-full scale-[150%] mdw:group-hover/mini-product:scale-[160%] translate-y-[10%] origin-center object-contain object-center transition-transform duration-300"
           />
         </div>
