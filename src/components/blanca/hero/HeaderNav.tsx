@@ -49,11 +49,20 @@ export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: Head
               />
             </button>
 
-            {/* Tombol Akun Desktop */}
+            {/* Tombol CTA Book Now */}
             <a
-              href="/account"
+              href="/reservasi"
+              className="flex items-center justify-center h-[38px] px-3.5 sm:px-4 rounded-[6px] bg-white text-black hover:bg-[#eaeaea] active:scale-[0.98] transition-all text-xs tracking-wider font-semibold uppercase shadow-sm whitespace-nowrap"
+            >
+              Book Now
+            </a>
+
+            {/* Tombol Panel Kasir / Petugas */}
+            <a
+              href="/kasir"
               className="hidden lg:flex header__button cursor-pointer"
-              aria-label="Account"
+              aria-label="Panel Kasir"
+              title="Panel Kasir / Petugas"
             >
               <svg
                 aria-hidden="true"
@@ -65,26 +74,6 @@ export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: Head
               >
                 <path
                   d="M18.33 19.25v-1.83a3.67 3.67 0 0 0-3.66-3.67H7.33a3.67 3.67 0 0 0-3.66 3.67v1.83M11 10.08a3.67 3.67 0 1 0 0-7.33 3.67 3.67 0 0 0 0 7.33Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-
-            {/* Tombol Keranjang Cart */}
-            <a href="/cart" className="flex header__button relative cursor-pointer" aria-label="Cart">
-              <svg
-                aria-hidden="true"
-                width="19"
-                height="19"
-                fill="none"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.83 6.5a3.6 3.6 0 0 1-.97 2.47A3.25 3.25 0 0 1 9.5 10c-.88 0-1.73-.37-2.36-1.03a3.6 3.6 0 0 1-.97-2.47M2 3v12.25c0 .96.75 1.75 1.67 1.75h11.66c.45 0 .87-.18 1.18-.51.31-.33.49-.78.49-1.24V3H2Z"
                   stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"

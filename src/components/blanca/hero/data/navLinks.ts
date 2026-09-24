@@ -3,14 +3,14 @@ export interface NavLinkItem {
   id: string
   label: string
   href: string
+  isExternal?: boolean
 }
 
 export const NAV_LINKS: NavLinkItem[] = [
-  { id: 'racquets', label: 'Racquets', href: '/collections/racquets' },
-  { id: 'bundles', label: 'Bundles', href: '/collections/bundle' },
-  { id: 'accessories', label: 'Accessories', href: '/collections/accessories' },
-  { id: 'apparel', label: 'Apparel', href: '/collections/apparel' },
-  { id: 'find-a-club', label: 'Trial our gear', href: '#locations' },
-  { id: 'about-us', label: 'About us', href: '#courts' },
+  { id: 'courts', label: 'Arena & Courts', href: '#courts' },
+  { id: 'technology', label: 'Gear & Tech', href: '#technology' },
+  { id: 'locations', label: 'Locations', href: '#locations' },
   { id: 'faq', label: 'FAQ', href: '#faq' },
+  { id: 'reservasi', label: 'Book Court', href: '/reservasi' },
 ]
+

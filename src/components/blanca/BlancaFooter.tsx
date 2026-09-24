@@ -19,8 +19,8 @@ export default function BlancaFooter() {
                 </a>
               </li>
               <li>
-                <a href="#shopify-section-template--17894129991737__common_slider_x8NN4j" className="hover:text-white transition-colors">
-                  Technology
+                <a href="#technology" className="hover:text-white transition-colors">
+                  Gear & Tech
                 </a>
               </li>
               <li>
@@ -31,6 +31,11 @@ export default function BlancaFooter() {
               <li>
                 <a href="#faq" className="hover:text-white transition-colors">
                   Frequently Asked Questions
+                </a>
+              </li>
+              <li>
+                <a href="/reservasi" className="text-white hover:underline transition-colors font-normal">
+                  Book Court (Online) →
                 </a>
               </li>
             </ul>
@@ -79,8 +84,13 @@ export default function BlancaFooter() {
                 <span className="text-[#8e8e8e]">SMK RPL / PPLG 2026</span>
               </li>
               <li>
-                <a href="/" className="text-[#f2d953] hover:underline font-normal">
-                  Buka Panel Kasir & Pemesan →
+                <a href="/kasir" className="text-[#f2d953] hover:underline font-normal">
+                  Buka Panel Kasir / Petugas →
+                </a>
+              </li>
+              <li>
+                <a href="/reservasi" className="text-[#f2d953] hover:underline font-normal">
+                  Halaman Reservasi Pemesan →
                 </a>
               </li>
             </ul>

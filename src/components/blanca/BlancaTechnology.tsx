@@ -9,9 +9,15 @@ export default function BlancaTechnology() {
 
   return (
     <section
-      id="shopify-section-template--17894129991737__common_slider_x8NN4j"
+      id="technology"
       className="mt-[64px] mdw:mt-[128px] relative text-[#fcfcfc] overflow-hidden font-aeonik"
     >
+      {/* Anchor cadangan untuk ID Shopify lama */}
+      <div
+        id="shopify-section-template--17894129991737__common_slider_x8NN4j"
+        className="absolute -top-[80px]"
+      />
+
       {/* Background Glow Circle */}
       <div className="absolute inset-0 size-full overflow-hidden pointer-events-none">
         <div className="background-circle top-[-46px] mdw:top-[41px] left-[-269px] mdw:left-[-664px] w-[491px] mdw:w-[1129px] h-[657px] mdw:h-[1129px]" />
