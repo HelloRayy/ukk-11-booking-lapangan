@@ -115,17 +115,17 @@ export function useReservationSchedule() {
       booking.date < today || (booking.date === today && endDecimal <= currentDecimal)
 
     if (booking.status === 'maintenance') {
-      setRangeError(`Lapangan sedang dalam perawatan berkala (${booking.startTime} - ${booking.endTime}).`)
+      setRangeError(`Lapangan sedang perawatan (${booking.startTime} - ${booking.endTime}).`)
       return
     }
 
     if (isPastBooking) {
-      setRangeError(`Sesi bermain pada jam ${booking.startTime} - ${booking.endTime} ini telah selesai.`)
+      setRangeError(`Sesi bermain ${booking.startTime} - ${booking.endTime} telah selesai.`)
       return
     }
 
     // Booking aktif: notifikasi privasi publik tanpa membuka panel rincian orang lain
-    setRangeError('Jadwal ini sudah terisi oleh pemesan lain. Silakan pilih slot jam atau lapangan lain yang tersedia.')
+    setRangeError('Jadwal ini sudah terisi. Silakan pilih slot lain.')
   }
 
   // Aksi pemilihan slot kosong dengan validasi jam lampau & rentang waktu dinamis
