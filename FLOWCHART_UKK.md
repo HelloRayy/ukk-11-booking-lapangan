@@ -1,60 +1,76 @@
-# Flowchart Sistem Reservasi & Kasir Lapangan Badminton (UKK RPL / PPLG)
+# Dokumentasi Flowchart Manual & Flowchart Sistem (UKK RPL / PPLG)
 
-Diagram alur kerja sistem dibuat bersih tanpa kotak pembungkus (*no subgraph containers*), berstandar ISO 5807 untuk kelancaran presentasi dan laporan UKK.
+Dokumen ini memenuhi **Kriteria Penilaian No. 1 Pra-UKK**:
+> *"Flowchart manual dibuat sesuai analisa"*
 
----
-
-## 1. Tautan Langsung Mermaid Live Editor (Tanpa Kotakan)
-
-- **[Buka Flowchart Gabungan (Pemesan + Kasir)](https://mermaid.live/edit#pako:eNp9VV1vGjkU_StXSFkRiexkSNJt87CrTEgoDCS0TBdtTR5uwAVrZjzI40lVofz3vf4aSLtaHhCyz7m-Pj7nsu-sqjXvXEPnW1F9X21RacgGSwn0OTmB-He4KRoFM17yGiU8ykJI7rZvumzaFCjgM6-5esFaPJ3C2dmfkLAoaXKEj1hgSaR2HyIVfkZPrkhiGbcsmolCbCFDudlgAQlXJQoZULcWNWDdtOFKwAA1wryoNMybHT5jzU89cGCBdyzDcieKnA4fKrGGMa6_U9UJ7qg-Sg--s-D7cHbYhd9c7TGW4fx7ixzu7fqU2t9CWtWV3Pz16gBDAkAm1phb5Ef2UGnxTeTm0paUUd8kkDvxiPMP2qURi0Zy12gYrbnUQmN9DQ8kXg8WNz24Iy2K0MvIEsYsxSIn-emArNJGMoE_kHofzODq_MSDxxachis-7gieEE5dexxEMGkk1qF6agkTNuSSK9QcPn0ezalqJkquIL6CKZdCe_DEgqf7v-ly_rK2uCUFaabmmkM0rxrZMhVd0_AeWELvaB8pbeTKCeUU-hp32ZwXZLk37joqSAbZ0lph4Y-sO5KE0s4ZOScfPfMCnqsqF3JTB3c8WvSMRQd7jORLJVYc5lo1OQzERhgtyQGUBE7iB11mvq-lbLPR99lIqQ9F0pJetagkFl7JOOTDAnw20r4Pxwwldei4kZFOtU_Qd8iL_Zi0ro8rO3xQ1sMvjB4zXphnbCPqSlyy6BYpMCG-LwJhIl7ouhzVatueeOngV6ybETx3MmYKZY25cfBPKUuvHP7dfq5RNzXVp-ooQ2PpO9PSvFnj1rnLwf84iqUnut34nAzrMDHpc8s15ci9SNtE26ur7ejew5b5Pph8yjWNtIMiLfO9A37Ye4T1atvzBxthogjfyfkNc89jslsifKHp4ABPxxQbEAf0vITR2XaQ0T1X9HWABCYV9-iYdb_s1iZpwa3Xb8Q5PVCSQAkrcdDsVz8sKFhnQtJQo4oNNW6Qi9ib775SJSTuPJpnssF2vCxc0UX_57HYMwOxZwaMMQc56mg-L5xlFxdvFSPQs9GYJJhx2WwD-sKhL9vY_v_VF5f_ec_YHfq1f5gVPmlL2elBp7T_IWvz37Y3lGVHbykHS1pYdtao8mVnKV8NEhtdzX_IFe2Q6TitNPZJBgI3Cku__PovKwIo1A)**
-- **[Buka Flowchart Khusus Pemesan Online](https://mermaid.live/edit#pako:eNpNU11vm0AQ_CsrpFSOlAj7IS9-aBWC42D81YBatYcf1uaCTxx36DgSRZb_e5cD1PgJ7c3s7M6OL95J59ybg_cm9cfpjMZCGmYK6Pc4YZtWojjcwv39dwiYH7QlwgtKrFDBK2-4ecdGgG_GT__QUwPHeGL-XkhxhhRVUaCEgJsKhRpRTw4VskncciMgRIuQSG0haWs8YsNvB2DogAuWYlULWZL40ogcVph_UNc11tQf1QBeOPDzqD2-wre-9wqrUf_ZIZcXV9_Q-GeIdaNV8ePaA5YEgFTkWDrkC9tqK95E2S3tSCnN3YhDr_iF8wddKWJ-pOrWQpRzZYXFZg5bMu8Ofj_ewYK8kOMskSOsWIyyJNNJYGd1hVY0kGrbeSfwE2mJcA8P05uBtXKseNx1VxMvIJyZDzjwYd0qbGA2nd6MWrFjrdmSK27Qcvj5GiXUOhUVNzB7gA1Xwg7gtQNvLr9o1WF1p-BIo1Gbbukldjf2XRtNS3e8LQvoqu5kcatOvW29X39nE5ZwyZsuYV_aUEjOpCIdaMcmkaJw2T4dJacsHbmEo9alUEUzJmTn0Hvm_49IpN61OHFIrGlLCEUhOhspBRRyTgcY3dgP02TKuwOvchHNu3_EpXvPPHvmFc-okHk5mjLzMnXtkNhanXyqE72QAqdKW-fkZiiwMFgN5es_AFkGsg)**
-- **[Buka Flowchart Khusus Kasir Operasional](https://mermaid.live/edit#pako:eNptk2Fv2jAQhv_KKVInkEAhQLu2HzaNokotoLImVaQ5fDjAI1YSJ7LjThXiv-8yx2HdygdA5-e9vHnvfPR25Z57t-D9zMtfuxRVDdE8kUCfRdBjK5OjgAVqoTZ9GA6_wGLM_JnJENYoeW6PwM-aH3_TCseWnBwfuRQaniqu6LyUmH89WaQFJwTCmudGokYJs7LMhDzAk8yF5LbJlPl3qARRBW-YV4GwFK8cQo5ql3bPnFr8kvUiwjOYY40QKZQaMy0gNBVuUfO-4y8tf3UMa6yNpv7UHaUzuLhqrIVmjyksG3sW_8wiLCqRZ-SkFdrTYDS62FgmoITueI0ZEcpkZxOdV9vbyudruBxdWOU189ciFymseE1jOSfTKa8teHP8l-h83zS9IyqK1s3oG7NDirgSBcK90BTPC8rD5m_J9-eHsJ1mq5sx6k7YoXnXHX2dEaek5i0dsN5Ltceaw9YOUd--C2gAodAIzxWM-mf1zKldJXAR_r8mbjlizLOhkODDksxpQ6VGEwftXt6XqujgFUqDuYsvtu3jsct5iRX1QDmARywG8MluDa0aii7z2G5zPHkfI0FbfEOaLf2VJnX0xNJT1nuQmtN1-jgPF0I8_fCNA_vQH-MeC3lOq9ldwkR6A_AKrsjjvrm4x0aSeHVKFyShQuLtUWWJl8hTQ6Kpy_BN7uiEtpFTxfyZ01zgQWHRlk-_AYz_Nog)**
+Untuk memperoleh nilai maksimal dari penguji, dokumentasi menyajikan perbandingan antara **Sistem Manual (Sistem Berjalan Konvensional)** dengan **Sistem Terkomputerisasi (Aplikasi Web Usulan)**.
 
 ---
 
-## 2. Kode Diagram Bersih (Siap Tempel ke FigJam / Mermaid Live)
+## 1. Flowchart Sistem Manual (Sistem Berjalan Sebelum Komputerisasi)
 
+### Tautan Langsung Mermaid Live (Tanpa Kotakan)
+**[Buka Flowchart Manual di Mermaid Live Editor](https://mermaid.live/edit#pako:eNptU8tunEAQ_JUWJ0eKhdmHHzkksrPKIRjL0pJIEfjQC20YAcNqmNEKrfbf08M7D07Q01XVVdOcnaROyfkEzntZn5IclYZwF0vgJ_CuosCUKN4-wPX1ZwhWkftKJcosQwk71PwGLoRU0rGWUBD42Ajlvg3wVY9aR25AEmWLBcN80qQaSgXyx3dMT1jCMx6ZCuWEXPfITdQRQkDVwRQIT6Yw8JV1WRkeM5IpwjfRiGLEbXrcdsLJjBIqRp3WDrw3KeawE9qUohmB2x54e3488pQ57MtaQ8AkOfh1U8vsy2XovOVOCEWKBVt_JWnyHnq30MQDKjGK9npd56h2NwSzpPyFzNdr9af3M6GdFF6wQqapqGHzqejCGAnve8hD5E6BCakRfljDgY0uNBIFcHAGQoWyeaf5nh56tHezvN4nbFEtYb5QorKqWvxL4d0MHN6YIE96sBRM9RNLkU4Bet6cYHcyIFez36RWpGevNszO7dC5vYr2vHONXcw_SJd067_i80-Ct6YRnPJLzdH4pDQ2fMfSYDnZGBbP28xJypYU5nZ1n60lNTPxwk95zUls_jul8xGcilSFIrU_29l2x47O2WPMhdhhl0XsxPJiO9Hoet_KhE-0MsQVc0xR005gprAaypffm80rPQ)**
+
+### Kode Diagram Mermaid
 ```mermaid
 flowchart TD
-    %% 1. ALUR PEMESAN ONLINE
-    A([Mulai Reservasi]) --> B[/Buka Halaman Reservasi /reservasi/]
-    B --> C[/Pilih Tanggal Bermain/]
-    C --> D[(Kueri Data Slot Supabase)]
-    D --> E[Tampilkan Grid Jadwal Lapangan]
-    E --> F[/Pilih Lapangan & Slot Jam/]
-    F --> G{Slot Masih Kosong?}
-    G -- Tidak --> H[Notifikasi Slot Terisi] --> F
-    G -- Ya --> I[/Input Identitas: Nama, WA, Email/]
-    I --> J[Kalkulasi Total Biaya & DP 50%]
-    J --> K[/Pilih Opsi Bayar: DP 50% / Lunas/]
-    K --> L[Generate QRIS & Timer 15 Menit]
-    L --> M{Verifikasi Bayar QRIS?}
-    M -- Gagal / Timeout --> N[Batalkan Kunci Slot] --> Z1([Selesai Reservasi])
-    M -- Berhasil --> O[(Insert Data ke Tabel bookings)]
-    O --> P[/Tampilkan Invoice Struk Digital & Share WA/]
-    P --> Z1
-
-    %% 2. ALUR KASIR OPERASIONAL
-    K1([Mulai Kasir]) --> K2[/Buka Panel Kasir /kasir/]
-    K2 --> K3{Jenis Operasional Kasir?}
-    
-    K3 -- Pelunasan Online --> K4[/Cari Pemesan via Live Search/]
-    K4 --> K5[(Tarik Data Transaksi Supabase)]
-    K5 --> K6{Status Pesanan?}
-    K6 -- Sudah Lunas --> K7[Tampilkan Status Lunas 100%] --> K12[/Cetak Struk Transaksi/]
-    K6 -- Status DP 50% --> K8[/Pilih Metode Pelunasan/]
-    K8 --> K9{Metode Bayar?}
-    K9 -- Tunai --> K10A[Kasir Terima Uang Tunai]
-    K9 -- QRIS Kasir --> K10B[Pelanggan Scan QRIS Kasir]
-    K10A --> K11[(Update bookings: Status Lunas)]
-    K10B --> K11
-    K11 --> K12
-    
-    K3 -- Walk-in Langsung --> W1[/Buka Form Booking Manual/]
-    W1 --> W2[/Pilih Lapangan, Jam, & Data Pemain/]
-    W2 --> W3[Kasir Terima Pembayaran Penuh]
-    W3 --> W4[(Insert bookings: Status Lunas)]
-    W4 --> K12
-    
-    K12 --> Z2([Selesai Kasir])
+    M1([Mulai]) --> M2[/Pelanggan Datang / Telepon ke Kasir/]
+    M2 --> M3[/Menanyakan Ketersediaan Jadwal Lapangan/]
+    M3 --> M4[Kasir Membuka Buku Catatan Agenda Fisik]
+    M4 --> M5[Kasir Mengecek Jadwal yang Sudah Ditulis]
+    M5 --> M6{Apakah Slot Masih Kosong?}
+    M6 -- Tidak / Penuh --> M7[Kasir Mengabari Jadwal Sudah Penuh]
+    M7 --> M3
+    M6 -- Ya / Kosong --> M8[Kasir Menulis Nama Pemesan di Buku]
+    M8 --> M9[/Kasir Meminta Uang Muka Tunai atau Transfer/]
+    M9 --> M10[/Pelanggan Bayar Tunai atau Kirim Bukti Transfer/]
+    M10 --> M11{Apakah Pembayaran Valid?}
+    M11 -- Tidak Valid --> M12[Kasir Mencoret Pemesan dari Buku] --> M15([Selesai])
+    M11 -- Valid --> M13[Kasir Menulis Kwitansi / Nota Kertas Manual]
+    M13 --> M14[/Kasir Menyerahkan Lembar Kwitansi ke Pelanggan/]
+    M14 --> M15([Selesai])
 ```
+
+### Kelemahan Sistem Manual untuk Jawaban Sidang:
+- Risiko tinggi bentrok jadwal (*double booking*) karena kesalahan manusia mencatat di buku.
+- Buku catatan kertas rentan hilang, sobek, atau terkena tumpahan air.
+- Pelanggan harus menunggu konfirmasi telepon/chat kasir secara lambat.
+- Rekapitulasi keuangan harian harus dihitung satu per satu menggunakan kalkulator.
+
+---
+
+## 2. Flowchart Sistem Terkomputerisasi (Aplikasi Web Usulan)
+
+### Tautan Langsung Mermaid Live (Tanpa Kotakan)
+**[Buka Flowchart Sistem di Mermaid Live Editor](https://mermaid.live/edit#pako:eNp1VF1P20AQ_CsrS6AggRIHQkiktiJKBSFQKHbhweFhEy_J1eezdXeGooj_3j1_BaQ2T_F5Z3Z2Z85bb5XF5I3Be5bZ62qD2kI4XSjgX-B3optCong6gKOjrxD0o-4dSVTrNSqYFAnCJUpM-eGRltDVZEi_oBHdp5qgX-GOGSek2EBYYiUE9IpwjTk_omqrj6vqk6gzL0gLuCeUVqQEVxi_MipGPpyixSUagqDIyz8HDfykgg-iQBhLKdyQJhWThgstYghkZmFOlrShWCBrbvo3-EGFP_045A2lpfCmFvYroitMW9mnFW64fUApYh7_c5t4p_nbew0ZMoQHiHEDU5GT4bKS4ywKMc2FTPjgXBJ7UXYLmTaBsOZ8qnV-5JpnJlPr6sWoWcC8UCvBu05JWdRYc5HO3UiN-lEF8ntRd6bywpZi4Y5BrGoMP9jeQ3jcoDXneX4I31MUsh3d79Vov-l5KWzBQm5tlqIVBsLMsnMTgW8IX9za4A-nQIvnlsKvKfr_o5jewaC35zYvDMKEmXQLrgPmtwm7zXn_Zc24AfI8BVwXCg34vd7eTnydN_-k6XxBijRa4nXGBD_vZwHbozBlEftsQkq7xnXY_MH2gaP6LBLnO29t6Vqzew7c2u27aMEFuuh3S6KMF10RnEYTFijH1X2aOwYpGuvYsNrtfq8TBSTZFL6Nn2gnpDfcXNZ8w6gzU8ZFpzQyZDEGExaXEC9-SRKWWZYItTbtxfGHNfYs6vzKY7eAwKItTJWYNvu_0WVZGL68O-xZjR1F3V12A6uLhEvXwrk_Uy-ZWJHbYZYuM77-_JkheDzfWTH655TeIXi8dI5c7L5QW1e98OyGw7ngg4XHX4Rk4S3Uu6vEwmbBm1rxG25PfFKUw0wFrjWm9fH7X8T0idE)**
+
+### Kode Diagram Mermaid
+```mermaid
+flowchart TD
+    S1([Mulai]) --> S2[/Pelanggan Buka Halaman Web /reservasi/]
+    S2 --> S3[/Pilih Tanggal Sewa Lapangan/]
+    S3 --> S4[(Kueri Realtime Jadwal dari Database Supabase)]
+    S4 --> S5[Sistem Merender Grid Slot Ketersediaan Lapangan]
+    S5 --> S6[/Pelanggan Memilih Lapangan & Slot Jam/]
+    S6 --> S7{Validasi Ketersediaan di Database?}
+    S7 -- Sudah Dipesan --> S8[Tampilkan Alert Slot Tidak Tersedia] --> S6
+    S7 -- Kosong --> S9[Sistem Kunci Sementara Slot Terpilih]
+    S9 --> S10[/Input Data Pemesan: Nama, WhatsApp, Email/]
+    S10 --> S11[Sistem Hitung Otomatis Total Biaya = Jam x Tarif]
+    S11 --> S12[Sistem Hitung Otomatis DP 50% & Sisa Bayar]
+    S12 --> S13[/Pilih Opsi Bayar: DP 50% atau Lunas 100%/]
+    S13 --> S14[Sistem Generate Kode QRIS Dinamis & Timer]
+    S14 --> S15{Verifikasi Pembayaran QRIS?}
+    S15 -- Gagal / Timeout --> S16[Batal: Buka Kembali Kunci Slot] --> S20([Selesai])
+    S15 -- Berhasil --> S17[(Insert Data Transaksi ke Tabel bookings)]
+    S17 --> S18[(Update Status Slot Lapangan jadi Disewa)]
+    S18 --> S19[/Tampilkan Struk Digital Invoice & Tombol Share WA/]
+    S19 --> S20([Selesai])
+```
+
+### Keunggulan Sistem Komputerisasi untuk Jawaban Sidang:
+- **Pilar Validasi Database**: Mencegah bentrok jadwal 100% dengan pengecekan realtime di Supabase PostgreSQL.
+- **Pilar Kalkulasi Otomatis**: Menghitung tarif per jam, durasi, dan komitmen DP 50% tanpa campur tangan kalkulator manual.
+- **Pilar Mutasi Status**: Slot waktu otomatis berubah menjadi `Booked` seketika saat pembayaran QRIS diverifikasi.
+- **Transparansi & Bukti**: Struk invoice tersimpan di `localStorage` dan dapat dibagikan otomatis ke WhatsApp pelanggan.
