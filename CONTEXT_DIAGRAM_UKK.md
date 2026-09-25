@@ -8,39 +8,34 @@ Diagram Konteks menggambarkan sistem secara global (*lingkup makro / black box*)
 
 ---
 
-## 1. Tautan Langsung Mermaid Live Editor
+## 1. Tautan Langsung Mermaid Live Editor (Bebas Error)
 Buka tautan berikut di peramban untuk melihat visualisasi diagram atau mengunduh dalam format SVG / PNG:
 
-**[Buka Context Diagram di Mermaid Live Editor](https://mermaid.live/edit#pako:eNqFU9tum0AQ_ZURUiJbqkl6SW-qIq1jahEwUBarrUwfJmbtrIAlgqVRFOffO2CEcZqqPCzLzJ6Zc84sj8a6SITxGYxNVtyvb7HUEM1iBfScnIDlRXbEOLhLFsLI-hFZocfcffjneH8ssFzmzefMW_U7OIMlt8Jf-wMO43a4aldKBFa0nDPe5RbMY9dWuOrebX5hu7YDLLQ8Rqd6LkHoc4tDtGxauDCi7yuLczjveHCbR9ZiNDo3uy3Y3lc_XFDfLzfl2eXU9x3bm4PLAmJJJKdstrC9yPfG40EbFi45zFjEaAltWjxwrIPIZ5phMrncvTZhhhohELmoUKGCUwhkJm9pd435ruPzEvSNCU6hNrLMsZJNgRt8wJJw30KbHwM7UQ3qrQm22hTgCC3KSiQSCcGzQoOLd6i2qHbPGQ_Q75qeiWhbEFNb_S7kWgDXZZ3CTG6lxuwI_x9v2skORt02ueg9yWqFVevJtChSqbbwHbN0ItWxvAP0fQd1RFZk2EuCUYSl3FAdrlHX1fif9nzoCkRkZIUpGXtKc0juMYNQYDbRMhe7Ie0B9qPZGXElNKYD-g4NqOxRL1hCTnS3-K-in8xGRdHMNRAqIUG6NcRPa9JG_A5j60sYr8DIBd0LmTS_52NTNDb0Ld2xmAKxkWCZxkasnpqTWOuCP6g1ZYi9oEh9l6AWM4nbEvMu_PQHb_kmYg)**
+**[Buka Context Diagram Bebas Error di Mermaid Live](https://mermaid.live/edit#pako:eNp9km9vmzAQxr_Kya9aqaFb96-rpkrOYBElQIap9iLsxTU4qYWxK2JUdW2_e23isSiKhgRYvnue-93Zz2Sla06ugKylflzdY2egDCsF9llEc5rNZjRbjis4h1sWFb93CQllcbEcvjawiMrbGWU-ltKM3kTF0v-HeBrP4wRoEWXUZu3yWMzKKD05eRf4JcTZj7xIrem3u-78eprnSZzNYE4XFsESTGmYxlmZZ6enfz3-4U0m1y8VeR9AiAZhwVu-RYUKavveYFuRF1_luPAigESrteha3Aonv8Mn7Kz2ZxGzQ7HH3Sk_BBCrtQYmtYE5PqDaoHKKscQR0UdXruaD-4DITNc3EIqNMCgP1Hsj9_JPY5uyV7j1bU61boTawC-UzUSoQ-p9g8_eIOFSSxyxB5sSO7H-b8tfvLq0A9piYwe2m3L9iBIKjnJiRMudxVDziMNlAN-5wcb3Pfaxpzmi-ho4Uu2OJW__cDOUzZvewluG_dn7u1cpcgak5fZURe2u-rNzrYi5547vyi5r7JqKVOrVZWJvNHtSKxuxXNzu9A81Gh4K3HTY-u3XN61e99Y)**
 
 ---
 
-## 2. Kode Diagram Mermaid (Salin ke FigJam / Mermaid Live)
+## 2. Kode Diagram Mermaid Bersih (Bebas Parse Error)
 
 ```mermaid
 flowchart TD
-    %% ENTITAS LUAR (EXTERNAL ENTITY)
     PELANGGAN[PELANGGAN / USER]
     KASIR[KASIR / PETUGAS]
     MANAJER[MANAJER / PEMILIK ARENA]
 
-    %% PROSES TUNGGAL (PROCESS 0)
     SISTEM((0. SISTEM INFORMASI<br/>BOOKING LAPANGAN BADMINTON))
 
-    %% ARUS DATA DARI DAN KE PELANGGAN
-    PELANGGAN -->|1. Data Pemesanan & Pilihan Jam| SISTEM
-    PELANGGAN -->|2. Konfirmasi Pembayaran QRIS| SISTEM
-    SISTEM -->|3. Info Ketersediaan Slot Lapangan| PELANGGAN
-    SISTEM -->|4. Kode QRIS & Invoice Struk Digital| PELANGGAN
+    PELANGGAN -->|"1. Data Pemesanan dan Jam"| SISTEM
+    PELANGGAN -->|"2. Konfirmasi Pembayaran QRIS"| SISTEM
+    SISTEM -->|"3. Info Slot Lapangan"| PELANGGAN
+    SISTEM -->|"4. Kode QRIS dan Struk Digital"| PELANGGAN
 
-    %% ARUS DATA DARI DAN KE KASIR
-    KASIR -->|5. Data Pelunasan & Booking Walk-in| SISTEM
-    KASIR -->|6. Data Kelola Lapangan (Tarif & Status)| SISTEM
-    SISTEM -->|7. Data Transaksi & Jadwal Real-time| KASIR
-    SISTEM -->|8. Struk Cetak Pelunasan Kasir| KASIR
+    KASIR -->|"5. Data Pelunasan dan Booking Walk-in"| SISTEM
+    KASIR -->|"6. Data Kelola Lapangan dan Tarif"| SISTEM
+    SISTEM -->|"7. Data Transaksi dan Jadwal Real-time"| KASIR
+    SISTEM -->|"8. Cetak Struk Pelunasan"| KASIR
 
-    %% ARUS DATA KE MANAJER
-    SISTEM -->|9. Laporan Pendapatan & Okupansi Lapangan| MANAJER
+    SISTEM -->|"9. Laporan Omzet dan Okupansi Lapangan"| MANAJER
 ```
 
 ---
