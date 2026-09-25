@@ -7,7 +7,7 @@ interface ScheduleHeaderProps {
 
 export default function ScheduleHeader({ courts }: ScheduleHeaderProps) {
   return (
-    <div className="flex border-b border-[#262626] bg-[#1a1a1a] sticky top-0 z-10 select-none font-aeonik">
+    <div className="w-full flex border-b border-[#262626] bg-[#1a1a1a] sticky top-0 z-10 select-none font-aeonik">
       {/* Kolom Pojok Kiri Atas (Label Jam) */}
       <div className="w-20 sm:w-24 shrink-0 flex items-center justify-center border-r border-[#262626] p-2 text-[#737373]">
         <div className="flex items-center gap-1.5 text-[#737373]">

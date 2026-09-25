@@ -40,11 +40,11 @@ export default function ReservationPage() {
       {/* 2. Area Utama: Kalender di Kiri, Panel Informasi & Booking di Kanan */}
       <div className="flex-1 flex overflow-hidden">
         {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) atau Skeleton Loader */}
-        <div className="flex-1 flex flex-col overflow-hidden min-w-0 border-r border-[#262626] relative">
+        <div className="flex-1 flex flex-col overflow-x-auto overflow-y-hidden min-w-0 border-r border-[#262626] relative">
           {isLoading && courts.length === 0 ? (
             <ReservationSkeletonLoader />
           ) : (
-            <>
+            <div className="min-w-[720px] sm:min-w-[780px] flex-1 flex flex-col h-full">
               <ScheduleHeader courts={courts} />
               <ScheduleGrid
                 courts={courts}
@@ -62,7 +62,7 @@ export default function ReservationPage() {
                 onClearSelection={handleClosePanel}
                 onClearError={handleClearError}
               />
-            </>
+            </div>
           )}
         </div>
 

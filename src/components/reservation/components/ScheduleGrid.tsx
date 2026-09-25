@@ -110,7 +110,7 @@ export default function ScheduleGrid({
 
       {/* 3. Grid Container Kalender */}
       <div
-        className="min-w-[720px] flex"
+        className="w-full flex"
         onMouseLeave={() => setHoveredSlot(null)}
       >
         {/* Kolom Sumbu Waktu Sisi Kiri */}

@@ -105,17 +105,17 @@ export default function ReservationNavbar({ customerName, selectedDate, onDateCh
   }
 
   return (
-    <header className="h-16 border-b border-[#262626] bg-[#161616] px-6 flex items-center justify-between shrink-0 select-none z-40 relative">
+    <header className="h-16 border-b border-[#262626] bg-[#161616] px-3 sm:px-6 flex items-center justify-between shrink-0 select-none z-40 relative">
       {/* Kiri: Tombol Kembali & Tanggal Aktif */}
-      <div className="flex items-center gap-4 sm:gap-6">
+      <div className="flex items-center gap-2 sm:gap-4">
         <button
           type="button"
           onClick={handleBack}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-[8px] bg-white/5 hover:bg-white/10 text-xs text-[#a3a3a3] hover:text-white transition-colors cursor-pointer border border-white/10"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-[8px] bg-white/5 hover:bg-white/10 text-xs text-[#a3a3a3] hover:text-white transition-colors cursor-pointer border border-white/10 shrink-0"
           aria-label="Kembali ke beranda"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Beranda</span>
+          <span className="hidden sm:inline">Beranda</span>
         </button>
 
         {/* Date Selector Trigger Container dengan Popover Kalender Shadcn-style */}
@@ -123,15 +123,15 @@ export default function ReservationNavbar({ customerName, selectedDate, onDateCh
           <button
             type="button"
             onClick={() => setIsCalendarOpen((prev) => !prev)}
-            className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-white/20 transition-all cursor-pointer group"
+            className="flex items-center gap-1.5 sm:gap-2.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-white/20 transition-all cursor-pointer group"
             aria-label="Buka kalender tanggal reservasi"
           >
-            <Calendar className="w-4 h-4 text-[#f2d953]" />
-            <span className="font-aeonik font-semibold text-sm sm:text-base text-white group-hover:text-[#f2d953] transition-colors">
+            <Calendar className="w-4 h-4 text-[#f2d953] shrink-0" />
+            <span className="font-aeonik font-semibold text-xs sm:text-base text-white group-hover:text-[#f2d953] transition-colors truncate max-w-[140px] sm:max-w-none">
               {displayDate}
             </span>
             <ChevronDown
-              className={`w-4 h-4 text-[#a3a3a3] group-hover:text-white transition-transform duration-200 ${
+              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#a3a3a3] group-hover:text-white transition-transform duration-200 shrink-0 ${
                 isCalendarOpen ? 'rotate-180 text-[#f2d953]' : ''
               }`}
             />
