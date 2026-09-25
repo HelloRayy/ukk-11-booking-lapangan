@@ -17,12 +17,9 @@ export default function ReservationSkeletonLoader() {
         {/* 4 Kolom Header Lapangan Skeleton */}
         <div className="flex-1 grid grid-cols-4 divide-x divide-[#262626]">
           {placeholderCourts.map((i) => (
-            <div key={i} className="py-3 px-4 flex items-center justify-between min-w-0">
-              <div className="flex flex-col gap-1.5 w-full">
-                <div className="h-4 w-20 sm:w-24 bg-white/10 rounded animate-pulse" />
-                <div className="h-2.5 w-14 sm:w-16 bg-white/5 rounded animate-pulse" />
-              </div>
-              <div className="h-3 w-16 bg-white/5 rounded hidden md:block shrink-0 animate-pulse" />
+            <div key={i} className="py-3 px-4 flex items-center justify-between min-w-0 gap-2">
+              <div className="h-4 w-20 sm:w-24 bg-white/10 rounded animate-pulse" />
+              <div className="h-3.5 w-16 bg-white/5 rounded hidden md:block shrink-0 animate-pulse" />
             </div>
           ))}
         </div>

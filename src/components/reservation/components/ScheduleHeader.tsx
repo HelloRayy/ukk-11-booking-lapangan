@@ -27,13 +27,12 @@ export default function ScheduleHeader({ courts }: ScheduleHeaderProps) {
         {courts.map((court) => (
           <div
             key={court.id}
-            className="py-3 px-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors min-w-0"
+            className="py-3 px-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors min-w-0 gap-2"
           >
-            <div className="truncate">
-              <span className="text-sm font-semibold text-white block truncate">{court.name}</span>
-              <span className="text-[11px] text-[#8e8e8e] block truncate">{court.type}</span>
-            </div>
-            <span className="text-xs text-[#737373] hidden md:block shrink-0">
+            <span className="text-sm sm:text-base font-semibold text-white truncate">
+              {court.name}
+            </span>
+            <span className="text-sm font-medium text-[#a3a3a3] hidden md:block shrink-0">
               Rp {(court.pricePerHour / 1000).toLocaleString('id-ID')}k/jam
             </span>
           </div>
