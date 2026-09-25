@@ -90,21 +90,22 @@ export default function ScheduleGrid({
       {/* 1. Toast Notifikasi Melayang Tanpa Pergeseran Layout */}
       <FloatingToast message={rangeError} onClose={onClearError} />
 
-      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (Dinamis: Dev Mode / Realtime) */}
+      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (Z-Index di bawah card booking) */}
       {isTimeWithinBounds && (
         <div
           style={{ top: `${currentTimeTop}px` }}
-          className="absolute left-0 right-0 z-30 pointer-events-none flex items-center"
+          className="absolute left-0 right-0 z-[2] pointer-events-none flex items-center -translate-y-1/2"
         >
-          <div className="w-20 sm:w-24 shrink-0 flex justify-end pr-2">
-            <span className="px-2.5 py-0.5 rounded bg-[#0091ff] text-white text-xs font-semibold shadow-md flex items-center gap-1">
+          <div className="w-20 sm:w-24 shrink-0 flex items-center justify-end pr-2 relative">
+            <div className="absolute right-0 w-2 h-[2px] bg-[#0091ff]" />
+            <span className="px-2 py-0.5 rounded-md bg-[#0091ff] text-white text-xs font-semibold tracking-tight shadow-md flex items-center gap-1 z-10">
               <span>{CALENDAR_CURRENT_TIME.display}</span>
               {CALENDAR_CURRENT_TIME.isDevMode && (
                 <span className="text-[9px] bg-white/20 px-1 rounded font-normal">Dev</span>
               )}
             </span>
           </div>
-          <div className="flex-1 h-[2px] bg-[#0091ff]/80 shadow-[0_0_8px_rgba(0,145,255,0.7)]" />
+          <div className="flex-1 h-[2px] bg-[#0091ff]" />
         </div>
       )}
 
