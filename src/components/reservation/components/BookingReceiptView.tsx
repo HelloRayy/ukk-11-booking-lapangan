@@ -16,6 +16,10 @@ export default function BookingReceiptView({
   // Normalisasi nomor HP WhatsApp untuk share struk online (ROADTOUKK-20)
   const cleanPhone = (booking.customerWhatsapp || '').replace(/[^0-9]/g, '')
   const intlPhone = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
+  const onlineReceiptUrl =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}/reservasi?invoice=${booking.invoiceNumber || booking.id}`
+      : ''
   const waReceiptText = encodeURIComponent(
     `*BUKTI RESERVASI RESMI - BLANCA BADMINTON ARENA*\n` +
     `No. Invoice: ${booking.invoiceNumber || booking.id}\n` +
@@ -25,6 +29,7 @@ export default function BookingReceiptView({
     `Waktu: ${booking.startTime} - ${booking.endTime}\n` +
     `Total Biaya: ${formatRupiah(booking.totalPrice)}\n` +
     `Status Bayar: ${isLunas ? 'LUNAS 100%' : `DP 50% (Sisa ${formatRupiah(booking.remainingAmount || 0)})`}\n\n` +
+    `Cek Struk Online: ${onlineReceiptUrl}\n\n` +
     `Tunjukkan invoice ini di resepsionis saat check-in. Terima kasih!`
   )
   const waReceiptUrl = `https://wa.me/${intlPhone}?text=${waReceiptText}`

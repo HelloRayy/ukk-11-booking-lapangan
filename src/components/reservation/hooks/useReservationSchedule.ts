@@ -4,6 +4,7 @@ import type { BookingItem, Court, SlotRangeSelection, PaymentType, RightPanelMod
 import { TIME_SLOTS, CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
 import { createBooking } from '../../../lib/api'
 import { getTodayISODate, getInitials } from '../utils/formatters'
+import { mapDbBookingsToItems } from '../utils/bookingMapper'
 import { useReservationData } from './useReservationData'
 import { useSlotValidation } from './useSlotValidation'
 
@@ -18,7 +19,7 @@ export function useReservationSchedule() {
   const [rangeError, setRangeError] = useState<string | null>(null)
 
   // 1. Modul Penarikan Data & Realtime Supabase
-  const { courts, bookings, isLoading, setAllDbBookings, setBookings } = useReservationData({ selectedDate })
+  const { courts, bookings, allDbBookings, isLoading, setAllDbBookings, setBookings } = useReservationData({ selectedDate })
 
   // 2. Modul Validasi Jam Lampau & Deteksi Bentrok
   const { isPastSlot, getSlotBooking, isSlotInRange } = useSlotValidation({
@@ -27,7 +28,7 @@ export function useReservationSchedule() {
     selectedSlot,
   })
 
-  // Auto-dismiss pesan error setelah 4 detik
+  // Auto-dismiss pesan notifikasi/error setelah 4 detik
   useEffect(() => {
     if (!rangeError) return
     const timer = setTimeout(() => setRangeError(null), 4000)
@@ -44,12 +45,87 @@ export function useReservationSchedule() {
     }
   }, [])
 
-  // Aksi ketika user mengklik booking yang sudah ada (Hanya melihat rincian sewa)
+  // 3. Deteksi URL Search Param "?invoice=INV-XXXX" untuk auto-buka struk digital resmi
+  useEffect(() => {
+    if (isLoading) return
+
+    try {
+      const params = new URLSearchParams(window.location.search)
+      const invoiceParam = params.get('invoice')?.trim()
+      if (!invoiceParam) return
+
+      // Cari di bookings tanggal aktif dulu
+      let matched = bookings.find(
+        (b) =>
+          b.invoiceNumber?.toLowerCase() === invoiceParam.toLowerCase() ||
+          b.id.toLowerCase() === invoiceParam.toLowerCase(),
+      )
+
+      // Jika belum ketemu di tanggal aktif, cari di seluruh allDbBookings
+      if (!matched && allDbBookings && allDbBookings.length > 0) {
+        const dbMatch = allDbBookings.find(
+          (b) =>
+            `inv-${b.id}` === invoiceParam.toLowerCase() ||
+            String(b.id).toLowerCase() === invoiceParam.toLowerCase(),
+        )
+        if (dbMatch) {
+          const mappedList = mapDbBookingsToItems([dbMatch], dbMatch.tgl_main, courts)
+          if (mappedList.length > 0) {
+            matched = mappedList[0]
+            if (dbMatch.tgl_main !== selectedDate) {
+              setSelectedDate(dbMatch.tgl_main)
+            }
+          }
+        }
+      }
+
+      // Fallback ke localStorage jika pencarian offline/terbatas
+      if (!matched) {
+        const rawLatest = localStorage.getItem('blanca_latest_booking')
+        if (rawLatest) {
+          const latest: BookingItem = JSON.parse(rawLatest)
+          if (
+            latest.invoiceNumber?.toLowerCase() === invoiceParam.toLowerCase() ||
+            latest.id.toLowerCase() === invoiceParam.toLowerCase()
+          ) {
+            matched = latest
+          }
+        }
+      }
+
+      if (matched) {
+        setSelectedBooking(matched)
+        setSelectedSlot(null)
+        setPanelMode('receipt')
+      }
+    } catch (e) {
+      console.error('Gagal membaca parameter invoice URL:', e)
+    }
+  }, [isLoading, bookings, allDbBookings, courts, selectedDate])
+
+  // Aksi ketika user mengklik booking yang sudah ada (Proteksi Privasi Publik - ROADTOUKK-20)
   const handleSelectBooking = (booking: BookingItem) => {
-    setSelectedBooking(booking)
     setSelectedSlot(null)
-    setRangeError(null)
-    setPanelMode('inspect')
+
+    const [endH, endM] = booking.endTime.split(':').map(Number)
+    const endDecimal = endH + (endM || 0) / 60
+    const currentDecimal = CALENDAR_CURRENT_TIME.hour + CALENDAR_CURRENT_TIME.minute / 60
+    const today = getTodayISODate()
+    const isPastBooking =
+      booking.date < today || (booking.date === today && endDecimal <= currentDecimal)
+
+    if (booking.status === 'maintenance') {
+      setRangeError(`Lapangan sedang dalam perawatan berkala (${booking.startTime} - ${booking.endTime}).`)
+      return
+    }
+
+    if (isPastBooking) {
+      setRangeError(`Sesi bermain pada jam ${booking.startTime} - ${booking.endTime} ini telah selesai.`)
+      return
+    }
+
+    // Booking aktif: notifikasi privasi publik tanpa membuka panel rincian orang lain
+    setRangeError('Jadwal ini sudah terisi oleh pemesan lain. Silakan pilih slot jam atau lapangan lain yang tersedia.')
   }
 
   // Aksi pemilihan slot kosong dengan validasi jam lampau & rentang waktu dinamis

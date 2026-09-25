@@ -1,5 +1,7 @@
 // PERAN FILE: Kartu jadwal terisi (Booked) atau Maintenance pada kolom lapangan
 import type { BookingItem } from '../../types'
+import { CALENDAR_CURRENT_TIME } from '../../constants/scheduleConfig'
+import { getTodayISODate } from '../../utils/formatters'
 
 interface BookedSlotCardProps {
   booking: BookingItem
@@ -24,6 +26,50 @@ export default function BookedSlotCard({
 
   const topOffset = (startDecimal - baseHour) * slotHeight + 3
   const cardHeight = duration * slotHeight - 6
+
+  const today = getTodayISODate()
+  const currentDecimal = CALENDAR_CURRENT_TIME.hour + CALENDAR_CURRENT_TIME.minute / 60
+  const isPastBooking =
+    booking.date < today || (booking.date === today && endDecimal <= currentDecimal)
+
+  // Status Slot Lampau yang sudah selesai (Garis Diagonal & Sembunyikan Nama Customer)
+  if (isPastBooking) {
+    return (
+      <div
+        onClick={(e) => {
+          e.stopPropagation()
+          onSelect(booking)
+        }}
+        style={{
+          top: `${topOffset}px`,
+          height: `${cardHeight}px`,
+          backgroundImage:
+            'repeating-linear-gradient(-45deg, #181818, #181818 8px, #222222 8px, #222222 16px)',
+        }}
+        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#383838] flex flex-col justify-between cursor-pointer opacity-50 hover:opacity-75 transition-all shadow-sm select-none font-aeonik ${
+          isSelected ? 'ring-2 ring-white/50 border-[#888888]' : ''
+        }`}
+      >
+        <div>
+          <div className="flex items-center justify-between gap-1 mb-1">
+            <span className="text-xs font-semibold text-[#8e8e8e]">
+              Selesai
+            </span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-[#737373] border border-white/5">
+              Arsip
+            </span>
+          </div>
+          <span className="text-xs text-[#666666] font-mono block">
+            {booking.startTime} - {booking.endTime}
+          </span>
+        </div>
+
+        <div className="text-[11px] text-[#555555] truncate">
+          {booking.courtName}
+        </div>
+      </div>
+    )
+  }
 
   // Status Maintenance
   if (booking.status === 'maintenance') {
