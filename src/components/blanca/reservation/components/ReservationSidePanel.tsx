@@ -269,14 +269,14 @@ export default function ReservationSidePanel({
 
               {/* Bottom Action Button dengan Motion Unlock Khas Blanca (WCAG Compliant) */}
               <div
-                className={`pt-8 pb-2 mt-auto transition-all duration-500 ease-out ${
+                className={`pt-8 pb-2 mt-auto transition-all duration-500 ease-out [transform:translateZ(0)] ${
                   isActive ? 'opacity-100 translate-y-0 delay-250' : 'opacity-0 translate-y-4'
                 }`}
               >
                 <button
                   type="submit"
                   disabled={!isFormValid}
-                  className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-300 select-none ${
+                  className={`group relative w-full h-[64px] rounded-[12px] flex items-center justify-center overflow-hidden transition-all duration-300 select-none antialiased [font-synthesis:none] [transform:translateZ(0)] [backface-visibility:hidden] ${
                     isFormValid
                       ? 'bg-[#f2d953] hover:bg-[#e4cb34] active:bg-[#d6bc28] text-[#161616] cursor-pointer shadow-[0_6px_24px_rgba(242,217,83,0.3)] hover:shadow-[0_8px_28px_rgba(228,203,52,0.4)] border border-[#f2d953]/30 active:scale-[0.98]'
                       : 'bg-[#222222] border border-white/10 text-[#666666] cursor-not-allowed'
@@ -312,12 +312,12 @@ export default function ReservationSidePanel({
                     </svg>
                   </span>
 
-                  {/* Teks Label yang Bergeser Halus Menyesuaikan Posisi Ikon */}
+                  {/* Teks Label yang Bergeser Halus Tanpa Glitch Perubahan Font-Weight */}
                   <span
-                    className={`text-[16px] tracking-tight transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                    className={`text-[16px] tracking-tight font-normal antialiased [font-synthesis:none] transition-[padding,color] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                       isFormValid
-                        ? 'pr-[56px] pl-4 font-medium text-[#161616]'
-                        : 'pl-[56px] pr-4 font-normal text-[#666666]'
+                        ? 'pr-[56px] pl-4 text-[#161616]'
+                        : 'pl-[56px] pr-4 text-[#666666]'
                     }`}
                   >
                     See our recommendations
