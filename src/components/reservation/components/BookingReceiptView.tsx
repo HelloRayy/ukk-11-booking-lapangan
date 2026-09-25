@@ -49,10 +49,10 @@ export default function BookingReceiptView({
         {/* 2. Kartu Struk Resmi (#printable-receipt) */}
         <div
           id="printable-receipt"
-          className="p-4 rounded-xl bg-[#202020] border border-[#2e2e2e] text-white shadow-lg space-y-3"
+          className="relative rounded-2xl bg-[#1f1f1f] border border-[#2e2e2e] text-white shadow-lg space-y-3 overflow-hidden"
         >
           {/* Header Brand Struk */}
-          <div className="text-center pb-2.5 border-b border-dashed border-white/15">
+          <div className="p-4 pb-0 text-center">
             <h2 className="text-sm font-bold tracking-tight text-white uppercase">
               BLANCA BADMINTON ARENA
             </h2>
@@ -71,19 +71,27 @@ export default function BookingReceiptView({
             </div>
           </div>
 
-          {/* Status Pembayaran */}
-          <div className="flex items-center justify-between py-1 px-2.5 rounded-lg bg-white/[0.03] border border-white/5">
-            <span className="text-xs text-[#8e8e8e]">Status Bayar</span>
-            <span
-              className={`text-xs font-bold px-2 py-0.5 rounded ${
-                isLunas
-                  ? 'bg-emerald-500/20 text-emerald-400'
-                  : 'bg-amber-500/20 text-amber-300'
-              }`}
-            >
-              {isLunas ? 'LUNAS 100%' : 'DP 50%'}
-            </span>
+          {/* Garis Potong Notched Divider */}
+          <div className="relative flex items-center justify-center my-0.5">
+            <div className="absolute -left-2 w-4 h-4 rounded-full bg-[#1a1a1a] border-r border-[#2e2e2e]" />
+            <div className="w-full border-t border-dashed border-[#383838] mx-3" />
+            <div className="absolute -right-2 w-4 h-4 rounded-full bg-[#1a1a1a] border-l border-[#2e2e2e]" />
           </div>
+
+          <div className="p-4 pt-0 space-y-3">
+            {/* Status Pembayaran */}
+            <div className="flex items-center justify-between py-1.5 px-3 rounded-lg bg-white/[0.03] border border-white/5">
+              <span className="text-xs text-[#8e8e8e]">Status Bayar</span>
+              <span
+                className={`text-xs font-bold px-2 py-0.5 rounded ${
+                  isLunas
+                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                    : 'bg-[#f2d953]/20 text-[#f2d953] border border-[#f2d953]/30'
+                }`}
+              >
+                {isLunas ? 'LUNAS 100%' : 'DP 50%'}
+              </span>
+            </div>
 
           {/* Rincian Jadwal & Lapangan */}
           <div className="space-y-1.5 text-xs">
@@ -188,6 +196,7 @@ export default function BookingReceiptView({
             <p className="text-[10px] text-[#737373] mt-0.5">
               Tunjukkan barcode ini kepada resepsionis saat tiba di venue.
             </p>
+          </div>
           </div>
         </div>
       </div>
