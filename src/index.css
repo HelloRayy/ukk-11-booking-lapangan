@@ -5,6 +5,37 @@
 @font-face { font-family: 'Inter Variable'; src: url('/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2'); font-weight: 100 900; }
 
 /* ============================================================== */
+/* ANIMASI SMOOTH SHAKE (KARTU SLOT TERKUNCI / TERISI)            */
+/* ============================================================== */
+@keyframes smooth-shake {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-4px) rotate(-0.4deg);
+  }
+  30% {
+    transform: translateX(3.5px) rotate(0.4deg);
+  }
+  45% {
+    transform: translateX(-2.5px) rotate(-0.2deg);
+  }
+  65% {
+    transform: translateX(1.5px) rotate(0.2deg);
+  }
+  85% {
+    transform: translateX(-0.5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-smooth-shake {
+  animation: smooth-shake 0.42s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* ============================================================== */
 /* GAYA CETAK STRUK PDF (@media print)                            */
 /* ============================================================== */
 @media print {

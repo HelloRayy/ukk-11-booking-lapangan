@@ -1,4 +1,5 @@
 // PERAN FILE: Kartu jadwal terisi (Booked) atau Maintenance pada kolom lapangan
+import { useState } from 'react'
 import type { BookingItem } from '../../types'
 import { CALENDAR_CURRENT_TIME } from '../../constants/scheduleConfig'
 import { getTodayISODate } from '../../utils/formatters'
@@ -18,6 +19,8 @@ export default function BookedSlotCard({
   baseHour,
   onSelect,
 }: BookedSlotCardProps) {
+  const [isShaking, setIsShaking] = useState(false)
+
   const [startH, startM] = booking.startTime.split(':').map(Number)
   const [endH, endM] = booking.endTime.split(':').map(Number)
   const startDecimal = startH + (startM || 0) / 60
@@ -32,23 +35,28 @@ export default function BookedSlotCard({
   const isPastBooking =
     booking.date < today || (booking.date === today && endDecimal <= currentDecimal)
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    // Memicu animasi smooth shake tactile feedback
+    setIsShaking(true)
+    setTimeout(() => setIsShaking(false), 450)
+    onSelect(booking)
+  }
+
   // Status Slot Lampau yang sudah selesai (Garis Diagonal & Sembunyikan Nama Customer)
   if (isPastBooking) {
     return (
       <div
-        onClick={(e) => {
-          e.stopPropagation()
-          onSelect(booking)
-        }}
+        onClick={handleCardClick}
         style={{
           top: `${topOffset}px`,
           height: `${cardHeight}px`,
           backgroundImage:
             'repeating-linear-gradient(-45deg, #181818, #181818 8px, #222222 8px, #222222 16px)',
         }}
-        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#383838] flex flex-col justify-between cursor-pointer opacity-50 hover:opacity-75 transition-all shadow-sm select-none font-aeonik ${
-          isSelected ? 'ring-2 ring-white/50 border-[#888888]' : ''
-        }`}
+        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#383838] flex flex-col justify-between cursor-pointer opacity-50 hover:opacity-75 transition-all shadow-sm select-none font-aeonik active:scale-[0.98] ${
+          isShaking ? 'animate-smooth-shake ring-2 ring-white/40 border-white/40' : ''
+        } ${isSelected ? 'ring-2 ring-white/50 border-[#888888]' : ''}`}
       >
         <div>
           <div className="flex items-center justify-between gap-1 mb-1">
@@ -75,19 +83,16 @@ export default function BookedSlotCard({
   if (booking.status === 'maintenance') {
     return (
       <div
-        onClick={(e) => {
-          e.stopPropagation()
-          onSelect(booking)
-        }}
+        onClick={handleCardClick}
         style={{
           top: `${topOffset}px`,
           height: `${cardHeight}px`,
           backgroundImage:
             'repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #262626 10px, #262626 20px)',
         }}
-        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#444444] flex flex-col justify-between cursor-pointer transition-all hover:brightness-110 shadow-md select-none font-aeonik ${
-          isSelected ? 'ring-2 ring-white/70' : ''
-        }`}
+        className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border border-dashed border-[#444444] flex flex-col justify-between cursor-pointer transition-all hover:brightness-110 shadow-md select-none font-aeonik active:scale-[0.98] ${
+          isShaking ? 'animate-smooth-shake ring-2 ring-amber-500/50' : ''
+        } ${isSelected ? 'ring-2 ring-white/70' : ''}`}
       >
         <div>
           <div className="flex items-center justify-between gap-1 mb-1">
@@ -107,16 +112,15 @@ export default function BookedSlotCard({
   // Status Booked Normal
   return (
     <div
-      onClick={(e) => {
-        e.stopPropagation()
-        onSelect(booking)
-      }}
+      onClick={handleCardClick}
       style={{
         top: `${topOffset}px`,
         height: `${cardHeight}px`,
       }}
-      className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] bg-[#222222] border transition-all cursor-pointer flex flex-col justify-between group shadow-md select-none font-aeonik ${
-        isSelected
+      className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] bg-[#222222] border transition-all cursor-pointer flex flex-col justify-between group shadow-md select-none font-aeonik active:scale-[0.98] ${
+        isShaking
+          ? 'animate-smooth-shake ring-2 ring-amber-400/50 border-amber-400/50'
+          : isSelected
           ? 'border-[#f2d953] ring-1 ring-[#f2d953] shadow-[0_0_16px_rgba(242,217,83,0.25)]'
           : 'border-[#383838] hover:border-[#555555] hover:bg-[#282828]'
       }`}
