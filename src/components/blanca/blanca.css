@@ -77,10 +77,8 @@ body {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url('/assets/blanca/background-dots.png');
-  background-repeat: repeat;
-  background-size: 33.206rem 33.206rem;
-  opacity: 0.35;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: 0;
   will-change: transform;

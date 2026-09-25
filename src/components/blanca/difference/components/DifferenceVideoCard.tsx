@@ -60,7 +60,7 @@ export default function DifferenceVideoCard() {
         {/* Racquet Image Overlay */}
         <div className="absolute -top-[10px] mdw:-top-[16px] bottom-0 right-0 w-[58px] mdw:w-[96px] px-[9px] mdw:px-[14px] overflow-hidden pointer-events-none">
           <img
-            src="/assets/blanca/coronado-front.png"
+            src="/assets/blanca/coronado-front.webp"
             alt="Coronado Badminton Racquet"
             loading="lazy"
             decoding="async"

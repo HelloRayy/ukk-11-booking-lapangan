@@ -44,7 +44,7 @@ export const CONTACT_ITEMS: ContactCardItem[] = [
     id: 'venue',
     title: 'Blanca Badminton Arena',
     address: 'Jl. Boulevard Raya No. 88, Tebet, Jakarta Selatan 12810',
-    image: '/assets/blanca/tech-carbon.png',
+    image: '/assets/blanca/tech-carbon.webp',
     href: VENUE_DATA.googleMapsUrl,
     isMapAction: true,
   },

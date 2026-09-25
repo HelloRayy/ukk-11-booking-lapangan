@@ -62,9 +62,9 @@ export default function FloatingToast({ message, onClose }: FloatingToastProps) 
   })()
 
   return (
-    <div className="sticky top-4 z-50 h-0 pointer-events-none flex justify-center font-aeonik select-none px-4">
+    <div className="sticky top-4 z-50 h-0 pointer-events-none flex items-start justify-center font-aeonik select-none px-4">
       <div
-        className={`pointer-events-auto max-w-max inline-flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-full backdrop-blur-xl border shadow-[0_12px_36px_rgba(0,0,0,0.7)] transition-all duration-300 animate-in fade-in zoom-in-95 slide-in-from-top-3 ${
+        className={`pointer-events-auto self-start max-w-max inline-flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-full backdrop-blur-xl border shadow-[0_12px_36px_rgba(0,0,0,0.7)] transition-all duration-300 animate-in fade-in zoom-in-95 slide-in-from-top-3 ${
           isInfo
             ? 'bg-[#181818]/95 border-white/12 text-white'
             : 'bg-[#1c1212]/95 border-red-500/30 text-white'
