@@ -1,5 +1,4 @@
-// PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan
-import { useState } from 'react'
+// PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan (Clean UI, Less Text)
 import type { SlotRangeSelection, PaymentType } from '../../types'
 import { formatRupiah } from '../../utils/formatters'
 
@@ -22,238 +21,163 @@ export default function BookingDetailsForm({
   notes,
   customerName,
   customerWhatsapp,
-  customerEmail,
   onPaymentTypeChange,
   onNotesChange,
   onClose,
   onProceedToPayment,
 }: BookingDetailsFormProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
   const dpAmount = selectedSlot.totalPrice * 0.5
   const currentPayAmount = paymentType === 'DP' ? dpAmount : selectedSlot.totalPrice
 
   return (
     <div className="flex flex-col justify-between h-full animate-in fade-in duration-150 select-none font-aeonik">
-      <div className="overflow-y-auto pr-0.5 space-y-3.5">
-        {/* Top Bar: Navigasi & Judul */}
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Batal pemilihan"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            </button>
-            <span className="text-xs text-[#8e8e8e] font-medium">
-              Rincian Pembayaran
-            </span>
-          </div>
-
+      <div className="overflow-y-auto pr-0.5 space-y-4">
+        {/* 1. Header Bersih */}
+        <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight">
-              Konfirmasi Reservasi
+            <h2 className="text-lg font-bold text-white tracking-tight">
+              Rincian Reservasi
             </h2>
-            <p className="text-xs text-[#8e8e8e] mt-0.5">
-              {selectedSlot.date} • {selectedSlot.courtName}
+            <p className="text-xs text-[#8e8e8e]">
+              {selectedSlot.courtName} • {selectedSlot.date}
             </p>
           </div>
-        </div>
 
-        {/* 1. Ringkasan Jadwal & Waktu Main */}
-        <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e]">
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs text-[#8e8e8e]">Waktu Bermain</span>
-            <span className="text-xs text-white font-medium">
-              {selectedSlot.totalHours} Jam
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-base font-bold text-white">
-              {selectedSlot.startTime} - {selectedSlot.endTime}
-            </span>
-            <span className="text-xs text-[#8e8e8e]">
-              {formatRupiah(selectedSlot.pricePerHour)} / jam
-            </span>
-          </div>
-        </div>
-
-        {/* 2. Rincian Tagihan Transparan */}
-        <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e]">
-          <div className="flex justify-between text-xs text-[#8e8e8e] mb-2">
-            <span>Sewa {selectedSlot.courtName} ({selectedSlot.totalHours} jam)</span>
-            <span className="text-white font-medium">
-              {formatRupiah(selectedSlot.totalPrice)}
-            </span>
-          </div>
-          <div className="flex justify-between text-sm font-bold text-white pt-2 border-t border-white/10">
-            <span>Total Tagihan</span>
-            <span className="text-base text-[#f2d953]">
-              {formatRupiah(selectedSlot.totalPrice)}
-            </span>
-          </div>
-        </div>
-
-        {/* 3. Metode Pembayaran: Dropdown Standar Ringkas */}
-        <div className="relative">
-          <label className="text-xs text-[#8e8e8e] block mb-1.5 font-medium">
-            Skema Pembayaran
-          </label>
-
-          {/* Dropdown Trigger Button */}
           <button
             type="button"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full h-11 px-3.5 rounded-[10px] bg-[#222222] border border-[#333333] hover:border-[#555555] flex items-center justify-between transition-colors text-left cursor-pointer focus:outline-none focus:border-[#f2d953]"
+            onClick={onClose}
+            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-[#a3a3a3] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10"
+            aria-label="Tutup rincian"
           >
-            <div className="flex items-center gap-2.5">
-              <span className={`w-2 h-2 rounded-full ${paymentType === 'DP' ? 'bg-[#f2d953]' : 'bg-emerald-400'}`} />
-              <span className="text-xs font-semibold text-white">
-                {paymentType === 'DP' ? 'Bayar DP 50%' : 'Bayar Lunas 100%'}
-              </span>
-              <span className="text-xs text-[#8e8e8e]">
-                • {formatRupiah(currentPayAmount)}
-              </span>
-            </div>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className={`text-[#8e8e8e] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-            >
-              <polyline points="6 9 12 15 18 9" />
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6 6 18M6 6l12 12" />
             </svg>
           </button>
+        </div>
 
-          {/* Dropdown Popover Menu */}
-          {isDropdownOpen && (
-            <div className="absolute left-0 right-0 top-full mt-1.5 z-30 p-1.5 rounded-[10px] bg-[#1e1e1e] border border-[#333333] shadow-2xl space-y-1 animate-in fade-in zoom-in-95 duration-100">
-              {/* Opsi 1: DP 50% */}
-              <div
-                onClick={() => {
-                  onPaymentTypeChange('DP')
-                  setIsDropdownOpen(false)
-                }}
-                className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
-                  paymentType === 'DP'
-                    ? 'bg-[#f2d953]/15 text-white'
-                    : 'hover:bg-white/5 text-[#d4d4d4]'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                    paymentType === 'DP' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
-                  }`}>
-                    {paymentType === 'DP' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold text-white block">Bayar DP 50%</span>
-                    <span className="text-[11px] text-[#8e8e8e] block">
-                      Sisa {formatRupiah(dpAmount)} di arena
-                    </span>
-                  </div>
-                </div>
-                <span className="text-xs font-bold text-[#f2d953]">
-                  {formatRupiah(dpAmount)}
-                </span>
-              </div>
-
-              {/* Opsi 2: Lunas 100% */}
-              <div
-                onClick={() => {
-                  onPaymentTypeChange('Lunas')
-                  setIsDropdownOpen(false)
-                }}
-                className={`px-3 py-2.5 rounded-[8px] transition-colors cursor-pointer flex items-center justify-between ${
-                  paymentType === 'Lunas'
-                    ? 'bg-[#f2d953]/15 text-white'
-                    : 'hover:bg-white/5 text-[#d4d4d4]'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                    paymentType === 'Lunas' ? 'border-[#f2d953] bg-[#f2d953]' : 'border-white/20'
-                  }`}>
-                    {paymentType === 'Lunas' && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold text-white block">Bayar Lunas 100%</span>
-                    <span className="text-[11px] text-[#8e8e8e] block">Bebas antre pelunasan</span>
-                  </div>
-                </div>
-                <span className="text-xs font-bold text-[#f2d953]">
-                  {formatRupiah(selectedSlot.totalPrice)}
-                </span>
-              </div>
+        {/* 2. Ringkasan Jadwal & Total Tagihan (Unified Card) */}
+        <div className="p-3.5 rounded-xl bg-[#202020] border border-[#2e2e2e] space-y-3">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-xs text-[#8e8e8e] block">Jadwal Bermain</span>
+              <span className="text-sm font-bold text-white">
+                {selectedSlot.startTime} - {selectedSlot.endTime}
+              </span>
             </div>
+            <div className="text-right">
+              <span className="text-xs text-[#8e8e8e] block">Durasi</span>
+              <span className="text-sm font-semibold text-white">
+                {selectedSlot.totalHours} Jam
+              </span>
+            </div>
+          </div>
+
+          <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
+            <div>
+              <span className="text-xs text-[#8e8e8e] block">Total Biaya</span>
+              <span className="text-[11px] text-[#737373]">
+                {formatRupiah(selectedSlot.pricePerHour)}/jam
+              </span>
+            </div>
+            <span className="text-lg font-bold text-[#f2d953]">
+              {formatRupiah(selectedSlot.totalPrice)}
+            </span>
+          </div>
+        </div>
+
+        {/* 3. Skema Pembayaran: Segmented Control Bersih (Zero Dropdown) */}
+        <div>
+          <span className="text-xs text-[#8e8e8e] block mb-2 font-medium">
+            Pilih Skema Bayar
+          </span>
+
+          <div className="grid grid-cols-2 gap-2 p-1 rounded-xl bg-[#202020] border border-[#2e2e2e]">
+            {/* Opsi DP 50% */}
+            <button
+              type="button"
+              onClick={() => onPaymentTypeChange('DP')}
+              className={`py-2 px-3 rounded-lg text-left transition-all cursor-pointer ${
+                paymentType === 'DP'
+                  ? 'bg-[#f2d953] text-black shadow-sm font-bold'
+                  : 'text-[#a3a3a3] hover:text-white hover:bg-white/5 font-medium'
+              }`}
+            >
+              <span className="text-xs block">DP 50%</span>
+              <span className="text-xs block opacity-90">
+                {formatRupiah(dpAmount)}
+              </span>
+            </button>
+
+            {/* Opsi Lunas 100% */}
+            <button
+              type="button"
+              onClick={() => onPaymentTypeChange('Lunas')}
+              className={`py-2 px-3 rounded-lg text-left transition-all cursor-pointer ${
+                paymentType === 'Lunas'
+                  ? 'bg-[#f2d953] text-black shadow-sm font-bold'
+                  : 'text-[#a3a3a3] hover:text-white hover:bg-white/5 font-medium'
+              }`}
+            >
+              <span className="text-xs block">Lunas 100%</span>
+              <span className="text-xs block opacity-90">
+                {formatRupiah(selectedSlot.totalPrice)}
+              </span>
+            </button>
+          </div>
+
+          {paymentType === 'DP' && (
+            <p className="text-[11px] text-[#737373] mt-1.5 px-1">
+              Sisa pelunasan {formatRupiah(dpAmount)} dibayar di arena.
+            </p>
           )}
         </div>
 
-        {/* 4. Ringkasan Akun Pelanggan */}
-        <div className="p-3.5 rounded-[12px] bg-[#222222] border border-[#2e2e2e]">
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/5">
-            <span className="text-xs text-[#8e8e8e] font-medium">Informasi Penyewa</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-[#a3a3a3]">
-              Terverifikasi
-            </span>
-          </div>
-
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between items-center">
-              <span className="text-[#8e8e8e]">Nama Lengkap</span>
-              <span className="font-semibold text-white">{customerName}</span>
+        {/* 4. Info Kontak Ringkas */}
+        <div className="px-3.5 py-2.5 rounded-xl bg-[#202020] border border-[#2e2e2e] flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2.5 truncate">
+            <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#f2d953] shrink-0 font-bold text-[11px]">
+              {customerName.charAt(0)}
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-[#8e8e8e]">No. WhatsApp</span>
-              <span className="font-medium text-white">{customerWhatsapp}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-[#8e8e8e]">Alamat Email</span>
-              <span className="font-medium text-[#d4d4d4]">{customerEmail}</span>
+            <div className="truncate">
+              <span className="font-semibold text-white block truncate">{customerName}</span>
+              <span className="text-[11px] text-[#737373] block">{customerWhatsapp}</span>
             </div>
           </div>
+          <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-[#a3a3a3] shrink-0">
+            Penyewa
+          </span>
         </div>
 
-        {/* 5. Catatan Opsional */}
+        {/* 5. Catatan Singkat */}
         <div>
-          <label htmlFor="user_booking_notes" className="text-xs text-[#8e8e8e] block mb-1.5 font-medium">
-            Catatan (Opsional)
-          </label>
-          <textarea
-            id="user_booking_notes"
-            rows={3}
+          <input
+            type="text"
             value={notes}
             onChange={(e) => onNotesChange(e.target.value)}
-            placeholder="e.g. Siapkan raket sewa / shuttlecock tambahan..."
-            className="w-full h-20 p-3 rounded-[10px] bg-[#222222] border border-[#333333] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors resize-none leading-relaxed"
+            placeholder="Catatan sewa (opsional)..."
+            className="w-full h-10 px-3 rounded-xl bg-[#202020] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors"
           />
         </div>
       </div>
 
-      {/* 6. Sticky Footer: Detail Jumlah Bayar Sekarang & Tombol CTA */}
-      <div className="pt-3 border-t border-[#262626]">
-        <div className="flex justify-between items-center mb-2 px-1">
+      {/* 6. Sticky Footer: Bayar Sekarang & CTA */}
+      <div className="pt-3 border-t border-[#262626] mt-3">
+        <div className="flex justify-between items-center mb-2.5 px-1">
           <span className="text-xs text-[#8e8e8e]">
-            {paymentType === 'DP' ? 'Wajib Bayar Sekarang (DP 50%)' : 'Wajib Bayar Sekarang (Lunas)'}:
+            {paymentType === 'DP' ? 'Bayar DP Sekarang' : 'Total Bayar Lunas'}
           </span>
-          <span className="text-sm font-bold text-[#f2d953]">
+          <span className="text-base font-bold text-[#f2d953]">
             {formatRupiah(currentPayAmount)}
           </span>
         </div>
+
         <button
           type="button"
           onClick={onProceedToPayment}
-          className="w-full h-12 rounded-[10px] bg-[#f2d953] hover:bg-[#e4cb34] text-[#161616] text-sm font-bold transition-all cursor-pointer shadow-lg active:scale-[0.98] flex items-center justify-center gap-2"
+          className="w-full h-11 rounded-xl bg-[#f2d953] hover:bg-[#e4cb34] text-[#161616] text-xs sm:text-sm font-bold transition-all cursor-pointer shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
         >
-          <span>Lanjut ke Pembayaran</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <span>Lanjut ke QRIS</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>

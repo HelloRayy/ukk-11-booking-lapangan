@@ -37,49 +37,42 @@ export default function BookingReceiptView({
     <div className="flex flex-col justify-between h-full select-none font-aeonik animate-in fade-in duration-200">
       <div className="overflow-y-auto pr-0.5 space-y-3.5">
         {/* 1. Header Konfirmasi Berhasil (no-print) */}
-        <div className="flex items-center gap-3 p-3 rounded-[12px] bg-emerald-500/10 border border-emerald-500/20 no-print">
-          <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold no-print">
+          <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
-          <div>
-            <span className="text-xs font-bold text-emerald-400 block">
-              Pembayaran Berhasil Terverifikasi
-            </span>
-            <span className="text-[11px] text-[#a3a3a3]">
-              Slot lapangan Anda telah terkunci di kalender
-            </span>
-          </div>
+          <span>Pembayaran Berhasil Terverifikasi</span>
         </div>
 
         {/* 2. Kartu Struk Resmi (#printable-receipt) */}
         <div
           id="printable-receipt"
-          className="p-4 rounded-[14px] bg-[#202020] border border-[#2e2e2e] text-white shadow-lg space-y-3"
+          className="p-4 rounded-xl bg-[#202020] border border-[#2e2e2e] text-white shadow-lg space-y-3"
         >
           {/* Header Brand Struk */}
           <div className="text-center pb-2.5 border-b border-dashed border-white/15">
             <h2 className="text-sm font-bold tracking-tight text-white uppercase">
               BLANCA BADMINTON ARENA
             </h2>
-            <p className="text-[10px] text-[#8e8e8e] mt-0.5">
-              Sports Hub • Jl. Boulevard Raya No. 88, Tebet, Jakarta Selatan
+            <p className="text-[10px] text-[#737373] mt-0.5">
+              Sports Hub • Tebet, Jakarta Selatan
             </p>
-            <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5 text-[11px]">
-              <span className="text-[#8e8e8e]">No. Invoice:</span>
-              <span className="font-bold text-[#f2d953] tracking-wide">
+            <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5 text-xs">
+              <span className="text-[#8e8e8e]">Invoice</span>
+              <span className="font-bold text-[#f2d953] tracking-wide font-mono">
                 {booking.invoiceNumber || booking.id}
               </span>
             </div>
-            <div className="flex items-center justify-between mt-0.5 text-[10px] text-[#8e8e8e]">
-              <span>Waktu Transaksi:</span>
+            <div className="flex items-center justify-between mt-0.5 text-[10px] text-[#737373]">
+              <span>Waktu</span>
               <span>{booking.createdAt || 'Hari Ini'}</span>
             </div>
           </div>
 
           {/* Status Pembayaran */}
-          <div className="flex items-center justify-between py-1 px-2.5 rounded-[8px] bg-white/[0.03] border border-white/5">
+          <div className="flex items-center justify-between py-1 px-2.5 rounded-lg bg-white/[0.03] border border-white/5">
             <span className="text-xs text-[#8e8e8e]">Status Bayar</span>
             <span
               className={`text-xs font-bold px-2 py-0.5 rounded ${
@@ -88,7 +81,7 @@ export default function BookingReceiptView({
                   : 'bg-amber-500/20 text-amber-300'
               }`}
             >
-              {isLunas ? 'LUNAS 100%' : 'DP 50% TERBAYAR'}
+              {isLunas ? 'LUNAS 100%' : 'DP 50%'}
             </span>
           </div>
 

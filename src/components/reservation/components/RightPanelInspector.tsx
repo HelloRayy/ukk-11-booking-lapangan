@@ -16,7 +16,7 @@ interface RightPanelInspectorProps {
   customerWhatsapp?: string
   customerEmail?: string
   onClose: (expiredMessage?: string) => void
-  onCreateBooking: (paymentType: PaymentType, notes?: string) => void
+  onCreateBooking: (paymentType: PaymentType, notes?: string) => void | Promise<void>
 }
 
 export default function RightPanelInspector({
@@ -34,6 +34,7 @@ export default function RightPanelInspector({
   const [bookingStep, setBookingStep] = useState<'details' | 'loading' | 'payment'>('details')
   const [expiryTimestamp, setExpiryTimestamp] = useState<number | null>(null)
   const [isViewingReceipt, setIsViewingReceipt] = useState(false)
+  const [isVerifyingPayment, setIsVerifyingPayment] = useState(false)
 
   // Reset step ketika slot baru dipilih
   const slotKey = selectedSlot ? `${selectedSlot.courtId}-${selectedSlot.startHour}-${selectedSlot.endHour}` : null
@@ -41,6 +42,7 @@ export default function RightPanelInspector({
     setBookingStep('details')
     setExpiryTimestamp(null)
     setIsViewingReceipt(false)
+    setIsVerifyingPayment(false)
   }, [slotKey, selectedBooking])
 
   // Shortcut tombol Escape untuk membatalkan pemilihan slot
@@ -60,7 +62,7 @@ export default function RightPanelInspector({
       setTimeout(() => {
         setExpiryTimestamp(Date.now() + 15 * 60 * 1000) // 15 Menit
         setBookingStep('payment')
-      }, 800)
+      }, 700)
     } else {
       setBookingStep('payment')
     }
@@ -76,10 +78,17 @@ export default function RightPanelInspector({
     }
   }
 
-  const handleConfirmPayment = () => {
-    setBookingStep('details')
-    setExpiryTimestamp(null)
-    onCreateBooking(paymentType, notes)
+  const handleConfirmPayment = async () => {
+    setIsVerifyingPayment(true)
+    try {
+      // Transisi loading state realistis saat perpindahan QR ke struk (~1100ms)
+      await new Promise((resolve) => setTimeout(resolve, 1100))
+      await onCreateBooking(paymentType, notes)
+    } finally {
+      setIsVerifyingPayment(false)
+      setBookingStep('details')
+      setExpiryTimestamp(null)
+    }
   }
 
   const finalCustomerName = customerName || 'Raditya Rayhan'
@@ -113,65 +122,80 @@ export default function RightPanelInspector({
         {/* Mobile Pull/Drag Indicator Handle */}
         <div className="w-10 h-1 bg-white/20 rounded-full mx-auto mb-3 lg:hidden shrink-0" />
 
-        {/* 2. KONTEN INSPEKSI JADWAL TERISI */}
-        {panelMode === 'inspect' && selectedBooking && (
-          isViewingReceipt ? (
-            <BookingReceiptView
-              booking={selectedBooking}
-              onClose={() => setIsViewingReceipt(false)}
-            />
-          ) : (
-            <InspectBookingView
-              selectedBooking={selectedBooking}
-              onClose={() => onClose()}
-              onViewReceipt={() => setIsViewingReceipt(true)}
-            />
-          )
-        )}
-
-        {/* 3. KONTEN BUKTI STRUK DIGITAL RESMI */}
-        {panelMode === 'receipt' && selectedBooking && (
-          <BookingReceiptView
-            booking={selectedBooking}
-            onClose={() => onClose()}
+        {/* Loading State saat Verifikasi Pembayaran (Transisi QR -> Struk) */}
+        {isVerifyingPayment ? (
+          <PaymentLoadingView
+            title="Memverifikasi Pembayaran"
+            subtitle="Mengonfirmasi transaksi QRIS dan menerbitkan bukti booking..."
           />
-        )}
-
-        {/* 4. KONTEN PEMESANAN BARU (Create Flow) */}
-        {panelMode === 'create' && selectedSlot && (
-          <div className="flex flex-col justify-between h-full">
-            {/* Sub-Step A: Loading animasi (~800ms) */}
-            {bookingStep === 'loading' && <PaymentLoadingView />}
-
-            {/* Sub-Step B: Layar Pembayaran QRIS Dinamis */}
-            {bookingStep === 'payment' && expiryTimestamp && (
-              <QrisPaymentView
-                selectedSlot={selectedSlot}
-                paymentType={paymentType}
-                notes={notes}
-                expiryTimestamp={expiryTimestamp}
-                onBackToDetails={() => setBookingStep('details')}
-                onConfirmPayment={handleConfirmPayment}
-                onCancelPayment={handleCancelPayment}
-              />
+        ) : (
+          <>
+            {/* 2. KONTEN INSPEKSI JADWAL TERISI */}
+            {panelMode === 'inspect' && selectedBooking && (
+              isViewingReceipt ? (
+                <BookingReceiptView
+                  booking={selectedBooking}
+                  onClose={() => setIsViewingReceipt(false)}
+                />
+              ) : (
+                <InspectBookingView
+                  selectedBooking={selectedBooking}
+                  onClose={() => onClose()}
+                  onViewReceipt={() => setIsViewingReceipt(true)}
+                />
+              )
             )}
 
-            {/* Sub-Step C: Formulir Konfirmasi Rincian */}
-            {bookingStep === 'details' && (
-              <BookingDetailsForm
-                selectedSlot={selectedSlot}
-                paymentType={paymentType}
-                notes={notes}
-                customerName={finalCustomerName}
-                customerWhatsapp={finalWhatsapp}
-                customerEmail={finalEmail}
-                onPaymentTypeChange={setPaymentType}
-                onNotesChange={setNotes}
+            {/* 3. KONTEN BUKTI STRUK DIGITAL RESMI */}
+            {panelMode === 'receipt' && selectedBooking && (
+              <BookingReceiptView
+                booking={selectedBooking}
                 onClose={() => onClose()}
-                onProceedToPayment={handleProceedToPayment}
               />
             )}
-          </div>
+
+            {/* 4. KONTEN PEMESANAN BARU (Create Flow) */}
+            {panelMode === 'create' && selectedSlot && (
+              <div className="flex flex-col justify-between h-full">
+                {/* Sub-Step A: Loading animasi (~700ms) */}
+                {bookingStep === 'loading' && (
+                  <PaymentLoadingView
+                    title="Menyiapkan Pembayaran"
+                    subtitle="Menghubungkan ke sistem QRIS Dinamis..."
+                  />
+                )}
+
+                {/* Sub-Step B: Layar Pembayaran QRIS Dinamis */}
+                {bookingStep === 'payment' && expiryTimestamp && (
+                  <QrisPaymentView
+                    selectedSlot={selectedSlot}
+                    paymentType={paymentType}
+                    notes={notes}
+                    expiryTimestamp={expiryTimestamp}
+                    onBackToDetails={() => setBookingStep('details')}
+                    onConfirmPayment={handleConfirmPayment}
+                    onCancelPayment={handleCancelPayment}
+                  />
+                )}
+
+                {/* Sub-Step C: Formulir Konfirmasi Rincian */}
+                {bookingStep === 'details' && (
+                  <BookingDetailsForm
+                    selectedSlot={selectedSlot}
+                    paymentType={paymentType}
+                    notes={notes}
+                    customerName={finalCustomerName}
+                    customerWhatsapp={finalWhatsapp}
+                    customerEmail={finalEmail}
+                    onPaymentTypeChange={setPaymentType}
+                    onNotesChange={setNotes}
+                    onClose={() => onClose()}
+                    onProceedToPayment={handleProceedToPayment}
+                  />
+                )}
+              </div>
+            )}
+          </>
         )}
       </aside>
     </>
