@@ -1,6 +1,6 @@
-// PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan (Itemized Receipt Slip + Fintech Selection)
-import { useMemo } from 'react'
-import { X, Clock, ArrowRight, ShieldCheck, ChevronDown } from 'lucide-react'
+// PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan (Clean UI Sesuai Backend)
+import { useState, useEffect, useRef, useMemo } from 'react'
+import { X, Clock, ArrowRight, ChevronDown, Check } from 'lucide-react'
 import type { SlotRangeSelection, PaymentType } from '../../types'
 import { formatRupiah } from '../../utils/formatters'
 
@@ -28,8 +28,22 @@ export default function BookingDetailsForm({
   onClose,
   onProceedToPayment,
 }: BookingDetailsFormProps) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
   const dpAmount = selectedSlot.totalPrice * 0.5
   const currentPayAmount = paymentType === 'DP' ? dpAmount : selectedSlot.totalPrice
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const formattedDate = useMemo(() => {
     try {
@@ -72,83 +86,140 @@ export default function BookingDetailsForm({
           </button>
         </div>
 
-        {/* 2. Struk Digital Rincian Sewa (Notched Receipt Pass Style) */}
-        <div className="relative rounded-2xl bg-[#1f1f1f] border border-[#2e2e2e] overflow-hidden shadow-lg">
-          {/* Header Tiket Struk */}
-          <div className="p-4 pb-3 space-y-3">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-[#8e8e8e] font-medium flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#f2d953]" />
-                <span>Jadwal Bermain</span>
-              </span>
-              <span className="text-white font-semibold">
-                {selectedSlot.startTime} - {selectedSlot.endTime} ({selectedSlot.totalHours} Jam)
-              </span>
-            </div>
-
-            <div className="space-y-1.5 pt-1 text-xs">
-              <div className="flex items-center justify-between">
-                <span className="text-[#a3a3a3]">
-                  Tarif Sewa ({selectedSlot.totalHours} jam × {formatRupiah(selectedSlot.pricePerHour)})
-                </span>
-                <span className="text-white font-medium">
-                  {formatRupiah(selectedSlot.totalPrice)}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[#a3a3a3] flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Biaya Layanan & Fasilitas</span>
-                </span>
-                <span className="text-emerald-400 font-medium">Gratis</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Garis Potong Perforated / Notched Divider */}
-          <div className="relative flex items-center justify-center my-0.5">
-            <div className="absolute -left-2 w-4 h-4 rounded-full bg-[#1a1a1a] border-r border-[#2e2e2e]" />
-            <div className="w-full border-t border-dashed border-[#383838] mx-3" />
-            <div className="absolute -right-2 w-4 h-4 rounded-full bg-[#1a1a1a] border-l border-[#2e2e2e]" />
-          </div>
-
-          {/* Footer Struk: Total Biaya */}
-          <div className="p-4 pt-3 bg-white/[0.02] flex items-center justify-between">
-            <div>
-              <span className="text-xs text-[#8e8e8e] block">Total Biaya Sewa</span>
-              <span className="text-[10px] text-[#737373]">Termasuk PPN & Jaminan Slot</span>
-            </div>
-            <span className="text-lg font-bold text-white tracking-tight">
-              {formatRupiah(selectedSlot.totalPrice)}
+        {/* 2. Rincian Reservasi (Clean UI Sesuai Skema Backend) */}
+        <div className="p-4 rounded-xl bg-[#202020] border border-[#2e2e2e] space-y-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-[#8e8e8e]">Lapangan</span>
+            <span className="text-white font-semibold">
+              {selectedSlot.courtName} ({formatRupiah(selectedSlot.pricePerHour)}/jam)
             </span>
+          </div>
+
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-[#8e8e8e] flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-[#f2d953]" />
+              <span>Jadwal Bermain</span>
+            </span>
+            <span className="text-white font-semibold">
+              {selectedSlot.startTime} - {selectedSlot.endTime} ({selectedSlot.totalHours} Jam)
+            </span>
+          </div>
+
+          <div className="pt-2.5 border-t border-[#2e2e2e] space-y-2 text-xs">
+            <div className="flex items-center justify-between">
+              <span className="text-[#8e8e8e]">Total Tagihan Sewa</span>
+              <span className="text-sm font-bold text-white">
+                {formatRupiah(selectedSlot.totalPrice)}
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-[#8e8e8e]">
+                {paymentType === 'DP' ? 'Dibayar Sekarang (DP 50%)' : 'Dibayar Sekarang (Lunas)'}
+              </span>
+              <span className="text-sm font-bold text-[#f2d953]">
+                {formatRupiah(currentPayAmount)}
+              </span>
+            </div>
+
+            {paymentType === 'DP' && (
+              <div className="flex items-center justify-between pt-1 border-t border-white/5 text-[#8e8e8e]">
+                <span>Sisa Pelunasan di Lokasi</span>
+                <span className="text-white font-medium">
+                  {formatRupiah(dpAmount)}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* 3. Pilihan Skema Pembayaran (Dropdown Biasa) */}
-        <div className="space-y-1.5">
-          <label htmlFor="skema-bayar-select" className="text-xs font-semibold text-white tracking-wide uppercase px-0.5 block">
+        {/* 3. Pilihan Skema Pembayaran (Custom Dropdown dengan UI Open State) */}
+        <div className="space-y-1.5 relative" ref={dropdownRef}>
+          <label className="text-xs font-semibold text-white tracking-wide uppercase px-0.5 block">
             Pilih Skema Bayar
           </label>
 
-          <div className="relative">
-            <select
-              id="skema-bayar-select"
-              value={paymentType}
-              onChange={(e) => onPaymentTypeChange(e.target.value as PaymentType)}
-              className="w-full h-11 pl-3.5 pr-10 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs font-semibold text-white appearance-none cursor-pointer focus:outline-none focus:border-[#f2d953] transition-colors"
-            >
-              <option value="DP" className="bg-[#1c1c1c] text-white py-1">
-                Bayar DP 50% — {formatRupiah(dpAmount)}
-              </option>
-              <option value="Lunas" className="bg-[#1c1c1c] text-white py-1">
-                Bayar Lunas 100% — {formatRupiah(selectedSlot.totalPrice)} (Paling Praktis)
-              </option>
-            </select>
-
-            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#8e8e8e]">
-              <ChevronDown className="w-4 h-4" />
+          {/* Trigger Dropdown */}
+          <button
+            type="button"
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            className={`w-full h-11 px-3.5 rounded-xl bg-[#1c1c1c] border flex items-center justify-between text-xs font-semibold transition-all cursor-pointer ${
+              isDropdownOpen
+                ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 text-white shadow-md'
+                : 'border-[#2e2e2e] hover:border-[#444444] text-white'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#f2d953]" />
+              <span>
+                {paymentType === 'DP'
+                  ? `Bayar DP 50% — ${formatRupiah(dpAmount)}`
+                  : `Bayar Lunas 100% — ${formatRupiah(selectedSlot.totalPrice)}`}
+              </span>
             </div>
-          </div>
+            <ChevronDown
+              className={`w-4 h-4 text-[#8e8e8e] transition-transform duration-200 ${
+                isDropdownOpen ? 'rotate-180 text-[#f2d953]' : ''
+              }`}
+            />
+          </button>
+
+          {/* Floating Dropdown Menu (UI When Open) */}
+          {isDropdownOpen && (
+            <div className="absolute left-0 right-0 top-full mt-1.5 rounded-xl bg-[#222222] border border-[#383838] shadow-2xl p-1.5 z-30 space-y-1 animate-in fade-in zoom-in-95 duration-150">
+              {/* Opsi DP 50% */}
+              <div
+                onClick={() => {
+                  onPaymentTypeChange('DP')
+                  setIsDropdownOpen(false)
+                }}
+                className={`px-3 py-2.5 rounded-lg flex items-center justify-between cursor-pointer transition-colors ${
+                  paymentType === 'DP'
+                    ? 'bg-[#f2d953]/10 text-white font-semibold'
+                    : 'text-[#a3a3a3] hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-white">Bayar DP (50%)</span>
+                    <span className="text-xs font-bold text-[#f2d953]">
+                      {formatRupiah(dpAmount)}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#737373] block mt-0.5">
+                    Sisa {formatRupiah(dpAmount)} dibayar saat tiba di arena
+                  </span>
+                </div>
+                {paymentType === 'DP' && <Check className="w-4 h-4 text-[#f2d953]" />}
+              </div>
+
+              {/* Opsi Lunas 100% */}
+              <div
+                onClick={() => {
+                  onPaymentTypeChange('Lunas')
+                  setIsDropdownOpen(false)
+                }}
+                className={`px-3 py-2.5 rounded-lg flex items-center justify-between cursor-pointer transition-colors ${
+                  paymentType === 'Lunas'
+                    ? 'bg-[#f2d953]/10 text-white font-semibold'
+                    : 'text-[#a3a3a3] hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-white">Bayar Lunas (100%)</span>
+                    <span className="text-xs font-bold text-[#f2d953]">
+                      {formatRupiah(selectedSlot.totalPrice)}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#737373] block mt-0.5">
+                    Langsung main saat check-in tanpa sisa tagihan
+                  </span>
+                </div>
+                {paymentType === 'Lunas' && <Check className="w-4 h-4 text-[#f2d953]" />}
+              </div>
+            </div>
+          )}
 
           <p className="text-[11px] text-[#8e8e8e] px-1 leading-snug">
             {paymentType === 'DP' ? (
@@ -159,7 +230,7 @@ export default function BookingDetailsForm({
           </p>
         </div>
 
-        {/* 4. Data Pemesan & Catatan */}
+        {/* 4. Data Pemesan & Catatan Sewa (Textarea Height Tinggi) */}
         <div className="space-y-2 pt-1">
           <div className="px-3.5 py-2.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] flex items-center justify-between text-xs">
             <div className="flex items-center gap-2.5 truncate">
@@ -177,12 +248,12 @@ export default function BookingDetailsForm({
           </div>
 
           <div>
-            <input
-              type="text"
+            <textarea
               value={notes}
               onChange={(e) => onNotesChange(e.target.value)}
-              placeholder="Catatan sewa (opsional)..."
-              className="w-full h-9 px-3 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors"
+              placeholder="Catatan sewa (opsional, contoh: butuh rompi tambahan)..."
+              rows={3}
+              className="w-full h-20 p-3 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors resize-none"
             />
           </div>
         </div>

@@ -67,11 +67,11 @@ export default function QrisPaymentView({
             <span>Rincian</span>
           </button>
 
-          {/* Hitung Mundur */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
-            <span className="text-[11px] text-[#8e8e8e]">Batas Bayar:</span>
+          {/* Hitung Mundur (Text Label Only Tanpa Badge UI) */}
+          <div className="flex items-center gap-1.5 text-xs">
+            <span className="text-[#8e8e8e]">Batas Bayar:</span>
             <span
-              className={`text-xs font-bold tabular-nums ${
+              className={`font-semibold tabular-nums ${
                 isUrgent ? 'text-red-400 animate-pulse' : 'text-[#f2d953]'
               }`}
             >
