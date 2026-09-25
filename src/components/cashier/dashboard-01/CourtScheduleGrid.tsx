@@ -5,6 +5,7 @@ import {
   ChevronRight,
   Plus,
   RefreshCw,
+  Clock,
 } from 'lucide-react'
 import type { Booking, Lapangan } from '../../../types/database'
 import BookingDetailSheet from './BookingDetailSheet'
@@ -198,15 +199,15 @@ export default function CourtScheduleGrid({
           {/* Legend Badges */}
           <div className="hidden lg:flex items-center gap-3 text-xs text-[#8e8e8e] pr-3 border-r border-[#262626]">
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span>Lunas</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#f2d953]" />
+              <span className="w-2 h-2 rounded-full bg-[#f2d953]" />
               <span>DP 50%</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-xs border border-[#333] bg-[#141414]" />
+              <span className="w-2.5 h-2.5 rounded-[3px] border border-[#525252] bg-white/[0.04]" />
               <span>Tersedia</span>
             </div>
           </div>
@@ -224,7 +225,7 @@ export default function CourtScheduleGrid({
           <button
             type="button"
             onClick={() => onOpenManualModalWithSlot?.(courts[0]?.id || 1, selectedDate, '08:00')}
-            className="h-8 px-3.5 rounded-lg bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold text-xs flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer active:scale-95"
+            className="h-8 px-3.5 rounded-lg bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-semibold text-xs flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer active:scale-95"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Booking Walk-in</span>
@@ -251,12 +252,12 @@ export default function CourtScheduleGrid({
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-2">
             <span className="text-[#8e8e8e]">Omzet Hari Ini:</span>
-            <span className="font-bold text-white">{formatRupiah(dateMetrics.totalRevenue)}</span>
+            <span className="font-semibold text-white">{formatRupiah(dateMetrics.totalRevenue)}</span>
           </div>
           {dateMetrics.pendingRemaining > 0 && (
             <div className="flex items-center gap-2">
               <span className="text-[#8e8e8e]">Sisa DP Kasir:</span>
-              <span className="font-bold text-[#f2d953]">
+              <span className="font-semibold text-[#f2d953]">
                 {formatRupiah(dateMetrics.pendingRemaining)}
               </span>
             </div>
@@ -268,13 +269,16 @@ export default function CourtScheduleGrid({
       <div className="flex-1 overflow-auto relative">
         <div className="min-w-[840px] flex flex-col">
           {/* Header Baris Lapangan (Sticky Top) */}
-          <div className="sticky top-0 z-20 flex bg-[#181818] border-b border-[#262626] shadow-xs">
+          <div className="sticky top-0 z-20 flex bg-[#1a1a1a] border-b border-[#262626] shadow-xs select-none">
             {/* Kolom Waktu Sudut Kiri */}
-            <div className="w-20 shrink-0 p-3 text-center border-r border-[#262626] text-xs font-semibold text-[#8e8e8e]">
-              Jam
+            <div className="w-20 sm:w-24 shrink-0 flex items-center justify-center border-r border-[#262626] p-2 text-[#737373]">
+              <div className="flex items-center gap-1.5 text-[#737373]">
+                <Clock className="w-3.5 h-3.5" />
+                <span className="text-[11px] font-medium tracking-wider uppercase">Jam</span>
+              </div>
             </div>
 
-            {/* Kolom 4 Lapangan */}
+            {/* Kolom Lapangan */}
             <div
               style={{ gridTemplateColumns: `repeat(${courts.length || 4}, minmax(0, 1fr))` }}
               className="flex-1 grid divide-x divide-[#262626]"
@@ -288,15 +292,16 @@ export default function CourtScheduleGrid({
                     { id: 4, nama_lapangan: 'Court 4', status: 'Aktif' as const, tarif_per_jam: 50000 },
                   ]
               ).map((court) => (
-                <div key={court.id} className="p-3 text-center">
-                  <div className="text-xs font-bold text-white tracking-tight">
+                <div
+                  key={court.id}
+                  className="py-3 px-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors min-w-0 gap-2"
+                >
+                  <span className="text-sm sm:text-base font-semibold text-white truncate">
                     {court.nama_lapangan}
-                  </div>
-                  <div className="text-[10px] text-[#8e8e8e] mt-0.5 flex items-center justify-center gap-1.5">
-                    <span className="text-emerald-400 font-medium">
-                      {formatRupiah(court.tarif_per_jam)}/jam
-                    </span>
-                  </div>
+                  </span>
+                  <span className="text-sm font-medium text-[#a3a3a3] hidden sm:block shrink-0">
+                    Rp {Math.round(court.tarif_per_jam / 1000)}k/jam
+                  </span>
                 </div>
               ))}
             </div>
@@ -316,13 +321,13 @@ export default function CourtScheduleGrid({
                     ]
 
               return (
-                <div key={hour} className="flex min-h-[68px]">
+                <div key={hour} className="flex min-h-[70px]">
                   {/* Kolom Jam di Sisi Kiri */}
-                  <div className="w-20 shrink-0 flex items-center justify-center border-r border-[#262626] text-xs font-mono text-[#8e8e8e] bg-[#141414]">
+                  <div className="w-20 sm:w-24 shrink-0 flex items-center justify-center border-r border-[#262626] text-xs font-mono text-[#8e8e8e] bg-[#141414]">
                     {hour}
                   </div>
 
-                  {/* Grid 4 Kolom Lapangan */}
+                  {/* Grid Kolom Lapangan */}
                   <div
                     style={{ gridTemplateColumns: `repeat(${activeCourtsList.length}, minmax(0, 1fr))` }}
                     className="flex-1 grid divide-x divide-[#262626]/40"
@@ -340,41 +345,56 @@ export default function CourtScheduleGrid({
                           <div
                             key={court.id}
                             onClick={() => setSelectedBookingForSheet(booking)}
-                            className={`p-2 transition-all cursor-pointer relative group flex flex-col justify-between ${
-                              isLunas
-                                ? 'bg-emerald-950/20 border-l-2 border-emerald-500 hover:bg-emerald-950/40'
-                                : 'bg-yellow-950/20 border-l-2 border-[#f2d953] hover:bg-yellow-950/40'
-                            }`}
+                            className="p-1.5 relative cursor-pointer group"
                             title={`Klik untuk rincian & pelunasan: INV-${booking.id} - ${booking.nama_penyewa}`}
                           >
-                            <div className="flex items-start justify-between gap-1">
-                              <div className="flex items-center gap-1.5 min-w-0">
-                                <span className="text-[10px] font-mono text-[#8e8e8e] truncate">
-                                  INV-{String(booking.id).padStart(4, '0')}
-                                </span>
-                                <span className="text-xs font-semibold text-white truncate">
-                                  {booking.nama_penyewa}
+                            <div
+                              className={`h-full min-h-[58px] p-2.5 rounded-[10px] bg-[#222222] border transition-all flex flex-col justify-between shadow-xs ${
+                                isLunas
+                                  ? 'border-[#383838] hover:border-emerald-500/60 hover:bg-[#282828]'
+                                  : 'border-[#383838] hover:border-[#f2d953]/70 hover:bg-[#282828]'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between gap-1.5">
+                                <div className="flex items-center gap-1.5 min-w-0">
+                                  <span className="text-[10px] font-mono text-[#737373] shrink-0">
+                                    #{String(booking.id).padStart(4, '0')}
+                                  </span>
+                                  <span className="text-xs font-semibold text-[#fcfcfc] truncate group-hover:text-white transition-colors">
+                                    {booking.nama_penyewa}
+                                  </span>
+                                </div>
+
+                                <span
+                                  className={`text-[10px] px-2 py-0.5 rounded font-medium shrink-0 flex items-center gap-1 ${
+                                    isLunas
+                                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                                      : 'bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/30'
+                                  }`}
+                                >
+                                  <span
+                                    className={`w-1.5 h-1.5 rounded-full ${
+                                      isLunas ? 'bg-emerald-400' : 'bg-[#f2d953]'
+                                    }`}
+                                  />
+                                  <span>{isLunas ? 'Lunas' : 'DP 50%'}</span>
                                 </span>
                               </div>
 
-                              <span
-                                className={`text-[10px] px-1.5 py-0.2 rounded font-medium shrink-0 ${
-                                  isLunas
-                                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
-                                    : 'bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/30'
-                                }`}
-                              >
-                                {isLunas ? 'Lunas' : 'DP 50%'}
-                              </span>
-                            </div>
-
-                            <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] mt-1">
-                              <span>{formatSlotRange(booking.jam_slots)}</span>
-                              {isDP && sisa > 0 && (
-                                <span className="text-[#f2d953] font-semibold">
-                                  Sisa {formatRupiah(sisa)}
+                              <div className="flex items-center justify-between text-[11px] text-[#8e8e8e] mt-1 pt-0.5">
+                                <span className="font-mono text-[10px] text-[#737373]">
+                                  {formatSlotRange(booking.jam_slots)}
                                 </span>
-                              )}
+                                {isDP && sisa > 0 ? (
+                                  <span className="text-[#f2d953] font-medium text-[11px]">
+                                    Sisa {formatRupiah(sisa)}
+                                  </span>
+                                ) : (
+                                  <span className="text-[#737373] text-[10px]">
+                                    {isLunas ? 'Lengkap' : ''}
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
                         )
@@ -387,12 +407,15 @@ export default function CourtScheduleGrid({
                           onClick={() =>
                             onOpenManualModalWithSlot?.(court.id, selectedDate, hour)
                           }
-                          className="p-2 transition-colors cursor-pointer group hover:bg-white/[0.04] flex items-center justify-center relative min-h-[64px]"
+                          className="p-1.5 transition-colors cursor-pointer group hover:bg-white/[0.02] flex items-center justify-center relative min-h-[68px]"
                           title={`Slot tersedia. Klik untuk booking walk-in jam ${hour}`}
                         >
-                          <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 text-[11px] font-medium text-[#f2d953] bg-[#f2d953]/10 border border-[#f2d953]/30 px-2 py-1 rounded transition-opacity">
-                            <Plus className="w-3 h-3" />
-                            <span>+ Walk-in</span>
+                          <div className="absolute inset-x-1.5 inset-y-1.5 rounded-[10px] border border-[#525252] bg-white/[0.04] opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none">
+                            <span className="text-xs font-medium text-[#e5e5e5] flex items-center gap-1.5">
+                              <Plus className="w-3.5 h-3.5 text-[#f2d953]" />
+                              <span>+ Walk-in</span>
+                            </span>
+                            <span className="text-[11px] font-mono text-[#8e8e8e]">{hour}</span>
                           </div>
                         </div>
                       )
