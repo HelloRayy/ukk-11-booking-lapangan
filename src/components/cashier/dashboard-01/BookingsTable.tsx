@@ -241,7 +241,7 @@ export default function BookingsTable({
   }
 
   return (
-    <div className="flex flex-col h-full select-none relative font-sans text-[oklch(0.9235_0.001733_230.685)]">
+    <div className="flex flex-col h-full select-none relative font-aeonik text-[#fafafa]">
       {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
@@ -252,11 +252,11 @@ export default function BookingsTable({
       )}
 
       {/* Top Filter Bar Linear dengan UX Copy Alami & Fitur Kasir Lengkap */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)]">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[#262626] bg-[#181818]">
         {/* Sisi Kiri: Search Input & Badge Filter */}
         <div className="flex items-center gap-2 flex-1 max-w-sm">
           <div className="relative w-full">
-            <Search className="w-3.5 h-3.5 text-[oklch(0.55_0.002_230.81)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-[#8e8e8e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <Input
               type="text"
               value={searchKeyword}
@@ -265,7 +265,7 @@ export default function BookingsTable({
                 setCurrentPage(1)
               }}
               placeholder="Cari transaksi, penyewa, no HP..."
-              className="pl-8 h-8 text-xs bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)]"
+              className="pl-8 h-8 text-xs bg-[#141414] border-[#262626] text-white placeholder:text-[#666] focus:border-[#f2d953]/60"
             />
           </div>
 
@@ -278,7 +278,7 @@ export default function BookingsTable({
                 setSelectedDate('all')
                 setCurrentPage(1)
               }}
-              className="text-[11px] text-[oklch(0.65_0.002_230.81)] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
+              className="text-[11px] text-[#8e8e8e] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
               title="Reset semua filter"
             >
               Reset Filter
@@ -295,18 +295,18 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'status' ? null : 'status')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
-                selectedStatus !== 'Semua' ? 'border-emerald-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
+                selectedStatus !== 'Semua' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
               }`}
             >
-              <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
               <span>Status: <strong className="font-semibold text-white">{selectedStatus}</strong></span>
-              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
             </Button>
 
             {openDropdown === 'status' && (
-              <div className="absolute right-0 top-full mt-1.5 w-44 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30">
-                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+              <div className="absolute right-0 top-full mt-1.5 w-44 py-1 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30">
+                <div className="px-3 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
                   Filter Status
                 </div>
                 {[
@@ -323,11 +323,11 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
                   >
                     <span>{item.label}</span>
                     {selectedStatus === item.value && (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-[#f2d953]" />
                     )}
                   </button>
                 ))}
@@ -342,22 +342,22 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'court' ? null : 'court')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
-                selectedCourt !== 'Semua' ? 'border-cyan-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
+                selectedCourt !== 'Semua' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
               }`}
             >
-              <MapPin className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <MapPin className="w-3.5 h-3.5 text-[#8e8e8e]" />
               <span>
                 {selectedCourt === 'Semua'
                   ? 'Semua Lapangan'
                   : courts.find((c) => String(c.id) === selectedCourt)?.nama_lapangan || 'Lapangan'}
               </span>
-              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
             </Button>
 
             {openDropdown === 'court' && (
-              <div className="absolute right-0 top-full mt-1.5 w-48 py-1 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30 max-h-56 overflow-y-auto">
-                <div className="px-3 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+              <div className="absolute right-0 top-full mt-1.5 w-48 py-1 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30 max-h-56 overflow-y-auto">
+                <div className="px-3 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
                   Filter Lapangan
                 </div>
                 <button
@@ -367,11 +367,11 @@ export default function BookingsTable({
                     setOpenDropdown(null)
                     setCurrentPage(1)
                   }}
-                  className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
                 >
                   <span>Semua Lapangan</span>
                   {selectedCourt === 'Semua' && (
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <Check className="w-3.5 h-3.5 text-[#f2d953]" />
                   )}
                 </button>
                 {courts.map((c) => (
@@ -383,11 +383,11 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
                   >
                     <span>{c.nama_lapangan}</span>
                     {selectedCourt === String(c.id) && (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-[#f2d953]" />
                     )}
                   </button>
                 ))}
@@ -402,11 +402,11 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'date' ? null : 'date')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer ${
-                selectedDate !== 'all' ? 'border-amber-500/60 text-white font-medium' : 'text-[oklch(0.75_0.002_230.81)]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
+                selectedDate !== 'all' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
               }`}
             >
-              <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+              <Calendar className="w-3.5 h-3.5 text-[#8e8e8e]" />
               <span>
                 {selectedDate === 'all'
                   ? 'Semua Tanggal'
@@ -416,12 +416,12 @@ export default function BookingsTable({
                   ? `Besok (${getLocalDateString(1)})`
                   : selectedDate}
               </span>
-              <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
             </Button>
 
             {openDropdown === 'date' && (
-              <div className="absolute right-0 top-full mt-1.5 w-52 p-1.5 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-xl z-30 space-y-1">
-                <div className="px-2.5 py-1 text-[10px] font-semibold text-[oklch(0.5_0.002_230.81)] uppercase tracking-wider">
+              <div className="absolute right-0 top-full mt-1.5 w-52 p-1.5 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30 space-y-1">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
                   Filter Tanggal
                 </div>
                 {[
@@ -437,17 +437,17 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs text-[oklch(0.85_0.002_230.81)] hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer text-left"
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer text-left"
                   >
                     <span>{item.label}</span>
                     {selectedDate === item.value && (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-[#f2d953]" />
                     )}
                   </button>
                 ))}
 
-                <div className="pt-1.5 mt-1 border-t border-[oklch(0.2593_0.0033_230.84)] px-2 pb-1">
-                  <span className="text-[10px] text-[oklch(0.6_0.002_230.81)] block mb-1">
+                <div className="pt-1.5 mt-1 border-t border-[#262626] px-2 pb-1">
+                  <span className="text-[10px] text-[#8e8e8e] block mb-1">
                     Pilih Tanggal Tertentu:
                   </span>
                   <input
@@ -462,7 +462,7 @@ export default function BookingsTable({
                         setCurrentPage(1)
                       }
                     }}
-                    className="w-full h-7 px-2 text-xs bg-[oklch(0.14_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded text-white focus:outline-none focus:border-amber-400/60 cursor-pointer"
+                    className="w-full h-7 px-2 text-xs bg-[#141414] border border-[#262626] rounded text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
                   />
                 </div>
               </div>
@@ -475,7 +475,7 @@ export default function BookingsTable({
             variant="outline"
             size="sm"
             onClick={handleExportCSV}
-            className="h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] text-[oklch(0.75_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer"
+            className="h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer"
             title="Ekspor CSV rekap transaksi"
           >
             <Download className="w-3.5 h-3.5" />
@@ -489,9 +489,9 @@ export default function BookingsTable({
             size="sm"
             onClick={onRefresh}
             title="Refresh data transaksi"
-            className="h-8 text-xs gap-1.5 px-2.5 bg-[oklch(0.16_0.002_230.81)] border-[oklch(0.2593_0.0033_230.84)] hover:bg-white/5 cursor-pointer"
+            className="h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#f2d953]' : ''}`} />
             <span>Refresh</span>
           </Button>
 
@@ -501,7 +501,7 @@ export default function BookingsTable({
             variant="default"
             size="sm"
             onClick={onOpenManualModal}
-            className="h-8 text-xs gap-1.5 px-3 font-semibold cursor-pointer"
+            className="h-8 text-xs gap-1.5 px-3.5 font-bold bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>+ Walk-in</span>
@@ -510,11 +510,11 @@ export default function BookingsTable({
       </div>
 
       {/* Tabel Data Full Width Tanpa Box Terjepit */}
-      <div className="flex-1 overflow-x-auto min-h-0 bg-[oklch(0.1932_0.002_230.81)]">
+      <div className="flex-1 overflow-x-auto min-h-0 bg-[#161616]">
         <Table>
           {/* Header Shadcn Table dengan UX Copy Kontekstual Kasir */}
           <TableHeader>
-            <TableRow className="border-b border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] hover:bg-[oklch(0.1932_0.002_230.81)]">
+            <TableRow className="border-b border-[#262626] bg-[#181818] hover:bg-[#181818]">
               {/* 1. Kolom Penyewa & Invoice */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
@@ -522,7 +522,7 @@ export default function BookingsTable({
               >
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-white/90">Penyewa</span>
-                  <span className="text-xs text-[oklch(0.55_0.002_230.81)]">({sortedBookings.length})</span>
+                  <span className="text-xs text-[#8e8e8e]">({sortedBookings.length})</span>
                 </div>
               </TableHead>
 
@@ -532,9 +532,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-36"
               >
                 <div className="flex items-center gap-1.5">
-                  <CircleDot className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Status</span>
-                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
@@ -544,9 +544,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  <CreditCard className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <CreditCard className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Tagihan</span>
-                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
@@ -556,9 +556,9 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors w-40"
               >
                 <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Lapangan</span>
-                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
@@ -568,15 +568,15 @@ export default function BookingsTable({
                 className="cursor-pointer hover:text-white transition-colors min-w-[220px]"
               >
                 <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-[oklch(0.65_0.002_230.81)]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#8e8e8e]" />
                   <span>Jadwal Main</span>
-                  <ChevronDown className="w-3 h-3 text-[oklch(0.55_0.002_230.81)]" />
+                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
               {/* 6. Settings / Options */}
               <TableHead className="text-right w-14 pr-5">
-                <div className="flex items-center justify-end text-[oklch(0.65_0.002_230.81)]">
+                <div className="flex items-center justify-end text-[#8e8e8e]">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
               </TableHead>
@@ -587,16 +587,16 @@ export default function BookingsTable({
           <TableBody>
             {loading && bookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[oklch(0.65_0.002_230.81)]">
+                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <RefreshCw className="w-4 h-4 animate-spin text-emerald-400" />
+                    <RefreshCw className="w-4 h-4 animate-spin text-[#f2d953]" />
                     <span>Memuat data transaksi...</span>
                   </div>
                 </TableCell>
               </TableRow>
             ) : paginatedBookings.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="py-16 text-center text-[oklch(0.65_0.002_230.81)]">
+                <TableCell colSpan={6} className="py-16 text-center text-[#8e8e8e]">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <p className="text-xs">
                       {selectedDate === 'all'
@@ -613,7 +613,7 @@ export default function BookingsTable({
                       <button
                         type="button"
                         onClick={() => setSelectedDate('all')}
-                        className="px-3 py-1 rounded bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 text-xs font-medium border border-emerald-500/20 transition-colors cursor-pointer"
+                        className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-[#f2d953] hover:text-[#ffe359] text-xs font-medium border border-[#f2d953]/20 transition-colors cursor-pointer"
                       >
                         Tampilkan Semua Tanggal
                       </button>
@@ -634,19 +634,19 @@ export default function BookingsTable({
                   <TableRow
                     key={item.id}
                     onClick={() => setSelectedBooking(item)}
-                    className="cursor-pointer group h-10 border-b border-[oklch(0.2593_0.0033_230.84)]/60 hover:bg-white/[0.04]"
+                    className="cursor-pointer group h-10 border-b border-[#262626]/60 hover:bg-white/[0.04]"
                   >
                     {/* 1. Identifier (Sans) + Title (Penyewa & No HP) */}
                     <TableCell className="pl-5">
                       <div className="flex items-center gap-3">
-                        <span className="text-xs text-[oklch(0.65_0.002_230.81)] font-medium tracking-wide shrink-0">
+                        <span className="text-xs text-[#8e8e8e] font-medium tracking-wide shrink-0">
                           {invoiceCode}
                         </span>
-                        <span className="text-[oklch(0.9235_0.001733_230.685)] text-xs font-medium group-hover:text-white transition-colors truncate">
+                        <span className="text-[#fafafa] text-xs font-medium group-hover:text-white transition-colors truncate">
                           {item.nama_penyewa}
                         </span>
                         {item.no_hp && (
-                          <span className="text-xs text-[oklch(0.55_0.002_230.81)] hidden md:inline">
+                          <span className="text-xs text-[#555555] hidden md:inline">
                             • {item.no_hp}
                           </span>
                         )}
@@ -667,15 +667,15 @@ export default function BookingsTable({
                         </div>
                       ) : isDP ? (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#f2d953] flex items-center justify-center shrink-0">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
                           </span>
-                          <span className="text-amber-300 text-xs font-medium">DP 50%</span>
+                          <span className="text-[#f2d953] text-xs font-medium">DP 50%</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[oklch(0.55_0.002_230.81)] shrink-0" />
-                          <span className="text-[oklch(0.65_0.002_230.81)] text-xs font-medium">Booked</span>
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#555555] shrink-0" />
+                          <span className="text-[#8e8e8e] text-xs font-medium">Booked</span>
                         </div>
                       )}
                     </TableCell>
@@ -684,23 +684,23 @@ export default function BookingsTable({
                     <TableCell className="whitespace-nowrap">
                       {!isLunas && !isBatal && sisa > 0 ? (
                         <div className="flex items-center gap-2">
-                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-500/30 bg-amber-500/10 flex items-center justify-center text-[9px] text-amber-400 font-bold shrink-0">
+                          <div className="w-3.5 h-3.5 rounded-xs border border-[#f2d953]/30 bg-[#f2d953]/10 flex items-center justify-center text-[9px] text-[#f2d953] font-bold shrink-0">
                             !
                           </div>
-                          <span className="text-amber-300 text-xs font-semibold">
+                          <span className="text-[#f2d953] text-xs font-semibold">
                             Sisa {formatRupiah(sisa)}
                           </span>
                         </div>
                       ) : isLunas ? (
                         <div className="flex items-center gap-2">
                           <Check className="w-3 h-3 text-emerald-400 shrink-0" />
-                          <span className="text-[oklch(0.9235_0.001733_230.685)] text-xs font-medium">
+                          <span className="text-[#fafafa] text-xs font-medium">
                             {formatRupiah(item.total_bayar)}
                           </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="text-[oklch(0.55_0.002_230.81)] text-xs font-normal">
+                          <span className="text-[#555555] text-xs font-normal">
                             - Batal
                           </span>
                         </div>
@@ -709,8 +709,8 @@ export default function BookingsTable({
 
                     {/* 4. Lapangan (Badge Pill Sesuai Referensi Pengguna) */}
                     <TableCell className="whitespace-nowrap">
-                      <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
-                        <span className="flex items-center justify-center w-3.5 h-3.5 bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.1)] text-[oklch(0.765_0.177_163.223)] text-xs font-bold rounded-full leading-snug transition-all">
+                      <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[#141414] text-[#fafafa] text-xs rounded-md border border-[#262626] h-[20.3125px] leading-snug transition-all">
+                        <span className="flex items-center justify-center w-3.5 h-3.5 bg-white/10 text-emerald-400 text-xs font-bold rounded-full leading-snug transition-all">
                           {courtName.charAt(0)}
                         </span>
                         <span className="leading-snug transition-all">{courtName}</span>
@@ -720,7 +720,7 @@ export default function BookingsTable({
                     {/* 5. Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[oklch(0.16_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] text-xs rounded-md border border-[oklch(0.2593_0.0033_230.84)] h-[20.3125px] leading-snug transition-all">
+                        <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[#141414] text-[#fafafa] text-xs rounded-md border border-[#262626] h-[20.3125px] leading-snug transition-all">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${getLabelDotColor(
                               courtName
@@ -729,7 +729,7 @@ export default function BookingsTable({
                           <span className="leading-snug transition-all">{item.tgl_main}</span>
                         </div>
                         <span
-                          className="text-xs text-[oklch(0.75_0.002_230.81)] font-medium"
+                          className="text-xs text-[#8e8e8e] font-medium"
                           title={`Durasi: ${item.durasi_jam} Jam (${item.jam_slots.join(', ')})`}
                         >
                           • {formatSlotRange(item.jam_slots)}
@@ -772,7 +772,7 @@ export default function BookingsTable({
                         {activeMenuId === item.id && (
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute right-0 top-full mt-1 w-44 rounded-md border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.18_0.002_230.81)] shadow-2xl p-1 z-30 text-xs text-[oklch(0.9235_0.001733_230.685)] animate-fadeIn"
+                            className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl p-1 z-30 text-xs text-[#fafafa] animate-fadeIn"
                           >
                             <button
                               type="button"
@@ -806,7 +806,7 @@ export default function BookingsTable({
                                     handleCopyPhone(item.no_hp, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[oklch(0.65_0.002_230.81)] hover:text-white"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#8e8e8e] hover:text-white"
                                 >
                                   <Copy className="w-3.5 h-3.5" />
                                   <span>
@@ -857,15 +857,15 @@ export default function BookingsTable({
         {/* Row Baris Bawah: + Tambah Transaksi (Walk-in) */}
         <div
           onClick={onOpenManualModal}
-          className="flex items-center gap-2 py-2.5 px-5 text-xs text-[oklch(0.65_0.002_230.81)] hover:text-white hover:bg-white/5 cursor-pointer transition-colors border-t border-[oklch(0.2593_0.0033_230.84)]"
+          className="flex items-center gap-2 py-2.5 px-5 text-xs text-[#8e8e8e] hover:text-[#f2d953] hover:bg-white/5 cursor-pointer transition-colors border-t border-[#262626]"
         >
-          <Plus className="w-3.5 h-3.5" />
+          <Plus className="w-3.5 h-3.5 text-[#f2d953]" />
           <span>+ Tambah Transaksi (Walk-in)</span>
         </div>
       </div>
 
       {/* Footer Navigasi Baris & Halaman Full Width */}
-      <div className="flex items-center justify-between px-5 py-2.5 border-t border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] text-xs text-[oklch(0.65_0.002_230.81)] shrink-0">
+      <div className="flex items-center justify-between px-5 py-2.5 border-t border-[#262626] bg-[#181818] text-xs text-[#8e8e8e] shrink-0">
         <div className="flex items-center gap-2">
           <span>Baris per halaman:</span>
           <select
@@ -874,7 +874,7 @@ export default function BookingsTable({
               setRowsPerPage(Number(e.target.value))
               setCurrentPage(1)
             }}
-            className="bg-[oklch(0.16_0.002_230.81)] border border-[oklch(0.2593_0.0033_230.84)] rounded px-1.5 py-0.5 text-white text-xs cursor-pointer focus:outline-none"
+            className="bg-[#141414] border border-[#262626] rounded-lg px-2 py-1 text-white text-xs cursor-pointer focus:outline-none"
           >
             <option value={10}>10</option>
             <option value={15}>15</option>

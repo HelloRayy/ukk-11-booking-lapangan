@@ -129,25 +129,25 @@ export default function ManualBookingModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-xl w-full p-6 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-[#181818] border border-[#262626] text-[#fafafa] font-aeonik rounded-2xl max-w-xl w-full p-6 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header Modal */}
-        <div className="flex items-center justify-between border-b pb-3">
+        <div className="flex items-center justify-between border-b border-[#262626] pb-3">
           <div>
-            <h3 className="text-lg font-bold text-gray-900">+ Input Booking Manual (Walk-in)</h3>
-            <p className="text-xs text-gray-500">Pemesanan langsung di loket kasir tanpa lewat website.</p>
+            <h3 className="text-lg font-bold text-white">+ Input Booking Manual (Walk-in)</h3>
+            <p className="text-xs text-[#8e8e8e]">Pemesanan langsung di loket kasir tanpa lewat website.</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-sm font-bold p-1 cursor-pointer"
+            className="text-[#8e8e8e] hover:text-white text-sm font-bold p-1 cursor-pointer transition-colors"
           >
             ✕
           </button>
         </div>
 
         {errorMessage && (
-          <div className="p-3 text-xs bg-red-50 text-red-700 border border-red-200 rounded-lg">
+          <div className="p-3 text-xs bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-xl">
             {errorMessage}
           </div>
         )}
@@ -156,11 +156,11 @@ export default function ManualBookingModal({
           {/* 1. Pilih Lapangan & Tanggal */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-gray-600 font-semibold block mb-1">Pilih Lapangan</label>
+              <label className="text-[#8e8e8e] font-semibold block mb-1">Pilih Lapangan</label>
               <select
                 value={selectedCourtId}
                 onChange={(e) => setSelectedCourtId(Number(e.target.value))}
-                className="w-full p-2 rounded-lg border border-gray-300 bg-white"
+                className="w-full p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
               >
                 {courts.map((court) => (
                   <option key={court.id} value={court.id} disabled={court.status === 'Tutup'}>
@@ -170,13 +170,13 @@ export default function ManualBookingModal({
               </select>
             </div>
             <div>
-              <label className="text-gray-600 font-semibold block mb-1">Tanggal Main</label>
+              <label className="text-[#8e8e8e] font-semibold block mb-1">Tanggal Main</label>
               <input
                 type="date"
                 min={today}
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full p-2 rounded-lg border border-gray-300 bg-white"
+                className="w-full p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
               />
             </div>
           </div>
@@ -184,11 +184,11 @@ export default function ManualBookingModal({
           {/* 2. Grid Jam Slot */}
           <div>
             <div className="flex justify-between items-center mb-1.5">
-              <label className="text-gray-600 font-semibold">
-                Pilih Jam Sewa {isLoadingSlots && <span className="text-gray-400 font-normal">(Memeriksa jadwal...)</span>}
+              <label className="text-[#8e8e8e] font-semibold">
+                Pilih Jam Sewa {isLoadingSlots && <span className="text-[#f2d953] font-normal">(Memeriksa jadwal...)</span>}
               </label>
-              <span className="text-[11px] text-gray-500">
-                Terpilih: <strong className="text-blue-600">{durasiJam} Jam</strong>
+              <span className="text-[11px] text-[#8e8e8e]">
+                Terpilih: <strong className="text-[#f2d953]">{durasiJam} Jam</strong>
               </span>
             </div>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
@@ -202,12 +202,12 @@ export default function ManualBookingModal({
                     type="button"
                     disabled={isBooked}
                     onClick={() => toggleHour(hour)}
-                    className={`py-1.5 px-1 text-center rounded text-[11px] font-bold transition-all cursor-pointer ${
+                    className={`py-1.5 px-1 text-center rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                       isBooked
-                        ? 'bg-gray-100 text-gray-400 line-through cursor-not-allowed border border-gray-200'
+                        ? 'bg-white/5 text-[#555] line-through cursor-not-allowed border border-[#262626]'
                         : isSelected
-                        ? 'bg-blue-600 text-white shadow-xs'
-                        : 'bg-white hover:bg-gray-50 text-gray-800 border border-gray-300'
+                        ? 'bg-[#f2d953] text-[#161616] border border-[#f2d953] shadow-xs'
+                        : 'bg-[#141414] hover:bg-white/5 text-white border border-[#262626]'
                     }`}
                   >
                     {hour}
@@ -220,39 +220,39 @@ export default function ManualBookingModal({
           {/* 3. Info Calon Penyewa */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-gray-600 font-semibold block mb-1">Nama Penyewa</label>
+              <label className="text-[#8e8e8e] font-semibold block mb-1">Nama Penyewa</label>
               <input
                 type="text"
                 placeholder="e.g. Budi Santoso"
                 value={namaPenyewa}
                 onChange={(e) => setNamaPenyewa(e.target.value)}
-                className="w-full p-2 rounded-lg border border-gray-300 bg-white"
+                className="w-full p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60"
               />
             </div>
             <div>
-              <label className="text-gray-600 font-semibold block mb-1">Nomor WhatsApp (Opsional)</label>
+              <label className="text-[#8e8e8e] font-semibold block mb-1">Nomor WhatsApp (Opsional)</label>
               <input
                 type="text"
                 placeholder="e.g. 08123456789"
                 value={noHp}
                 onChange={(e) => setNoHp(e.target.value)}
-                className="w-full p-2 rounded-lg border border-gray-300 bg-white"
+                className="w-full p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60"
               />
             </div>
           </div>
 
           {/* 4. Skema Bayar & Rincian Total */}
-          <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
+          <div className="p-3.5 rounded-xl bg-[#141414] border border-[#262626] space-y-2">
             <div className="flex justify-between items-center">
-              <span className="font-semibold text-gray-700">Skema Pembayaran</span>
+              <span className="font-semibold text-white">Skema Pembayaran</span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setTipeBayar('Lunas')}
-                  className={`px-3 py-1 rounded-md text-xs font-bold cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold cursor-pointer transition-colors ${
                     tipeBayar === 'Lunas'
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white/5 text-[#8e8e8e] hover:text-white border border-[#262626]'
                   }`}
                 >
                   Lunas Langsung (100%)
@@ -260,10 +260,10 @@ export default function ManualBookingModal({
                 <button
                   type="button"
                   onClick={() => setTipeBayar('DP')}
-                  className={`px-3 py-1 rounded-md text-xs font-bold cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold cursor-pointer transition-colors ${
                     tipeBayar === 'DP'
-                      ? 'bg-amber-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      ? 'bg-[#f2d953] text-[#161616] shadow-xs'
+                      : 'bg-white/5 text-[#8e8e8e] hover:text-white border border-[#262626]'
                   }`}
                 >
                   Bayar DP (50%)
@@ -271,17 +271,17 @@ export default function ManualBookingModal({
               </div>
             </div>
 
-            <div className="pt-2 border-t border-gray-200 space-y-1 text-gray-600">
+            <div className="pt-2 border-t border-[#262626] space-y-1 text-[#8e8e8e]">
               <div className="flex justify-between">
                 <span>Total Sewa ({durasiJam} Jam):</span>
-                <span className="font-bold text-gray-900">Rp {totalBayar.toLocaleString('id-ID')}</span>
+                <span className="font-bold text-white">Rp {totalBayar.toLocaleString('id-ID')}</span>
               </div>
-              <div className="flex justify-between text-emerald-600 font-semibold">
+              <div className="flex justify-between text-emerald-400 font-semibold">
                 <span>Wajib Dibayar Sekarang di Kasir:</span>
                 <span>Rp {nominalDibayar.toLocaleString('id-ID')}</span>
               </div>
               {tipeBayar === 'DP' && (
-                <div className="flex justify-between text-amber-700 font-semibold">
+                <div className="flex justify-between text-[#f2d953] font-semibold">
                   <span>Sisa Pelunasan Nanti:</span>
                   <span>Rp {sisaBayar.toLocaleString('id-ID')}</span>
                 </div>
@@ -290,18 +290,18 @@ export default function ManualBookingModal({
           </div>
 
           {/* Tombol Aksi */}
-          <div className="flex justify-end gap-2 pt-2 border-t">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#262626]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-bold rounded-lg cursor-pointer"
+              className="px-4 py-2 bg-[#141414] hover:bg-white/5 text-[#8e8e8e] hover:text-white border border-[#262626] text-xs font-bold rounded-lg cursor-pointer transition-colors"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={isSubmitting || durasiJam === 0}
-              className="px-5 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white text-xs font-bold rounded-lg cursor-pointer"
+              className="px-5 py-2 bg-[#f2d953] hover:bg-[#ffe359] disabled:opacity-50 text-[#161616] text-xs font-bold rounded-lg cursor-pointer transition-colors shadow-xs active:scale-95"
             >
               {isSubmitting ? 'Menyimpan...' : 'Konfirmasi & Simpan Booking'}
             </button>

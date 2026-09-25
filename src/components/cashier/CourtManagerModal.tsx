@@ -100,18 +100,18 @@ export default function CourtManagerModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-[#181818] border border-[#262626] text-[#fafafa] font-aeonik rounded-2xl max-w-2xl w-full p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header Modal */}
-        <div className="flex items-center justify-between border-b pb-3">
+        <div className="flex items-center justify-between border-b border-[#262626] pb-3">
           <div>
-            <h3 className="text-lg font-bold text-gray-900">Kelola Master Data Lapangan</h3>
-            <p className="text-xs text-gray-500">Tambah, ubah tarif, dan atur ketersediaan lapangan.</p>
+            <h3 className="text-lg font-bold text-white">Kelola Master Data Lapangan</h3>
+            <p className="text-xs text-[#8e8e8e]">Tambah, ubah tarif, dan atur ketersediaan lapangan.</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-sm font-bold p-1 cursor-pointer"
+            className="text-[#8e8e8e] hover:text-white text-sm font-bold p-1 cursor-pointer transition-colors"
           >
             ✕
           </button>
@@ -119,43 +119,43 @@ export default function CourtManagerModal({
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="p-3 text-xs bg-red-50 text-red-700 border border-red-200 rounded-lg">
+          <div className="p-3 text-xs bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-xl">
             {errorMessage}
           </div>
         )}
 
         {/* Form Tambah Lapangan Baru (Poin 10) */}
-        <form onSubmit={handleCreateCourt} className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-3">
-          <span className="text-xs font-bold text-gray-700 uppercase tracking-wide block">
+        <form onSubmit={handleCreateCourt} className="p-4 rounded-xl bg-[#141414] border border-[#262626] space-y-3">
+          <span className="text-xs font-bold text-[#f2d953] uppercase tracking-wide block">
             + Tambah Lapangan Baru
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="text-xs text-gray-600 block mb-1">Nama Lapangan</label>
+              <label className="text-xs text-[#8e8e8e] block mb-1">Nama Lapangan</label>
               <input
                 type="text"
                 placeholder="e.g. Court 4"
                 value={namaLapangan}
                 onChange={(e) => setNamaLapangan(e.target.value)}
-                className="w-full text-xs p-2 rounded-lg border border-gray-300 bg-white focus:outline-blue-500"
+                className="w-full text-xs p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-600 block mb-1">Tarif per Jam (Rp)</label>
+              <label className="text-xs text-[#8e8e8e] block mb-1">Tarif per Jam (Rp)</label>
               <input
                 type="number"
                 step="5000"
                 value={tarifPerJam}
                 onChange={(e) => setTarifPerJam(Number(e.target.value))}
-                className="w-full text-xs p-2 rounded-lg border border-gray-300 bg-white focus:outline-blue-500"
+                className="w-full text-xs p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-600 block mb-1">Status Awal</label>
+              <label className="text-xs text-[#8e8e8e] block mb-1">Status Awal</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as StatusLapangan)}
-                className="w-full text-xs p-2 rounded-lg border border-gray-300 bg-white focus:outline-blue-500"
+                className="w-full text-xs p-2 rounded-lg border border-[#262626] bg-[#1a1a1a] text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
               >
                 <option value="Aktif">Aktif</option>
                 <option value="Tutup">Tutup (Perbaikan)</option>
@@ -165,7 +165,7 @@ export default function CourtManagerModal({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer transition-colors"
+            className="w-full sm:w-auto px-4 py-2 bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] text-xs font-bold rounded-lg cursor-pointer transition-colors shadow-xs active:scale-95 disabled:opacity-50"
           >
             {isSubmitting ? 'Menyimpan...' : 'Simpan Lapangan'}
           </button>
@@ -173,12 +173,12 @@ export default function CourtManagerModal({
 
         {/* Tabel Daftar Lapangan & Aksi Edit/Hapus (Poin 11 & 12) */}
         <div>
-          <span className="text-xs font-bold text-gray-700 uppercase tracking-wide block mb-2">
+          <span className="text-xs font-bold text-[#fafafa] uppercase tracking-wide block mb-2">
             Daftar Lapangan Tersedia ({courts.length})
           </span>
-          <div className="overflow-x-auto border border-gray-200 rounded-xl">
+          <div className="overflow-x-auto border border-[#262626] rounded-xl bg-[#141414]">
             <table className="w-full text-xs text-left">
-              <thead className="bg-gray-100 border-b border-gray-200 text-gray-600">
+              <thead className="bg-[#181818] border-b border-[#262626] text-[#8e8e8e]">
                 <tr>
                   <th className="p-2.5">ID</th>
                   <th className="p-2.5">Nama Lapangan</th>
@@ -187,17 +187,17 @@ export default function CourtManagerModal({
                   <th className="p-2.5 text-right">Aksi</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-[#262626]">
                 {courts.map((court) => (
-                  <tr key={court.id} className="hover:bg-gray-50">
-                    <td className="p-2.5 font-medium text-gray-500">#{court.id}</td>
-                    <td className="p-2.5 font-bold text-gray-900">{court.nama_lapangan}</td>
-                    <td className="p-2.5 text-gray-700">Rp {court.tarif_per_jam.toLocaleString('id-ID')}</td>
+                  <tr key={court.id} className="hover:bg-white/5 transition-colors">
+                    <td className="p-2.5 font-medium text-[#8e8e8e]">#{court.id}</td>
+                    <td className="p-2.5 font-bold text-white">{court.nama_lapangan}</td>
+                    <td className="p-2.5 text-emerald-400 font-medium">Rp {court.tarif_per_jam.toLocaleString('id-ID')}</td>
                     <td className="p-2.5">
                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                         court.status === 'Aktif'
-                          ? 'bg-emerald-100 text-emerald-700'
-                          : 'bg-amber-100 text-amber-700'
+                          ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                          : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
                       }`}>
                         {court.status}
                       </span>
@@ -206,7 +206,7 @@ export default function CourtManagerModal({
                       <button
                         type="button"
                         onClick={() => handleEditTarif(court)}
-                        className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-[11px] font-semibold cursor-pointer"
+                        className="px-2.5 py-1 bg-white/5 hover:bg-white/10 text-white rounded-lg text-[11px] font-semibold border border-[#262626] transition-colors cursor-pointer"
                         title="Ubah tarif per jam"
                       >
                         Edit Tarif
@@ -214,7 +214,7 @@ export default function CourtManagerModal({
                       <button
                         type="button"
                         onClick={() => handleToggleStatus(court)}
-                        className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-[11px] font-semibold cursor-pointer"
+                        className="px-2.5 py-1 bg-white/5 hover:bg-white/10 text-white rounded-lg text-[11px] font-semibold border border-[#262626] transition-colors cursor-pointer"
                         title="Ubah status Aktif / Tutup"
                       >
                         {court.status === 'Aktif' ? 'Set Tutup' : 'Set Aktif'}
@@ -222,7 +222,7 @@ export default function CourtManagerModal({
                       <button
                         type="button"
                         onClick={() => handleDeleteCourt(court)}
-                        className="px-2 py-1 bg-red-50 hover:bg-red-100 text-red-600 rounded text-[11px] font-semibold cursor-pointer"
+                        className="px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-lg text-[11px] font-semibold border border-rose-500/20 transition-colors cursor-pointer"
                         title="Hapus lapangan dari database"
                       >
                         Hapus
@@ -236,11 +236,11 @@ export default function CourtManagerModal({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end pt-2 border-t">
+        <div className="flex justify-end pt-2 border-t border-[#262626]">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-bold rounded-lg cursor-pointer"
+            className="px-4 py-2 bg-[#141414] hover:bg-white/5 text-[#8e8e8e] hover:text-white border border-[#262626] text-xs font-bold rounded-lg cursor-pointer transition-colors"
           >
             Tutup
           </button>

@@ -6,11 +6,13 @@ import DashboardOverview from './cashier/dashboard-01/DashboardOverview'
 import BookingsTable from './cashier/dashboard-01/BookingsTable'
 import CourtScheduleGrid from './cashier/dashboard-01/CourtScheduleGrid'
 import ManualBookingModal from './cashier/ManualBookingModal'
+import CourtManagerModal from './cashier/CourtManagerModal'
 import { useCashier } from './cashier/hooks/useCashier'
 
 export default function CashierPage() {
   const [currentTab, setCurrentTab] = useState<'overview' | 'bookings' | 'schedule'>('schedule')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isCourtManagerOpen, setIsCourtManagerOpen] = useState(false)
   const [manualModalDefaults, setManualModalDefaults] = useState<{
     courtId?: number
     date?: string
@@ -45,25 +47,30 @@ export default function CashierPage() {
   }
 
   return (
-    <div className="h-screen w-full flex overflow-hidden bg-[oklch(0.1932_0.002_230.81)] text-[oklch(0.9235_0.001733_230.685)] font-['Inter_Variable',sans-serif] select-none antialiased">
+    <div className="h-screen w-full flex overflow-hidden bg-[#161616] text-[#fafafa] font-aeonik select-none antialiased">
       {/* 1. Sidebar Navigasi Kiri (Desktop Full Height) */}
       <Sidebar
         currentTab={currentTab}
         onTabChange={(tab) => setCurrentTab(tab)}
+        onOpenCourtManager={() => setIsCourtManagerOpen(true)}
       />
 
       {/* 2. Drawer Mobile Sederhana */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/70 backdrop-blur-xs"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="relative z-10 w-64 bg-[oklch(0.1932_0.002_230.81)] border-r border-[oklch(0.2593_0.0033_230.84)] flex flex-col justify-between h-full">
+          <div className="relative z-10 w-64 bg-[#181818] border-r border-[#262626] flex flex-col justify-between h-full">
             <Sidebar
               currentTab={currentTab}
               onTabChange={(tab) => {
                 setCurrentTab(tab)
+                setIsMobileMenuOpen(false)
+              }}
+              onOpenCourtManager={() => {
+                setIsCourtManagerOpen(true)
                 setIsMobileMenuOpen(false)
               }}
             />
@@ -132,6 +139,14 @@ export default function CashierPage() {
         initialCourtId={manualModalDefaults.courtId}
         initialDate={manualModalDefaults.date}
         initialHour={manualModalDefaults.hour}
+      />
+
+      {/* 5. Modal CRUD Master Data Lapangan (Poin 10, 11, 12 UKK) */}
+      <CourtManagerModal
+        courts={courts}
+        isOpen={isCourtManagerOpen}
+        onClose={() => setIsCourtManagerOpen(false)}
+        onCourtsUpdated={loadDataKasir}
       />
     </div>
   )

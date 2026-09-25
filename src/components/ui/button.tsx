@@ -9,14 +9,14 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', ...props }, ref) => {
     const variantStyles = {
-      default: 'bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-xs active:scale-95',
+      default: 'bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold shadow-xs active:scale-95',
       destructive: 'bg-rose-600 hover:bg-rose-500 text-white font-semibold shadow-xs active:scale-95',
-      outline: 'border border-[oklch(0.2593_0.0033_230.84)] bg-[oklch(0.1932_0.002_230.81)] hover:bg-white/10 text-[oklch(0.9235_0.001733_230.685)]',
-      secondary: 'bg-[oklch(0.2593_0.0033_230.84)] text-white hover:bg-white/20',
-      ghost: 'hover:bg-white/10 text-[oklch(0.65_0.002_230.81)] hover:text-white',
-      link: 'text-emerald-400 underline-offset-4 hover:underline',
+      outline: 'border border-[#262626] bg-[#141414] hover:bg-white/10 text-[#fafafa]',
+      secondary: 'bg-[#262626] text-white hover:bg-white/20',
+      ghost: 'hover:bg-white/10 text-[#8e8e8e] hover:text-white',
+      link: 'text-[#f2d953] underline-offset-4 hover:underline',
       emerald: 'bg-emerald-600 hover:bg-emerald-500 text-white font-semibold active:scale-95',
-      gold: 'bg-[#f2d953] hover:bg-[#e2ca48] text-black font-semibold active:scale-95',
+      gold: 'bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold active:scale-95',
     }
 
     const sizeStyles = {
