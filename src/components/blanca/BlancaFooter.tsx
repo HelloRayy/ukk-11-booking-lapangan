@@ -1,4 +1,4 @@
-// PERAN FILE: Komponen Footer 1:1 Blanca Padel dengan navigasi, kontak, dan back to top
+// PERAN FILE: Komponen Footer Blanca Badminton dengan navigasi, kontak, dan back to top
 export default function BlancaFooter() {
   const scrollToTop = (e: React.MouseEvent) => {
     e.preventDefault()

@@ -1,4 +1,4 @@
-// PERAN FILE: Data Statis Raket & Teknologi Modern Blanca Padel
+// PERAN FILE: Data Statis Raket & Teknologi Modern Blanca Badminton
 import type { SlideData } from '../types'
 
 export const TECHNOLOGY_SLIDES: SlideData[] = [

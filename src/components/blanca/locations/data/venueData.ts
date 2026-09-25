@@ -1,4 +1,4 @@
-// PERAN FILE: Data Statis Venue Arena & Kontak Resmi Blanca Padel / Badminton
+// PERAN FILE: Data Statis Venue Arena & Kontak Resmi Blanca Badminton
 import type { ArenaVenue, ContactCardItem } from '../types'
 
 export const VENUE_DATA: ArenaVenue = {

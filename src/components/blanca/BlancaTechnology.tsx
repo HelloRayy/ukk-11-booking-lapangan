@@ -1,4 +1,4 @@
-// PERAN FILE: Root Coordinator Section Our Technology Blanca Padel (Modular Feature-Folder)
+// PERAN FILE: Root Coordinator Section Our Technology Blanca Badminton (Modular Feature-Folder)
 import { useTechnologySlider } from './technology/hooks/useTechnologySlider'
 import TechnologyHeading from './technology/components/TechnologyHeading'
 import TechnologySlideMedia from './technology/components/TechnologySlideMedia'

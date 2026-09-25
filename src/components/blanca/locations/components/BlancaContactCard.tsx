@@ -1,4 +1,4 @@
-// PERAN FILE: Pure UI Kartu Kontak 1:1 Persis Desain Blanca Padel
+// PERAN FILE: Pure UI Kartu Kontak Arena Blanca Badminton
 import type { ContactCardItem } from '../types'
 
 interface BlancaContactCardProps {

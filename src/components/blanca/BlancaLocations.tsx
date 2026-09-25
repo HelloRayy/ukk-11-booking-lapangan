@@ -1,4 +1,4 @@
-// PERAN FILE: Root Coordinator Section Lokasi & Kontak Blanca Padel (Modular Feature-Folder)
+// PERAN FILE: Root Coordinator Section Lokasi & Kontak Blanca Badminton (Modular Feature-Folder)
 import { useBlancaLocations } from './locations/hooks/useBlancaLocations'
 import BlancaLocationHeader from './locations/components/BlancaLocationHeader'
 import BlancaLocationMap from './locations/components/BlancaLocationMap'

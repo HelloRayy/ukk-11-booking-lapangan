@@ -1,4 +1,4 @@
-// PERAN FILE: Root Coordinator Section FAQ Blanca Padel (Modular Feature-Folder)
+// PERAN FILE: Root Coordinator Section FAQ Blanca Badminton (Modular Feature-Folder)
 import { useFaqAccordion } from './faq/hooks/useFaqAccordion'
 import FaqHeading from './faq/components/FaqHeading'
 import FaqAccordionItem from './faq/components/FaqAccordionItem'

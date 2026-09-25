@@ -1,4 +1,4 @@
-// PERAN FILE: Container Utama Overview Panel Dashboard Kasir (Jaya Padel Grid Layout)
+// PERAN FILE: Container Utama Overview Panel Dashboard Kasir (Badminton Arena Grid Layout)
 import CourtStatisticCard from './components/CourtStatisticCard'
 import MostBookedDayCard from './components/MostBookedDayCard'
 import UtilizationRateCard from './components/UtilizationRateCard'

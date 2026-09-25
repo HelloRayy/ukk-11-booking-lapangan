@@ -1,4 +1,4 @@
-// PERAN FILE: Kartu 1 - Statistik Lapangan Aktif dengan Visual Raket Padel
+// PERAN FILE: Kartu 1 - Statistik Lapangan Aktif dengan Visual Lapangan Badminton
 import type { CourtStatData } from '../types'
 
 interface Props {
