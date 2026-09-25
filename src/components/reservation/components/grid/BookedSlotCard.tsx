@@ -72,7 +72,7 @@ export default function BookedSlotCard({
       className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] bg-[#222222] border transition-all cursor-pointer flex flex-col justify-between group shadow-md select-none font-aeonik ${
         isSelected
           ? 'border-[#f2d953] ring-1 ring-[#f2d953] shadow-[0_0_16px_rgba(242,217,83,0.25)]'
-          : 'border-[#333333] hover:border-[#555555] hover:bg-[#282828]'
+          : 'border-[#383838] hover:border-[#555555] hover:bg-[#282828]'
       }`}
     >
       <div>

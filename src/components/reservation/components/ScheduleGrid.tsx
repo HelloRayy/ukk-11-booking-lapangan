@@ -167,9 +167,9 @@ export default function ScheduleGrid({
                             : 'cursor-pointer group'
                         }`}
                       >
-                        {/* Hover Indicator Box - Soft Luxury Style */}
+                        {/* Hover Indicator Box - Soft Luxury Style setara Booked Card */}
                         {!isPast && !inRange && !isRangePreviewActive && (
-                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/15 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none">
+                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#525252] bg-white/[0.04] opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none">
                             <span className="text-xs font-medium text-[#e5e5e5]">
                               {selectedSlot && selectedSlot.courtId === court.id
                                 ? 'Pilih Selesai'
