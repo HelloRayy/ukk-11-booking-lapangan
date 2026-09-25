@@ -90,21 +90,6 @@ export default function ReservationNavbar({ customerName, selectedDate, onDateCh
   const todayDateObj = new Date()
   todayDateObj.setHours(0, 0, 0, 0)
 
-  // Helper set tanggal cepat
-  const handleQuickSelect = (offsetDays: number) => {
-    const target = new Date()
-    target.setDate(target.getDate() + offsetDays)
-    const y = target.getFullYear()
-    const m = String(target.getMonth() + 1).padStart(2, '0')
-    const d = String(target.getDate()).padStart(2, '0')
-    const dateStr = `${y}-${m}-${d}`
-
-    setViewYear(target.getFullYear())
-    setViewMonth(target.getMonth())
-    onDateChange?.(dateStr)
-    setIsCalendarOpen(false)
-  }
-
   const handleSelectDay = (dayNum: number) => {
     const m = String(viewMonth + 1).padStart(2, '0')
     const d = String(dayNum).padStart(2, '0')
@@ -174,31 +159,6 @@ export default function ReservationNavbar({ customerName, selectedDate, onDateCh
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
-              </div>
-
-              {/* Quick Date Chips */}
-              <div className="flex items-center gap-1.5 mb-3">
-                <button
-                  type="button"
-                  onClick={() => handleQuickSelect(0)}
-                  className="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[11px] font-medium text-white border border-white/5 hover:border-white/10 transition-colors cursor-pointer"
-                >
-                  Hari Ini
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickSelect(1)}
-                  className="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[11px] font-medium text-white border border-white/5 hover:border-white/10 transition-colors cursor-pointer"
-                >
-                  Besok
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickSelect(2)}
-                  className="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[11px] font-medium text-white border border-white/5 hover:border-white/10 transition-colors cursor-pointer"
-                >
-                  Lusa
-                </button>
               </div>
 
               {/* Baris Nama Hari */}
