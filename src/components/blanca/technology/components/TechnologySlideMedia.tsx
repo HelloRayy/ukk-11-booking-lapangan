@@ -14,6 +14,7 @@ export default function TechnologySlideMedia({ slide }: TechnologySlideMediaProp
           alt={slide.alt}
           className="w-full h-auto mdw:h-full max-mdw:aspect-[327/262] max-mdw:max-h-[360px] object-cover object-center rounded-[4px] opacity-[0.95] overflow-hidden"
           loading="lazy"
+          decoding="async"
         />
 
         {/* Mini Product Card (pinned to bottom-left) */}
@@ -38,6 +39,8 @@ export default function TechnologySlideMedia({ slide }: TechnologySlideMediaProp
             <img
               src={slide.racquetImg}
               alt={slide.productName}
+              loading="lazy"
+              decoding="async"
               className="w-auto h-full scale-[150%] mdw:group-hover/mini-product:scale-[160%] translate-y-[10%] origin-center object-contain object-center transition-transform duration-300"
             />
           </div>

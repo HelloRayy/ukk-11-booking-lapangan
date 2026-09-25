@@ -18,6 +18,7 @@ export default function BlancaContactCard({ item, onFocusMap }: BlancaContactCar
           alt={item.title}
           className="h-full w-full object-cover rounded-lg leading-normal transition-all"
           loading="lazy"
+          decoding="async"
         />
       </div>
 

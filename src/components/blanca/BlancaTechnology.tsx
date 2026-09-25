@@ -10,7 +10,7 @@ export default function BlancaTechnology() {
   return (
     <section
       id="technology"
-      className="mt-[64px] mdw:mt-[128px] relative text-[#fcfcfc] overflow-hidden font-aeonik"
+      className="mt-[64px] mdw:mt-[128px] relative text-[#fcfcfc] overflow-hidden font-aeonik section-deferred"
     >
       {/* Anchor cadangan untuk ID Shopify lama */}
       <div

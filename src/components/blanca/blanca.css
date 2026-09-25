@@ -83,6 +83,16 @@ body {
   opacity: 0.35;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ============================================================== */
+/* DEFERRED RENDERING (CONTENT-VISIBILITY UNTUK SECTION OFFSCREEN) */
+/* ============================================================== */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
 }
 
 .font-aeonik {

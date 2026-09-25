@@ -1,15 +1,39 @@
 // PERAN FILE: Pure UI Showcase Video Gameplay & Mini Card Coronado
+import { useEffect, useRef } from 'react'
+
 export default function DifferenceVideoCard() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Otomatis putar video hanya saat terlihat di layar, pause saat keluar viewport
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="w-full h-auto aspect-[904/678] rounded-[8px] overflow-hidden mb-[40px] relative group/mini-product">
       <video
+        ref={videoRef}
         playsInline
-        autoPlay
         muted
         loop
         className="w-full h-full object-cover object-center"
         poster="/assets/blanca/difference-poster.jpg"
-        preload="metadata"
+        preload="none"
       >
         <source src="/assets/blanca/difference-video.webm" type="video/webm" />
         <source src="/assets/blanca/difference-video.mp4" type="video/mp4" />
@@ -38,6 +62,8 @@ export default function DifferenceVideoCard() {
           <img
             src="/assets/blanca/coronado-front.png"
             alt="Coronado Badminton Racquet"
+            loading="lazy"
+            decoding="async"
             className="w-auto h-full scale-[150%] mdw:group-hover/mini-product:scale-[160%] translate-y-[10%] origin-center object-contain object-center transition-transform duration-300"
           />
         </div>

@@ -37,26 +37,24 @@ export function useHeroAnimation() {
 
     header.style.opacity = '0'
     headerLogo.style.opacity = '0'
-    document.documentElement.classList.add('noscroll')
 
     const rect = headerLogo.getBoundingClientRect()
 
     const tl = gsap.timeline({
       onStart: () => {
         header.style.opacity = '0'
-        document.documentElement.classList.add('noscroll')
       },
     })
 
-    // 1. Bola pada logo berputar -180 deg ke 0
+    // 1. Bola pada logo berputar -180 deg ke 0 (0.5s snappy)
     tl.fromTo(
       ball,
       { rotation: -180 },
       {
-        duration: 1,
+        duration: 0.55,
         rotation: 0,
         transformOrigin: 'center',
-        ease: 'power4.out',
+        ease: 'power3.out',
       },
     )
 
@@ -64,10 +62,10 @@ export function useHeroAnimation() {
     tl.to(
       centerLogo,
       {
-        duration: 1,
+        duration: 0.55,
         height: 40,
         width: 208,
-        ease: 'power4.out',
+        ease: 'power3.out',
       },
       '<',
     )
@@ -76,19 +74,19 @@ export function useHeroAnimation() {
     tl.to(
       centerLogo,
       {
-        duration: 1,
+        duration: 0.55,
         top: rect.top,
         left: rect.left,
         width: rect.width,
         height: rect.height,
         transform: 'none',
-        ease: 'power4.out',
+        ease: 'power3.out',
         onComplete: () => {
           headerLogo.style.opacity = '1'
           centerLogo.style.opacity = '0'
         },
       },
-      '+=0.3s',
+      '+=0.05s',
     )
 
     // 4. Video scale down dan fade in bersamaan
@@ -97,8 +95,8 @@ export function useHeroAnimation() {
       {
         opacity: 1,
         scale: 1,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 0.55,
+        ease: 'power2.out',
       },
       '<',
     )
@@ -110,9 +108,9 @@ export function useHeroAnimation() {
       { y: '100%' },
       {
         y: '0%',
-        duration: 1,
-        stagger: 0.05,
-        ease: 'power3.out',
+        duration: 0.55,
+        stagger: 0.03,
+        ease: 'power2.out',
       },
       '<',
     )
@@ -124,8 +122,8 @@ export function useHeroAnimation() {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 0.55,
+        ease: 'power2.out',
         onComplete: () => {
           gsap.set(header, { clearProps: 'transform' })
         },
@@ -140,20 +138,27 @@ export function useHeroAnimation() {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 0.55,
+        ease: 'power2.out',
       },
       '<',
     )
 
-    tl.eventCallback('onComplete', () => {
-      document.documentElement.classList.remove('noscroll')
-    })
-
     ;(window as unknown as { __BLANCA_TL__?: gsap.core.Timeline }).__BLANCA_TL__ = tl
+
+    // Jika pengguna scroll sebelum animasi selesai, langsung selesaikan timeline agar tidak menghambat navigasi
+    const handleEarlyScroll = () => {
+      if (tl.isActive()) {
+        tl.progress(1)
+      }
+    }
+    window.addEventListener('wheel', handleEarlyScroll, { passive: true, once: true })
+    window.addEventListener('touchmove', handleEarlyScroll, { passive: true, once: true })
 
     return () => {
       document.documentElement.classList.remove('noscroll')
+      window.removeEventListener('wheel', handleEarlyScroll)
+      window.removeEventListener('touchmove', handleEarlyScroll)
       tl.kill()
     }
   }, [])

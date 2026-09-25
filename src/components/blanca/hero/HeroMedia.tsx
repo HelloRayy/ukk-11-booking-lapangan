@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import heroVideo from '../../../assets/hero-video.webm'
 
 interface HeroMediaProps {
@@ -5,6 +6,28 @@ interface HeroMediaProps {
 }
 
 export default function HeroMedia({ videoRef }: HeroMediaProps) {
+  const videoElRef = useRef<HTMLVideoElement>(null)
+
+  // Otomatis pause video saat user scroll keluar dari hero section untuk hemat CPU/GPU
+  useEffect(() => {
+    const video = videoElRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div
       ref={videoRef}
@@ -19,14 +42,14 @@ export default function HeroMedia({ videoRef }: HeroMediaProps) {
         }}
       />
 
-
       {/* Hero Video (Seamless Loop 24fps) */}
       <video
+        ref={videoElRef}
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="relative z-[1] w-full h-full object-contain sm:object-cover mix-blend-screen opacity-90 select-none pointer-events-none"
       >
         <source src={heroVideo} type="video/webm" />

@@ -17,7 +17,7 @@ export default function BlancaLocations() {
   return (
     <section
       id="locations"
-      className="locations relative w-full text-[#fcfcfc] overflow-hidden pt-[64px] mdw:pt-[110px] pb-[80px] mdw:pb-[140px] font-aeonik"
+      className="locations relative w-full text-[#fcfcfc] overflow-hidden pt-[64px] mdw:pt-[110px] pb-[80px] mdw:pb-[140px] font-aeonik section-deferred"
     >
       {/* Anchor Navigation */}
       <div id="find-a-club" className="absolute -top-[80px]" />

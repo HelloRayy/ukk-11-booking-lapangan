@@ -15,6 +15,8 @@ export default function DifferenceFeatures() {
             <img
               src={feature.iconSrc}
               alt={feature.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-contain object-center"
             />
           </div>

@@ -10,6 +10,7 @@ export default function DifferenceCommunityStory() {
           alt={COMMUNITY_STORY.alt}
           className="w-full h-full object-cover object-center"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-black/10 pointer-events-none" />
       </div>

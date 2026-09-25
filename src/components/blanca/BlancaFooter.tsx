@@ -6,7 +6,7 @@ export default function BlancaFooter() {
   }
 
   return (
-    <footer className="w-full pb-[40px] md:pb-[64px] text-[#fcfcfc] text-sm font-light">
+    <footer className="w-full pb-[40px] md:pb-[64px] text-[#fcfcfc] text-sm font-light section-deferred">
       <div className="container">
         <div className="flex flex-col md:grid md:grid-cols-5 gap-y-12 md:gap-y-0 md:gap-x-8 items-start">
           {/* Kolom 1: Explore */}

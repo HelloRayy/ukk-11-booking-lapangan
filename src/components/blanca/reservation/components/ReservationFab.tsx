@@ -25,6 +25,8 @@ export default function ReservationFab({ onOpen }: ReservationFabProps) {
             src="/assets/blanca/quiz-button.png"
             width="191"
             height="144"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

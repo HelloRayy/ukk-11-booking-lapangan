@@ -10,7 +10,7 @@ export default function BlancaFaq() {
     <section
       id="faq"
       data-section-id="shopify-section-faq"
-      className="mt-[64px] mdw:mt-[120px] relative text-[#fcfcfc] overflow-hidden font-aeonik"
+      className="mt-[64px] mdw:mt-[120px] relative text-[#fcfcfc] overflow-hidden font-aeonik section-deferred"
     >
       <div className="container mdw:site-grid items-start">
         {/* Garis Pembatas Atas (Fancy Spacer) */}

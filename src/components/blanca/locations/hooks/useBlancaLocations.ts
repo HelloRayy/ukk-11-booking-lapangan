@@ -10,10 +10,30 @@ export function useBlancaLocations() {
   const mapInstanceRef = useRef<L.Map | null>(null)
   const markerRef = useRef<L.Marker | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isMapVisible, setIsMapVisible] = useState(false)
 
-  // Inisialisasi Peta Leaflet dengan Dark Matter Tiles
+  // Lazy-load Leaflet hanya saat section lokasi mendekati layar (rootMargin 300px)
   useEffect(() => {
-    if (!mapContainerRef.current) return
+    const el = mapContainerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsMapVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '300px' },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Inisialisasi Peta Leaflet dengan Dark Matter Tiles secara bertahap
+  useEffect(() => {
+    if (!isMapVisible || !mapContainerRef.current) return
 
     if (mapInstanceRef.current) {
       mapInstanceRef.current.remove()
@@ -75,10 +95,13 @@ export function useBlancaLocations() {
       map.remove()
       mapInstanceRef.current = null
     }
-  }, [])
+  }, [isMapVisible])
 
   // Fungsi aksi flyTo peta
   const focusOnMap = () => {
+    if (!isMapVisible) {
+      setIsMapVisible(true)
+    }
     if (mapInstanceRef.current && markerRef.current) {
       mapInstanceRef.current.flyTo([VENUE_DATA.lat, VENUE_DATA.lng], 16, { duration: 1.2 })
       markerRef.current.openPopup()
