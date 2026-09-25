@@ -1,6 +1,6 @@
 // PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan (Itemized Receipt Slip + Fintech Selection)
 import { useMemo } from 'react'
-import { X, Clock, ArrowRight, ShieldCheck } from 'lucide-react'
+import { X, Clock, ArrowRight, ShieldCheck, ChevronDown } from 'lucide-react'
 import type { SlotRangeSelection, PaymentType } from '../../types'
 import { formatRupiah } from '../../utils/formatters'
 
@@ -124,97 +124,39 @@ export default function BookingDetailsForm({
           </div>
         </div>
 
-        {/* 3. Pilihan Skema Pembayaran (Modern Fintech Stacked Radio Cards) */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between px-0.5">
-            <span className="text-xs font-semibold text-white tracking-wide uppercase">
-              Pilih Skema Bayar
-            </span>
-            <span className="text-[11px] text-[#8e8e8e]">Metode QRIS Dinamis</span>
-          </div>
+        {/* 3. Pilihan Skema Pembayaran (Dropdown Biasa) */}
+        <div className="space-y-1.5">
+          <label htmlFor="skema-bayar-select" className="text-xs font-semibold text-white tracking-wide uppercase px-0.5 block">
+            Pilih Skema Bayar
+          </label>
 
-          <div className="space-y-2">
-            {/* Opsi DP 50% */}
-            <div
-              onClick={() => onPaymentTypeChange('DP')}
-              className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
-                paymentType === 'DP'
-                  ? 'bg-[#242424] border-[#f2d953] ring-1 ring-[#f2d953]/25 shadow-sm'
-                  : 'bg-[#1c1c1c] border-[#2e2e2e] hover:border-[#444444] hover:bg-[#202020]'
-              }`}
+          <div className="relative">
+            <select
+              id="skema-bayar-select"
+              value={paymentType}
+              onChange={(e) => onPaymentTypeChange(e.target.value as PaymentType)}
+              className="w-full h-11 pl-3.5 pr-10 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs font-semibold text-white appearance-none cursor-pointer focus:outline-none focus:border-[#f2d953] transition-colors"
             >
-              <div className="pt-0.5">
-                <div
-                  className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
-                    paymentType === 'DP'
-                      ? 'border-[#f2d953]'
-                      : 'border-[#555555]'
-                  }`}
-                >
-                  {paymentType === 'DP' && (
-                    <div className="w-2 h-2 rounded-full bg-[#f2d953]" />
-                  )}
-                </div>
-              </div>
+              <option value="DP" className="bg-[#1c1c1c] text-white py-1">
+                Bayar DP 50% — {formatRupiah(dpAmount)}
+              </option>
+              <option value="Lunas" className="bg-[#1c1c1c] text-white py-1">
+                Bayar Lunas 100% — {formatRupiah(selectedSlot.totalPrice)} (Paling Praktis)
+              </option>
+            </select>
 
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-bold text-white">
-                    Bayar DP (50%)
-                  </span>
-                  <span className={`text-sm font-bold ${paymentType === 'DP' ? 'text-[#f2d953]' : 'text-white'}`}>
-                    {formatRupiah(dpAmount)}
-                  </span>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] mt-1 leading-snug">
-                  Sisa <span className="text-white font-medium">{formatRupiah(dpAmount)}</span> dibayar saat tiba di kasir arena.
-                </p>
-              </div>
-            </div>
-
-            {/* Opsi Lunas 100% */}
-            <div
-              onClick={() => onPaymentTypeChange('Lunas')}
-              className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
-                paymentType === 'Lunas'
-                  ? 'bg-[#242424] border-[#f2d953] ring-1 ring-[#f2d953]/25 shadow-sm'
-                  : 'bg-[#1c1c1c] border-[#2e2e2e] hover:border-[#444444] hover:bg-[#202020]'
-              }`}
-            >
-              <div className="pt-0.5">
-                <div
-                  className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
-                    paymentType === 'Lunas'
-                      ? 'border-[#f2d953]'
-                      : 'border-[#555555]'
-                  }`}
-                >
-                  {paymentType === 'Lunas' && (
-                    <div className="w-2 h-2 rounded-full bg-[#f2d953]" />
-                  )}
-                </div>
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xs font-bold text-white">
-                      Bayar Lunas (100%)
-                    </span>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium">
-                      Paling Praktis
-                    </span>
-                  </div>
-                  <span className={`text-sm font-bold ${paymentType === 'Lunas' ? 'text-[#f2d953]' : 'text-white'}`}>
-                    {formatRupiah(selectedSlot.totalPrice)}
-                  </span>
-                </div>
-                <p className="text-[11px] text-[#8e8e8e] mt-1 leading-snug">
-                  Langsung main saat check-in tanpa perlu antre pelunasan di kasir.
-                </p>
-              </div>
+            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#8e8e8e]">
+              <ChevronDown className="w-4 h-4" />
             </div>
           </div>
+
+          <p className="text-[11px] text-[#8e8e8e] px-1 leading-snug">
+            {paymentType === 'DP' ? (
+              <>Sisa <span className="text-white font-medium">{formatRupiah(dpAmount)}</span> dibayar saat tiba di kasir arena.</>
+            ) : (
+              <>Langsung main saat check-in tanpa perlu antre pelunasan di kasir.</>
+            )}
+          </p>
         </div>
 
         {/* 4. Data Pemesan & Catatan */}
