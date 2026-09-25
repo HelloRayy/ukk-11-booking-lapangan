@@ -167,15 +167,15 @@ export default function ScheduleGrid({
                             : 'cursor-pointer group'
                         }`}
                       >
-                        {/* Hover Indicator Box */}
+                        {/* Hover Indicator Box - Soft Luxury Style */}
                         {!isPast && !inRange && !isRangePreviewActive && (
-                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/30 bg-[#f2d953]/5 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none shadow-sm">
-                            <span className="text-xs font-semibold text-[#f2d953]">
+                          <div className="absolute inset-x-1.5 inset-y-1 rounded-[10px] border border-[#f2d953]/15 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center justify-between px-3 pointer-events-none">
+                            <span className="text-xs font-medium text-[#e5e5e5]">
                               {selectedSlot && selectedSlot.courtId === court.id
                                 ? 'Pilih Selesai'
                                 : 'Pilih Slot'}
                             </span>
-                            <span className="text-[11px] text-[#8e8e8e]">{time}</span>
+                            <span className="text-[11px] text-[#737373]">{time}</span>
                           </div>
                         )}
                       </div>
