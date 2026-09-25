@@ -8,9 +8,15 @@ interface HeaderNavProps {
   headerRef: React.RefObject<HTMLDivElement | null>
   headerLogoRef: React.RefObject<HTMLAnchorElement | null>
   isScrolled: boolean
+  onOpenReservation?: () => void
 }
 
-export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: HeaderNavProps) {
+export default function HeaderNav({
+  headerRef,
+  headerLogoRef,
+  isScrolled,
+  onOpenReservation,
+}: HeaderNavProps) {
   const [mobileMenu, setMobileMenu] = useState(false)
 
   return (
@@ -21,7 +27,7 @@ export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: Head
           <HeaderLogo headerLogoRef={headerLogoRef} />
 
           {/* Sisi Tengah: Nav Links Desktop Pill */}
-          <DesktopNavLinks />
+          <DesktopNavLinks onOpenReservation={onOpenReservation} />
 
           {/* Sisi Kanan: Menu Hamburger Mobile, Account & Cart Buttons */}
           <div className="flex-1 flex flex-row items-center justify-end gap-x-2">
@@ -49,13 +55,14 @@ export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: Head
               />
             </button>
 
-            {/* Tombol CTA Book Now */}
-            <a
-              href="/reservasi"
-              className="flex items-center justify-center h-[38px] px-3.5 sm:px-4 rounded-[6px] bg-white text-black hover:bg-[#eaeaea] active:scale-[0.98] transition-all text-xs tracking-wider font-semibold uppercase shadow-sm whitespace-nowrap"
+            {/* Tombol CTA Book Now (Membuka Side Panel Drawer di LP) */}
+            <button
+              type="button"
+              onClick={onOpenReservation}
+              className="flex items-center justify-center h-[38px] px-3.5 sm:px-4 rounded-[6px] bg-white text-black hover:bg-[#eaeaea] active:scale-[0.98] transition-all text-xs tracking-wider font-semibold uppercase shadow-sm whitespace-nowrap cursor-pointer"
             >
               Book Now
-            </a>
+            </button>
 
             {/* Tombol Panel Kasir / Petugas */}
             <a
@@ -89,6 +96,7 @@ export default function HeaderNav({ headerRef, headerLogoRef, isScrolled }: Head
       <MobileNavDrawer
         isOpen={mobileMenu}
         onClose={() => setMobileMenu(false)}
+        onOpenReservation={onOpenReservation}
       />
     </header>
   )

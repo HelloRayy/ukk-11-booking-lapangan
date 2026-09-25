@@ -4,32 +4,41 @@ import { NAV_LINKS } from '../data/navLinks'
 interface MobileNavDrawerProps {
   isOpen: boolean
   onClose: () => void
+  onOpenReservation?: () => void
 }
 
-export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
+export default function MobileNavDrawer({ isOpen, onClose, onOpenReservation }: MobileNavDrawerProps) {
   if (!isOpen) return null
 
   return (
     <div className="lg:hidden bg-[#161616]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex flex-col gap-3">
-      {NAV_LINKS.map((link) => (
-        <a
-          key={link.id}
-          href={link.href}
-          onClick={onClose}
-          className={`py-2.5 text-base border-b border-white/5 flex items-center justify-between transition-colors ${
-            link.href === '/reservasi'
-              ? 'text-white font-medium hover:text-white'
-              : 'font-light text-[#fcfcfc]/80 hover:text-white'
-          }`}
-        >
-          <span>{link.label}</span>
-          {link.href === '/reservasi' && (
+      {NAV_LINKS.map((link) =>
+        link.href === '/reservasi' ? (
+          <button
+            key={link.id}
+            type="button"
+            onClick={() => {
+              onClose()
+              if (onOpenReservation) onOpenReservation()
+            }}
+            className="py-2.5 text-base border-b border-white/5 flex items-center justify-between transition-colors text-white font-medium hover:text-white text-left w-full cursor-pointer bg-transparent"
+          >
+            <span>{link.label}</span>
             <span className="text-[11px] uppercase tracking-wider bg-white text-black font-semibold px-2 py-0.5 rounded">
               Book
             </span>
-          )}
-        </a>
-      ))}
+          </button>
+        ) : (
+          <a
+            key={link.id}
+            href={link.href}
+            onClick={onClose}
+            className="py-2.5 text-base border-b border-white/5 flex items-center justify-between transition-colors font-light text-[#fcfcfc]/80 hover:text-white"
+          >
+            <span>{link.label}</span>
+          </a>
+        ),
+      )}
       <a
         href="/kasir"
         onClick={onClose}

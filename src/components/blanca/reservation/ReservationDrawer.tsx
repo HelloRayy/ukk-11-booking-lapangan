@@ -3,7 +3,14 @@ import { useReservationDrawer } from './hooks/useReservationDrawer'
 import ReservationFab from './components/ReservationFab'
 import ReservationSidePanel from './components/ReservationSidePanel'
 
-export default function ReservationDrawer() {
+interface ReservationDrawerProps {
+  drawer?: ReturnType<typeof useReservationDrawer>
+}
+
+export default function ReservationDrawer({ drawer: customDrawer }: ReservationDrawerProps = {}) {
+  const defaultDrawer = useReservationDrawer()
+  const drawer = customDrawer || defaultDrawer
+
   const {
     isOpen,
     openDrawer,
@@ -14,7 +21,7 @@ export default function ReservationDrawer() {
     isSubmitted,
     handleSubmit,
     resetForm,
-  } = useReservationDrawer()
+  } = drawer
 
   return (
     <>

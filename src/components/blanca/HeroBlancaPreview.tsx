@@ -5,12 +5,15 @@ import BlancaLocations from './BlancaLocations'
 import BlancaFaq from './BlancaFaq'
 import BlancaCta from './BlancaCta'
 import BlancaFooter from './BlancaFooter'
+import { useReservationDrawer } from './reservation/hooks/useReservationDrawer'
 
 export default function HeroBlancaPreview() {
+  const drawer = useReservationDrawer()
+
   return (
     <div className="w-full min-h-screen text-[#fcfcfc] bg-dots">
       {/* 1. Hero Section (Attention / First Fold) */}
-      <HeroBlanca />
+      <HeroBlanca onOpenReservation={drawer.openDrawer} drawer={drawer} />
 
       {/* 2. Social Proof & Core Benefits (Interest) */}
       <BlancaDifference />
@@ -25,7 +28,7 @@ export default function HeroBlancaPreview() {
       <BlancaFaq />
 
       {/* 6. Final Call-to-Action Banner */}
-      <BlancaCta />
+      <BlancaCta onOpenReservation={drawer.openDrawer} />
 
       {/* 7. Footer */}
       <BlancaFooter />

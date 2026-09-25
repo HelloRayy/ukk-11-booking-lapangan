@@ -11,10 +11,47 @@ const INITIAL_STATE: CustomerInfo = {
 
 export function useReservationDrawer() {
   const [isOpen, setIsOpen] = useState(false)
-  const [customerInfo, setCustomerInfo] = useState<CustomerInfo>(INITIAL_STATE)
+  const [customerInfo, setCustomerInfo] = useState<CustomerInfo>(() => {
+    try {
+      const raw =
+        localStorage.getItem('blanca_customer_info') ||
+        sessionStorage.getItem('blanca_customer_info')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        return {
+          nama: parsed.nama || '',
+          whatsapp: parsed.whatsapp || '',
+          email: parsed.email || '',
+          isConfirmed: Boolean(parsed.isConfirmed),
+        }
+      }
+    } catch (e) {
+      console.error('Gagal membaca customer info tersimpan:', e)
+    }
+    return INITIAL_STATE
+  })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const openDrawer = () => setIsOpen(true)
+  const openDrawer = () => {
+    // Re-check localStorage saat drawer dibuka jika data sebelumnya belum dimuat
+    try {
+      const raw =
+        localStorage.getItem('blanca_customer_info') ||
+        sessionStorage.getItem('blanca_customer_info')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        setCustomerInfo((prev) => ({
+          nama: prev.nama || parsed.nama || '',
+          whatsapp: prev.whatsapp || parsed.whatsapp || '',
+          email: prev.email || parsed.email || '',
+          isConfirmed: prev.isConfirmed || Boolean(parsed.isConfirmed),
+        }))
+      }
+    } catch (e) {
+      console.error('Gagal sinkronisasi data drawer:', e)
+    }
+    setIsOpen(true)
+  }
   const closeDrawer = () => setIsOpen(false)
 
   const updateField = <K extends keyof CustomerInfo>(key: K, value: CustomerInfo[K]) => {

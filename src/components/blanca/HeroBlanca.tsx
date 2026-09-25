@@ -4,8 +4,14 @@ import CenterFlyingLogo from './hero/CenterFlyingLogo'
 import HeroTitle from './hero/HeroTitle'
 import HeroMedia from './hero/HeroMedia'
 import ReservationDrawer from './reservation/ReservationDrawer'
+import { useReservationDrawer } from './reservation/hooks/useReservationDrawer'
 
-export default function HeroBlanca() {
+interface HeroBlancaProps {
+  onOpenReservation?: () => void
+  drawer?: ReturnType<typeof useReservationDrawer>
+}
+
+export default function HeroBlanca({ onOpenReservation, drawer }: HeroBlancaProps = {}) {
   const {
     headerRef,
     headerLogoRef,
@@ -17,6 +23,8 @@ export default function HeroBlanca() {
     outroRef,
     isScrolled,
   } = useHeroAnimation()
+
+  const handleOpen = onOpenReservation || drawer?.openDrawer
 
   return (
     <div
@@ -32,6 +40,7 @@ export default function HeroBlanca() {
         headerRef={headerRef}
         headerLogoRef={headerLogoRef}
         isScrolled={isScrolled}
+        onOpenReservation={handleOpen}
       />
 
       {/* Center Flying Logo Animation (Initial GSAP Position) */}
@@ -53,7 +62,7 @@ export default function HeroBlanca() {
       </section>
 
       {/* Reservation FAB & Side Panel Drawer */}
-      <ReservationDrawer />
+      <ReservationDrawer drawer={drawer} />
     </div>
   )
 }
