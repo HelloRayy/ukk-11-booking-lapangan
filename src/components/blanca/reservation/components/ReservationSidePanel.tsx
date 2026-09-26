@@ -39,10 +39,10 @@ export default function ReservationSidePanel({
     } else {
       setIsActive(false)
       document.body.style.overflow = ''
-      // Tunggu durasi animasi keluar (350ms) selesai sebelum melepaskan dari DOM
+      // Tunggu durasi animasi keluar (450ms) selesai sebelum melepaskan dari DOM
       timeoutId = setTimeout(() => {
         setIsRendered(false)
-      }, 350)
+      }, 450)
     }
 
     return () => {
@@ -119,7 +119,7 @@ export default function ReservationSidePanel({
     >
       {/* Backdrop Gelap dengan Transisi Fade & Soft Blur */}
       <div
-        className={`fixed inset-0 bg-black/60 transition-opacity duration-350 ease-out ${
+        className={`fixed inset-0 bg-black/60 transition-all duration-450 ease-out ${
           isActive ? 'opacity-100 backdrop-blur-[8px]' : 'opacity-0 backdrop-blur-none pointer-events-none'
         }`}
         onClick={onClose}
@@ -129,7 +129,7 @@ export default function ReservationSidePanel({
       {/* Kontainer Drawer Samping Kanan (Smooth Slide-in & Slide-out Transition) */}
       <div
         ref={panelRef}
-        className={`fixed inset-y-0 right-0 w-full max-w-[540px] md:max-w-[580px] bg-[#161616] text-[#f5f5f5] border-l border-white/10 rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-transform duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${
+        className={`fixed inset-y-0 right-0 w-full max-w-[540px] md:max-w-[580px] bg-[#161616] text-[#f5f5f5] border-l border-white/10 rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-all duration-450 ease-out will-change-transform ${
           isActive
             ? 'translate-x-0 shadow-[-24px_0_60px_rgba(0,0,0,0.7)]'
             : 'translate-x-full shadow-none pointer-events-none'
