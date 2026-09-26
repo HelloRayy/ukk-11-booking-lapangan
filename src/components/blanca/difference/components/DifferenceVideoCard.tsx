@@ -32,7 +32,7 @@ export default function DifferenceVideoCard() {
         muted
         loop
         className="w-full h-full object-cover object-center"
-        poster="/assets/blanca/difference-poster.jpg"
+        poster="/assets/blanca/difference-poster.webp"
         preload="none"
       >
         <source src="/assets/blanca/difference-video.webm" type="video/webm" />

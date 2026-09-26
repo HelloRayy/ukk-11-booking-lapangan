@@ -6,19 +6,19 @@ import { getInitials } from './formatters'
 export const COURT_STYLE_MAP: Record<number, { type: string; image: string }> = {
   1: {
     type: 'Panoramic Glass',
-    image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80',
+    image: '/assets/courts/court-1.webp',
   },
   2: {
     type: 'Pro Championship',
-    image: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80',
+    image: '/assets/courts/court-2.webp',
   },
   3: {
     type: 'VIP Indoor AC',
-    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80',
+    image: '/assets/courts/court-3.webp',
   },
   4: {
     type: 'Training Ground',
-    image: 'https://images.unsplash.com/photo-1521537634581-0dced2fedc2a?auto=format&fit=crop&w=600&q=80',
+    image: '/assets/courts/court-4.webp',
   },
 }
 

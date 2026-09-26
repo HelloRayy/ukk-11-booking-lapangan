@@ -23,14 +23,14 @@ export const CONTACT_ITEMS: ContactCardItem[] = [
     id: 'whatsapp',
     title: 'WhatsApp Admin Booking',
     address: '+62 812-3456-7890 • Konfirmasi DP 50%, jadwal kosong & kasir arena',
-    image: '/assets/blanca/difference-poster.jpg',
+    image: '/assets/blanca/difference-poster.webp',
     href: `https://wa.me/${VENUE_DATA.whatsapp}?text=Halo%20Admin%20Blanca%2C%20saya%20ingin%20reservasi%20lapangan%20badminton`,
   },
   {
     id: 'instagram',
     title: 'Instagram @blanca.arena',
     address: 'Info turnamen mingguan, update jadwal sparring & highlight pemain',
-    image: '/assets/blanca/tech-lifestyle.jpg',
+    image: '/assets/blanca/tech-lifestyle.webp',
     href: 'https://instagram.com',
   },
   {

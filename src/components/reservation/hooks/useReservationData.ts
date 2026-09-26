@@ -44,7 +44,7 @@ export function useReservationData({ selectedDate }: ReservationDataProps) {
             type: COURT_STYLE_MAP[c.id]?.type || 'Standard Court',
             image:
               COURT_STYLE_MAP[c.id]?.image ||
-              'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80',
+              '/assets/courts/court-1.webp',
             pricePerHour: c.tarif_per_jam,
           }))
           setCourts(mapped)

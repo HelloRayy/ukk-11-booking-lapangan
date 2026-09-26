@@ -208,7 +208,7 @@ export default function ManualBookingModal({
                   className="w-full h-11 px-3 pr-8 rounded-xl border border-[#2e2e2e] bg-[#1c1c1c] text-xs font-semibold text-white focus:outline-none focus:border-[#f2d953] transition-colors cursor-pointer appearance-none"
                 >
                   {courts.map((court) => (
-                    <option key={court.id} value={court.id} disabled={court.status === 'Tutup')}>
+                    <option key={court.id} value={court.id} disabled={court.status === 'Tutup'}>
                       {court.nama_lapangan} (Rp {Math.round(court.tarif_per_jam / 1000)}k/jam)
                       {court.status === 'Tutup' ? ' - [TUTUP]' : ''}
                     </option>

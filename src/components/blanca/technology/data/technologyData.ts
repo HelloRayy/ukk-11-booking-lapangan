@@ -4,7 +4,7 @@ import type { SlideData } from '../types'
 export const TECHNOLOGY_SLIDES: SlideData[] = [
   {
     id: 'coronado',
-    imgSrc: '/assets/blanca/tech-lifestyle.jpg',
+    imgSrc: '/assets/blanca/tech-lifestyle.webp',
     alt: 'Blanca Lifestyle Coronado',
     productName: 'Coronado',
     productSubtitle: 'All-round control badminton racquet',
