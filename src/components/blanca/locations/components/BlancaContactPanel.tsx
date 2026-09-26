@@ -25,11 +25,6 @@ export default function BlancaContactPanel({
           <h3 className="text-xl sm:text-2xl font-normal text-white">
             Find a Club / Contact
           </h3>
-          {/* Badge Status Jam Operasional (Hijau Aktif) */}
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-            <span>Buka Setiap Hari</span>
-          </span>
         </div>
 
         {/* Input Pencarian Kontak */}
