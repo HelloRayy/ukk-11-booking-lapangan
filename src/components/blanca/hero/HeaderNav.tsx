@@ -63,6 +63,31 @@ export default function HeaderNav({
             >
               Book Now
             </button>
+
+            {/* Tombol Panel Kasir / Petugas */}
+            <a
+              href="/kasir"
+              className="hidden lg:flex header__button cursor-pointer"
+              aria-label="Panel Kasir"
+              title="Panel Kasir / Petugas"
+            >
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 22 22"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.33 19.25v-1.83a3.67 3.67 0 0 0-3.66-3.67H7.33a3.67 3.67 0 0 0-3.66 3.67v1.83M11 10.08a3.67 3.67 0 1 0 0-7.33 3.67 3.67 0 0 0 0 7.33Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
