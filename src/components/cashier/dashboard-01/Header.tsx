@@ -1,5 +1,4 @@
-// PERAN FILE: Komponen Top Header Bar Kasir Linear-Style (Clean & Minimalist, Tanpa Redundansi Search Bar)
-import { Bell, Menu, ShieldCheck } from 'lucide-react'
+import { Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
   currentTab: 'overview' | 'bookings' | 'schedule'
