@@ -355,8 +355,26 @@ export default function ReservationSidePanel({
               <div className="pt-8 flex flex-col gap-3">
                 <button
                   type="button"
+                  onClick={() => {
+                    window.location.href = '/reservasi'
+                  }}
+                  className="w-full h-[56px] rounded-[10px] bg-[#f2d953] hover:bg-[#ffe359] text-sm font-bold text-[#161616] flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md active:scale-[0.98]"
+                >
+                  <span>Lanjutkan Pilih Jadwal Lapangan</span>
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path
+                      d="M3.5 11.5L11.5 3.5M11.5 3.5H5.5M11.5 3.5V9.5"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="button"
                   onClick={handleReset}
-                  className="w-full h-[56px] rounded-[10px] border border-white/20 hover:border-white text-sm font-medium text-[#f5f5f5] bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+                  className="w-full h-[52px] rounded-[10px] border border-white/20 hover:border-white text-sm font-medium text-[#f5f5f5] bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   Edit information
                 </button>
