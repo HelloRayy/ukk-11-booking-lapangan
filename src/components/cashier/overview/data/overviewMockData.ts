@@ -13,7 +13,7 @@ import type {
 export const MOCK_COURT_STAT: CourtStatData = {
   activeCount: 5,
   totalCount: 6,
-  imageUrl: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80',
+  imageUrl: '/assets/courts/court-1.webp',
 }
 
 // 2. Data Mock Hari Paling Banyak Dipesan (Most Booked Day)

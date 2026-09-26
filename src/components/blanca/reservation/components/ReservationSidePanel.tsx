@@ -141,7 +141,7 @@ export default function ReservationSidePanel({
         </div>
 
         {/* Body Area Formulir (Spacious & Clean Typography) */}
-        <div className="flex-1 min-h-0 overflow-y-auto px-6 md:px-10 pb-8 flex flex-col justify-between">
+        <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-6 md:px-10 pb-8 flex flex-col justify-between">
           {!isSubmitted ? (
             <form onSubmit={onSubmit} className="flex flex-col justify-between h-full min-h-[460px]">
               <div>
