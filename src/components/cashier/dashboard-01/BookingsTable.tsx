@@ -21,6 +21,9 @@ import {
   MapPin,
   SlidersHorizontal,
   Download,
+  ArrowUp,
+  ArrowDown,
+  ArrowUpDown,
 } from 'lucide-react'
 import type { Booking, Lapangan } from '../../../types/database'
 import BookingDetailSheet from './BookingDetailSheet'
@@ -295,19 +298,24 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'status' ? null : 'status')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
-                selectedStatus !== 'Semua' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border transition-all cursor-pointer ${
+                openDropdown === 'status'
+                  ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] text-white shadow-xs'
+                  : selectedStatus !== 'Semua'
+                  ? 'border-[#f2d953]/60 text-white font-medium hover:bg-white/5'
+                  : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
               }`}
             >
-              <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
+              <CircleDot className={`w-3.5 h-3.5 ${openDropdown === 'status' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
               <span>Status: <strong className="font-semibold text-white">{selectedStatus}</strong></span>
-              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
+              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'status' ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
             </Button>
 
             {openDropdown === 'status' && (
-              <div className="absolute right-0 top-full mt-1.5 w-44 py-1 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30">
-                <div className="px-3 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
-                  Filter Status
+              <div className="absolute right-0 top-full mt-1.5 w-48 py-1.5 px-1 rounded-xl border border-[#333333] bg-[#1a1a1a] shadow-2xl z-30 animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+                  <span>Filter Status</span>
                 </div>
                 {[
                   { label: 'Semua Status', value: 'Semua' },
@@ -323,7 +331,11 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
+                      selectedStatus === item.value
+                        ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
+                        : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
+                    }`}
                   >
                     <span>{item.label}</span>
                     {selectedStatus === item.value && (
@@ -342,23 +354,28 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'court' ? null : 'court')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
-                selectedCourt !== 'Semua' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border transition-all cursor-pointer ${
+                openDropdown === 'court'
+                  ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] text-white shadow-xs'
+                  : selectedCourt !== 'Semua'
+                  ? 'border-[#f2d953]/60 text-white font-medium hover:bg-white/5'
+                  : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
               }`}
             >
-              <MapPin className="w-3.5 h-3.5 text-[#8e8e8e]" />
+              <MapPin className={`w-3.5 h-3.5 ${openDropdown === 'court' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
               <span>
                 {selectedCourt === 'Semua'
                   ? 'Semua Lapangan'
                   : courts.find((c) => String(c.id) === selectedCourt)?.nama_lapangan || 'Lapangan'}
               </span>
-              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
+              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'court' ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
             </Button>
 
             {openDropdown === 'court' && (
-              <div className="absolute right-0 top-full mt-1.5 w-48 py-1 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30 max-h-56 overflow-y-auto">
-                <div className="px-3 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
-                  Filter Lapangan
+              <div className="absolute right-0 top-full mt-1.5 w-52 py-1.5 px-1 rounded-xl border border-[#333333] bg-[#1a1a1a] shadow-2xl z-30 max-h-56 overflow-y-auto animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+                  <span>Filter Lapangan</span>
                 </div>
                 <button
                   type="button"
@@ -367,7 +384,11 @@ export default function BookingsTable({
                     setOpenDropdown(null)
                     setCurrentPage(1)
                   }}
-                  className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
+                    selectedCourt === 'Semua'
+                      ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
+                      : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
+                  }`}
                 >
                   <span>Semua Lapangan</span>
                   {selectedCourt === 'Semua' && (
@@ -383,7 +404,11 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
+                      selectedCourt === String(c.id)
+                        ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
+                        : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
+                    }`}
                   >
                     <span>{c.nama_lapangan}</span>
                     {selectedCourt === String(c.id) && (
@@ -402,11 +427,15 @@ export default function BookingsTable({
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'date' ? null : 'date')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] hover:bg-white/5 cursor-pointer ${
-                selectedDate !== 'all' ? 'border-[#f2d953]/60 text-white font-medium' : 'text-[#8e8e8e]'
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border transition-all cursor-pointer ${
+                openDropdown === 'date'
+                  ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] text-white shadow-xs'
+                  : selectedDate !== 'all'
+                  ? 'border-[#f2d953]/60 text-white font-medium hover:bg-white/5'
+                  : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
               }`}
             >
-              <Calendar className="w-3.5 h-3.5 text-[#8e8e8e]" />
+              <Calendar className={`w-3.5 h-3.5 ${openDropdown === 'date' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
               <span>
                 {selectedDate === 'all'
                   ? 'Semua Tanggal'
@@ -416,13 +445,14 @@ export default function BookingsTable({
                   ? `Besok (${getLocalDateString(1)})`
                   : selectedDate}
               </span>
-              <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
+              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'date' ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
             </Button>
 
             {openDropdown === 'date' && (
-              <div className="absolute right-0 top-full mt-1.5 w-52 p-1.5 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl z-30 space-y-1">
-                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
-                  Filter Tanggal
+              <div className="absolute right-0 top-full mt-1.5 w-56 p-2 rounded-xl border border-[#333333] bg-[#1a1a1a] shadow-2xl z-30 space-y-1 animate-in fade-in zoom-in-95 duration-150">
+                <div className="px-2 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+                  <span>Filter Tanggal</span>
                 </div>
                 {[
                   { label: 'Hari Ini (Default)', value: 'today' },
@@ -437,7 +467,11 @@ export default function BookingsTable({
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
-                    className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs text-[#e5e5e5] hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer text-left"
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 text-xs rounded-lg transition-colors cursor-pointer text-left ${
+                      selectedDate === item.value
+                        ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
+                        : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
+                    }`}
                   >
                     <span>{item.label}</span>
                     {selectedDate === item.value && (
@@ -446,8 +480,8 @@ export default function BookingsTable({
                   </button>
                 ))}
 
-                <div className="pt-1.5 mt-1 border-t border-[#262626] px-2 pb-1">
-                  <span className="text-[10px] text-[#8e8e8e] block mb-1">
+                <div className="pt-2 mt-1.5 border-t border-[#262626] px-1 pb-1">
+                  <span className="text-[10px] text-[#8e8e8e] block mb-1.5 font-medium">
                     Pilih Tanggal Tertentu:
                   </span>
                   <input
@@ -462,7 +496,7 @@ export default function BookingsTable({
                         setCurrentPage(1)
                       }
                     }}
-                    className="w-full h-7 px-2 text-xs bg-[#141414] border border-[#262626] rounded text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
+                    className="w-full h-8 px-2 text-xs bg-[#141414] border border-[#2e2e2e] rounded-lg text-white focus:outline-none focus:border-[#f2d953] transition-colors cursor-pointer"
                   />
                 </div>
               </div>
@@ -515,67 +549,93 @@ export default function BookingsTable({
           {/* Header Shadcn Table dengan UX Copy Kontekstual Kasir */}
           <TableHeader>
             <TableRow className="border-b border-[#262626] bg-[#181818] hover:bg-[#181818]">
-              {/* 1. Kolom Penyewa & Invoice */}
+              {/* 1. Kolom Penyewa & Invoice (Sortable A-Z / Z-A) */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[280px] pl-5"
+                className="cursor-pointer hover:text-white transition-colors min-w-[280px] pl-5 select-none"
+                title="Klik untuk mengurutkan nama penyewa"
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-white/90">Penyewa</span>
+                  <span className={`font-semibold transition-colors ${sortField === 'nama_penyewa' ? 'text-[#f2d953]' : 'text-white/90'}`}>
+                    Penyewa
+                  </span>
                   <span className="text-xs text-[#8e8e8e]">({sortedBookings.length})</span>
+                  {sortField === 'nama_penyewa' ? (
+                    sortOrder === 'asc' ? (
+                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                    ) : (
+                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                    )
+                  ) : (
+                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                  )}
                 </div>
               </TableHead>
 
-              {/* 2. Kolom Status */}
-              <TableHead
-                onClick={() => handleSort('status')}
-                className="cursor-pointer hover:text-white transition-colors w-36"
-              >
-                <div className="flex items-center gap-1.5">
-                  <CircleDot className="w-3.5 h-3.5 text-[#8e8e8e]" />
+              {/* 2. Kolom Status (Clean Header Tanpa Fake Arrow) */}
+              <TableHead className="w-36 select-none">
+                <div className="flex items-center gap-1.5 text-[#8e8e8e]">
+                  <CircleDot className="w-3.5 h-3.5" />
                   <span>Status</span>
-                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
-              {/* 3. Kolom Tagihan (Sebelumnya 'Priority') */}
+              {/* 3. Kolom Tagihan (Sortable Nominal) */}
               <TableHead
                 onClick={() => handleSort('total_bayar')}
-                className="cursor-pointer hover:text-white transition-colors w-40"
+                className="cursor-pointer hover:text-white transition-colors w-40 select-none"
+                title="Klik untuk mengurutkan nominal tagihan"
               >
                 <div className="flex items-center gap-1.5">
-                  <CreditCard className="w-3.5 h-3.5 text-[#8e8e8e]" />
-                  <span>Tagihan</span>
-                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
+                  <CreditCard className={`w-3.5 h-3.5 ${sortField === 'total_bayar' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
+                  <span className={`font-medium transition-colors ${sortField === 'total_bayar' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`}>
+                    Tagihan
+                  </span>
+                  {sortField === 'total_bayar' ? (
+                    sortOrder === 'asc' ? (
+                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                    ) : (
+                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                    )
+                  ) : (
+                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                  )}
                 </div>
               </TableHead>
 
-              {/* 4. Kolom Lapangan (Sebelumnya 'Assignees') */}
-              <TableHead
-                onClick={() => handleSort('lapangan')}
-                className="cursor-pointer hover:text-white transition-colors w-40"
-              >
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#8e8e8e]" />
+              {/* 4. Kolom Lapangan (Clean Header Tanpa Fake Arrow) */}
+              <TableHead className="w-40 select-none">
+                <div className="flex items-center gap-1.5 text-[#8e8e8e]">
+                  <MapPin className="w-3.5 h-3.5" />
                   <span>Lapangan</span>
-                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
                 </div>
               </TableHead>
 
-              {/* 5. Kolom Jadwal Main (Sebelumnya 'Labels') */}
+              {/* 5. Kolom Jadwal Main (Sortable Tanggal/Jam) */}
               <TableHead
                 onClick={() => handleSort('tgl_main')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[220px]"
+                className="cursor-pointer hover:text-white transition-colors min-w-[220px] select-none"
+                title="Klik untuk mengurutkan tanggal/jam main"
               >
                 <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-[#8e8e8e]" />
-                  <span>Jadwal Main</span>
-                  <ChevronDown className="w-3 h-3 text-[#8e8e8e]" />
+                  <Calendar className={`w-3.5 h-3.5 ${sortField === 'tgl_main' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
+                  <span className={`font-medium transition-colors ${sortField === 'tgl_main' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`}>
+                    Jadwal Main
+                  </span>
+                  {sortField === 'tgl_main' ? (
+                    sortOrder === 'asc' ? (
+                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                    ) : (
+                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                    )
+                  ) : (
+                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                  )}
                 </div>
               </TableHead>
 
               {/* 6. Settings / Options */}
-              <TableHead className="text-right w-14 pr-5">
+              <TableHead className="text-right w-14 pr-5 select-none">
                 <div className="flex items-center justify-end text-[#8e8e8e]">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
