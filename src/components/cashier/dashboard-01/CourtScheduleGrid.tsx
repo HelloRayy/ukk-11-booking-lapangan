@@ -572,46 +572,36 @@ export default function CourtScheduleGrid({
   }
 
   return (
-    <div className="flex flex-col h-full bg-[#161616] text-[#fafafa] font-aeonik select-none overflow-hidden">
-      {/* 1. Control Toolbar Atas (Navigasi Tanggal & Search Bar Kontekstual) - Selaras 1:1 dengan Tab Transaksi */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[#262626] bg-[#181818]">
-        {/* Sisi Kiri: Search Bar Terpadu (Sama persis dengan Tab Transaksi di posisi paling kiri) */}
-        <div className="flex items-center gap-2 flex-1 max-w-sm">
+    <div className="flex flex-col h-full bg-zinc-950 text-zinc-100 font-sans select-none overflow-hidden">
+      {/* 1. Control Toolbar Atas Minimalis Selaras dengan Tab Transaksi & Overview */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-2.5 border-b border-zinc-800/80 bg-zinc-950">
+        {/* Sisi Kiri: Search Bar Terpadu Bersih */}
+        <div className="flex items-center gap-2 flex-1 max-w-xs">
           <div className="relative w-full">
-            <Search className="w-3.5 h-3.5 text-[#8e8e8e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari transaksi, penyewa, no HP..."
-              className="w-full h-8 pl-8 pr-7 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder:text-[#666666] focus:outline-none focus:border-[#f2d953]/60 transition-colors"
+              placeholder="Cari transaksi..."
+              className="w-full h-8 pl-8 pr-7 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-amber-400/60 transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8e8e8e] hover:text-white p-0.5 cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 p-0.5 cursor-pointer"
                 title="Hapus pencarian"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => setSearchQuery('')}
-              className="text-[11px] text-[#8e8e8e] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
-              title="Reset pencarian"
-            >
-              Reset
-            </button>
-          )}
         </div>
 
-        {/* Sisi Kanan: Popover Kalender Tanggal 1:1 Reservasi, Legend Status & Refresh Button */}
-        <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap justify-end">
-          {/* Popover Kalender Tanggal 1:1 Reservasi */}
+        {/* Sisi Kanan: Popover Kalender Tanggal, Legend Status & Refresh Icon Button */}
+        <div className="flex items-center gap-2.5 justify-end">
+          {/* Popover Kalender Tanggal 1:1 Reservasi Ringkas */}
           <CashierDatePicker
             selectedDate={selectedDate}
             onDateChange={(newDate) => {
@@ -621,31 +611,26 @@ export default function CourtScheduleGrid({
             align="right"
           />
 
-          {/* Legend Status Slot Jam */}
-          <div className="hidden lg:flex items-center gap-3 text-xs text-[#8e8e8e] px-3 border-x border-[#262626]">
+          {/* Legend Status Slot Jam Ringkas */}
+          <div className="hidden sm:flex items-center gap-2.5 text-xs text-zinc-400 px-2.5 border-x border-zinc-800/80">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span>Lunas</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#f2d953]" />
+              <span className="w-2 h-2 rounded-full bg-amber-400" />
               <span>DP 50%</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-[3px] border border-[#525252] bg-white/[0.04]" />
-              <span>Tersedia</span>
             </div>
           </div>
 
-          {/* Tombol Muat Ulang / Refresh */}
+          {/* Tombol Muat Ulang / Refresh Icon Button */}
           <button
             type="button"
             onClick={onRefresh}
-            className="h-8 px-2.5 rounded-lg bg-[#141414] border border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5 text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-zinc-100 flex items-center justify-center transition-colors cursor-pointer"
             title="Muat Ulang Jadwal"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#f2d953]' : ''}`} />
-            <span className="hidden sm:inline">Refresh</span>
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-amber-400' : ''}`} />
           </button>
         </div>
       </div>
@@ -686,7 +671,7 @@ export default function CourtScheduleGrid({
       {/* 2. Area Utama 1:1 Reservasi (Kalender di Kiri, RightPanel di Kanan) */}
       <div className="flex-1 flex overflow-hidden min-h-0 relative">
         {/* Kolom Kiri: Tabel Kalender (Header Lapangan + Grid Jam 1:1) */}
-        <div className="flex-1 flex flex-col overflow-x-auto overflow-y-hidden min-w-0 border-r border-[#262626] relative">
+        <div className="flex-1 flex flex-col overflow-x-auto overflow-y-hidden min-w-0 border-r border-zinc-800/80 relative">
           <div className="min-w-[720px] sm:min-w-[780px] flex-1 flex flex-col h-full">
             <ScheduleHeader courts={mappedCourts} />
             <ScheduleGrid
@@ -721,8 +706,8 @@ export default function CourtScheduleGrid({
           aria-label="Panel Reservasi Lapangan"
           className={
             panelMode === 'empty'
-              ? 'hidden lg:flex lg:w-[380px] xl:w-[420px] bg-[#1a1a1a] border-l border-[#262626] p-6 flex-col justify-between overflow-y-auto select-none font-aeonik shrink-0'
-              : 'fixed inset-x-0 bottom-0 max-h-[90vh] z-50 rounded-t-2xl border-t border-[#2e2e2e] shadow-2xl bg-[#1a1a1a] p-5 sm:p-6 lg:static lg:inset-auto lg:max-h-none lg:z-auto lg:rounded-none lg:border-t-0 lg:border-l lg:border-[#262626] lg:shadow-none w-full lg:w-[380px] xl:w-[420px] flex flex-col justify-between overflow-y-auto select-none font-aeonik shrink-0'
+              ? 'hidden lg:flex lg:w-[380px] xl:w-[420px] bg-zinc-950 border-l border-zinc-800/80 p-6 flex-col justify-between overflow-y-auto select-none font-sans shrink-0'
+              : 'fixed inset-x-0 bottom-0 max-h-[90vh] z-50 rounded-t-2xl border-t border-zinc-800 shadow-2xl bg-zinc-950 p-5 sm:p-6 lg:static lg:inset-auto lg:max-h-none lg:z-auto lg:rounded-none lg:border-t-0 lg:border-l lg:border-zinc-800/80 lg:shadow-none w-full lg:w-[380px] xl:w-[420px] flex flex-col justify-between overflow-y-auto select-none font-sans shrink-0'
           }
         >
           {/* Mobile Handle Indicator */}

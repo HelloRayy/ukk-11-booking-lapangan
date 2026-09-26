@@ -9,6 +9,7 @@ interface CashierDatePickerProps {
   align?: 'left' | 'right'
   allowAllDates?: boolean
   labelPrefix?: string
+  compact?: boolean
 }
 
 const MONTH_NAMES = [
@@ -24,6 +25,7 @@ export default function CashierDatePicker({
   align = 'right',
   allowAllDates = false,
   labelPrefix,
+  compact = true,
 }: CashierDatePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -64,11 +66,22 @@ export default function CashierDatePicker({
     }
   }, [])
 
+  const todayStr = getTodayISODate()
+
   const displayDate = useMemo(() => {
     if (selectedDate === 'all') return 'Semua Tanggal'
     if (!selectedDate) return 'Pilih Tanggal'
+    if (compact) {
+      if (selectedDate === todayStr) return 'Hari Ini'
+      try {
+        const d = new Date(selectedDate.includes('T') ? selectedDate : `${selectedDate}T00:00:00`)
+        return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })
+      } catch {
+        return selectedDate
+      }
+    }
     return formatDisplayDate(selectedDate)
-  }, [selectedDate])
+  }, [selectedDate, compact, todayStr])
 
   const handlePrevMonth = () => {
     if (viewMonth === 0) {
@@ -91,8 +104,6 @@ export default function CashierDatePicker({
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate()
   const firstDayOfWeek = new Date(viewYear, viewMonth, 1).getDay()
 
-  const todayStr = getTodayISODate()
-
   const handleSelectDay = (dayNum: number) => {
     const m = String(viewMonth + 1).padStart(2, '0')
     const d = String(dayNum).padStart(2, '0')
@@ -102,27 +113,27 @@ export default function CashierDatePicker({
   }
 
   return (
-    <div className="relative font-aeonik" ref={containerRef}>
+    <div className="relative font-sans" ref={containerRef}>
       {/* Trigger Button: Teks Tanggal Bersih dengan Icon Kalender & Chevron */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-1.5 text-xs font-medium cursor-pointer transition-all duration-150 px-2.5 h-8 rounded-lg border bg-[#141414] group select-none ${
+        className={`flex items-center gap-1.5 text-xs font-medium cursor-pointer transition-all duration-150 px-2.5 h-8 rounded-lg border group select-none ${
           isOpen
-            ? 'text-white border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] shadow-xs'
+            ? 'text-zinc-100 border-amber-400/80 ring-1 ring-amber-400/30 bg-zinc-900 shadow-xs'
             : selectedDate !== 'all'
-            ? 'border-[#262626] text-white hover:border-[#383838]'
-            : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
+            ? 'border-zinc-700/80 bg-zinc-900/80 text-zinc-100 hover:border-zinc-600'
+            : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:bg-zinc-850 hover:text-zinc-200'
         }`}
         aria-label="Buka kalender tanggal reservasi"
         aria-expanded={isOpen}
       >
-        <Calendar className={`w-3.5 h-3.5 transition-colors shrink-0 ${isOpen ? 'text-[#f2d953]' : 'text-[#8e8e8e] group-hover:text-white'}`} />
+        <Calendar className={`w-3.5 h-3.5 transition-colors shrink-0 ${isOpen ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'}`} />
         <span className="truncate max-w-[210px]">
           {labelPrefix ? (
             <span>
               {labelPrefix}{' '}
-              <strong className="font-semibold text-white">{displayDate}</strong>
+              <strong className="font-semibold text-zinc-100">{displayDate}</strong>
             </span>
           ) : (
             displayDate
@@ -130,7 +141,7 @@ export default function CashierDatePicker({
         </span>
         <ChevronDown
           className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
-            isOpen ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e] group-hover:text-white'
+            isOpen ? 'rotate-180 text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'
           }`}
         />
       </button>
@@ -138,20 +149,20 @@ export default function CashierDatePicker({
       {/* Popover Kalender Visual (1:1 dengan Reservasi) */}
       {isOpen && (
         <div
-          className={`absolute top-full mt-1.5 w-72 sm:w-80 bg-[#181818] border border-[#2e2e2e] rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none ${
+          className={`absolute top-full mt-1.5 w-72 sm:w-80 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none font-sans ${
             align === 'right' ? 'right-0' : 'left-0'
           }`}
         >
           {/* Header Bulan & Navigasi */}
-          <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#282828]">
-            <div className="text-sm font-bold text-white">
+          <div className="flex items-center justify-between mb-3 pb-2 border-b border-zinc-800">
+            <div className="text-sm font-bold text-zinc-100">
               {MONTH_NAMES[viewMonth]} {viewYear}
             </div>
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={handlePrevMonth}
-                className="p-1 rounded-md text-[#a3a3a3] hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-1 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors cursor-pointer"
                 title="Bulan sebelumnya"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -159,7 +170,7 @@ export default function CashierDatePicker({
               <button
                 type="button"
                 onClick={handleNextMonth}
-                className="p-1 rounded-md text-[#a3a3a3] hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-1 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors cursor-pointer"
                 title="Bulan berikutnya"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -170,7 +181,7 @@ export default function CashierDatePicker({
           {/* Baris Nama Hari */}
           <div className="grid grid-cols-7 gap-1 text-center mb-1.5">
             {DAY_NAMES.map((name) => (
-              <span key={name} className="text-[11px] font-medium text-[#737373]">
+              <span key={name} className="text-[11px] font-medium text-zinc-500">
                 {name}
               </span>
             ))}
@@ -200,10 +211,10 @@ export default function CashierDatePicker({
                   onClick={() => handleSelectDay(dayNum)}
                   className={`h-8 w-8 mx-auto flex items-center justify-center rounded-lg text-xs transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#f2d953] text-[#161616] font-bold shadow-md'
+                      ? 'bg-amber-400 text-zinc-950 font-bold shadow-xs'
                       : isToday
-                      ? 'border border-[#f2d953]/60 text-white font-semibold hover:bg-white/10'
-                      : 'text-[#e5e5e5] hover:bg-white/10 hover:text-white'
+                      ? 'border border-amber-400/60 text-zinc-100 font-semibold hover:bg-zinc-800'
+                      : 'text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100'
                   }`}
                 >
                   {dayNum}
@@ -213,7 +224,7 @@ export default function CashierDatePicker({
           </div>
 
           {/* Shortcut Footer */}
-          <div className="pt-2.5 mt-2.5 border-t border-[#262626] flex items-center justify-between gap-2">
+          <div className="pt-2.5 mt-2.5 border-t border-zinc-800 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -221,13 +232,13 @@ export default function CashierDatePicker({
                   onDateChange(todayStr)
                   setIsOpen(false)
                 }}
-                className="text-[11px] font-medium text-[#f2d953] hover:underline cursor-pointer"
+                className="text-[11px] font-medium text-amber-400 hover:underline cursor-pointer"
               >
                 Hari Ini
               </button>
               {allowAllDates && (
                 <>
-                  <span className="text-[#3a3a3a]">•</span>
+                  <span className="text-zinc-700">•</span>
                   <button
                     type="button"
                     onClick={() => {
@@ -236,8 +247,8 @@ export default function CashierDatePicker({
                     }}
                     className={`text-[11px] font-medium cursor-pointer transition-colors ${
                       selectedDate === 'all'
-                        ? 'text-[#f2d953] font-semibold underline'
-                        : 'text-[#a3a3a3] hover:text-white'
+                        ? 'text-amber-400 font-semibold underline'
+                        : 'text-zinc-400 hover:text-zinc-200'
                     }`}
                   >
                     Semua Tanggal
@@ -245,7 +256,7 @@ export default function CashierDatePicker({
                 </>
               )}
             </div>
-            <span className="text-[10px] text-[#737373] truncate max-w-[120px]">
+            <span className="text-[10px] text-zinc-500 truncate max-w-[120px]">
               {selectedDate === 'all' ? 'Semua Tanggal' : selectedDate}
             </span>
           </div>

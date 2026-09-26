@@ -10,24 +10,24 @@ export default function Header({
   onToggleMobileSidebar,
 }: HeaderProps) {
   return (
-    <header className="h-[46px] shrink-0 border-b border-[#262626] bg-[#181818] px-5 flex items-center justify-between gap-4 select-none text-[#fafafa] font-aeonik">
+    <header className="h-12 shrink-0 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md px-5 flex items-center justify-between gap-4 select-none text-zinc-100 font-sans">
       {/* 1. Sisi Kiri: Breadcrumb Kasir */}
       <div className="flex items-center gap-2">
         <button
           type="button"
           onClick={onToggleMobileSidebar}
-          className="md:hidden p-1.5 rounded-md bg-white/5 text-[#a3a3a3] hover:text-white cursor-pointer border border-white/10"
+          className="md:hidden p-1.5 rounded-lg bg-zinc-900 text-zinc-400 hover:text-zinc-100 cursor-pointer border border-zinc-800 transition-colors"
         >
           <Menu className="w-4 h-4" />
         </button>
 
         <div className="flex items-center gap-2 text-xs">
-          <span className="text-[#737373]">...</span>
-          <span className="font-medium text-[#a3a3a3]">
+          <span className="text-zinc-600">...</span>
+          <span className="font-medium text-zinc-400">
             Blanca Arena
           </span>
-          <span className="text-[#737373]">/</span>
-          <span className="text-white font-semibold">
+          <span className="text-zinc-700">/</span>
+          <span className="text-zinc-100 font-semibold tracking-tight">
             {currentTab === 'overview'
               ? 'Overview'
               : currentTab === 'schedule'
@@ -48,14 +48,14 @@ export default function Header({
         {/* Notifikasi & Profile Avatar */}
         <button
           type="button"
-          className="w-7 h-7 rounded-md bg-white/5 hover:bg-white/10 border border-[#262626] flex items-center justify-center text-[#a3a3a3] hover:text-white transition-colors relative cursor-pointer"
+          className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors relative cursor-pointer"
           title="Notifikasi"
         >
           <Bell className="w-3.5 h-3.5" />
-          <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953] absolute top-1.5 right-1.5" />
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 absolute top-2 right-2" />
         </button>
 
-        <div className="w-7 h-7 rounded-full bg-[#f2d953]/15 border border-[#f2d953]/30 flex items-center justify-center text-[10px] font-bold text-[#f2d953]">
+        <div className="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xs font-bold text-amber-400">
           AK
         </div>
       </div>

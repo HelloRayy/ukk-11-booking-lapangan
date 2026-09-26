@@ -27,24 +27,24 @@ export default function MetricCards({ metrics }: MetricCardsProps) {
       {metrics.map((item) => (
         <div
           key={item.title}
-          className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-5 shadow-xs flex flex-col justify-between hover:border-white/20 transition-all group"
+          className="rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 shadow-xs flex flex-col justify-between hover:border-zinc-700/80 hover:bg-zinc-900/60 transition-all group"
         >
           {/* Baris Atas: Judul Metrik & Icon */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-[#8e8e8e]">
+            <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
               {item.title}
             </span>
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-lg bg-zinc-800/60 border border-zinc-700/60 flex items-center justify-center group-hover:scale-105 transition-transform">
               {renderIcon(item.icon)}
             </div>
           </div>
 
           {/* Baris Bawah: Angka Nilai Utama & Indikator Tren */}
           <div className="mt-3">
-            <div className="text-2xl font-bold text-white tracking-tight">
+            <div className="text-2xl font-bold text-zinc-100 tracking-tight">
               {item.value}
             </div>
-            <p className="text-xs text-[#8e8e8e] mt-1 flex items-center gap-1.5">
+            <p className="text-xs text-zinc-400 mt-1 flex items-center gap-1.5">
               <span
                 className={`font-medium ${
                   item.trendPositive ? 'text-emerald-400' : 'text-amber-400'

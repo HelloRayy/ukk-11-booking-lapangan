@@ -55,7 +55,7 @@ export default function CashierPage() {
   }
 
   return (
-    <div className="h-screen w-full flex overflow-hidden bg-[#161616] text-[#fafafa] font-aeonik select-none antialiased">
+    <div className="h-screen w-full flex overflow-hidden bg-zinc-950 text-zinc-100 font-sans select-none antialiased">
       {/* 1. Sidebar Navigasi Kiri (Desktop Full Height) */}
       <Sidebar
         currentTab={currentTab}
@@ -70,7 +70,7 @@ export default function CashierPage() {
             className="fixed inset-0 bg-black/70 backdrop-blur-xs"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="relative z-10 w-64 bg-[#181818] border-r border-[#262626] flex flex-col justify-between h-full">
+          <div className="relative z-10 w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col justify-between h-full">
             <Sidebar
               currentTab={currentTab}
               onTabChange={(tab) => {

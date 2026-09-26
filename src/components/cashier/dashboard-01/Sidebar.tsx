@@ -9,134 +9,124 @@ interface SidebarProps {
 
 export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }: SidebarProps) {
   return (
-    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-[#262626] bg-[#181818] p-3.5 select-none h-screen text-[#fafafa] font-aeonik">
+    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-zinc-800/80 bg-zinc-950 p-3 select-none h-screen text-zinc-100 font-sans">
       {/* 1. Brand & Workspace Bar */}
       <div className="space-y-4">
-        <div className="flex items-center gap-2.5 px-2 py-1">
-          <div className="w-6 h-6 rounded-md bg-[#f2d953] text-black flex items-center justify-center font-bold text-xs shadow-xs">
+        <div className="flex items-center gap-2.5 px-2 py-1.5">
+          <div className="w-6 h-6 rounded-md bg-amber-400 text-zinc-950 flex items-center justify-center font-bold text-xs shadow-xs">
             B
           </div>
           <div className="flex flex-col">
-            <span className="text-xs font-semibold text-white tracking-tight">
+            <span className="text-xs font-semibold text-zinc-100 tracking-tight">
               Blanca Arena
             </span>
-            <span className="text-[10px] text-[#737373]">Kasir & Resepsionis</span>
+            <span className="text-[10px] text-zinc-400 font-medium">Kasir & Resepsionis</span>
           </div>
         </div>
 
         {/* 2. Menu Navigasi Kasir */}
-        <nav className="space-y-0.5">
+        <nav className="space-y-1">
           <button
             type="button"
             onClick={() => onTabChange?.('overview')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[32px] leading-normal transition-all cursor-pointer outline-none select-none ${
+            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
               currentTab === 'overview'
-                ? 'bg-white/10 text-white font-semibold shadow-xs'
-                : 'text-[#a3a3a3] hover:bg-white/5 hover:text-white'
+                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
+                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
             }`}
           >
-            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
-              <LayoutDashboard className={`w-4 h-4 shrink-0 ${currentTab === 'overview' ? 'text-[#f2d953]' : 'text-[#737373]'}`} />
-              <p className="text-sm font-medium leading-normal transition-all">Overview</p>
+            <div className="flex items-center gap-2">
+              <LayoutDashboard className={`w-4 h-4 shrink-0 ${currentTab === 'overview' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <span>Overview</span>
             </div>
-            <div className="flex items-center gap-1.5 leading-normal transition-all">
-              {currentTab === 'overview' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
-              )}
-            </div>
+            {currentTab === 'overview' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            )}
           </button>
 
           {/* Tab 2: Jadwal Lapangan (Matriks Visual Kasir) */}
           <button
             type="button"
             onClick={() => onTabChange?.('schedule')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[32px] leading-normal transition-all cursor-pointer outline-none select-none ${
+            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
               currentTab === 'schedule'
-                ? 'bg-white/10 text-white font-semibold shadow-xs'
-                : 'text-[#a3a3a3] hover:bg-white/5 hover:text-white'
+                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
+                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
             }`}
           >
-            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
-              <CalendarDays className={`w-4 h-4 shrink-0 ${currentTab === 'schedule' ? 'text-[#f2d953]' : 'text-[#737373]'}`} />
-              <p className="text-sm font-medium leading-normal transition-all">Jadwal Lapangan</p>
+            <div className="flex items-center gap-2">
+              <CalendarDays className={`w-4 h-4 shrink-0 ${currentTab === 'schedule' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <span>Jadwal Lapangan</span>
             </div>
-            <div className="flex items-center gap-1.5 leading-normal transition-all">
-              {currentTab === 'schedule' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
-              )}
-            </div>
+            {currentTab === 'schedule' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            )}
           </button>
 
           {/* Tab 3: Transaksi Booking */}
           <button
             type="button"
             onClick={() => onTabChange?.('bookings')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[32px] leading-normal transition-all cursor-pointer outline-none select-none ${
+            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
               currentTab === 'bookings'
-                ? 'bg-white/10 text-white font-semibold shadow-xs'
-                : 'text-[#a3a3a3] hover:bg-white/5 hover:text-white'
+                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
+                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
             }`}
           >
-            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
-              <ReceiptText className={`w-4 h-4 shrink-0 ${currentTab === 'bookings' ? 'text-[#f2d953]' : 'text-[#737373]'}`} />
-              <p className="text-sm font-medium leading-normal transition-all">Transaksi</p>
+            <div className="flex items-center gap-2">
+              <ReceiptText className={`w-4 h-4 shrink-0 ${currentTab === 'bookings' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <span>Transaksi</span>
             </div>
-            <div className="flex items-center gap-1.5 leading-normal transition-all">
-              {currentTab === 'bookings' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
-              )}
-            </div>
+            {currentTab === 'bookings' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            )}
           </button>
 
           {/* Menu Tambahan: Kelola Lapangan (CRUD Master Data Poin 10, 11, 12 UKK) */}
           <button
             type="button"
             onClick={onOpenCourtManager}
-            className="w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[32px] leading-normal transition-all cursor-pointer outline-none select-none text-[#a3a3a3] hover:bg-white/5 hover:text-white group"
+            className="w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200 group"
           >
-            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
-              <SlidersHorizontal className="w-4 h-4 text-[#f2d953] group-hover:rotate-45 transition-transform shrink-0" />
-              <p className="text-sm font-medium leading-normal transition-all">Kelola Lapangan</p>
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform shrink-0" />
+              <span>Kelola Lapangan</span>
             </div>
-            <div className="flex items-center gap-1 leading-normal transition-all">
-              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/30">
-                CRUD
-              </span>
-            </div>
+            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">
+              CRUD
+            </span>
           </button>
 
           {/* Tautan ke Kalender Publik Pemesan */}
           <a
             href="/reservasi"
-            className="w-full flex items-center justify-between gap-1.5 py-1 px-2 rounded-md h-[32px] text-[#a3a3a3] hover:bg-white/5 hover:text-white leading-normal transition-all cursor-pointer outline-none group select-none"
+            className="w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] text-xs font-medium text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200 leading-normal transition-all cursor-pointer outline-none group select-none"
           >
-            <div className="flex items-center gap-2 py-px h-[22px] leading-normal transition-all">
-              <Calendar className="w-4 h-4 text-[#737373] group-hover:text-white shrink-0 transition-colors" />
-              <p className="text-sm font-medium leading-normal transition-all">Kalender Publik</p>
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-zinc-500 group-hover:text-zinc-300 shrink-0 transition-colors" />
+              <span>Kalender Publik</span>
             </div>
-            <div className="flex items-center gap-1.5 leading-normal transition-all">
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#737373] group-hover:text-white transition-colors" />
-            </div>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-300 transition-colors" />
           </a>
         </nav>
       </div>
 
       {/* 3. Footer Profil Kasir */}
-      <div className="pt-3 border-t border-[#262626] flex items-center justify-between px-2">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
+      <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between px-2">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[10px] font-semibold text-zinc-200">
             AK
           </div>
           <div>
-            <div className="text-xs font-medium text-white leading-tight">Admin Kasir</div>
-            <div className="flex items-center gap-1 text-[10px] text-emerald-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="text-xs font-medium text-zinc-200 leading-tight">Admin Kasir</div>
+            <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span>Online</span>
             </div>
           </div>
         </div>
 
-        <ShieldCheck className="w-3.5 h-3.5 text-[#737373]" />
+        <ShieldCheck className="w-4 h-4 text-zinc-500" />
       </div>
     </aside>
   )

@@ -10,21 +10,21 @@ export default function RecentBookings({ bookings, onSelectBooking }: RecentBook
   const formatRupiah = (val: number) => `+Rp ${val.toLocaleString('id-ID')}`
 
   return (
-    <div className="rounded-xl border border-[#262626] bg-[#1a1a1a] p-6 shadow-xs flex flex-col justify-between">
+    <div className="rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-6 shadow-xs flex flex-col justify-between">
       {/* 1. Header Kartu */}
       <div className="mb-4">
-        <h3 className="text-base font-semibold text-white tracking-tight">
+        <h3 className="text-base font-semibold text-zinc-100 tracking-tight">
           Booking Terkini
         </h3>
-        <p className="text-xs text-[#8e8e8e] mt-0.5">
+        <p className="text-xs text-zinc-400 mt-0.5">
           {bookings.length} transaksi terbaru (klik untuk buka di jadwal)
         </p>
       </div>
 
       {/* 2. Daftar Transaksi Terkini */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {bookings.length === 0 ? (
-          <div className="py-8 text-center text-xs text-[#8e8e8e]">
+          <div className="py-8 text-center text-xs text-zinc-500">
             Belum ada transaksi booking tercatat.
           </div>
         ) : (
@@ -42,7 +42,7 @@ export default function RecentBookings({ bookings, onSelectBooking }: RecentBook
             <div
               key={item.id}
               onClick={() => onSelectBooking?.(item)}
-              className="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-white/[0.06] hover:border-[#383838] border border-transparent transition-all cursor-pointer group active:scale-[0.99]"
+              className="flex items-center justify-between gap-3 p-2.5 rounded-lg hover:bg-zinc-800/60 hover:border-zinc-700/60 border border-transparent transition-all cursor-pointer group active:scale-[0.99]"
               title="Buka di Jadwal Lapangan"
             >
               {/* Avatar Inisial */}
@@ -54,22 +54,22 @@ export default function RecentBookings({ bookings, onSelectBooking }: RecentBook
 
               {/* Info Pelanggan & Lapangan */}
               <div className="flex-1 min-w-0 pr-2">
-                <div className="text-sm font-medium text-white truncate leading-none">
+                <div className="text-sm font-medium text-zinc-100 truncate leading-none">
                   {item.customerName}
                 </div>
-                <p className="text-xs text-[#8e8e8e] truncate mt-1">
+                <p className="text-xs text-zinc-400 truncate mt-1">
                   {item.courtName} • {item.schedule}
                 </p>
               </div>
 
               {/* Nominal Pembayaran & Status Text Bersih */}
               <div className="text-right shrink-0">
-                <span className="text-sm font-semibold text-white block">
+                <span className="text-sm font-semibold text-zinc-100 block">
                   {formatRupiah(item.amount)}
                 </span>
                 <span
                   className={`text-[11px] font-medium ${
-                    isLunas ? 'text-emerald-400' : 'text-[#f2d953]'
+                    isLunas ? 'text-emerald-400' : 'text-amber-400'
                   }`}
                 >
                   {item.status}

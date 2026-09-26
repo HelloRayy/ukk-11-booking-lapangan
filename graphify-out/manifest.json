@@ -72,10 +72,10 @@
     "semantic_hash": "5c9c7cdd75ab0c9df6cdcd37782442a6"
   },
   "src/components/CashierPage.tsx": {
-    "mtime": 1790424678.9144921,
-    "seen": 1790428398.4315138,
-    "ast_hash": "678aa1d5509aae797bd24ff9dc405c26",
-    "semantic_hash": "678aa1d5509aae797bd24ff9dc405c26"
+    "mtime": 1790438949.5882769,
+    "seen": 1790439877.67507,
+    "ast_hash": "129e6f4aee1b77933b76c1db136097fd",
+    "semantic_hash": ""
   },
   "src/components/CustomerBookingPage.tsx": {
     "mtime": 1790087707.9322531,
@@ -204,10 +204,10 @@
     "semantic_hash": "cbf18a2835f5e3baafbb5f96a41fb435"
   },
   "src/components/blanca/hero/HeaderNav.tsx": {
-    "mtime": 1790428266.275296,
-    "seen": 1790428398.4315484,
-    "ast_hash": "93fbb1813cd1e25f3584f4bfc1a77966",
-    "semantic_hash": "93fbb1813cd1e25f3584f4bfc1a77966"
+    "mtime": 1790438503.7395153,
+    "seen": 1790439877.6751652,
+    "ast_hash": "803d924d0b4c88fd23e75dd622881eef",
+    "semantic_hash": ""
   },
   "src/components/blanca/hero/HeroMedia.tsx": {
     "mtime": 1790354571.0191865,
@@ -270,10 +270,10 @@
     "semantic_hash": "3cd4c49aaa1e6dad845ff8c98ee2ea53"
   },
   "src/components/blanca/locations/components/BlancaContactPanel.tsx": {
-    "mtime": 1790053492.3130996,
-    "seen": 1790428398.4315655,
-    "ast_hash": "97acf8f46ba477936219c9f534d428c9",
-    "semantic_hash": "97acf8f46ba477936219c9f534d428c9"
+    "mtime": 1790428513.4912813,
+    "seen": 1790439877.6752112,
+    "ast_hash": "f8bbe3b56a8dadd59ab47964efcf3021",
+    "semantic_hash": ""
   },
   "src/components/blanca/locations/components/BlancaLocationHeader.tsx": {
     "mtime": 1790053472.4998455,
@@ -318,10 +318,10 @@
     "semantic_hash": "8db131107454180dc2829a6771503cfb"
   },
   "src/components/blanca/reservation/components/ReservationSidePanel.tsx": {
-    "mtime": 1790428394.4838068,
-    "seen": 1790428398.4315763,
-    "ast_hash": "172b47e1ea302be377dc98e37afe8ae0",
-    "semantic_hash": "172b47e1ea302be377dc98e37afe8ae0"
+    "mtime": 1790428618.8667011,
+    "seen": 1790439877.675247,
+    "ast_hash": "507806cd53cc2fb347cb70767038b4be",
+    "semantic_hash": ""
   },
   "src/components/blanca/reservation/hooks/useReservationDrawer.ts": {
     "mtime": 1790354222.9256675,
@@ -450,58 +450,58 @@
     "semantic_hash": "fc277de0e929681227c95ae704953f5f"
   },
   "src/components/cashier/dashboard-01/BookingsTable.tsx": {
-    "mtime": 1790424643.303338,
-    "seen": 1790428398.4316158,
-    "ast_hash": "82f1553441afcf9d9bfc8a2ff7f374ee",
-    "semantic_hash": "82f1553441afcf9d9bfc8a2ff7f374ee"
+    "mtime": 1790439642.6681879,
+    "seen": 1790439877.6753576,
+    "ast_hash": "3352e5cbc85f3aeaa2dfdfbd13d73c21",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/CashierDatePicker.tsx": {
-    "mtime": 1790423732.2143712,
-    "seen": 1790428398.4316177,
-    "ast_hash": "5000e2576a0c945e53cae8bca0736bf3",
-    "semantic_hash": "5000e2576a0c945e53cae8bca0736bf3"
+    "mtime": 1790439602.0300148,
+    "seen": 1790439877.675361,
+    "ast_hash": "3d5fee87b8f38a7fc081c42483bb4e3c",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx": {
-    "mtime": 1790424667.2904418,
-    "seen": 1790428398.4316194,
-    "ast_hash": "52c58c00bd26788c2ff21faf323bd40c",
-    "semantic_hash": "52c58c00bd26788c2ff21faf323bd40c"
+    "mtime": 1790439673.9373224,
+    "seen": 1790439877.6753654,
+    "ast_hash": "1fbc8f431b7c7f3a35c667282a291f0e",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/DashboardOverview.tsx": {
-    "mtime": 1790424524.3908238,
-    "seen": 1790428398.431621,
-    "ast_hash": "3cc0387f41623173e28c5dfcf4d0210d",
-    "semantic_hash": "3cc0387f41623173e28c5dfcf4d0210d"
+    "mtime": 1790439661.1202672,
+    "seen": 1790439877.67537,
+    "ast_hash": "b69b47c86ab83ee412b01d4c466b945a",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Header.tsx": {
-    "mtime": 1790421773.2475567,
-    "seen": 1790428398.4316227,
-    "ast_hash": "5544c8ec2e78b73fd693b81536fb3a91",
-    "semantic_hash": "5544c8ec2e78b73fd693b81536fb3a91"
+    "mtime": 1790438978.9594002,
+    "seen": 1790439877.6753755,
+    "ast_hash": "8b4dc1891a52ea629275aec910fc5937",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/MetricCards.tsx": {
-    "mtime": 1790148558.677584,
-    "seen": 1790428398.4316242,
-    "ast_hash": "9d4eb6f4280c4a443195aaffa97b6fe6",
-    "semantic_hash": "9d4eb6f4280c4a443195aaffa97b6fe6"
+    "mtime": 1790438988.5294402,
+    "seen": 1790439877.6753814,
+    "ast_hash": "1f42d9247e7e866af7446028efe827a2",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/OverviewChart.tsx": {
-    "mtime": 1790148569.74964,
-    "seen": 1790428398.4316263,
-    "ast_hash": "bfa30faabb790ac69715ff0c3d1791a0",
-    "semantic_hash": "bfa30faabb790ac69715ff0c3d1791a0"
+    "mtime": 1790439009.0795264,
+    "seen": 1790439877.6753879,
+    "ast_hash": "ceb18c263e666a0fb1b00e1ef5976215",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/RecentBookings.tsx": {
-    "mtime": 1790424502.3727288,
-    "seen": 1790428398.4316278,
-    "ast_hash": "52d8a8cfc5e4810471275c15fddfaa08",
-    "semantic_hash": "52d8a8cfc5e4810471275c15fddfaa08"
+    "mtime": 1790438997.6974788,
+    "seen": 1790439877.6753955,
+    "ast_hash": "2ef92b43f2864a36a0b6c3a51060ad1a",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Sidebar.tsx": {
-    "mtime": 1790311120.7570362,
-    "seen": 1790428398.4316294,
-    "ast_hash": "9f0566af251c9f55cdda4e5625323558",
-    "semantic_hash": "9f0566af251c9f55cdda4e5625323558"
+    "mtime": 1790438967.0533502,
+    "seen": 1790439877.6754012,
+    "ast_hash": "5ed7966f1539ccfaafa42df53a2f8a98",
+    "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/mockData.ts": {
     "mtime": 1790424488.7276697,
@@ -726,20 +726,20 @@
     "semantic_hash": "6a8197d00251a56c1b768ad082b9915f"
   },
   "src/components/ui/badge.tsx": {
-    "mtime": 1790311466.2943249,
-    "seen": 1790428398.4316862,
+    "mtime": 1790438466.2204244,
+    "seen": 1790439877.6756258,
     "ast_hash": "d335839650352dfdb33ef5d31972b73c",
     "semantic_hash": "d335839650352dfdb33ef5d31972b73c"
   },
   "src/components/ui/button.tsx": {
-    "mtime": 1790311458.2962902,
-    "seen": 1790428398.4316874,
+    "mtime": 1790438466.2204244,
+    "seen": 1790439877.6756325,
     "ast_hash": "961d6759e298026795a45aec60414a9e",
     "semantic_hash": "961d6759e298026795a45aec60414a9e"
   },
   "src/components/ui/card.tsx": {
-    "mtime": 1790311474.9063623,
-    "seen": 1790428398.431689,
+    "mtime": 1790438466.2214243,
+    "seen": 1790439877.6756399,
     "ast_hash": "7ef31b560ea2e6876fb7ed9c22ccf153",
     "semantic_hash": "7ef31b560ea2e6876fb7ed9c22ccf153"
   },
@@ -750,14 +750,14 @@
     "semantic_hash": "e704d95b33b40ab57ac08aa20ac5535e"
   },
   "src/components/ui/input.tsx": {
-    "mtime": 1790311484.308403,
-    "seen": 1790428398.431692,
+    "mtime": 1790438466.2214243,
+    "seen": 1790439877.6756504,
     "ast_hash": "f46409894fd6a7e8bbb5c30ee9ebf0de",
     "semantic_hash": "f46409894fd6a7e8bbb5c30ee9ebf0de"
   },
   "src/components/ui/table.tsx": {
-    "mtime": 1790311148.9391305,
-    "seen": 1790428398.431693,
+    "mtime": 1790438466.2224243,
+    "seen": 1790439877.6756606,
     "ast_hash": "d3585a383cd5e70099ca2e622075a5da",
     "semantic_hash": "d3585a383cd5e70099ca2e622075a5da"
   },
@@ -780,10 +780,10 @@
     "semantic_hash": "247dfa19b30924cb7d31b04e8c2945d0"
   },
   "src/kasir.tsx": {
-    "mtime": 1790311067.9558597,
-    "seen": 1790428398.4316988,
-    "ast_hash": "5bc746881f415d4ee3cb4f38441a5da6",
-    "semantic_hash": "5bc746881f415d4ee3cb4f38441a5da6"
+    "mtime": 1790438936.6802227,
+    "seen": 1790439877.6756825,
+    "ast_hash": "77e84ed2be8abf6e6ff4c50003a0b8b5",
+    "semantic_hash": ""
   },
   "src/lib/api.ts": {
     "mtime": 1790397558.0249395,
@@ -828,10 +828,10 @@
     "semantic_hash": "bffd1cc5d486a619952d682ca446a354"
   },
   "test-results/.last-run.json": {
-    "mtime": 1790428241.9661992,
-    "seen": 1790428398.4317102,
-    "ast_hash": "d51b5024b293d14bb4222467547bd55a",
-    "semantic_hash": "d51b5024b293d14bb4222467547bd55a"
+    "mtime": 1790428470.302109,
+    "seen": 1790439877.6757405,
+    "ast_hash": "f196824657d8858bc7fa44eecbba38b1",
+    "semantic_hash": ""
   },
   "tests/blanca-hero.spec.ts": {
     "mtime": 1790043305.6536567,
@@ -858,8 +858,8 @@
     "semantic_hash": "f9cb81ddcea69ffdab672fc8c48dca66"
   },
   "vite.config.ts": {
-    "mtime": 1790422072.2298725,
-    "seen": 1790428398.4317176,
+    "mtime": 1790438268.4389446,
+    "seen": 1790439877.6757772,
     "ast_hash": "0879161c3da5129a047bbb9d446688c6",
     "semantic_hash": "0879161c3da5129a047bbb9d446688c6"
   },
@@ -898,5 +898,575 @@
     "seen": 1790428398.4317262,
     "ast_hash": "e4be9a73429cb2073b102c5a69fb24dc",
     "semantic_hash": "e4be9a73429cb2073b102c5a69fb24dc"
+  },
+  "src/components/cashier/clean/CleanBookingsView.tsx": {
+    "mtime": 1790438163.9916914,
+    "seen": 1790439877.6753235,
+    "ast_hash": "5ea4adfe2c5a3c55a380c8e84b919d29",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanCourtManagerModal.tsx": {
+    "mtime": 1790438209.4098015,
+    "seen": 1790439877.675327,
+    "ast_hash": "cc54d3f7da8a5a6427f898349ab91c0b",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanHeader.tsx": {
+    "mtime": 1790438135.3476217,
+    "seen": 1790439877.6753297,
+    "ast_hash": "43c5a2ac3044d88e053753f4e1712a08",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanOverviewView.tsx": {
+    "mtime": 1790438174.4177165,
+    "seen": 1790439877.6753325,
+    "ast_hash": "109d0c6843dfc217aa98d8fe66f40b11",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanPaymentModal.tsx": {
+    "mtime": 1790438193.568763,
+    "seen": 1790439877.675336,
+    "ast_hash": "d9e8d641020eab90e42cbbdcb3bfde21",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanReceiptModal.tsx": {
+    "mtime": 1790438199.9297786,
+    "seen": 1790439877.675339,
+    "ast_hash": "11b8668a74bf5420c07086c4e1bd447a",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanScheduleView.tsx": {
+    "mtime": 1790438150.5176587,
+    "seen": 1790439877.6753426,
+    "ast_hash": "7265c2487512390c68e84b79c93ebcdd",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/clean/CleanWalkinModal.tsx": {
+    "mtime": 1790438187.0517473,
+    "seen": 1790439877.6753478,
+    "ast_hash": "2aa488ca49591931dcedf756c11f92ea",
+    "semantic_hash": ""
+  },
+  "src/utils/formatters.ts": {
+    "mtime": 1790438100.2585366,
+    "seen": 1790439877.6757336,
+    "ast_hash": "812657b41203ddeca175a0f6ae6b2e00",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1790428385.1650248,
+    "seen": 1790439877.675781,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1790428385.1657882,
+    "seen": 1790439877.675784,
+    "ast_hash": "6d73634a678cf1e1c71930adf80bd1f0",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1789982733.4411194,
+    "seen": 1790439877.6757877,
+    "ast_hash": "47f68136e68090512be70a35b9e6fc3d",
+    "semantic_hash": ""
+  },
+  "CONTEXT_DIAGRAM_UKK.md": {
+    "mtime": 1790298378.7587988,
+    "seen": 1790439877.675791,
+    "ast_hash": "2cf3e5140f645891ef096af1f22204a5",
+    "semantic_hash": ""
+  },
+  "DFD_UKK.md": {
+    "mtime": 1790299501.3244,
+    "seen": 1790439877.675794,
+    "ast_hash": "b93a05391b7731d3c5738ff2bf354ed2",
+    "semantic_hash": ""
+  },
+  "ERD_UKK.md": {
+    "mtime": 1790296571.9448237,
+    "seen": 1790439877.675797,
+    "ast_hash": "086c60232a72137f85d5f8ad575c1bbf",
+    "semantic_hash": ""
+  },
+  "FLOWCHART_UKK.md": {
+    "mtime": 1790295453.5809708,
+    "seen": 1790439877.6758,
+    "ast_hash": "9f8eb7103fc98e0c9e846139549c0dbb",
+    "semantic_hash": ""
+  },
+  "PANDUAN_PENJELASAN_BACKEND_UKK.md": {
+    "mtime": 1790397569.2329903,
+    "seen": 1790439877.6758032,
+    "ast_hash": "c3b0281cb0e686247a42d2b20b2025ca",
+    "semantic_hash": ""
+  },
+  "PLAN.md": {
+    "mtime": 1790399259.8806381,
+    "seen": 1790439877.6758068,
+    "ast_hash": "c24783f76dc6ec9ac7c29a6e7fde9bde",
+    "semantic_hash": ""
+  },
+  "RAB_DAN_TIME_SCHEDULE_UKK.md": {
+    "mtime": 1790302986.9816282,
+    "seen": 1790439877.6758094,
+    "ast_hash": "0358cfb4a4a739bd1e649f0478d03a72",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789980153.8050807,
+    "seen": 1790439877.6758122,
+    "ast_hash": "b81d7c798d385d9081eafb0ab843e15c",
+    "semantic_hash": ""
+  },
+  "STRUKTUR_LAPORAN_UKK.md": {
+    "mtime": 1790306433.2224882,
+    "seen": 1790439877.6758168,
+    "ast_hash": "17de4537a27925a05ca913c4349c84ed",
+    "semantic_hash": ""
+  },
+  "UKK_REQUIREMENTS.md": {
+    "mtime": 1789980798.1321669,
+    "seen": 1790439877.6758358,
+    "ast_hash": "d9f5124e2eebf55baf42c3aa0fd4e30f",
+    "semantic_hash": ""
+  },
+  "belajar.html": {
+    "mtime": 1790003372.2238064,
+    "seen": 1790439877.67584,
+    "ast_hash": "c2669d20678003ddd621188c0b63df20",
+    "semantic_hash": ""
+  },
+  "blanca.html": {
+    "mtime": 1790307449.6022084,
+    "seen": 1790439877.6758425,
+    "ast_hash": "30487bd330d02cad2f1f74cffa0c39a2",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1790398648.5438774,
+    "seen": 1790439877.6758468,
+    "ast_hash": "595426a2a2c6255b165335314ffe422f",
+    "semantic_hash": ""
+  },
+  "kasir.html": {
+    "mtime": 1790438933.8092105,
+    "seen": 1790439877.6758497,
+    "ast_hash": "be17fbbc8a537a6bd4b057e089fe5ec7",
+    "semantic_hash": ""
+  },
+  "prototype.html": {
+    "mtime": 1790088822.6757672,
+    "seen": 1790439877.675852,
+    "ast_hash": "cff96fe24548465b3ff3af9dec550876",
+    "semantic_hash": ""
+  },
+  "reservasi.html": {
+    "mtime": 1790307379.0561314,
+    "seen": 1790439877.6758568,
+    "ast_hash": "2de6fd4d97f706075332303cdd11d291",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-target-markup.html": {
+    "mtime": 1790011100.176469,
+    "seen": 1790439877.6758595,
+    "ast_hash": "921812c5e041f9ac52b1994602c209b9",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/difference-section-target.html": {
+    "mtime": 1790044495.720315,
+    "seen": 1790439877.6758628,
+    "ast_hash": "84d283ac3c3f93386e411a5a1a8e9923",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/technology-section-target.html": {
+    "mtime": 1790050120.0238228,
+    "seen": 1790439877.6758654,
+    "ast_hash": "97d478a6b925989f807126b8524e2c18",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Image 2026-09-21 at 15.24.58.jpeg": {
+    "mtime": 1789979248.0,
+    "seen": 1790439877.6758687,
+    "ast_hash": "461c718748ef26d42492c170cc48163f",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Image 2026-09-21 at 15.25.08.jpeg": {
+    "mtime": 1789979248.0,
+    "seen": 1790439877.6758711,
+    "ast_hash": "736ada8cfe6219556398de1955c4daad",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Image 2026-09-21 at 15.25.15.jpeg": {
+    "mtime": 1789979248.0,
+    "seen": 1790439877.6758738,
+    "ast_hash": "d07fc6ddb97d378ecaf0f02ded74e1d8",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Image 2026-09-21 at 15.25.24.jpeg": {
+    "mtime": 1789979248.0,
+    "seen": 1790439877.6758776,
+    "ast_hash": "1d833ad71d9e6fcaa467f71e0aed4ef9",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Image 2026-09-21 at 15.25.31.jpeg": {
+    "mtime": 1789979248.0,
+    "seen": 1790439877.6758804,
+    "ast_hash": "1095be31eb7605dad7c846a2ef120c8f",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/background-dots-light.png": {
+    "mtime": 1790051348.7096167,
+    "seen": 1790439877.6758838,
+    "ast_hash": "3e7c24d9b7be01d3166399627c1fa03a",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/coronado-front.webp": {
+    "mtime": 1790355536.9626367,
+    "seen": 1790439877.6758873,
+    "ast_hash": "7074cb14aba275c3b6f33e0c0993d626",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/del-mar-front.webp": {
+    "mtime": 1790355534.068623,
+    "seen": 1790439877.675891,
+    "ast_hash": "093723bdb29c549efbbd89feced37326",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/difference-people.png": {
+    "mtime": 1790044783.6186206,
+    "seen": 1790439877.6758933,
+    "ast_hash": "e4714544123679d71c40fbcae6f626b8",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/difference-poster.jpg": {
+    "mtime": 1790049563.4137402,
+    "seen": 1790439877.6758964,
+    "ast_hash": "16971fade6250a67f9767bea9b580c15",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/difference-poster.webp": {
+    "mtime": 1790398490.4541633,
+    "seen": 1790439877.6758988,
+    "ast_hash": "f7fdb3e46c3c62c2a4646dc00c9810c4",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/hero-poster.jpg": {
+    "mtime": 1790011051.3001754,
+    "seen": 1790439877.6759021,
+    "ast_hash": "5d8fc3f30e8ca52109f968104b5b7e5a",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/icon-all-levels.svg": {
+    "mtime": 1790044789.0916429,
+    "seen": 1790439877.6759055,
+    "ast_hash": "a3fea8aab5ba9e375bd1d7e29c1a0026",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/icon-minimal.svg": {
+    "mtime": 1790044788.6476412,
+    "seen": 1790439877.675908,
+    "ast_hash": "8b2de342f418e83dc6bd833a916c8acb",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/icon-quality.svg": {
+    "mtime": 1790044789.857646,
+    "seen": 1790439877.6759121,
+    "ast_hash": "195ba7d61c2acaa23f536fd0082bdf21",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/orang-1.webp": {
+    "mtime": 1790050082.05164,
+    "seen": 1790439877.6759157,
+    "ast_hash": "a49a202ea350a73133ff20f83c3e8282",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/quiz-button.png": {
+    "mtime": 1790043454.0722537,
+    "seen": 1790439877.6759183,
+    "ast_hash": "d00e71bd1d799ba1bf504f3558a9a7b2",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/tech-carbon.webp": {
+    "mtime": 1790355529.4146016,
+    "seen": 1790439877.6759212,
+    "ast_hash": "f037bb96af0647b18399aa069ca149aa",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/tech-lifestyle.jpg": {
+    "mtime": 1790050185.0281353,
+    "seen": 1790439877.675923,
+    "ast_hash": "797230da00961389de2e25b85dea97fb",
+    "semantic_hash": ""
+  },
+  "public/assets/blanca/tech-lifestyle.webp": {
+    "mtime": 1790398490.375163,
+    "seen": 1790439877.6759257,
+    "ast_hash": "7888480086920ae503282f7b9e08c383",
+    "semantic_hash": ""
+  },
+  "public/assets/courts/court-1.webp": {
+    "mtime": 1790398490.6351643,
+    "seen": 1790439877.6759293,
+    "ast_hash": "aa0720ce8420dc8ee2ece5b8757b4a45",
+    "semantic_hash": ""
+  },
+  "public/assets/courts/court-2.webp": {
+    "mtime": 1790398490.7601647,
+    "seen": 1790439877.675933,
+    "ast_hash": "c17a98fa7f4ff3d324594e540a230042",
+    "semantic_hash": ""
+  },
+  "public/assets/courts/court-3.webp": {
+    "mtime": 1790398490.9321656,
+    "seen": 1790439877.6759372,
+    "ast_hash": "c7b08ceb4edb89cea525cbbfe42f4249",
+    "semantic_hash": ""
+  },
+  "public/assets/courts/court-4.webp": {
+    "mtime": 1790398496.8305545,
+    "seen": 1790439877.6759412,
+    "ast_hash": "aa0720ce8420dc8ee2ece5b8757b4a45",
+    "semantic_hash": ""
+  },
+  "public/assets/orang-1.webp": {
+    "mtime": 1790084897.6528332,
+    "seen": 1790439877.6759436,
+    "ast_hash": "a49a202ea350a73133ff20f83c3e8282",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1789980153.7762046,
+    "seen": 1790439877.675946,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "public/icons.svg": {
+    "mtime": 1789980153.7768943,
+    "seen": 1790439877.6759486,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "public/thegrind/avatar_1.webp": {
+    "mtime": 1790010108.2305176,
+    "seen": 1790439877.675951,
+    "ast_hash": "a130db8eaed59568e051b4d4267202f9",
+    "semantic_hash": ""
+  },
+  "public/thegrind/avatar_2.webp": {
+    "mtime": 1790010108.5155187,
+    "seen": 1790439877.6759543,
+    "ast_hash": "b597a8a6b75ea5b9a437bd63bb82e9b7",
+    "semantic_hash": ""
+  },
+  "public/thegrind/avatar_3.webp": {
+    "mtime": 1790010108.558519,
+    "seen": 1790439877.6759577,
+    "ast_hash": "8766075bd667de34d8fb6a2f21af82c8",
+    "semantic_hash": ""
+  },
+  "public/thegrind/avatar_4.webp": {
+    "mtime": 1790010108.9335203,
+    "seen": 1790439877.675962,
+    "ast_hash": "7189abd21875c316e3a6eeca14d72b77",
+    "semantic_hash": ""
+  },
+  "public/thegrind/cartboard_overlay.webp": {
+    "mtime": 1790010107.9645164,
+    "seen": 1790439877.6759646,
+    "ast_hash": "9aba2e04ea717ebbb995c7e286bb981e",
+    "semantic_hash": ""
+  },
+  "public/thegrind/grind_logo.svg": {
+    "mtime": 1790010107.9225163,
+    "seen": 1790439877.6759691,
+    "ast_hash": "c94198c77d026cd82cea6d9364952920",
+    "semantic_hash": ""
+  },
+  "public/thegrind/photo_1.webp": {
+    "mtime": 1790010107.7905157,
+    "seen": 1790439877.6759734,
+    "ast_hash": "d9433c0582bc3c52fcbb07116caef1fd",
+    "semantic_hash": ""
+  },
+  "public/thegrind/photo_2.webp": {
+    "mtime": 1790010107.8345158,
+    "seen": 1790439877.6759768,
+    "ast_hash": "f6d934f329d2bb7c70d61c596068a4cf",
+    "semantic_hash": ""
+  },
+  "public/thegrind/video_poster.webp": {
+    "mtime": 1790010107.881516,
+    "seen": 1790439877.6759796,
+    "ast_hash": "32007e852b4c3a6b2802c0fa7d8e2f13",
+    "semantic_hash": ""
+  },
+  "src/assets/hero.png": {
+    "mtime": 1789980153.7804506,
+    "seen": 1790439877.6759841,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "src/assets/hero.svg": {
+    "mtime": 1790043835.257331,
+    "seen": 1790439877.6759875,
+    "ast_hash": "cc405b0a04907db4ee3275ba0fa64f6f",
+    "semantic_hash": ""
+  },
+  "src/assets/orang-1.webp": {
+    "mtime": 1790049782.867201,
+    "seen": 1790439877.6759903,
+    "ast_hash": "a49a202ea350a73133ff20f83c3e8282",
+    "semantic_hash": ""
+  },
+  "src/assets/quiz-button.png_20260922103438.jpeg": {
+    "mtime": 1790048078.7024362,
+    "seen": 1790439877.6759932,
+    "ast_hash": "53940cfb437483929567a3806614be16",
+    "semantic_hash": ""
+  },
+  "src/assets/raket-green.jpeg": {
+    "mtime": 1790048752.3989656,
+    "seen": 1790439877.6759963,
+    "ast_hash": "c4b1c9c62315be9b0280d8b1cc894ed1",
+    "semantic_hash": ""
+  },
+  "src/assets/raket-quizbutotn-new.webp": {
+    "mtime": 1790048134.4107149,
+    "seen": 1790439877.6759992,
+    "ast_hash": "151ae9cf89ba99113237d34e30a1fef4",
+    "semantic_hash": ""
+  },
+  "src/assets/raket-quizbutotn.jpeg": {
+    "mtime": 1790047896.4405243,
+    "seen": 1790439877.676002,
+    "ast_hash": "17c8c6120e91641045f9cee4672419ca",
+    "semantic_hash": ""
+  },
+  "src/assets/raket-quizbutotn.webp": {
+    "mtime": 1790047982.0459528,
+    "seen": 1790439877.6760063,
+    "ast_hash": "721d94cc89c4e65b926184d939c695a3",
+    "semantic_hash": ""
+  },
+  "src/assets/react.svg": {
+    "mtime": 1789980153.7820804,
+    "seen": 1790439877.6760094,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "src/assets/vite.svg": {
+    "mtime": 1789980153.783633,
+    "seen": 1790439877.676012,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  "target.png": {
+    "mtime": 1790010144.5506687,
+    "seen": 1790439877.6760154,
+    "ast_hash": "d779433dda5f6fb476c32487c8469062",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-desktop-diff.png": {
+    "mtime": 1790011475.886058,
+    "seen": 1790439877.6760178,
+    "ast_hash": "bdee06d8c16590f3e27f02980a2769dc",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-desktop-hero-target.png": {
+    "mtime": 1790011100.160469,
+    "seen": 1790439877.6760213,
+    "ast_hash": "92d3dc2901fca495338dd47bd2dd4400",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-desktop-local.png": {
+    "mtime": 1790011475.5300567,
+    "seen": 1790439877.676024,
+    "ast_hash": "de5d45dbe3eb123be95c38bb2b77e30e",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-desktop-target.png": {
+    "mtime": 1790011099.9704683,
+    "seen": 1790439877.6760273,
+    "ast_hash": "92d3dc2901fca495338dd47bd2dd4400",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-hero.spec.ts-snapshots/Blanca-Padel-Hero-Section-1-1-Reproduction-Her-6916a-matches-design-layout-and-visual-appearance-1-desktop-linux.png": {
+    "mtime": 1790011721.7990847,
+    "seen": 1790439877.6760302,
+    "ast_hash": "8a6ebe72fbdcccd4ccf736e45f012729",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-hero.spec.ts-snapshots/Blanca-Padel-Hero-Section-1-1-Reproduction-Her-6916a-matches-design-layout-and-visual-appearance-1-mobile-linux.png": {
+    "mtime": 1790011734.6221383,
+    "seen": 1790439877.6760325,
+    "ast_hash": "43548f5a0532d5d21bd93d9a476eee11",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-mobile-diff.png": {
+    "mtime": 1790011668.2568612,
+    "seen": 1790439877.676036,
+    "ast_hash": "5aac616ccc3a97cf5208f21268006ee5",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-mobile-local.png": {
+    "mtime": 1790011668.0308602,
+    "seen": 1790439877.6760385,
+    "ast_hash": "8dbc54e69238053f7d5a419e2e34b314",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/blanca-mobile-target.png": {
+    "mtime": 1790011121.3375592,
+    "seen": 1790439877.6760418,
+    "ast_hash": "df293fc3afd27b87d1f59a8e9a31a66e",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/difference-section-diff.png": {
+    "mtime": 1790046133.8829534,
+    "seen": 1790439877.6760445,
+    "ast_hash": "278769778faeeebc682c6ae402f8f424",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/difference-section-local.png": {
+    "mtime": 1790046133.8859534,
+    "seen": 1790439877.6760488,
+    "ast_hash": "abaf584b42dacfc630d6222bb20e789e",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/difference-section-target.png": {
+    "mtime": 1790045601.1114545,
+    "seen": 1790439877.6760519,
+    "ast_hash": "bc01aa3cf681cc6e1c519ac82d0d4632",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/target-nav-hover.png": {
+    "mtime": 1790043287.265579,
+    "seen": 1790439877.6760552,
+    "ast_hash": "83f3e04fc2c8595e1c66c35b564a6432",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/technology-section-diff.png": {
+    "mtime": 1790050669.6084273,
+    "seen": 1790439877.6760583,
+    "ast_hash": "5e38fd5cb87c346811d9e5afb55b1815",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/technology-section-local.png": {
+    "mtime": 1790050669.294426,
+    "seen": 1790439877.6760616,
+    "ast_hash": "cc51cdcf5870e4a8e903d546f49632fa",
+    "semantic_hash": ""
+  },
+  "tests/snapshots/technology-section-target.png": {
+    "mtime": 1790050121.8028312,
+    "seen": 1790439877.6760645,
+    "ast_hash": "63948ac7ae1309d3729b4114b056fae4",
+    "semantic_hash": ""
+  },
+  "tests/visual.spec.js-snapshots/thegrind-hero-linux.png": {
+    "mtime": 1790010144.89167,
+    "seen": 1790439877.6760674,
+    "ast_hash": "d779433dda5f6fb476c32487c8469062",
+    "semantic_hash": ""
   }
 }

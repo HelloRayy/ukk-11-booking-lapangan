@@ -3,9 +3,9 @@ import { useState, useMemo, useRef, useEffect } from 'react'
 import {
   Search,
   Plus,
-  RefreshCw,
   CheckCircle2,
   XCircle,
+  X,
   Check,
   ChevronDown,
   ChevronLeft,
@@ -20,7 +20,6 @@ import {
   CreditCard,
   MapPin,
   SlidersHorizontal,
-  Download,
   ArrowUp,
   ArrowDown,
   ArrowUpDown,
@@ -246,7 +245,7 @@ export default function BookingsTable({
   }
 
   return (
-    <div className="flex flex-col h-full select-none relative font-aeonik text-[#fafafa]">
+    <div className="flex flex-col h-full select-none relative font-sans text-zinc-100">
       {/* Overlay Dropdown */}
       {activeMenuId !== null && (
         <div
@@ -256,12 +255,12 @@ export default function BookingsTable({
         />
       )}
 
-      {/* Top Filter Bar Linear dengan UX Copy Alami & Fitur Kasir Lengkap */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[#262626] bg-[#181818]">
-        {/* Sisi Kiri: Search Input & Badge Filter */}
-        <div className="flex items-center gap-2 flex-1 max-w-sm">
+      {/* Top Filter Bar Linear Minimalis Intuitif */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-2.5 border-b border-zinc-800/80 bg-zinc-950">
+        {/* Sisi Kiri: Search Input Bersih dengan Clear button */}
+        <div className="flex items-center gap-2 flex-1 max-w-xs">
           <div className="relative w-full">
-            <Search className="w-3.5 h-3.5 text-[#8e8e8e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <Input
               type="text"
               value={searchKeyword}
@@ -269,54 +268,51 @@ export default function BookingsTable({
                 onSearchChange(e.target.value)
                 setCurrentPage(1)
               }}
-              placeholder="Cari transaksi, penyewa, no HP..."
-              className="pl-8 h-8 text-xs bg-[#141414] border-[#262626] text-white placeholder:text-[#666] focus:border-[#f2d953]/60"
+              placeholder="Cari transaksi..."
+              className="pl-8 pr-7 h-8 text-xs bg-zinc-900 border-zinc-800 text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400/60"
             />
+            {searchKeyword && (
+              <button
+                type="button"
+                onClick={() => {
+                  onSearchChange('')
+                  setCurrentPage(1)
+                }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 p-0.5 cursor-pointer"
+                title="Hapus pencarian"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
-
-          {(selectedStatus !== 'Semua' || selectedCourt !== 'Semua' || selectedDate !== 'all') && (
-            <button
-              type="button"
-              onClick={() => {
-                onStatusChange('Semua')
-                setSelectedCourt('Semua')
-                setSelectedDate('all')
-                setCurrentPage(1)
-              }}
-              className="text-[11px] text-[#8e8e8e] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
-              title="Reset semua filter"
-            >
-              Reset Filter
-            </button>
-          )}
         </div>
 
-        {/* Sisi Kanan: Dropdowns & Action Buttons (Terletak di Kanan Samping Button Refresh) */}
-        <div ref={dropdownRef} className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end">
-          {/* 1. Dropdown Filter Status (Pengganti Tab Switch) */}
+        {/* Sisi Kanan: Status, Tanggal, & Action Button + Walk-in */}
+        <div ref={dropdownRef} className="flex items-center gap-2 justify-end">
+          {/* 1. Dropdown Filter Status Ringkas */}
           <div className="relative">
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={() => setOpenDropdown(openDropdown === 'status' ? null : 'status')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border transition-all cursor-pointer ${
+              className={`h-8 text-xs gap-1.5 px-2.5 bg-zinc-900 border transition-all cursor-pointer ${
                 openDropdown === 'status'
-                  ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] text-white shadow-xs'
+                  ? 'border-amber-400 ring-1 ring-amber-400/30 bg-zinc-900 text-zinc-100 shadow-xs'
                   : selectedStatus !== 'Semua'
-                  ? 'border-[#f2d953]/60 text-white font-medium hover:bg-white/5'
-                  : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
+                  ? 'border-amber-400/60 text-zinc-100 font-medium hover:bg-zinc-850'
+                  : 'border-zinc-800 text-zinc-400 hover:bg-zinc-850 hover:text-zinc-200'
               }`}
             >
-              <CircleDot className={`w-3.5 h-3.5 ${openDropdown === 'status' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
-              <span>Status: <strong className="font-semibold text-white">{selectedStatus}</strong></span>
-              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'status' ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
+              <CircleDot className={`w-3.5 h-3.5 ${openDropdown === 'status' || selectedStatus !== 'Semua' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <span>{selectedStatus === 'Semua' ? 'Status' : selectedStatus}</span>
+              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'status' ? 'rotate-180 text-amber-400' : 'text-zinc-500'}`} />
             </Button>
 
             {openDropdown === 'status' && (
-              <div className="absolute right-0 top-full mt-1.5 w-48 py-1.5 px-1 rounded-xl border border-[#333333] bg-[#1a1a1a] shadow-2xl z-30 animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
-                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+              <div className="absolute right-0 top-full mt-1.5 w-44 py-1.5 px-1 rounded-xl border border-zinc-800 bg-zinc-900 shadow-2xl z-30 animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                   <span>Filter Status</span>
                 </div>
                 {[
@@ -335,13 +331,13 @@ export default function BookingsTable({
                     }}
                     className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
                       selectedStatus === item.value
-                        ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
-                        : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
+                        ? 'bg-amber-400/10 text-amber-400 font-semibold'
+                        : 'text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800'
                     }`}
                   >
                     <span>{item.label}</span>
                     {selectedStatus === item.value && (
-                      <Check className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <Check className="w-3.5 h-3.5 text-amber-400" />
                     )}
                   </button>
                 ))}
@@ -349,80 +345,7 @@ export default function BookingsTable({
             )}
           </div>
 
-          {/* 2. Dropdown Filter Lapangan (Fitur Tambahan) */}
-          <div className="relative">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => setOpenDropdown(openDropdown === 'court' ? null : 'court')}
-              className={`h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border transition-all cursor-pointer ${
-                openDropdown === 'court'
-                  ? 'border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] text-white shadow-xs'
-                  : selectedCourt !== 'Semua'
-                  ? 'border-[#f2d953]/60 text-white font-medium hover:bg-white/5'
-                  : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
-              }`}
-            >
-              <MapPin className={`w-3.5 h-3.5 ${openDropdown === 'court' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
-              <span>
-                {selectedCourt === 'Semua'
-                  ? 'Semua Lapangan'
-                  : courts.find((c) => String(c.id) === selectedCourt)?.nama_lapangan || 'Lapangan'}
-              </span>
-              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${openDropdown === 'court' ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
-            </Button>
-
-            {openDropdown === 'court' && (
-              <div className="absolute right-0 top-full mt-1.5 w-52 py-1.5 px-1 rounded-xl border border-[#333333] bg-[#1a1a1a] shadow-2xl z-30 max-h-56 overflow-y-auto animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
-                <div className="px-2.5 py-1 text-[10px] font-semibold text-[#737373] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
-                  <span>Filter Lapangan</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCourt('Semua')
-                    setOpenDropdown(null)
-                    setCurrentPage(1)
-                  }}
-                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
-                    selectedCourt === 'Semua'
-                      ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
-                      : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  <span>Semua Lapangan</span>
-                  {selectedCourt === 'Semua' && (
-                    <Check className="w-3.5 h-3.5 text-[#f2d953]" />
-                  )}
-                </button>
-                {courts.map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCourt(String(c.id))
-                      setOpenDropdown(null)
-                      setCurrentPage(1)
-                    }}
-                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
-                      selectedCourt === String(c.id)
-                        ? 'bg-[#f2d953]/15 text-[#f2d953] font-semibold'
-                        : 'text-[#d1d1d1] hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    <span>{c.nama_lapangan}</span>
-                    {selectedCourt === String(c.id) && (
-                      <Check className="w-3.5 h-3.5 text-[#f2d953]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* 3. Popover Kalender Tanggal (1:1 UI Popover Reservasi & Jadwal Lapangan) */}
+          {/* 2. Popover Kalender Tanggal Ringkas */}
           <CashierDatePicker
             selectedDate={
               selectedDate === 'today'
@@ -437,81 +360,54 @@ export default function BookingsTable({
             }}
             allowAllDates={true}
             align="right"
-            labelPrefix="Tanggal:"
           />
 
-          {/* 4. Fitur Ekspor CSV (Fitur Tambahan Praktis Kasir) */}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={handleExportCSV}
-            className="h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer"
-            title="Ekspor CSV rekap transaksi"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span className="hidden xl:inline">Ekspor</span>
-          </Button>
-
-          {/* 5. Button Refresh (Sesuai Posisi Permintaan User di Samping Filter) */}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={onRefresh}
-            title="Refresh data transaksi"
-            className="h-8 text-xs gap-1.5 px-2.5 bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5 cursor-pointer"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#f2d953]' : ''}`} />
-            <span>Refresh</span>
-          </Button>
-
-          {/* 6. Primary Action Button Walk-in */}
+          {/* 3. Primary Action Button Walk-in */}
           <Button
             type="button"
             variant="default"
             size="sm"
             onClick={onOpenManualModal}
-            className="h-8 text-xs gap-1.5 px-3.5 font-bold bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] cursor-pointer"
+            className="h-8 text-xs gap-1.5 px-3 font-semibold bg-amber-400 hover:bg-amber-300 text-zinc-950 cursor-pointer shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>+ Walk-in</span>
+            <span>Walk-in</span>
           </Button>
         </div>
       </div>
 
       {/* Tabel Data Full Width Tanpa Box Terjepit */}
-      <div className="flex-1 overflow-x-auto min-h-0 bg-[#161616]">
+      <div className="flex-1 overflow-x-auto min-h-0 bg-zinc-950">
         <Table>
           {/* Header Shadcn Table dengan UX Copy Kontekstual Kasir */}
           <TableHeader>
-            <TableRow className="border-b border-[#262626] bg-[#181818] hover:bg-[#181818]">
+            <TableRow className="border-b border-zinc-800/80 bg-zinc-900/40 hover:bg-zinc-900/40">
               {/* 1. Kolom Penyewa & Invoice (Sortable A-Z / Z-A) */}
               <TableHead
                 onClick={() => handleSort('nama_penyewa')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[280px] pl-5 select-none"
+                className="cursor-pointer hover:text-zinc-100 transition-colors min-w-[280px] pl-5 select-none"
                 title="Klik untuk mengurutkan nama penyewa"
               >
                 <div className="flex items-center gap-2">
-                  <span className={`font-semibold transition-colors ${sortField === 'nama_penyewa' ? 'text-[#f2d953]' : 'text-white/90'}`}>
+                  <span className={`font-semibold transition-colors ${sortField === 'nama_penyewa' ? 'text-amber-400' : 'text-zinc-200'}`}>
                     Penyewa
                   </span>
-                  <span className="text-xs text-[#8e8e8e]">({sortedBookings.length})</span>
+                  <span className="text-xs text-zinc-500">({sortedBookings.length})</span>
                   {sortField === 'nama_penyewa' ? (
                     sortOrder === 'asc' ? (
-                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowUp className="w-3.5 h-3.5 text-amber-400" />
                     ) : (
-                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
                     )
                   ) : (
-                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                    <ArrowUpDown className="w-3 h-3 text-zinc-600 opacity-60 hover:opacity-100" />
                   )}
                 </div>
               </TableHead>
 
               {/* 2. Kolom Status (Clean Header Tanpa Fake Arrow) */}
               <TableHead className="w-36 select-none">
-                <div className="flex items-center gap-1.5 text-[#8e8e8e]">
+                <div className="flex items-center gap-1.5 text-zinc-400">
                   <CircleDot className="w-3.5 h-3.5" />
                   <span>Status</span>
                 </div>
@@ -520,29 +416,29 @@ export default function BookingsTable({
               {/* 3. Kolom Tagihan (Sortable Nominal) */}
               <TableHead
                 onClick={() => handleSort('total_bayar')}
-                className="cursor-pointer hover:text-white transition-colors w-40 select-none"
+                className="cursor-pointer hover:text-zinc-100 transition-colors w-40 select-none"
                 title="Klik untuk mengurutkan nominal tagihan"
               >
                 <div className="flex items-center gap-1.5">
-                  <CreditCard className={`w-3.5 h-3.5 ${sortField === 'total_bayar' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
-                  <span className={`font-medium transition-colors ${sortField === 'total_bayar' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`}>
+                  <CreditCard className={`w-3.5 h-3.5 ${sortField === 'total_bayar' ? 'text-amber-400' : 'text-zinc-400'}`} />
+                  <span className={`font-medium transition-colors ${sortField === 'total_bayar' ? 'text-amber-400' : 'text-zinc-400'}`}>
                     Tagihan
                   </span>
                   {sortField === 'total_bayar' ? (
                     sortOrder === 'asc' ? (
-                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowUp className="w-3.5 h-3.5 text-amber-400" />
                     ) : (
-                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
                     )
                   ) : (
-                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                    <ArrowUpDown className="w-3 h-3 text-zinc-600 opacity-60 hover:opacity-100" />
                   )}
                 </div>
               </TableHead>
 
               {/* 4. Kolom Lapangan (Clean Header Tanpa Fake Arrow) */}
               <TableHead className="w-40 select-none">
-                <div className="flex items-center gap-1.5 text-[#8e8e8e]">
+                <div className="flex items-center gap-1.5 text-zinc-400">
                   <MapPin className="w-3.5 h-3.5" />
                   <span>Lapangan</span>
                 </div>
@@ -551,29 +447,29 @@ export default function BookingsTable({
               {/* 5. Kolom Jadwal Main (Sortable Tanggal/Jam) */}
               <TableHead
                 onClick={() => handleSort('tgl_main')}
-                className="cursor-pointer hover:text-white transition-colors min-w-[220px] select-none"
+                className="cursor-pointer hover:text-zinc-100 transition-colors min-w-[220px] select-none"
                 title="Klik untuk mengurutkan tanggal/jam main"
               >
                 <div className="flex items-center gap-1.5">
-                  <Calendar className={`w-3.5 h-3.5 ${sortField === 'tgl_main' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`} />
-                  <span className={`font-medium transition-colors ${sortField === 'tgl_main' ? 'text-[#f2d953]' : 'text-[#8e8e8e]'}`}>
+                  <Calendar className={`w-3.5 h-3.5 ${sortField === 'tgl_main' ? 'text-amber-400' : 'text-zinc-400'}`} />
+                  <span className={`font-medium transition-colors ${sortField === 'tgl_main' ? 'text-amber-400' : 'text-zinc-400'}`}>
                     Jadwal Main
                   </span>
                   {sortField === 'tgl_main' ? (
                     sortOrder === 'asc' ? (
-                      <ArrowUp className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowUp className="w-3.5 h-3.5 text-amber-400" />
                     ) : (
-                      <ArrowDown className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
                     )
                   ) : (
-                    <ArrowUpDown className="w-3 h-3 text-[#555555] opacity-50 hover:opacity-100" />
+                    <ArrowUpDown className="w-3 h-3 text-zinc-600 opacity-60 hover:opacity-100" />
                   )}
                 </div>
               </TableHead>
 
               {/* 6. Settings / Options */}
               <TableHead className="text-right w-14 pr-5 select-none">
-                <div className="flex items-center justify-end text-[#8e8e8e]">
+                <div className="flex items-center justify-end text-zinc-400">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </div>
               </TableHead>
@@ -637,20 +533,20 @@ export default function BookingsTable({
                         setSelectedBooking(item)
                       }
                     }}
-                    className="cursor-pointer group h-10 border-b border-[#262626]/60 hover:bg-white/[0.04]"
+                    className="cursor-pointer group h-10 border-b border-zinc-800/60 hover:bg-zinc-900/50"
                     title="Klik untuk membuka jadwal di Jadwal Lapangan"
                   >
                     {/* 1. Identifier (Sans) + Title (Penyewa & No HP) */}
                     <TableCell className="pl-5">
                       <div className="flex items-center gap-3">
-                        <span className="text-xs text-[#8e8e8e] font-medium tracking-wide shrink-0">
+                        <span className="text-xs text-zinc-500 font-mono font-medium tracking-wide shrink-0">
                           {invoiceCode}
                         </span>
-                        <span className="text-[#fafafa] text-xs font-medium group-hover:text-white transition-colors truncate">
+                        <span className="text-zinc-200 text-xs font-medium group-hover:text-zinc-100 transition-colors truncate">
                           {item.nama_penyewa}
                         </span>
                         {item.no_hp && (
-                          <span className="text-xs text-[#555555] hidden md:inline">
+                          <span className="text-xs text-zinc-500 hidden md:inline">
                             • {item.no_hp}
                           </span>
                         )}
@@ -671,15 +567,15 @@ export default function BookingsTable({
                         </div>
                       ) : isDP ? (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#f2d953] flex items-center justify-center shrink-0">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#f2d953]" />
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                           </span>
-                          <span className="text-[#f2d953] text-xs font-medium">DP 50%</span>
+                          <span className="text-amber-400 text-xs font-medium">DP 50%</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 rounded-full border-2 border-[#555555] shrink-0" />
-                          <span className="text-[#8e8e8e] text-xs font-medium">Booked</span>
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-zinc-600 shrink-0" />
+                          <span className="text-zinc-400 text-xs font-medium">Booked</span>
                         </div>
                       )}
                     </TableCell>
@@ -688,23 +584,23 @@ export default function BookingsTable({
                     <TableCell className="whitespace-nowrap">
                       {!isLunas && !isBatal && sisa > 0 ? (
                         <div className="flex items-center gap-2">
-                          <div className="w-3.5 h-3.5 rounded-xs border border-[#f2d953]/30 bg-[#f2d953]/10 flex items-center justify-center text-[9px] text-[#f2d953] font-bold shrink-0">
+                          <div className="w-3.5 h-3.5 rounded-xs border border-amber-400/30 bg-amber-400/10 flex items-center justify-center text-[9px] text-amber-400 font-bold shrink-0">
                             !
                           </div>
-                          <span className="text-[#f2d953] text-xs font-semibold">
+                          <span className="text-amber-400 text-xs font-semibold">
                             Sisa {formatRupiah(sisa)}
                           </span>
                         </div>
                       ) : isLunas ? (
                         <div className="flex items-center gap-2">
                           <Check className="w-3 h-3 text-emerald-400 shrink-0" />
-                          <span className="text-[#fafafa] text-xs font-medium">
+                          <span className="text-zinc-200 text-xs font-medium">
                             {formatRupiah(item.total_bayar)}
                           </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <span className="text-[#555555] text-xs font-normal">
+                          <span className="text-zinc-500 text-xs font-normal">
                             - Batal
                           </span>
                         </div>
@@ -713,27 +609,27 @@ export default function BookingsTable({
 
                     {/* 4. Lapangan (Badge Pill Sesuai Referensi Pengguna) */}
                     <TableCell className="whitespace-nowrap">
-                      <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[#141414] text-[#fafafa] text-xs rounded-md border border-[#262626] h-[20.3125px] leading-snug transition-all">
-                        <span className="flex items-center justify-center w-3.5 h-3.5 bg-white/10 text-emerald-400 text-xs font-bold rounded-full leading-snug transition-all">
+                      <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-zinc-900 text-zinc-200 text-xs rounded-md border border-zinc-800 h-[22px] leading-snug">
+                        <span className="flex items-center justify-center w-3.5 h-3.5 bg-zinc-800 text-emerald-400 text-xs font-bold rounded-full leading-snug">
                           {courtName.charAt(0)}
                         </span>
-                        <span className="leading-snug transition-all">{courtName}</span>
+                        <span className="leading-snug">{courtName}</span>
                       </div>
                     </TableCell>
 
                     {/* 5. Jadwal Main */}
                     <TableCell className="whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-[#141414] text-[#fafafa] text-xs rounded-md border border-[#262626] h-[20.3125px] leading-snug transition-all">
+                        <div className="inline-flex items-center gap-1.5 py-0.5 px-2 bg-zinc-900 text-zinc-200 text-xs rounded-md border border-zinc-800 h-[22px] leading-snug">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${getLabelDotColor(
                               courtName
                             )}`}
                           />
-                          <span className="leading-snug transition-all">{item.tgl_main}</span>
+                          <span className="leading-snug">{item.tgl_main}</span>
                         </div>
                         <span
-                          className="text-xs text-[#8e8e8e] font-medium"
+                          className="text-xs text-zinc-400 font-medium"
                           title={`Durasi: ${item.durasi_jam} Jam (${item.jam_slots.join(', ')})`}
                         >
                           • {formatSlotRange(item.jam_slots)}
@@ -776,7 +672,7 @@ export default function BookingsTable({
                         {activeMenuId === item.id && (
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl p-1 z-30 text-xs text-[#fafafa] animate-fadeIn"
+                            className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-zinc-800 bg-zinc-900 shadow-2xl p-1 z-30 text-xs text-zinc-200 animate-fadeIn"
                           >
                             <button
                               type="button"
@@ -784,9 +680,9 @@ export default function BookingsTable({
                                 onNavigateToSchedule?.(item.tgl_main, item.id)
                                 setActiveMenuId(null)
                               }}
-                              className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#f2d953]"
+                              className="w-full text-left px-2 py-1.5 rounded hover:bg-zinc-800 transition flex items-center gap-2 cursor-pointer text-amber-400"
                             >
-                              <Calendar className="w-3.5 h-3.5 text-[#f2d953]" />
+                              <Calendar className="w-3.5 h-3.5 text-amber-400" />
                               <span>Buka di Jadwal</span>
                             </button>
 
@@ -796,7 +692,7 @@ export default function BookingsTable({
                                 setSelectedBooking(item)
                                 setActiveMenuId(null)
                               }}
-                              className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer"
+                              className="w-full text-left px-2 py-1.5 rounded hover:bg-zinc-800 transition flex items-center gap-2 cursor-pointer text-zinc-200"
                             >
                               <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
                               <span>Detail Transaksi</span>
@@ -810,7 +706,7 @@ export default function BookingsTable({
                                     handleOpenWhatsApp(item.no_hp, item.nama_penyewa, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-emerald-400"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-zinc-800 transition flex items-center gap-2 cursor-pointer text-emerald-400"
                                 >
                                   <MessageCircle className="w-3.5 h-3.5" />
                                   <span>Kirim WhatsApp</span>
@@ -822,7 +718,7 @@ export default function BookingsTable({
                                     handleCopyPhone(item.no_hp, e)
                                     setActiveMenuId(null)
                                   }}
-                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#8e8e8e] hover:text-white"
+                                  className="w-full text-left px-2 py-1.5 rounded hover:bg-zinc-800 transition flex items-center gap-2 cursor-pointer text-zinc-400 hover:text-zinc-200"
                                 >
                                   <Copy className="w-3.5 h-3.5" />
                                   <span>
@@ -873,15 +769,15 @@ export default function BookingsTable({
         {/* Row Baris Bawah: + Tambah Transaksi (Walk-in) */}
         <div
           onClick={onOpenManualModal}
-          className="flex items-center gap-2 py-2.5 px-5 text-xs text-[#8e8e8e] hover:text-[#f2d953] hover:bg-white/5 cursor-pointer transition-colors border-t border-[#262626]"
+          className="flex items-center gap-2 py-2.5 px-5 text-xs text-zinc-400 hover:text-amber-400 hover:bg-zinc-900/40 cursor-pointer transition-colors border-t border-zinc-800/80"
         >
-          <Plus className="w-3.5 h-3.5 text-[#f2d953]" />
+          <Plus className="w-3.5 h-3.5 text-amber-400" />
           <span>+ Tambah Transaksi (Walk-in)</span>
         </div>
       </div>
 
       {/* Footer Navigasi Baris & Halaman Full Width */}
-      <div className="flex items-center justify-between px-5 py-2.5 border-t border-[#262626] bg-[#181818] text-xs text-[#8e8e8e] shrink-0">
+      <div className="flex items-center justify-between px-5 py-2.5 border-t border-zinc-800/80 bg-zinc-950 text-xs text-zinc-400 shrink-0">
         <div className="flex items-center gap-2">
           <span>Baris per halaman:</span>
           <select
@@ -890,7 +786,7 @@ export default function BookingsTable({
               setRowsPerPage(Number(e.target.value))
               setCurrentPage(1)
             }}
-            className="bg-[#141414] border border-[#262626] rounded-lg px-2 py-1 text-white text-xs cursor-pointer focus:outline-none"
+            className="bg-zinc-900 border border-zinc-800 rounded-lg px-2 py-1 text-zinc-200 text-xs cursor-pointer focus:outline-none"
           >
             <option value={10}>10</option>
             <option value={15}>15</option>

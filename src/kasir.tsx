@@ -6,7 +6,7 @@ import CashierPage from './components/CashierPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="min-h-screen bg-[#161616] text-[#fafafa] font-aeonik">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans">
       <CashierPage />
     </div>
   </StrictMode>,
