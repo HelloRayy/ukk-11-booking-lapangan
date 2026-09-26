@@ -1,5 +1,6 @@
 // PERAN FILE: Pure UI Side Panel Drawer dari Kanan dengan Motion Halus & Staggered Reveal
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import type { CustomerInfo } from '../types'
 import { Checkbox } from '../../../ui/checkbox'
 
@@ -26,31 +27,43 @@ export default function ReservationSidePanel({
 }: ReservationSidePanelProps) {
   const [isRendered, setIsRendered] = useState(isOpen)
   const [isActive, setIsActive] = useState(false)
+  const panelRef = useRef<HTMLDivElement>(null)
 
-  // Sinkronisasi motion buka & tutup dengan transisi CSS halus
+  // Sinkronisasi motion buka & tutup dengan transisi CSS slide-in dan slide-out halus
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>
+
     if (isOpen) {
       setIsRendered(true)
-      // Jalankan state aktif setelah frame browser siap
-      const rafId = requestAnimationFrame(() => {
-        setIsActive(true)
-      })
       document.body.style.overflow = 'hidden'
-      return () => cancelAnimationFrame(rafId)
     } else {
       setIsActive(false)
       document.body.style.overflow = ''
-      // Tunggu durasi animasi selesai (450ms) sebelum melepaskan dari DOM
+      // Tunggu durasi animasi keluar (350ms) selesai sebelum melepaskan dari DOM
       timeoutId = setTimeout(() => {
         setIsRendered(false)
-      }, 450)
+      }, 350)
     }
+
     return () => {
       clearTimeout(timeoutId)
       document.body.style.overflow = ''
     }
   }, [isOpen])
+
+  // Trigger animasi slide-in setelah elemen ter-mount di DOM
+  useEffect(() => {
+    if (isRendered && isOpen) {
+      // Force reflow layout agar posisi offscreen translate-x-full terdaftar di browser
+      if (panelRef.current) {
+        void panelRef.current.offsetHeight
+      }
+      const raf = requestAnimationFrame(() => {
+        setIsActive(true)
+      })
+      return () => cancelAnimationFrame(raf)
+    }
+  }, [isRendered, isOpen])
 
   const [isWaTouched, setIsWaTouched] = useState(false)
 
@@ -97,16 +110,16 @@ export default function ReservationSidePanel({
 
   if (!isRendered) return null
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 overflow-hidden font-aeonik select-none"
       role="dialog"
       aria-modal="true"
       aria-labelledby="side-panel-title"
     >
-      {/* Backdrop Gelap dengan Transisi Fade & Soft Blur (Cubic Deceleration) */}
+      {/* Backdrop Gelap dengan Transisi Fade & Soft Blur */}
       <div
-        className={`fixed inset-0 bg-black/60 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed inset-0 bg-black/60 transition-opacity duration-350 ease-out ${
           isActive ? 'opacity-100 backdrop-blur-[8px]' : 'opacity-0 backdrop-blur-none pointer-events-none'
         }`}
         onClick={onClose}
@@ -115,18 +128,15 @@ export default function ReservationSidePanel({
 
       {/* Kontainer Drawer Samping Kanan (Smooth Slide-in & Slide-out Transition) */}
       <div
-        className={`fixed inset-y-0 right-0 w-full max-w-[540px] mdw:max-w-[580px] bg-[#161616] text-[#f5f5f5] border-l border-white/10 rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+        ref={panelRef}
+        className={`fixed inset-y-0 right-0 w-full max-w-[540px] md:max-w-[580px] bg-[#161616] text-[#f5f5f5] border-l border-white/10 rounded-none sm:rounded-l-[24px] flex flex-col z-50 transition-transform duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${
           isActive
             ? 'translate-x-0 shadow-[-24px_0_60px_rgba(0,0,0,0.7)]'
             : 'translate-x-full shadow-none pointer-events-none'
         }`}
       >
         {/* Top Bar Navigasi (Back Button, Dashes Indicator, Close Button) */}
-        <div
-          className={`p-6 md:px-10 md:pt-8 md:pb-6 flex items-center justify-between shrink-0 transition-all duration-500 ease-out ${
-            isActive ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 -translate-y-2'
-          }`}
-        >
+        <div className="p-6 md:px-10 md:pt-8 md:pb-6 flex items-center justify-between shrink-0">
           {/* Tombol Back di Kiri */}
           <button
             type="button"
@@ -145,12 +155,8 @@ export default function ReservationSidePanel({
           {!isSubmitted ? (
             <form onSubmit={onSubmit} className="flex flex-col justify-between h-full min-h-[460px]">
               <div>
-                {/* Subtitle / Step Indicator & Big Headline (Staggered Entrance) */}
-                <div
-                  className={`transition-all duration-500 ease-out ${
-                    isActive ? 'opacity-100 translate-y-0 delay-150' : 'opacity-0 translate-y-3'
-                  }`}
-                >
+                {/* Subtitle / Step Indicator & Big Headline */}
+                <div>
                   <span className="text-[13px] text-[#8e8e8e] font-light block mb-2">
                     Question 1 • Personal details
                   </span>
@@ -163,12 +169,8 @@ export default function ReservationSidePanel({
                   </h2>
                 </div>
 
-                {/* 3 Parameter Input Utama (Staggered Entrance) */}
-                <div
-                  className={`flex flex-col gap-6 transition-all duration-500 ease-out ${
-                    isActive ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'
-                  }`}
-                >
+                {/* 3 Parameter Input Utama */}
+                <div className="flex flex-col gap-6">
                   {/* 1. Nama Lengkap */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="nama_penyewa" className="text-sm font-normal text-[#d4d4d4]">
@@ -226,7 +228,7 @@ export default function ReservationSidePanel({
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
                           <circle cx="12" cy="12" r="10" />
                           <line x1="12" y1="8" x2="12" y2="12" />
-                          <line x1="12" y1="16" x2="12.01" y2="16" />
+                          <line x1="12" y1="8" x2="12.01" y2="16" />
                         </svg>
                         <span>{waValidation.error}</span>
                       </div>
@@ -268,11 +270,7 @@ export default function ReservationSidePanel({
               </div>
 
               {/* Bottom Action Button dengan Motion Unlock Khas Blanca (WCAG Compliant) */}
-              <div
-                className={`pt-8 pb-2 mt-auto transition-all duration-500 ease-out [transform:translateZ(0)] ${
-                  isActive ? 'opacity-100 translate-y-0 delay-250' : 'opacity-0 translate-y-4'
-                }`}
-              >
+              <div className="pt-8 pb-2 mt-auto">
                 <button
                   type="submit"
                   disabled={!isFormValid}
@@ -383,6 +381,7 @@ export default function ReservationSidePanel({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
