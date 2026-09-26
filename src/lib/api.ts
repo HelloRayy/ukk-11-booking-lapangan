@@ -1,91 +1,34 @@
+// ============================================================================
+// BACKEND SERVICE LAYER: REST API & DATABASE REPOSITORY (SUPABASE POSTGRESQL)
+// ============================================================================
+// Berkas ini bertindak sebagai API Controller / Service Repository Layer.
+// Menangani seluruh operasi CRUD, query JOIN berelasi, serta algoritma
+// pencegahan bentrok jadwal langsung ke basis data PostgreSQL di Supabase.
+// ============================================================================
+
 import { supabase } from './supabase'
 import type { Lapangan, Booking, StatusBooking } from '../types/database'
 
-// ambil info lapangan dari supabase
+// ============================================================================
+// 1. MASTER DATA LAPANGAN (CRUD TABEL `lapangan` - Kriteria 10, 11, 12, 14 UKK)
+// ============================================================================
+
+/**
+ * READ: Mengambil seluruh katalog master lapangan yang terdaftar
+ */
 export async function getLapangan(): Promise<Lapangan[]> {
   const { data, error } = await supabase
     .from('lapangan')
     .select('*')
     .order('id', { ascending: true })
-  //jika gagal muncul error
+
   if (error) throw new Error(`Gagal mengambil data lapangan: ${error.message}`)
   return data || []
 }
 
-//booking anti nabrak dengan user lain
-export async function getBookedSlots(lapanganId: number, tglMain: string): Promise<string[]> {
-  const { data, error } = await supabase
-    .from('bookings')
-    .select('jam_slots')
-    .eq('lapangan_id', lapanganId)
-    .eq('tgl_main', tglMain)
-    .neq('status', 'Batal') // Jadwal yang dibatalkan tidak dianggap bentrok
-
-  if (error) throw new Error(`Gagal memeriksa jadwal: ${error.message}`)
-
-  // Gabungkan seluruh array jam_slots menjadi satu array datar
-  const allBooked = (data || []).flatMap((item: { jam_slots: string[] }) => item.jam_slots)
-  return allBooked
-}
-
-// menyimpan transaksi booking baru ke database
-export async function createBooking(
-  bookingData: Omit<Booking, 'id' | 'created_at'>
-): Promise<Booking> {
-  const { data, error } = await supabase
-    .from('bookings')
-    .insert([bookingData])
-    .select()
-    .single()
-
-  if (error) throw new Error(`Gagal membuat booking: ${error.message}`)
-  return data
-}
-
-// 4. new status booking (Pelunasan di Kasir atau Pembatalan)
-export async function updateStatusBooking(
-  bookingId: number,
-  status: StatusBooking,
-  sisaBayar: number = 0
-): Promise<void> {
-  const { error } = await supabase
-    .from('bookings')
-    .update({ status, sisa_bayar: sisaBayar })
-    .eq('id', bookingId)
-
-  if (error) throw new Error(`Gagal mengubah status: ${error.message}`)
-}
-
-// 5. ambil seluruh data transaksi booking untuk tabel kasir
-export async function getAllBookings(): Promise<Booking[]> {
-  const { data, error } = await supabase
-    .from('bookings')
-    .select('*, lapangan(*)')
-    .order('created_at', { ascending: false })
-
-  if (error) throw new Error(`Gagal mengambil data kasir: ${error.message}`)
-  return (data as Booking[]) || []
-}
-
-// 6. langganan perubahan data booking secara realtime
-export function subscribeToBookings(onUpdate: () => void) {
-  const channel = supabase
-    .channel('bookings-realtime-sync')
-    .on(
-      'postgres_changes',
-      { event: '*', schema: 'public', table: 'bookings' },
-      () => {
-        onUpdate()
-      }
-    )
-    .subscribe()
-
-  return () => {
-    supabase.removeChannel(channel)
-  }
-}
-
-// 7. tambah master lapangan baru (Poin 10 Kisi-Kisi UKK)
+/**
+ * CREATE: Menambahkan master data lapangan baru oleh Admin (Poin 10 Kisi-Kisi UKK)
+ */
 export async function createLapangan(
   lapanganData: Omit<Lapangan, 'id' | 'created_at'>
 ): Promise<Lapangan> {
@@ -99,7 +42,9 @@ export async function createLapangan(
   return data
 }
 
-// 8. edit tarif atau status master lapangan (Poin 11 Kisi-Kisi UKK)
+/**
+ * UPDATE: Memperbarui tarif per jam, nama, atau status lapangan (Poin 11 Kisi-Kisi UKK)
+ */
 export async function updateLapangan(
   id: number,
   lapanganData: Partial<Omit<Lapangan, 'id' | 'created_at'>>
@@ -115,9 +60,12 @@ export async function updateLapangan(
   return data
 }
 
-// 9. hapus master lapangan dari database (Poin 12 Kisi-Kisi UKK)
+/**
+ * DELETE: Menghapus master lapangan dengan validasi integritas referensial (Poin 12 Kisi-Kisi UKK)
+ * Catatan: Mencegah penghapusan jika lapangan masih memiliki riwayat booking aktif
+ */
 export async function deleteLapangan(id: number): Promise<void> {
-  // Validasi relasi database: cegah hapus lapangan jika ada jadwal booking yang aktif
+  // Validasi relasi database: cek apakah ada transaksi aktif pada lapangan ini
   const { data: activeBookings, error: checkError } = await supabase
     .from('bookings')
     .select('id')
@@ -127,7 +75,9 @@ export async function deleteLapangan(id: number): Promise<void> {
   if (checkError) throw new Error(`Gagal memeriksa riwayat booking: ${checkError.message}`)
 
   if (activeBookings && activeBookings.length > 0) {
-    throw new Error('Lapangan tidak dapat dihapus karena masih memiliki transaksi booking aktif. Nonaktifkan status lapangan menjadi Tutup.')
+    throw new Error(
+      'Lapangan tidak dapat dihapus karena masih memiliki transaksi booking aktif. Silakan ubah status lapangan menjadi Tutup.'
+    )
   }
 
   const { error } = await supabase
@@ -138,7 +88,83 @@ export async function deleteLapangan(id: number): Promise<void> {
   if (error) throw new Error(`Gagal menghapus lapangan: ${error.message}`)
 }
 
-// 10. cari dan filter transaksi booking (Poin 13 Kisi-Kisi UKK - Single Query JOIN Bebas N+1)
+// ============================================================================
+// 2. TRANSAKSI BOOKING & LOGIKA ANTI-BENTROK (TABEL `bookings` - Kriteria 3 & 4)
+// ============================================================================
+
+/**
+ * VALIDASI JADWAL: Mengecek daftar slot jam yang sudah terisi pada tanggal & lapangan tertentu
+ * Logika Bisnis: Mengabaikan status 'Batal' sehingga slot yang dibatalkan bisa dipesan kembali
+ */
+export async function getBookedSlots(lapanganId: number, tglMain: string): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('jam_slots')
+    .eq('lapangan_id', lapanganId)
+    .eq('tgl_main', tglMain)
+    .neq('status', 'Batal') // Slot yang dibatalkan tidak dianggap bentrok
+
+  if (error) throw new Error(`Gagal memeriksa jadwal: ${error.message}`)
+
+  // Gabungkan array jam_slots menjadi satu array datar (contoh: ['08:00', '09:00', '10:00'])
+  const allBooked = (data || []).flatMap((item: { jam_slots: string[] }) => item.jam_slots)
+  return allBooked
+}
+
+/**
+ * CREATE TRANSAKSI: Menyimpan data reservasi baru dari pemesan / kasir ke database
+ */
+export async function createBooking(
+  bookingData: Omit<Booking, 'id' | 'created_at'>
+): Promise<Booking> {
+  const { data, error } = await supabase
+    .from('bookings')
+    .insert([bookingData])
+    .select()
+    .single()
+
+  if (error) throw new Error(`Gagal membuat booking: ${error.message}`)
+  return data
+}
+
+// ============================================================================
+// 3. OPERASIONAL KASIR & MANAJEMEN TRANSAKSI (Kriteria 11, 13, 14 UKK)
+// ============================================================================
+
+/**
+ * READ ALL (JOIN): Mengambil seluruh data transaksi kasir beserta relasi data lapangannya
+ * Menggunakan relasi Foreign Key: bookings.lapangan_id -> lapangan.id
+ */
+export async function getAllBookings(): Promise<Booking[]> {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*, lapangan(*)')
+    .order('created_at', { ascending: false })
+
+  if (error) throw new Error(`Gagal mengambil data kasir: ${error.message}`)
+  return (data as Booking[]) || []
+}
+
+/**
+ * UPDATE STATUS: Memperbarui status transaksi (Pelunasan sisa bayar DP atau Pembatalan)
+ */
+export async function updateStatusBooking(
+  bookingId: number,
+  status: StatusBooking,
+  sisaBayar: number = 0
+): Promise<void> {
+  const { error } = await supabase
+    .from('bookings')
+    .update({ status, sisa_bayar: sisaBayar })
+    .eq('id', bookingId)
+
+  if (error) throw new Error(`Gagal mengubah status: ${error.message}`)
+}
+
+/**
+ * SEARCH & FILTER (SQL LEVEL): Mencari dan menyaring transaksi berdasarkan kata kunci atau status
+ * Poin 13 Kisi-Kisi UKK: Query efisien tanpa N+1 problem menggunakan operator .ilike dan .or
+ */
 export async function searchBookings(
   keyword: string = '',
   status?: string
@@ -148,7 +174,7 @@ export async function searchBookings(
     .select('*, lapangan(*)')
     .order('created_at', { ascending: false })
 
-  // 1. Filter status di level SQL Supabase
+  // Filter 1: Status transaksi di level database
   if (status && status !== 'Semua') {
     if (status === 'Belum Lunas') {
       query = query.eq('status', 'Booked').gt('sisa_bayar', 0)
@@ -157,7 +183,7 @@ export async function searchBookings(
     }
   }
 
-  // 2. Filter keyword pencarian di level SQL Supabase (Nama, No HP, atau Invoice ID)
+  // Filter 2: Kata kunci pencarian (Nama Penyewa, Nomor WhatsApp, atau No Invoice)
   if (keyword.trim()) {
     const q = keyword.trim()
     const numericPart = q.toLowerCase().startsWith('inv-') ? q.slice(4) : q
@@ -176,4 +202,27 @@ export async function searchBookings(
   return (data as Booking[]) || []
 }
 
+// ============================================================================
+// 4. WEBSOCKET REALTIME (SINKRONISASI JADWAL LIVE)
+// ============================================================================
 
+/**
+ * REALTIME LISTENER: Berlangganan perubahan data tabel bookings via WebSocket
+ * Setiap ada transaksi baru / pelunasan, UI langsung update otomatis tanpa reload
+ */
+export function subscribeToBookings(onUpdate: () => void) {
+  const channel = supabase
+    .channel('bookings-realtime-sync')
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'bookings' },
+      () => {
+        onUpdate()
+      }
+    )
+    .subscribe()
+
+  return () => {
+    supabase.removeChannel(channel)
+  }
+}
