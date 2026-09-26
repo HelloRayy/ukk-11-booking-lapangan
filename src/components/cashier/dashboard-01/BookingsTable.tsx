@@ -52,6 +52,7 @@ interface BookingsTableProps {
   onBatal: (id: number) => void
   onRefresh: () => void
   onOpenManualModal: () => void
+  onNavigateToSchedule?: (date?: string, bookingId?: number | string) => void
 }
 
 type SortField = 'nama_penyewa' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
@@ -69,6 +70,7 @@ export default function BookingsTable({
   onBatal,
   onRefresh,
   onOpenManualModal,
+  onNavigateToSchedule,
 }: BookingsTableProps) {
   // State Panel Detail Kanan
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
@@ -628,8 +630,15 @@ export default function BookingsTable({
                 return (
                   <TableRow
                     key={item.id}
-                    onClick={() => setSelectedBooking(item)}
+                    onClick={() => {
+                      if (onNavigateToSchedule) {
+                        onNavigateToSchedule(item.tgl_main, item.id)
+                      } else {
+                        setSelectedBooking(item)
+                      }
+                    }}
                     className="cursor-pointer group h-10 border-b border-[#262626]/60 hover:bg-white/[0.04]"
+                    title="Klik untuk membuka jadwal di Jadwal Lapangan"
                   >
                     {/* 1. Identifier (Sans) + Title (Penyewa & No HP) */}
                     <TableCell className="pl-5">
@@ -769,6 +778,18 @@ export default function BookingsTable({
                             onClick={(e) => e.stopPropagation()}
                             className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-[#262626] bg-[#181818] shadow-2xl p-1 z-30 text-xs text-[#fafafa] animate-fadeIn"
                           >
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onNavigateToSchedule?.(item.tgl_main, item.id)
+                                setActiveMenuId(null)
+                              }}
+                              className="w-full text-left px-2 py-1.5 rounded hover:bg-white/10 transition flex items-center gap-2 cursor-pointer text-[#f2d953]"
+                            >
+                              <Calendar className="w-3.5 h-3.5 text-[#f2d953]" />
+                              <span>Buka di Jadwal</span>
+                            </button>
+
                             <button
                               type="button"
                               onClick={() => {
@@ -912,6 +933,7 @@ export default function BookingsTable({
         onClose={() => setSelectedBooking(null)}
         onLunasi={onLunasi}
         onBatal={onBatal}
+        onNavigateToSchedule={onNavigateToSchedule}
       />
     </div>
   )

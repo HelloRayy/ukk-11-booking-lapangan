@@ -12,12 +12,14 @@ interface DashboardOverviewProps {
   bookings: Booking[]
   courts: Lapangan[]
   loading?: boolean
+  onNavigateToSchedule?: (date?: string, bookingId?: number | string) => void
 }
 
 export default function DashboardOverview({
   bookings = [],
   courts = [],
   loading = false,
+  onNavigateToSchedule,
 }: DashboardOverviewProps) {
   // Label Periode Berjalan (misal: "September 2026")
   const currentPeriod = useMemo(() => {
@@ -106,6 +108,8 @@ export default function DashboardOverview({
 
     return bookings.slice(0, 5).map((b, idx) => ({
       id: String(b.id),
+      dbId: b.id,
+      date: b.tgl_main,
       customerName: b.nama_penyewa,
       email: b.no_hp || 'Tanpa nomor HP',
       courtName: b.lapangan?.nama_lapangan || `Lapangan ${b.lapangan_id}`,
@@ -163,7 +167,10 @@ export default function DashboardOverview({
 
         {/* Kolom Kanan: Recent Bookings */}
         <div className="lg:col-span-3">
-          <RecentBookings bookings={recentBookings} />
+          <RecentBookings
+            bookings={recentBookings}
+            onSelectBooking={(item) => onNavigateToSchedule?.(item.date, item.dbId)}
+          />
         </div>
       </div>
     </div>

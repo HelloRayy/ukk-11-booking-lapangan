@@ -16,6 +16,7 @@ import {
   QrCode,
   ChevronDown,
   ArrowLeft,
+  ArrowUpRight,
 } from 'lucide-react'
 import type { Booking } from '../../../types/database'
 import { formatSlotRange } from '../../../lib/utils'
@@ -26,6 +27,7 @@ interface BookingDetailSheetProps {
   onClose: () => void
   onLunasi: (id: number) => void
   onBatal: (id: number) => void
+  onNavigateToSchedule?: (date?: string, bookingId?: number | string) => void
 }
 
 export default function BookingDetailSheet({
@@ -34,6 +36,7 @@ export default function BookingDetailSheet({
   onClose,
   onLunasi,
   onBatal,
+  onNavigateToSchedule,
 }: BookingDetailSheetProps) {
   // State Mode Tampilan: 'detail' (rincian umum) atau 'qris' (layar QRIS dinamis)
   const [sheetMode, setSheetMode] = useState<'detail' | 'qris'>('detail')
@@ -348,6 +351,21 @@ export default function BookingDetailSheet({
                     <span className="text-white">{booking.durasi_jam} Jam</span>
                   </div>
                 </div>
+
+                {onNavigateToSchedule && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onNavigateToSchedule(booking.tgl_main, booking.id)
+                      onClose()
+                    }}
+                    className="w-full mt-2 py-1.5 px-3 rounded-lg bg-white/5 hover:bg-[#f2d953]/15 border border-[#333333] hover:border-[#f2d953]/40 text-[#f2d953] text-xs font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                  >
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Buka di Jadwal Lapangan</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
 
               {/* Bagian 3: Rincian Pembayaran */}

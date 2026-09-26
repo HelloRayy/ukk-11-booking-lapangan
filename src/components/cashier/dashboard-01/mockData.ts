@@ -17,6 +17,8 @@ export interface ChartMonthData {
 
 export interface RecentBookingItem {
   id: string
+  dbId?: number
+  date?: string
   customerName: string
   email: string
   courtName: string

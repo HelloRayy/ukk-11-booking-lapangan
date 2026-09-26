@@ -3,9 +3,10 @@ import type { RecentBookingItem } from './mockData'
 
 interface RecentBookingsProps {
   bookings: RecentBookingItem[]
+  onSelectBooking?: (booking: RecentBookingItem) => void
 }
 
-export default function RecentBookings({ bookings }: RecentBookingsProps) {
+export default function RecentBookings({ bookings, onSelectBooking }: RecentBookingsProps) {
   const formatRupiah = (val: number) => `+Rp ${val.toLocaleString('id-ID')}`
 
   return (
@@ -16,7 +17,7 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
           Booking Terkini
         </h3>
         <p className="text-xs text-[#8e8e8e] mt-0.5">
-          {bookings.length} transaksi terbaru
+          {bookings.length} transaksi terbaru (klik untuk buka di jadwal)
         </p>
       </div>
 
@@ -40,7 +41,9 @@ export default function RecentBookings({ bookings }: RecentBookingsProps) {
           return (
             <div
               key={item.id}
-              className="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-white/[0.03] transition-colors"
+              onClick={() => onSelectBooking?.(item)}
+              className="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-white/[0.06] hover:border-[#383838] border border-transparent transition-all cursor-pointer group active:scale-[0.99]"
+              title="Buka di Jadwal Lapangan"
             >
               {/* Avatar Inisial */}
               <div

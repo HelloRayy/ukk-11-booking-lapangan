@@ -42,6 +42,8 @@ interface CourtScheduleGridProps {
   onBatal: (id: number) => void
   onRefresh: () => void
   onOpenManualModalWithSlot?: (courtId: number, date: string, hour: string) => void
+  initialDate?: string | null
+  initialBookingId?: number | string | null
 }
 
 export default function CourtScheduleGrid({
@@ -51,9 +53,11 @@ export default function CourtScheduleGrid({
   onLunasi,
   onBatal,
   onRefresh,
+  initialDate,
+  initialBookingId,
 }: CourtScheduleGridProps) {
-  // State Tanggal Terpilih (Default: Hari Ini YYYY-MM-DD)
-  const [selectedDate, setSelectedDate] = useState<string>(getTodayISODate())
+  // State Tanggal Terpilih (Default: Hari Ini YYYY-MM-DD atau initialDate jika diberikan)
+  const [selectedDate, setSelectedDate] = useState<string>(() => initialDate || getTodayISODate())
 
   // State Orkestrasi Panel Kanan 1:1 Reservasi ('empty' | 'inspect' | 'create' | 'receipt')
   const [panelMode, setPanelMode] = useState<RightPanelMode>('empty')
@@ -119,6 +123,27 @@ export default function CourtScheduleGrid({
     const timer = setTimeout(() => setRangeError(null), 4000)
     return () => clearTimeout(timer)
   }, [rangeError])
+
+  // Sinkronisasi tanggal dari navigasi eksternal (Overview / Transaksi)
+  useEffect(() => {
+    if (initialDate && initialDate !== selectedDate) {
+      setSelectedDate(initialDate)
+    }
+  }, [initialDate])
+
+  // Otomatis sorot & buka inspektor booking saat diarahkan dari navigasi eksternal
+  useEffect(() => {
+    if (initialBookingId && mappedBookings.length > 0) {
+      const match = mappedBookings.find(
+        (b) =>
+          String(b.id) === String(initialBookingId) ||
+          String(b.invoiceNumber).includes(String(initialBookingId))
+      )
+      if (match) {
+        handleSelectBooking(match)
+      }
+    }
+  }, [initialBookingId, mappedBookings, selectedDate])
 
   // Click outside listener untuk dropdown skema bayar
   useEffect(() => {

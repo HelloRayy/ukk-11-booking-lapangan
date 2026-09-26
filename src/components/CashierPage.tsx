@@ -18,6 +18,14 @@ export default function CashierPage() {
     date?: string
     hour?: string
   }>({})
+  const [initialScheduleDate, setInitialScheduleDate] = useState<string | null>(null)
+  const [initialBookingId, setInitialBookingId] = useState<number | string | null>(null)
+
+  const handleNavigateToSchedule = (date?: string, bookingId?: number | string) => {
+    if (date) setInitialScheduleDate(date)
+    if (bookingId) setInitialBookingId(bookingId)
+    setCurrentTab('schedule')
+  }
 
   // Ambil state dan aksi riil Supabase dari custom hook useCashier
   const {
@@ -93,6 +101,7 @@ export default function CashierPage() {
                 bookings={allBookings}
                 courts={courts}
                 loading={loading}
+                onNavigateToSchedule={handleNavigateToSchedule}
               />
             </div>
           ) : currentTab === 'schedule' ? (
@@ -105,6 +114,8 @@ export default function CashierPage() {
               onBatal={handleBatal}
               onRefresh={loadDataKasir}
               onOpenManualModalWithSlot={handleOpenManualWithSlot}
+              initialDate={initialScheduleDate}
+              initialBookingId={initialBookingId}
             />
           ) : (
             /* Tab 3: Tabel Operasional Linear (Work items) Full Width */
@@ -123,6 +134,7 @@ export default function CashierPage() {
                 setManualModalDefaults({})
                 setIsManualModalOpen(true)
               }}
+              onNavigateToSchedule={handleNavigateToSchedule}
             />
           )}
         </main>
