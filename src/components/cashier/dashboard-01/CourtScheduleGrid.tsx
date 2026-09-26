@@ -550,19 +550,9 @@ export default function CourtScheduleGrid({
     <div className="flex flex-col h-full bg-[#161616] text-[#fafafa] font-aeonik select-none overflow-hidden">
       {/* 1. Control Toolbar Atas (Navigasi Tanggal & Search Bar Kontekstual) - Selaras 1:1 dengan Tab Transaksi */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[#262626] bg-[#181818]">
-        {/* Sisi Kiri: Popover Kalender Tanggal 1:1 Reservasi & Search Bar */}
-        <div className="flex items-center gap-2.5 flex-1 max-w-lg flex-wrap sm:flex-nowrap">
-          {/* Popover Kalender Tanggal 1:1 Reservasi */}
-          <CashierDatePicker
-            selectedDate={selectedDate}
-            onDateChange={(newDate) => {
-              setSelectedDate(newDate)
-              handleClosePanel()
-            }}
-          />
-
-          {/* Search Bar Jadwal Lapangan Terpadu */}
-          <div className="relative w-full sm:w-64 max-w-xs">
+        {/* Sisi Kiri: Search Bar Terpadu (Sama persis dengan Tab Transaksi di posisi paling kiri) */}
+        <div className="flex items-center gap-2 flex-1 max-w-sm">
+          <div className="relative w-full">
             <Search className="w-3.5 h-3.5 text-[#8e8e8e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
@@ -582,11 +572,32 @@ export default function CourtScheduleGrid({
               </button>
             )}
           </div>
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="text-[11px] text-[#8e8e8e] hover:text-white px-2 py-1 rounded bg-white/5 whitespace-nowrap transition-colors cursor-pointer"
+              title="Reset pencarian"
+            >
+              Reset
+            </button>
+          )}
         </div>
 
-        {/* Sisi Kanan: Legend & Refresh */}
-        <div className="flex items-center gap-2.5 justify-end">
-          <div className="hidden lg:flex items-center gap-3 text-xs text-[#8e8e8e] pr-3 border-r border-[#262626]">
+        {/* Sisi Kanan: Popover Kalender Tanggal 1:1 Reservasi, Legend Status & Refresh Button */}
+        <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap justify-end">
+          {/* Popover Kalender Tanggal 1:1 Reservasi */}
+          <CashierDatePicker
+            selectedDate={selectedDate}
+            onDateChange={(newDate) => {
+              setSelectedDate(newDate)
+              handleClosePanel()
+            }}
+            align="right"
+          />
+
+          {/* Legend Status Slot Jam */}
+          <div className="hidden lg:flex items-center gap-3 text-xs text-[#8e8e8e] px-3 border-x border-[#262626]">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span>Lunas</span>
@@ -601,6 +612,7 @@ export default function CourtScheduleGrid({
             </div>
           </div>
 
+          {/* Tombol Muat Ulang / Refresh */}
           <button
             type="button"
             onClick={onRefresh}

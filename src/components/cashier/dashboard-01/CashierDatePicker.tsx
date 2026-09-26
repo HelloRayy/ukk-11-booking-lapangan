@@ -6,6 +6,9 @@ import { formatDisplayDate, getTodayISODate } from '../../reservation/utils/form
 interface CashierDatePickerProps {
   selectedDate: string
   onDateChange: (date: string) => void
+  align?: 'left' | 'right'
+  allowAllDates?: boolean
+  labelPrefix?: string
 }
 
 const MONTH_NAMES = [
@@ -18,12 +21,15 @@ const DAY_NAMES = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab']
 export default function CashierDatePicker({
   selectedDate,
   onDateChange,
+  align = 'right',
+  allowAllDates = false,
+  labelPrefix,
 }: CashierDatePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const initialDate = useMemo(() => {
-    if (selectedDate) {
+    if (selectedDate && selectedDate !== 'all') {
       const parts = selectedDate.split('-').map(Number)
       if (parts.length === 3) return new Date(parts[0], parts[1] - 1, parts[2])
     }
@@ -58,7 +64,11 @@ export default function CashierDatePicker({
     }
   }, [])
 
-  const displayDate = selectedDate ? formatDisplayDate(selectedDate) : 'Pilih Tanggal'
+  const displayDate = useMemo(() => {
+    if (selectedDate === 'all') return 'Semua Tanggal'
+    if (!selectedDate) return 'Pilih Tanggal'
+    return formatDisplayDate(selectedDate)
+  }, [selectedDate])
 
   const handlePrevMonth = () => {
     if (viewMonth === 0) {
@@ -97,26 +107,41 @@ export default function CashierDatePicker({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-2 text-xs sm:text-sm font-medium cursor-pointer transition-all duration-150 px-3 h-8 rounded-lg border bg-[#141414] group select-none ${
+        className={`flex items-center gap-1.5 text-xs font-medium cursor-pointer transition-all duration-150 px-2.5 h-8 rounded-lg border bg-[#141414] group select-none ${
           isOpen
-            ? 'text-[#f2d953] border-[#f2d953]/60 bg-[#1a1914]'
-            : 'text-white border-[#262626] hover:text-[#f2d953] hover:border-[#383838]'
+            ? 'text-white border-[#f2d953] ring-1 ring-[#f2d953]/30 bg-[#1c1c1c] shadow-xs'
+            : selectedDate !== 'all'
+            ? 'border-[#262626] text-white hover:border-[#383838]'
+            : 'border-[#262626] text-[#8e8e8e] hover:bg-white/5'
         }`}
         aria-label="Buka kalender tanggal reservasi"
         aria-expanded={isOpen}
       >
-        <Calendar className="w-3.5 h-3.5 text-[#a3a3a3] group-hover:text-[#f2d953] transition-colors shrink-0" />
-        <span className="truncate max-w-[190px] sm:max-w-none">{displayDate}</span>
+        <Calendar className={`w-3.5 h-3.5 transition-colors shrink-0 ${isOpen ? 'text-[#f2d953]' : 'text-[#8e8e8e] group-hover:text-white'}`} />
+        <span className="truncate max-w-[210px]">
+          {labelPrefix ? (
+            <span>
+              {labelPrefix}{' '}
+              <strong className="font-semibold text-white">{displayDate}</strong>
+            </span>
+          ) : (
+            displayDate
+          )}
+        </span>
         <ChevronDown
-          className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-            isOpen ? 'rotate-180 text-[#f2d953]' : 'text-[#a3a3a3] group-hover:text-[#f2d953]'
+          className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+            isOpen ? 'rotate-180 text-[#f2d953]' : 'text-[#8e8e8e] group-hover:text-white'
           }`}
         />
       </button>
 
       {/* Popover Kalender Visual (1:1 dengan Reservasi) */}
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-72 sm:w-80 bg-[#181818] border border-[#2e2e2e] rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none">
+        <div
+          className={`absolute top-full mt-1.5 w-72 sm:w-80 bg-[#181818] border border-[#2e2e2e] rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none ${
+            align === 'right' ? 'right-0' : 'left-0'
+          }`}
+        >
           {/* Header Bulan & Navigasi */}
           <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#282828]">
             <div className="text-sm font-bold text-white">
@@ -187,20 +212,41 @@ export default function CashierDatePicker({
             })}
           </div>
 
-          {/* Shortcut Hari Ini */}
-          <div className="pt-2.5 mt-2.5 border-t border-[#262626] flex items-center justify-between">
-            <button
-              type="button"
-              onClick={() => {
-                onDateChange(todayStr)
-                setIsOpen(false)
-              }}
-              className="text-[11px] font-medium text-[#f2d953] hover:underline cursor-pointer"
-            >
-              Lompat ke Hari Ini
-            </button>
-            <span className="text-[10px] text-[#737373]">
-              {selectedDate}
+          {/* Shortcut Footer */}
+          <div className="pt-2.5 mt-2.5 border-t border-[#262626] flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  onDateChange(todayStr)
+                  setIsOpen(false)
+                }}
+                className="text-[11px] font-medium text-[#f2d953] hover:underline cursor-pointer"
+              >
+                Hari Ini
+              </button>
+              {allowAllDates && (
+                <>
+                  <span className="text-[#3a3a3a]">•</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onDateChange('all')
+                      setIsOpen(false)
+                    }}
+                    className={`text-[11px] font-medium cursor-pointer transition-colors ${
+                      selectedDate === 'all'
+                        ? 'text-[#f2d953] font-semibold underline'
+                        : 'text-[#a3a3a3] hover:text-white'
+                    }`}
+                  >
+                    Semua Tanggal
+                  </button>
+                </>
+              )}
+            </div>
+            <span className="text-[10px] text-[#737373] truncate max-w-[120px]">
+              {selectedDate === 'all' ? 'Semua Tanggal' : selectedDate}
             </span>
           </div>
         </div>
