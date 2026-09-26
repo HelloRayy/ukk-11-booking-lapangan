@@ -16,7 +16,11 @@ interface RightPanelInspectorProps {
   customerWhatsapp?: string
   customerEmail?: string
   onClose: (expiredMessage?: string) => void
-  onCreateBooking: (paymentType: PaymentType, notes?: string) => void | Promise<void>
+  onCreateBooking: (
+    paymentType: PaymentType,
+    notes?: string,
+    customerData?: { nama: string; whatsapp: string; email?: string }
+  ) => void | Promise<void>
 }
 
 export default function RightPanelInspector({
@@ -35,6 +39,18 @@ export default function RightPanelInspector({
   const [expiryTimestamp, setExpiryTimestamp] = useState<number | null>(null)
   const [isViewingReceipt, setIsViewingReceipt] = useState(false)
   const [isVerifyingPayment, setIsVerifyingPayment] = useState(false)
+
+  // State nama dan WhatsApp yang bisa diedit di form
+  const [formName, setFormName] = useState(customerName || '')
+  const [formWhatsapp, setFormWhatsapp] = useState(customerWhatsapp || '')
+
+  useEffect(() => {
+    if (customerName) setFormName(customerName)
+  }, [customerName])
+
+  useEffect(() => {
+    if (customerWhatsapp) setFormWhatsapp(customerWhatsapp)
+  }, [customerWhatsapp])
 
   // Reset step ketika slot baru dipilih
   const slotKey = selectedSlot ? `${selectedSlot.courtId}-${selectedSlot.startHour}-${selectedSlot.endHour}` : null
@@ -83,17 +99,17 @@ export default function RightPanelInspector({
     try {
       // Transisi loading state realistis saat perpindahan QR ke struk (~1100ms)
       await new Promise((resolve) => setTimeout(resolve, 1100))
-      await onCreateBooking(paymentType, notes)
+      await onCreateBooking(paymentType, notes, {
+        nama: formName.trim() || 'Raditya Rayhan',
+        whatsapp: formWhatsapp.trim() || '085799799857',
+        email: customerEmail,
+      })
     } finally {
       setIsVerifyingPayment(false)
       setBookingStep('details')
       setExpiryTimestamp(null)
     }
   }
-
-  const finalCustomerName = customerName || 'Raditya Rayhan'
-  const finalWhatsapp = customerWhatsapp || '085799799857'
-  const finalEmail = customerEmail || 'raditya.rayhan@gmail.com'
 
   // Jika kondisi kosong (idle), di layar HP sembunyikan agar kalender bisa dilihat 100% penuh
   if (panelMode === 'empty') {
@@ -184,11 +200,13 @@ export default function RightPanelInspector({
                     selectedSlot={selectedSlot}
                     paymentType={paymentType}
                     notes={notes}
-                    customerName={finalCustomerName}
-                    customerWhatsapp={finalWhatsapp}
-                    customerEmail={finalEmail}
+                    customerName={formName}
+                    customerWhatsapp={formWhatsapp}
+                    customerEmail={customerEmail || ''}
                     onPaymentTypeChange={setPaymentType}
                     onNotesChange={setNotes}
+                    onCustomerNameChange={setFormName}
+                    onCustomerWhatsappChange={setFormWhatsapp}
                     onClose={() => onClose()}
                     onProceedToPayment={handleProceedToPayment}
                   />

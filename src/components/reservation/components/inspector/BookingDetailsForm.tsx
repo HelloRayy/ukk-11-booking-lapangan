@@ -1,6 +1,5 @@
-// PERAN FILE: Formulir konfirmasi rincian sewa, skema pembayaran DP/Lunas, info pemesan & catatan (Clean UI Sesuai Backend)
 import { useState, useEffect, useRef, useMemo } from 'react'
-import { X, Clock, ArrowRight, ChevronDown, Check } from 'lucide-react'
+import { X, Clock, ArrowRight, ChevronDown, Check, User, Phone } from 'lucide-react'
 import type { SlotRangeSelection, PaymentType } from '../../types'
 import { formatRupiah } from '../../utils/formatters'
 
@@ -10,9 +9,11 @@ interface BookingDetailsFormProps {
   notes: string
   customerName: string
   customerWhatsapp: string
-  customerEmail: string
+  customerEmail?: string
   onPaymentTypeChange: (type: PaymentType) => void
   onNotesChange: (notes: string) => void
+  onCustomerNameChange: (name: string) => void
+  onCustomerWhatsappChange: (whatsapp: string) => void
   onClose: () => void
   onProceedToPayment: () => void
 }
@@ -25,6 +26,8 @@ export default function BookingDetailsForm({
   customerWhatsapp,
   onPaymentTypeChange,
   onNotesChange,
+  onCustomerNameChange,
+  onCustomerWhatsappChange,
   onClose,
   onProceedToPayment,
 }: BookingDetailsFormProps) {
@@ -230,24 +233,50 @@ export default function BookingDetailsForm({
           </p>
         </div>
 
-        {/* 4. Data Pemesan & Catatan Sewa (Textarea Height Tinggi) */}
-        <div className="space-y-2 pt-1">
-          <div className="px-3.5 py-2.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2.5 truncate">
-              <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#f2d953] shrink-0 font-bold text-[11px]">
-                {customerName.charAt(0)}
-              </div>
-              <div className="truncate">
-                <span className="font-semibold text-white block truncate">{customerName}</span>
-                <span className="text-[11px] text-[#737373] block">{customerWhatsapp}</span>
-              </div>
+        {/* 4. Data Pemesan & Catatan Sewa (Input Field Fleksibel) */}
+        <div className="space-y-3 pt-1">
+          {/* Input Nama Pemesan */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-medium text-[#8e8e8e] px-1 flex items-center justify-between">
+              <span>Nama Penyewa</span>
+              <span className="text-[10px] text-[#f2d953]">*Wajib (Min 3 huruf)</span>
+            </label>
+            <div className="relative">
+              <User className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={customerName}
+                onChange={(e) => onCustomerNameChange(e.target.value)}
+                placeholder="Contoh: Raditya Rayhan"
+                className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors"
+              />
             </div>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-[#a3a3a3] shrink-0">
-              Penyewa
-            </span>
           </div>
 
-          <div>
+          {/* Input Nomor WhatsApp */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-medium text-[#8e8e8e] px-1 flex items-center justify-between">
+              <span>Nomor WhatsApp</span>
+              <span className="text-[10px] text-[#f2d953]">*Wajib (Awalan 08)</span>
+            </label>
+            <div className="relative">
+              <Phone className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="tel"
+                value={customerWhatsapp}
+                onChange={(e) => onCustomerWhatsappChange(e.target.value.replace(/\D/g, ''))}
+                placeholder="Contoh: 085799799857"
+                maxLength={13}
+                className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors font-mono"
+              />
+            </div>
+          </div>
+
+          {/* Textarea Catatan */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-medium text-[#8e8e8e] px-1 block">
+              Catatan Sewa (Opsional)
+            </label>
             <textarea
               value={notes}
               onChange={(e) => onNotesChange(e.target.value)}
@@ -260,7 +289,7 @@ export default function BookingDetailsForm({
       </div>
 
       {/* 5. Sticky Footer: Bayar Sekarang & CTA */}
-      <div className="pt-3 border-t border-[#262626] mt-3 space-y-2.5">
+      <div className="pt-3 border-t border-[#262626] mt-3 space-y-2">
         <div className="flex justify-between items-baseline px-1">
           <div>
             <span className="text-xs text-[#8e8e8e] block">
@@ -277,14 +306,37 @@ export default function BookingDetailsForm({
           </span>
         </div>
 
-        <button
-          type="button"
-          onClick={onProceedToPayment}
-          className="w-full h-11 rounded-xl bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] text-xs sm:text-sm font-bold transition-all cursor-pointer shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
-        >
-          <span>Lanjut ke Pembayaran QRIS</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
+        {(() => {
+          const isNameValid = customerName.trim().length >= 3
+          const isWaValid = /^08[0-9]{8,11}$/.test(customerWhatsapp.trim())
+          const isFormComplete = isNameValid && isWaValid
+
+          return (
+            <>
+              <button
+                type="button"
+                disabled={!isFormComplete}
+                onClick={onProceedToPayment}
+                className={`w-full h-11 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 ${
+                  isFormComplete
+                    ? 'bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] cursor-pointer shadow-md active:scale-[0.98]'
+                    : 'bg-[#262626] text-[#666666] cursor-not-allowed opacity-60'
+                }`}
+              >
+                <span>Lanjut ke Pembayaran QRIS</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              {!isFormComplete && (
+                <p className="text-[11px] text-[#f2d953]/80 text-center font-medium">
+                  {!isNameValid
+                    ? 'Lengkapi nama pemesan (min. 3 huruf)'
+                    : 'Lengkapi nomor WhatsApp valid (diawali 08, 10-13 digit)'}
+                </p>
+              )}
+            </>
+          )
+        })()}
       </div>
     </div>
   )

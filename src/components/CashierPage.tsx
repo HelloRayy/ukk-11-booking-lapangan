@@ -82,8 +82,6 @@ export default function CashierPage() {
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         <Header
           currentTab={currentTab}
-          searchKeyword={searchKeyword}
-          onSearchChange={setSearchKeyword}
           onToggleMobileSidebar={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         />
 

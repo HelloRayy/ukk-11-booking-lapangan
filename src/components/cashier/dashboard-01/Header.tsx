@@ -1,17 +1,13 @@
-// PERAN FILE: Komponen Top Header Bar Kasir Linear-Style (Inter Sans Bebas Mono)
-import { Search, Bell, Menu } from 'lucide-react'
+// PERAN FILE: Komponen Top Header Bar Kasir Linear-Style (Clean & Minimalist, Tanpa Redundansi Search Bar)
+import { Bell, Menu, ShieldCheck } from 'lucide-react'
 
 interface HeaderProps {
   currentTab: 'overview' | 'bookings' | 'schedule'
-  searchKeyword?: string
-  onSearchChange?: (val: string) => void
   onToggleMobileSidebar?: () => void
 }
 
 export default function Header({
   currentTab,
-  searchKeyword = '',
-  onSearchChange,
   onToggleMobileSidebar,
 }: HeaderProps) {
   return (
@@ -42,20 +38,12 @@ export default function Header({
         </div>
       </div>
 
-      {/* 2. Sisi Kanan: Search Input & Shortcut */}
+      {/* 2. Sisi Kanan: Status Kasir, Notifikasi, & Profile Avatar */}
       <div className="flex items-center gap-3">
-        <div className="relative hidden sm:block w-52 md:w-60">
-          <Search className="w-3.5 h-3.5 text-[#737373] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="text"
-            value={searchKeyword}
-            onChange={(e) => onSearchChange?.(e.target.value)}
-            placeholder="Cari transaksi..."
-            className="w-full h-7 pl-8 pr-10 rounded-md bg-[#141414] border border-[#262626] text-xs text-white placeholder:text-[#737373] focus:outline-none focus:border-[#f2d953]/60 transition-colors"
-          />
-          <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/10 text-[#a3a3a3] pointer-events-none">
-            ⌘K
-          </kbd>
+        {/* Status Indikator Sistem Kasir */}
+        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-medium">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Kasir Online</span>
         </div>
 
         {/* Notifikasi & Profile Avatar */}

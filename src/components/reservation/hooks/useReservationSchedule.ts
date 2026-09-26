@@ -252,17 +252,36 @@ export function useReservationSchedule() {
   }
 
   // Konfirmasi pembuatan booking baru & simpan ke Supabase
-  const handleCreateBooking = async (paymentType: PaymentType, notes?: string) => {
+  const handleCreateBooking = async (
+    paymentType: PaymentType,
+    notes?: string,
+    customerData?: { nama: string; whatsapp: string; email?: string }
+  ) => {
     if (!selectedSlot) return
 
     const totalPrice = selectedSlot.totalPrice
     const paidAmount = paymentType === 'DP' ? totalPrice * 0.5 : totalPrice
     const remainingAmount = totalPrice - paidAmount
 
-    const customerName = customer?.nama || 'Raditya Rayhan'
-    const customerWhatsapp = customer?.whatsapp || '085799799857'
-    const customerEmail = customer?.email || 'raditya.rayhan@gmail.com'
+    const customerName = customerData?.nama?.trim() || customer?.nama || 'Raditya Rayhan'
+    const customerWhatsapp = customerData?.whatsapp?.trim() || customer?.whatsapp || '085799799857'
+    const customerEmail = customerData?.email?.trim() || customer?.email || 'raditya.rayhan@gmail.com'
     const avatarInitials = getInitials(customerName)
+
+    // Simpan ke storage dan state agar navbar & session tersinkronisasi
+    const updatedCustomer: StoredCustomerInfo = {
+      nama: customerName,
+      whatsapp: customerWhatsapp,
+      email: customerEmail,
+      isConfirmed: true,
+    }
+    setCustomer(updatedCustomer)
+    try {
+      localStorage.setItem('blanca_customer_info', JSON.stringify(updatedCustomer))
+      sessionStorage.setItem('blanca_customer_info', JSON.stringify(updatedCustomer))
+    } catch (e) {
+      console.error('Gagal sinkronisasi data customer ke storage:', e)
+    }
 
     const now = new Date()
     const invoiceNumber = `INV-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`
