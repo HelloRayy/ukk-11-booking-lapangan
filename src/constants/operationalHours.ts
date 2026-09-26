@@ -4,7 +4,7 @@
 // PENGATURAN MODE SIMULASI (DEV & DEMO UKK)
 // ==========================================
 // MODE DEV: ubah ke true jika ingin simulasi jam manual (misal testing malam hari / demo UKK)
-export const isDevMode = true // true = pakai jam simulasi, false = pakai jam realtime
+export const isDevMode = false // true = pakai jam simulasi, false = pakai jam realtime
 export const jamSimulasi = 15 // atur jam simulasi di sini (contoh: 10 = jam 10:00 pagi, 18 = jam 18:00 sore)
 export const menitSimulasi = 0 // atur menit simulasi (contoh: 0 atau 30)
 
