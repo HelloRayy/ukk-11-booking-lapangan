@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { createBooking } from '../../../lib/api'
 import type { Booking as DbBooking, Lapangan, StatusBooking } from '../../../types/database'
+import CashierDatePicker from './CashierDatePicker'
 
 // Komponen & Hook Baku 1:1 dari Modul Reservasi
 import ScheduleHeader from '../../reservation/components/ScheduleHeader'
@@ -66,9 +67,13 @@ export default function CourtScheduleGrid({
   const [isVerifyingPayment, setIsVerifyingPayment] = useState(false)
   const [isViewingReceipt, setIsViewingReceipt] = useState(false)
 
-  // Form State Admin Kasir (Nama, WA, Catatan, Skema Bayar)
-  const [customerName, setCustomerName] = useState('Penyewa Walk-in')
-  const [customerWhatsapp, setCustomerWhatsapp] = useState('08')
+  // State Layar QRIS Pelunasan Kasir
+  const [isInspectQrisActive, setIsInspectQrisActive] = useState(false)
+  const [inspectQrisSeconds, setInspectQrisSeconds] = useState(900)
+
+  // Form State Admin Kasir (Nama, WA, Catatan, Skema Bayar) - Default Kosong Murni
+  const [customerName, setCustomerName] = useState('')
+  const [customerWhatsapp, setCustomerWhatsapp] = useState('')
   const [paymentType, setPaymentType] = useState<PaymentType>('DP')
   const [notes, setNotes] = useState('')
   const [isPaymentDropdownOpen, setIsPaymentDropdownOpen] = useState(false)
@@ -136,6 +141,23 @@ export default function CourtScheduleGrid({
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [panelMode])
+
+  // Timer Countdown Layar QRIS Pelunasan Kasir
+  useEffect(() => {
+    if (!isInspectQrisActive) return
+    setInspectQrisSeconds(900)
+    const interval = setInterval(() => {
+      setInspectQrisSeconds((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval)
+          setIsInspectQrisActive(false)
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [isInspectQrisActive])
 
   // Navigasi Tanggal
   const handleShiftDate = (offset: number) => {
@@ -231,6 +253,12 @@ export default function CourtScheduleGrid({
       setSelectedBooking(null)
       setPanelMode('create')
       setBookingStep('details')
+      setIsInspectQrisActive(false)
+      setIsViewingReceipt(false)
+      setCustomerName('')
+      setCustomerWhatsapp('')
+      setNotes('')
+      setPaymentType('DP')
       return
     }
 
@@ -306,6 +334,8 @@ export default function CourtScheduleGrid({
     setSelectedBooking(null)
     setPanelMode('create')
     setBookingStep('details')
+    setIsInspectQrisActive(false)
+    setIsViewingReceipt(false)
   }
 
   // Aksi Klik Booking Terisi (Untuk Admin Kasir: Langsung Buka Mode Inspeksi & Aksi Pelunasan)
@@ -313,6 +343,7 @@ export default function CourtScheduleGrid({
     setSelectedSlot(null)
     setSelectedBooking(booking)
     setIsViewingReceipt(false)
+    setIsInspectQrisActive(false)
     setPanelMode('inspect')
   }
 
@@ -324,6 +355,10 @@ export default function CourtScheduleGrid({
     setBookingStep('details')
     setExpiryTimestamp(null)
     setIsViewingReceipt(false)
+    setIsInspectQrisActive(false)
+    setCustomerName('')
+    setCustomerWhatsapp('')
+    setNotes('')
   }
 
   // Flow Eksekusi Simpan Booking Walk-in ke Supabase
@@ -460,107 +495,97 @@ export default function CourtScheduleGrid({
     return isNaN(clean) ? null : clean
   }, [selectedBooking])
 
+  // Pelunasan Tunai Langsung
+  const handleCashPelunasan = async () => {
+    if (!selectedDbId || !selectedBooking) return
+    setIsVerifyingPayment(true)
+    try {
+      await onLunasi(selectedDbId)
+      setSelectedBooking((prev) =>
+        prev
+          ? {
+              ...prev,
+              status: 'Sudah Lunas',
+              remainingAmount: 0,
+              paidAmount: prev.totalPrice,
+            }
+          : null
+      )
+      setIsViewingReceipt(true)
+    } finally {
+      setIsVerifyingPayment(false)
+    }
+  }
+
+  // Buka Layar QRIS Pelunasan Kasir
+  const handleOpenInspectQris = () => {
+    setIsInspectQrisActive(true)
+  }
+
+  // Konfirmasi QRIS Pelunasan Kasir Berhasil
+  const handleConfirmInspectQris = async () => {
+    if (!selectedDbId || !selectedBooking) return
+    setIsVerifyingPayment(true)
+    try {
+      await new Promise((r) => setTimeout(r, 600))
+      await onLunasi(selectedDbId)
+      setSelectedBooking((prev) =>
+        prev
+          ? {
+              ...prev,
+              status: 'Sudah Lunas',
+              remainingAmount: 0,
+              paidAmount: prev.totalPrice,
+            }
+          : null
+      )
+      setIsInspectQrisActive(false)
+      setIsViewingReceipt(true)
+    } finally {
+      setIsVerifyingPayment(false)
+    }
+  }
+
   return (
     <div className="flex flex-col h-full bg-[#161616] text-[#fafafa] font-aeonik select-none overflow-hidden">
-      {/* 1. Control Toolbar Atas (Navigasi Tanggal & Search Bar Kontekstual) */}
-      <div className="shrink-0 p-4 border-b border-[#262626] flex flex-wrap items-center justify-between gap-3 bg-[#181818]">
-        {/* Navigasi Tanggal & Search Bar Jadwal Lapangan */}
-        <div className="flex items-center gap-2.5 flex-wrap flex-1 min-w-0">
-          <div className="flex items-center rounded-lg border border-[#262626] bg-[#141414] p-0.5">
-            <button
-              type="button"
-              onClick={() => handleShiftDate(-1)}
-              className="p-1.5 rounded text-[#8e8e8e] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-              title="Hari Sebelumnya"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <div className="px-3 py-0.5 text-xs font-semibold text-white min-w-[190px] text-center">
-              {formattedDateTitle}
-            </div>
-            <button
-              type="button"
-              onClick={() => handleShiftDate(1)}
-              className="p-1.5 rounded text-[#8e8e8e] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-              title="Hari Berikutnya"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+      {/* 1. Control Toolbar Atas (Navigasi Tanggal & Search Bar Kontekstual) - Selaras 1:1 dengan Tab Transaksi */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 px-5 py-2.5 border-b border-[#262626] bg-[#181818]">
+        {/* Sisi Kiri: Popover Kalender Tanggal 1:1 Reservasi & Search Bar */}
+        <div className="flex items-center gap-2.5 flex-1 max-w-lg flex-wrap sm:flex-nowrap">
+          {/* Popover Kalender Tanggal 1:1 Reservasi */}
+          <CashierDatePicker
+            selectedDate={selectedDate}
+            onDateChange={(newDate) => {
+              setSelectedDate(newDate)
+              handleClosePanel()
+            }}
+          />
 
-          {/* Quick Date Chips */}
-          <div className="hidden sm:flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedDate(getTodayISODate())
-                handleClosePanel()
-              }}
-              className={`px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer border ${
-                selectedDate === getTodayISODate()
-                  ? 'bg-[#f2d953] border-[#f2d953] text-[#161616] font-bold shadow-xs'
-                  : 'bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5'
-              }`}
-            >
-              Hari Ini
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                const tomorrow = new Date()
-                tomorrow.setDate(tomorrow.getDate() + 1)
-                const y = tomorrow.getFullYear()
-                const m = String(tomorrow.getMonth() + 1).padStart(2, '0')
-                const d = String(tomorrow.getDate()).padStart(2, '0')
-                setSelectedDate(`${y}-${m}-${d}`)
-                handleClosePanel()
-              }}
-              className="px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer border bg-[#141414] border-[#262626] text-[#8e8e8e] hover:text-white hover:bg-white/5"
-            >
-              Besok
-            </button>
-          </div>
-
-          {/* Date Picker Input */}
-          <div className="relative">
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => {
-                if (e.target.value) {
-                  setSelectedDate(e.target.value)
-                  handleClosePanel()
-                }
-              }}
-              className="h-8 px-2.5 text-xs rounded-lg bg-[#141414] border border-[#262626] text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
-            />
-          </div>
-
-          {/* Search Bar Jadwal Lapangan (Posisi Tepat Sesuai Permintaan User) */}
-          <div className="relative w-48 sm:w-56 md:w-64">
-            <Search className="w-3.5 h-3.5 text-[#737373] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          {/* Search Bar Jadwal Lapangan Terpadu */}
+          <div className="relative w-full sm:w-64 max-w-xs">
+            <Search className="w-3.5 h-3.5 text-[#8e8e8e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari penyewa, no HP, invoice..."
-              className="w-full h-8 pl-8 pr-7 text-xs bg-[#141414] border border-[#282828] rounded-lg text-white placeholder:text-[#666] focus:outline-none focus:border-[#f2d953]/70 focus:ring-1 focus:ring-[#f2d953]/25 transition-all"
+              placeholder="Cari transaksi, penyewa, no HP..."
+              className="w-full h-8 pl-8 pr-7 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder:text-[#666666] focus:outline-none focus:border-[#f2d953]/60 transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8e8e8e] hover:text-white cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8e8e8e] hover:text-white p-0.5 cursor-pointer"
                 title="Hapus pencarian"
               >
-                <X className="w-3 h-3" />
+                <X className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
         </div>
 
-        {/* Legend & Refresh */}
-        <div className="flex items-center gap-3">
+        {/* Sisi Kanan: Legend & Refresh */}
+        <div className="flex items-center gap-2.5 justify-end">
           <div className="hidden lg:flex items-center gap-3 text-xs text-[#8e8e8e] pr-3 border-r border-[#262626]">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -686,7 +711,101 @@ export default function CourtScheduleGrid({
                 booking={selectedBooking}
                 onClose={() => setIsViewingReceipt(false)}
               />
+            ) : isInspectQrisActive ? (
+              /* Layar Pembayaran QRIS Pelunasan Kasir Dinamis */
+              <div className="flex flex-col justify-between h-full animate-in fade-in duration-200 select-none font-aeonik">
+                <div className="space-y-4">
+                  {/* Top Bar Navigasi */}
+                  <div className="flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setIsInspectQrisActive(false)}
+                      className="flex items-center gap-1.5 text-xs text-[#a3a3a3] hover:text-white px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <span>Kembali ke Rincian</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleClosePanel}
+                      className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 text-[#a3a3a3] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  {/* Info Pelunasan */}
+                  <div className="text-center space-y-1">
+                    <span className="text-[11px] font-semibold text-[#f2d953] tracking-wide uppercase block">
+                      Pelunasan Kasir
+                    </span>
+                    <h3 className="text-lg font-bold text-white tracking-tight">
+                      QRIS Dinamis #{selectedBooking.invoiceNumber || selectedBooking.id}
+                    </h3>
+                    <p className="text-xs text-[#8e8e8e]">
+                      Atas nama <strong className="text-white font-medium">{selectedBooking.customerName}</strong>
+                    </p>
+                  </div>
+
+                  {/* QRIS Scan Frame dengan Animasi Garis Scan */}
+                  <div className="p-4 rounded-2xl bg-[#1c1c1c] border border-[#2e2e2e] flex flex-col items-center justify-center relative overflow-hidden">
+                    <div className="relative p-2.5 bg-white rounded-xl shadow-lg">
+                      <img
+                        src="/assets/quiz-button.png"
+                        alt="QRIS Pelunasan"
+                        className="w-40 h-40 object-contain"
+                      />
+                      <div className="absolute inset-x-2.5 top-2.5 h-0.5 bg-emerald-500/80 shadow-[0_0_8px_#10b981] animate-pulse" />
+                    </div>
+
+                    {/* Timer Countdown */}
+                    <div className="mt-3 flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-[#a3a3a3]">
+                      <Clock className="w-3.5 h-3.5 text-[#f2d953]" />
+                      <span>Sisa waktu:</span>
+                      <span className="font-bold text-[#f2d953]">
+                        {Math.floor(inspectQrisSeconds / 60).toString().padStart(2, '0')}:
+                        {(inspectQrisSeconds % 60).toString().padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Rincian Sisa Tagihan */}
+                  <div className="p-3.5 rounded-xl bg-[#202020] border border-[#2a2a2a] space-y-2 text-xs">
+                    <div className="flex justify-between items-center text-[#8e8e8e]">
+                      <span>Nominal Pelunasan:</span>
+                      <span className="text-lg font-bold text-[#f2d953]">
+                        {formatRupiah(selectedBooking.remainingAmount)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-[#737373] text-[11px] pt-1.5 border-t border-white/5">
+                      <span>Status Pembayaran:</span>
+                      <span className="text-[#f2d953] font-medium">DP 50% (Perlu Pelunasan)</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tombol Konfirmasi Pembayaran QRIS */}
+                <div className="pt-3 border-t border-[#262626] mt-3 space-y-2">
+                  <button
+                    type="button"
+                    disabled={isVerifyingPayment}
+                    onClick={handleConfirmInspectQris}
+                    className="w-full h-11 rounded-xl bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-[0.98]"
+                  >
+                    <Check className="w-4 h-4" />
+                    <span>{isVerifyingPayment ? 'Memverifikasi...' : 'Konfirmasi QRIS Berhasil'}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsInspectQrisActive(false)}
+                    className="w-full h-8 rounded-lg bg-white/5 hover:bg-white/10 text-[#8e8e8e] hover:text-white text-xs font-medium transition-colors cursor-pointer"
+                  >
+                    Batal
+                  </button>
+                </div>
+              </div>
             ) : (
+              /* Inspect Detail Standby */
               <div className="flex flex-col justify-between h-full animate-in fade-in duration-200 select-none font-aeonik">
                 <div className="space-y-4">
                   {/* Top Bar */}
@@ -733,24 +852,24 @@ export default function CourtScheduleGrid({
                       </div>
                     </div>
 
-                    {/* Rincian Finansial Kasir */}
+                    {/* Rincian Finansial Kasir (Tanpa font-mono) */}
                     <div className="pt-2.5 border-t border-[#2e2e2e] space-y-1.5 text-xs">
                       <div className="flex items-center justify-between text-[#8e8e8e]">
                         <span>Total Tagihan:</span>
-                        <span className="font-mono text-white font-medium">
+                        <span className="text-white font-semibold">
                           {formatRupiah(selectedBooking.totalPrice)}
                         </span>
                       </div>
                       <div className="flex items-center justify-between text-[#8e8e8e]">
                         <span>Sudah Dibayar:</span>
-                        <span className="font-mono text-emerald-400 font-medium">
+                        <span className="text-emerald-400 font-semibold">
                           {formatRupiah(selectedBooking.paidAmount)}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pt-1 border-t border-white/5">
                         <span className="text-[#8e8e8e]">Sisa Tagihan:</span>
                         <span
-                          className={`font-mono font-bold ${
+                          className={`font-bold ${
                             selectedBooking.remainingAmount > 0 ? 'text-[#f2d953]' : 'text-emerald-400'
                           }`}
                         >
@@ -767,25 +886,20 @@ export default function CourtScheduleGrid({
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"
-                        onClick={() => {
-                          onLunasi(selectedDbId)
-                          handleClosePanel()
-                        }}
-                        className="h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs active:scale-98"
+                        disabled={isVerifyingPayment}
+                        onClick={handleCashPelunasan}
+                        className="h-10 rounded-xl bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs active:scale-98"
                       >
                         <CreditCard className="w-3.5 h-3.5" />
-                        <span>Pelunasan Tunai</span>
+                        <span>{isVerifyingPayment ? 'Menyimpan...' : 'Pelunasan Tunai'}</span>
                       </button>
 
                       <button
                         type="button"
-                        onClick={() => {
-                          onLunasi(selectedDbId)
-                          handleClosePanel()
-                        }}
-                        className="h-10 rounded-xl bg-[#222222] hover:bg-[#282828] border border-[#f2d953]/50 text-[#f2d953] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer active:scale-98"
+                        onClick={handleOpenInspectQris}
+                        className="h-10 rounded-xl bg-[#222222] hover:bg-[#282828] border border-[#383838] hover:border-[#f2d953]/50 text-white hover:text-[#f2d953] font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer active:scale-98"
                       >
-                        <QrCode className="w-3.5 h-3.5" />
+                        <QrCode className="w-3.5 h-3.5 text-[#f2d953]" />
                         <span>Bayar QRIS</span>
                       </button>
                     </div>
@@ -794,9 +908,9 @@ export default function CourtScheduleGrid({
                   <button
                     type="button"
                     onClick={() => setIsViewingReceipt(true)}
-                    className="w-full h-10 rounded-xl bg-[#f2d953] hover:bg-[#e4cb34] text-[#161616] text-xs font-bold transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+                    className="w-full h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-[#2e2e2e] text-[#a3a3a3] hover:text-white text-xs font-medium transition-colors cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <Receipt className="w-4 h-4" />
+                    <Receipt className="w-3.5 h-3.5" />
                     <span>Lihat Struk Digital Resmi</span>
                   </button>
 
@@ -1053,7 +1167,7 @@ export default function CourtScheduleGrid({
                             onChange={(e) => setCustomerWhatsapp(e.target.value.replace(/\D/g, ''))}
                             placeholder="Contoh: 081234567890"
                             maxLength={13}
-                            className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors font-mono"
+                            className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-[#1c1c1c] border border-[#2e2e2e] text-xs text-white placeholder:text-[#555555] focus:outline-none focus:border-[#f2d953] transition-colors"
                           />
                         </div>
                       </div>
