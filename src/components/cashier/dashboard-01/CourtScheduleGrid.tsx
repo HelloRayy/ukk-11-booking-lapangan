@@ -4,6 +4,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Plus,
+  Search,
   RefreshCw,
   Clock,
   Phone,
@@ -148,6 +149,9 @@ export default function CourtScheduleGrid({
   // State Pesan Toast Bentrok / Error
   const [toastMessage, setToastMessage] = useState<string | null>(null)
 
+  // State Pencarian Jadwal Lapangan Kasir
+  const [searchQuery, setSearchQuery] = useState('')
+
   // Form State untuk Walk-in di Right Panel
   const [customerName, setCustomerName] = useState('')
   const [customerWhatsapp, setCustomerWhatsapp] = useState('')
@@ -242,6 +246,36 @@ export default function CourtScheduleGrid({
   const dateBookings = useMemo(() => {
     return bookings.filter((b) => b.tgl_main === selectedDate && b.status !== 'Batal')
   }, [bookings, selectedDate])
+
+  // Pengecekan Hasil Pencarian pada Tanggal Terpilih
+  const searchFilteredBookingIds = useMemo(() => {
+    if (!searchQuery.trim()) return null
+    const q = searchQuery.toLowerCase().trim()
+    const matchedIds = new Set<number>()
+    dateBookings.forEach((b) => {
+      const nameMatch = b.nama_penyewa?.toLowerCase().includes(q)
+      const phoneMatch = b.no_hp?.toLowerCase().includes(q)
+      const idMatch = String(b.id).includes(q)
+      const courtMatch = b.lapangan?.nama_lapangan?.toLowerCase().includes(q)
+      if (nameMatch || phoneMatch || idMatch || courtMatch) {
+        matchedIds.add(b.id)
+      }
+    })
+    return matchedIds
+  }, [searchQuery, dateBookings])
+
+  // Pengecekan Hasil Pencarian pada Tanggal Lain (Cross-Date Discovery)
+  const otherDateMatches = useMemo(() => {
+    if (!searchQuery.trim()) return []
+    const q = searchQuery.toLowerCase().trim()
+    return bookings.filter((b) => {
+      if (b.tgl_main === selectedDate || b.status === 'Batal') return false
+      const nameMatch = b.nama_penyewa?.toLowerCase().includes(q)
+      const phoneMatch = b.no_hp?.toLowerCase().includes(q)
+      const idMatch = String(b.id).includes(q)
+      return nameMatch || phoneMatch || idMatch
+    })
+  }, [searchQuery, bookings, selectedDate])
 
   // Daftar Lapangan Aktif
   const activeCourtsList = useMemo(() => {
@@ -480,8 +514,8 @@ export default function CourtScheduleGrid({
     <div className="flex flex-col h-full bg-[#161616] text-[#fafafa] font-aeonik select-none overflow-hidden">
       {/* 1. Control Toolbar Atas */}
       <div className="shrink-0 p-4 border-b border-[#262626] flex flex-wrap items-center justify-between gap-3 bg-[#181818]">
-        {/* Navigasi Tanggal */}
-        <div className="flex items-center gap-2">
+        {/* Navigasi Tanggal & Search Bar Jadwal Lapangan */}
+        <div className="flex items-center gap-2.5 flex-wrap flex-1 min-w-0">
           <div className="flex items-center rounded-lg border border-[#262626] bg-[#141414] p-0.5">
             <button
               type="button"
@@ -553,6 +587,28 @@ export default function CourtScheduleGrid({
               className="h-8 px-2.5 text-xs rounded-lg bg-[#141414] border border-[#262626] text-white focus:outline-none focus:border-[#f2d953]/60 cursor-pointer"
             />
           </div>
+
+          {/* Search Bar Khusus Jadwal Lapangan Mandiri */}
+          <div className="relative w-48 sm:w-56 md:w-64">
+            <Search className="w-3.5 h-3.5 text-[#737373] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari penyewa, no HP, invoice..."
+              className="w-full h-8 pl-8 pr-7 text-xs bg-[#141414] border border-[#282828] rounded-lg text-white placeholder:text-[#666] focus:outline-none focus:border-[#f2d953]/70 focus:ring-1 focus:ring-[#f2d953]/25 transition-all"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8e8e8e] hover:text-white cursor-pointer"
+                title="Hapus pencarian"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Legend & Aksi */}
@@ -593,6 +649,38 @@ export default function CourtScheduleGrid({
           </button>
         </div>
       </div>
+
+      {/* Banner Hasil Pencarian Jadwal Lapangan */}
+      {searchQuery.trim() && (
+        <div className="shrink-0 px-5 py-2 bg-[#1b1a15] border-b border-[#f2d953]/30 flex flex-wrap items-center justify-between text-xs gap-3 animate-in fade-in duration-150">
+          <div className="flex items-center gap-2">
+            <Search className="w-3.5 h-3.5 text-[#f2d953]" />
+            <span className="text-[#d1d1d1]">
+              Hasil pencarian &ldquo;<strong className="text-[#f2d953]">{searchQuery}</strong>&rdquo;:
+            </span>
+            <span className="px-2 py-0.5 rounded-full bg-[#f2d953]/15 text-[#f2d953] font-semibold text-[11px] border border-[#f2d953]/30">
+              {searchFilteredBookingIds?.size || 0} jadwal cocok di tanggal ini
+            </span>
+          </div>
+
+          {otherDateMatches.length > 0 && (
+            <div className="flex items-center gap-2 text-xs">
+              <span className="text-[#8e8e8e]">
+                Ditemukan juga di tanggal lain ({otherDateMatches[0].tgl_main}):
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedDate(otherDateMatches[0].tgl_main)
+                }}
+                className="px-2.5 py-1 rounded-md bg-[#f2d953] text-[#161616] font-bold text-[11px] hover:bg-[#ffe359] transition-colors cursor-pointer"
+              >
+                Buka Jadwal {otherDateMatches[0].tgl_main}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 2. Bar Ringkasan Okupansi Tanggal Ini */}
       <div className="shrink-0 px-5 py-2.5 bg-[#141414] border-b border-[#262626] flex flex-wrap items-center justify-between text-xs gap-4">
@@ -840,6 +928,11 @@ export default function CourtScheduleGrid({
                         const isMultiHour = card.durationHours >= 2
                         const isInspected = selectedBooking?.id === b.id
 
+                        // Logika Highlighting Pencarian Jadwal Lapangan
+                        const isSearchActive = Boolean(searchFilteredBookingIds !== null)
+                        const isMatchedSearch = isSearchActive && searchFilteredBookingIds!.has(b.id)
+                        const isDimmedBySearch = isSearchActive && !isMatchedSearch
+
                         return (
                           <div
                             key={card.uniqueKey}
@@ -852,7 +945,11 @@ export default function CourtScheduleGrid({
                               setSelectedBooking(b)
                             }}
                             className={`absolute inset-x-1.5 z-10 p-3 rounded-[10px] border transition-all duration-150 cursor-pointer flex flex-col justify-between group shadow-md hover:shadow-xl font-aeonik select-none ${
-                              isInspected
+                              isMatchedSearch
+                                ? 'bg-[#282416] border-[#f2d953] ring-2 ring-[#f2d953] shadow-[0_0_24px_rgba(242,217,83,0.45)] z-30 scale-[1.01]'
+                                : isDimmedBySearch
+                                ? 'opacity-20 hover:opacity-50'
+                                : isInspected
                                 ? 'bg-[#222222] border-[#f2d953] ring-2 ring-[#f2d953]/30 shadow-[0_0_20px_rgba(242,217,83,0.2)]'
                                 : isLunas
                                 ? 'bg-[#181f1a] hover:bg-[#1c261e] border-emerald-500/40 hover:border-emerald-400/80 shadow-[0_0_12px_rgba(16,185,129,0.06)]'
@@ -871,20 +968,27 @@ export default function CourtScheduleGrid({
                                   </span>
                                 </div>
 
-                                <span
-                                  className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 flex items-center gap-1 ${
-                                    isLunas
-                                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
-                                      : 'bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/30'
-                                  }`}
-                                >
+                                <div className="flex items-center gap-1 shrink-0">
+                                  {isMatchedSearch && (
+                                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#f2d953] text-[#161616] font-bold animate-pulse">
+                                      Cocok
+                                    </span>
+                                  )}
                                   <span
-                                    className={`w-1.5 h-1.5 rounded-full ${
-                                      isLunas ? 'bg-emerald-400' : 'bg-[#f2d953]'
+                                    className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 flex items-center gap-1 ${
+                                      isLunas
+                                        ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                                        : 'bg-[#f2d953]/15 text-[#f2d953] border border-[#f2d953]/30'
                                     }`}
-                                  />
-                                  <span>{isLunas ? 'Lunas' : 'DP 50%'}</span>
-                                </span>
+                                  >
+                                    <span
+                                      className={`w-1.5 h-1.5 rounded-full ${
+                                        isLunas ? 'bg-emerald-400' : 'bg-[#f2d953]'
+                                      }`}
+                                    />
+                                    <span>{isLunas ? 'Lunas' : 'DP 50%'}</span>
+                                  </span>
+                                </div>
                               </div>
 
                               <div className="flex items-center gap-1.5 text-xs text-[#8e8e8e]">
