@@ -12,6 +12,7 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
 - [x] **#10: Improve footer ui**: Perbaikan styling dan links footer landing page Blanca.
 - [x] **#14: Improvisasi ui struk di right panel**: Perbaikan tampilan struk ringkasan pemesanan dan pelunasan di kasir.
 - [x] **#24: Mobile /reservasi click overlay**: Perbaikan event bubbling dan overlay klik pada tampilan mobile reservasi.
+- [x] **#26: Kompresi Video Difference Gameplay**: Re-encode video gameplay (VP9 & H.264) dari 7+ MB menjadi 1.4 MB hemat bandwidth.
 - [x] **Pola Titik GPU Pure CSS**: Mengganti file raster `background-dots.png` dengan `radial-gradient` CSS berkas 0 KB.
 - [x] **Mesin Smooth Scroll Lenis**: Memasang `lenis` v1.3.26 untuk pengalaman scrolling inersia 60/120 fps yang mulus tanpa micro-stutter.
 
@@ -20,9 +21,6 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
 ## Daftar Issue Aktif di Plane.so (Status: Todo)
 
 ### 1. Prioritas Tinggi (High Priority)
-- [ ] **#26: Kompresi Video Difference Gameplay (7.0 MB -> 1.5 MB)**
-  - *Target*: `public/assets/blanca/difference-video.webm` & `.mp4`
-  - *Rincian*: Re-encode video dengan CRF 30 / VP9 (target <1.5 MB) agar tidak membebani transfer network saat user scroll ke section Difference.
 
 - [ ] **#27: Code-Splitting Library Leaflet Maps (On-Demand)**
   - *Target*: `src/components/blanca/locations/hooks/useBlancaLocations.ts`

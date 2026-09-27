@@ -1,17 +1,17 @@
 # Graph Report - ukk-11  (2026-09-27)
 
 ## Corpus Check
-- 168 files · ~663,850 words
+- 168 files · ~664,272 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: .woff2 4, .css 4, .avif 2)
 
 ## Summary
-- 724 nodes · 1483 edges · 35 communities (30 shown, 5 thin omitted)
+- 725 nodes · 1485 edges · 33 communities (28 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 22 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b9887c7c`
+- Built from commit: `e4464f0e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - api.ts
 - HeroBlancaPreview.tsx
 - OverviewPanel.tsx
-- devDependencies
+- CashierTableRow.tsx
 - react
 - DashboardOverview.tsx
 - CustomerBookingPage.tsx
@@ -34,9 +34,7 @@
 - dependencies
 - BlancaDifference.tsx
 - HeaderNav.tsx
-- vite.config.ts
 - Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG
-- scripts
 - CashierFilterBar.tsx
 - CashierHeader.tsx
 - tsconfig.json
@@ -79,39 +77,39 @@
 ## Import Cycles
 - None detected.
 
-## Communities (35 total, 5 thin omitted)
+## Communities (33 total, 5 thin omitted)
 
 ### Community 0 - "CourtScheduleGrid.tsx"
 Cohesion: 0.06
 Nodes (59): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard() (+51 more)
 
 ### Community 1 - "api.ts"
-Cohesion: 0.07
-Nodes (47): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 3. `src/lib/api.ts` (API Controller & Query Builder), 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK (+39 more)
+Cohesion: 0.06
+Nodes (49): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 3. `src/lib/api.ts` (API Controller & Query Builder), 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK (+41 more)
 
 ### Community 2 - "HeroBlancaPreview.tsx"
-Cohesion: 0.07
-Nodes (29): gsap, lenis, react-dom, src_assets_hero_video, src_components_blanca_blanca, BlancaCta(), BlancaCtaProps, BlancaFooter() (+21 more)
+Cohesion: 0.08
+Nodes (28): gsap, lenis, src_assets_hero_video, BlancaCta(), BlancaCtaProps, BlancaFooter(), CenterFlyingLogo(), CenterFlyingLogoProps (+20 more)
 
 ### Community 3 - "OverviewPanel.tsx"
 Cohesion: 0.10
 Nodes (31): BookedByHourCard(), Props, BookingStatusCard(), Props, COURTS_PILLS, CourtScheduleCard(), Props, CourtStatisticCard() (+23 more)
 
-### Community 4 - "devDependencies"
-Cohesion: 0.13
-Nodes (15): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @playwright/test, pngjs (+7 more)
+### Community 4 - "CashierTableRow.tsx"
+Cohesion: 0.27
+Nodes (6): CashierTableProps, CashierTableRow(), Props, Props, StatusBadge(), StatusBooking
 
 ### Community 5 - "react"
-Cohesion: 0.05
-Nodes (77): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 2. Aturan Koding & Standar Penilaian UKK, 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:, lucide-react (+69 more)
+Cohesion: 0.06
+Nodes (68): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 2. Aturan Koding & Standar Penilaian UKK, 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:, lucide-react (+60 more)
 
 ### Community 6 - "DashboardOverview.tsx"
-Cohesion: 0.16
-Nodes (16): recharts, DashboardOverview(), DashboardOverviewProps, MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS (+8 more)
+Cohesion: 0.17
+Nodes (15): recharts, DashboardOverview(), MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS, MOCK_RECENT_BOOKINGS (+7 more)
 
 ### Community 7 - "CustomerBookingPage.tsx"
-Cohesion: 0.12
-Nodes (15): App(), Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan(), Props, GridJam() (+7 more)
+Cohesion: 0.10
+Nodes (18): react-dom, App(), src_components_blanca_blanca, Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan() (+10 more)
 
 ### Community 8 - "BlancaLocations.tsx"
 Cohesion: 0.18
@@ -122,8 +120,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 10 - "package.json"
-Cohesion: 0.13
-Nodes (18): name, private, type, version, clsx, eslint, @eslint/js, eslint-plugin-react-hooks (+10 more)
+Cohesion: 0.05
+Nodes (45): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @playwright/test, pngjs (+37 more)
 
 ### Community 11 - "components.json"
 Cohesion: 0.12
@@ -153,17 +151,9 @@ Nodes (8): BlancaDifference(), DifferenceCommunityStory(), DifferenceFeatures(),
 Cohesion: 0.19
 Nodes (10): DesktopNavLinks(), DesktopNavLinksProps, HeaderLogo(), HeaderLogoProps, MobileNavDrawer(), MobileNavDrawerProps, NAV_LINKS, NavLinkItem (+2 more)
 
-### Community 19 - "vite.config.ts"
-Cohesion: 0.38
-Nodes (6): @tailwindcss/vite, vite, @vitejs/plugin-react, configurePreviewServer(), configureServer(), routeMiddleware()
-
 ### Community 20 - "Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG"
 Cohesion: 0.15
 Nodes (12): 1. "Apa bedanya Context Diagram dengan DFD Level 1?", 1. Tautan Langsung Mermaid Live Editor, 2. "Apa arti simbol dua garis / tabung silinder D1, D2, D3?", 2. Kode Diagram Mermaid DFD Level 1 (Tanpa Kotak Pembungkus), 3. "Kenapa panah D3 ke Proses 3.0 bolak-balik (`<-->`)?", 3. Rincian 3 Proses Utama & 3 Data Store, 4. Bocoran Pertanyaan Penguji UKK & Cara Jawabnya, A. Proses 1.0: Kelola Data Lapangan (+4 more)
-
-### Community 21 - "scripts"
-Cohesion: 0.40
-Nodes (5): scripts, build, dev, lint, preview
 
 ### Community 25 - "2. Rencana Anggaran Biaya (RAB) Operasional Sistem"
 Cohesion: 0.15
@@ -220,6 +210,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `CourtScheduleGrid.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.06147732585320243 - nodes in this community are weakly interconnected._
 - **Should `api.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06349206349206349 - nodes in this community are weakly interconnected._
 - **Should `HeroBlancaPreview.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07030527289546716 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0753045404208195 - nodes in this community are weakly interconnected._

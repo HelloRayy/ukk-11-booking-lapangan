@@ -35,7 +35,7 @@ export default function CashierPage() {
       rowsPerPage: 10,
       sortField: 'tgl_main',
       sortOrder: 'asc',
-      onlyUpcoming: true,
+      onlyUpcoming: false,
       timestamp: Date.now(),
     })
     setCurrentTab('bookings')

@@ -171,14 +171,9 @@ export default function BookingsTable({
         if (b.tgl_main !== selectedDate) return false
       }
 
-      // 3. Filter Prioritas Hari Terdekat (Abaikan jadwal lampau yang sudah lewat)
-      if (onlyUpcoming) {
-        if (b.tgl_main < todayStr) return false
-      }
-
       return true
     })
-  }, [bookings, selectedCourt, selectedDate, selectedStatus, onlyUpcoming])
+  }, [bookings, selectedCourt, selectedDate, selectedStatus])
 
   // Data Terurut
   const sortedBookings = useMemo(() => {
@@ -424,21 +419,25 @@ export default function BookingsTable({
         </div>
       </div>
 
-      {/* Banner Filter Aktif: Khusus Pelunasan DP Hari Terdekat */}
-      {onlyUpcoming && selectedStatus === 'Belum Lunas' && (
+      {/* Banner Filter Aktif: Khusus Pelunasan DP Semua Tanggal (Termasuk Masa Lampau) */}
+      {selectedStatus === 'Belum Lunas' && (
         <div className="flex items-center justify-between px-5 py-2 bg-rose-500/10 border-b border-rose-500/20 text-xs text-rose-300">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse" />
             <span>
-              Menampilkan filter otomatis: <strong>Sisa Tagihan Belum Lunas</strong> (prioritas hari terdekat, 10 per halaman).
+              Menampilkan semua transaksi <strong>Belum Lunas</strong> (seluruh hari termasuk masa lampau & mendatang, 10 baris per halaman).
             </span>
           </div>
           <button
             type="button"
-            onClick={() => setOnlyUpcoming(false)}
+            onClick={() => {
+              onStatusChange('Semua')
+              setSelectedDate('today')
+              setCurrentPage(1)
+            }}
             className="text-rose-400 hover:text-rose-200 underline cursor-pointer text-xs font-medium"
           >
-            Sertakan riwayat lampau
+            Reset ke jadwal hari ini
           </button>
         </div>
       )}

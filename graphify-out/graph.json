@@ -7037,7 +7037,7 @@
       "node_kind": "heading",
       "norm_label": "1. prioritas tinggi (high priority)",
       "source_file": "PLAN.md",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "plan_2_prioritas_menengah_medium_priority",
@@ -7049,7 +7049,7 @@
       "node_kind": "heading",
       "norm_label": "2. prioritas menengah (medium priority)",
       "source_file": "PLAN.md",
-      "source_location": "L49"
+      "source_location": "L47"
     },
     {
       "id": "plan_3_prioritas_rendah_low_priority",
@@ -7061,7 +7061,7 @@
       "node_kind": "heading",
       "norm_label": "3. prioritas rendah (low priority)",
       "source_file": "PLAN.md",
-      "source_location": "L76"
+      "source_location": "L74"
     },
     {
       "id": "plan_daftar_issue_aktif_di_plane_so_status_todo",
@@ -7073,7 +7073,7 @@
       "node_kind": "heading",
       "norm_label": "daftar issue aktif di plane.so (status: todo)",
       "source_file": "PLAN.md",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "plan_plan_md_roadmap_optimasi_perbaikan_landing_page_blanca",
@@ -8843,7 +8843,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L230",
+      "source_location": "L225",
       "weight": 1.0
     },
     {
@@ -21283,7 +21283,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -21294,7 +21294,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L49",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -21305,7 +21305,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L76",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -21316,7 +21316,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -25864,5 +25864,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e4464f0eeedd77d221a55b5f52c0e0e419837636"
+  "built_at_commit": "dec3c6993d90d57e9893adf5c470f7f28d46d4b3"
 }
