@@ -31,7 +31,30 @@ Dokumen ini berisi aturan wajib bagi seluruh AI agent yang bekerja di repositori
 
 ---
 
-## 3. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)
+## 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify)
+
+- **Wajib Prioritas Graphify**: Setiap sesi AI yang membutuhkan pencarian arsitektur, pemahaman alur, atau pencarian fungsi/komponen DIWAJIBKAN menggunakan `graphify` terlebih dahulu untuk mempercepat analisis kode tanpa membuang-buang token:
+  - Cari relasi simbol: `graphify query "<NamaSimbol>"` (contoh: `graphify query "Booking"`, `graphify query "CourtScheduleGrid"`).
+  - Pahami peran modul: `graphify explain "<NamaSimbol>"`.
+  - Cek keterhubungan antar komponen: `graphify path "<NodeA>" "<NodeB>"`.
+- **Sinkronisasi Graf**: Setiap kali selesai memodifikasi kode pada sesi tersebut, jalankan `graphify update .` untuk menjaga graf pengetahuan tetap mutakhir (AST-only, tanpa biaya API).
+
+---
+
+## 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless)
+
+- **Dilarang Keras Menggunakan Playwright**: Seluruh AI agent dilarang memasang atau menjalankan Playwright untuk pengetesan antarmuka web.
+- **Wajib Menggunakan `agent-browser`**: Gunakan binary CLI `agent-browser` yang sudah terpasang global di sistem (`/home/rayhan/.npm-global/bin/agent-browser`).
+- **Gunakan Mode Headless Cepat**: Eksekusi perintah browser secara headless (default tanpa `--headed`) agar proses verifikasi UI dan visual berlangsung cepat dan ringan:
+  - Buka halaman: `agent-browser open http://localhost:5173/kasir`
+  - Ambil elemen interaktif: `agent-browser snapshot -i`
+  - Klik/interaksi elemen: `agent-browser click @e1` atau `agent-browser fill @e2 "teks"`
+  - Ambil tangkapan layar cepat: `agent-browser screenshot`
+  - Tutup sesi: `agent-browser close`
+
+---
+
+## 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)
 
 Setiap kali suatu tahapan fitur selesai dibuat, diperbaiki, atau diedit, jalankan siklus git otomatis:
 1. `git add .`
@@ -59,3 +82,4 @@ Gunakan awalan conventional commits (`feat`, `fix`, `style`, `docs`, `refactor`)
   - `docs: update catatan kisi-kisi dan skema tabel database`
 - **`refactor`** (bersih-bersih kode):
   - `refactor: pisah fungsi kalkulasi total ke helper biar kodingan rapi`
+
