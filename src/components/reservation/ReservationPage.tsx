@@ -52,6 +52,7 @@ export default function ReservationPage() {
                 bookings={bookings}
                 selectedBooking={selectedBooking}
                 selectedSlot={selectedSlot}
+                selectedDate={selectedDate}
                 customerName={customer?.nama}
                 rangeError={rangeError}
                 getSlotBooking={getSlotBooking}

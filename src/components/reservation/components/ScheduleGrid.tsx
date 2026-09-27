@@ -1,11 +1,12 @@
 // PERAN FILE: Orkestrator Grid Kalender (Menghubungkan Toast, TimeColumn, dan Kolom Lapangan)
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import type { BookingItem, Court, SlotRangeSelection } from '../types'
 import FloatingToast from './grid/FloatingToast'
 import TimeColumn from './grid/TimeColumn'
 import BookedSlotCard from './grid/BookedSlotCard'
 import ActiveSelectionCard from './grid/ActiveSelectionCard'
 import { CALENDAR_CURRENT_TIME } from '../constants/scheduleConfig'
+import { getTodayISODate } from '../utils/formatters'
 
 interface ScheduleGridProps {
   courts: Court[]
@@ -13,6 +14,7 @@ interface ScheduleGridProps {
   bookings: BookingItem[]
   selectedBooking: BookingItem | null
   selectedSlot: SlotRangeSelection | null
+  selectedDate?: string
   customerName?: string
   rangeError: string | null
   getSlotBooking?: (courtId: number | string, time: string) => BookingItem | undefined
@@ -39,6 +41,7 @@ export default function ScheduleGrid({
   bookings,
   selectedBooking,
   selectedSlot,
+  selectedDate,
   customerName,
   rangeError,
   getSlotBooking,
@@ -50,10 +53,44 @@ export default function ScheduleGrid({
   onClearError,
 }: ScheduleGridProps) {
   const [hoveredSlot, setHoveredSlot] = useState<HoveredSlotState | null>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  const todayStr = getTodayISODate()
+  const isToday = !selectedDate || selectedDate === todayStr
+
   const currentTimeTop =
     (CALENDAR_CURRENT_TIME.hour - BASE_HOUR + CALENDAR_CURRENT_TIME.minute / 60) * SLOT_HEIGHT
   const isTimeWithinBounds =
-    CALENDAR_CURRENT_TIME.hour >= BASE_HOUR && CALENDAR_CURRENT_TIME.hour <= 22
+    isToday && CALENDAR_CURRENT_TIME.hour >= BASE_HOUR && CALENDAR_CURRENT_TIME.hour <= 22
+
+  // Auto-scroll ke garis jam sekarang atau booking terpilih
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const timer = setTimeout(() => {
+      if (selectedBooking && selectedBooking.startTime) {
+        // Prioritas 1: Jika ada booking spesifik yang dipilih (misal klik dari kasir)
+        const startH = parseInt(selectedBooking.startTime.split(':')[0], 10)
+        if (!isNaN(startH)) {
+          const targetTop = Math.max(0, (startH - BASE_HOUR) * SLOT_HEIGHT - 100)
+          container.scrollTo({ top: targetTop, behavior: 'smooth' })
+          return
+        }
+      }
+
+      if (isToday) {
+        // Prioritas 2: Jika hari ini, auto-scroll halus ke garis jam sekarang dengan offset ~120px
+        const currentTargetTop = Math.max(0, currentTimeTop - 120)
+        container.scrollTo({ top: currentTargetTop, behavior: 'smooth' })
+      } else {
+        // Jika tanggal lain, scroll ke paling atas (jam 08:00)
+        container.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    }, 150)
+
+    return () => clearTimeout(timer)
+  }, [isToday, selectedBooking, selectedDate, currentTimeTop])
 
   // Cek apakah mode preview rentang hover aktif
   const isRangePreviewActive = Boolean(
@@ -86,11 +123,14 @@ export default function ScheduleGrid({
   }, [isRangePreviewActive, previewMinHour, previewMaxHour, isPastSlot, getSlotBooking, selectedSlot])
 
   return (
-    <div className="relative flex-1 overflow-y-auto bg-[#141414] select-none font-aeonik">
+    <div
+      ref={scrollContainerRef}
+      className="relative flex-1 overflow-y-auto bg-zinc-950 select-none font-sans scroll-smooth"
+    >
       {/* 1. Toast Notifikasi Melayang Tanpa Pergeseran Layout */}
       <FloatingToast message={rangeError} onClose={onClearError} />
 
-      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (Z-Index di bawah card booking) */}
+      {/* 2. Indikator Garis Waktu Berjalan Saat Ini (Hanya di Hari Ini, Z-Index di bawah card booking) */}
       {isTimeWithinBounds && (
         <div
           style={{ top: `${currentTimeTop}px` }}

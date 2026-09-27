@@ -680,6 +680,7 @@ export default function CourtScheduleGrid({
               bookings={bookingsForGrid}
               selectedBooking={selectedBooking}
               selectedSlot={selectedSlot}
+              selectedDate={selectedDate}
               customerName={customerName}
               rangeError={rangeError}
               getSlotBooking={getSlotBooking}
