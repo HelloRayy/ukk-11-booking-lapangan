@@ -1,0 +1,47 @@
+=== DFD LEVEL 1 VERSI SUPER SIMPEL (5 ELEMEN) ===
+
+flowchart TD
+    P["Pelanggan"]
+    K["Kasir"]
+    P1(("1.0 Booking Lapangan"))
+    P2(("2.0 Kelola Pembayaran"))
+    DB[("Database Supabase")]
+
+    P -->|Pilih Slot & Bayar DP| P1
+    P1 -->|Kirim Bukti Booking| P
+    P1 -->|Simpan Data Booking| DB
+
+    DB -->|Tarik Data Belum Lunas| P2
+    K -->|Input Pelunasan| P2
+    P2 -->|Update Status Lunas| DB
+    P2 -->|Cetak Struk Resmi| K
+
+
+=== DFD LEVEL 1 VERSI LENGKAP STANDAR UKK ===
+
+flowchart TD
+    PELANGGAN["PELANGGAN"]
+    KASIR["KASIR / PETUGAS"]
+    MANAGER["MANAGER"]
+
+    P1(("1.0 Kelola Data<br/>Lapangan"))
+    P2(("2.0 Transaksi Booking<br/>& Pembayaran"))
+    P3(("3.0 Pelunasan &<br/>Laporan Kasir"))
+
+    D1[("D1: Tabel Petugas")]
+    D2[("D2: Tabel Lapangan")]
+    D3[("D3: Tabel Booking")]
+
+    KASIR -->|"Data tarif & status lapangan"| P1
+    P1 -->|"Simpan / update lapangan"| D2
+
+    PELANGGAN -->|"Data pemesan & pilih slot"| P2
+    D2 -->|"Data tarif & info lapangan"| P2
+    P2 -->|"Status slot & struk invoice"| PELANGGAN
+    P2 -->|"Simpan transaksi baru (DP/Lunas)"| D3
+
+    KASIR -->|"Input pelunasan sisa bayar"| P3
+    D1 -->|"Verifikasi login kasir"| P3
+    D3 <-->|"Update status lunas & baca transaksi"| P3
+    P3 -->|"Struk cetak & data realtime"| KASIR
+    P3 -->|"Rekap omzet & okupansi"| MANAGER
