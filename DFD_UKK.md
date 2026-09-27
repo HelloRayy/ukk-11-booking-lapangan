@@ -1,84 +1,170 @@
-# Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG
-## Aplikasi Booking Lapangan Badminton
+# Data Flow Diagram (DFD) Lengkap - UKK RPL / PPLG
+## Aplikasi Booking Lapangan Badminton (Blanca Badminton Arena)
 
-Dokumen ini memenuhi **Kriteria Penilaian No. 6 Pra-UKK**:
-> *"Data Flow Diagram dibuat"*
-
-DFD Level 1 adalah dekomposisi (rincian bagian dalam) dari Diagram Konteks (Level 0). Lingkaran utama dipecah menjadi **3 Proses Inti** dan memunculkan **3 Data Store (Tabel Database)** untuk melihat ke mana data disimpan dan dari mana data dibaca.
+Dokumen ini adalah standar resmi penyusunan **Data Flow Diagram (DFD)** untuk laporan UKK dan materi presentasi penguji, mencakup **Level 0 (Diagram Konteks)**, **Level 1**, **Level 2**, dan **Kamus Data (Data Dictionary)**.
 
 ---
 
-## 1. Tautan Langsung Mermaid Live Editor
-Buka tautan berikut di peramban untuk melihat visualisasi DFD Level 1 atau mengunduh dalam format SVG / PNG:
+## 1. DFD Level 0 (Diagram Konteks)
 
-**[Buka DFD Level 1 di Mermaid Live Editor](https://mermaid.live/edit#pako:eNp1VNtum0AQ_ZURUiwsNU4Nb1YUaSOQhaCYsvgp9GFsbxzEzYKlUZrk3zu7XGpHNS-Mds7Mnjlz4N3Y1wdhrMB4LurX_Qs2EhInrYCemxtYLsANEy9hHIIti8FkfrKJ530-cgMWrtcsfEqNKU6NX33WZ9yLKaPfcEfoZLtmfMr_YCFbuwoxRDoz3WwtIPDCtc9iFkIUb7jLh1uXppkay8V38EVRFwgOSrzfNXcPAZ6wOmKVGvORoaWwFmGTBqsW8zaDx7rOs-qoK2YQiXKHb9hcVNmqyqaqSBRdhS1WMBtvqAkKPrZZ0xdMhO0FOCxhwEkgF0wVPzLuAt9GOhiaO8snau4sV5DgThR0heyO2FKzQRfH0gBrBJxNNSJsjbBHxDBRD5j4sMD7Jx0ovUzfDTYBg4BFtCsWzs8WBbe3Dx_UlLQEiU32DDNoJcquhWIi8EHij0sYCnhWnpQ80J0OKMUF2LGu0lErMRM64MznHjxuNj4t-6uvzkm14hXpGr0s-Bl7XNOxRs3-xz-rnutL9tZoiwHuKURb1FJP23Q51fyus73Q6MnSl0XDyHJy1K7Xn7g1nZ7bvjq3MpVJjbch43Q6U7vYxNdXcZoM2GYtWT3SxOzRSgOUdVJUMsvJlZAdIO_deQa04b5HbvstjZtVvbWoe4S6_CPkeVVkV6K1MnsRMScwVrIRROgkiFavq6b9pWj8VHRbKqvzjtRoM4UfP_jG-AZGIZoSs4P6Bb2rHqkhX0RJG1hRuMOWorT6VEjsZM3fqj1liJGgk950ToZHh8vh-e0vo_hnXA)**
-
----
-
-## 2. Kode Diagram Mermaid DFD Level 1 (Tanpa Kotak Pembungkus)
+Diagram Konteks menggambarkan batasan sistem secara menyeluruh dari sudut pandang entitas luar (*External Entities*).
 
 ```mermaid
 flowchart TD
-    %% 1. ENTITAS LUAR (AKTOR)
     PELANGGAN["PELANGGAN"]
+    SISTEM(("0. SISTEM INFORMASI<br/>BOOKING LAPANGAN"))
     KASIR["KASIR / PETUGAS"]
     MANAGER["MANAGER"]
 
-    %% 2. LINGKARAN PROSES INTI
-    P1(("1.0 Kelola Data<br/>Lapangan"))
-    P2(("2.0 Transaksi Booking<br/>& Pembayaran"))
-    P3(("3.0 Pelunasan &<br/>Laporan Kasir"))
+    %% Aliran Data Pelanggan
+    PELANGGAN -->|"1. Data Pemesanan & Slot Jam<br/>2. Bukti Pembayaran QRIS"| SISTEM
+    SISTEM -->|"3. Jadwal Slot & Tarif Lapangan<br/>4. Invoice / Bukti Booking Digital"| PELANGGAN
 
-    %% 3. DATA STORE (DATABASE SUPABASE)
-    D1[("D1: Tabel Petugas")]
-    D2[("D2: Tabel Lapangan")]
-    D3[("D3: Tabel Booking")]
+    %% Aliran Data Kasir
+    KASIR -->|"5. Input Pelunasan & Booking Walk-in<br/>6. Data Master Lapangan"| SISTEM
+    SISTEM -->|"7. Notifikasi Booking & Jadwal Realtime<br/>8. Cetak Struk Pelunasan Fisik"| KASIR
 
-    %% ALIRAN PROSES 1.0 (KELOLA LAPANGAN)
-    KASIR -->|"Data tarif & status lapangan"| P1
-    P1 -->|"Simpan & update lapangan"| D2
-
-    %% ALIRAN PROSES 2.0 (TRANSAKSI BOOKING)
-    PELANGGAN -->|"Data sewa & bayar QRIS"| P2
-    D2 -->|"Data tarif & info lapangan"| P2
-    P2 -->|"Info slot & struk invoice"| PELANGGAN
-    P2 -->|"Simpan transaksi booking baru"| D3
-
-    %% ALIRAN PROSES 3.0 (PELUNASAN & LAPORAN)
-    KASIR -->|"Data pelunasan sisa DP"| P3
-    D1 -->|"Autentikasi id kasir"| P3
-    D3 <-->|"Update status lunas & baca omzet"| P3
-    P3 -->|"Struk cetak & antrean pesanan"| KASIR
-    P3 -->|"Laporan omzet & okupansi"| MANAGER
+    %% Aliran Data Manager
+    SISTEM -->|"9. Laporan Omzet & Okupansi Lapangan"| MANAGER
 ```
 
 ---
 
-## 3. Rincian 3 Proses Utama & 3 Data Store
+## 2. DFD Level 1 (Dekomposisi Proses Inti)
 
-### A. Proses 1.0: Kelola Data Lapangan
-- **Aktor**: Kasir / Petugas Admin.
-- **Fungsi**: Menerima input nama lapangan, tarif sewa per jam, dan status operasional (Aktif / Tutup Perawatan).
-- **Data Store**: Menyimpan dan memperbarui data ke **D2: Tabel Lapangan**.
+DFD Level 1 memecah sistem 0 menjadi **3 Proses Utama** dan menghubungkannya ke **3 Data Store (Tabel Supabase)**.
 
-### B. Proses 2.0: Transaksi Booking & Pembayaran
-- **Aktor**: Pelanggan (Online) & Kasir (Walk-in).
-- **Fungsi**: Membaca tarif lapangan dari **D2**, menghitung total sewa dan DP 50%, memvalidasi anti-bentrok, memproses QRIS, menerbitkan struk digital invoice ke Pelanggan.
-- **Data Store**: Menyimpan data pesanan baru berstatus `DP` atau `Lunas` ke **D3: Tabel Booking**.
+```mermaid
+flowchart TD
+    PELANGGAN["PELANGGAN"]
+    KASIR["KASIR / PETUGAS"]
+    MANAGER["MANAGER"]
 
-### C. Proses 3.0: Pelunasan & Laporan Kasir
-- **Aktor**: Kasir / Petugas dan Manager.
-- **Fungsi**: Kasir menginput pelunasan sisa bayar (Tunai/QRIS), sistem memverifikasi akun kasir dari **D1**, mengupdate status pesanan di **D3** menjadi `Lunas` (sisa bayar Rp 0), mencetak struk fisik, serta merekap omzet pendapatan untuk dikirim ke **Manager**.
+    P1(("1.0 Kelola Data<br/>Lapangan"))
+    P2(("2.0 Transaksi Booking<br/>& Pembayaran"))
+    P3(("3.0 Pelunasan &<br/>Laporan Kasir"))
+
+    D1[("D1: Tabel Petugas")]
+    D2[("D2: Tabel Lapangan")]
+    D3[("D3: Tabel Booking")]
+
+    %% Proses 1.0 (Kelola Lapangan)
+    KASIR -->|"Data tarif & status lapangan"| P1
+    P1 -->|"Simpan / update lapangan"| D2
+
+    %% Proses 2.0 (Transaksi Booking)
+    PELANGGAN -->|"Data pemesan & pilih slot"| P2
+    D2 -->|"Data tarif & info lapangan"| P2
+    P2 -->|"Status slot & struk invoice"| PELANGGAN
+    P2 -->|"Simpan transaksi baru (DP/Lunas)"| D3
+
+    %% Proses 3.0 (Pelunasan & Laporan)
+    KASIR -->|"Input pelunasan sisa bayar"| P3
+    D1 -->|"Verifikasi login kasir"| P3
+    D3 <-->|"Update status lunas & baca transaksi"| P3
+    P3 -->|"Struk cetak & data realtime"| KASIR
+    P3 -->|"Rekap omzet & okupansi"| MANAGER
+```
 
 ---
 
-## 4. Bocoran Pertanyaan Penguji UKK & Cara Jawabnya
+## 3. DFD Level 2: Proses 2.0 (Transaksi Booking)
 
-### 1. "Apa bedanya Context Diagram dengan DFD Level 1?"
-> **Jawaban Emas**: *"Context Diagram hanya memperlihatkan sistem secara global dari luar (sebagai 1 lingkaran 0 tanpa database). Sedangkan DFD Level 1 membedah proses di dalam sistem menjadi 3 proses inti (1.0, 2.0, 3.0) serta memperlihatkan tabel-tabel database penyimpanannya (D1, D2, D3) pak/bu."*
+Dekomposisi rinci untuk proses pemesanan lapangan dan validasi anti-bentrok jadwal:
 
-### 2. "Apa arti simbol dua garis / tabung silinder D1, D2, D3?"
-> **Jawaban Emas**: *"Itu adalah simbol **Data Store**, yaitu tempat penyimpanan data permanen di basis data PostgreSQL Supabase kami."*
+```mermaid
+flowchart TD
+    PELANGGAN["PELANGGAN"]
+    D2[("D2: Tabel Lapangan")]
+    D3[("D3: Tabel Booking")]
 
-### 3. "Kenapa panah D3 ke Proses 3.0 bolak-balik (`<-->`)?"
-> **Jawaban Emas**: *"Karena Proses 3.0 melakukan dua hal: **Membaca** data transaksi lama untuk dilunasi/dihitung omzetnya, lalu **Menulis kembali (Update)** statusnya menjadi Lunas ke tabel yang sama."*
+    P21(("2.1 Cek Jadwal &<br/>Validasi Bentrok"))
+    P22(("2.2 Hitung Total Biaya<br/>& Skema DP 50%"))
+    P23(("2.3 Simpan Transaksi<br/>ke Database"))
+    P24(("2.4 Terbitkan Struk<br/>& Invoice Digital"))
+
+    PELANGGAN -->|"Pilih tanggal, lapangan, & jam"| P21
+    D3 -->|"Baca slot yang sudah terisi"| P21
+    P21 -->|"Slot valid & belum dibooking"| P22
+    D2 -->|"Tarif per jam lapangan"| P22
+
+    P22 -->|"Rincian tagihan (Total & DP)"| PELANGGAN
+    PELANGGAN -->|"Konfirmasi & bayar DP/Lunas"| P23
+    P23 -->|"Insert record booking baru"| D3
+    P23 -->|"ID Transaksi terbit"| P24
+    P24 -->|"Kirim struk / bukti sewa"| PELANGGAN
+```
+
+---
+
+## 4. DFD Level 2: Proses 3.0 (Pelunasan & Laporan Kasir)
+
+Dekomposisi rinci untuk proses pelunasan di meja kasir dan pelaporan:
+
+```mermaid
+flowchart TD
+    KASIR["KASIR / PETUGAS"]
+    MANAGER["MANAGER"]
+    D3[("D3: Tabel Booking")]
+
+    P31(("3.1 Filter Transaksi<br/>Belum Lunas"))
+    P32(("3.2 Eksekusi Pelunasan<br/>(Tunai / QRIS)"))
+    P33(("3.3 Batalkan Transaksi<br/>(Buka Slot)"))
+    P34(("3.4 Rekap Pendapatan<br/>& Ekspor CSV"))
+
+    D3 -->|"Baca data booking (sisa_bayar > 0)"| P31
+    P31 -->|"Daftar tagihan diurutkan terdekat"| KASIR
+
+    KASIR -->|"Terima uang & klik Lunasi"| P32
+    P32 -->|"Update status = Lunas, sisa = 0"| D3
+    P32 -->|"Cetak struk pelunasan fisik"| KASIR
+
+    KASIR -->|"Batalkan pesanan (batal main)"| P33
+    P33 -->|"Update status = Batal"| D3
+
+    D3 -->|"Agregasi nominal_dibayar"| P34
+    P34 -->|"File rekap CSV & laporan omzet"| MANAGER
+```
+
+---
+
+## 5. Kamus Data (Data Dictionary) Resmi
+
+### A. Arus Data (Data Flows)
+
+| Nama Arus Data | Sumber | Tujuan | Struktur / Elemen Data |
+| :--- | :--- | :--- | :--- |
+| `Data_Pemesanan` | Pelanggan | 2.1 | `nama_penyewa` + `no_hp` + `lapangan_id` + `tgl_main` + `jam_slots` |
+| `Tarif_Lapangan` | D2 Lapangan | 2.2 | `id` + `nama_lapangan` + `tarif_per_jam` + `status` |
+| `Simpan_Booking` | 2.3 | D3 Booking | `id` + `nama_penyewa` + `tgl_main` + `jam_slots` + `total_bayar` + `nominal_dibayar` + `sisa_bayar` + `tipe_bayar` + `status` |
+| `Pelunasan_Sisa` | Kasir | 3.2 | `id_booking` + `sisa_bayar (= 0)` + `status (= 'Lunas')` |
+| `Laporan_Omzet` | 3.4 | Manager | `periode` + `total_pendapatan` + `total_booking` + `tingkat_okupansi` |
+
+### B. Data Store (Simpanan Data)
+
+- **D1: Tabel Petugas** = `id` + `username` + `password` + `nama_petugas` + `role`
+- **D2: Tabel Lapangan** = `id` + `nama_lapangan` + `tarif_per_jam` + `status`
+- **D3: Tabel Booking** = `id` + `lapangan_id` + `nama_penyewa` + `no_hp` + `tgl_main` + `jam_slots` + `durasi_jam` + `total_bayar` + `nominal_dibayar` + `sisa_bayar` + `tipe_bayar` + `status` + `created_at`
+
+---
+
+## 6. Cara Ekspor Diagram ke Figma & Laporan Word
+
+1. Buka [Mermaid Live Editor](https://mermaid.live).
+2. Salin kode diagram dari bab di atas dan tempelkan ke editor.
+3. Klik tombol **Actions > Download SVG** (format vektor tajam tanpa pecah).
+4. Di Figma: seret (*drag-and-drop*) file SVG langsung ke dalam kanvas Figma. Diagram akan otomatis terpecah menjadi objek vektor rapi yang bisa diwarnai atau diatur fontnya.
+5. Di Microsoft Word: klik **Insert > Pictures** lalu pilih file SVG/PNG yang sudah diunduh.
+
+---
+
+## 7. Bocoran Pertanyaan Penguji UKK Terkait DFD
+
+1. **"Mengapa tabel Petugas tidak terhubung ke proses 2.0?"**
+   - *Jawaban*: *"Karena proses 2.0 adalah pemesanan mandiri oleh pelanggan publik via web, sehingga tidak memerlukan login petugas. Tabel Petugas hanya diakses saat proses 1.0 (kelola lapangan) dan 3.0 (pelunasan kasir) untuk otorisasi hak akses."*
+
+2. **"Apa itu entitas luar (External Entity) di DFD?"**
+   - *Jawaban*: *"Entitas luar adalah pihak atau aktor di luar batas sistem yang memberikan input data atau menerima output data dari sistem, yaitu Pelanggan, Kasir/Petugas, dan Manager."*
+
+3. **"Apa bedanya DFD Level 1 dan Level 2?"**
+   - *Jawaban*: *"DFD Level 1 memecah sistem global menjadi proses-proses inti tingkat pertama (1.0, 2.0, 3.0). DFD Level 2 membedah sub-proses yang ada di dalam proses tersebut menjadi lebih terperinci (misal: 2.1 cek bentrok, 2.2 hitung DP, 2.3 simpan ke database)."*
