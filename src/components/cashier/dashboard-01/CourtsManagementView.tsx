@@ -165,7 +165,7 @@ export default function CourtsManagementView({
   }
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6 select-none font-sans text-zinc-100">
+    <div className="p-6 max-w-7xl mx-auto space-y-6 select-none font-aeonik text-zinc-100">
       {/* 1. Header & Metrik Statistik Ringkasan */}
       <div className="space-y-4">
         <div>

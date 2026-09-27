@@ -10,7 +10,7 @@ export default function Header({
   onToggleMobileSidebar,
 }: HeaderProps) {
   return (
-    <header className="h-12 shrink-0 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md px-5 flex items-center justify-between gap-4 select-none text-zinc-100 font-sans">
+    <header className="h-14 shrink-0 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md px-5 flex items-center justify-between gap-4 select-none text-zinc-100 font-aeonik">
       {/* 1. Sisi Kiri: Breadcrumb Kasir */}
       <div className="flex items-center gap-2">
         <button
@@ -21,7 +21,7 @@ export default function Header({
           <Menu className="w-4 h-4" />
         </button>
 
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex items-center gap-2 text-sm">
           <span className="text-zinc-600">...</span>
           <span className="font-medium text-zinc-400">
             Blanca Arena
@@ -42,7 +42,7 @@ export default function Header({
       {/* 2. Sisi Kanan: Status Kasir, Notifikasi, & Profile Avatar */}
       <div className="flex items-center gap-3">
         {/* Status Indikator Sistem Kasir */}
-        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-medium">
+        <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span>Kasir Online</span>
         </div>
@@ -50,14 +50,14 @@ export default function Header({
         {/* Notifikasi & Profile Avatar */}
         <button
           type="button"
-          className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors relative cursor-pointer"
+          className="w-8.5 h-8.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors relative cursor-pointer"
           title="Notifikasi"
         >
-          <Bell className="w-3.5 h-3.5" />
+          <Bell className="w-4 h-4" />
           <span className="w-1.5 h-1.5 rounded-full bg-amber-400 absolute top-2 right-2" />
         </button>
 
-        <div className="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xs font-bold text-amber-400">
+        <div className="w-8.5 h-8.5 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xs font-bold text-amber-400">
           AK
         </div>
       </div>

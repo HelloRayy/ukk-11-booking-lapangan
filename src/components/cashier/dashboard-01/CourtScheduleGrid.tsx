@@ -572,28 +572,28 @@ export default function CourtScheduleGrid({
   }
 
   return (
-    <div className="flex flex-col h-full bg-zinc-950 text-zinc-100 font-sans select-none overflow-hidden">
+    <div className="flex flex-col h-full bg-zinc-950 text-zinc-100 font-aeonik select-none overflow-hidden">
       {/* 1. Control Toolbar Atas Minimalis Selaras dengan Tab Transaksi & Overview */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-5 py-2.5 border-b border-zinc-800/80 bg-zinc-950">
         {/* Sisi Kiri: Search Bar Terpadu Bersih */}
         <div className="flex items-center gap-2 flex-1 max-w-xs">
           <div className="relative w-full">
-            <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari transaksi..."
-              className="w-full h-8 pl-8 pr-7 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-amber-400/60 transition-colors"
+              className="w-full h-9 pl-9 pr-8 rounded-lg bg-zinc-900 border border-zinc-800 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-amber-400/60 transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 p-0.5 cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 p-0.5 cursor-pointer"
                 title="Hapus pencarian"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
@@ -612,13 +612,13 @@ export default function CourtScheduleGrid({
           />
 
           {/* Legend Status Slot Jam Ringkas */}
-          <div className="hidden sm:flex items-center gap-2.5 text-xs text-zinc-400 px-2.5 border-x border-zinc-800/80">
+          <div className="hidden sm:flex items-center gap-3 text-sm text-zinc-300 px-3 border-x border-zinc-800/80">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
               <span>Lunas</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
               <span>DP 50%</span>
             </div>
           </div>
@@ -627,19 +627,19 @@ export default function CourtScheduleGrid({
           <button
             type="button"
             onClick={onRefresh}
-            className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-zinc-100 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-zinc-100 flex items-center justify-center transition-colors cursor-pointer"
             title="Muat Ulang Jadwal"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-amber-400' : ''}`} />
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-amber-400' : ''}`} />
           </button>
         </div>
       </div>
 
       {/* Banner Hasil Pencarian Jadwal Lapangan */}
       {searchQuery.trim() && (
-        <div className="shrink-0 px-5 py-2 bg-[#1b1a15] border-b border-[#f2d953]/30 flex flex-wrap items-center justify-between text-xs gap-3 animate-in fade-in duration-150">
+        <div className="shrink-0 px-5 py-2.5 bg-[#1b1a15] border-b border-[#f2d953]/30 flex flex-wrap items-center justify-between text-sm gap-3 animate-in fade-in duration-150">
           <div className="flex items-center gap-2">
-            <Search className="w-3.5 h-3.5 text-[#f2d953]" />
+            <Search className="w-4 h-4 text-[#f2d953]" />
             <span className="text-[#d1d1d1]">
               Hasil pencarian &ldquo;<strong className="text-[#f2d953]">{searchQuery}</strong>&rdquo;:
             </span>

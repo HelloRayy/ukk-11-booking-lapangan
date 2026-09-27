@@ -9,18 +9,18 @@ interface SidebarProps {
 
 export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }: SidebarProps) {
   return (
-    <aside className="w-56 shrink-0 hidden md:flex flex-col justify-between border-r border-zinc-800/80 bg-zinc-950 p-3 select-none h-screen text-zinc-100 font-sans">
+    <aside className="w-60 shrink-0 hidden md:flex flex-col justify-between border-r border-zinc-800/80 bg-zinc-950 p-3.5 select-none h-screen text-zinc-100 font-aeonik">
       {/* 1. Brand & Workspace Bar */}
       <div className="space-y-4">
         <div className="flex items-center gap-2.5 px-2 py-1.5">
-          <div className="w-6 h-6 rounded-md bg-amber-400 text-zinc-950 flex items-center justify-center font-bold text-xs shadow-xs">
+          <div className="w-7 h-7 rounded-md bg-amber-400 text-zinc-950 flex items-center justify-center font-bold text-sm shadow-xs">
             B
           </div>
           <div className="flex flex-col">
-            <span className="text-xs font-semibold text-zinc-100 tracking-tight">
+            <span className="text-sm font-semibold text-zinc-100 tracking-tight">
               Blanca Arena
             </span>
-            <span className="text-[10px] text-zinc-400 font-medium">Kasir & Resepsionis</span>
+            <span className="text-xs text-zinc-400 font-medium">Kasir & Resepsionis</span>
           </div>
         </div>
 
@@ -29,14 +29,14 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
           <button
             type="button"
             onClick={() => onTabChange?.('overview')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
+            className={`w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer outline-none select-none transition-colors group ${
               currentTab === 'overview'
-                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
-                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
+                ? 'bg-zinc-900 text-zinc-100'
+                : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <div className="flex items-center gap-2">
-              <LayoutDashboard className={`w-4 h-4 shrink-0 ${currentTab === 'overview' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <LayoutDashboard className={`w-4 h-4 shrink-0 transition-colors ${currentTab === 'overview' ? 'text-amber-400' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
               <span>Overview</span>
             </div>
             {currentTab === 'overview' && (
@@ -48,14 +48,14 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
           <button
             type="button"
             onClick={() => onTabChange?.('schedule')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
+            className={`w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer outline-none select-none transition-colors group ${
               currentTab === 'schedule'
-                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
-                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
+                ? 'bg-zinc-900 text-zinc-100'
+                : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <div className="flex items-center gap-2">
-              <CalendarDays className={`w-4 h-4 shrink-0 ${currentTab === 'schedule' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <CalendarDays className={`w-4 h-4 shrink-0 transition-colors ${currentTab === 'schedule' ? 'text-amber-400' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
               <span>Jadwal Lapangan</span>
             </div>
             {currentTab === 'schedule' && (
@@ -67,14 +67,14 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
           <button
             type="button"
             onClick={() => onTabChange?.('bookings')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
+            className={`w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer outline-none select-none transition-colors group ${
               currentTab === 'bookings'
-                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
-                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
+                ? 'bg-zinc-900 text-zinc-100'
+                : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <div className="flex items-center gap-2">
-              <ReceiptText className={`w-4 h-4 shrink-0 ${currentTab === 'bookings' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <ReceiptText className={`w-4 h-4 shrink-0 transition-colors ${currentTab === 'bookings' ? 'text-amber-400' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
               <span>Transaksi</span>
             </div>
             {currentTab === 'bookings' && (
@@ -86,29 +86,25 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
           <button
             type="button"
             onClick={() => onTabChange?.('courts')}
-            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
+            className={`w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer outline-none select-none transition-colors group ${
               currentTab === 'courts'
-                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
-                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
+                ? 'bg-zinc-900 text-zinc-100'
+                : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <div className="flex items-center gap-2">
-              <SlidersHorizontal className={`w-4 h-4 shrink-0 ${currentTab === 'courts' ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <SlidersHorizontal className={`w-4 h-4 shrink-0 transition-colors ${currentTab === 'courts' ? 'text-amber-400' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
               <span>Kelola Lapangan</span>
             </div>
-            {currentTab === 'courts' ? (
+            {currentTab === 'courts' && (
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            ) : (
-              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700/50">
-                CRUD
-              </span>
             )}
           </button>
 
           {/* Tautan ke Kalender Publik Pemesan */}
           <a
             href="/reservasi"
-            className="w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] text-xs font-medium text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200 leading-normal transition-all cursor-pointer outline-none group select-none"
+            className="w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-100 whitespace-nowrap cursor-pointer outline-none select-none transition-colors group"
           >
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-zinc-500 group-hover:text-zinc-300 shrink-0 transition-colors" />

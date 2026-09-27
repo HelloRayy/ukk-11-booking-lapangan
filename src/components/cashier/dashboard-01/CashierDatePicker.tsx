@@ -118,7 +118,7 @@ export default function CashierDatePicker({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-1.5 text-xs font-medium cursor-pointer transition-all duration-150 px-2.5 h-8 rounded-lg border group select-none ${
+        className={`flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-150 px-3 h-9 rounded-lg border group select-none ${
           isOpen
             ? 'text-zinc-100 border-amber-400/80 ring-1 ring-amber-400/30 bg-zinc-900 shadow-xs'
             : selectedDate !== 'all'
@@ -128,7 +128,7 @@ export default function CashierDatePicker({
         aria-label="Buka kalender tanggal reservasi"
         aria-expanded={isOpen}
       >
-        <Calendar className={`w-3.5 h-3.5 transition-colors shrink-0 ${isOpen ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'}`} />
+        <Calendar className={`w-4 h-4 transition-colors shrink-0 ${isOpen ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'}`} />
         <span className="truncate max-w-[210px]">
           {labelPrefix ? (
             <span>
@@ -140,7 +140,7 @@ export default function CashierDatePicker({
           )}
         </span>
         <ChevronDown
-          className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+          className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
             isOpen ? 'rotate-180 text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'
           }`}
         />
@@ -149,7 +149,7 @@ export default function CashierDatePicker({
       {/* Popover Kalender Visual (1:1 dengan Reservasi) */}
       {isOpen && (
         <div
-          className={`absolute top-full mt-1.5 w-72 sm:w-80 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none font-sans ${
+          className={`absolute top-full mt-1.5 w-72 sm:w-80 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3.5 z-50 animate-fadeIn select-none font-aeonik ${
             align === 'right' ? 'right-0' : 'left-0'
           }`}
         >

@@ -54,7 +54,7 @@ export default function CashierPage() {
   }
 
   return (
-    <div className="h-screen w-full flex overflow-hidden bg-zinc-950 text-zinc-100 font-sans select-none antialiased">
+    <div className="h-screen w-full flex overflow-hidden bg-zinc-950 text-zinc-100 font-aeonik select-none antialiased">
       {/* 1. Sidebar Navigasi Kiri (Desktop Full Height) */}
       <Sidebar
         currentTab={currentTab}
