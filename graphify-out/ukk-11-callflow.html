@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>ukk-11 — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 724 nodes, 1483 edges, 35 communities. Commit: b9887c7</p>
+<p class="subtitle">Generated from graphify knowledge graph: 725 nodes, 1485 edges, 33 communities. Commit: e4464f0</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -90,19 +90,19 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 flowchart LR
     EXTRACT_PIPELINE_5F350230("Extraction Pipeline<br/><small>4 nodes</small>")
     class EXTRACT_PIPELINE_5F350230 module;
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>166 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>163 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
     ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>28 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
     OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>45 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
-    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>23 nodes</small>")
+    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>29 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>61 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>64 nodes</small>")
     class SERVE_API_35EC8E86 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>64 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>63 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
-    REACT_6B810C90("react<br/><small>108 nodes</small>")
+    REACT_6B810C90("react<br/><small>94 nodes</small>")
     class REACT_6B810C90 module;
     COURTSCHEDULEGRID_TSX_5EC44A8B("CourtScheduleGrid.tsx<br/><small>93 nodes</small>")
     class COURTSCHEDULEGRID_TSX_5EC44A8B module;
@@ -116,20 +116,20 @@ flowchart LR
     class HEADERNAV_TSX_642F330C module;
     SECTION_2_RENCANA_ANGGARAN_BIAYA_RAB_OPERASIONAL_C657E894("2. Rencana Anggaran Biaya (RAB) Operasional Sistem<br/><small>13 nodes</small>")
     class SECTION_2_RENCANA_ANGGARAN_BIAYA_RAB_OPERASIONAL_C657E894 module;
-    OTHER_D0941E68("Other<br/><small>51 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>61 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x33| REACT_6B810C90
-    COURTSCHEDULEGRID_TSX_5EC44A8B -->|imports x22| REACT_6B810C90
-    SERVE_API_35EC8E86 -->|imports x13| COURTSCHEDULEGRID_TSX_5EC44A8B
-    REACT_6B810C90 -->|imports x13| SERVE_API_35EC8E86
-    BUILD_GRAPH_321CBB04 -->|imports x13| REACT_6B810C90
-    TESTS_FIXTURES_B84B1DCC -->|imports x12| REACT_6B810C90
-    CLI_SKILLS_9964CBB8 -->|imports x8| REACT_6B810C90
-    REACT_6B810C90 -->|imports x8| COURTSCHEDULEGRID_TSX_5EC44A8B
+    SERVE_API_35EC8E86 -->|imports x37| REACT_6B810C90
+    COURTSCHEDULEGRID_TSX_5EC44A8B -->|imports x21| REACT_6B810C90
+    SERVE_API_35EC8E86 -->|imports x17| COURTSCHEDULEGRID_TSX_5EC44A8B
+    REACT_6B810C90 -->|imports x11| SERVE_API_35EC8E86
+    TESTS_FIXTURES_B84B1DCC -->|imports x11| REACT_6B810C90
+    CLI_SKILLS_9964CBB8 -->|imports x9| REACT_6B810C90
+    BUILD_GRAPH_321CBB04 -->|imports x9| REACT_6B810C90
+    OTHER_D0941E68 -->|imports x8| REACT_6B810C90
     COURTSCHEDULEGRID_TSX_5EC44A8B -->|imports x7| SERVE_API_35EC8E86
-    CLI_SKILLS_9964CBB8 -->|imports x5| SERVE_API_35EC8E86
+    CLI_SKILLS_9964CBB8 -->|imports x7| SERVE_API_35EC8E86
+    REACT_6B810C90 -->|imports x4| COURTSCHEDULEGRID_TSX_5EC44A8B
     COURTSCHEDULEGRID_TSX_5EC44A8B -->|imports x4| CLI_SKILLS_9964CBB8
-    BUILD_GRAPH_321CBB04 -->|imports x3| SERVE_API_35EC8E86
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>4</td><td><code>34</code></td></tr><tr><td>Graph Build</td><td>166</td><td><code>2, 10, 9, 11, 12, 15, 4, 19, 21, 24</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>28</td><td><code>13</code></td></tr><tr><td>Outputs &amp; Docs</td><td>45</td><td><code>20, 27, 29, 30</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>23</td><td><code>7</code></td></tr><tr><td>Serving API</td><td>61</td><td><code>1</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>64</td><td><code>3, 6</code></td></tr><tr><td>react</td><td>108</td><td><code>5</code></td></tr><tr><td>CourtScheduleGrid.tsx</td><td>93</td><td><code>0</code></td></tr><tr><td>BlancaLocations.tsx</td><td>22</td><td><code>8</code></td></tr><tr><td>BlancaTechnology.tsx</td><td>16</td><td><code>14</code></td></tr><tr><td>BlancaDifference.tsx</td><td>15</td><td><code>16</code></td></tr><tr><td>HeaderNav.tsx</td><td>15</td><td><code>17</code></td></tr><tr><td>2. Rencana Anggaran Biaya (RAB) Operasional Sistem</td><td>13</td><td><code>25</code></td></tr><tr><td>Other</td><td>51</td><td><code>26, 28, 31, 32, 22, 23, 35, 36</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>4</td><td><code>34</code></td></tr><tr><td>Graph Build</td><td>163</td><td><code>10, 2, 9, 11, 12, 15, 24</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>28</td><td><code>13</code></td></tr><tr><td>Outputs &amp; Docs</td><td>45</td><td><code>20, 27, 29, 30</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>29</td><td><code>7</code></td></tr><tr><td>Serving API</td><td>64</td><td><code>1</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>63</td><td><code>3, 6</code></td></tr><tr><td>react</td><td>94</td><td><code>5</code></td></tr><tr><td>CourtScheduleGrid.tsx</td><td>93</td><td><code>0</code></td></tr><tr><td>BlancaLocations.tsx</td><td>22</td><td><code>8</code></td></tr><tr><td>BlancaTechnology.tsx</td><td>16</td><td><code>14</code></td></tr><tr><td>BlancaDifference.tsx</td><td>15</td><td><code>16</code></td></tr><tr><td>HeaderNav.tsx</td><td>15</td><td><code>17</code></td></tr><tr><td>2. Rencana Anggaran Biaya (RAB) Operasional Sistem</td><td>13</td><td><code>25</code></td></tr><tr><td>Other</td><td>61</td><td><code>26, 28, 4, 31, 32, 22, 23, 35, 36</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -158,7 +158,7 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>724 nodes · 1483 edges · 35 communities (30 shown, 5 thin omitted)</li>
+      <li>725 nodes · 1485 edges · 33 communities (28 shown, 5 thin omitted)</li>
       <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 22 edges (avg confidence: 0.91)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `react` - 56 edges</li>
@@ -259,12 +259,12 @@ flowchart LR
 
 <!-- ====== 3. Graph Build ====== -->
 <h2 id="build-graph">3. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, components, blanca, tsconfigappjson, mostly in package.json, tsconfig.app.json, components.json. This section covers 166 nodes and 202 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, components, blanca, tsconfigappjson, mostly in package.json, tsconfig.app.json, components.json. This section covers 163 nodes and 194 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (166 nodes, 202 edges)
+    %% Section: Graph Build (163 nodes, 194 edges)
     subgraph build_graph_package_json_4e40bfbd["package.json"]
         package_582681c2("package.json")
         ref_eslint_js_d5412ee4("@eslint/js<br/><small>package.json</small>")
@@ -290,7 +290,7 @@ flowchart LR
     src_components_blanca_hooks_uselenis_uselenis_d67f5118("useLenis()<br/><small>blanca/hooks/useLenis.ts</small>")
     eslint_config_80901414("eslint.config.js")
     src_components_blanca_reservation_hooks_usereser_67f70d60("useReservationDrawer()<br/><small>reservation/hooks/useReservationDrawer.ts</small>")
-    src_blanca_0b7ff62f("blanca.tsx")
+    vite_config_433f92aa("vite.config.ts")
     src_components_blanca_heroblanca_heroblanca_83441b21 -->|calls| src_components_blanca_hero_useheroanimation_useh_bb662cce
     src_components_blanca_heroblancapreview_heroblan_4ea5aebe -->|calls| src_components_blanca_reservation_hooks_usereser_67f70d60
     src_components_blanca_heroblancapreview_heroblan_4ea5aebe -->|calls| src_components_blanca_hooks_uselenis_uselenis_d67f5118
@@ -307,15 +307,15 @@ flowchart LR
     package_582681c2 -->|imports| ref_eslint_plugin_react_refresh_e93dbdba
     package_582681c2 -->|imports| ref_globals_18122627
     package_582681c2 -->|imports| ref_typescript_eslint_8e22e9b7
-    src_blanca_0b7ff62f -->|imports| src_components_blanca_heroblancapreview_heroblan_4ea5aebe
-    src_blanca_0b7ff62f -->|imports| src_components_blanca_heroblancapreview_6918d7e7
     src_components_blanca_heroblanca_7defba5a -->|imports| src_components_blanca_hero_useheroanimation_useh_bb662cce
     src_components_blanca_heroblanca_7defba5a -->|imports| src_components_blanca_reservation_reservationdra_2efa2b37
     src_components_blanca_heroblanca_7defba5a -->|imports| src_components_blanca_reservation_hooks_usereser_67f70d60
     src_components_blanca_heroblanca_7defba5a -->|imports| src_components_blanca_reservation_reservationdra_5efa311d
     src_components_blanca_heroblancapreview_6918d7e7 -->|imports| src_components_blanca_heroblanca_heroblanca_83441b21
     src_components_blanca_heroblancapreview_6918d7e7 -->|imports| src_components_blanca_reservation_hooks_usereser_67f70d60
-    %% Omitted for readability: 148 nodes, 3 edges
+    src_components_blanca_heroblancapreview_6918d7e7 -->|imports| src_components_blanca_hooks_uselenis_uselenis_d67f5118
+    src_components_blanca_heroblancapreview_6918d7e7 -->|imports| src_components_blanca_heroblanca_7defba5a
+    %% Omitted for readability: 145 nodes, 1 edges
     class package_582681c2 function;
     class ref_eslint_js_d5412ee4 function;
     class ref_globals_18122627 function;
@@ -333,7 +333,7 @@ flowchart LR
     class src_components_blanca_hooks_uselenis_uselenis_d67f5118 ui;
     class eslint_config_80901414 module;
     class src_components_blanca_reservation_hooks_usereser_67f70d60 ui;
-    class src_blanca_0b7ff62f ui;
+    class vite_config_433f92aa module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -357,243 +357,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>BlancaCtaProps</code><br><small style="color:var(--muted)">components/blanca/BlancaCta.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>configurePreviewServer()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>BlancaCtaProps node in components/blanca/BlancaCta.tsx.</td>
+  <td><code>routeMiddleware()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>CenterFlyingLogoProps</code><br><small style="color:var(--muted)">blanca/hero/CenterFlyingLogo.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>configureServer()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CenterFlyingLogoProps node in blanca/hero/CenterFlyingLogo.tsx.</td>
+  <td><code>routeMiddleware()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>HeroMediaProps</code><br><small style="color:var(--muted)">blanca/hero/HeroMedia.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>routeMiddleware()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>configurePreviewServer()</code><br><small style="color:var(--muted)">vite.config.ts</small><br><code>configureServer()</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>HeroMediaProps node in blanca/hero/HeroMedia.tsx.</td>
+  <td>routeMiddleware() node in vite.config.ts.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>HeroTitleProps</code><br><small style="color:var(--muted)">blanca/hero/HeroTitle.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>eslint.config.js</code><br><small style="color:var(--muted)">eslint.config.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>HeroTitleProps node in blanca/hero/HeroTitle.tsx.</td>
+  <td><code>@eslint/js</code><br><small style="color:var(--muted)">package.json</small><br><code>eslint</code><br><small style="color:var(--muted)">package.json</small><br><code>eslint-plugin-react-hooks</code><br><small style="color:var(--muted)">package.json</small><br>+3 more</td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>HeroBlancaProps</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>package.json</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>HeroBlancaProps node in components/blanca/HeroBlanca.tsx.</td>
+  <td><code>@eslint/js</code><br><small style="color:var(--muted)">package.json</small><br><code>@playwright/test</code><br><small style="color:var(--muted)">package.json</small><br><code>@radix-ui/react-checkbox</code><br><small style="color:var(--muted)">package.json</small><br>+25 more</td>
+  <td>package.json node in package.json.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>UseLenisOptions</code><br><small style="color:var(--muted)">blanca/hooks/useLenis.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
+  <td><code>devDependencies</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>UseLenisOptions node in blanca/hooks/useLenis.ts.</td>
+  <td>devDependencies node in package.json.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>ReservationFabProps</code><br><small style="color:var(--muted)">reservation/components/ReservationFab.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>eslint</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ReservationFabProps node in reservation/components/ReservationFab.tsx.</td>
+  <td>eslint node in package.json.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>ReservationSidePanelProps</code><br><small style="color:var(--muted)">reservation/components/ReservationSidePanel.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>@eslint/js</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ReservationSidePanelProps node in reservation/components/ReservationSidePanel.tsx.</td>
+  <td>@eslint/js node in package.json.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>ReservationDrawerProps</code><br><small style="color:var(--muted)">blanca/reservation/ReservationDrawer.tsx</small></td>
+  <td><code>eslint-plugin-react-hooks</code><br><small style="color:var(--muted)">package.json</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ReservationDrawerProps node in blanca/reservation/ReservationDrawer.tsx.</td>
+  <td>eslint-plugin-react-hooks node in package.json.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>CustomerInfo</code><br><small style="color:var(--muted)">blanca/reservation/types.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>ReservationSidePanel.tsx</code><br><small style="color:var(--muted)">reservation/components/ReservationSidePanel.tsx</small><br><code>useReservationDrawer.ts</code><br><small style="color:var(--muted)">reservation/hooks/useReservationDrawer.ts</small></td>
+  <td><code>eslint-plugin-react-refresh</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>CustomerInfo node in blanca/reservation/types.ts.</td>
+  <td>eslint-plugin-react-refresh node in package.json.</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>BlancaCta()</code><br><small style="color:var(--muted)">components/blanca/BlancaCta.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
+  <td><code>globals</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>BlancaCta() node in components/blanca/BlancaCta.tsx.</td>
+  <td>globals node in package.json.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>BlancaFooter()</code><br><small style="color:var(--muted)">components/blanca/BlancaFooter.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
+  <td><code>@playwright/test</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>BlancaFooter() node in components/blanca/BlancaFooter.tsx.</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>CenterFlyingLogo()</code><br><small style="color:var(--muted)">blanca/hero/CenterFlyingLogo.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>pngjs</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>CenterFlyingLogo() node in blanca/hero/CenterFlyingLogo.tsx.</td>
+  <td>pngjs node in package.json.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>HeroMedia()</code><br><small style="color:var(--muted)">blanca/hero/HeroMedia.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>@types/node</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>HeroMedia() node in blanca/hero/HeroMedia.tsx.</td>
+  <td>@types/node node in package.json.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>HeroTitle()</code><br><small style="color:var(--muted)">blanca/hero/HeroTitle.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>@types/react</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>HeroTitle() node in blanca/hero/HeroTitle.tsx.</td>
+  <td>@types/react node in package.json.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>useHeroAnimation()</code><br><small style="color:var(--muted)">blanca/hero/useHeroAnimation.ts</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca()</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small><br><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>@types/react-dom</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>useHeroAnimation() node in blanca/hero/useHeroAnimation.ts.</td>
+  <td>@types/react-dom node in package.json.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>HeroBlanca()</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
-  <td><code>useHeroAnimation()</code><br><small style="color:var(--muted)">blanca/hero/useHeroAnimation.ts</small></td>
-  <td>HeroBlanca() node in components/blanca/HeroBlanca.tsx.</td>
+  <td><code>typescript</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>typescript node in package.json.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>HeroBlancaPreview()</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>blanca.tsx</code><br><small style="color:var(--muted)">src/blanca.tsx</small></td>
-  <td><code>useLenis()</code><br><small style="color:var(--muted)">blanca/hooks/useLenis.ts</small><br><code>useReservationDrawer()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationDrawer.ts</small></td>
-  <td>HeroBlancaPreview() node in components/blanca/HeroBlancaPreview.tsx.</td>
+  <td><code>typescript-eslint</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>typescript-eslint node in package.json.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>useLenis()</code><br><small style="color:var(--muted)">blanca/hooks/useLenis.ts</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview()</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
+  <td><code>vite</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>useLenis() node in blanca/hooks/useLenis.ts.</td>
+  <td>vite node in package.json.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>ReservationFab()</code><br><small style="color:var(--muted)">reservation/components/ReservationFab.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>ReservationDrawer.tsx</code><br><small style="color:var(--muted)">blanca/reservation/ReservationDrawer.tsx</small></td>
+  <td><code>@vitejs/plugin-react</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ReservationFab() node in reservation/components/ReservationFab.tsx.</td>
+  <td>@vitejs/plugin-react node in package.json.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>ReservationSidePanel()</code><br><small style="color:var(--muted)">reservation/components/ReservationSidePanel.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>ReservationDrawer.tsx</code><br><small style="color:var(--muted)">blanca/reservation/ReservationDrawer.tsx</small></td>
+  <td><code>name</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ReservationSidePanel() node in reservation/components/ReservationSidePanel.tsx.</td>
+  <td>name node in package.json.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>useReservationDrawer()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationDrawer.ts</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small><br><code>HeroBlancaPreview()</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br>+2 more</td>
+  <td><code>private</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>useReservationDrawer() node in reservation/hooks/useReservationDrawer.ts.</td>
+  <td>private node in package.json.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>ReservationDrawer()</code><br><small style="color:var(--muted)">blanca/reservation/ReservationDrawer.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
-  <td><code>useReservationDrawer()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationDrawer.ts</small></td>
-  <td>ReservationDrawer() node in blanca/reservation/ReservationDrawer.tsx.</td>
+  <td><code>scripts</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>scripts node in package.json.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>blanca.tsx</code><br><small style="color:var(--muted)">src/blanca.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>build</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>HeroBlancaPreview()</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small><br>+2 more</td>
-  <td>Module file in src/blanca.tsx.</td>
+  <td>No direct outbound edge</td>
+  <td>build node in package.json.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>BlancaCta.tsx</code><br><small style="color:var(--muted)">components/blanca/BlancaCta.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
+  <td><code>dev</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Module file in components/blanca/BlancaCta.tsx.</td>
+  <td>dev node in package.json.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>BlancaFooter.tsx</code><br><small style="color:var(--muted)">components/blanca/BlancaFooter.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small></td>
+  <td><code>lint</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Module file in components/blanca/BlancaFooter.tsx.</td>
+  <td>lint node in package.json.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>CenterFlyingLogo.tsx</code><br><small style="color:var(--muted)">blanca/hero/CenterFlyingLogo.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>preview</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Module file in blanca/hero/CenterFlyingLogo.tsx.</td>
+  <td>preview node in package.json.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>HeroMedia.tsx</code><br><small style="color:var(--muted)">blanca/hero/HeroMedia.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
-  <td><code>react</code><br><small style="color:var(--muted)">package.json</small><br><code>src_assets_hero_video</code></td>
-  <td>Module file in blanca/hero/HeroMedia.tsx.</td>
+  <td><code>type</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>type node in package.json.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>HeroTitle.tsx</code><br><small style="color:var(--muted)">blanca/hero/HeroTitle.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>HeroBlanca.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlanca.tsx</small></td>
+  <td><code>version</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Module file in blanca/hero/HeroTitle.tsx.</td>
+  <td>version node in package.json.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>ReservationModal.tsx</code><br><small style="color:var(--muted)">blanca/hero/ReservationModal.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>vite.config.ts</code><br><small style="color:var(--muted)">vite.config.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in blanca/hero/ReservationModal.tsx.</td>
+  <td><code>@tailwindcss/vite</code><br><small style="color:var(--muted)">package.json</small><br><code>@vitejs/plugin-react</code><br><small style="color:var(--muted)">package.json</small><br><code>ref_path</code><br>+1 more</td>
+  <td>Module file in vite.config.ts.</td>
 </tr>
 </table>
 
@@ -614,7 +614,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x119, imports x37, imports x36, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x119, imports x37, imports x28, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1309,46 +1309,41 @@ flowchart LR
 
 <!-- ====== 6. CLI & Skill Installers ====== -->
 <h2 id="cli-skills">6. CLI &amp; Skill Installers</h2>
-<p>CLI &amp; Skill Installers groups implementation around components, booking, operationalhoursts, constants, mostly in src/constants/operationalHours.ts, components/booking/CostSummary.tsx, components/booking/CourtSelector.tsx. This section covers 23 nodes and 30 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>CLI &amp; Skill Installers groups implementation around components, booking, operationalhoursts, constants, mostly in src/constants/operationalHours.ts, components/booking/CostSummary.tsx, components/booking/CourtSelector.tsx. This section covers 29 nodes and 40 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: CLI &amp; Skill Installers (23 nodes, 30 edges)
-    subgraph cli_skills_components_booking_CostSummary_tsx_5cae9f60["components/booking/CostSummary.tsx"]
-        src_components_booking_costsummary_ringkasanbiay_787a367c("RingkasanBiaya()<br/><small>components/booking/CostSummary.tsx</small>")
-        src_components_booking_costsummary_d05002e0("CostSummary.tsx")
-        src_components_booking_costsummary_props_2a733b7d("Props<br/><small>components/booking/CostSummary.tsx</small>")
-    end
+    %% Section: CLI &amp; Skill Installers (29 nodes, 40 edges)
     subgraph cli_skills_src_constants_operationalHours_ts_a64d0ae8["src/constants/operationalHours.ts"]
+        src_constants_operationalhours_daftar_jam_f80a357e("DAFTAR_JAM<br/><small>src/constants/operationalHours.ts</small>")
         src_constants_operationalhours_isdevmode_4a504497("isDevMode<br/><small>src/constants/operationalHours.ts</small>")
         src_constants_operationalhours_jamsimulasi_a5152e6f("jamSimulasi<br/><small>src/constants/operationalHours.ts</small>")
         src_constants_operationalhours_a5fe60ca("operationalHours.ts")
-    end
-    subgraph cli_skills_components_booking_CourtSelector_tsx_f19a34fe["components/booking/CourtSelector.tsx"]
-        src_components_booking_courtselector_pilihlapang_564be327("PilihLapangan()<br/><small>components/booking/CourtSelector.tsx</small>")
-        src_components_booking_courtselector_81a94ea5("CourtSelector.tsx")
-    end
-    subgraph cli_skills_components_booking_CustomerForm_tsx_bbd72e5a["components/booking/CustomerForm.tsx"]
-        src_components_booking_customerform_formpemesan_913e5342("FormPemesan()<br/><small>components/booking/CustomerForm.tsx</small>")
-        src_components_booking_customerform_d5c13325("CustomerForm.tsx")
     end
     subgraph cli_skills_components_booking_TimeSlotGrid_tsx_0aeb7da3["components/booking/TimeSlotGrid.tsx"]
         src_components_booking_timeslotgrid_6fdf39de("TimeSlotGrid.tsx")
         src_components_booking_timeslotgrid_gridjam_164b1d96("GridJam()<br/><small>components/booking/TimeSlotGrid.tsx</small>")
     end
-    subgraph cli_skills_src_App_tsx_6e733dc5["src/App.tsx"]
-        src_app_46efd68e("App.tsx")
-        src_app_app_f316b20d("App()<br/><small>src/App.tsx</small>")
-    end
     subgraph cli_skills_src_components_CustomerBookingPage_ts_d7a11fce["src/components/CustomerBookingPage.tsx"]
         src_components_customerbookingpage_8e13cbf5("CustomerBookingPage.tsx")
         src_components_customerbookingpage_customerbooki_f1d8576f("CustomerBookingPage()<br/><small>src/components/CustomerBookingPage.tsx</small>")
     end
-    src_index_811cdc82("src_index")
+    src_components_blanca_blanca_d355cbf4("src_components_blanca_blanca")
+    src_components_booking_costsummary_ringkasanbiay_787a367c("RingkasanBiaya()<br/><small>components/booking/CostSummary.tsx</small>")
+    src_components_booking_courtselector_pilihlapang_564be327("PilihLapangan()<br/><small>components/booking/CourtSelector.tsx</small>")
+    src_components_booking_customerform_formpemesan_913e5342("FormPemesan()<br/><small>components/booking/CustomerForm.tsx</small>")
+    ref_react_dom_61ea372d("react-dom<br/><small>package.json</small>")
+    src_app_46efd68e("App.tsx")
+    src_blanca_0b7ff62f("blanca.tsx")
+    src_kasir_17c53e49("kasir.tsx")
     src_main_3231ff52("main.tsx")
+    src_reservation_b3b3af01("reservation.tsx")
     src_app_46efd68e -->|imports| src_components_customerbookingpage_customerbooki_f1d8576f
     src_app_46efd68e -->|imports| src_components_customerbookingpage_8e13cbf5
+    src_blanca_0b7ff62f -->|imports| ref_react_dom_61ea372d
+    src_blanca_0b7ff62f -->|imports| src_components_blanca_blanca_d355cbf4
+    src_components_booking_timeslotgrid_6fdf39de -->|imports| src_constants_operationalhours_daftar_jam_f80a357e
     src_components_booking_timeslotgrid_6fdf39de -->|imports| src_constants_operationalhours_isdevmode_4a504497
     src_components_booking_timeslotgrid_6fdf39de -->|imports| src_constants_operationalhours_jamsimulasi_a5152e6f
     src_components_booking_timeslotgrid_6fdf39de -->|imports| src_constants_operationalhours_a5fe60ca
@@ -1356,32 +1351,32 @@ flowchart LR
     src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_timeslotgrid_gridjam_164b1d96
     src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_costsummary_ringkasanbiay_787a367c
     src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_customerform_formpemesan_913e5342
-    src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_courtselector_81a94ea5
     src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_timeslotgrid_6fdf39de
-    src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_costsummary_d05002e0
-    src_components_customerbookingpage_8e13cbf5 -->|imports| src_components_booking_customerform_d5c13325
-    src_main_3231ff52 -->|imports| src_app_app_f316b20d
-    src_main_3231ff52 -->|imports| src_index_811cdc82
+    src_kasir_17c53e49 -->|imports| ref_react_dom_61ea372d
+    src_kasir_17c53e49 -->|imports| src_components_blanca_blanca_d355cbf4
+    src_main_3231ff52 -->|imports| ref_react_dom_61ea372d
     src_main_3231ff52 -->|imports| src_app_46efd68e
-    %% Omitted for readability: 5 nodes, 0 edges
-    class src_components_booking_costsummary_ringkasanbiay_787a367c ui;
-    class src_components_booking_costsummary_d05002e0 ui;
-    class src_components_booking_costsummary_props_2a733b7d ui;
+    src_reservation_b3b3af01 -->|imports| ref_react_dom_61ea372d
+    src_reservation_b3b3af01 -->|imports| src_components_blanca_blanca_d355cbf4
+    %% Omitted for readability: 11 nodes, 0 edges
+    class src_constants_operationalhours_daftar_jam_f80a357e klass;
     class src_constants_operationalhours_isdevmode_4a504497 function;
     class src_constants_operationalhours_jamsimulasi_a5152e6f function;
     class src_constants_operationalhours_a5fe60ca module;
-    class src_components_booking_courtselector_pilihlapang_564be327 ui;
-    class src_components_booking_courtselector_81a94ea5 ui;
-    class src_components_booking_customerform_formpemesan_913e5342 ui;
-    class src_components_booking_customerform_d5c13325 ui;
     class src_components_booking_timeslotgrid_6fdf39de ui;
     class src_components_booking_timeslotgrid_gridjam_164b1d96 ui;
-    class src_app_46efd68e ui;
-    class src_app_app_f316b20d ui;
     class src_components_customerbookingpage_8e13cbf5 ui;
     class src_components_customerbookingpage_customerbooki_f1d8576f ui;
-    class src_index_811cdc82 function;
+    class src_components_blanca_blanca_d355cbf4 ui;
+    class src_components_booking_costsummary_ringkasanbiay_787a367c ui;
+    class src_components_booking_courtselector_pilihlapang_564be327 ui;
+    class src_components_booking_customerform_formpemesan_913e5342 ui;
+    class ref_react_dom_61ea372d function;
+    class src_app_46efd68e ui;
+    class src_blanca_0b7ff62f ui;
+    class src_kasir_17c53e49 ui;
     class src_main_3231ff52 ui;
+    class src_reservation_b3b3af01 ui;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1493,6 +1488,14 @@ flowchart LR
 </tr>
 <tr>
   <td>12</td>
+  <td><code>blanca.tsx</code><br><small style="color:var(--muted)">src/blanca.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>HeroBlancaPreview()</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>HeroBlancaPreview.tsx</code><br><small style="color:var(--muted)">components/blanca/HeroBlancaPreview.tsx</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small><br>+2 more</td>
+  <td>Module file in src/blanca.tsx.</td>
+</tr>
+<tr>
+  <td>13</td>
   <td><code>CostSummary.tsx</code><br><small style="color:var(--muted)">components/booking/CostSummary.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
@@ -1500,7 +1503,7 @@ flowchart LR
   <td>Module file in components/booking/CostSummary.tsx.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>CourtSelector.tsx</code><br><small style="color:var(--muted)">components/booking/CourtSelector.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
@@ -1508,7 +1511,7 @@ flowchart LR
   <td>Module file in components/booking/CourtSelector.tsx.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>CustomerForm.tsx</code><br><small style="color:var(--muted)">components/booking/CustomerForm.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
@@ -1516,7 +1519,7 @@ flowchart LR
   <td>Module file in components/booking/CustomerForm.tsx.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>TimeSlotGrid.tsx</code><br><small style="color:var(--muted)">components/booking/TimeSlotGrid.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
@@ -1524,7 +1527,7 @@ flowchart LR
   <td>Module file in components/booking/TimeSlotGrid.tsx.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>App.tsx</code><br><small style="color:var(--muted)">src/App.tsx</small></td>
@@ -1532,7 +1535,7 @@ flowchart LR
   <td>Module file in src/components/CustomerBookingPage.tsx.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>operationalHours.ts</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>CleanScheduleView.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanScheduleView.tsx</small><br><code>CleanWalkinModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small><br><code>TimeSlotGrid.tsx</code><br><small style="color:var(--muted)">components/booking/TimeSlotGrid.tsx</small></td>
@@ -1540,7 +1543,15 @@ flowchart LR
   <td>Module file in src/constants/operationalHours.ts.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>19</td>
+  <td><code>DAFTAR_JAM</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>CleanScheduleView.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanScheduleView.tsx</small><br><code>CleanWalkinModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small><br><code>TimeSlotGrid.tsx</code><br><small style="color:var(--muted)">components/booking/TimeSlotGrid.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>DAFTAR_JAM node in src/constants/operationalHours.ts.</td>
+</tr>
+<tr>
+  <td>20</td>
   <td><code>isDevMode</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>scheduleConfig.ts</code><br><small style="color:var(--muted)">reservation/constants/scheduleConfig.ts</small><br><code>TimeSlotGrid.tsx</code><br><small style="color:var(--muted)">components/booking/TimeSlotGrid.tsx</small></td>
@@ -1548,7 +1559,7 @@ flowchart LR
   <td>isDevMode node in src/constants/operationalHours.ts.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>21</td>
   <td><code>jamSimulasi</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>scheduleConfig.ts</code><br><small style="color:var(--muted)">reservation/constants/scheduleConfig.ts</small><br><code>TimeSlotGrid.tsx</code><br><small style="color:var(--muted)">components/booking/TimeSlotGrid.tsx</small></td>
@@ -1556,7 +1567,7 @@ flowchart LR
   <td>jamSimulasi node in src/constants/operationalHours.ts.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>22</td>
   <td><code>menitSimulasi</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>scheduleConfig.ts</code><br><small style="color:var(--muted)">reservation/constants/scheduleConfig.ts</small></td>
@@ -1564,7 +1575,7 @@ flowchart LR
   <td>menitSimulasi node in src/constants/operationalHours.ts.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>23</td>
   <td><code>OPERATIONAL_HOURS</code><br><small style="color:var(--muted)">src/constants/operationalHours.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1572,7 +1583,15 @@ flowchart LR
   <td>OPERATIONAL_HOURS node in src/constants/operationalHours.ts.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>24</td>
+  <td><code>kasir.tsx</code><br><small style="color:var(--muted)">src/kasir.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>CashierPage()</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small><br><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small><br>+3 more</td>
+  <td>Module file in src/kasir.tsx.</td>
+</tr>
+<tr>
+  <td>25</td>
   <td><code>main.tsx</code><br><small style="color:var(--muted)">src/main.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1580,7 +1599,31 @@ flowchart LR
   <td>Module file in src/main.tsx.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>26</td>
+  <td><code>reservation.tsx</code><br><small style="color:var(--muted)">src/reservation.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>react</code><br><small style="color:var(--muted)">package.json</small><br><code>react-dom</code><br><small style="color:var(--muted)">package.json</small><br><code>ReservationPage()</code><br><small style="color:var(--muted)">components/reservation/ReservationPage.tsx</small><br>+2 more</td>
+  <td>Module file in src/reservation.tsx.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>react-dom</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>blanca.tsx</code><br><small style="color:var(--muted)">src/blanca.tsx</small><br><code>kasir.tsx</code><br><small style="color:var(--muted)">src/kasir.tsx</small><br><code>main.tsx</code><br><small style="color:var(--muted)">src/main.tsx</small><br>+3 more</td>
+  <td>No direct outbound edge</td>
+  <td>react-dom node in package.json.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>src_components_blanca_blanca</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>blanca.tsx</code><br><small style="color:var(--muted)">src/blanca.tsx</small><br><code>kasir.tsx</code><br><small style="color:var(--muted)">src/kasir.tsx</small><br><code>reservation.tsx</code><br><small style="color:var(--muted)">src/reservation.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>src_components_blanca_blanca node in project.</td>
+</tr>
+<tr>
+  <td>29</td>
   <td><code>src_index</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>kasir.tsx</code><br><small style="color:var(--muted)">src/kasir.tsx</small><br><code>main.tsx</code><br><small style="color:var(--muted)">src/main.tsx</small></td>
@@ -1594,31 +1637,31 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>src/constants/operationalHours.ts</code></td><td>5 nodes</td></tr>
+      <tr><td><code>src/constants/operationalHours.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>components/booking/CostSummary.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>components/booking/CourtSelector.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>components/booking/CustomerForm.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>components/booking/TimeSlotGrid.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>src/App.tsx</code></td><td>2 nodes</td></tr>
 <tr><td><code>src/components/CustomerBookingPage.tsx</code></td><td>2 nodes</td></tr>
-<tr><td><code>src/main.tsx</code></td><td>1 nodes</td></tr>
+<tr><td><code>package.json</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x14, imports x8, imports x8. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x16, contains x15, imports x9. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 7. Serving API ====== -->
 <h2 id="serve-api">7. Serving API</h2>
-<p>Serving API groups implementation around components, backend, panduan, cashier, mostly in PANDUAN_PENJELASAN_BACKEND_UKK.md, src/lib/api.ts, reservation/hooks/useReservationData.ts. This section covers 61 nodes and 122 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around components, backend, cashier, panduan, mostly in PANDUAN_PENJELASAN_BACKEND_UKK.md, src/lib/api.ts, components/cashier/ManualBookingModal.tsx. This section covers 64 nodes and 128 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (61 nodes, 122 edges)
+    %% Section: Serving API (64 nodes, 128 edges)
     subgraph serve_api_src_lib_api_ts_4018941b["src/lib/api.ts"]
         src_lib_api_deletelapangan_e0e3f5dd("deleteLapangan()<br/><small>src/lib/api.ts</small>")
         src_lib_api_createlapangan_dccf6af1("createLapangan()<br/><small>src/lib/api.ts</small>")
@@ -1669,7 +1712,7 @@ flowchart LR
     src_components_cashier_hooks_usecashier_acb8aeb0 -->|imports| src_lib_api_getlapangan_75becd3d
     src_components_cashier_hooks_usecashier_acb8aeb0 -->|imports| src_lib_api_searchbookings_829f3647
     src_components_cashier_hooks_usecashier_acb8aeb0 -->|imports| src_lib_api_subscribetobookings_002045f3
-    %% Omitted for readability: 43 nodes, 9 edges
+    %% Omitted for readability: 46 nodes, 9 edges
     class src_lib_api_deletelapangan_e0e3f5dd function;
     class src_lib_api_createlapangan_dccf6af1 function;
     class src_lib_api_updatelapangan_2ff4babf function;
@@ -1711,6 +1754,14 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>TableInitialFilters</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingsTable.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>TableInitialFilters node in cashier/dashboard-01/BookingsTable.tsx.</td>
+</tr>
+<tr>
+  <td>2</td>
   <td><code>HeaderProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/Header.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1718,7 +1769,7 @@ flowchart LR
   <td>HeaderProps node in cashier/dashboard-01/Header.tsx.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>3</td>
   <td><code>SidebarProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/Sidebar.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1726,7 +1777,15 @@ flowchart LR
   <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>4</td>
+  <td><code>ManualBookingModalProps</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ManualBookingModalProps node in components/cashier/ManualBookingModal.tsx.</td>
+</tr>
+<tr>
+  <td>5</td>
   <td><code>ReservationDataProps</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1734,7 +1793,7 @@ flowchart LR
   <td>ReservationDataProps node in reservation/hooks/useReservationData.ts.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>6</td>
   <td><code>StatusLapangan</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>CleanCourtManagerModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CourtManagerModal.tsx</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small><br><code>CourtsManagementView.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtsManagementView.tsx</small></td>
@@ -1742,7 +1801,7 @@ flowchart LR
   <td>StatusLapangan node in src/types/database.ts.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>7</td>
   <td><code>CleanCourtManagerModal()</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1750,7 +1809,7 @@ flowchart LR
   <td>CleanCourtManagerModal() node in cashier/clean/CleanCourtManagerModal.tsx.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>8</td>
   <td><code>CourtManagerModal()</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1758,7 +1817,7 @@ flowchart LR
   <td>CourtManagerModal() node in components/cashier/CourtManagerModal.tsx.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>9</td>
   <td><code>CourtsManagementView()</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtsManagementView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
@@ -1766,7 +1825,7 @@ flowchart LR
   <td>CourtsManagementView() node in cashier/dashboard-01/CourtsManagementView.tsx.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>10</td>
   <td><code>Header()</code><br><small style="color:var(--muted)">cashier/dashboard-01/Header.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
@@ -1774,7 +1833,7 @@ flowchart LR
   <td>Header() node in cashier/dashboard-01/Header.tsx.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>11</td>
   <td><code>Sidebar()</code><br><small style="color:var(--muted)">cashier/dashboard-01/Sidebar.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
@@ -1782,7 +1841,7 @@ flowchart LR
   <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>12</td>
   <td><code>useCashier()</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CashierPage()</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small><br><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
@@ -1790,7 +1849,7 @@ flowchart LR
   <td>useCashier() node in cashier/hooks/useCashier.ts.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>13</td>
   <td><code>ManualBookingModal()</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
@@ -1798,7 +1857,7 @@ flowchart LR
   <td>ManualBookingModal() node in components/cashier/ManualBookingModal.tsx.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>14</td>
   <td><code>fetchAvailability()</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1806,7 +1865,7 @@ flowchart LR
   <td>fetchAvailability() node in components/cashier/ManualBookingModal.tsx.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>15</td>
   <td><code>CashierPage()</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>App.tsx</code><br><small style="color:var(--muted)">src/App.tsx</small><br><code>kasir.tsx</code><br><small style="color:var(--muted)">src/kasir.tsx</small></td>
@@ -1814,7 +1873,7 @@ flowchart LR
   <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>16</td>
   <td><code>useReservationData()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>useReservationSchedule()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationSchedule.ts</small><br><code>useReservationSchedule.ts</code><br><small style="color:var(--muted)">reservation/hooks/useReservationSchedule.ts</small></td>
@@ -1822,7 +1881,7 @@ flowchart LR
   <td>useReservationData() node in reservation/hooks/useReservationData.ts.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>17</td>
   <td><code>initializeData()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1830,7 +1889,7 @@ flowchart LR
   <td>initializeData() node in reservation/hooks/useReservationData.ts.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>18</td>
   <td><code>useBooking()</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>CustomerBookingPage()</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small><br><code>CustomerBookingPage.tsx</code><br><small style="color:var(--muted)">src/components/CustomerBookingPage.tsx</small></td>
@@ -1838,7 +1897,7 @@ flowchart LR
   <td>useBooking() node in src/hooks/useBooking.ts.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>19</td>
   <td><code>loadLapangan()</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1846,7 +1905,7 @@ flowchart LR
   <td>loadLapangan() node in src/hooks/useBooking.ts.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>20</td>
   <td><code>useSchedule()</code><br><small style="color:var(--muted)">src/hooks/useSchedule.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>useBooking()</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small><br><code>useBooking.ts</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small></td>
@@ -1854,7 +1913,7 @@ flowchart LR
   <td>useSchedule() node in src/hooks/useSchedule.ts.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>21</td>
   <td><code>createLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>CleanCourtManagerModal()</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CleanCourtManagerModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CourtManagerModal()</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small><br>+3 more</td>
@@ -1862,7 +1921,7 @@ flowchart LR
   <td>createLapangan() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>22</td>
   <td><code>deleteLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>CleanCourtManagerModal()</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CleanCourtManagerModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CourtManagerModal()</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small><br>+3 more</td>
@@ -1870,7 +1929,7 @@ flowchart LR
   <td>deleteLapangan() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>23</td>
   <td><code>getAllBookings()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>initializeData()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small><br><code>useCashier()</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br><code>useCashier.ts</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br>+2 more</td>
@@ -1878,7 +1937,7 @@ flowchart LR
   <td>getAllBookings() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>24</td>
   <td><code>getBookedSlots()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>CleanWalkinModal()</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small><br><code>CleanWalkinModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small><br><code>fetchAvailability()</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small><br>+4 more</td>
@@ -1886,7 +1945,7 @@ flowchart LR
   <td>getBookedSlots() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>25</td>
   <td><code>getLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>initializeData()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small><br><code>loadLapangan()</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small><br><code>useBooking()</code><br><small style="color:var(--muted)">src/hooks/useBooking.ts</small><br>+5 more</td>
@@ -1894,7 +1953,7 @@ flowchart LR
   <td>getLapangan() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>26</td>
   <td><code>searchBookings()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>useCashier()</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br><code>useCashier.ts</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small></td>
@@ -1902,7 +1961,7 @@ flowchart LR
   <td>searchBookings() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>27</td>
   <td><code>subscribeToBookings()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>useCashier()</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br><code>useCashier.ts</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br><code>useReservationData()</code><br><small style="color:var(--muted)">reservation/hooks/useReservationData.ts</small><br>+1 more</td>
@@ -1910,7 +1969,7 @@ flowchart LR
   <td>subscribeToBookings() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>28</td>
   <td><code>updateLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>CleanCourtManagerModal()</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CleanCourtManagerModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small><br><code>CourtManagerModal()</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small><br>+3 more</td>
@@ -1918,7 +1977,7 @@ flowchart LR
   <td>updateLapangan() node in src/lib/api.ts.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>29</td>
   <td><code>updateStatusBooking()</code><br><small style="color:var(--muted)">src/lib/api.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>useCashier()</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small><br><code>useCashier.ts</code><br><small style="color:var(--muted)">cashier/hooks/useCashier.ts</small></td>
@@ -1926,28 +1985,12 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>30</td>
   <td><code>calculateBookingCost()</code><br><small style="color:var(--muted)">src/utils/costCalculation.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>calculateBookingCost() node in src/utils/costCalculation.ts.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>CourtManagerModal.tsx</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>createLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>database.ts</code><br><small style="color:var(--muted)">src/types/database.ts</small><br>+5 more</td>
-  <td>Module file in components/cashier/CourtManagerModal.tsx.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>CourtsManagementView.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtsManagementView.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>CashierPage.tsx</code><br><small style="color:var(--muted)">src/components/CashierPage.tsx</small></td>
-  <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>createLapangan()</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>database.ts</code><br><small style="color:var(--muted)">src/types/database.ts</small><br>+8 more</td>
-  <td>Module file in cashier/dashboard-01/CourtsManagementView.tsx.</td>
 </tr>
 </table>
 
@@ -1958,29 +2001,29 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>PANDUAN_PENJELASAN_BACKEND_UKK.md</code></td><td>14 nodes</td></tr>
 <tr><td><code>src/lib/api.ts</code></td><td>10 nodes</td></tr>
+<tr><td><code>components/cashier/ManualBookingModal.tsx</code></td><td>4 nodes</td></tr>
 <tr><td><code>reservation/hooks/useReservationData.ts</code></td><td>4 nodes</td></tr>
 <tr><td><code>src/hooks/useBooking.ts</code></td><td>4 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/Header.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/Sidebar.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>src/hooks/useSchedule.ts</code></td><td>3 nodes</td></tr>
-<tr><td><code>src/utils/costCalculation.ts</code></td><td>3 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x42, imports x28, calls x27, imports x14. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x44, imports x30, calls x27, imports x16. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 8. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">8. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around components, cashier, overview, dashboard, mostly in cashier/overview/types.ts, overview/data/overviewMockData.ts, cashier/dashboard-01/mockData.ts. This section covers 64 nodes and 124 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around components, cashier, overview, dashboard, mostly in cashier/overview/types.ts, overview/data/overviewMockData.ts, cashier/dashboard-01/mockData.ts. This section covers 63 nodes and 123 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (64 nodes, 124 edges)
+    %% Section: Tests &amp; Fixtures (63 nodes, 123 edges)
     subgraph tests_fixtures_cashier_overview_types_ts_accb0687["cashier/overview/types.ts"]
         src_components_cashier_overview_types_hourbookin_f644c4f7("HourBookingDensity<br/><small>cashier/overview/types.ts</small>")
         src_components_cashier_overview_types_32f0ae87("types.ts")
@@ -2025,7 +2068,7 @@ flowchart LR
     src_components_cashier_overview_overviewpanel_fc437ecd -->|imports| src_components_cashier_overview_components_mostb_96b15b68
     src_components_cashier_overview_overviewpanel_fc437ecd -->|imports| src_components_cashier_overview_components_todol_c235ee1e
     src_components_cashier_overview_overviewpanel_fc437ecd -->|imports| src_components_cashier_overview_components_court_093205ac
-    %% Omitted for readability: 46 nodes, 4 edges
+    %% Omitted for readability: 45 nodes, 4 edges
     class src_components_cashier_overview_types_hourbookin_f644c4f7 klass;
     class src_components_cashier_overview_types_32f0ae87 module;
     class src_components_cashier_overview_types_bookingsta_82432120 klass;
@@ -2317,26 +2360,26 @@ flowchart LR
 <tr><td><code>cashier/dashboard-01/mockData.ts</code></td><td>7 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/OverviewChart.tsx</code></td><td>5 nodes</td></tr>
 <tr><td><code>overview/components/CourtScheduleCard.tsx</code></td><td>4 nodes</td></tr>
-<tr><td><code>cashier/dashboard-01/DashboardOverview.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/MetricCards.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/RecentBookings.tsx</code></td><td>3 nodes</td></tr>
+<tr><td><code>cashier/overview/OverviewPanel.tsx</code></td><td>3 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x48, imports x39, imports x25, references x12. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x47, imports x39, imports x25, references x12. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 9. react ====== -->
 <h2 id="react">9. react</h2>
-<p>react groups implementation around components, cashier, clean, dashboard, mostly in components/ui/table.tsx, AGENTS.md, components/ui/card.tsx. This section covers 108 nodes and 314 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>react groups implementation around components, cashier, clean, dashboard, mostly in components/ui/table.tsx, AGENTS.md, components/ui/card.tsx. This section covers 94 nodes and 283 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: react (108 nodes, 314 edges)
+    %% Section: react (94 nodes, 283 edges)
     subgraph react_src_utils_formatters_ts_b1231f4b["src/utils/formatters.ts"]
         src_utils_formatters_formatrupiah_71c9640c("formatRupiah()<br/><small>src/utils/formatters.ts</small>")
         src_utils_formatters_gettodayisodate_8e8803c8("getTodayISODate()<br/><small>src/utils/formatters.ts</small>")
@@ -2391,7 +2434,7 @@ flowchart LR
     src_components_cashier_clean_cleanscheduleview_c6f3cf94 -->|imports| src_utils_formatters_formatdisplaydate_d06c144b
     src_components_cashier_clean_cleanscheduleview_c6f3cf94 -->|imports| src_utils_formatters_formatrupiah_71c9640c
     src_components_cashier_clean_cleanscheduleview_c6f3cf94 -->|imports| src_utils_formatters_gettodayisodate_8e8803c8
-    %% Omitted for readability: 90 nodes, 4 edges
+    %% Omitted for readability: 76 nodes, 4 edges
     class src_utils_formatters_formatrupiah_71c9640c function;
     class src_utils_formatters_gettodayisodate_8e8803c8 function;
     class src_utils_formatters_formatdisplaydate_d06c144b function;
@@ -2441,22 +2484,6 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
-  <td><code>CashierTableProps</code><br><small style="color:var(--muted)">components/cashier/CashierTable.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CashierTableProps node in components/cashier/CashierTable.tsx.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>Props</code><br><small style="color:var(--muted)">components/cashier/CashierTableRow.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Props node in components/cashier/CashierTableRow.tsx.</td>
-</tr>
-<tr>
-  <td>4</td>
   <td><code>CleanBookingsViewProps</code><br><small style="color:var(--muted)">cashier/clean/CleanBookingsView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2464,7 +2491,7 @@ flowchart LR
   <td>CleanBookingsViewProps node in cashier/clean/CleanBookingsView.tsx.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>3</td>
   <td><code>DateFilterType</code><br><small style="color:var(--muted)">cashier/clean/CleanBookingsView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2472,7 +2499,7 @@ flowchart LR
   <td>DateFilterType node in cashier/clean/CleanBookingsView.tsx.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>4</td>
   <td><code>StatusFilterType</code><br><small style="color:var(--muted)">cashier/clean/CleanBookingsView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2480,7 +2507,7 @@ flowchart LR
   <td>StatusFilterType node in cashier/clean/CleanBookingsView.tsx.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>5</td>
   <td><code>CleanCourtManagerModalProps</code><br><small style="color:var(--muted)">cashier/clean/CleanCourtManagerModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2488,7 +2515,7 @@ flowchart LR
   <td>CleanCourtManagerModalProps node in cashier/clean/CleanCourtManagerModal.tsx.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>6</td>
   <td><code>CashierTab</code><br><small style="color:var(--muted)">cashier/clean/CleanHeader.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2496,7 +2523,7 @@ flowchart LR
   <td>CashierTab node in cashier/clean/CleanHeader.tsx.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>7</td>
   <td><code>CleanHeaderProps</code><br><small style="color:var(--muted)">cashier/clean/CleanHeader.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2504,7 +2531,7 @@ flowchart LR
   <td>CleanHeaderProps node in cashier/clean/CleanHeader.tsx.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>8</td>
   <td><code>CleanOverviewViewProps</code><br><small style="color:var(--muted)">cashier/clean/CleanOverviewView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2512,7 +2539,7 @@ flowchart LR
   <td>CleanOverviewViewProps node in cashier/clean/CleanOverviewView.tsx.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>9</td>
   <td><code>CleanPaymentModalProps</code><br><small style="color:var(--muted)">cashier/clean/CleanPaymentModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2520,7 +2547,7 @@ flowchart LR
   <td>CleanPaymentModalProps node in cashier/clean/CleanPaymentModal.tsx.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>10</td>
   <td><code>CleanReceiptModalProps</code><br><small style="color:var(--muted)">cashier/clean/CleanReceiptModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2528,7 +2555,7 @@ flowchart LR
   <td>CleanReceiptModalProps node in cashier/clean/CleanReceiptModal.tsx.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>11</td>
   <td><code>CleanScheduleViewProps</code><br><small style="color:var(--muted)">cashier/clean/CleanScheduleView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2536,7 +2563,7 @@ flowchart LR
   <td>CleanScheduleViewProps node in cashier/clean/CleanScheduleView.tsx.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>12</td>
   <td><code>CleanWalkinModalProps</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2544,7 +2571,7 @@ flowchart LR
   <td>CleanWalkinModalProps node in cashier/clean/CleanWalkinModal.tsx.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>13</td>
   <td><code>CourtManagerModalProps</code><br><small style="color:var(--muted)">components/cashier/CourtManagerModal.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2552,7 +2579,7 @@ flowchart LR
   <td>CourtManagerModalProps node in components/cashier/CourtManagerModal.tsx.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>14</td>
   <td><code>BookingDetailSheetProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingDetailSheet.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2560,7 +2587,7 @@ flowchart LR
   <td>BookingDetailSheetProps node in cashier/dashboard-01/BookingDetailSheet.tsx.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>15</td>
   <td><code>BookingsTableProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingsTable.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2568,7 +2595,7 @@ flowchart LR
   <td>BookingsTableProps node in cashier/dashboard-01/BookingsTable.tsx.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>16</td>
   <td><code>SortField</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingsTable.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2576,7 +2603,7 @@ flowchart LR
   <td>SortField node in cashier/dashboard-01/BookingsTable.tsx.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>17</td>
   <td><code>SortOrder</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingsTable.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2584,7 +2611,7 @@ flowchart LR
   <td>SortOrder node in cashier/dashboard-01/BookingsTable.tsx.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>18</td>
   <td><code>CourtScheduleGridProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtScheduleGrid.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2592,7 +2619,7 @@ flowchart LR
   <td>CourtScheduleGridProps node in cashier/dashboard-01/CourtScheduleGrid.tsx.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>19</td>
   <td><code>CourtsManagementViewProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtsManagementView.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2600,7 +2627,15 @@ flowchart LR
   <td>CourtsManagementViewProps node in cashier/dashboard-01/CourtsManagementView.tsx.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>20</td>
+  <td><code>DashboardOverviewProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/DashboardOverview.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DashboardOverviewProps node in cashier/dashboard-01/DashboardOverview.tsx.</td>
+</tr>
+<tr>
+  <td>21</td>
   <td><code>DeleteCourtDialogProps</code><br><small style="color:var(--muted)">cashier/dashboard-01/DeleteCourtDialog.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2608,23 +2643,7 @@ flowchart LR
   <td>DeleteCourtDialogProps node in cashier/dashboard-01/DeleteCourtDialog.tsx.</td>
 </tr>
 <tr>
-  <td>23</td>
-  <td><code>ManualBookingModalProps</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>ManualBookingModalProps node in components/cashier/ManualBookingModal.tsx.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>Props</code><br><small style="color:var(--muted)">components/cashier/StatusBadge.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Props node in components/cashier/StatusBadge.tsx.</td>
-</tr>
-<tr>
-  <td>25</td>
+  <td>22</td>
   <td><code>BadgeProps</code><br><small style="color:var(--muted)">components/ui/badge.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2632,7 +2651,7 @@ flowchart LR
   <td>BadgeProps node in components/ui/badge.tsx.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>23</td>
   <td><code>ButtonProps</code><br><small style="color:var(--muted)">components/ui/button.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2640,7 +2659,7 @@ flowchart LR
   <td>ButtonProps node in components/ui/button.tsx.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>24</td>
   <td><code>InputProps</code><br><small style="color:var(--muted)">components/ui/input.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2648,7 +2667,7 @@ flowchart LR
   <td>InputProps node in components/ui/input.tsx.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>25</td>
   <td><code>Booking</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>BookingDetailSheet.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingDetailSheet.tsx</small><br><code>bookingMapper.ts</code><br><small style="color:var(--muted)">reservation/utils/bookingMapper.ts</small><br>+13 more</td>
@@ -2656,7 +2675,7 @@ flowchart LR
   <td>Booking node in src/types/database.ts.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>26</td>
   <td><code>Lapangan</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>BookingsTable.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/BookingsTable.tsx</small><br><code>CleanBookingsView.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanBookingsView.tsx</small><br>+14 more</td>
@@ -2664,12 +2683,36 @@ flowchart LR
   <td>Lapangan node in src/types/database.ts.</td>
 </tr>
 <tr>
-  <td>30</td>
-  <td><code>StatusBooking</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
+  <td>27</td>
+  <td><code>TipeBayar</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
-  <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>CourtScheduleGrid.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtScheduleGrid.tsx</small><br><code>ManualBookingModal.tsx</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small><br>+1 more</td>
+  <td><code>CleanWalkinModal.tsx</code><br><small style="color:var(--muted)">cashier/clean/CleanWalkinModal.tsx</small><br><code>ManualBookingModal.tsx</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small></td>
   <td>No direct outbound edge</td>
-  <td>StatusBooking node in src/types/database.ts.</td>
+  <td>TipeBayar node in src/types/database.ts.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>CashierStats()</code><br><small style="color:var(--muted)">components/cashier/CashierStats.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>CashierStats() node in components/cashier/CashierStats.tsx.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>CleanBookingsView()</code><br><small style="color:var(--muted)">cashier/clean/CleanBookingsView.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>formatRupiah()</code><br><small style="color:var(--muted)">src/utils/formatters.ts</small><br><code>getTodayISODate()</code><br><small style="color:var(--muted)">src/utils/formatters.ts</small></td>
+  <td>CleanBookingsView() node in cashier/clean/CleanBookingsView.tsx.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>CleanHeader()</code><br><small style="color:var(--muted)">cashier/clean/CleanHeader.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>CleanHeader() node in cashier/clean/CleanHeader.tsx.</td>
 </tr>
 </table>
 
@@ -2683,14 +2726,14 @@ flowchart LR
 <tr><td><code>components/ui/card.tsx</code></td><td>7 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/BookingsTable.tsx</code></td><td>6 nodes</td></tr>
 <tr><td><code>cashier/clean/CleanBookingsView.tsx</code></td><td>5 nodes</td></tr>
-<tr><td><code>src/types/database.ts</code></td><td>5 nodes</td></tr>
 <tr><td><code>cashier/clean/CleanHeader.tsx</code></td><td>4 nodes</td></tr>
 <tr><td><code>cashier/dashboard-01/BookingDetailSheet.tsx</code></td><td>4 nodes</td></tr>
+<tr><td><code>src/types/database.ts</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x92, imports x90, contains x72, calls x32. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x83, imports x80, contains x63, calls x31. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -4242,18 +4285,12 @@ flowchart LR
 
 <!-- ====== 16. Other ====== -->
 <h2 id="other">16. Other</h2>
-<p>Other groups implementation around components, ukk, blanca, faq, mostly in UKK_REQUIREMENTS.md, STRUKTUR_LAPORAN_UKK.md, PLAN.md. This section covers 51 nodes and 52 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Other groups implementation around components, ukk, cashier, blanca, mostly in UKK_REQUIREMENTS.md, STRUKTUR_LAPORAN_UKK.md, PLAN.md. This section covers 61 nodes and 64 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (51 nodes, 52 edges)
-    subgraph other_components_cashier_CashierFilterBar_tsx_62684aa9["components/cashier/CashierFilterBar.tsx"]
-        src_components_cashier_cashierfilterbar_cashierf_c08f8cf6("CashierFilterBar()<br/><small>components/cashier/CashierFilterBar.tsx</small>")
-        src_components_cashier_cashierfilterbar_86857422("CashierFilterBar.tsx")
-        src_components_cashier_cashierfilterbar_cashierf_7c014474("CashierFilterBarProps<br/><small>components/cashier/CashierFilterBar.tsx</small>")
-        src_components_cashier_cashierfilterbar_status_f_f1cf28c8("STATUS_FILTERS<br/><small>components/cashier/CashierFilterBar.tsx</small>")
-    end
+    %% Section: Other (61 nodes, 64 edges)
     subgraph other_blanca_faq_types_ts_5be5cd79["blanca/faq/types.ts"]
         src_components_blanca_faq_types_faqitem_8a821cd0("FaqItem<br/><small>blanca/faq/types.ts</small>")
         src_components_blanca_faq_types_103afa7c("types.ts")
@@ -4262,9 +4299,13 @@ flowchart LR
         src_components_blanca_blancafaq_50b4e053("BlancaFaq.tsx")
         src_components_blanca_blancafaq_blancafaq_cf19a0dc("BlancaFaq()<br/><small>components/blanca/BlancaFaq.tsx</small>")
     end
-    subgraph other_components_cashier_CashierHeader_tsx_595abfb1["components/cashier/CashierHeader.tsx"]
-        src_components_cashier_cashierheader_cashierhead_eb7a7c49("CashierHeader()<br/><small>components/cashier/CashierHeader.tsx</small>")
-        src_components_cashier_cashierheader_e4e517a0("CashierHeader.tsx")
+    subgraph other_components_cashier_CashierTableRow_tsx_58fe85b9["components/cashier/CashierTableRow.tsx"]
+        src_components_cashier_cashiertablerow_6f646b24("CashierTableRow.tsx")
+        src_components_cashier_cashiertablerow_cashierta_49acdf9b("CashierTableRow()<br/><small>components/cashier/CashierTableRow.tsx</small>")
+    end
+    subgraph other_components_cashier_StatusBadge_tsx_64475fb0["components/cashier/StatusBadge.tsx"]
+        src_components_cashier_statusbadge_statusbadge_4bcc242f("StatusBadge()<br/><small>components/cashier/StatusBadge.tsx</small>")
+        src_components_cashier_statusbadge_55bee3ce("StatusBadge.tsx")
     end
     subgraph other_faq_components_FaqAccordionItem_tsx_93fb0794["faq/components/FaqAccordionItem.tsx"]
         src_components_blanca_faq_components_faqaccordio_3f8b6306("FaqAccordionItem.tsx")
@@ -4282,6 +4323,8 @@ flowchart LR
         src_components_blanca_faq_hooks_usefaqaccordion_b0b62b32("useFaqAccordion.ts")
         src_components_blanca_faq_hooks_usefaqaccordion_755fd767("useFaqAccordion()<br/><small>faq/hooks/useFaqAccordion.ts</small>")
     end
+    src_components_cashier_cashiertable_b38f0f97("CashierTable.tsx")
+    src_types_database_statusbooking_08cb555b("StatusBooking<br/><small>src/types/database.ts</small>")
     src_components_blanca_blancafaq_blancafaq_cf19a0dc -->|calls| src_components_blanca_faq_hooks_usefaqaccordion_755fd767
     src_components_blanca_blancafaq_50b4e053 -->|imports| src_components_blanca_faq_hooks_usefaqaccordion_755fd767
     src_components_blanca_blancafaq_50b4e053 -->|imports| src_components_blanca_faq_components_faqheading_d2861f4b
@@ -4295,17 +4338,20 @@ flowchart LR
     src_components_blanca_faq_data_faqdata_a265615f -->|imports| src_components_blanca_faq_types_103afa7c
     src_components_blanca_faq_hooks_usefaqaccordion_b0b62b32 -->|imports| src_components_blanca_faq_data_faqdata_faq_data_c0365de1
     src_components_blanca_faq_hooks_usefaqaccordion_b0b62b32 -->|imports| src_components_blanca_faq_data_faqdata_a265615f
-    %% Omitted for readability: 33 nodes, 0 edges
-    class src_components_cashier_cashierfilterbar_cashierf_c08f8cf6 ui;
-    class src_components_cashier_cashierfilterbar_86857422 ui;
-    class src_components_cashier_cashierfilterbar_cashierf_7c014474 ui;
-    class src_components_cashier_cashierfilterbar_status_f_f1cf28c8 ui;
+    src_components_cashier_cashiertable_b38f0f97 -->|imports| src_components_cashier_cashiertablerow_cashierta_49acdf9b
+    src_components_cashier_cashiertable_b38f0f97 -->|imports| src_components_cashier_cashiertablerow_6f646b24
+    src_components_cashier_cashiertablerow_6f646b24 -->|imports| src_components_cashier_statusbadge_statusbadge_4bcc242f
+    src_components_cashier_cashiertablerow_6f646b24 -->|imports| src_components_cashier_statusbadge_55bee3ce
+    src_components_cashier_statusbadge_55bee3ce -->|imports| src_types_database_statusbooking_08cb555b
+    %% Omitted for readability: 43 nodes, 0 edges
     class src_components_blanca_faq_types_faqitem_8a821cd0 klass;
     class src_components_blanca_faq_types_103afa7c module;
     class src_components_blanca_blancafaq_50b4e053 ui;
     class src_components_blanca_blancafaq_blancafaq_cf19a0dc ui;
-    class src_components_cashier_cashierheader_cashierhead_eb7a7c49 ui;
-    class src_components_cashier_cashierheader_e4e517a0 ui;
+    class src_components_cashier_cashiertablerow_6f646b24 ui;
+    class src_components_cashier_cashiertablerow_cashierta_49acdf9b ui;
+    class src_components_cashier_statusbadge_statusbadge_4bcc242f ui;
+    class src_components_cashier_statusbadge_55bee3ce ui;
     class src_components_blanca_faq_components_faqaccordio_3f8b6306 ui;
     class src_components_blanca_faq_components_faqaccordio_9c8c4c3a ui;
     class src_components_blanca_faq_components_faqheading_d2861f4b ui;
@@ -4314,6 +4360,8 @@ flowchart LR
     class src_components_blanca_faq_data_faqdata_faq_data_c0365de1 klass;
     class src_components_blanca_faq_hooks_usefaqaccordion_b0b62b32 ui;
     class src_components_blanca_faq_hooks_usefaqaccordion_755fd767 ui;
+    class src_components_cashier_cashiertable_b38f0f97 ui;
+    class src_types_database_statusbooking_08cb555b klass;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -4529,51 +4577,51 @@ flowchart LR
 </tr>
 <tr>
   <td>25</td>
-  <td><code>STRUKTUR_LAPORAN_UKK.md</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>CashierTableProps</code><br><small style="color:var(--muted)">components/cashier/CashierTable.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing STRUKTUR_LAPORAN_UKK.md.</td>
+  <td>CashierTableProps node in components/cashier/CashierTable.tsx.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>BAB I: PENDAHULUAN</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>Props</code><br><small style="color:var(--muted)">components/cashier/CashierTableRow.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing BAB I: PENDAHULUAN.</td>
+  <td>Props node in components/cashier/CashierTableRow.tsx.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>BAB II: PERENCANAAN PROYEK</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>Props</code><br><small style="color:var(--muted)">components/cashier/StatusBadge.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing BAB II: PERENCANAAN PROYEK.</td>
+  <td>Props node in components/cashier/StatusBadge.tsx.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>BAB III: PERANCANGAN SISTEM (SISTEM DESIGN)</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>StatusBooking</code><br><small style="color:var(--muted)">src/types/database.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>api.ts</code><br><small style="color:var(--muted)">src/lib/api.ts</small><br><code>CourtScheduleGrid.tsx</code><br><small style="color:var(--muted)">cashier/dashboard-01/CourtScheduleGrid.tsx</small><br><code>ManualBookingModal.tsx</code><br><small style="color:var(--muted)">components/cashier/ManualBookingModal.tsx</small><br>+1 more</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing BAB III: PERANCANGAN SISTEM (SISTEM DESIGN).</td>
+  <td>StatusBooking node in src/types/database.ts.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>BAB IV: IMPLEMENTASI &amp; PENGUJIAN</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>CashierTable()</code><br><small style="color:var(--muted)">components/cashier/CashierTable.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing BAB IV: IMPLEMENTASI &amp; PENGUJIAN.</td>
+  <td>CashierTable() node in components/cashier/CashierTable.tsx.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>BAB V: PENUTUP</code><br><small style="color:var(--muted)">STRUKTUR_LAPORAN_UKK.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>CashierTableRow()</code><br><small style="color:var(--muted)">components/cashier/CashierTableRow.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>CashierTable.tsx</code><br><small style="color:var(--muted)">components/cashier/CashierTable.tsx</small></td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing BAB V: PENUTUP.</td>
+  <td>CashierTableRow() node in components/cashier/CashierTableRow.tsx.</td>
 </tr>
 </table>
 
@@ -4588,13 +4636,13 @@ flowchart LR
 <tr><td><code>components/cashier/CashierFilterBar.tsx</code></td><td>4 nodes</td></tr>
 <tr><td><code>faq/components/FaqAccordionItem.tsx</code></td><td>3 nodes</td></tr>
 <tr><td><code>components/cashier/CashierHeader.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>.agents/rules/graphify.md</code></td><td>2 nodes</td></tr>
-<tr><td><code>.agents/workflows/graphify.md</code></td><td>2 nodes</td></tr>
+<tr><td><code>components/cashier/CashierTable.tsx</code></td><td>3 nodes</td></tr>
+<tr><td><code>components/cashier/CashierTableRow.tsx</code></td><td>3 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x38, imports x6, imports x6, references x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x44, imports x9, imports x8, references x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -4605,17 +4653,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>724</td></tr>
-      <tr><td>Edges</td><td>1483</td></tr>
+      <tr><td>Nodes</td><td>725</td></tr>
+      <tr><td>Edges</td><td>1485</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>35</td></tr>
+      <tr><td>Communities</td><td>33</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1461</td></tr>
+      <tr><td>EXTRACTED</td><td>1463</td></tr>
       <tr><td>INFERRED</td><td>22</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -4624,7 +4672,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>ukk-11 — Architecture Documentation</p>
-  <p>Generated: 2026-09-27 04:19 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-09-27 04:23 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

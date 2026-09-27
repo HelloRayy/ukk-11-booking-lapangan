@@ -13,6 +13,7 @@ interface DashboardOverviewProps {
   courts: Lapangan[]
   loading?: boolean
   onNavigateToSchedule?: (date?: string, bookingId?: number | string) => void
+  onNavigateToUnpaid?: () => void
 }
 
 export default function DashboardOverview({
@@ -20,6 +21,7 @@ export default function DashboardOverview({
   courts = [],
   loading = false,
   onNavigateToSchedule,
+  onNavigateToUnpaid,
 }: DashboardOverviewProps) {
   // Label Periode Berjalan (misal: "September 2026")
   const currentPeriod = useMemo(() => {
@@ -156,7 +158,7 @@ export default function DashboardOverview({
       </div>
 
       {/* 2. Empat Kartu KPI Metrik Utama Terhubung Riil */}
-      <MetricCards metrics={metrics} />
+      <MetricCards metrics={metrics} onNavigateToUnpaid={onNavigateToUnpaid} />
 
       {/* 3. Grid Dua Kolom Khas Shadcn Dashboard-01 */}
       <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">

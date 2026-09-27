@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Sidebar from './cashier/dashboard-01/Sidebar'
 import Header from './cashier/dashboard-01/Header'
 import DashboardOverview from './cashier/dashboard-01/DashboardOverview'
-import BookingsTable from './cashier/dashboard-01/BookingsTable'
+import BookingsTable, { type TableInitialFilters } from './cashier/dashboard-01/BookingsTable'
 import CourtScheduleGrid from './cashier/dashboard-01/CourtScheduleGrid'
 import CourtsManagementView from './cashier/dashboard-01/CourtsManagementView'
 import ManualBookingModal from './cashier/ManualBookingModal'
@@ -19,11 +19,26 @@ export default function CashierPage() {
   }>({})
   const [initialScheduleDate, setInitialScheduleDate] = useState<string | null>(null)
   const [initialBookingId, setInitialBookingId] = useState<number | string | null>(null)
+  const [tableInitialFilters, setTableInitialFilters] = useState<TableInitialFilters | null>(null)
 
   const handleNavigateToSchedule = (date?: string, bookingId?: number | string) => {
     if (date) setInitialScheduleDate(date)
     if (bookingId) setInitialBookingId(bookingId)
     setCurrentTab('schedule')
+  }
+
+  const handleNavigateToUnpaid = () => {
+    setSelectedStatus('Belum Lunas')
+    setTableInitialFilters({
+      date: 'all',
+      status: 'Belum Lunas',
+      rowsPerPage: 10,
+      sortField: 'tgl_main',
+      sortOrder: 'asc',
+      onlyUpcoming: true,
+      timestamp: Date.now(),
+    })
+    setCurrentTab('bookings')
   }
 
   // Ambil state dan aksi riil Supabase dari custom hook useCashier
@@ -96,6 +111,7 @@ export default function CashierPage() {
                 courts={courts}
                 loading={loading}
                 onNavigateToSchedule={handleNavigateToSchedule}
+                onNavigateToUnpaid={handleNavigateToUnpaid}
               />
             </div>
           ) : currentTab === 'schedule' ? (
@@ -136,6 +152,7 @@ export default function CashierPage() {
                 setIsManualModalOpen(true)
               }}
               onNavigateToSchedule={handleNavigateToSchedule}
+              initialFilters={tableInitialFilters}
             />
           )}
         </main>

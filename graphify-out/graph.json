@@ -303,6 +303,19 @@
       "source_location": "L50"
     },
     {
+      "id": "src_components_cashier_dashboard_01_bookingstable_tableinitialfilters",
+      "label": "TableInitialFilters",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "tableinitialfilters",
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L45"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_header_headerprops",
       "label": "HeaderProps",
       "_callable": true,
@@ -327,6 +340,19 @@
       "norm_label": "sidebarprops",
       "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
       "source_location": "L4"
+    },
+    {
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
+      "label": "ManualBookingModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "manualbookingmodalprops",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L17"
     },
     {
       "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
@@ -862,26 +888,13 @@
       "source_location": "L14"
     },
     {
-      "id": "src_components_cashier_cashierstats_cashierstatsprops",
-      "label": "CashierStatsProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashierstatsprops",
-      "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_cashier_cashiertable_cashiertableprops",
       "label": "CashierTableProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
       "norm_label": "cashiertableprops",
       "source_file": "src/components/cashier/CashierTable.tsx",
@@ -893,12 +906,51 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/cashier/CashierTableRow.tsx",
       "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_types_database_statusbooking",
+      "label": "StatusBooking",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "statusbooking",
+      "source_file": "src/types/database.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_components_cashier_cashierstats_cashierstatsprops",
+      "label": "CashierStatsProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashierstatsprops",
+      "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L4"
     },
     {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsviewprops",
@@ -1080,7 +1132,7 @@
       "file_type": "code",
       "norm_label": "bookingstableprops",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L42"
+      "source_location": "L55"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingstable_sortfield",
@@ -1093,7 +1145,7 @@
       "file_type": "code",
       "norm_label": "sortfield",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L57"
+      "source_location": "L42"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingstable_sortorder",
@@ -1106,7 +1158,7 @@
       "file_type": "code",
       "norm_label": "sortorder",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L58"
+      "source_location": "L43"
     },
     {
       "id": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegridprops",
@@ -1135,6 +1187,19 @@
       "source_location": "L19"
     },
     {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
+      "label": "DashboardOverviewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "dashboardoverviewprops",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
       "label": "DeleteCourtDialogProps",
       "_callable": true,
@@ -1146,32 +1211,6 @@
       "norm_label": "deletecourtdialogprops",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
       "source_location": "L5"
-    },
-    {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
-      "label": "ManualBookingModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "manualbookingmodalprops",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_components_cashier_statusbadge_props",
-      "label": "Props",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L4"
     },
     {
       "id": "src_components_ui_badge_badgeprops",
@@ -1239,19 +1278,6 @@
       "source_location": "L5"
     },
     {
-      "id": "src_types_database_statusbooking",
-      "label": "StatusBooking",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "statusbooking",
-      "source_file": "src/types/database.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_types_database_tipebayar",
       "label": "TipeBayar",
       "_callable": true,
@@ -1263,19 +1289,6 @@
       "norm_label": "tipebayar",
       "source_file": "src/types/database.ts",
       "source_location": "L2"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
-      "label": "DashboardOverviewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "DashboardOverview.tsx",
-      "file_type": "code",
-      "norm_label": "dashboardoverviewprops",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L11"
     },
     {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccardsprops",
@@ -2182,6 +2195,42 @@
       "source_location": "L1"
     },
     {
+      "id": "vite_config_configurepreviewserver",
+      "label": "configurePreviewServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "configurepreviewserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "vite_config_configureserver",
+      "label": "configureServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "configureserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "vite_config_routemiddleware",
+      "label": "routeMiddleware()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "routemiddleware()",
+      "source_file": "vite.config.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "scripts_capture_blanca_baseline_capture",
       "label": "capture()",
       "_callable": true,
@@ -2396,42 +2445,6 @@
       "norm_label": "headernav()",
       "source_file": "src/components/blanca/hero/HeaderNav.tsx",
       "source_location": "L14"
-    },
-    {
-      "id": "vite_config_configurepreviewserver",
-      "label": "configurePreviewServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "configurepreviewserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "vite_config_configureserver",
-      "label": "configureServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "configureserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "vite_config_routemiddleware",
-      "label": "routeMiddleware()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "routemiddleware()",
-      "source_file": "vite.config.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_components_blanca_blancacta_blancacta",
@@ -2758,24 +2771,12 @@
       "source_location": "L26"
     },
     {
-      "id": "src_components_cashier_cashierstats_cashierstats",
-      "label": "CashierStats()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashierstats()",
-      "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L8"
-    },
-    {
       "id": "src_components_cashier_cashiertable_cashiertable",
       "label": "CashierTable()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
       "norm_label": "cashiertable()",
       "source_file": "src/components/cashier/CashierTable.tsx",
@@ -2786,12 +2787,36 @@
       "label": "CashierTableRow()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
       "norm_label": "cashiertablerow()",
       "source_file": "src/components/cashier/CashierTableRow.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_statusbadge",
+      "label": "StatusBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "statusbadge()",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_components_cashier_cashierstats_cashierstats",
+      "label": "CashierStats()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashierstats()",
+      "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L8"
     },
     {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsview",
@@ -2911,7 +2936,7 @@
       "file_type": "code",
       "norm_label": "bookingstable()",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L60"
+      "source_location": "L71"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingstable_bookingstable_handleclickoutside",
@@ -2923,7 +2948,7 @@
       "file_type": "code",
       "norm_label": "handleclickoutside()",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L102"
+      "source_location": "L129"
     },
     {
       "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialog",
@@ -2936,18 +2961,6 @@
       "norm_label": "deletecourtdialog()",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
       "source_location": "L13"
-    },
-    {
-      "id": "src_components_cashier_statusbadge_statusbadge",
-      "label": "StatusBadge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "statusbadge()",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L8"
     },
     {
       "id": "src_components_ui_badge_badge",
@@ -3031,7 +3044,7 @@
       "file_type": "code",
       "norm_label": "dashboardoverview()",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccards",
@@ -3043,7 +3056,7 @@
       "file_type": "code",
       "norm_label": "metriccards()",
       "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "src_components_cashier_dashboard_01_overviewchart_customtooltip",
@@ -3666,6 +3679,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cashier_manualbookingmodal",
+      "label": "ManualBookingModal.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "manualbookingmodal.tsx",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_cashierpage",
       "label": "CashierPage.tsx",
       "_origin": "ast",
@@ -4010,6 +4034,171 @@
       "source_location": "L1"
     },
     {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "eslint",
+      "source_file": "package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "package_devdependencies_eslint_js",
+      "label": "@eslint/js",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@eslint/js",
+      "source_file": "package.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "package_devdependencies_eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "eslint-plugin-react-hooks",
+      "source_file": "package.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "package_devdependencies_eslint_plugin_react_refresh",
+      "label": "eslint-plugin-react-refresh",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "eslint-plugin-react-refresh",
+      "source_file": "package.json",
+      "source_location": "L37"
+    },
+    {
+      "id": "package_devdependencies_globals",
+      "label": "globals",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "globals",
+      "source_file": "package.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "package_devdependencies_playwright_test",
+      "label": "@playwright/test",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@playwright/test",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "package_devdependencies_pngjs",
+      "label": "pngjs",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "pngjs",
+      "source_file": "package.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/node",
+      "source_file": "package.json",
+      "source_location": "L31"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "package.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "package.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "package_devdependencies_typescript_eslint",
+      "label": "typescript-eslint",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "typescript-eslint",
+      "source_file": "package.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "package_devdependencies_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "package_devdependencies_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -4032,6 +4221,61 @@
       "source_location": "L3"
     },
     {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -4052,6 +4296,17 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
     },
     {
       "id": "ref_clsx",
@@ -4120,6 +4375,17 @@
       "source_location": "L38"
     },
     {
+      "id": "ref_radix_ui_react_checkbox",
+      "label": "@radix-ui/react-checkbox",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@radix-ui/react-checkbox",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
       "id": "ref_tailwind_merge",
       "label": "tailwind-merge",
       "_origin": "ast",
@@ -4140,6 +4406,17 @@
       "norm_label": "tailwindcss",
       "source_file": "package.json",
       "source_location": "L26"
+    },
+    {
+      "id": "ref_tailwindcss_vite",
+      "label": "@tailwindcss/vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@tailwindcss/vite",
+      "source_file": "package.json",
+      "source_location": "L15"
     },
     {
       "id": "ref_types_leaflet",
@@ -4206,6 +4483,28 @@
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
       "source_location": "L41"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
     },
     {
       "id": "components",
@@ -5231,61 +5530,6 @@
       "source_location": "L1"
     },
     {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_tailwindcss_vite",
-      "label": "@tailwindcss/vite",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "@tailwindcss/vite",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_blanca",
-      "label": "blanca.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "blanca.tsx",
-      "source_file": "src/blanca.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_blanca_blancacta",
       "label": "BlancaCta.tsx",
       "_origin": "ast",
@@ -5462,26 +5706,15 @@
       "source_location": "L1"
     },
     {
-      "id": "src_kasir",
-      "label": "kasir.tsx",
+      "id": "src_components_ui_checkbox_checkbox",
+      "label": "Checkbox",
       "_origin": "ast",
       "community": 2,
       "community_name": "HeroBlancaPreview.tsx",
       "file_type": "code",
-      "norm_label": "kasir.tsx",
-      "source_file": "src/kasir.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_reservation",
-      "label": "reservation.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "reservation.tsx",
-      "source_file": "src/reservation.tsx",
-      "source_location": "L1"
+      "norm_label": "checkbox",
+      "source_file": "src/components/ui/checkbox.tsx",
+      "source_location": "L6"
     },
     {
       "id": "ref_gsap",
@@ -5504,17 +5737,6 @@
       "norm_label": "lenis",
       "source_file": "package.json",
       "source_location": "L20"
-    },
-    {
-      "id": "ref_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L23"
     },
     {
       "id": "dfd_ukk",
@@ -5671,61 +5893,6 @@
       "norm_label": "data flow diagram (dfd) level 1 - ukk rpl / pplg",
       "source_file": "DFD_UKK.md",
       "source_location": "L1"
-    },
-    {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L10"
     },
     {
       "id": "src_components_cashier_cashierfilterbar",
@@ -7037,169 +7204,37 @@
       "source_location": "L6"
     },
     {
-      "id": "package_devdependencies",
-      "label": "devDependencies",
+      "id": "src_components_cashier_cashiertable",
+      "label": "CashierTable.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "devDependencies",
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "package.json",
-      "source_location": "L28"
+      "norm_label": "cashiertable.tsx",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "package_devdependencies_eslint",
-      "label": "eslint",
+      "id": "src_components_cashier_cashiertablerow",
+      "label": "CashierTableRow.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "devDependencies",
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
-      "norm_label": "eslint",
-      "source_file": "package.json",
-      "source_location": "L35"
+      "norm_label": "cashiertablerow.tsx",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "package_devdependencies_eslint_js",
-      "label": "@eslint/js",
+      "id": "src_components_cashier_statusbadge",
+      "label": "StatusBadge.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "devDependencies",
+      "community_name": "CashierTableRow.tsx",
       "file_type": "code",
-      "norm_label": "@eslint/js",
-      "source_file": "package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_hooks",
-      "label": "eslint-plugin-react-hooks",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-hooks",
-      "source_file": "package.json",
-      "source_location": "L36"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_refresh",
-      "label": "eslint-plugin-react-refresh",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-refresh",
-      "source_file": "package.json",
-      "source_location": "L37"
-    },
-    {
-      "id": "package_devdependencies_globals",
-      "label": "globals",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "globals",
-      "source_file": "package.json",
-      "source_location": "L38"
-    },
-    {
-      "id": "package_devdependencies_playwright_test",
-      "label": "@playwright/test",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@playwright/test",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "package_devdependencies_pngjs",
-      "label": "pngjs",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "pngjs",
-      "source_file": "package.json",
-      "source_location": "L39"
-    },
-    {
-      "id": "package_devdependencies_types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "package_devdependencies_types_react",
-      "label": "@types/react",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@types/react",
-      "source_file": "package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "package.json",
-      "source_location": "L33"
-    },
-    {
-      "id": "package_devdependencies_typescript",
-      "label": "typescript",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "typescript",
-      "source_file": "package.json",
-      "source_location": "L40"
-    },
-    {
-      "id": "package_devdependencies_typescript_eslint",
-      "label": "typescript-eslint",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "typescript-eslint",
-      "source_file": "package.json",
-      "source_location": "L41"
-    },
-    {
-      "id": "package_devdependencies_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "package_devdependencies_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
+      "norm_label": "statusbadge.tsx",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L1"
     },
     {
       "id": "src_components_cashier_cashierstats",
@@ -7210,28 +7245,6 @@
       "file_type": "code",
       "norm_label": "cashierstats.tsx",
       "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_cashiertable",
-      "label": "CashierTable.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertable.tsx",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_cashiertablerow",
-      "label": "CashierTableRow.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertablerow.tsx",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
       "source_location": "L1"
     },
     {
@@ -7356,28 +7369,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal",
-      "label": "ManualBookingModal.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "manualbookingmodal.tsx",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_statusbadge",
-      "label": "StatusBadge.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "statusbadge.tsx",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_ui_badge",
       "label": "badge.tsx",
       "_origin": "ast",
@@ -7497,17 +7488,6 @@
       "norm_label": "checkbox.tsx",
       "source_file": "src/components/ui/checkbox.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_ui_checkbox_checkbox",
-      "label": "Checkbox",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "checkbox",
-      "source_file": "src/components/ui/checkbox.tsx",
-      "source_location": "L6"
     },
     {
       "id": "src_components_ui_input",
@@ -7631,17 +7611,6 @@
       "source_location": "L42"
     },
     {
-      "id": "src_constants_operationalhours_daftar_jam",
-      "label": "DAFTAR_JAM",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "daftar_jam",
-      "source_file": "src/constants/operationalHours.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "src_lib_utils",
       "label": "utils.ts",
       "_origin": "ast",
@@ -7684,17 +7653,6 @@
       "norm_label": "lucide-react",
       "source_file": "package.json",
       "source_location": "L21"
-    },
-    {
-      "id": "ref_radix_ui_react_checkbox",
-      "label": "@radix-ui/react-checkbox",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "@radix-ui/react-checkbox",
-      "source_file": "package.json",
-      "source_location": "L13"
     },
     {
       "id": "ref_react",
@@ -7914,6 +7872,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_blanca",
+      "label": "blanca.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "blanca.tsx",
+      "source_file": "src/blanca.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_booking_costsummary",
       "label": "CostSummary.tsx",
       "_origin": "ast",
@@ -7980,6 +7949,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_constants_operationalhours_daftar_jam",
+      "label": "DAFTAR_JAM",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "daftar_jam",
+      "source_file": "src/constants/operationalHours.ts",
+      "source_location": "L14"
+    },
+    {
       "id": "src_constants_operationalhours_isdevmode",
       "label": "isDevMode",
       "_origin": "ast",
@@ -8024,6 +8004,17 @@
       "source_location": "L31"
     },
     {
+      "id": "src_kasir",
+      "label": "kasir.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "kasir.tsx",
+      "source_file": "src/kasir.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_main",
       "label": "main.tsx",
       "_origin": "ast",
@@ -8033,6 +8024,28 @@
       "norm_label": "main.tsx",
       "source_file": "src/main.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_reservation",
+      "label": "reservation.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "reservation.tsx",
+      "source_file": "src/reservation.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "src_components_blanca_blancalocations",
@@ -8436,18 +8449,6 @@
       "type": "external"
     },
     {
-      "id": "src_components_blanca_blanca",
-      "label": "src_components_blanca_blanca",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_components_blanca_blanca",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_ui_dialog",
       "label": "ref_ui_dialog",
       "_origin": "semantic",
@@ -8456,6 +8457,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_ui_dialog",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_components_blanca_blanca",
+      "label": "src_components_blanca_blanca",
+      "_origin": "semantic",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_components_blanca_blanca",
       "source_file": "",
       "type": "external"
     },
@@ -8830,7 +8843,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L188",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -8974,7 +8987,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L116",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -9082,7 +9095,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L44",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -10042,7 +10055,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L43",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -10054,7 +10067,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L44",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -13924,6 +13937,18 @@
     {
       "source": "src_components_cashierpage",
       "target": "src_components_cashier_dashboard_01_bookingstable_bookingstable",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/CashierPage.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashierpage",
+      "target": "src_components_cashier_dashboard_01_bookingstable_tableinitialfilters",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -22891,7 +22916,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_bookingstable",
-      "target": "src_components_cashier_dashboard_01_bookingstable_bookingstableprops",
+      "target": "src_components_cashier_dashboard_01_bookingstable_sortfield",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -22902,24 +22927,35 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_bookingstable",
-      "target": "src_components_cashier_dashboard_01_bookingstable_sortfield",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L57",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cashier_dashboard_01_bookingstable",
       "target": "src_components_cashier_dashboard_01_bookingstable_sortorder",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L58",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingstable",
+      "target": "src_components_cashier_dashboard_01_bookingstable_tableinitialfilters",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingstable",
+      "target": "src_components_cashier_dashboard_01_bookingstable_bookingstableprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -22930,7 +22966,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L60",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -23040,7 +23076,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -23089,6 +23125,17 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_metriccards",
+      "target": "src_components_cashier_dashboard_01_metriccards_metriccards",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_metriccards",
       "target": "src_components_cashier_dashboard_01_metriccards_metriccardsprops",
       "relation": "contains",
       "_origin": "ast",
@@ -23096,17 +23143,6 @@
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
       "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cashier_dashboard_01_metriccards",
-      "target": "src_components_cashier_dashboard_01_metriccards_metriccards",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -25583,7 +25619,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L107",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -25828,5 +25864,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b9887c7c18c486a1bcdbbdd77e20bdc7774ee1f7"
+  "built_at_commit": "e4464f0eeedd77d221a55b5f52c0e0e419837636"
 }

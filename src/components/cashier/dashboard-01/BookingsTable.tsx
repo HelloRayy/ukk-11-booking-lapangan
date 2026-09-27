@@ -39,6 +39,19 @@ import { Button } from '../../ui/button'
 import { Input } from '../../ui/input'
 import { formatSlotRange } from '../../../lib/utils'
 
+export type SortField = 'nama_penyewa' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
+export type SortOrder = 'asc' | 'desc'
+
+export interface TableInitialFilters {
+  date?: string
+  status?: string
+  rowsPerPage?: number
+  sortField?: SortField
+  sortOrder?: SortOrder
+  onlyUpcoming?: boolean
+  timestamp?: number
+}
+
 interface BookingsTableProps {
   bookings: Booking[]
   courts?: Lapangan[]
@@ -52,10 +65,8 @@ interface BookingsTableProps {
   onRefresh: () => void
   onOpenManualModal: () => void
   onNavigateToSchedule?: (date?: string, bookingId?: number | string) => void
+  initialFilters?: TableInitialFilters | null
 }
-
-type SortField = 'nama_penyewa' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
-type SortOrder = 'asc' | 'desc'
 
 export default function BookingsTable({
   bookings,
@@ -70,6 +81,7 @@ export default function BookingsTable({
   onRefresh,
   onOpenManualModal,
   onNavigateToSchedule,
+  initialFilters,
 }: BookingsTableProps) {
   // State Panel Detail Kanan
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
@@ -81,6 +93,21 @@ export default function BookingsTable({
   // State Pagination
   const [currentPage, setCurrentPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(15)
+
+  // State Filter Jadwal Terdekat (Hari ini & Mendatang saja)
+  const [onlyUpcoming, setOnlyUpcoming] = useState(false)
+
+  // Sinkronisasi filter navigasi langsung (misal: klik kartu Sisa Tagihan DP dari Overview)
+  useEffect(() => {
+    if (initialFilters?.timestamp) {
+      if (initialFilters.date !== undefined) setSelectedDate(initialFilters.date)
+      if (initialFilters.rowsPerPage !== undefined) setRowsPerPage(initialFilters.rowsPerPage)
+      if (initialFilters.sortField !== undefined) setSortField(initialFilters.sortField)
+      if (initialFilters.sortOrder !== undefined) setSortOrder(initialFilters.sortOrder)
+      if (initialFilters.onlyUpcoming !== undefined) setOnlyUpcoming(initialFilters.onlyUpcoming)
+      setCurrentPage(1)
+    }
+  }, [initialFilters])
 
   // State Menu Tiga Titik & Salin Kontak
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null)
@@ -120,7 +147,15 @@ export default function BookingsTable({
 
   // Filter Data Transaksi berdasarkan Lapangan & Tanggal
   const filteredBookingsList = useMemo(() => {
+    const todayStr = getLocalDateString(0)
+
     return bookings.filter((b) => {
+      // 0. Safety Filter Belum Lunas (Pastikan hanya yang memiliki sisa bayar)
+      if (selectedStatus === 'Belum Lunas') {
+        const sisa = b.sisa_bayar || 0
+        if (sisa <= 0 || b.status === 'Lunas' || b.status === 'Batal') return false
+      }
+
       // 1. Filter Lapangan
       if (selectedCourt !== 'Semua' && String(b.lapangan_id) !== selectedCourt) {
         return false
@@ -128,7 +163,7 @@ export default function BookingsTable({
 
       // 2. Filter Tanggal Main
       if (selectedDate === 'today') {
-        if (b.tgl_main !== getLocalDateString(0)) return false
+        if (b.tgl_main !== todayStr) return false
       } else if (selectedDate === 'tomorrow') {
         if (b.tgl_main !== getLocalDateString(1)) return false
       } else if (selectedDate !== 'all') {
@@ -136,9 +171,14 @@ export default function BookingsTable({
         if (b.tgl_main !== selectedDate) return false
       }
 
+      // 3. Filter Prioritas Hari Terdekat (Abaikan jadwal lampau yang sudah lewat)
+      if (onlyUpcoming) {
+        if (b.tgl_main < todayStr) return false
+      }
+
       return true
     })
-  }, [bookings, selectedCourt, selectedDate])
+  }, [bookings, selectedCourt, selectedDate, selectedStatus, onlyUpcoming])
 
   // Data Terurut
   const sortedBookings = useMemo(() => {
@@ -155,8 +195,10 @@ export default function BookingsTable({
         aVal = a.lapangan?.nama_lapangan || ''
         bVal = b.lapangan?.nama_lapangan || ''
       } else if (sortField === 'tgl_main') {
-        aVal = a.tgl_main
-        bVal = b.tgl_main
+        const aValTime = `${a.tgl_main} ${a.jam_slots?.[0] || '00:00'}`
+        const bValTime = `${b.tgl_main} ${b.jam_slots?.[0] || '00:00'}`
+        aVal = aValTime
+        bVal = bValTime
       } else if (sortField === 'total_bayar') {
         aVal = a.total_bayar
         bVal = b.total_bayar
@@ -326,6 +368,9 @@ export default function BookingsTable({
                     type="button"
                     onClick={() => {
                       onStatusChange(item.value)
+                      if (item.value !== 'Belum Lunas') {
+                        setOnlyUpcoming(false)
+                      }
                       setOpenDropdown(null)
                       setCurrentPage(1)
                     }}
@@ -356,6 +401,9 @@ export default function BookingsTable({
             }
             onDateChange={(newDate) => {
               setSelectedDate(newDate)
+              if (newDate !== 'all') {
+                setOnlyUpcoming(false)
+              }
               setCurrentPage(1)
             }}
             allowAllDates={true}
@@ -375,6 +423,25 @@ export default function BookingsTable({
           </Button>
         </div>
       </div>
+
+      {/* Banner Filter Aktif: Khusus Pelunasan DP Hari Terdekat */}
+      {onlyUpcoming && selectedStatus === 'Belum Lunas' && (
+        <div className="flex items-center justify-between px-5 py-2 bg-rose-500/10 border-b border-rose-500/20 text-xs text-rose-300">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse" />
+            <span>
+              Menampilkan filter otomatis: <strong>Sisa Tagihan Belum Lunas</strong> (prioritas hari terdekat, 10 per halaman).
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setOnlyUpcoming(false)}
+            className="text-rose-400 hover:text-rose-200 underline cursor-pointer text-xs font-medium"
+          >
+            Sertakan riwayat lampau
+          </button>
+        </div>
+      )}
 
       {/* Tabel Data Full Width Tanpa Box Terjepit */}
       <div className="flex-1 overflow-x-auto min-h-0 bg-zinc-950">

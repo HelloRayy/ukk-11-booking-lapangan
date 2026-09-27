@@ -199,19 +199,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
-      "label": "ReservationDataProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "reservationdataprops",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "src_components_reservation_hooks_useslotvalidation_slotvalidationprops",
       "label": "SlotValidationProps",
       "_callable": true,
@@ -316,32 +303,6 @@
       "source_location": "L50"
     },
     {
-      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
-      "label": "CourtManagerModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "courtmanagermodalprops",
-      "source_file": "src/components/cashier/CourtManagerModal.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
-      "label": "CourtsManagementViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "courtsmanagementviewprops",
-      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
-      "source_location": "L19"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_header_headerprops",
       "label": "HeaderProps",
       "_callable": true,
@@ -366,6 +327,19 @@
       "norm_label": "sidebarprops",
       "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
       "source_location": "L4"
+    },
+    {
+      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
+      "label": "ReservationDataProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "reservationdataprops",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_types_database_statuslapangan",
@@ -1070,6 +1044,19 @@
       "source_location": "L19"
     },
     {
+      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
+      "label": "CourtManagerModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "courtmanagermodalprops",
+      "source_file": "src/components/cashier/CourtManagerModal.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheetprops",
       "label": "BookingDetailSheetProps",
       "_callable": true,
@@ -1135,17 +1122,17 @@
       "source_location": "L37"
     },
     {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
-      "label": "DashboardOverviewProps",
+      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
+      "label": "CourtsManagementViewProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "code",
-      "norm_label": "dashboardoverviewprops",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L11"
+      "norm_label": "courtsmanagementviewprops",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
@@ -1276,6 +1263,19 @@
       "norm_label": "tipebayar",
       "source_file": "src/types/database.ts",
       "source_location": "L2"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
+      "label": "DashboardOverviewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "DashboardOverview.tsx",
+      "file_type": "code",
+      "norm_label": "dashboardoverviewprops",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L11"
     },
     {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccardsprops",
@@ -1606,6 +1606,18 @@
       "source_location": "L21"
     },
     {
+      "id": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform_handleclickoutside",
+      "label": "handleClickOutside()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "handleclickoutside()",
+      "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
+      "source_location": "L42"
+    },
+    {
       "id": "src_components_reservation_components_inspector_emptyinspectorview_emptyinspectorview",
       "label": "EmptyInspectorView()",
       "_callable": true,
@@ -1918,18 +1930,6 @@
       "source_location": "L25"
     },
     {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
-      "label": "DashboardOverview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "dashboardoverview()",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L18"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_header_header",
       "label": "Header()",
       "_callable": true,
@@ -1990,16 +1990,16 @@
       "source_location": "L74"
     },
     {
-      "id": "src_components_customerbookingpage_customerbookingpage",
-      "label": "CustomerBookingPage()",
+      "id": "src_components_cashierpage_cashierpage",
+      "label": "CashierPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "customerbookingpage()",
-      "source_file": "src/components/CustomerBookingPage.tsx",
-      "source_location": "L7"
+      "norm_label": "cashierpage()",
+      "source_file": "src/components/CashierPage.tsx",
+      "source_location": "L12"
     },
     {
       "id": "src_components_reservation_hooks_usereservationdata_usereservationdata",
@@ -2434,18 +2434,6 @@
       "source_location": "L6"
     },
     {
-      "id": "src_app_app",
-      "label": "App()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "src/App.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_blanca_blancacta_blancacta",
       "label": "BlancaCta()",
       "_callable": true,
@@ -2600,18 +2588,6 @@
       "norm_label": "reservationdrawer()",
       "source_file": "src/components/blanca/reservation/ReservationDrawer.tsx",
       "source_location": "L10"
-    },
-    {
-      "id": "src_components_cashierpage_cashierpage",
-      "label": "CashierPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "cashierpage()",
-      "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L12"
     },
     {
       "id": "src_components_cashier_cashierfilterbar_cashierfilterbar",
@@ -3046,6 +3022,18 @@
       "source_location": "L20"
     },
     {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
+      "label": "DashboardOverview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "DashboardOverview.tsx",
+      "file_type": "code",
+      "norm_label": "dashboardoverview()",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L18"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccards",
       "label": "MetricCards()",
       "_callable": true,
@@ -3094,6 +3082,18 @@
       "source_location": "L9"
     },
     {
+      "id": "src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "src/App.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_booking_costsummary_ringkasanbiaya",
       "label": "RingkasanBiaya()",
       "_callable": true,
@@ -3140,6 +3140,18 @@
       "norm_label": "gridjam()",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "src_components_customerbookingpage_customerbookingpage",
+      "label": "CustomerBookingPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "customerbookingpage()",
+      "source_file": "src/components/CustomerBookingPage.tsx",
+      "source_location": "L7"
     },
     {
       "id": "src_components_blanca_blancalocations_blancalocations",
@@ -3489,17 +3501,6 @@
       "source_location": "L30"
     },
     {
-      "id": "src_components_reservation_hooks_usereservationdata",
-      "label": "useReservationData.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "usereservationdata.ts",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_reservation_hooks_usereservationschedule",
       "label": "useReservationSchedule.ts",
       "_origin": "ast",
@@ -3555,17 +3556,6 @@
       "source_location": "L35"
     },
     {
-      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
-      "label": "FIXTURE_COURTS",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "fixture_courts",
-      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_reservation_reservationpage",
       "label": "ReservationPage.tsx",
       "_origin": "ast",
@@ -3597,17 +3587,6 @@
       "norm_label": "bookingmapper.ts",
       "source_file": "src/components/reservation/utils/bookingMapper.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
-      "label": "COURT_STYLE_MAP",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "court_style_map",
-      "source_file": "src/components/reservation/utils/bookingMapper.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_components_reservation_utils_formatters",
@@ -3696,6 +3675,39 @@
       "norm_label": "cashierpage.tsx",
       "source_file": "src/components/CashierPage.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_hooks_usereservationdata",
+      "label": "useReservationData.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "usereservationdata.ts",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
+      "label": "FIXTURE_COURTS",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "fixture_courts",
+      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
+      "label": "COURT_STYLE_MAP",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "court_style_map",
+      "source_file": "src/components/reservation/utils/bookingMapper.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_hooks_usebooking",
@@ -4106,17 +4118,6 @@
       "norm_label": "globals",
       "source_file": "package.json",
       "source_location": "L38"
-    },
-    {
-      "id": "ref_radix_ui_react_checkbox",
-      "label": "@radix-ui/react-checkbox",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@radix-ui/react-checkbox",
-      "source_file": "package.json",
-      "source_location": "L13"
     },
     {
       "id": "ref_tailwind_merge",
@@ -5230,90 +5231,6 @@
       "source_location": "L1"
     },
     {
-      "id": "agents",
-      "label": "AGENTS.md",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "agents.md",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_1_aturan_mode_belajar_mandiri_student_first_mentorship",
-      "label": "1. Aturan Mode Belajar Mandiri (Student-First Mentorship)",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. aturan mode belajar mandiri (student-first mentorship)",
-      "source_file": "AGENTS.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "agents_3_aturan_navigasi_codebase_cepat_wajib_menggunakan_graphify",
-      "label": "3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify)",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. aturan navigasi codebase cepat (wajib menggunakan graphify)",
-      "source_file": "AGENTS.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "agents_4_aturan_pengujian_otomasi_browser_wajib_agent_browser_headless",
-      "label": "4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless)",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. aturan pengujian & otomasi browser (wajib agent-browser headless)",
-      "source_file": "AGENTS.md",
-      "source_location": "L44"
-    },
-    {
-      "id": "agents_5_aturan_git_commit_push_gaya_santai_khas_anak_smk",
-      "label": "5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "5. aturan git commit & push (gaya santai khas anak smk)",
-      "source_file": "AGENTS.md",
-      "source_location": "L57"
-    },
-    {
-      "id": "agents_agents_md_panduan_aturan_ai_mentor_ukk_smk",
-      "label": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "agents.md - panduan & aturan ai mentor ukk smk",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_standar_format_pesan_commit",
-      "label": "Standar Format Pesan Commit:",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "standar format pesan commit:",
-      "source_file": "AGENTS.md",
-      "source_location": "L66"
-    },
-    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
@@ -5356,17 +5273,6 @@
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
       "source_location": "L34"
-    },
-    {
-      "id": "src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "src/App.tsx",
-      "source_location": "L1"
     },
     {
       "id": "src_blanca",
@@ -5564,17 +5470,6 @@
       "file_type": "code",
       "norm_label": "kasir.tsx",
       "source_file": "src/kasir.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
       "source_location": "L1"
     },
     {
@@ -6975,7 +6870,7 @@
       "node_kind": "heading",
       "norm_label": "1. prioritas tinggi (high priority)",
       "source_file": "PLAN.md",
-      "source_location": "L19"
+      "source_location": "L22"
     },
     {
       "id": "plan_2_prioritas_menengah_medium_priority",
@@ -6987,7 +6882,7 @@
       "node_kind": "heading",
       "norm_label": "2. prioritas menengah (medium priority)",
       "source_file": "PLAN.md",
-      "source_location": "L46"
+      "source_location": "L49"
     },
     {
       "id": "plan_3_prioritas_rendah_low_priority",
@@ -6999,7 +6894,7 @@
       "node_kind": "heading",
       "norm_label": "3. prioritas rendah (low priority)",
       "source_file": "PLAN.md",
-      "source_location": "L73"
+      "source_location": "L76"
     },
     {
       "id": "plan_daftar_issue_aktif_di_plane_so_status_todo",
@@ -7011,7 +6906,7 @@
       "node_kind": "heading",
       "norm_label": "daftar issue aktif di plane.so (status: todo)",
       "source_file": "PLAN.md",
-      "source_location": "L17"
+      "source_location": "L20"
     },
     {
       "id": "plan_plan_md_roadmap_optimasi_perbaikan_landing_page_blanca",
@@ -7026,14 +6921,14 @@
       "source_location": "L1"
     },
     {
-      "id": "plan_ringkasan_progres_yang_sudah_selesai",
-      "label": "Ringkasan Progres yang Sudah Selesai",
+      "id": "plan_ringkasan_progres_yang_sudah_selesai_status_done",
+      "label": "Ringkasan Progres yang Sudah Selesai (Status: Done)",
       "_origin": "ast",
       "community": 32,
       "community_name": "Daftar Issue Aktif di Plane.so (Status: Todo)",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "ringkasan progres yang sudah selesai",
+      "norm_label": "ringkasan progres yang sudah selesai (status: done)",
       "source_file": "PLAN.md",
       "source_location": "L8"
     },
@@ -7791,6 +7686,17 @@
       "source_location": "L21"
     },
     {
+      "id": "ref_radix_ui_react_checkbox",
+      "label": "@radix-ui/react-checkbox",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "@radix-ui/react-checkbox",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
       "id": "ref_react",
       "label": "react",
       "_origin": "ast",
@@ -7800,6 +7706,30 @@
       "norm_label": "react",
       "source_file": "package.json",
       "source_location": "L22"
+    },
+    {
+      "id": "agents",
+      "label": "AGENTS.md",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_1_aturan_mode_belajar_mandiri_student_first_mentorship",
+      "label": "1. Aturan Mode Belajar Mandiri (Student-First Mentorship)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. aturan mode belajar mandiri (student-first mentorship)",
+      "source_file": "AGENTS.md",
+      "source_location": "L7"
     },
     {
       "id": "agents_2_aturan_koding_standar_penilaian_ukk",
@@ -7812,6 +7742,66 @@
       "norm_label": "2. aturan koding & standar penilaian ukk",
       "source_file": "AGENTS.md",
       "source_location": "L20"
+    },
+    {
+      "id": "agents_3_aturan_navigasi_codebase_cepat_wajib_menggunakan_graphify",
+      "label": "3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. aturan navigasi codebase cepat (wajib menggunakan graphify)",
+      "source_file": "AGENTS.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "agents_4_aturan_pengujian_otomasi_browser_wajib_agent_browser_headless",
+      "label": "4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. aturan pengujian & otomasi browser (wajib agent-browser headless)",
+      "source_file": "AGENTS.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "agents_5_aturan_git_commit_push_gaya_santai_khas_anak_smk",
+      "label": "5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. aturan git commit & push (gaya santai khas anak smk)",
+      "source_file": "AGENTS.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "agents_agents_md_panduan_aturan_ai_mentor_ukk_smk",
+      "label": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "agents.md - panduan & aturan ai mentor ukk smk",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_standar_format_pesan_commit",
+      "label": "Standar Format Pesan Commit:",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "standar format pesan commit:",
+      "source_file": "AGENTS.md",
+      "source_location": "L66"
     },
     {
       "id": "src_components_cashier_dashboard_01_dashboardoverview",
@@ -7911,6 +7901,17 @@
       "norm_label": "recharts",
       "source_file": "package.json",
       "source_location": "L24"
+    },
+    {
+      "id": "src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "src/App.tsx",
+      "source_location": "L1"
     },
     {
       "id": "src_components_booking_costsummary",
@@ -8021,6 +8022,17 @@
       "norm_label": "operational_hours",
       "source_file": "src/constants/operationalHours.ts",
       "source_location": "L31"
+    },
+    {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
     },
     {
       "id": "src_components_blanca_blancalocations",
@@ -8436,18 +8448,6 @@
       "type": "external"
     },
     {
-      "id": "src_index",
-      "label": "src_index",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_index",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_ui_dialog",
       "label": "ref_ui_dialog",
       "_origin": "semantic",
@@ -8456,6 +8456,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_ui_dialog",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_index",
+      "label": "src_index",
+      "_origin": "semantic",
+      "community": 7,
+      "community_name": "CustomerBookingPage.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_index",
       "source_file": "",
       "type": "external"
     }
@@ -9130,7 +9142,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
-      "source_location": "L83",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -21246,7 +21258,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L19",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -21257,7 +21269,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -21268,7 +21280,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L73",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -21279,12 +21291,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L17",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
       "source": "plan_plan_md_roadmap_optimasi_perbaikan_landing_page_blanca",
-      "target": "plan_ringkasan_progres_yang_sudah_selesai",
+      "target": "plan_ringkasan_progres_yang_sudah_selesai_status_done",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -25599,6 +25611,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform",
+      "target": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform_handleclickoutside",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_reservation_components_reservationnavbar_reservationnavbar",
       "target": "src_components_reservation_components_reservationnavbar_reservationnavbar_handleclickoutside",
       "relation": "indirect_call",
@@ -25804,5 +25828,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ec69da9f75ceb66bfcde69aea034150b33207d50"
+  "built_at_commit": "b9887c7c18c486a1bcdbbdd77e20bdc7774ee1f7"
 }

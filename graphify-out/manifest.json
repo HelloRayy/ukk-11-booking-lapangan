@@ -72,9 +72,9 @@
     "semantic_hash": "5c9c7cdd75ab0c9df6cdcd37782442a6"
   },
   "src/components/CashierPage.tsx": {
-    "mtime": 1790481895.7184517,
-    "seen": 1790482042.7859533,
-    "ast_hash": "f50cd3aafc3d590d7e67f151a1dada84",
+    "mtime": 1790482933.3352914,
+    "seen": 1790482982.1163647,
+    "ast_hash": "fbb5b85cfd5db0f8ff8cc97abaabcdf9",
     "semantic_hash": ""
   },
   "src/components/CustomerBookingPage.tsx": {
@@ -450,9 +450,9 @@
     "semantic_hash": "fc277de0e929681227c95ae704953f5f"
   },
   "src/components/cashier/dashboard-01/BookingsTable.tsx": {
-    "mtime": 1790482002.2529132,
-    "seen": 1790482042.7860312,
-    "ast_hash": "cebdc292ff379c7c8deecd7d1a5e1176",
+    "mtime": 1790482909.3902013,
+    "seen": 1790482982.1165295,
+    "ast_hash": "763263d05326ef35a867636f9db74df4",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/CashierDatePicker.tsx": {
@@ -468,9 +468,9 @@
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/DashboardOverview.tsx": {
-    "mtime": 1790439661.1202672,
-    "seen": 1790439877.67537,
-    "ast_hash": "b69b47c86ab83ee412b01d4c466b945a",
+    "mtime": 1790482862.9590266,
+    "seen": 1790482982.116556,
+    "ast_hash": "47399731f04519d52221dea7eeb1c8b2",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Header.tsx": {
@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/MetricCards.tsx": {
-    "mtime": 1790438988.5294402,
-    "seen": 1790439877.6753814,
-    "ast_hash": "1f42d9247e7e866af7446028efe827a2",
+    "mtime": 1790482848.989974,
+    "seen": 1790482982.1165636,
+    "ast_hash": "e6df361b7a1e0a84814c09e28f1bc0dd",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/OverviewChart.tsx": {
@@ -864,16 +864,16 @@
     "semantic_hash": "0879161c3da5129a047bbb9d446688c6"
   },
   "public/assets/blanca/difference-video.mp4": {
-    "mtime": 1790049563.4271455,
-    "seen": 1790428398.431719,
-    "ast_hash": "8d5916e923243c468bd464686f79de4b",
-    "semantic_hash": "8d5916e923243c468bd464686f79de4b"
+    "mtime": 1790482929.412407,
+    "seen": 1790482982.11689,
+    "ast_hash": "00342fced0366e9e0a75df8ed47f99d0",
+    "semantic_hash": ""
   },
   "public/assets/blanca/difference-video.webm": {
-    "mtime": 1790049563.4141455,
-    "seen": 1790428398.4317205,
-    "ast_hash": "64bc36973d19fe43b568c857e932ccf5",
-    "semantic_hash": "64bc36973d19fe43b568c857e932ccf5"
+    "mtime": 1790482926.2132645,
+    "seen": 1790482982.116892,
+    "ast_hash": "9bb8178c354ae209886ef2e898a283e0",
+    "semantic_hash": ""
   },
   "public/assets/blanca/hero-video.mp4": {
     "mtime": 1790011055.8542764,
