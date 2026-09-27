@@ -25,6 +25,22 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
   - *Target*: `src/components/blanca/locations/hooks/useBlancaLocations.ts`
   - *Rincian*: Ubah static import `leaflet` menjadi dynamic import `await import('leaflet')` ketika section peta terdeteksi di viewport agar initial bundle JS lebih ramping.
 
+- [ ] **#33: Penguasaan Alur Supabase Client & CRUD API (Persiapan Sidang UKK)**
+  - *Target*: `src/lib/api.ts` & `src/types/database.ts`
+  - *Rincian*: Bedah alur pemanggilan data Supabase, pemetaan relasi tabel `lapangan` dan `booking`, serta penanganan error untuk persiapan tanya-jawab penguji UKK.
+
+- [ ] **#34: Bedah Algoritma Validasi Jadwal Anti-Bentrok (Logika Inti UKK)**
+  - *Target*: `src/components/reservation/hooks/useSlotValidation.ts`
+  - *Rincian*: Pelajari alur validasi `isSlotInRange()`, deteksi bentrok jadwal terisi, dan pemblokiran jam lampau (`isPastSlot`) saat pemesanan multi-jam.
+
+- [ ] **#35: Latihan Simulasi Tanya-Jawab Arsitektur & Tech Stack UKK**
+  - *Target*: Dokumen Panduan Wawancara Penguji UKK
+  - *Rincian*: Latihan argumentasi teknis: alasan pemilihan React 19 + Vite, Tailwind CSS v4, serta database Supabase PostgreSQL vs database konvensional.
+
+- [ ] **#36: Skenario Live Demo Uji Kompetensi Terstruktur**
+  - *Target*: Alur Demonstrasi Sidang UKK
+  - *Rincian*: Penyusunan alur demonstrasi 5 menit: Landing page -> Booking publik -> Verifikasi kasir -> Pelunasan QRIS/Tunai -> Pengelolaan master lapangan (CRUD).
+
 ---
 
 ### 2. Prioritas Menengah (Medium Priority)
@@ -40,13 +56,21 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
   - *Target*: `src/components/blanca/faq/components/FaqAccordionItem.tsx`
   - *Rincian*: Pasang atribut WAI-ARIA `aria-expanded` dan `aria-controls` pada accordion FAQ serta pastikan navigasi keyboard Enter/Space berfungsi penuh sesuai standar penilaian UKK.
 
+- [ ] **#37: Validasi Ketat Nomor WhatsApp Indonesia**
+  - *Target*: `src/components/reservation/components/inspector/BookingDetailsForm.tsx` & `CourtScheduleGrid.tsx`
+  - *Rincian*: Tambahkan validasi regex format nomor telepon Indonesia (`08...` / `+62...`) dengan panjang 10-14 digit untuk mencegah data kotor.
+
+- [ ] **#38: Cetak Struk Digital PDF Langsung di Kasir**
+  - *Target*: `src/components/cashier/dashboard-01/BookingDetailSheet.tsx` & `BookingsTable.tsx`
+  - *Rincian*: Pasang opsi cetak struk pembayaran resmi PDF langsung dari halaman kasir untuk transaksi yang telah lunas.
+
+- [ ] **#40: Pembuatan Diagram UML & Skema Relasi Database (ERD)**
+  - *Target*: Dokumen Arsitektur Sistem UKK
+  - *Rincian*: Buat diagram visual Use Case, Activity Diagram alur booking, dan ERD relasi tabel `lapangan` ke `booking` untuk bahan presentasi penguji.
+
 ---
 
 ### 3. Prioritas Rendah (Low Priority)
-- [ ] **#31: Focus Ring Estetis untuk Navigasi Keyboard**
-  - *Target*: Tombol CTA dan tautan navigasi di `HeaderNav.tsx` dan `BlancaCta.tsx`
-  - *Rincian*: Tambahkan `focus-visible:ring-2 focus-visible:ring-[#f2d953]` agar navigasi keyboard (Tab key) terlihat jelas dan profesional saat disidang penguji UKK.
-
 - [ ] **#32: Pembersihan Aset Unused Lama di Repo**
   - *Target*: `public/assets/blanca/difference-people.png` (4.2 MB) & `hero-video.mp4` (5.3 MB)
   - *Rincian*: Hapus file aset mentah yang sudah tidak direferensikan untuk merampingkan ukuran repository Git.

@@ -199,6 +199,19 @@
       "source_location": "L4"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
+      "label": "ReservationDataProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationdataprops",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L9"
+    },
+    {
       "id": "src_components_reservation_hooks_useslotvalidation_slotvalidationprops",
       "label": "SlotValidationProps",
       "_callable": true,
@@ -303,6 +316,32 @@
       "source_location": "L50"
     },
     {
+      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
+      "label": "CourtManagerModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "courtmanagermodalprops",
+      "source_file": "src/components/cashier/CourtManagerModal.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
+      "label": "CourtsManagementViewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "courtsmanagementviewprops",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L19"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_header_headerprops",
       "label": "HeaderProps",
       "_callable": true,
@@ -329,32 +368,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
-      "label": "ManualBookingModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "manualbookingmodalprops",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
-      "label": "ReservationDataProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "reservationdataprops",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "src_types_database_statuslapangan",
       "label": "StatusLapangan",
       "_callable": true,
@@ -368,26 +381,13 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_blanca_difference_types_courtfeature",
-      "label": "CourtFeature",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "courtfeature",
-      "source_file": "src/components/blanca/difference/types.ts",
-      "source_location": "L2"
-    },
-    {
       "id": "src_components_blanca_technology_components_technologyslidedetails_technologyslidedetailsprops",
       "label": "TechnologySlideDetailsProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidedetailsprops",
       "source_file": "src/components/blanca/technology/components/TechnologySlideDetails.tsx",
@@ -400,7 +400,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidemediaprops",
       "source_file": "src/components/blanca/technology/components/TechnologySlideMedia.tsx",
@@ -413,63 +413,89 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "slidedata",
       "source_file": "src/components/blanca/technology/types.ts",
       "source_location": "L2"
     },
     {
-      "id": "src_components_cashier_cashiertable_cashiertableprops",
-      "label": "CashierTableProps",
+      "id": "src_components_blanca_difference_types_courtfeature",
+      "label": "CourtFeature",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
       "file_type": "code",
-      "norm_label": "cashiertableprops",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L5"
+      "norm_label": "courtfeature",
+      "source_file": "src/components/blanca/difference/types.ts",
+      "source_location": "L2"
     },
     {
-      "id": "src_components_cashier_cashiertablerow_props",
-      "label": "Props",
+      "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinksprops",
+      "label": "DesktopNavLinksProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community_name": "HeaderNav.tsx",
       "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "src_components_cashier_statusbadge_props",
-      "label": "Props",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "desktopnavlinksprops",
+      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
       "source_location": "L4"
     },
     {
-      "id": "src_types_database_statusbooking",
-      "label": "StatusBooking",
+      "id": "src_components_blanca_hero_components_headerlogo_headerlogoprops",
+      "label": "HeaderLogoProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community_name": "HeaderNav.tsx",
       "file_type": "code",
-      "norm_label": "statusbooking",
-      "source_file": "src/types/database.ts",
-      "source_location": "L3"
+      "norm_label": "headerlogoprops",
+      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_hero_components_mobilenavdrawer_mobilenavdrawerprops",
+      "label": "MobileNavDrawerProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "mobilenavdrawerprops",
+      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_hero_data_navlinks_navlinkitem",
+      "label": "NavLinkItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "navlinkitem",
+      "source_file": "src/components/blanca/hero/data/navLinks.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "src_components_blanca_hero_headernav_headernavprops",
+      "label": "HeaderNavProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "headernavprops",
+      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
+      "source_location": "L7"
     },
     {
       "id": "src_components_blanca_blancacta_blancactaprops",
@@ -496,71 +522,6 @@
       "norm_label": "centerflyinglogoprops",
       "source_file": "src/components/blanca/hero/CenterFlyingLogo.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinksprops",
-      "label": "DesktopNavLinksProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "desktopnavlinksprops",
-      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_hero_components_headerlogo_headerlogoprops",
-      "label": "HeaderLogoProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headerlogoprops",
-      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_hero_components_mobilenavdrawer_mobilenavdrawerprops",
-      "label": "MobileNavDrawerProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "mobilenavdrawerprops",
-      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_hero_data_navlinks_navlinkitem",
-      "label": "NavLinkItem",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "navlinkitem",
-      "source_file": "src/components/blanca/hero/data/navLinks.ts",
-      "source_location": "L2"
-    },
-    {
-      "id": "src_components_blanca_hero_headernav_headernavprops",
-      "label": "HeaderNavProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headernavprops",
-      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
-      "source_location": "L7"
     },
     {
       "id": "src_components_blanca_hero_heromedia_heromediaprops",
@@ -940,6 +901,32 @@
       "source_location": "L4"
     },
     {
+      "id": "src_components_cashier_cashiertable_cashiertableprops",
+      "label": "CashierTableProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashiertableprops",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L5"
+    },
+    {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsviewprops",
       "label": "CleanBookingsViewProps",
       "_callable": true,
@@ -1083,19 +1070,6 @@
       "source_location": "L19"
     },
     {
-      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
-      "label": "CourtManagerModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "courtmanagermodalprops",
-      "source_file": "src/components/cashier/CourtManagerModal.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheetprops",
       "label": "BookingDetailSheetProps",
       "_callable": true,
@@ -1161,19 +1135,6 @@
       "source_location": "L37"
     },
     {
-      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
-      "label": "CourtsManagementViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "courtsmanagementviewprops",
-      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
-      "source_location": "L19"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
       "label": "DashboardOverviewProps",
       "_callable": true,
@@ -1198,6 +1159,32 @@
       "norm_label": "deletecourtdialogprops",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
       "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
+      "label": "ManualBookingModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "manualbookingmodalprops",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L4"
     },
     {
       "id": "src_components_ui_badge_badgeprops",
@@ -1263,6 +1250,19 @@
       "norm_label": "lapangan",
       "source_file": "src/types/database.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "src_types_database_statusbooking",
+      "label": "StatusBooking",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbooking",
+      "source_file": "src/types/database.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_types_database_tipebayar",
@@ -1534,18 +1534,6 @@
       "source_location": "L49"
     },
     {
-      "id": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegrid_handleclickoutside",
-      "label": "handleClickOutside()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "handleclickoutside()",
-      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L150"
-    },
-    {
       "id": "src_components_reservation_components_bookingreceiptview_bookingreceiptview",
       "label": "BookingReceiptView()",
       "_callable": true,
@@ -1616,18 +1604,6 @@
       "norm_label": "bookingdetailsform()",
       "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
       "source_location": "L21"
-    },
-    {
-      "id": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform_handleclickoutside",
-      "label": "handleClickOutside()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "handleclickoutside()",
-      "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
-      "source_location": "L42"
     },
     {
       "id": "src_components_reservation_components_inspector_emptyinspectorview_emptyinspectorview",
@@ -1942,6 +1918,18 @@
       "source_location": "L25"
     },
     {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
+      "label": "DashboardOverview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "dashboardoverview()",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L18"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_header_header",
       "label": "Header()",
       "_callable": true,
@@ -2002,16 +1990,16 @@
       "source_location": "L74"
     },
     {
-      "id": "src_components_cashierpage_cashierpage",
-      "label": "CashierPage()",
+      "id": "src_components_customerbookingpage_customerbookingpage",
+      "label": "CustomerBookingPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "cashierpage()",
-      "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L12"
+      "norm_label": "customerbookingpage()",
+      "source_file": "src/components/CustomerBookingPage.tsx",
+      "source_location": "L7"
     },
     {
       "id": "src_components_reservation_hooks_usereservationdata_usereservationdata",
@@ -2194,42 +2182,6 @@
       "source_location": "L1"
     },
     {
-      "id": "vite_config_configurepreviewserver",
-      "label": "configurePreviewServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "configurepreviewserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "vite_config_configureserver",
-      "label": "configureServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "configureserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "vite_config_routemiddleware",
-      "label": "routeMiddleware()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "routemiddleware()",
-      "source_file": "vite.config.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "scripts_capture_blanca_baseline_capture",
       "label": "capture()",
       "_callable": true,
@@ -2278,76 +2230,16 @@
       "source_location": "L11"
     },
     {
-      "id": "src_components_blanca_blancadifference_blancadifference",
-      "label": "BlancaDifference()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "blancadifference()",
-      "source_file": "src/components/blanca/BlancaDifference.tsx",
-      "source_location": "L7"
-    },
-    {
       "id": "src_components_blanca_blancatechnology_blancatechnology",
       "label": "BlancaTechnology()",
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "blancatechnology()",
       "source_file": "src/components/blanca/BlancaTechnology.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencecommunitystory_differencecommunitystory",
-      "label": "DifferenceCommunityStory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencecommunitystory()",
-      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencefeatures_differencefeatures",
-      "label": "DifferenceFeatures()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencefeatures()",
-      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differenceheading_differenceheading",
-      "label": "DifferenceHeading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differenceheading()",
-      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
-      "source_location": "L2"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencevideocard_differencevideocard",
-      "label": "DifferenceVideoCard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencevideocard()",
-      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
-      "source_location": "L4"
     },
     {
       "id": "src_components_blanca_technology_components_technologyheading_technologyheading",
@@ -2355,7 +2247,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyheading()",
       "source_file": "src/components/blanca/technology/components/TechnologyHeading.tsx",
@@ -2367,7 +2259,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidedetails()",
       "source_file": "src/components/blanca/technology/components/TechnologySlideDetails.tsx",
@@ -2379,7 +2271,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidemedia()",
       "source_file": "src/components/blanca/technology/components/TechnologySlideMedia.tsx",
@@ -2391,47 +2283,167 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "usetechnologyslider()",
       "source_file": "src/components/blanca/technology/hooks/useTechnologySlider.ts",
       "source_location": "L5"
     },
     {
-      "id": "src_components_cashier_cashiertable_cashiertable",
-      "label": "CashierTable()",
+      "id": "src_components_blanca_blancadifference_blancadifference",
+      "label": "BlancaDifference()",
       "_callable": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
       "file_type": "code",
-      "norm_label": "cashiertable()",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L12"
+      "norm_label": "blancadifference()",
+      "source_file": "src/components/blanca/BlancaDifference.tsx",
+      "source_location": "L7"
     },
     {
-      "id": "src_components_cashier_cashiertablerow_cashiertablerow",
-      "label": "CashierTableRow()",
+      "id": "src_components_blanca_difference_components_differencecommunitystory_differencecommunitystory",
+      "label": "DifferenceCommunityStory()",
       "_callable": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
       "file_type": "code",
-      "norm_label": "cashiertablerow()",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
-      "source_location": "L11"
+      "norm_label": "differencecommunitystory()",
+      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
+      "source_location": "L4"
     },
     {
-      "id": "src_components_cashier_statusbadge_statusbadge",
-      "label": "StatusBadge()",
+      "id": "src_components_blanca_difference_components_differencefeatures_differencefeatures",
+      "label": "DifferenceFeatures()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differencefeatures()",
+      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differenceheading_differenceheading",
+      "label": "DifferenceHeading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differenceheading()",
+      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
+      "source_location": "L2"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencevideocard_differencevideocard",
+      "label": "DifferenceVideoCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differencevideocard()",
+      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinks",
+      "label": "DesktopNavLinks()",
       "_callable": true,
       "_origin": "ast",
       "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community_name": "HeaderNav.tsx",
       "file_type": "code",
-      "norm_label": "statusbadge()",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "desktopnavlinks()",
+      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
       "source_location": "L8"
+    },
+    {
+      "id": "src_components_blanca_hero_components_headerlogo_headerlogo",
+      "label": "HeaderLogo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "headerlogo()",
+      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_components_blanca_hero_components_mobilenavdrawer_mobilenavdrawer",
+      "label": "MobileNavDrawer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "mobilenavdrawer()",
+      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_components_blanca_hero_headernav_headernav",
+      "label": "HeaderNav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "headernav()",
+      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "vite_config_configurepreviewserver",
+      "label": "configurePreviewServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "configurepreviewserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "vite_config_configureserver",
+      "label": "configureServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "configureserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "vite_config_routemiddleware",
+      "label": "routeMiddleware()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "routemiddleware()",
+      "source_file": "vite.config.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "src/App.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_components_blanca_blancacta_blancacta",
@@ -2468,54 +2480,6 @@
       "norm_label": "centerflyinglogo()",
       "source_file": "src/components/blanca/hero/CenterFlyingLogo.tsx",
       "source_location": "L6"
-    },
-    {
-      "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinks",
-      "label": "DesktopNavLinks()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "desktopnavlinks()",
-      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_components_blanca_hero_components_headerlogo_headerlogo",
-      "label": "HeaderLogo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headerlogo()",
-      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_components_blanca_hero_components_mobilenavdrawer_mobilenavdrawer",
-      "label": "MobileNavDrawer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "mobilenavdrawer()",
-      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_components_blanca_hero_headernav_headernav",
-      "label": "HeaderNav()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headernav()",
-      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
-      "source_location": "L14"
     },
     {
       "id": "src_components_blanca_hero_heromedia_heromedia",
@@ -2636,6 +2600,18 @@
       "norm_label": "reservationdrawer()",
       "source_file": "src/components/blanca/reservation/ReservationDrawer.tsx",
       "source_location": "L10"
+    },
+    {
+      "id": "src_components_cashierpage_cashierpage",
+      "label": "CashierPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "cashierpage()",
+      "source_file": "src/components/CashierPage.tsx",
+      "source_location": "L12"
     },
     {
       "id": "src_components_cashier_cashierfilterbar_cashierfilterbar",
@@ -2818,6 +2794,30 @@
       "source_location": "L8"
     },
     {
+      "id": "src_components_cashier_cashiertable_cashiertable",
+      "label": "CashierTable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashiertable()",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow_cashiertablerow",
+      "label": "CashierTableRow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashiertablerow()",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsview",
       "label": "CleanBookingsView()",
       "_callable": true,
@@ -2962,6 +2962,18 @@
       "source_location": "L13"
     },
     {
+      "id": "src_components_cashier_statusbadge_statusbadge",
+      "label": "StatusBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbadge()",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L8"
+    },
+    {
       "id": "src_components_ui_badge_badge",
       "label": "Badge()",
       "_callable": true,
@@ -3034,18 +3046,6 @@
       "source_location": "L20"
     },
     {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
-      "label": "DashboardOverview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "DashboardOverview.tsx",
-      "file_type": "code",
-      "norm_label": "dashboardoverview()",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L18"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccards",
       "label": "MetricCards()",
       "_callable": true,
@@ -3094,18 +3094,6 @@
       "source_location": "L9"
     },
     {
-      "id": "src_app_app",
-      "label": "App()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "src/App.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_booking_costsummary_ringkasanbiaya",
       "label": "RingkasanBiaya()",
       "_callable": true,
@@ -3152,18 +3140,6 @@
       "norm_label": "gridjam()",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
       "source_location": "L11"
-    },
-    {
-      "id": "src_components_customerbookingpage_customerbookingpage",
-      "label": "CustomerBookingPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "customerbookingpage()",
-      "source_file": "src/components/CustomerBookingPage.tsx",
-      "source_location": "L7"
     },
     {
       "id": "src_components_blanca_blancalocations_blancalocations",
@@ -3513,6 +3489,17 @@
       "source_location": "L30"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata",
+      "label": "useReservationData.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "usereservationdata.ts",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_reservation_hooks_usereservationschedule",
       "label": "useReservationSchedule.ts",
       "_origin": "ast",
@@ -3568,6 +3555,17 @@
       "source_location": "L35"
     },
     {
+      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
+      "label": "FIXTURE_COURTS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "fixture_courts",
+      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "src_components_reservation_reservationpage",
       "label": "ReservationPage.tsx",
       "_origin": "ast",
@@ -3599,6 +3597,17 @@
       "norm_label": "bookingmapper.ts",
       "source_file": "src/components/reservation/utils/bookingMapper.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
+      "label": "COURT_STYLE_MAP",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "court_style_map",
+      "source_file": "src/components/reservation/utils/bookingMapper.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_components_reservation_utils_formatters",
@@ -3678,17 +3687,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal",
-      "label": "ManualBookingModal.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "manualbookingmodal.tsx",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_cashierpage",
       "label": "CashierPage.tsx",
       "_origin": "ast",
@@ -3698,39 +3696,6 @@
       "norm_label": "cashierpage.tsx",
       "source_file": "src/components/CashierPage.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_hooks_usereservationdata",
-      "label": "useReservationData.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "usereservationdata.ts",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
-      "label": "FIXTURE_COURTS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "fixture_courts",
-      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
-      "label": "COURT_STYLE_MAP",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "court_style_map",
-      "source_file": "src/components/reservation/utils/bookingMapper.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_hooks_usebooking",
@@ -4033,171 +3998,6 @@
       "source_location": "L1"
     },
     {
-      "id": "package_devdependencies",
-      "label": "devDependencies",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "package_devdependencies_eslint",
-      "label": "eslint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint",
-      "source_file": "package.json",
-      "source_location": "L35"
-    },
-    {
-      "id": "package_devdependencies_eslint_js",
-      "label": "@eslint/js",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@eslint/js",
-      "source_file": "package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_hooks",
-      "label": "eslint-plugin-react-hooks",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-hooks",
-      "source_file": "package.json",
-      "source_location": "L36"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_refresh",
-      "label": "eslint-plugin-react-refresh",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-refresh",
-      "source_file": "package.json",
-      "source_location": "L37"
-    },
-    {
-      "id": "package_devdependencies_globals",
-      "label": "globals",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "globals",
-      "source_file": "package.json",
-      "source_location": "L38"
-    },
-    {
-      "id": "package_devdependencies_playwright_test",
-      "label": "@playwright/test",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@playwright/test",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "package_devdependencies_pngjs",
-      "label": "pngjs",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "pngjs",
-      "source_file": "package.json",
-      "source_location": "L39"
-    },
-    {
-      "id": "package_devdependencies_types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "package_devdependencies_types_react",
-      "label": "@types/react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react",
-      "source_file": "package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "package.json",
-      "source_location": "L33"
-    },
-    {
-      "id": "package_devdependencies_typescript",
-      "label": "typescript",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "typescript",
-      "source_file": "package.json",
-      "source_location": "L40"
-    },
-    {
-      "id": "package_devdependencies_typescript_eslint",
-      "label": "typescript-eslint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "typescript-eslint",
-      "source_file": "package.json",
-      "source_location": "L41"
-    },
-    {
-      "id": "package_devdependencies_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "package_devdependencies_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -4220,61 +4020,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -4295,17 +4040,6 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
     },
     {
       "id": "ref_clsx",
@@ -4407,17 +4141,6 @@
       "source_location": "L26"
     },
     {
-      "id": "ref_tailwindcss_vite",
-      "label": "@tailwindcss/vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@tailwindcss/vite",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
       "id": "ref_types_leaflet",
       "label": "@types/leaflet",
       "_origin": "ast",
@@ -4482,28 +4205,6 @@
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
       "source_location": "L41"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
     },
     {
       "id": "components",
@@ -5111,113 +4812,14 @@
       "source_location": "L39"
     },
     {
-      "id": "src_components_blanca_blancadifference",
-      "label": "BlancaDifference.tsx",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "blancadifference.tsx",
-      "source_file": "src/components/blanca/BlancaDifference.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_blanca_blancatechnology",
       "label": "BlancaTechnology.tsx",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "blancatechnology.tsx",
       "source_file": "src/components/blanca/BlancaTechnology.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencecommunitystory",
-      "label": "DifferenceCommunityStory.tsx",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencecommunitystory.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencefeatures",
-      "label": "DifferenceFeatures.tsx",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencefeatures.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differenceheading",
-      "label": "DifferenceHeading.tsx",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differenceheading.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencevideocard",
-      "label": "DifferenceVideoCard.tsx",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencevideocard.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_data_differencedata",
-      "label": "differenceData.ts",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencedata.ts",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_difference_data_differencedata_community_story",
-      "label": "COMMUNITY_STORY",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "community_story",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_data_differencedata_court_features",
-      "label": "COURT_FEATURES",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "court_features",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_components_blanca_difference_types",
-      "label": "difference/types.ts",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "difference/types.ts",
-      "source_file": "src/components/blanca/difference/types.ts",
       "source_location": "L1"
     },
     {
@@ -5225,7 +4827,7 @@
       "label": "TechnologyHeading.tsx",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyheading.tsx",
       "source_file": "src/components/blanca/technology/components/TechnologyHeading.tsx",
@@ -5236,7 +4838,7 @@
       "label": "TechnologySlideDetails.tsx",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidedetails.tsx",
       "source_file": "src/components/blanca/technology/components/TechnologySlideDetails.tsx",
@@ -5247,7 +4849,7 @@
       "label": "TechnologySlideMedia.tsx",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologyslidemedia.tsx",
       "source_file": "src/components/blanca/technology/components/TechnologySlideMedia.tsx",
@@ -5258,7 +4860,7 @@
       "label": "technologyData.ts",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technologydata.ts",
       "source_file": "src/components/blanca/technology/data/technologyData.ts",
@@ -5269,7 +4871,7 @@
       "label": "TECHNOLOGY_SLIDES",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technology_slides",
       "source_file": "src/components/blanca/technology/data/technologyData.ts",
@@ -5280,7 +4882,7 @@
       "label": "useTechnologySlider.ts",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "usetechnologyslider.ts",
       "source_file": "src/components/blanca/technology/hooks/useTechnologySlider.ts",
@@ -5291,7 +4893,7 @@
       "label": "technology/types.ts",
       "_origin": "ast",
       "community": 14,
-      "community_name": "BlancaDifference.tsx",
+      "community_name": "BlancaTechnology.tsx",
       "file_type": "code",
       "norm_label": "technology/types.ts",
       "source_file": "src/components/blanca/technology/types.ts",
@@ -5463,36 +5065,318 @@
       "source_location": "L16"
     },
     {
-      "id": "src_components_cashier_cashiertable",
-      "label": "CashierTable.tsx",
+      "id": "src_components_blanca_blancadifference",
+      "label": "BlancaDifference.tsx",
       "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
       "file_type": "code",
-      "norm_label": "cashiertable.tsx",
-      "source_file": "src/components/cashier/CashierTable.tsx",
+      "norm_label": "blancadifference.tsx",
+      "source_file": "src/components/blanca/BlancaDifference.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_cashiertablerow",
-      "label": "CashierTableRow.tsx",
+      "id": "src_components_blanca_difference_components_differencecommunitystory",
+      "label": "DifferenceCommunityStory.tsx",
       "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
       "file_type": "code",
-      "norm_label": "cashiertablerow.tsx",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "norm_label": "differencecommunitystory.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_statusbadge",
-      "label": "StatusBadge.tsx",
+      "id": "src_components_blanca_difference_components_differencefeatures",
+      "label": "DifferenceFeatures.tsx",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differencefeatures.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differenceheading",
+      "label": "DifferenceHeading.tsx",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differenceheading.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencevideocard",
+      "label": "DifferenceVideoCard.tsx",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differencevideocard.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata",
+      "label": "differenceData.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "differencedata.ts",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata_community_story",
+      "label": "COMMUNITY_STORY",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "community_story",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata_court_features",
+      "label": "COURT_FEATURES",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "court_features",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_blanca_difference_types",
+      "label": "difference/types.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "BlancaDifference.tsx",
+      "file_type": "code",
+      "norm_label": "difference/types.ts",
+      "source_file": "src/components/blanca/difference/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_hero_components_desktopnavlinks",
+      "label": "DesktopNavLinks.tsx",
       "_origin": "ast",
       "community": 17,
-      "community_name": "CashierTableRow.tsx",
+      "community_name": "HeaderNav.tsx",
       "file_type": "code",
-      "norm_label": "statusbadge.tsx",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "desktopnavlinks.tsx",
+      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_hero_components_headerlogo",
+      "label": "HeaderLogo.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "headerlogo.tsx",
+      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_hero_components_mobilenavdrawer",
+      "label": "MobileNavDrawer.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "mobilenavdrawer.tsx",
+      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_hero_data_navlinks",
+      "label": "navLinks.ts",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "navlinks.ts",
+      "source_file": "src/components/blanca/hero/data/navLinks.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_hero_data_navlinks_nav_links",
+      "label": "NAV_LINKS",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "nav_links",
+      "source_file": "src/components/blanca/hero/data/navLinks.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_components_blanca_hero_headernav",
+      "label": "HeaderNav.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "HeaderNav.tsx",
+      "file_type": "code",
+      "norm_label": "headernav.tsx",
+      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents",
+      "label": "AGENTS.md",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_1_aturan_mode_belajar_mandiri_student_first_mentorship",
+      "label": "1. Aturan Mode Belajar Mandiri (Student-First Mentorship)",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. aturan mode belajar mandiri (student-first mentorship)",
+      "source_file": "AGENTS.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "agents_3_aturan_navigasi_codebase_cepat_wajib_menggunakan_graphify",
+      "label": "3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify)",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. aturan navigasi codebase cepat (wajib menggunakan graphify)",
+      "source_file": "AGENTS.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "agents_4_aturan_pengujian_otomasi_browser_wajib_agent_browser_headless",
+      "label": "4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless)",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. aturan pengujian & otomasi browser (wajib agent-browser headless)",
+      "source_file": "AGENTS.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "agents_5_aturan_git_commit_push_gaya_santai_khas_anak_smk",
+      "label": "5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. aturan git commit & push (gaya santai khas anak smk)",
+      "source_file": "AGENTS.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "agents_agents_md_panduan_aturan_ai_mentor_ukk_smk",
+      "label": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "agents.md - panduan & aturan ai mentor ukk smk",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_standar_format_pesan_commit",
+      "label": "Standar Format Pesan Commit:",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "standar format pesan commit:",
+      "source_file": "AGENTS.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_tailwindcss_vite",
+      "label": "@tailwindcss/vite",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "@tailwindcss/vite",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_blanca",
+      "label": "blanca.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "blanca.tsx",
+      "source_file": "src/blanca.tsx",
       "source_location": "L1"
     },
     {
@@ -5526,72 +5410,6 @@
       "file_type": "code",
       "norm_label": "centerflyinglogo.tsx",
       "source_file": "src/components/blanca/hero/CenterFlyingLogo.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_components_desktopnavlinks",
-      "label": "DesktopNavLinks.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "desktopnavlinks.tsx",
-      "source_file": "src/components/blanca/hero/components/DesktopNavLinks.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_components_headerlogo",
-      "label": "HeaderLogo.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headerlogo.tsx",
-      "source_file": "src/components/blanca/hero/components/HeaderLogo.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_components_mobilenavdrawer",
-      "label": "MobileNavDrawer.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "mobilenavdrawer.tsx",
-      "source_file": "src/components/blanca/hero/components/MobileNavDrawer.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_data_navlinks",
-      "label": "navLinks.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "navlinks.ts",
-      "source_file": "src/components/blanca/hero/data/navLinks.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_blanca_hero_data_navlinks_nav_links",
-      "label": "NAV_LINKS",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "nav_links",
-      "source_file": "src/components/blanca/hero/data/navLinks.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_components_blanca_hero_headernav",
-      "label": "HeaderNav.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "headernav.tsx",
-      "source_file": "src/components/blanca/hero/HeaderNav.tsx",
       "source_location": "L1"
     },
     {
@@ -5738,15 +5556,37 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_ui_checkbox_checkbox",
-      "label": "Checkbox",
+      "id": "src_kasir",
+      "label": "kasir.tsx",
       "_origin": "ast",
       "community": 2,
       "community_name": "HeroBlancaPreview.tsx",
       "file_type": "code",
-      "norm_label": "checkbox",
-      "source_file": "src/components/ui/checkbox.tsx",
-      "source_location": "L6"
+      "norm_label": "kasir.tsx",
+      "source_file": "src/kasir.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_reservation",
+      "label": "reservation.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "reservation.tsx",
+      "source_file": "src/reservation.tsx",
+      "source_location": "L1"
     },
     {
       "id": "ref_gsap",
@@ -5769,6 +5609,17 @@
       "norm_label": "lenis",
       "source_file": "package.json",
       "source_location": "L20"
+    },
+    {
+      "id": "ref_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "dfd_ukk",
@@ -5925,6 +5776,61 @@
       "norm_label": "data flow diagram (dfd) level 1 - ukk rpl / pplg",
       "source_file": "DFD_UKK.md",
       "source_location": "L1"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L10"
     },
     {
       "id": "src_components_cashier_cashierfilterbar",
@@ -7081,7 +6987,7 @@
       "node_kind": "heading",
       "norm_label": "2. prioritas menengah (medium priority)",
       "source_file": "PLAN.md",
-      "source_location": "L30"
+      "source_location": "L46"
     },
     {
       "id": "plan_3_prioritas_rendah_low_priority",
@@ -7093,7 +6999,7 @@
       "node_kind": "heading",
       "norm_label": "3. prioritas rendah (low priority)",
       "source_file": "PLAN.md",
-      "source_location": "L45"
+      "source_location": "L73"
     },
     {
       "id": "plan_daftar_issue_aktif_di_plane_so_status_todo",
@@ -7236,6 +7142,171 @@
       "source_location": "L6"
     },
     {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "eslint",
+      "source_file": "package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "package_devdependencies_eslint_js",
+      "label": "@eslint/js",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@eslint/js",
+      "source_file": "package.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "package_devdependencies_eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "eslint-plugin-react-hooks",
+      "source_file": "package.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "package_devdependencies_eslint_plugin_react_refresh",
+      "label": "eslint-plugin-react-refresh",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "eslint-plugin-react-refresh",
+      "source_file": "package.json",
+      "source_location": "L37"
+    },
+    {
+      "id": "package_devdependencies_globals",
+      "label": "globals",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "globals",
+      "source_file": "package.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "package_devdependencies_playwright_test",
+      "label": "@playwright/test",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@playwright/test",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "package_devdependencies_pngjs",
+      "label": "pngjs",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "pngjs",
+      "source_file": "package.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/node",
+      "source_file": "package.json",
+      "source_location": "L31"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "package.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "package.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "package_devdependencies_typescript_eslint",
+      "label": "typescript-eslint",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript-eslint",
+      "source_file": "package.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "package_devdependencies_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "package_devdependencies_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "src_components_cashier_cashierstats",
       "label": "CashierStats.tsx",
       "_origin": "ast",
@@ -7244,6 +7315,28 @@
       "file_type": "code",
       "norm_label": "cashierstats.tsx",
       "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_cashiertable",
+      "label": "CashierTable.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashiertable.tsx",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow",
+      "label": "CashierTableRow.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cashiertablerow.tsx",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
       "source_location": "L1"
     },
     {
@@ -7368,6 +7461,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cashier_manualbookingmodal",
+      "label": "ManualBookingModal.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "manualbookingmodal.tsx",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_statusbadge",
+      "label": "StatusBadge.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbadge.tsx",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_ui_badge",
       "label": "badge.tsx",
       "_origin": "ast",
@@ -7487,6 +7602,17 @@
       "norm_label": "checkbox.tsx",
       "source_file": "src/components/ui/checkbox.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_ui_checkbox_checkbox",
+      "label": "Checkbox",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "checkbox",
+      "source_file": "src/components/ui/checkbox.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_components_ui_input",
@@ -7610,6 +7736,17 @@
       "source_location": "L42"
     },
     {
+      "id": "src_constants_operationalhours_daftar_jam",
+      "label": "DAFTAR_JAM",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "daftar_jam",
+      "source_file": "src/constants/operationalHours.ts",
+      "source_location": "L14"
+    },
+    {
       "id": "src_lib_utils",
       "label": "utils.ts",
       "_origin": "ast",
@@ -7665,30 +7802,6 @@
       "source_location": "L22"
     },
     {
-      "id": "agents",
-      "label": "AGENTS.md",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "agents.md",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_1_aturan_mode_belajar_mandiri_student_first_mentorship",
-      "label": "1. Aturan Mode Belajar Mandiri (Student-First Mentorship)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. aturan mode belajar mandiri (student-first mentorship)",
-      "source_file": "AGENTS.md",
-      "source_location": "L7"
-    },
-    {
       "id": "agents_2_aturan_koding_standar_penilaian_ukk",
       "label": "2. Aturan Koding & Standar Penilaian UKK",
       "_origin": "ast",
@@ -7699,66 +7812,6 @@
       "norm_label": "2. aturan koding & standar penilaian ukk",
       "source_file": "AGENTS.md",
       "source_location": "L20"
-    },
-    {
-      "id": "agents_3_aturan_navigasi_codebase_cepat_wajib_menggunakan_graphify",
-      "label": "3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. aturan navigasi codebase cepat (wajib menggunakan graphify)",
-      "source_file": "AGENTS.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "agents_4_aturan_pengujian_otomasi_browser_wajib_agent_browser_headless",
-      "label": "4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. aturan pengujian & otomasi browser (wajib agent-browser headless)",
-      "source_file": "AGENTS.md",
-      "source_location": "L44"
-    },
-    {
-      "id": "agents_5_aturan_git_commit_push_gaya_santai_khas_anak_smk",
-      "label": "5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "5. aturan git commit & push (gaya santai khas anak smk)",
-      "source_file": "AGENTS.md",
-      "source_location": "L57"
-    },
-    {
-      "id": "agents_agents_md_panduan_aturan_ai_mentor_ukk_smk",
-      "label": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "agents.md - panduan & aturan ai mentor ukk smk",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_standar_format_pesan_commit",
-      "label": "Standar Format Pesan Commit:",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "standar format pesan commit:",
-      "source_file": "AGENTS.md",
-      "source_location": "L66"
     },
     {
       "id": "src_components_cashier_dashboard_01_dashboardoverview",
@@ -7860,28 +7913,6 @@
       "source_location": "L24"
     },
     {
-      "id": "src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "src/App.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_blanca",
-      "label": "blanca.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "blanca.tsx",
-      "source_file": "src/blanca.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_booking_costsummary",
       "label": "CostSummary.tsx",
       "_origin": "ast",
@@ -7948,17 +7979,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_constants_operationalhours_daftar_jam",
-      "label": "DAFTAR_JAM",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "daftar_jam",
-      "source_file": "src/constants/operationalHours.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "src_constants_operationalhours_isdevmode",
       "label": "isDevMode",
       "_origin": "ast",
@@ -8001,50 +8021,6 @@
       "norm_label": "operational_hours",
       "source_file": "src/constants/operationalHours.ts",
       "source_location": "L31"
-    },
-    {
-      "id": "src_kasir",
-      "label": "kasir.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "kasir.tsx",
-      "source_file": "src/kasir.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_reservation",
-      "label": "reservation.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "reservation.tsx",
-      "source_file": "src/reservation.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L23"
     },
     {
       "id": "src_components_blanca_blancalocations",
@@ -8448,23 +8424,11 @@
       "type": "external"
     },
     {
-      "id": "ref_ui_dialog",
-      "label": "ref_ui_dialog",
-      "_origin": "semantic",
-      "community": 5,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_ui_dialog",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_components_blanca_blanca",
       "label": "src_components_blanca_blanca",
       "_origin": "semantic",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_components_blanca_blanca",
@@ -8475,11 +8439,23 @@
       "id": "src_index",
       "label": "src_index",
       "_origin": "semantic",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_index",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_ui_dialog",
+      "label": "ref_ui_dialog",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "react",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_ui_dialog",
       "source_file": "",
       "type": "external"
     }
@@ -8878,7 +8854,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L110",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -8890,7 +8866,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L114",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -8902,7 +8878,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L401",
+      "source_location": "L388",
       "weight": 1.0
     },
     {
@@ -8914,7 +8890,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L437",
+      "source_location": "L424",
       "weight": 1.0
     },
     {
@@ -8938,7 +8914,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L800",
+      "source_location": "L787",
       "weight": 1.0
     },
     {
@@ -9154,7 +9130,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
-      "source_location": "L97",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -21281,7 +21257,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L30",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -21292,7 +21268,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "PLAN.md",
-      "source_location": "L45",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -25623,30 +25599,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegrid",
-      "target": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegrid_handleclickoutside",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L155",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform",
-      "target": "src_components_reservation_components_inspector_bookingdetailsform_bookingdetailsform_handleclickoutside",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "src/components/reservation/components/inspector/BookingDetailsForm.tsx",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
       "source": "src_components_reservation_components_reservationnavbar_reservationnavbar",
       "target": "src_components_reservation_components_reservationnavbar_reservationnavbar_handleclickoutside",
       "relation": "indirect_call",
@@ -25852,5 +25804,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "30a79dd8f2bf9e20095f3eb9223c48507342cc1b"
+  "built_at_commit": "ec69da9f75ceb66bfcde69aea034150b33207d50"
 }
