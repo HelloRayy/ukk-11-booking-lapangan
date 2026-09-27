@@ -303,13 +303,26 @@
       "source_location": "L50"
     },
     {
+      "id": "src_components_cashier_cashierstats_cashierstatsprops",
+      "label": "CashierStatsProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cashierstatsprops",
+      "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "src_components_cashier_cashiertable_cashiertableprops",
       "label": "CashierTableProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cashiertableprops",
       "source_file": "src/components/cashier/CashierTable.tsx",
@@ -322,11 +335,89 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/cashier/CashierTableRow.tsx",
       "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsviewprops",
+      "label": "CleanBookingsViewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleanbookingsviewprops",
+      "source_file": "src/components/cashier/clean/CleanBookingsView.tsx",
+      "source_location": "L30"
+    },
+    {
+      "id": "src_components_cashier_clean_cleancourtmanagermodal_cleancourtmanagermodalprops",
+      "label": "CleanCourtManagerModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleancourtmanagermodalprops",
+      "source_file": "src/components/cashier/clean/CleanCourtManagerModal.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_components_cashier_clean_cleanoverviewview_cleanoverviewviewprops",
+      "label": "CleanOverviewViewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleanoverviewviewprops",
+      "source_file": "src/components/cashier/clean/CleanOverviewView.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_components_cashier_clean_cleanreceiptmodal_cleanreceiptmodalprops",
+      "label": "CleanReceiptModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleanreceiptmodalprops",
+      "source_file": "src/components/cashier/clean/CleanReceiptModal.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_components_cashier_clean_cleanscheduleview_cleanscheduleviewprops",
+      "label": "CleanScheduleViewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleanscheduleviewprops",
+      "source_file": "src/components/cashier/clean/CleanScheduleView.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_components_cashier_clean_cleanwalkinmodal_cleanwalkinmodalprops",
+      "label": "CleanWalkinModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cleanwalkinmodalprops",
+      "source_file": "src/components/cashier/clean/CleanWalkinModal.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
@@ -335,11 +426,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtmanagermodalprops",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_bookingstable_bookingstableprops",
+      "label": "BookingsTableProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "bookingstableprops",
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L55"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegridprops",
+      "label": "CourtScheduleGridProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "courtschedulegridprops",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L39"
     },
     {
       "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
@@ -348,11 +465,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtsmanagementviewprops",
       "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
       "source_location": "L19"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
+      "label": "DashboardOverviewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "dashboardoverviewprops",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L11"
     },
     {
       "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
@@ -361,7 +491,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "deletecourtdialogprops",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
@@ -374,7 +504,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "manualbookingmodalprops",
       "source_file": "src/components/cashier/ManualBookingModal.tsx",
@@ -387,7 +517,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/cashier/StatusBadge.tsx",
@@ -400,11 +530,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "reservationdataprops",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "src_types_database_booking",
+      "label": "Booking",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "booking",
+      "source_file": "src/types/database.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_types_database_lapangan",
+      "label": "Lapangan",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "lapangan",
+      "source_file": "src/types/database.ts",
+      "source_location": "L5"
     },
     {
       "id": "src_types_database_statusbooking",
@@ -413,7 +569,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "statusbooking",
       "source_file": "src/types/database.ts",
@@ -426,7 +582,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "statuslapangan",
       "source_file": "src/types/database.ts",
@@ -439,7 +595,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "tipebayar",
       "source_file": "src/types/database.ts",
@@ -482,19 +638,6 @@
       "file_type": "code",
       "norm_label": "slidedata",
       "source_file": "src/components/blanca/technology/types.ts",
-      "source_location": "L2"
-    },
-    {
-      "id": "src_components_blanca_difference_types_courtfeature",
-      "label": "CourtFeature",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "courtfeature",
-      "source_file": "src/components/blanca/difference/types.ts",
       "source_location": "L2"
     },
     {
@@ -573,6 +716,19 @@
       "file_type": "code",
       "norm_label": "blancactaprops",
       "source_file": "src/components/blanca/BlancaCta.tsx",
+      "source_location": "L2"
+    },
+    {
+      "id": "src_components_blanca_difference_types_courtfeature",
+      "label": "CourtFeature",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "courtfeature",
+      "source_file": "src/components/blanca/difference/types.ts",
       "source_location": "L2"
     },
     {
@@ -953,32 +1109,6 @@
       "source_location": "L14"
     },
     {
-      "id": "src_components_cashier_cashierstats_cashierstatsprops",
-      "label": "CashierStatsProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashierstatsprops",
-      "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsviewprops",
-      "label": "CleanBookingsViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleanbookingsviewprops",
-      "source_file": "src/components/cashier/clean/CleanBookingsView.tsx",
-      "source_location": "L30"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview_datefiltertype",
       "label": "DateFilterType",
       "_callable": true,
@@ -1003,19 +1133,6 @@
       "norm_label": "statusfiltertype",
       "source_file": "src/components/cashier/clean/CleanBookingsView.tsx",
       "source_location": "L38"
-    },
-    {
-      "id": "src_components_cashier_clean_cleancourtmanagermodal_cleancourtmanagermodalprops",
-      "label": "CleanCourtManagerModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleancourtmanagermodalprops",
-      "source_file": "src/components/cashier/clean/CleanCourtManagerModal.tsx",
-      "source_location": "L18"
     },
     {
       "id": "src_components_cashier_clean_cleanheader_cashiertab",
@@ -1044,19 +1161,6 @@
       "source_location": "L16"
     },
     {
-      "id": "src_components_cashier_clean_cleanoverviewview_cleanoverviewviewprops",
-      "label": "CleanOverviewViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleanoverviewviewprops",
-      "source_file": "src/components/cashier/clean/CleanOverviewView.tsx",
-      "source_location": "L18"
-    },
-    {
       "id": "src_components_cashier_clean_cleanpaymentmodal_cleanpaymentmodalprops",
       "label": "CleanPaymentModalProps",
       "_callable": true,
@@ -1070,45 +1174,6 @@
       "source_location": "L15"
     },
     {
-      "id": "src_components_cashier_clean_cleanreceiptmodal_cleanreceiptmodalprops",
-      "label": "CleanReceiptModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleanreceiptmodalprops",
-      "source_file": "src/components/cashier/clean/CleanReceiptModal.tsx",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_components_cashier_clean_cleanscheduleview_cleanscheduleviewprops",
-      "label": "CleanScheduleViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleanscheduleviewprops",
-      "source_file": "src/components/cashier/clean/CleanScheduleView.tsx",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_components_cashier_clean_cleanwalkinmodal_cleanwalkinmodalprops",
-      "label": "CleanWalkinModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cleanwalkinmodalprops",
-      "source_file": "src/components/cashier/clean/CleanWalkinModal.tsx",
-      "source_location": "L19"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheetprops",
       "label": "BookingDetailSheetProps",
       "_callable": true,
@@ -1120,19 +1185,6 @@
       "norm_label": "bookingdetailsheetprops",
       "source_file": "src/components/cashier/dashboard-01/BookingDetailSheet.tsx",
       "source_location": "L24"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_bookingstable_bookingstableprops",
-      "label": "BookingsTableProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "bookingstableprops",
-      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
-      "source_location": "L55"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingstable_sortfield",
@@ -1159,32 +1211,6 @@
       "norm_label": "sortorder",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
       "source_location": "L43"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegridprops",
-      "label": "CourtScheduleGridProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "courtschedulegridprops",
-      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L37"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
-      "label": "DashboardOverviewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "dashboardoverviewprops",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L11"
     },
     {
       "id": "src_components_ui_badge_badgeprops",
@@ -1226,39 +1252,13 @@
       "source_location": "L4"
     },
     {
-      "id": "src_types_database_booking",
-      "label": "Booking",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "booking",
-      "source_file": "src/types/database.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_types_database_lapangan",
-      "label": "Lapangan",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "lapangan",
-      "source_file": "src/types/database.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_metriccards_metriccardsprops",
       "label": "MetricCardsProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "metriccardsprops",
       "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
@@ -1271,7 +1271,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "chartmonthdata",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -1284,7 +1284,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "metriccarditem",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -1297,7 +1297,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "recentbookingitem",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -1310,7 +1310,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "customtooltipprops",
       "source_file": "src/components/cashier/dashboard-01/OverviewChart.tsx",
@@ -1323,7 +1323,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "overviewchartprops",
       "source_file": "src/components/cashier/dashboard-01/OverviewChart.tsx",
@@ -1336,7 +1336,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "recentbookingsprops",
       "source_file": "src/components/cashier/dashboard-01/RecentBookings.tsx",
@@ -1544,7 +1544,7 @@
       "file_type": "code",
       "norm_label": "courtschedulegrid()",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L49"
+      "source_location": "L51"
     },
     {
       "id": "src_components_reservation_components_bookingreceiptview_bookingreceiptview",
@@ -1907,12 +1907,24 @@
       "source_location": "L117"
     },
     {
+      "id": "src_components_cashier_cashierstats_cashierstats",
+      "label": "CashierStats()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cashierstats()",
+      "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L8"
+    },
+    {
       "id": "src_components_cashier_cashiertable_cashiertable",
       "label": "CashierTable()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cashiertable()",
       "source_file": "src/components/cashier/CashierTable.tsx",
@@ -1924,7 +1936,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cashiertablerow()",
       "source_file": "src/components/cashier/CashierTableRow.tsx",
@@ -1936,7 +1948,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cleancourtmanagermodal()",
       "source_file": "src/components/cashier/clean/CleanCourtManagerModal.tsx",
@@ -1948,7 +1960,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtmanagermodal()",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
@@ -1960,7 +1972,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtsmanagementview()",
       "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
@@ -1972,7 +1984,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "deletecourtdialog()",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
@@ -1984,7 +1996,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usecashier()",
       "source_file": "src/components/cashier/hooks/useCashier.ts",
@@ -1996,7 +2008,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "manualbookingmodal()",
       "source_file": "src/components/cashier/ManualBookingModal.tsx",
@@ -2008,7 +2020,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "fetchavailability()",
       "source_file": "src/components/cashier/ManualBookingModal.tsx",
@@ -2020,7 +2032,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "statusbadge()",
       "source_file": "src/components/cashier/StatusBadge.tsx",
@@ -2032,7 +2044,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usereservationdata()",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
@@ -2044,7 +2056,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "initializedata()",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
@@ -2056,7 +2068,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usebooking()",
       "source_file": "src/hooks/useBooking.ts",
@@ -2068,7 +2080,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "loadlapangan()",
       "source_file": "src/hooks/useBooking.ts",
@@ -2080,7 +2092,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "useschedule()",
       "source_file": "src/hooks/useSchedule.ts",
@@ -2092,7 +2104,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "createlapangan()",
       "source_file": "src/lib/api.ts",
@@ -2104,7 +2116,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "deletelapangan()",
       "source_file": "src/lib/api.ts",
@@ -2116,7 +2128,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "getallbookings()",
       "source_file": "src/lib/api.ts",
@@ -2128,7 +2140,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "getbookedslots()",
       "source_file": "src/lib/api.ts",
@@ -2140,7 +2152,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "getlapangan()",
       "source_file": "src/lib/api.ts",
@@ -2152,7 +2164,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "searchbookings()",
       "source_file": "src/lib/api.ts",
@@ -2164,7 +2176,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "subscribetobookings()",
       "source_file": "src/lib/api.ts",
@@ -2176,7 +2188,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "updatelapangan()",
       "source_file": "src/lib/api.ts",
@@ -2188,7 +2200,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "updatestatusbooking()",
       "source_file": "src/lib/api.ts",
@@ -2200,11 +2212,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "calculatebookingcost()",
       "source_file": "src/utils/costCalculation.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "vite_config_configurepreviewserver",
+      "label": "configurePreviewServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "configurepreviewserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "vite_config_configureserver",
+      "label": "configureServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "configureserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "vite_config_routemiddleware",
+      "label": "routeMiddleware()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "routemiddleware()",
+      "source_file": "vite.config.ts",
+      "source_location": "L6"
     },
     {
       "id": "scripts_capture_blanca_baseline_capture",
@@ -2315,66 +2363,6 @@
       "source_location": "L5"
     },
     {
-      "id": "src_components_blanca_blancadifference_blancadifference",
-      "label": "BlancaDifference()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "blancadifference()",
-      "source_file": "src/components/blanca/BlancaDifference.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencecommunitystory_differencecommunitystory",
-      "label": "DifferenceCommunityStory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencecommunitystory()",
-      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencefeatures_differencefeatures",
-      "label": "DifferenceFeatures()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencefeatures()",
-      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differenceheading_differenceheading",
-      "label": "DifferenceHeading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differenceheading()",
-      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
-      "source_location": "L2"
-    },
-    {
-      "id": "src_components_blanca_difference_components_differencevideocard_differencevideocard",
-      "label": "DifferenceVideoCard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencevideocard()",
-      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinks",
       "label": "DesktopNavLinks()",
       "_callable": true,
@@ -2423,42 +2411,6 @@
       "source_location": "L14"
     },
     {
-      "id": "vite_config_configurepreviewserver",
-      "label": "configurePreviewServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "configurepreviewserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "vite_config_configureserver",
-      "label": "configureServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "configureserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "vite_config_routemiddleware",
-      "label": "routeMiddleware()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "routemiddleware()",
-      "source_file": "vite.config.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_blanca_blancacta_blancacta",
       "label": "BlancaCta()",
       "_callable": true,
@@ -2471,6 +2423,18 @@
       "source_location": "L6"
     },
     {
+      "id": "src_components_blanca_blancadifference_blancadifference",
+      "label": "BlancaDifference()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "blancadifference()",
+      "source_file": "src/components/blanca/BlancaDifference.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "src_components_blanca_blancafooter_blancafooter",
       "label": "BlancaFooter()",
       "_callable": true,
@@ -2481,6 +2445,54 @@
       "norm_label": "blancafooter()",
       "source_file": "src/components/blanca/BlancaFooter.tsx",
       "source_location": "L2"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencecommunitystory_differencecommunitystory",
+      "label": "DifferenceCommunityStory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencecommunitystory()",
+      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencefeatures_differencefeatures",
+      "label": "DifferenceFeatures()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencefeatures()",
+      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differenceheading_differenceheading",
+      "label": "DifferenceHeading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differenceheading()",
+      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
+      "source_location": "L2"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencevideocard_differencevideocard",
+      "label": "DifferenceVideoCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencevideocard()",
+      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
+      "source_location": "L4"
     },
     {
       "id": "src_components_blanca_hero_centerflyinglogo_centerflyinglogo",
@@ -2783,18 +2795,6 @@
       "source_location": "L26"
     },
     {
-      "id": "src_components_cashier_cashierstats_cashierstats",
-      "label": "CashierStats()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashierstats()",
-      "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L8"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsview",
       "label": "CleanBookingsView()",
       "_callable": true,
@@ -2927,18 +2927,6 @@
       "source_location": "L129"
     },
     {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
-      "label": "DashboardOverview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "dashboardoverview()",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L19"
-    },
-    {
       "id": "src_components_ui_badge_badge",
       "label": "Badge()",
       "_callable": true,
@@ -2961,6 +2949,18 @@
       "norm_label": "cn()",
       "source_file": "src/lib/utils.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "src_lib_utils_formatdateddmmyyyy",
+      "label": "formatDateDDMMYYYY()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "formatdateddmmyyyy()",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L58"
     },
     {
       "id": "src_lib_utils_formatslotrange",
@@ -3016,7 +3016,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "metriccards()",
       "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
@@ -3028,7 +3028,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "customtooltip()",
       "source_file": "src/components/cashier/dashboard-01/OverviewChart.tsx",
@@ -3040,7 +3040,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "overviewchart()",
       "source_file": "src/components/cashier/dashboard-01/OverviewChart.tsx",
@@ -3052,7 +3052,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "recentbookings()",
       "source_file": "src/components/cashier/dashboard-01/RecentBookings.tsx",
@@ -3117,6 +3117,18 @@
       "norm_label": "gridjam()",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
+      "label": "DashboardOverview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "CashierPage.tsx",
+      "file_type": "code",
+      "norm_label": "dashboardoverview()",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_components_cashier_dashboard_01_header_header",
@@ -3636,11 +3648,22 @@
       "source_location": "L32"
     },
     {
+      "id": "src_components_cashier_cashierstats",
+      "label": "CashierStats.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "code",
+      "norm_label": "cashierstats.tsx",
+      "source_file": "src/components/cashier/CashierStats.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_cashier_cashiertable",
       "label": "CashierTable.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cashiertable.tsx",
       "source_file": "src/components/cashier/CashierTable.tsx",
@@ -3651,7 +3674,7 @@
       "label": "CashierTableRow.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "cashiertablerow.tsx",
       "source_file": "src/components/cashier/CashierTableRow.tsx",
@@ -3662,7 +3685,7 @@
       "label": "CourtManagerModal.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtmanagermodal.tsx",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
@@ -3673,7 +3696,7 @@
       "label": "CourtsManagementView.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "courtsmanagementview.tsx",
       "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
@@ -3684,7 +3707,7 @@
       "label": "DeleteCourtDialog.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "deletecourtdialog.tsx",
       "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
@@ -3695,7 +3718,7 @@
       "label": "useCashier.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usecashier.ts",
       "source_file": "src/components/cashier/hooks/useCashier.ts",
@@ -3706,7 +3729,7 @@
       "label": "ManualBookingModal.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "manualbookingmodal.tsx",
       "source_file": "src/components/cashier/ManualBookingModal.tsx",
@@ -3717,7 +3740,7 @@
       "label": "StatusBadge.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "statusbadge.tsx",
       "source_file": "src/components/cashier/StatusBadge.tsx",
@@ -3728,7 +3751,7 @@
       "label": "useReservationData.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usereservationdata.ts",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
@@ -3739,7 +3762,7 @@
       "label": "FIXTURE_COURTS",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "fixture_courts",
       "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
@@ -3750,7 +3773,7 @@
       "label": "COURT_STYLE_MAP",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "court_style_map",
       "source_file": "src/components/reservation/utils/bookingMapper.ts",
@@ -3761,7 +3784,7 @@
       "label": "useBooking.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usebooking.ts",
       "source_file": "src/hooks/useBooking.ts",
@@ -3772,7 +3795,7 @@
       "label": "usePemesanan",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usepemesanan",
       "source_file": "src/hooks/useBooking.ts",
@@ -3783,7 +3806,7 @@
       "label": "useSchedule.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "useschedule.ts",
       "source_file": "src/hooks/useSchedule.ts",
@@ -3794,7 +3817,7 @@
       "label": "useJadwal",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "usejadwal",
       "source_file": "src/hooks/useSchedule.ts",
@@ -3805,7 +3828,7 @@
       "label": "api.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "api.ts",
       "source_file": "src/lib/api.ts",
@@ -3816,7 +3839,7 @@
       "label": "supabase.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "supabase.ts",
       "source_file": "src/lib/supabase.ts",
@@ -3827,7 +3850,7 @@
       "label": "supabase",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "supabase",
       "source_file": "src/lib/supabase.ts",
@@ -3838,7 +3861,7 @@
       "label": "database.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "database.ts",
       "source_file": "src/types/database.ts",
@@ -3849,7 +3872,7 @@
       "label": "costCalculation.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "costcalculation.ts",
       "source_file": "src/utils/costCalculation.ts",
@@ -3860,190 +3883,57 @@
       "label": "hitungBiayaBooking",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "code",
       "norm_label": "hitungbiayabooking",
       "source_file": "src/utils/costCalculation.ts",
       "source_location": "L16"
     },
     {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Lapangan",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
       "id": "ref_supabase_supabase_js",
       "label": "@supabase/supabase-js",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "concept",
       "norm_label": "@supabase/supabase-js",
       "source_file": "package.json",
       "source_location": "L14"
     },
     {
-      "id": "panduan_penjelasan_backend_ukk",
-      "label": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "id": "agents_2_aturan_koding_standar_penilaian_ukk",
+      "label": "2. Aturan Koding & Standar Penilaian UKK",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "panduan_penjelasan_backend_ukk.md",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_1_peta_arsitektur_frontend_vs_backend_di_aplikasi_ini",
-      "label": "1. Peta Arsitektur: \"Frontend vs Backend di Aplikasi Ini\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. peta arsitektur: \"frontend vs backend di aplikasi ini\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_1_src_types_database_ts_model_skema_data",
-      "label": "1. `src/types/database.ts` (Model / Skema Data)",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. `src/types/database.ts` (model / skema data)",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L38"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_2_src_lib_supabase_ts_inisialisasi_client",
-      "label": "2. `src/lib/supabase.ts` (Inisialisasi Client)",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. `src/lib/supabase.ts` (inisialisasi client)",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L45"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_2_tiga_berkas_kunci_backend_yang_wajib_dibuka_saat_sidang",
-      "label": "2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. tiga berkas kunci backend yang wajib dibuka saat sidang",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_3_bocoran_5_pertanyaan_penguji_ukk_cara_jawab_santai",
-      "label": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. bocoran 5 pertanyaan penguji ukk & cara jawab santai",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L60"
+      "norm_label": "2. aturan koding & standar penilaian ukk",
+      "source_file": "AGENTS.md",
+      "source_location": "L20"
     },
     {
       "id": "panduan_penjelasan_backend_ukk_3_src_lib_api_ts_api_controller_query_builder",
       "label": "3. `src/lib/api.ts` (API Controller & Query Builder)",
       "_origin": "ast",
       "community": 1,
-      "community_name": "database.ts",
+      "community_name": "Lapangan",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "3. `src/lib/api.ts` (api controller & query builder)",
       "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
       "source_location": "L50"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_4_rangkuman_struktur_folder_proyek_yang_rapi",
-      "label": "4. Rangkuman Struktur Folder Proyek yang Rapi",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. rangkuman struktur folder proyek yang rapi",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L95"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_panduan_strategi_menjelaskan_backend_ke_penguji_ukk",
-      "label": "Panduan & Strategi Menjelaskan Backend ke Penguji UKK",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "panduan & strategi menjelaskan backend ke penguji ukk",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q1_mana_server_backend_kamu_kok_tidak_pakai_express_js_atau_laravel",
-      "label": "Q1: \"Mana server backend kamu? Kok tidak pakai Express.js atau Laravel?\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q1: \"mana server backend kamu? kok tidak pakai express.js atau laravel?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L62"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q2_bagaimana_cara_sistem_kamu_mencegah_dua_orang_booking_jam_yang_sama_bentrok_jadwal",
-      "label": "Q2: \"Bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q2: \"bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L68"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q3_bagaimana_relasi_antar_tabel_di_basis_data_kamu",
-      "label": "Q3: \"Bagaimana relasi antar tabel di basis data kamu?\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q3: \"bagaimana relasi antar tabel di basis data kamu?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L74"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q4_bagaimana_rumus_perhitungan_dp_50_dan_sisa_bayar_di_sistem_ini",
-      "label": "Q4: \"Bagaimana rumus perhitungan DP 50% dan sisa bayar di sistem ini?\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q4: \"bagaimana rumus perhitungan dp 50% dan sisa bayar di sistem ini?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L80"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q5_apa_tipe_data_kolom_jam_dan_tanggal_di_database",
-      "label": "Q5: \"Apa tipe data kolom jam dan tanggal di database?\"",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "database.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q5: \"apa tipe data kolom jam dan tanggal di database?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L89"
     },
     {
       "id": "eslint_config",
@@ -4068,6 +3958,171 @@
       "source_location": "L1"
     },
     {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "package_dependencies_clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "package_dependencies_gsap",
+      "label": "gsap",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "gsap",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "package_dependencies_leaflet",
+      "label": "leaflet",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "leaflet",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "package_dependencies_lenis",
+      "label": "lenis",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lenis",
+      "source_file": "package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "package_dependencies_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "package_dependencies_radix_ui_react_checkbox",
+      "label": "@radix-ui/react-checkbox",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@radix-ui/react-checkbox",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "package_dependencies_recharts",
+      "label": "recharts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "recharts",
+      "source_file": "package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "package_dependencies_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_dependencies_tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "package_dependencies_tailwindcss",
+      "label": "tailwindcss",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "tailwindcss",
+      "source_file": "package.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "package_dependencies_tailwindcss_vite",
+      "label": "@tailwindcss/vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@tailwindcss/vite",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_types_leaflet",
+      "label": "@types/leaflet",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/leaflet",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -4090,6 +4145,61 @@
       "source_location": "L3"
     },
     {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -4110,6 +4220,28 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L17"
     },
     {
       "id": "ref_eslint",
@@ -4167,6 +4299,17 @@
       "source_location": "L38"
     },
     {
+      "id": "ref_tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L25"
+    },
+    {
       "id": "ref_tailwindcss",
       "label": "tailwindcss",
       "_origin": "ast",
@@ -4176,6 +4319,17 @@
       "norm_label": "tailwindcss",
       "source_file": "package.json",
       "source_location": "L26"
+    },
+    {
+      "id": "ref_tailwindcss_vite",
+      "label": "@tailwindcss/vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@tailwindcss/vite",
+      "source_file": "package.json",
+      "source_location": "L15"
     },
     {
       "id": "ref_types_leaflet",
@@ -4242,6 +4396,28 @@
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
       "source_location": "L41"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
     },
     {
       "id": "components",
@@ -4695,6 +4871,72 @@
       "source_location": "L16"
     },
     {
+      "id": "scripts_analyze_blanca_mobile_diff",
+      "label": "analyze-blanca-mobile-diff.js",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "analyze-blanca-mobile-diff.js",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_analyze_blanca_mobile_diff_diffimg",
+      "label": "diffImg",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "diffimg",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "scripts_analyze_blanca_mobile_diff_height",
+      "label": "height",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "height",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L12"
+    },
+    {
+      "id": "scripts_analyze_blanca_mobile_diff_localimg",
+      "label": "localImg",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "localimg",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L9"
+    },
+    {
+      "id": "scripts_analyze_blanca_mobile_diff_targetimg",
+      "label": "targetImg",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "targetimg",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "scripts_analyze_blanca_mobile_diff_width",
+      "label": "width",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "@playwright/test",
+      "file_type": "code",
+      "norm_label": "width",
+      "source_file": "scripts/analyze-blanca-mobile-diff.js",
+      "source_location": "L11"
+    },
+    {
       "id": "scripts_capture_blanca_baseline",
       "label": "capture-blanca-baseline.js",
       "_origin": "ast",
@@ -4871,268 +5113,160 @@
       "source_location": "L1"
     },
     {
-      "id": "package_dependencies",
-      "label": "dependencies",
+      "id": "panduan_penjelasan_backend_ukk",
+      "label": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
       "_origin": "ast",
       "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "package_dependencies_clsx",
-      "label": "clsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "clsx",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "package_dependencies_gsap",
-      "label": "gsap",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "gsap",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "package_dependencies_leaflet",
-      "label": "leaflet",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "leaflet",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "package_dependencies_lenis",
-      "label": "lenis",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "lenis",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "package_dependencies_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "package_dependencies_radix_ui_react_checkbox",
-      "label": "@radix-ui/react-checkbox",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@radix-ui/react-checkbox",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "package_dependencies_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "package_dependencies_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "package_dependencies_recharts",
-      "label": "recharts",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "recharts",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "package_dependencies_supabase_supabase_js",
-      "label": "@supabase/supabase-js",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@supabase/supabase-js",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "package_dependencies_tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "package_dependencies_tailwindcss",
-      "label": "tailwindcss",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "tailwindcss",
-      "source_file": "package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "package_dependencies_tailwindcss_vite",
-      "label": "@tailwindcss/vite",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@tailwindcss/vite",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "package_dependencies_types_leaflet",
-      "label": "@types/leaflet",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@types/leaflet",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_components_blanca_blancadifference",
-      "label": "BlancaDifference.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "blancadifference.tsx",
-      "source_file": "src/components/blanca/BlancaDifference.tsx",
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "panduan_penjelasan_backend_ukk.md",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
       "source_location": "L1"
     },
     {
-      "id": "src_components_blanca_difference_components_differencecommunitystory",
-      "label": "DifferenceCommunityStory.tsx",
+      "id": "panduan_penjelasan_backend_ukk_1_peta_arsitektur_frontend_vs_backend_di_aplikasi_ini",
+      "label": "1. Peta Arsitektur: \"Frontend vs Backend di Aplikasi Ini\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencecommunitystory.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. peta arsitektur: \"frontend vs backend di aplikasi ini\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_1_src_types_database_ts_model_skema_data",
+      "label": "1. `src/types/database.ts` (Model / Skema Data)",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. `src/types/database.ts` (model / skema data)",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L38"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_2_src_lib_supabase_ts_inisialisasi_client",
+      "label": "2. `src/lib/supabase.ts` (Inisialisasi Client)",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. `src/lib/supabase.ts` (inisialisasi client)",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_2_tiga_berkas_kunci_backend_yang_wajib_dibuka_saat_sidang",
+      "label": "2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. tiga berkas kunci backend yang wajib dibuka saat sidang",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_3_bocoran_5_pertanyaan_penguji_ukk_cara_jawab_santai",
+      "label": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. bocoran 5 pertanyaan penguji ukk & cara jawab santai",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_4_rangkuman_struktur_folder_proyek_yang_rapi",
+      "label": "4. Rangkuman Struktur Folder Proyek yang Rapi",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. rangkuman struktur folder proyek yang rapi",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L95"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_panduan_strategi_menjelaskan_backend_ke_penguji_ukk",
+      "label": "Panduan & Strategi Menjelaskan Backend ke Penguji UKK",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "panduan & strategi menjelaskan backend ke penguji ukk",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
       "source_location": "L1"
     },
     {
-      "id": "src_components_blanca_difference_components_differencefeatures",
-      "label": "DifferenceFeatures.tsx",
+      "id": "panduan_penjelasan_backend_ukk_q1_mana_server_backend_kamu_kok_tidak_pakai_express_js_atau_laravel",
+      "label": "Q1: \"Mana server backend kamu? Kok tidak pakai Express.js atau Laravel?\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencefeatures.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
-      "source_location": "L1"
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q1: \"mana server backend kamu? kok tidak pakai express.js atau laravel?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L62"
     },
     {
-      "id": "src_components_blanca_difference_components_differenceheading",
-      "label": "DifferenceHeading.tsx",
+      "id": "panduan_penjelasan_backend_ukk_q2_bagaimana_cara_sistem_kamu_mencegah_dua_orang_booking_jam_yang_sama_bentrok_jadwal",
+      "label": "Q2: \"Bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differenceheading.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
-      "source_location": "L1"
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q2: \"bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L68"
     },
     {
-      "id": "src_components_blanca_difference_components_differencevideocard",
-      "label": "DifferenceVideoCard.tsx",
+      "id": "panduan_penjelasan_backend_ukk_q3_bagaimana_relasi_antar_tabel_di_basis_data_kamu",
+      "label": "Q3: \"Bagaimana relasi antar tabel di basis data kamu?\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencevideocard.tsx",
-      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
-      "source_location": "L1"
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q3: \"bagaimana relasi antar tabel di basis data kamu?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L74"
     },
     {
-      "id": "src_components_blanca_difference_data_differencedata",
-      "label": "differenceData.ts",
+      "id": "panduan_penjelasan_backend_ukk_q4_bagaimana_rumus_perhitungan_dp_50_dan_sisa_bayar_di_sistem_ini",
+      "label": "Q4: \"Bagaimana rumus perhitungan DP 50% dan sisa bayar di sistem ini?\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "differencedata.ts",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L1"
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q4: \"bagaimana rumus perhitungan dp 50% dan sisa bayar di sistem ini?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L80"
     },
     {
-      "id": "src_components_blanca_difference_data_differencedata_community_story",
-      "label": "COMMUNITY_STORY",
+      "id": "panduan_penjelasan_backend_ukk_q5_apa_tipe_data_kolom_jam_dan_tanggal_di_database",
+      "label": "Q5: \"Apa tipe data kolom jam dan tanggal di database?\"",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "community_story",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_blanca_difference_data_differencedata_court_features",
-      "label": "COURT_FEATURES",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "court_features",
-      "source_file": "src/components/blanca/difference/data/differenceData.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_components_blanca_difference_types",
-      "label": "difference/types.ts",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "BlancaDifference.tsx",
-      "file_type": "code",
-      "norm_label": "difference/types.ts",
-      "source_file": "src/components/blanca/difference/types.ts",
-      "source_location": "L1"
+      "community": 15,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q5: \"apa tipe data kolom jam dan tanggal di database?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L89"
     },
     {
       "id": "src_components_blanca_hero_components_desktopnavlinks",
@@ -5285,50 +5419,6 @@
       "source_location": "L66"
     },
     {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_tailwindcss_vite",
-      "label": "@tailwindcss/vite",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "@tailwindcss/vite",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "vite.config.ts",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
       "id": "src_components_blanca_blancacta",
       "label": "BlancaCta.tsx",
       "_origin": "ast",
@@ -5340,6 +5430,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_blanca_blancadifference",
+      "label": "BlancaDifference.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "blancadifference.tsx",
+      "source_file": "src/components/blanca/BlancaDifference.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_blanca_blancafooter",
       "label": "BlancaFooter.tsx",
       "_origin": "ast",
@@ -5348,6 +5449,94 @@
       "file_type": "code",
       "norm_label": "blancafooter.tsx",
       "source_file": "src/components/blanca/BlancaFooter.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencecommunitystory",
+      "label": "DifferenceCommunityStory.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencecommunitystory.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceCommunityStory.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencefeatures",
+      "label": "DifferenceFeatures.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencefeatures.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceFeatures.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differenceheading",
+      "label": "DifferenceHeading.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differenceheading.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceHeading.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_components_differencevideocard",
+      "label": "DifferenceVideoCard.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencevideocard.tsx",
+      "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata",
+      "label": "differenceData.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "differencedata.ts",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata_community_story",
+      "label": "COMMUNITY_STORY",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "community_story",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_blanca_difference_data_differencedata_court_features",
+      "label": "COURT_FEATURES",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "court_features",
+      "source_file": "src/components/blanca/difference/data/differenceData.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_blanca_difference_types",
+      "label": "difference/types.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "difference/types.ts",
+      "source_file": "src/components/blanca/difference/types.ts",
       "source_location": "L1"
     },
     {
@@ -5505,28 +5694,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_ui_checkbox",
-      "label": "checkbox.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "checkbox.tsx",
-      "source_file": "src/components/ui/checkbox.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_ui_checkbox_checkbox",
-      "label": "Checkbox",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "code",
-      "norm_label": "checkbox",
-      "source_file": "src/components/ui/checkbox.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "ref_gsap",
       "label": "gsap",
       "_origin": "ast",
@@ -5547,17 +5714,6 @@
       "norm_label": "lenis",
       "source_file": "package.json",
       "source_location": "L20"
-    },
-    {
-      "id": "ref_radix_ui_react_checkbox",
-      "label": "@radix-ui/react-checkbox",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "HeroBlancaPreview.tsx",
-      "file_type": "concept",
-      "norm_label": "@radix-ui/react-checkbox",
-      "source_file": "package.json",
-      "source_location": "L13"
     },
     {
       "id": "dfd_ukk",
@@ -5714,72 +5870,6 @@
       "norm_label": "data flow diagram (dfd) level 1 - ukk rpl / pplg",
       "source_file": "DFD_UKK.md",
       "source_location": "L1"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff",
-      "label": "analyze-blanca-mobile-diff.js",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "analyze-blanca-mobile-diff.js",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff_diffimg",
-      "label": "diffImg",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "diffimg",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff_height",
-      "label": "height",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "height",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L12"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff_localimg",
-      "label": "localImg",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "localimg",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L9"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff_targetimg",
-      "label": "targetImg",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "targetimg",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L8"
-    },
-    {
-      "id": "scripts_analyze_blanca_mobile_diff_width",
-      "label": "width",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "analyze-blanca-mobile-diff.js",
-      "file_type": "code",
-      "norm_label": "width",
-      "source_file": "scripts/analyze-blanca-mobile-diff.js",
-      "source_location": "L11"
     },
     {
       "id": "src_components_cashier_cashierfilterbar",
@@ -6987,61 +7077,6 @@
       "source_location": "L8"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
       "id": "readme",
       "label": "README.md",
       "_origin": "ast",
@@ -7311,17 +7346,6 @@
       "source_location": "L34"
     },
     {
-      "id": "src_components_cashier_cashierstats",
-      "label": "CashierStats.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashierstats.tsx",
-      "source_file": "src/components/cashier/CashierStats.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview",
       "label": "CleanBookingsView.tsx",
       "_origin": "ast",
@@ -7542,6 +7566,28 @@
       "source_location": "L22"
     },
     {
+      "id": "src_components_ui_checkbox",
+      "label": "checkbox.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "checkbox.tsx",
+      "source_file": "src/components/ui/checkbox.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_ui_checkbox_checkbox",
+      "label": "Checkbox",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "checkbox",
+      "source_file": "src/components/ui/checkbox.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_ui_input",
       "label": "input.tsx",
       "_origin": "ast",
@@ -7685,15 +7731,15 @@
       "source_location": "L1"
     },
     {
-      "id": "ref_clsx",
-      "label": "clsx",
+      "id": "ref_radix_ui_react_checkbox",
+      "label": "@radix-ui/react-checkbox",
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "concept",
-      "norm_label": "clsx",
+      "norm_label": "@radix-ui/react-checkbox",
       "source_file": "package.json",
-      "source_location": "L17"
+      "source_location": "L13"
     },
     {
       "id": "ref_react",
@@ -7707,34 +7753,11 @@
       "source_location": "L22"
     },
     {
-      "id": "ref_tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "agents_2_aturan_koding_standar_penilaian_ukk",
-      "label": "2. Aturan Koding & Standar Penilaian UKK",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. aturan koding & standar penilaian ukk",
-      "source_file": "AGENTS.md",
-      "source_location": "L20"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_dashboardoverview",
       "label": "DashboardOverview.tsx",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "dashboardoverview.tsx",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
@@ -7745,7 +7768,7 @@
       "label": "MetricCards.tsx",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "metriccards.tsx",
       "source_file": "src/components/cashier/dashboard-01/MetricCards.tsx",
@@ -7756,7 +7779,7 @@
       "label": "mockData.ts",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "mockdata.ts",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -7767,7 +7790,7 @@
       "label": "MOCK_DASHBOARD_METRICS",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "mock_dashboard_metrics",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -7778,7 +7801,7 @@
       "label": "MOCK_RECENT_BOOKINGS",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "mock_recent_bookings",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -7789,7 +7812,7 @@
       "label": "MOCK_REVENUE_CHART",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "mock_revenue_chart",
       "source_file": "src/components/cashier/dashboard-01/mockData.ts",
@@ -7800,7 +7823,7 @@
       "label": "OverviewChart.tsx",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "overviewchart.tsx",
       "source_file": "src/components/cashier/dashboard-01/OverviewChart.tsx",
@@ -7811,29 +7834,18 @@
       "label": "RecentBookings.tsx",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "code",
       "norm_label": "recentbookings.tsx",
       "source_file": "src/components/cashier/dashboard-01/RecentBookings.tsx",
       "source_location": "L1"
     },
     {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "lucide-react",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
       "id": "ref_recharts",
       "label": "recharts",
       "_origin": "ast",
       "community": 6,
-      "community_name": "lucide-react",
+      "community_name": "DashboardOverview.tsx",
       "file_type": "concept",
       "norm_label": "recharts",
       "source_file": "package.json",
@@ -8858,6 +8870,18 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheet",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/BookingDetailSheet.tsx",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheet",
       "target": "src_lib_utils_formatslotrange",
       "relation": "calls",
       "_origin": "ast",
@@ -8878,6 +8902,18 @@
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
       "source_location": "L225",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingstable_bookingstable",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L695",
       "weight": 1.0
     },
     {
@@ -8913,7 +8949,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L108",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -8925,7 +8961,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L112",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -8937,7 +8973,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L388",
+      "source_location": "L390",
       "weight": 1.0
     },
     {
@@ -8949,7 +8985,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L424",
+      "source_location": "L426",
       "weight": 1.0
     },
     {
@@ -8961,7 +8997,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L60",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -8973,7 +9009,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L787",
+      "source_location": "L789",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegrid",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L862",
       "weight": 1.0
     },
     {
@@ -10125,7 +10173,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -10137,7 +10185,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -12699,6 +12747,18 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_bookingdetailsheet",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/BookingDetailSheet.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingdetailsheet",
       "target": "src_lib_utils_formatslotrange",
       "relation": "imports",
       "_origin": "ast",
@@ -12855,6 +12915,18 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_bookingstable",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/BookingsTable.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_bookingstable",
       "target": "src_lib_utils_formatslotrange",
       "relation": "imports",
       "_origin": "ast",
@@ -12898,7 +12970,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -12910,7 +12982,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -12922,7 +12994,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -12934,7 +13006,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -12946,7 +13030,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -12958,7 +13042,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -12970,7 +13054,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -12982,7 +13066,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12994,7 +13078,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -13006,7 +13090,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -13018,7 +13102,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -13030,7 +13114,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -13042,7 +13126,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -13054,7 +13138,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -13066,7 +13150,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -13078,7 +13162,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -13090,7 +13174,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -13102,7 +13186,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -13114,7 +13198,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13126,7 +13210,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13138,7 +13222,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13150,7 +13234,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13162,7 +13246,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13174,7 +13258,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -17703,7 +17787,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -17715,8 +17799,20 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
+      "target": "src_lib_utils",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -17728,7 +17824,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -17740,7 +17836,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -17752,36 +17848,12 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_components_inspector_emptyinspectorview",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_components_inspector_paymentloadingview",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
       "source_location": "L28",
       "weight": 1.0
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_components_qrispaymentview",
+      "target": "src_components_reservation_components_inspector_emptyinspectorview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17805,7 +17877,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_components_bookingreceiptview",
+      "target": "src_components_reservation_components_inspector_paymentloadingview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17817,7 +17889,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_utils_bookingmapper",
+      "target": "src_components_reservation_components_qrispaymentview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17829,7 +17901,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_utils_formatters",
+      "target": "src_components_reservation_components_bookingreceiptview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17841,7 +17913,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_constants_scheduleconfig",
+      "target": "src_components_reservation_utils_bookingmapper",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17853,7 +17925,7 @@
     },
     {
       "source": "src_components_cashier_dashboard_01_courtschedulegrid",
-      "target": "src_components_reservation_types",
+      "target": "src_components_reservation_utils_formatters",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17861,6 +17933,30 @@
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
       "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
+      "target": "src_components_reservation_constants_scheduleconfig",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtschedulegrid",
+      "target": "src_components_reservation_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L36",
       "type_only": true,
       "weight": 1.0
     },
@@ -17873,7 +17969,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -23081,7 +23177,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -23092,7 +23188,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -24911,6 +25007,17 @@
       "weight": 1.0
     },
     {
+      "source": "src_lib_utils",
+      "target": "src_lib_utils_formatdateddmmyyyy",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
       "source": "src_types_database",
       "target": "src_types_database_statuslapangan",
       "relation": "contains",
@@ -25942,5 +26049,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6782ee263c3ba91a81d35f2a7dcf161a03312337"
+  "built_at_commit": "1cdea95ec34996487b626900a969e824dd7cfad1"
 }

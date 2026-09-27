@@ -37,7 +37,7 @@ import {
 } from '../../ui/table'
 import { Button } from '../../ui/button'
 import { Input } from '../../ui/input'
-import { formatSlotRange } from '../../../lib/utils'
+import { formatSlotRange, formatDateDDMMYYYY } from '../../../lib/utils'
 
 export type SortField = 'nama_penyewa' | 'lapangan' | 'tgl_main' | 'total_bayar' | 'status'
 export type SortOrder = 'asc' | 'desc'
@@ -692,7 +692,7 @@ export default function BookingsTable({
                               courtName
                             )}`}
                           />
-                          <span className="leading-snug">{item.tgl_main}</span>
+                          <span className="leading-snug font-medium">{formatDateDDMMYYYY(item.tgl_main)}</span>
                         </div>
                         <span
                           className="text-sm text-zinc-300 font-medium"

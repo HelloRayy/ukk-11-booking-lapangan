@@ -16,9 +16,11 @@ import {
   ArrowRight,
   Receipt,
   ShieldAlert,
+  MessageCircle,
 } from 'lucide-react'
 import { createBooking } from '../../../lib/api'
 import type { Booking as DbBooking, Lapangan, StatusBooking } from '../../../types/database'
+import { formatDateDDMMYYYY } from '../../../lib/utils'
 import CashierDatePicker from './CashierDatePicker'
 
 // Komponen & Hook Baku 1:1 dari Modul Reservasi
@@ -857,7 +859,7 @@ export default function CourtScheduleGrid({
                           {selectedBooking.customerName}
                         </span>
                         <span className="text-xs text-[#8e8e8e] block">
-                          {selectedBooking.date} • {selectedBooking.startTime}–{selectedBooking.endTime}
+                          {formatDateDDMMYYYY(selectedBooking.date)} • {selectedBooking.startTime}–{selectedBooking.endTime}
                         </span>
                       </div>
                     </div>
@@ -890,63 +892,91 @@ export default function CourtScheduleGrid({
                   </div>
                 </div>
 
-                {/* Tombol Aksi Kasir Terpadu */}
-                <div className="pt-3 border-t border-[#262626] space-y-2 mt-3">
-                  {selectedBooking.remainingAmount > 0 && selectedDbId && (
-                    <div className="grid grid-cols-2 gap-2">
+                {/* 3 Tombol Utama Aksi Kasir Terpadu (Bayar, Chat WA, Batal) */}
+                <div className="pt-3 border-t border-[#262626] space-y-2.5 mt-3">
+                  {/* 1. Tombol Bayar Pelunasan */}
+                  {selectedBooking.remainingAmount > 0 && selectedDbId ? (
+                    <div className="flex items-center gap-2">
                       <button
                         type="button"
                         disabled={isVerifyingPayment}
                         onClick={handleCashPelunasan}
-                        className="h-10 rounded-xl bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs active:scale-98"
+                        className="flex-1 h-10 rounded-xl bg-[#f2d953] hover:bg-[#ffe359] text-[#161616] font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-98"
                       >
                         <CreditCard className="w-3.5 h-3.5" />
-                        <span>{isVerifyingPayment ? 'Menyimpan...' : 'Pelunasan Tunai'}</span>
+                        <span>
+                          {isVerifyingPayment
+                            ? 'Menyimpan...'
+                            : `Bayar Pelunasan (${formatRupiah(selectedBooking.remainingAmount)})`}
+                        </span>
                       </button>
 
                       <button
                         type="button"
                         onClick={handleOpenInspectQris}
-                        className="h-10 rounded-xl bg-[#222222] hover:bg-[#282828] border border-[#383838] hover:border-[#f2d953]/50 text-white hover:text-[#f2d953] font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer active:scale-98"
+                        className="w-10 h-10 rounded-xl bg-[#222222] hover:bg-[#282828] border border-[#383838] hover:border-[#f2d953]/50 text-white hover:text-[#f2d953] flex items-center justify-center transition-colors cursor-pointer shrink-0 active:scale-98"
+                        title="Bayar via QRIS Dinamis"
                       >
-                        <QrCode className="w-3.5 h-3.5 text-[#f2d953]" />
-                        <span>Bayar QRIS</span>
+                        <QrCode className="w-4 h-4 text-[#f2d953]" />
                       </button>
+                    </div>
+                  ) : (
+                    <div className="w-full h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold text-xs flex items-center justify-center gap-2">
+                      <Check className="w-4 h-4" />
+                      <span>Status: Sudah Lunas</span>
                     </div>
                   )}
 
-                  <button
-                    type="button"
-                    onClick={() => setIsViewingReceipt(true)}
-                    className="w-full h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-[#2e2e2e] text-[#a3a3a3] hover:text-white text-xs font-medium transition-colors cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <Receipt className="w-3.5 h-3.5" />
-                    <span>Lihat Struk Digital Resmi</span>
-                  </button>
+                  {/* 2. Tombol Chat WhatsApp */}
+                  {(() => {
+                    const rawPhone = selectedBooking.customerWhatsapp || ''
+                    const cleanPhone = rawPhone.replace(/\D/g, '')
+                    const waNumber = cleanPhone.startsWith('0') ? '62' + cleanPhone.slice(1) : cleanPhone
+                    const waText = encodeURIComponent(
+                      `Halo Kak ${selectedBooking.customerName}, kami dari Blanca Badminton Arena terkait reservasi jadwal main Anda:\n` +
+                      `• Lapangan: ${selectedBooking.courtName}\n` +
+                      `• Tanggal: ${formatDateDDMMYYYY(selectedBooking.date)}\n` +
+                      `• Jam: ${selectedBooking.startTime}–${selectedBooking.endTime}\n` +
+                      `• Status: ${selectedBooking.remainingAmount > 0 ? `DP 50% (Sisa Tagihan: ${formatRupiah(selectedBooking.remainingAmount)})` : 'Lunas 100%'}\n\n` +
+                      `Terima kasih!`
+                    )
+                    const waUrl = cleanPhone ? `https://wa.me/${waNumber}?text=${waText}` : '#'
 
+                    return (
+                      <a
+                        href={waUrl}
+                        target={cleanPhone ? '_blank' : undefined}
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!cleanPhone) {
+                            e.preventDefault()
+                            alert('Nomor WhatsApp penyewa tidak tersedia untuk booking ini.')
+                          }
+                        }}
+                        className="w-full h-10 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-98"
+                      >
+                        <MessageCircle className="w-4 h-4 text-emerald-400" />
+                        <span>Chat WhatsApp ({rawPhone || 'Penyewa'})</span>
+                      </a>
+                    )
+                  })()}
+
+                  {/* 3. Tombol Batalkan Transaksi */}
                   {selectedDbId && (
                     <button
                       type="button"
                       onClick={() => {
-                        if (confirm(`Yakin batalkan booking #${selectedDbId} (${selectedBooking.customerName})?`)) {
+                        if (confirm(`Yakin batalkan booking #${selectedDbId} (${selectedBooking.customerName})? Slot jam akan otomatis dibuka kembali untuk pelanggan lain.`)) {
                           onBatal(selectedDbId)
                           handleClosePanel()
                         }
                       }}
-                      className="w-full h-8 rounded-lg bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      className="w-full h-9 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer active:scale-98"
                     >
                       <ShieldAlert className="w-3.5 h-3.5" />
-                      <span>Batalkan Transaksi</span>
+                      <span>Batalkan Booking</span>
                     </button>
                   )}
-
-                  <button
-                    type="button"
-                    onClick={handleClosePanel}
-                    className="w-full h-8 rounded-lg bg-white/5 hover:bg-white/10 text-[#8e8e8e] hover:text-white text-xs font-medium transition-colors cursor-pointer"
-                  >
-                    Tutup
-                  </button>
                 </div>
               </div>
             )

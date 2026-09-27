@@ -51,3 +51,15 @@ export function formatSlotRange(slots: string[] | undefined | null): string {
     .join(', ')
 }
 
+/**
+ * Mengubah string tanggal YYYY-MM-DD menjadi format standar DD/MM/YYYY
+ * Contoh: "2026-09-21" -> "21/09/2026"
+ */
+export function formatDateDDMMYYYY(dateStr?: string | null): string {
+  if (!dateStr) return '-'
+  const parts = dateStr.split('-')
+  if (parts.length === 3) {
+    return `${parts[2]}/${parts[1]}/${parts[0]}`
+  }
+  return dateStr
+}
