@@ -199,6 +199,19 @@
       "source_location": "L4"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
+      "label": "ReservationDataProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationdataprops",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L9"
+    },
+    {
       "id": "src_components_reservation_hooks_useslotvalidation_slotvalidationprops",
       "label": "SlotValidationProps",
       "_callable": true,
@@ -303,19 +316,6 @@
       "source_location": "L50"
     },
     {
-      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
-      "label": "CourtManagerModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "courtmanagermodalprops",
-      "source_file": "src/components/cashier/CourtManagerModal.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_cashier_dashboard_01_header_headerprops",
       "label": "HeaderProps",
       "_callable": true,
@@ -342,17 +342,30 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
-      "label": "ReservationDataProps",
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
+      "label": "ManualBookingModalProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "reservationdataprops",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L9"
+      "norm_label": "manualbookingmodalprops",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_types_database_statuslapangan",
+      "label": "StatusLapangan",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "statuslapangan",
+      "source_file": "src/types/database.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_components_blanca_technology_components_technologyslidedetails_technologyslidedetailsprops",
@@ -392,6 +405,58 @@
       "norm_label": "slidedata",
       "source_file": "src/components/blanca/technology/types.ts",
       "source_location": "L2"
+    },
+    {
+      "id": "src_components_cashier_cashiertable_cashiertableprops",
+      "label": "CashierTableProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "cashiertableprops",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_types_database_statusbooking",
+      "label": "StatusBooking",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "statusbooking",
+      "source_file": "src/types/database.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinksprops",
@@ -875,32 +940,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_cashier_cashiertable_cashiertableprops",
-      "label": "CashierTableProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertableprops",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "src_components_cashier_cashiertablerow_props",
-      "label": "Props",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
-      "source_location": "L5"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsviewprops",
       "label": "CleanBookingsViewProps",
       "_callable": true,
@@ -1044,6 +1083,19 @@
       "source_location": "L19"
     },
     {
+      "id": "src_components_cashier_courtmanagermodal_courtmanagermodalprops",
+      "label": "CourtManagerModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "courtmanagermodalprops",
+      "source_file": "src/components/cashier/CourtManagerModal.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheetprops",
       "label": "BookingDetailSheetProps",
       "_callable": true,
@@ -1109,30 +1161,30 @@
       "source_location": "L37"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
-      "label": "ManualBookingModalProps",
+      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
+      "label": "CourtsManagementViewProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "code",
-      "norm_label": "manualbookingmodalprops",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L17"
+      "norm_label": "courtsmanagementviewprops",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L19"
     },
     {
-      "id": "src_components_cashier_statusbadge_props",
-      "label": "Props",
+      "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
+      "label": "DeleteCourtDialogProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L4"
+      "norm_label": "deletecourtdialogprops",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L5"
     },
     {
       "id": "src_components_ui_badge_badgeprops",
@@ -1198,32 +1250,6 @@
       "norm_label": "lapangan",
       "source_file": "src/types/database.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "src_types_database_statusbooking",
-      "label": "StatusBooking",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "statusbooking",
-      "source_file": "src/types/database.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_types_database_statuslapangan",
-      "label": "StatusLapangan",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "statuslapangan",
-      "source_file": "src/types/database.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_types_database_tipebayar",
@@ -1880,18 +1906,6 @@
       "source_location": "L117"
     },
     {
-      "id": "src_app_app",
-      "label": "App()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "src/App.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_cashier_clean_cleancourtmanagermodal_cleancourtmanagermodal",
       "label": "CleanCourtManagerModal()",
       "_callable": true,
@@ -1914,6 +1928,18 @@
       "norm_label": "courtmanagermodal()",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
       "source_location": "L13"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
+      "label": "CourtsManagementView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "courtsmanagementview()",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L25"
     },
     {
       "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
@@ -1986,18 +2012,6 @@
       "norm_label": "fetchavailability()",
       "source_file": "src/components/cashier/ManualBookingModal.tsx",
       "source_location": "L74"
-    },
-    {
-      "id": "src_components_cashierpage_cashierpage",
-      "label": "CashierPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "cashierpage()",
-      "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L12"
     },
     {
       "id": "src_components_customerbookingpage_customerbookingpage",
@@ -2300,6 +2314,42 @@
       "source_location": "L5"
     },
     {
+      "id": "src_components_cashier_cashiertable_cashiertable",
+      "label": "CashierTable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "cashiertable()",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow_cashiertablerow",
+      "label": "CashierTableRow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "cashiertablerow()",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_statusbadge",
+      "label": "StatusBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "statusbadge()",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L8"
+    },
+    {
       "id": "vite_config_configurepreviewserver",
       "label": "configurePreviewServer()",
       "_callable": true,
@@ -2382,6 +2432,18 @@
       "norm_label": "headernav()",
       "source_file": "src/components/blanca/hero/HeaderNav.tsx",
       "source_location": "L14"
+    },
+    {
+      "id": "src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "src/App.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_components_blanca_blancacta_blancacta",
@@ -2538,6 +2600,18 @@
       "norm_label": "reservationdrawer()",
       "source_file": "src/components/blanca/reservation/ReservationDrawer.tsx",
       "source_location": "L10"
+    },
+    {
+      "id": "src_components_cashierpage_cashierpage",
+      "label": "CashierPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "cashierpage()",
+      "source_file": "src/components/CashierPage.tsx",
+      "source_location": "L12"
     },
     {
       "id": "src_components_cashier_cashierfilterbar_cashierfilterbar",
@@ -2780,30 +2854,6 @@
       "source_location": "L8"
     },
     {
-      "id": "src_components_cashier_cashiertable_cashiertable",
-      "label": "CashierTable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertable()",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_components_cashier_cashiertablerow_cashiertablerow",
-      "label": "CashierTableRow()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertablerow()",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
-      "source_location": "L11"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview_cleanbookingsview",
       "label": "CleanBookingsView()",
       "_callable": true,
@@ -2936,16 +2986,16 @@
       "source_location": "L102"
     },
     {
-      "id": "src_components_cashier_statusbadge_statusbadge",
-      "label": "StatusBadge()",
+      "id": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialog",
+      "label": "DeleteCourtDialog()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "code",
-      "norm_label": "statusbadge()",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L8"
+      "norm_label": "deletecourtdialog()",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L13"
     },
     {
       "id": "src_components_ui_badge_badge",
@@ -3232,17 +3282,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal",
-      "label": "ManualBookingModal.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "manualbookingmodal.tsx",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_reservation_components_bookingreceiptview",
       "label": "BookingReceiptView.tsx",
       "_origin": "ast",
@@ -3474,6 +3513,17 @@
       "source_location": "L30"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata",
+      "label": "useReservationData.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "usereservationdata.ts",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_reservation_hooks_usereservationschedule",
       "label": "useReservationSchedule.ts",
       "_origin": "ast",
@@ -3529,6 +3579,17 @@
       "source_location": "L35"
     },
     {
+      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
+      "label": "FIXTURE_COURTS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "fixture_courts",
+      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "src_components_reservation_reservationpage",
       "label": "ReservationPage.tsx",
       "_origin": "ast",
@@ -3562,6 +3623,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
+      "label": "COURT_STYLE_MAP",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "court_style_map",
+      "source_file": "src/components/reservation/utils/bookingMapper.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_reservation_utils_formatters",
       "label": "reservation/utils/formatters.ts",
       "_origin": "ast",
@@ -3584,28 +3656,6 @@
       "source_location": "L32"
     },
     {
-      "id": "src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "src/App.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_blanca",
-      "label": "blanca.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "blanca.tsx",
-      "source_file": "src/blanca.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_cashier_courtmanagermodal",
       "label": "CourtManagerModal.tsx",
       "_origin": "ast",
@@ -3614,6 +3664,17 @@
       "file_type": "code",
       "norm_label": "courtmanagermodal.tsx",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "label": "CourtsManagementView.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "courtsmanagementview.tsx",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
       "source_location": "L1"
     },
     {
@@ -3650,6 +3711,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cashier_manualbookingmodal",
+      "label": "ManualBookingModal.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "manualbookingmodal.tsx",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_cashierpage",
       "label": "CashierPage.tsx",
       "_origin": "ast",
@@ -3659,39 +3731,6 @@
       "norm_label": "cashierpage.tsx",
       "source_file": "src/components/CashierPage.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_hooks_usereservationdata",
-      "label": "useReservationData.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "usereservationdata.ts",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
-      "label": "FIXTURE_COURTS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "fixture_courts",
-      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
-      "label": "COURT_STYLE_MAP",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "court_style_map",
-      "source_file": "src/components/reservation/utils/bookingMapper.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_hooks_usebooking",
@@ -3738,17 +3777,6 @@
       "source_location": "L31"
     },
     {
-      "id": "src_kasir",
-      "label": "kasir.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "kasir.tsx",
-      "source_file": "src/kasir.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_lib_api",
       "label": "api.ts",
       "_origin": "ast",
@@ -3782,28 +3810,6 @@
       "source_location": "L10"
     },
     {
-      "id": "src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_reservation",
-      "label": "reservation.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "reservation.tsx",
-      "source_file": "src/reservation.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_utils_costcalculation",
       "label": "costCalculation.ts",
       "_origin": "ast",
@@ -3824,17 +3830,6 @@
       "norm_label": "hitungbiayabooking",
       "source_file": "src/utils/costCalculation.ts",
       "source_location": "L16"
-    },
-    {
-      "id": "ref_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L23"
     },
     {
       "id": "ref_supabase_supabase_js",
@@ -4148,15 +4143,15 @@
       "source_location": "L38"
     },
     {
-      "id": "ref_gsap",
-      "label": "gsap",
+      "id": "ref_radix_ui_react_checkbox",
+      "label": "@radix-ui/react-checkbox",
       "_origin": "ast",
       "community": 10,
       "community_name": "package.json",
       "file_type": "concept",
-      "norm_label": "gsap",
+      "norm_label": "@radix-ui/react-checkbox",
       "source_file": "package.json",
-      "source_location": "L18"
+      "source_location": "L13"
     },
     {
       "id": "ref_tailwind_merge",
@@ -5270,6 +5265,39 @@
       "source_location": "L34"
     },
     {
+      "id": "src_components_cashier_cashiertable",
+      "label": "CashierTable.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "cashiertable.tsx",
+      "source_file": "src/components/cashier/CashierTable.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_cashiertablerow",
+      "label": "CashierTableRow.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "cashiertablerow.tsx",
+      "source_file": "src/components/cashier/CashierTableRow.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_statusbadge",
+      "label": "StatusBadge.tsx",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "CashierTableRow.tsx",
+      "file_type": "code",
+      "norm_label": "statusbadge.tsx",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
@@ -5377,6 +5405,28 @@
       "file_type": "code",
       "norm_label": "headernav.tsx",
       "source_file": "src/components/blanca/hero/HeaderNav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_blanca",
+      "label": "blanca.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "blanca.tsx",
+      "source_file": "src/blanca.tsx",
       "source_location": "L1"
     },
     {
@@ -5556,6 +5606,50 @@
       "source_location": "L1"
     },
     {
+      "id": "src_kasir",
+      "label": "kasir.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "kasir.tsx",
+      "source_file": "src/kasir.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_reservation",
+      "label": "reservation.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "code",
+      "norm_label": "reservation.tsx",
+      "source_file": "src/reservation.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_gsap",
+      "label": "gsap",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "concept",
+      "norm_label": "gsap",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
       "id": "ref_lenis",
       "label": "lenis",
       "_origin": "ast",
@@ -5565,6 +5659,17 @@
       "norm_label": "lenis",
       "source_file": "package.json",
       "source_location": "L20"
+    },
+    {
+      "id": "ref_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "dfd_ukk",
@@ -7269,28 +7374,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_cashiertable",
-      "label": "CashierTable.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertable.tsx",
-      "source_file": "src/components/cashier/CashierTable.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_cashiertablerow",
-      "label": "CashierTableRow.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "cashiertablerow.tsx",
-      "source_file": "src/components/cashier/CashierTableRow.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_cashier_clean_cleanbookingsview",
       "label": "CleanBookingsView.tsx",
       "_origin": "ast",
@@ -7401,14 +7484,14 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_statusbadge",
-      "label": "StatusBadge.tsx",
+      "id": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "label": "DeleteCourtDialog.tsx",
       "_origin": "ast",
       "community": 5,
       "community_name": "react",
       "file_type": "code",
-      "norm_label": "statusbadge.tsx",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "deletecourtdialog.tsx",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
       "source_location": "L1"
     },
     {
@@ -7665,6 +7748,17 @@
       "source_location": "L42"
     },
     {
+      "id": "src_constants_operationalhours_daftar_jam",
+      "label": "DAFTAR_JAM",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "daftar_jam",
+      "source_file": "src/constants/operationalHours.ts",
+      "source_location": "L14"
+    },
+    {
       "id": "src_lib_utils",
       "label": "utils.ts",
       "_origin": "ast",
@@ -7707,17 +7801,6 @@
       "norm_label": "lucide-react",
       "source_file": "package.json",
       "source_location": "L21"
-    },
-    {
-      "id": "ref_radix_ui_react_checkbox",
-      "label": "@radix-ui/react-checkbox",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "@radix-ui/react-checkbox",
-      "source_file": "package.json",
-      "source_location": "L13"
     },
     {
       "id": "ref_react",
@@ -7894,17 +7977,6 @@
       "norm_label": "operationalhours.ts",
       "source_file": "src/constants/operationalHours.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_constants_operationalhours_daftar_jam",
-      "label": "DAFTAR_JAM",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "CustomerBookingPage.tsx",
-      "file_type": "code",
-      "norm_label": "daftar_jam",
-      "source_file": "src/constants/operationalHours.ts",
-      "source_location": "L14"
     },
     {
       "id": "src_constants_operationalhours_isdevmode",
@@ -8304,30 +8376,6 @@
       "type": "external"
     },
     {
-      "id": "src_components_blanca_blanca",
-      "label": "src_components_blanca_blanca",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "api.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_components_blanca_blanca",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_index",
-      "label": "src_index",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "api.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_index",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_child_process",
       "label": "ref_child_process",
       "_origin": "semantic",
@@ -8372,6 +8420,30 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_assets_hero_video",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_components_blanca_blanca",
+      "label": "src_components_blanca_blanca",
+      "_origin": "semantic",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_components_blanca_blanca",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_index",
+      "label": "src_index",
+      "_origin": "semantic",
+      "community": 2,
+      "community_name": "HeroBlancaPreview.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_index",
       "source_file": "",
       "type": "external"
     },
@@ -8846,6 +8918,42 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
+      "target": "src_lib_api_deletelapangan",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
+      "target": "src_lib_api_createlapangan",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
+      "target": "src_lib_api_updatelapangan",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
       "target": "src_lib_utils_formatslotrange",
       "relation": "calls",
@@ -8962,7 +9070,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L45",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -9962,6 +10070,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
+      "target": "src_types_database_lapangan",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
       "target": "src_types_database_booking",
       "relation": "references",
@@ -9983,6 +10103,18 @@
       "context": "field",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
       "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
+      "target": "src_types_database_lapangan",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12962,6 +13094,78 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_types_database_lapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_types_database_statuslapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_lib_api_createlapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_lib_api_deletelapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_lib_api_updatelapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialog",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_cashier_dashboard_01_dashboardoverview",
       "target": "src_components_cashier_dashboard_01_metriccards_metriccards",
       "relation": "imports",
@@ -13067,6 +13271,18 @@
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "target": "src_types_database_lapangan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -13719,7 +13935,7 @@
     },
     {
       "source": "src_components_cashierpage",
-      "target": "src_components_cashier_manualbookingmodal_manualbookingmodal",
+      "target": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13731,7 +13947,7 @@
     },
     {
       "source": "src_components_cashierpage",
-      "target": "src_components_cashier_courtmanagermodal_courtmanagermodal",
+      "target": "src_components_cashier_manualbookingmodal_manualbookingmodal",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17564,6 +17780,67 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_types_database",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L15",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_lib_api",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_cashier_dashboard_01_dashboardoverview",
       "target": "ref_react",
       "relation": "imports_from",
@@ -17659,6 +17936,31 @@
       "context": "import",
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "target": "src_types_database",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L3",
+      "type_only": true,
       "weight": 1.0
     },
     {
@@ -18170,7 +18472,7 @@
     },
     {
       "source": "src_components_cashierpage",
-      "target": "src_components_cashier_manualbookingmodal",
+      "target": "src_components_cashier_dashboard_01_courtsmanagementview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18182,7 +18484,7 @@
     },
     {
       "source": "src_components_cashierpage",
-      "target": "src_components_cashier_courtmanagermodal",
+      "target": "src_components_cashier_manualbookingmodal",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -22664,6 +22966,28 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementviewprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_courtsmanagementview",
+      "target": "src_components_cashier_dashboard_01_courtsmanagementview_courtsmanagementview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_cashier_dashboard_01_dashboardoverview",
       "target": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverviewprops",
       "relation": "contains",
@@ -22683,6 +23007,28 @@
       "confidence_score": 1.0,
       "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
       "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "target": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialog",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cashier_dashboard_01_deletecourtdialog",
+      "target": "src_components_cashier_dashboard_01_deletecourtdialog_deletecourtdialogprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -25460,5 +25806,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3c7880ca01b5280152bdfa6cca3a6758ae7b7e76"
+  "built_at_commit": "826ee113379b81bc0e631c38c54368aa82db3669"
 }

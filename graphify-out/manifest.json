@@ -72,9 +72,9 @@
     "semantic_hash": "5c9c7cdd75ab0c9df6cdcd37782442a6"
   },
   "src/components/CashierPage.tsx": {
-    "mtime": 1790438949.5882769,
-    "seen": 1790439877.67507,
-    "ast_hash": "129e6f4aee1b77933b76c1db136097fd",
+    "mtime": 1790481656.649367,
+    "seen": 1790481700.7357714,
+    "ast_hash": "0c1465efdb63be6e8afa165650e59c72",
     "semantic_hash": ""
   },
   "src/components/CustomerBookingPage.tsx": {
@@ -474,9 +474,9 @@
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Header.tsx": {
-    "mtime": 1790438978.9594002,
-    "seen": 1790439877.6753755,
-    "ast_hash": "8b4dc1891a52ea629275aec910fc5937",
+    "mtime": 1790481640.5133147,
+    "seen": 1790481700.7360144,
+    "ast_hash": "9d1e76d3bf6757875990838a840ba260",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/MetricCards.tsx": {
@@ -498,9 +498,9 @@
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Sidebar.tsx": {
-    "mtime": 1790438967.0533502,
-    "seen": 1790439877.6754012,
-    "ast_hash": "5ed7966f1539ccfaafa42df53a2f8a98",
+    "mtime": 1790481634.080294,
+    "seen": 1790481700.7360244,
+    "ast_hash": "bd39176e4fded2e642bf7ee895f90963",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/mockData.ts": {
@@ -1467,6 +1467,18 @@
     "mtime": 1790010144.89167,
     "seen": 1790439877.6760674,
     "ast_hash": "d779433dda5f6fb476c32487c8469062",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/dashboard-01/CourtsManagementView.tsx": {
+    "mtime": 1790481620.5631402,
+    "seen": 1790481700.7360036,
+    "ast_hash": "6178e0222d72af72c4dc29f983100f52",
+    "semantic_hash": ""
+  },
+  "src/components/cashier/dashboard-01/DeleteCourtDialog.tsx": {
+    "mtime": 1790481599.7028837,
+    "seen": 1790481700.7360106,
+    "ast_hash": "5f6fee8da5f4fcd43651c3bd105526da",
     "semantic_hash": ""
   }
 }

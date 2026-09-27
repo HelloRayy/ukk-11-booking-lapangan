@@ -5,14 +5,13 @@ import Header from './cashier/dashboard-01/Header'
 import DashboardOverview from './cashier/dashboard-01/DashboardOverview'
 import BookingsTable from './cashier/dashboard-01/BookingsTable'
 import CourtScheduleGrid from './cashier/dashboard-01/CourtScheduleGrid'
+import CourtsManagementView from './cashier/dashboard-01/CourtsManagementView'
 import ManualBookingModal from './cashier/ManualBookingModal'
-import CourtManagerModal from './cashier/CourtManagerModal'
 import { useCashier } from './cashier/hooks/useCashier'
 
 export default function CashierPage() {
-  const [currentTab, setCurrentTab] = useState<'overview' | 'bookings' | 'schedule'>('schedule')
+  const [currentTab, setCurrentTab] = useState<'overview' | 'bookings' | 'schedule' | 'courts'>('schedule')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isCourtManagerOpen, setIsCourtManagerOpen] = useState(false)
   const [manualModalDefaults, setManualModalDefaults] = useState<{
     courtId?: number
     date?: string
@@ -60,7 +59,6 @@ export default function CashierPage() {
       <Sidebar
         currentTab={currentTab}
         onTabChange={(tab) => setCurrentTab(tab)}
-        onOpenCourtManager={() => setIsCourtManagerOpen(true)}
       />
 
       {/* 2. Drawer Mobile Sederhana */}
@@ -75,10 +73,6 @@ export default function CashierPage() {
               currentTab={currentTab}
               onTabChange={(tab) => {
                 setCurrentTab(tab)
-                setIsMobileMenuOpen(false)
-              }}
-              onOpenCourtManager={() => {
-                setIsCourtManagerOpen(true)
                 setIsMobileMenuOpen(false)
               }}
             />
@@ -117,8 +111,15 @@ export default function CashierPage() {
               initialDate={initialScheduleDate}
               initialBookingId={initialBookingId}
             />
+          ) : currentTab === 'courts' ? (
+            /* Tab 3: Kelola Master Lapangan Standalone (Card Grid + In-Place Edit + Switch Toggle) */
+            <CourtsManagementView
+              courts={courts}
+              loading={loading}
+              onCourtsUpdated={loadDataKasir}
+            />
           ) : (
-            /* Tab 3: Tabel Operasional Linear (Work items) Full Width */
+            /* Tab 4: Tabel Operasional Linear (Work items) Full Width */
             <BookingsTable
               bookings={filteredBookings}
               courts={courts}
@@ -149,14 +150,6 @@ export default function CashierPage() {
         initialCourtId={manualModalDefaults.courtId}
         initialDate={manualModalDefaults.date}
         initialHour={manualModalDefaults.hour}
-      />
-
-      {/* 5. Modal CRUD Master Data Lapangan (Poin 10, 11, 12 UKK) */}
-      <CourtManagerModal
-        courts={courts}
-        isOpen={isCourtManagerOpen}
-        onClose={() => setIsCourtManagerOpen(false)}
-        onCourtsUpdated={loadDataKasir}
       />
     </div>
   )

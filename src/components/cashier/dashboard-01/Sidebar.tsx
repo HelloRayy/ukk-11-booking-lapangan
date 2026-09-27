@@ -2,8 +2,8 @@
 import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck, CalendarDays, SlidersHorizontal } from 'lucide-react'
 
 interface SidebarProps {
-  currentTab: 'overview' | 'bookings' | 'schedule'
-  onTabChange?: (tab: 'overview' | 'bookings' | 'schedule') => void
+  currentTab: 'overview' | 'bookings' | 'schedule' | 'courts'
+  onTabChange?: (tab: 'overview' | 'bookings' | 'schedule' | 'courts') => void
   onOpenCourtManager?: () => void
 }
 
@@ -82,19 +82,27 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
             )}
           </button>
 
-          {/* Menu Tambahan: Kelola Lapangan (CRUD Master Data Poin 10, 11, 12 UKK) */}
+          {/* Tab 4: Kelola Lapangan (Standalone Page Master Data Poin 10, 11, 12 UKK) */}
           <button
             type="button"
-            onClick={onOpenCourtManager}
-            className="w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200 group"
+            onClick={() => onTabChange?.('courts')}
+            className={`w-full flex items-center justify-between gap-1.5 py-1.5 px-2.5 rounded-lg h-[34px] leading-normal transition-all cursor-pointer outline-none select-none text-xs font-medium ${
+              currentTab === 'courts'
+                ? 'bg-zinc-900 text-zinc-100 border border-zinc-800/80 shadow-xs'
+                : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'
+            }`}
           >
             <div className="flex items-center gap-2">
-              <SlidersHorizontal className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform shrink-0" />
+              <SlidersHorizontal className={`w-4 h-4 shrink-0 ${currentTab === 'courts' ? 'text-amber-400' : 'text-zinc-500'}`} />
               <span>Kelola Lapangan</span>
             </div>
-            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">
-              CRUD
-            </span>
+            {currentTab === 'courts' ? (
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            ) : (
+              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700/50">
+                CRUD
+              </span>
+            )}
           </button>
 
           {/* Tautan ke Kalender Publik Pemesan */}

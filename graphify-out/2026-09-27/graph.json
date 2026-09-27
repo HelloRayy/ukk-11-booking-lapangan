@@ -170,7 +170,7 @@
       "file_type": "code",
       "norm_label": "hoveredslotstate",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "src_components_reservation_components_schedulegrid_schedulegridprops",
@@ -183,7 +183,7 @@
       "file_type": "code",
       "norm_label": "schedulegridprops",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "src_components_reservation_components_scheduleheader_scheduleheaderprops",
@@ -316,29 +316,29 @@
       "source_location": "L6"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
-      "label": "ManualBookingModalProps",
+      "id": "src_components_cashier_dashboard_01_header_headerprops",
+      "label": "HeaderProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "manualbookingmodalprops",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L17"
+      "norm_label": "headerprops",
+      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
+      "source_location": "L3"
     },
     {
-      "id": "src_components_cashier_statusbadge_props",
-      "label": "Props",
+      "id": "src_components_cashier_dashboard_01_sidebar_sidebarprops",
+      "label": "SidebarProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "sidebarprops",
+      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
       "source_location": "L4"
     },
     {
@@ -353,19 +353,6 @@
       "norm_label": "reservationdataprops",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
       "source_location": "L9"
-    },
-    {
-      "id": "src_types_database_statusbooking",
-      "label": "StatusBooking",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "statusbooking",
-      "source_file": "src/types/database.ts",
-      "source_location": "L3"
     },
     {
       "id": "src_components_blanca_technology_components_technologyslidedetails_technologyslidedetailsprops",
@@ -405,32 +392,6 @@
       "norm_label": "slidedata",
       "source_file": "src/components/blanca/technology/types.ts",
       "source_location": "L2"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_header_headerprops",
-      "label": "HeaderProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "headerprops",
-      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_sidebar_sidebarprops",
-      "label": "SidebarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "sidebarprops",
-      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
-      "source_location": "L4"
     },
     {
       "id": "src_components_blanca_hero_components_desktopnavlinks_desktopnavlinksprops",
@@ -1148,6 +1109,32 @@
       "source_location": "L37"
     },
     {
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodalprops",
+      "label": "ManualBookingModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "manualbookingmodalprops",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_components_cashier_statusbadge_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "src_components_ui_badge_badgeprops",
       "label": "BadgeProps",
       "_callable": true,
@@ -1211,6 +1198,19 @@
       "norm_label": "lapangan",
       "source_file": "src/types/database.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "src_types_database_statusbooking",
+      "label": "StatusBooking",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbooking",
+      "source_file": "src/types/database.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_types_database_statuslapangan",
@@ -1349,7 +1349,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/booking/CostSummary.tsx",
@@ -1362,7 +1362,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/booking/CourtSelector.tsx",
@@ -1375,7 +1375,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/booking/CustomerForm.tsx",
@@ -1388,7 +1388,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "props",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
@@ -1721,7 +1721,7 @@
       "file_type": "code",
       "norm_label": "schedulegrid()",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "src_components_reservation_components_scheduleheader_scheduleheader",
@@ -1734,6 +1734,18 @@
       "norm_label": "scheduleheader()",
       "source_file": "src/components/reservation/components/ScheduleHeader.tsx",
       "source_location": "L8"
+    },
+    {
+      "id": "src_components_reservation_constants_scheduleconfig_getcalendarcurrenttime",
+      "label": "getCalendarCurrentTime()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "getcalendarcurrenttime()",
+      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
+      "source_location": "L12"
     },
     {
       "id": "src_components_reservation_hooks_usereservationschedule_usereservationschedule",
@@ -1770,6 +1782,18 @@
       "norm_label": "useslotvalidation()",
       "source_file": "src/components/reservation/hooks/useSlotValidation.ts",
       "source_location": "L13"
+    },
+    {
+      "id": "src_components_reservation_reservationpage_reservationpage",
+      "label": "ReservationPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationpage()",
+      "source_file": "src/components/reservation/ReservationPage.tsx",
+      "source_location": "L8"
     },
     {
       "id": "src_components_reservation_utils_bookingmapper_mapdbbookingstoitems",
@@ -1856,6 +1880,18 @@
       "source_location": "L117"
     },
     {
+      "id": "src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "src/App.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_cashier_clean_cleancourtmanagermodal_cleancourtmanagermodal",
       "label": "CleanCourtManagerModal()",
       "_callable": true,
@@ -1878,6 +1914,42 @@
       "norm_label": "courtmanagermodal()",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
       "source_location": "L13"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
+      "label": "DashboardOverview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "dashboardoverview()",
+      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_header_header",
+      "label": "Header()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "header()",
+      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_sidebar_sidebar",
+      "label": "Sidebar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "sidebar()",
+      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
+      "source_location": "L10"
     },
     {
       "id": "src_components_cashier_hooks_usecashier_usecashier",
@@ -1916,16 +1988,16 @@
       "source_location": "L74"
     },
     {
-      "id": "src_components_cashier_statusbadge_statusbadge",
-      "label": "StatusBadge()",
+      "id": "src_components_cashierpage_cashierpage",
+      "label": "CashierPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "statusbadge()",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
-      "source_location": "L8"
+      "norm_label": "cashierpage()",
+      "source_file": "src/components/CashierPage.tsx",
+      "source_location": "L12"
     },
     {
       "id": "src_components_customerbookingpage_customerbookingpage",
@@ -2226,78 +2298,6 @@
       "norm_label": "usetechnologyslider()",
       "source_file": "src/components/blanca/technology/hooks/useTechnologySlider.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "src_app_app",
-      "label": "App()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "src/App.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_dashboardoverview_dashboardoverview",
-      "label": "DashboardOverview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "dashboardoverview()",
-      "source_file": "src/components/cashier/dashboard-01/DashboardOverview.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_header_header",
-      "label": "Header()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "header()",
-      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_sidebar_sidebar",
-      "label": "Sidebar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "sidebar()",
-      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_components_cashierpage_cashierpage",
-      "label": "CashierPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "cashierpage()",
-      "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_components_reservation_reservationpage_reservationpage",
-      "label": "ReservationPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "reservationpage()",
-      "source_file": "src/components/reservation/ReservationPage.tsx",
-      "source_location": "L8"
     },
     {
       "id": "vite_config_configurepreviewserver",
@@ -2936,6 +2936,18 @@
       "source_location": "L102"
     },
     {
+      "id": "src_components_cashier_statusbadge_statusbadge",
+      "label": "StatusBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbadge()",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L8"
+    },
+    {
       "id": "src_components_ui_badge_badge",
       "label": "Badge()",
       "_callable": true,
@@ -3061,7 +3073,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "ringkasanbiaya()",
       "source_file": "src/components/booking/CostSummary.tsx",
@@ -3073,7 +3085,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "pilihlapangan()",
       "source_file": "src/components/booking/CourtSelector.tsx",
@@ -3085,7 +3097,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "formpemesan()",
       "source_file": "src/components/booking/CustomerForm.tsx",
@@ -3097,23 +3109,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "gridjam()",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
       "source_location": "L11"
-    },
-    {
-      "id": "src_components_reservation_constants_scheduleconfig_getcalendarcurrenttime",
-      "label": "getCalendarCurrentTime()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "scheduleConfig.ts",
-      "file_type": "code",
-      "norm_label": "getcalendarcurrenttime()",
-      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
-      "source_location": "L12"
     },
     {
       "id": "src_components_blanca_blancalocations_blancalocations",
@@ -3229,6 +3229,17 @@
       "file_type": "code",
       "norm_label": "courtschedulegrid.tsx",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_manualbookingmodal",
+      "label": "ManualBookingModal.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "manualbookingmodal.tsx",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
       "source_location": "L1"
     },
     {
@@ -3419,6 +3430,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_reservation_constants_scheduleconfig",
+      "label": "scheduleConfig.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "scheduleconfig.ts",
+      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_constants_scheduleconfig_base_operational_hour",
+      "label": "BASE_OPERATIONAL_HOUR",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "base_operational_hour",
+      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
+      "source_location": "L29"
+    },
+    {
       "id": "src_components_reservation_constants_scheduleconfig_calendar_current_time",
       "label": "CALENDAR_CURRENT_TIME",
       "_origin": "ast",
@@ -3428,6 +3461,17 @@
       "norm_label": "calendar_current_time",
       "source_file": "src/components/reservation/constants/scheduleConfig.ts",
       "source_location": "L27"
+    },
+    {
+      "id": "src_components_reservation_constants_scheduleconfig_default_slot_height",
+      "label": "DEFAULT_SLOT_HEIGHT",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "default_slot_height",
+      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
+      "source_location": "L30"
     },
     {
       "id": "src_components_reservation_hooks_usereservationschedule",
@@ -3485,17 +3529,6 @@
       "source_location": "L35"
     },
     {
-      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
-      "label": "FIXTURE_COURTS",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "fixture_courts",
-      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_reservation_reservationpage",
       "label": "ReservationPage.tsx",
       "_origin": "ast",
@@ -3540,6 +3573,39 @@
       "source_location": "L1"
     },
     {
+      "id": "src_constants_operationalhours_time_slots",
+      "label": "TIME_SLOTS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "time_slots",
+      "source_file": "src/constants/operationalHours.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_blanca",
+      "label": "blanca.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "blanca.tsx",
+      "source_file": "src/blanca.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_cashier_courtmanagermodal",
       "label": "CourtManagerModal.tsx",
       "_origin": "ast",
@@ -3548,6 +3614,28 @@
       "file_type": "code",
       "norm_label": "courtmanagermodal.tsx",
       "source_file": "src/components/cashier/CourtManagerModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_header",
+      "label": "Header.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "header.tsx",
+      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_sidebar",
+      "label": "Sidebar.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "sidebar.tsx",
+      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
       "source_location": "L1"
     },
     {
@@ -3562,25 +3650,14 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_manualbookingmodal",
-      "label": "ManualBookingModal.tsx",
+      "id": "src_components_cashierpage",
+      "label": "CashierPage.tsx",
       "_origin": "ast",
       "community": 1,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "manualbookingmodal.tsx",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_statusbadge",
-      "label": "StatusBadge.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "statusbadge.tsx",
-      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "norm_label": "cashierpage.tsx",
+      "source_file": "src/components/CashierPage.tsx",
       "source_location": "L1"
     },
     {
@@ -3593,6 +3670,17 @@
       "norm_label": "usereservationdata.ts",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_mocks_schedulefixtures_fixture_courts",
+      "label": "FIXTURE_COURTS",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "fixture_courts",
+      "source_file": "src/components/reservation/__mocks__/scheduleFixtures.ts",
+      "source_location": "L4"
     },
     {
       "id": "src_components_reservation_utils_bookingmapper_court_style_map",
@@ -3650,6 +3738,17 @@
       "source_location": "L31"
     },
     {
+      "id": "src_kasir",
+      "label": "kasir.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "kasir.tsx",
+      "source_file": "src/kasir.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_lib_api",
       "label": "api.ts",
       "_origin": "ast",
@@ -3683,6 +3782,28 @@
       "source_location": "L10"
     },
     {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_reservation",
+      "label": "reservation.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "reservation.tsx",
+      "source_file": "src/reservation.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_utils_costcalculation",
       "label": "costCalculation.ts",
       "_origin": "ast",
@@ -3703,6 +3824,17 @@
       "norm_label": "hitungbiayabooking",
       "source_file": "src/utils/costCalculation.ts",
       "source_location": "L16"
+    },
+    {
+      "id": "ref_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.ts",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "ref_supabase_supabase_js",
@@ -5136,105 +5268,6 @@
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
       "source_location": "L34"
-    },
-    {
-      "id": "src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "src/App.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_blanca",
-      "label": "blanca.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "blanca.tsx",
-      "source_file": "src/blanca.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_header",
-      "label": "Header.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "header.tsx",
-      "source_file": "src/components/cashier/dashboard-01/Header.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_sidebar",
-      "label": "Sidebar.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "sidebar.tsx",
-      "source_file": "src/components/cashier/dashboard-01/Sidebar.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cashierpage",
-      "label": "CashierPage.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "cashierpage.tsx",
-      "source_file": "src/components/CashierPage.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_kasir",
-      "label": "kasir.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "kasir.tsx",
-      "source_file": "src/kasir.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_reservation",
-      "label": "reservation.tsx",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "code",
-      "norm_label": "reservation.tsx",
-      "source_file": "src/reservation.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L23"
     },
     {
       "id": "vite_config",
@@ -7368,6 +7401,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cashier_statusbadge",
+      "label": "StatusBadge.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "statusbadge.tsx",
+      "source_file": "src/components/cashier/StatusBadge.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_ui_badge",
       "label": "badge.tsx",
       "_origin": "ast",
@@ -7790,7 +7834,7 @@
       "label": "CostSummary.tsx",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "costsummary.tsx",
       "source_file": "src/components/booking/CostSummary.tsx",
@@ -7801,7 +7845,7 @@
       "label": "CourtSelector.tsx",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "courtselector.tsx",
       "source_file": "src/components/booking/CourtSelector.tsx",
@@ -7812,7 +7856,7 @@
       "label": "CustomerForm.tsx",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "customerform.tsx",
       "source_file": "src/components/booking/CustomerForm.tsx",
@@ -7823,7 +7867,7 @@
       "label": "TimeSlotGrid.tsx",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "timeslotgrid.tsx",
       "source_file": "src/components/booking/TimeSlotGrid.tsx",
@@ -7834,51 +7878,18 @@
       "label": "CustomerBookingPage.tsx",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "customerbookingpage.tsx",
       "source_file": "src/components/CustomerBookingPage.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_reservation_constants_scheduleconfig",
-      "label": "scheduleConfig.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "scheduleConfig.ts",
-      "file_type": "code",
-      "norm_label": "scheduleconfig.ts",
-      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_constants_scheduleconfig_base_operational_hour",
-      "label": "BASE_OPERATIONAL_HOUR",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "scheduleConfig.ts",
-      "file_type": "code",
-      "norm_label": "base_operational_hour",
-      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_components_reservation_constants_scheduleconfig_default_slot_height",
-      "label": "DEFAULT_SLOT_HEIGHT",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "scheduleConfig.ts",
-      "file_type": "code",
-      "norm_label": "default_slot_height",
-      "source_file": "src/components/reservation/constants/scheduleConfig.ts",
-      "source_location": "L30"
-    },
-    {
       "id": "src_constants_operationalhours",
       "label": "operationalHours.ts",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "operationalhours.ts",
       "source_file": "src/constants/operationalHours.ts",
@@ -7889,7 +7900,7 @@
       "label": "DAFTAR_JAM",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "daftar_jam",
       "source_file": "src/constants/operationalHours.ts",
@@ -7900,7 +7911,7 @@
       "label": "isDevMode",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "isdevmode",
       "source_file": "src/constants/operationalHours.ts",
@@ -7911,7 +7922,7 @@
       "label": "jamSimulasi",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "jamsimulasi",
       "source_file": "src/constants/operationalHours.ts",
@@ -7922,7 +7933,7 @@
       "label": "menitSimulasi",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "menitsimulasi",
       "source_file": "src/constants/operationalHours.ts",
@@ -7933,22 +7944,11 @@
       "label": "OPERATIONAL_HOURS",
       "_origin": "ast",
       "community": 7,
-      "community_name": "scheduleConfig.ts",
+      "community_name": "CustomerBookingPage.tsx",
       "file_type": "code",
       "norm_label": "operational_hours",
       "source_file": "src/constants/operationalHours.ts",
       "source_location": "L31"
-    },
-    {
-      "id": "src_constants_operationalhours_time_slots",
-      "label": "TIME_SLOTS",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "scheduleConfig.ts",
-      "file_type": "code",
-      "norm_label": "time_slots",
-      "source_file": "src/constants/operationalHours.ts",
-      "source_location": "L32"
     },
     {
       "id": "src_components_blanca_blancalocations",
@@ -8304,6 +8304,30 @@
       "type": "external"
     },
     {
+      "id": "src_components_blanca_blanca",
+      "label": "src_components_blanca_blanca",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "api.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_components_blanca_blanca",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_index",
+      "label": "src_index",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "api.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_index",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "ref_child_process",
       "label": "ref_child_process",
       "_origin": "semantic",
@@ -8340,30 +8364,6 @@
       "type": "external"
     },
     {
-      "id": "src_components_blanca_blanca",
-      "label": "src_components_blanca_blanca",
-      "_origin": "semantic",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_components_blanca_blanca",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_index",
-      "label": "src_index",
-      "_origin": "semantic",
-      "community": 17,
-      "community_name": "CashierPage.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_index",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_assets_hero_video",
       "label": "src_assets_hero_video",
       "_origin": "semantic",
@@ -8378,6 +8378,7 @@
     {
       "id": "ref_ui_dialog",
       "label": "ref_ui_dialog",
+      "_origin": "semantic",
       "community": 5,
       "community_name": "react",
       "external": true,
@@ -8841,7 +8842,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/cashier/dashboard-01/CourtScheduleGrid.tsx",
-      "source_location": "L799",
+      "source_location": "L800",
       "weight": 1.0
     },
     {
@@ -9070,6 +9071,18 @@
       "context": "call",
       "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
       "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_reservation_components_schedulegrid_schedulegrid",
+      "target": "src_components_reservation_utils_formatters_gettodayisodate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -10293,7 +10306,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -10305,7 +10318,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -10317,7 +10330,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -14242,6 +14255,18 @@
       "context": "import",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_reservation_components_schedulegrid",
+      "target": "src_components_reservation_utils_formatters_gettodayisodate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -18665,6 +18690,18 @@
       "context": "import",
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_reservation_components_schedulegrid",
+      "target": "src_components_reservation_utils_formatters",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -23569,7 +23606,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -23580,7 +23617,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -23591,7 +23628,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reservation/components/ScheduleGrid.tsx",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -25423,5 +25460,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "683bf0078b3a95f569f7195fcf3ffaffd215e622"
+  "built_at_commit": "3c7880ca01b5280152bdfa6cca3a6758ae7b7e76"
 }
