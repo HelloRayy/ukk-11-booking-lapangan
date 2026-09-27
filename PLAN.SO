@@ -13,6 +13,7 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
 - [x] **#14: Improvisasi ui struk di right panel**: Perbaikan tampilan struk ringkasan pemesanan dan pelunasan di kasir.
 - [x] **#24: Mobile /reservasi click overlay**: Perbaikan event bubbling dan overlay klik pada tampilan mobile reservasi.
 - [x] **#26: Kompresi Video Difference Gameplay**: Re-encode video gameplay (VP9 & H.264) dari 7+ MB menjadi 1.4 MB hemat bandwidth.
+- [x] **#27: Code-Splitting Library Leaflet Maps**: Dynamic import `await import('leaflet')` on-demand saat peta mendekati viewport.
 - [x] **Pola Titik GPU Pure CSS**: Mengganti file raster `background-dots.png` dengan `radial-gradient` CSS berkas 0 KB.
 - [x] **Mesin Smooth Scroll Lenis**: Memasang `lenis` v1.3.26 untuk pengalaman scrolling inersia 60/120 fps yang mulus tanpa micro-stutter.
 
@@ -21,10 +22,6 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
 ## Daftar Issue Aktif di Plane.so (Status: Todo)
 
 ### 1. Prioritas Tinggi (High Priority)
-
-- [ ] **#27: Code-Splitting Library Leaflet Maps (On-Demand)**
-  - *Target*: `src/components/blanca/locations/hooks/useBlancaLocations.ts`
-  - *Rincian*: Ubah static import `leaflet` menjadi dynamic import `await import('leaflet')` ketika section peta terdeteksi di viewport agar initial bundle JS lebih ramping.
 
 - [ ] **#33: Penguasaan Alur Supabase Client & CRUD API (Persiapan Sidang UKK)**
   - *Target*: `src/lib/api.ts` & `src/types/database.ts`
