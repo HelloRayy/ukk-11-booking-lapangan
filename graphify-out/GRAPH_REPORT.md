@@ -1,17 +1,17 @@
 # Graph Report - ukk-11  (2026-09-27)
 
 ## Corpus Check
-- 168 files · ~663,761 words
+- 168 files · ~663,850 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: .woff2 4, .css 4, .avif 2)
 
 ## Summary
-- 723 nodes · 1482 edges · 36 communities (31 shown, 5 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
+- 724 nodes · 1483 edges · 35 communities (30 shown, 5 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 22 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ec69da9f`
+- Built from commit: `b9887c7c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,7 +34,6 @@
 - dependencies
 - BlancaDifference.tsx
 - HeaderNav.tsx
-- AGENTS.md - Panduan & Aturan AI Mentor UKK SMK
 - vite.config.ts
 - Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG
 - scripts
@@ -80,19 +79,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (36 total, 5 thin omitted)
+## Communities (35 total, 5 thin omitted)
 
 ### Community 0 - "CourtScheduleGrid.tsx"
 Cohesion: 0.06
-Nodes (62): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard() (+54 more)
+Nodes (59): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard() (+51 more)
 
 ### Community 1 - "api.ts"
 Cohesion: 0.07
 Nodes (47): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 3. `src/lib/api.ts` (API Controller & Query Builder), 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK (+39 more)
 
 ### Community 2 - "HeroBlancaPreview.tsx"
-Cohesion: 0.06
-Nodes (32): gsap, lenis, react-dom, App(), src_assets_hero_video, src_components_blanca_blanca, BlancaCta(), BlancaCtaProps (+24 more)
+Cohesion: 0.07
+Nodes (29): gsap, lenis, react-dom, src_assets_hero_video, src_components_blanca_blanca, BlancaCta(), BlancaCtaProps, BlancaFooter() (+21 more)
 
 ### Community 3 - "OverviewPanel.tsx"
 Cohesion: 0.10
@@ -103,16 +102,16 @@ Cohesion: 0.13
 Nodes (15): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @playwright/test, pngjs (+7 more)
 
 ### Community 5 - "react"
-Cohesion: 0.06
-Nodes (69): 2. Aturan Koding & Standar Penilaian UKK, lucide-react, react, ref_ui_dialog, CashierStatsProps, CashierTableProps, CashierTableRow(), Props (+61 more)
+Cohesion: 0.05
+Nodes (77): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 2. Aturan Koding & Standar Penilaian UKK, 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:, lucide-react (+69 more)
 
 ### Community 6 - "DashboardOverview.tsx"
-Cohesion: 0.18
-Nodes (14): recharts, MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS, MOCK_RECENT_BOOKINGS, MOCK_REVENUE_CHART (+6 more)
+Cohesion: 0.16
+Nodes (16): recharts, DashboardOverview(), DashboardOverviewProps, MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS (+8 more)
 
 ### Community 7 - "CustomerBookingPage.tsx"
-Cohesion: 0.15
-Nodes (12): Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan(), Props, GridJam(), Props (+4 more)
+Cohesion: 0.12
+Nodes (15): App(), Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan(), Props, GridJam() (+7 more)
 
 ### Community 8 - "BlancaLocations.tsx"
 Cohesion: 0.18
@@ -123,8 +122,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 10 - "package.json"
-Cohesion: 0.12
-Nodes (19): name, private, type, version, clsx, eslint, @eslint/js, eslint-plugin-react-hooks (+11 more)
+Cohesion: 0.13
+Nodes (18): name, private, type, version, clsx, eslint, @eslint/js, eslint-plugin-react-hooks (+10 more)
 
 ### Community 11 - "components.json"
 Cohesion: 0.12
@@ -153,10 +152,6 @@ Nodes (8): BlancaDifference(), DifferenceCommunityStory(), DifferenceFeatures(),
 ### Community 17 - "HeaderNav.tsx"
 Cohesion: 0.19
 Nodes (10): DesktopNavLinks(), DesktopNavLinksProps, HeaderLogo(), HeaderLogoProps, MobileNavDrawer(), MobileNavDrawerProps, NAV_LINKS, NavLinkItem (+2 more)
-
-### Community 18 - "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK"
-Cohesion: 0.29
-Nodes (6): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:
 
 ### Community 19 - "vite.config.ts"
 Cohesion: 0.38
@@ -200,7 +195,7 @@ Nodes (8): BAB I: PENDAHULUAN, BAB II: PERENCANAAN PROYEK, BAB III: PERANCANGAN 
 
 ### Community 32 - "Daftar Issue Aktif di Plane.so (Status: Todo)"
 Cohesion: 0.29
-Nodes (6): 1. Prioritas Tinggi (High Priority), 2. Prioritas Menengah (Medium Priority), 3. Prioritas Rendah (Low Priority), Daftar Issue Aktif di Plane.so (Status: Todo), PLAN.md - Roadmap Optimasi & Perbaikan Landing Page Blanca, Ringkasan Progres yang Sudah Selesai
+Nodes (6): 1. Prioritas Tinggi (High Priority), 2. Prioritas Menengah (Medium Priority), 3. Prioritas Rendah (Low Priority), Daftar Issue Aktif di Plane.so (Status: Todo), PLAN.md - Roadmap Optimasi & Perbaikan Landing Page Blanca, Ringkasan Progres yang Sudah Selesai (Status: Done)
 
 ### Community 34 - "React + TypeScript + Vite"
 Cohesion: 0.50
@@ -208,7 +203,7 @@ Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScrip
 
 ## Knowledge Gaps
 - **226 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+221 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 264 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 265 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -219,12 +214,12 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `lucide-react` connect `react` to `CourtScheduleGrid.tsx`, `api.ts`, `package.json`, `DashboardOverview.tsx`?**
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `pngjs` connect `@playwright/test` to `package.json`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+  _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
   _226 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourtScheduleGrid.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.060087719298245613 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06147732585320243 - nodes in this community are weakly interconnected._
 - **Should `api.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.0655367231638418 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `HeroBlancaPreview.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06334841628959276 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07030527289546716 - nodes in this community are weakly interconnected._

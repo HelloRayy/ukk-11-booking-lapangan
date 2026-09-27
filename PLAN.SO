@@ -5,10 +5,13 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
 
 ---
 
-## Ringkasan Progres yang Sudah Selesai
+## Ringkasan Progres yang Sudah Selesai (Status: Done)
 
-- [x] **Lokalisasi Gambar Lapangan**: Mengganti seluruh pemanggilan eksternal `images.unsplash.com` ke file lokal WebP (`/assets/courts/court-{1..4}.webp`) untuk mencegah lag dan error 404.
-- [x] **Kompresi Aset Gambar Raksasa**: Mengonversi `tech-carbon`, `del-mar-front`, `coronado-front` dari PNG 10+ MB menjadi WebP hemat ~500 KB (hemat 90%+).
+- [x] **#5: Penyesuaian Assets**: Lokalisasi dan kompresi aset gambar raksasa (PNG 10+ MB -> WebP ~500 KB) serta aset lapangan lokal.
+- [x] **#7: FAQ Belom sesuai**: Penyesuaian isi konten, tata letak, dan animasi FAQ accordion landing page.
+- [x] **#10: Improve footer ui**: Perbaikan styling dan links footer landing page Blanca.
+- [x] **#14: Improvisasi ui struk di right panel**: Perbaikan tampilan struk ringkasan pemesanan dan pelunasan di kasir.
+- [x] **#24: Mobile /reservasi click overlay**: Perbaikan event bubbling dan overlay klik pada tampilan mobile reservasi.
 - [x] **Pola Titik GPU Pure CSS**: Mengganti file raster `background-dots.png` dengan `radial-gradient` CSS berkas 0 KB.
 - [x] **Mesin Smooth Scroll Lenis**: Memasang `lenis` v1.3.26 untuk pengalaman scrolling inersia 60/120 fps yang mulus tanpa micro-stutter.
 
@@ -64,7 +67,7 @@ Dokumen ini tersinkronisasi langsung dengan papan tugas **Plane.so**:
   - *Target*: `src/components/cashier/dashboard-01/BookingDetailSheet.tsx` & `BookingsTable.tsx`
   - *Rincian*: Pasang opsi cetak struk pembayaran resmi PDF langsung dari halaman kasir untuk transaksi yang telah lunas.
 
-- [ ] **#40: Pembuatan Diagram UML & Skema Relasi Database (ERD)**
+- [ ] **#39: Pembuatan Diagram UML & Skema Relasi Database (ERD)**
   - *Target*: Dokumen Arsitektur Sistem UKK
   - *Rincian*: Buat diagram visual Use Case, Activity Diagram alur booking, dan ERD relasi tabel `lapangan` ke `booking` untuk bahan presentasi penguji.
 

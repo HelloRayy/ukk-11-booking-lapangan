@@ -1,17 +1,17 @@
 # Graph Report - ukk-11  (2026-09-27)
 
 ## Corpus Check
-- 168 files · ~663,936 words
+- 168 files · ~663,761 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: .woff2 4, .css 4, .avif 2)
 
 ## Summary
-- 725 nodes · 1484 edges · 31 communities (26 shown, 5 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.91)
+- 723 nodes · 1482 edges · 36 communities (31 shown, 5 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `30a79dd8`
+- Built from commit: `ec69da9f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,6 +20,7 @@
 - api.ts
 - HeroBlancaPreview.tsx
 - OverviewPanel.tsx
+- devDependencies
 - react
 - DashboardOverview.tsx
 - CustomerBookingPage.tsx
@@ -29,10 +30,14 @@
 - components.json
 - compilerOptions
 - @playwright/test
-- BlancaDifference.tsx
+- BlancaTechnology.tsx
 - dependencies
-- CashierTableRow.tsx
+- BlancaDifference.tsx
+- HeaderNav.tsx
+- AGENTS.md - Panduan & Aturan AI Mentor UKK SMK
+- vite.config.ts
 - Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG
+- scripts
 - CashierFilterBar.tsx
 - CashierHeader.tsx
 - tsconfig.json
@@ -75,35 +80,39 @@
 ## Import Cycles
 - None detected.
 
-## Communities (31 total, 5 thin omitted)
+## Communities (36 total, 5 thin omitted)
 
 ### Community 0 - "CourtScheduleGrid.tsx"
 Cohesion: 0.06
-Nodes (59): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard() (+51 more)
+Nodes (62): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard() (+54 more)
 
 ### Community 1 - "api.ts"
 Cohesion: 0.07
-Nodes (48): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 3. `src/lib/api.ts` (API Controller & Query Builder), 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK (+40 more)
+Nodes (47): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 3. `src/lib/api.ts` (API Controller & Query Builder), 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK (+39 more)
 
 ### Community 2 - "HeroBlancaPreview.tsx"
-Cohesion: 0.05
-Nodes (38): gsap, lenis, src_assets_hero_video, BlancaCta(), BlancaCtaProps, BlancaFooter(), CenterFlyingLogo(), CenterFlyingLogoProps (+30 more)
+Cohesion: 0.06
+Nodes (32): gsap, lenis, react-dom, App(), src_assets_hero_video, src_components_blanca_blanca, BlancaCta(), BlancaCtaProps (+24 more)
 
 ### Community 3 - "OverviewPanel.tsx"
 Cohesion: 0.10
 Nodes (31): BookedByHourCard(), Props, BookingStatusCard(), Props, COURTS_PILLS, CourtScheduleCard(), Props, CourtStatisticCard() (+23 more)
 
+### Community 4 - "devDependencies"
+Cohesion: 0.13
+Nodes (15): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @playwright/test, pngjs (+7 more)
+
 ### Community 5 - "react"
 Cohesion: 0.06
-Nodes (68): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 2. Aturan Koding & Standar Penilaian UKK, 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:, lucide-react (+60 more)
+Nodes (69): 2. Aturan Koding & Standar Penilaian UKK, lucide-react, react, ref_ui_dialog, CashierStatsProps, CashierTableProps, CashierTableRow(), Props (+61 more)
 
 ### Community 6 - "DashboardOverview.tsx"
-Cohesion: 0.17
-Nodes (15): recharts, DashboardOverview(), MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS, MOCK_RECENT_BOOKINGS (+7 more)
+Cohesion: 0.18
+Nodes (14): recharts, MetricCards(), MetricCardsProps, ChartMonthData, MetricCardItem, MOCK_DASHBOARD_METRICS, MOCK_RECENT_BOOKINGS, MOCK_REVENUE_CHART (+6 more)
 
 ### Community 7 - "CustomerBookingPage.tsx"
-Cohesion: 0.10
-Nodes (18): react-dom, App(), src_components_blanca_blanca, Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan() (+10 more)
+Cohesion: 0.15
+Nodes (12): Props, RingkasanBiaya(), PilihLapangan(), Props, FormPemesan(), Props, GridJam(), Props (+4 more)
 
 ### Community 8 - "BlancaLocations.tsx"
 Cohesion: 0.18
@@ -114,8 +123,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 10 - "package.json"
-Cohesion: 0.05
-Nodes (45): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @playwright/test, pngjs (+37 more)
+Cohesion: 0.12
+Nodes (19): name, private, type, version, clsx, eslint, @eslint/js, eslint-plugin-react-hooks (+11 more)
 
 ### Community 11 - "components.json"
 Cohesion: 0.12
@@ -129,21 +138,37 @@ Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib
 Cohesion: 0.09
 Nodes (16): ref_child_process, ref_fs, ref_path, @playwright/test, pngjs, diffImg, height, localImg (+8 more)
 
-### Community 14 - "BlancaDifference.tsx"
-Cohesion: 0.11
-Nodes (17): BlancaDifference(), BlancaTechnology(), DifferenceCommunityStory(), DifferenceFeatures(), DifferenceHeading(), DifferenceVideoCard(), COMMUNITY_STORY, COURT_FEATURES (+9 more)
+### Community 14 - "BlancaTechnology.tsx"
+Cohesion: 0.23
+Nodes (9): BlancaTechnology(), TechnologyHeading(), TechnologySlideDetails(), TechnologySlideDetailsProps, TechnologySlideMedia(), TechnologySlideMediaProps, TECHNOLOGY_SLIDES, useTechnologySlider() (+1 more)
 
 ### Community 15 - "dependencies"
 Cohesion: 0.13
 Nodes (15): dependencies, clsx, gsap, leaflet, lenis, lucide-react, @radix-ui/react-checkbox, react (+7 more)
 
-### Community 17 - "CashierTableRow.tsx"
-Cohesion: 0.27
-Nodes (6): CashierTableProps, CashierTableRow(), Props, Props, StatusBadge(), StatusBooking
+### Community 16 - "BlancaDifference.tsx"
+Cohesion: 0.21
+Nodes (8): BlancaDifference(), DifferenceCommunityStory(), DifferenceFeatures(), DifferenceHeading(), DifferenceVideoCard(), COMMUNITY_STORY, COURT_FEATURES, CourtFeature
+
+### Community 17 - "HeaderNav.tsx"
+Cohesion: 0.19
+Nodes (10): DesktopNavLinks(), DesktopNavLinksProps, HeaderLogo(), HeaderLogoProps, MobileNavDrawer(), MobileNavDrawerProps, NAV_LINKS, NavLinkItem (+2 more)
+
+### Community 18 - "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK"
+Cohesion: 0.29
+Nodes (6): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:
+
+### Community 19 - "vite.config.ts"
+Cohesion: 0.38
+Nodes (6): @tailwindcss/vite, vite, @vitejs/plugin-react, configurePreviewServer(), configureServer(), routeMiddleware()
 
 ### Community 20 - "Data Flow Diagram (DFD) Level 1 - UKK RPL / PPLG"
 Cohesion: 0.15
 Nodes (12): 1. "Apa bedanya Context Diagram dengan DFD Level 1?", 1. Tautan Langsung Mermaid Live Editor, 2. "Apa arti simbol dua garis / tabung silinder D1, D2, D3?", 2. Kode Diagram Mermaid DFD Level 1 (Tanpa Kotak Pembungkus), 3. "Kenapa panah D3 ke Proses 3.0 bolak-balik (`<-->`)?", 3. Rincian 3 Proses Utama & 3 Data Store, 4. Bocoran Pertanyaan Penguji UKK & Cara Jawabnya, A. Proses 1.0: Kelola Data Lapangan (+4 more)
+
+### Community 21 - "scripts"
+Cohesion: 0.40
+Nodes (5): scripts, build, dev, lint, preview
 
 ### Community 25 - "2. Rencana Anggaran Biaya (RAB) Operasional Sistem"
 Cohesion: 0.15
@@ -183,23 +208,23 @@ Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScrip
 
 ## Knowledge Gaps
 - **226 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+221 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 266 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 264 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `CourtScheduleGrid.tsx`, `api.ts`, `HeroBlancaPreview.tsx`, `OverviewPanel.tsx`, `DashboardOverview.tsx`, `CustomerBookingPage.tsx`, `BlancaLocations.tsx`, `package.json`, `BlancaDifference.tsx`, `BlancaFaq.tsx`?**
+- **Why does `react` connect `react` to `CourtScheduleGrid.tsx`, `api.ts`, `HeroBlancaPreview.tsx`, `OverviewPanel.tsx`, `DashboardOverview.tsx`, `CustomerBookingPage.tsx`, `BlancaLocations.tsx`, `package.json`, `BlancaTechnology.tsx`, `BlancaDifference.tsx`, `HeaderNav.tsx`, `BlancaFaq.tsx`?**
   _High betweenness centrality (0.392) - this node is a cross-community bridge._
 - **Why does `lucide-react` connect `react` to `CourtScheduleGrid.tsx`, `api.ts`, `package.json`, `DashboardOverview.tsx`?**
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `pngjs` connect `@playwright/test` to `package.json`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
   _226 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourtScheduleGrid.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.060398078242964996 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.060087719298245613 - nodes in this community are weakly interconnected._
 - **Should `api.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06502816180235535 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0655367231638418 - nodes in this community are weakly interconnected._
 - **Should `HeroBlancaPreview.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0544464609800363 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06334841628959276 - nodes in this community are weakly interconnected._
