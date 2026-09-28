@@ -1,75 +1,60 @@
-# React + TypeScript + Vite
+# PANDUAN PROYEK & ATURAN AI AGENT (ANTI OVER-ENGINEERING)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **PERINGATAN UNTUK SELURUH AI AGENT (Antigravity, Cursor, Copilot, Claude, ChatGPT, dll.)**:  
+> Repositori ini digunakan untuk **Uji Kompetensi Keahlian (UKK) Rekayasa Perangkat Lunak / PPLG SMK**.  
+> **DILARANG KERAS MENULIS KODE YANG OVER-ENGINEERED.**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 1. Aturan Wajib Anti-Overengineering untuk AI Agent
 
-## React Compiler
+1. **Gaya Kode Tingkat Siswa SMK Pemula**:
+   - Jika menulis **PHP**: Wajib gaya prosedural sederhana dengan PDO/MySQLi biasa. **Dilarang keras memakai Class, OOP, Abstract Controller, Repository Pattern, atau Middleware**.
+   - Jika menulis **React/TypeScript**: Gunakan React Hooks dasar (`useState`, `useEffect`). **Dilarang keras menambah library state management rumit (Redux, MobX) atau custom router berbelit-belit**.
+   - Jika menulis **CSS/UI**: Gunakan Tailwind CSS standar. Jangan menambah library komponen eksternal yang berat.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Batasan Panjang dan Struktur Kode**:
+   - Tulis kode langsung pada berkas inti yang bersangkutan.
+   - Jangan membuat folder abstraction berlebihan (hindari membuat 5 file hanya untuk 1 fungsi tombol).
+   - Setiap file diusahakan di bawah 50 baris kode agar mudah dibaca dan dipahami siswa.
 
-## Expanding the ESLint configuration
+3. **Prinsip "Siswa Harus Paham Setiap Baris"**:
+   - Siswa akan diuji secara lisan (sidang 15 menit) oleh asesor BNSP.
+   - Jika Anda (AI) menulis fungsi atau istilah asing yang tidak dimengerti siswa, siswa bisa dinyatakan **Belum Kompeten**.
+   - Tuliskan kode yang to-the-point: tangkap input -> simpan ke database -> tampilkan ke tabel.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+4. **Fokus Hanya pada 4 Pilar Penilaian UKK (FR.IA.04A)**:
+   - **Create**: Form input dengan validasi atribut HTML `required`.
+   - **Read**: Tabel penampil data menggunakan query `JOIN` antar 2 tabel.
+   - **Update**: Tombol pengubah status transaksi.
+   - **Delete**: Tombol penghapus data dengan konfirmasi sederhana.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 2. Struktur Data Standar (Pola 2 Tabel)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Setiap kasus UKK hanya menggunakan **2 Tabel**:
+- **Tabel 1 (Master)**: Data barang/jasa tetap (`id`, `nama`, `tarif/harga`).
+- **Tabel 2 (Transaksi)**: Aktivitas pelanggan (`id`, `master_id` Foreign Key, `nama_pelanggan`, `tanggal`, `status`).
 
+---
+
+## 3. Konfigurasi Lingkungan (.env)
+
+```env
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 4. Cara Menjalankan Proyek
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+- **React / Vite**:
+  ```bash
+  npm run dev
+  ```
+- **PHP Native**:
+  ```bash
+  php -S localhost:8080
+  ```
