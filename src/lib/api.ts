@@ -128,6 +128,29 @@ export async function updateStatusBooking(
   if (error) throw new Error(error.message)
 }
 
+// UPDATE NAMA PENYEWA: Ubah nama pemesan di kasir
+export async function updateNamaPenyewa(bookingId: number, namaBaru: string): Promise<void> {
+  const { error } = await supabase
+    .from('bookings')
+    .update({ nama_penyewa: namaBaru })
+    .eq('id', bookingId)
+
+  if (error) throw new Error(error.message)
+}
+
+// UPDATE DATA BOOKING: Ubah data umum booking
+export async function updateBooking(
+  bookingId: number,
+  bookingData: Partial<Omit<Booking, 'id' | 'created_at' | 'lapangan'>>
+): Promise<void> {
+  const { error } = await supabase
+    .from('bookings')
+    .update(bookingData)
+    .eq('id', bookingId)
+
+  if (error) throw new Error(error.message)
+}
+
 // SEARCH: Cari nama pemesan atau filter status di tabel kasir
 export async function searchBookings(
   keyword: string = '',

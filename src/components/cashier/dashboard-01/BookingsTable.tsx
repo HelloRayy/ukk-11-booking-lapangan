@@ -7,9 +7,11 @@
 // 2. Aksi Kasir: Pelunasan sisa bayar DP & Pembatalan sewa
 // ============================================================================
 
-import { Search, RefreshCw, CheckCircle, XCircle } from 'lucide-react'
+import { useState } from 'react'
+import { Search, RefreshCw, CheckCircle, XCircle, Pencil, Check, X } from 'lucide-react'
 import type { Booking, Lapangan } from '../../../types/database'
 import { formatRupiah } from '../../../utils/formatters'
+import { updateNamaPenyewa } from '../../../lib/api'
 
 export interface TableInitialFilters {
   date?: string
@@ -48,6 +50,29 @@ export default function BookingsTable({
   onBatal,
   onRefresh,
 }: BookingsTableProps) {
+  // State Edit Nama Penyewa
+  const [editingBookingId, setEditingBookingId] = useState<number | null>(null)
+  const [editedName, setEditedName] = useState('')
+  const [isSavingName, setIsSavingName] = useState(false)
+
+  const handleStartEditName = (booking: Booking) => {
+    setEditingBookingId(booking.id)
+    setEditedName(booking.nama_penyewa)
+  }
+
+  const handleSaveName = async (bookingId: number) => {
+    if (!editedName.trim()) return
+    try {
+      setIsSavingName(true)
+      await updateNamaPenyewa(bookingId, editedName.trim())
+      setEditingBookingId(null)
+      onRefresh()
+    } catch (err: any) {
+      alert(err.message || 'Gagal mengubah nama penyewa.')
+    } finally {
+      setIsSavingName(false)
+    }
+  }
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6 text-zinc-100">
       {/* 1. Baris Kontrol: Pencarian, Filter Status & Tombol Refresh */}
@@ -123,8 +148,52 @@ export default function BookingsTable({
                       INV-{b.id}
                     </td>
                     <td className="py-3 px-4">
-                      <div className="font-semibold text-zinc-200">{b.nama_penyewa}</div>
-                      <div className="text-xs text-zinc-400">{b.no_hp}</div>
+                      {editingBookingId === b.id ? (
+                        <div className="flex items-center gap-1.5 py-0.5">
+                          <input
+                            type="text"
+                            value={editedName}
+                            onChange={(e) => setEditedName(e.target.value)}
+                            className="bg-zinc-950 border border-emerald-500 px-2 py-1 rounded text-xs text-zinc-100 focus:outline-none w-36 font-medium shadow-sm"
+                            autoFocus
+                            disabled={isSavingName}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') handleSaveName(b.id)
+                              if (e.key === 'Escape') setEditingBookingId(null)
+                            }}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => handleSaveName(b.id)}
+                            disabled={isSavingName}
+                            title="Simpan Nama (Enter)"
+                            className="p-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white transition disabled:opacity-50"
+                          >
+                            <Check className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setEditingBookingId(null)}
+                            title="Batal (Esc)"
+                            className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 transition"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5 group">
+                          <span className="font-semibold text-zinc-200">{b.nama_penyewa}</span>
+                          <button
+                            type="button"
+                            onClick={() => handleStartEditName(b)}
+                            title="Ubah Nama Pembeli"
+                            className="text-zinc-500 hover:text-emerald-400 p-0.5 rounded transition group-hover:opacity-100"
+                          >
+                            <Pencil className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      )}
+                      <div className="text-xs text-zinc-400 mt-0.5">{b.no_hp}</div>
                     </td>
                     <td className="py-3 px-4 text-zinc-300">
                       {b.lapangan?.nama_lapangan || `Lapangan #${b.lapangan_id}`}

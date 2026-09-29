@@ -11,7 +11,7 @@ import { useState } from 'react'
 import type { Lapangan, StatusLapangan } from '../../../types/database'
 import { createLapangan, updateLapangan, deleteLapangan } from '../../../lib/api'
 import { formatRupiah } from '../../../utils/formatters'
-import { Plus, Trash2, Power, Layers } from 'lucide-react'
+import { Plus, Trash2, Power, Layers, Pencil, X } from 'lucide-react'
 
 interface CourtsManagementViewProps {
   courts: Lapangan[]
@@ -30,6 +30,47 @@ export default function CourtsManagementView({
   const [status, setStatus] = useState<StatusLapangan>('Aktif')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
+
+  // State Form Edit Lapangan
+  const [editingCourt, setEditingCourt] = useState<Lapangan | null>(null)
+  const [editNama, setEditNama] = useState('')
+  const [editTarif, setEditTarif] = useState<number>(50000)
+  const [editStatus, setEditStatus] = useState<StatusLapangan>('Aktif')
+  const [isEditSubmitting, setIsEditSubmitting] = useState(false)
+
+  // Buka Modal Edit
+  const handleBukaEdit = (court: Lapangan) => {
+    setEditingCourt(court)
+    setEditNama(court.nama_lapangan)
+    setEditTarif(court.tarif_per_jam)
+    setEditStatus(court.status)
+  }
+
+  // Aksi UPDATE: Simpan Perubahan Lapangan
+  const handleSimpanEdit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!editingCourt) return
+    if (!editNama.trim()) {
+      setErrorMsg('Nama lapangan wajib diisi!')
+      return
+    }
+
+    try {
+      setIsEditSubmitting(true)
+      setErrorMsg(null)
+      await updateLapangan(editingCourt.id, {
+        nama_lapangan: editNama.trim(),
+        tarif_per_jam: Number(editTarif),
+        status: editStatus,
+      })
+      setEditingCourt(null)
+      onCourtsUpdated()
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Gagal mengubah data lapangan.')
+    } finally {
+      setIsEditSubmitting(false)
+    }
+  }
 
   // 2. Aksi CREATE: Tambah Lapangan Baru
   const handleTambahLapangan = async (e: React.FormEvent) => {
@@ -224,6 +265,16 @@ export default function CourtsManagementView({
                       </span>
                     </td>
                     <td className="py-3 px-4 text-right space-x-2">
+                      {/* Tombol Edit Data Lapangan */}
+                      <button
+                        onClick={() => handleBukaEdit(court)}
+                        title="Edit Data Lapangan"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition"
+                      >
+                        <Pencil className="w-3.5 h-3.5 text-emerald-400" />
+                        Edit
+                      </button>
+
                       {/* Tombol Toggle Enable/Disable Status */}
                       <button
                         onClick={() => handleToggleStatus(court)}
@@ -254,6 +305,86 @@ export default function CourtsManagementView({
           </tbody>
         </table>
       </div>
+
+      {/* Modal Edit Lapangan */}
+      {editingCourt && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="bg-zinc-900 border border-zinc-700 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-6 space-y-5 text-zinc-100">
+            <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
+              <h3 className="font-bold text-lg flex items-center gap-2">
+                <Pencil className="w-5 h-5 text-emerald-400" />
+                Edit Data Lapangan
+              </h3>
+              <button
+                onClick={() => setEditingCourt(null)}
+                className="text-zinc-400 hover:text-zinc-100 p-1 rounded-lg hover:bg-zinc-800 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSimpanEdit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1">
+                  Nama Lapangan
+                </label>
+                <input
+                  type="text"
+                  value={editNama}
+                  onChange={(e) => setEditNama(e.target.value)}
+                  className="w-full bg-zinc-950 border border-zinc-700 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 text-zinc-100"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1">
+                  Tarif Per Jam (Rp)
+                </label>
+                <input
+                  type="number"
+                  step="5000"
+                  value={editTarif}
+                  onChange={(e) => setEditTarif(Number(e.target.value))}
+                  className="w-full bg-zinc-950 border border-zinc-700 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 text-zinc-100 font-mono"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1">
+                  Status Operasional
+                </label>
+                <select
+                  value={editStatus}
+                  onChange={(e) => setEditStatus(e.target.value as StatusLapangan)}
+                  className="w-full bg-zinc-950 border border-zinc-700 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 text-zinc-100"
+                >
+                  <option value="Aktif">Aktif</option>
+                  <option value="Tutup">Tutup</option>
+                </select>
+              </div>
+
+              <div className="flex justify-end gap-2.5 pt-3 border-t border-zinc-800">
+                <button
+                  type="button"
+                  onClick={() => setEditingCourt(null)}
+                  className="px-4 py-2 rounded-xl text-sm text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  disabled={isEditSubmitting}
+                  className="px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition disabled:opacity-50"
+                >
+                  {isEditSubmitting ? 'Menyimpan...' : 'Simpan Perubahan'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
