@@ -1,34 +1,32 @@
 // ============================================================================
-// BACKEND SERVICE LAYER: REST API & DATABASE REPOSITORY (SUPABASE POSTGRESQL)
+// BACKEND SERVICE LAYER: REST API (SUPABASE POSTGRESQL) - VERSI RINGKAS UKK
 // ============================================================================
-// Berkas ini bertindak sebagai API Controller / Service Repository Layer.
-// Menangani seluruh operasi CRUD, query JOIN berelasi, serta algoritma
-// pencegahan bentrok jadwal langsung ke basis data PostgreSQL di Supabase.
+// File ini adalah Backend Controller / API Layer.
+// Hanya berisi 3 fungsi inti:
+// 1. CRUD Master Lapangan
+// 2. Booking & Logika Anti-Bentrok
+// 3. Operasional Kasir (Lihat Data & Pelunasan)
 // ============================================================================
 
 import { supabase } from './supabase'
 import type { Lapangan, Booking, StatusBooking } from '../types/database'
 
-// ============================================================================
-// 1. MASTER DATA LAPANGAN (CRUD TABEL `lapangan` - Kriteria 10, 11, 12, 14 UKK)
-// ============================================================================
+// ----------------------------------------------------------------------------
+// 1. MASTER LAPANGAN (CRUD)
+// ----------------------------------------------------------------------------
 
-/**
- * READ: Mengambil seluruh katalog master lapangan yang terdaftar
- */
+// READ: Ambil seluruh data lapangan
 export async function getLapangan(): Promise<Lapangan[]> {
   const { data, error } = await supabase
     .from('lapangan')
     .select('*')
     .order('id', { ascending: true })
 
-  if (error) throw new Error(`Gagal mengambil data lapangan: ${error.message}`)
+  if (error) throw new Error(error.message)
   return data || []
 }
 
-/**
- * CREATE: Menambahkan master data lapangan baru oleh Admin (Poin 10 Kisi-Kisi UKK)
- */
+// CREATE: Tambah lapangan baru
 export async function createLapangan(
   lapanganData: Omit<Lapangan, 'id' | 'created_at'>
 ): Promise<Lapangan> {
@@ -38,13 +36,11 @@ export async function createLapangan(
     .select()
     .single()
 
-  if (error) throw new Error(`Gagal menambah lapangan: ${error.message}`)
+  if (error) throw new Error(error.message)
   return data
 }
 
-/**
- * UPDATE: Memperbarui tarif per jam, nama, atau status lapangan (Poin 11 Kisi-Kisi UKK)
- */
+// UPDATE: Ubah nama, tarif, atau status lapangan
 export async function updateLapangan(
   id: number,
   lapanganData: Partial<Omit<Lapangan, 'id' | 'created_at'>>
@@ -56,64 +52,40 @@ export async function updateLapangan(
     .select()
     .single()
 
-  if (error) throw new Error(`Gagal mengubah data lapangan: ${error.message}`)
+  if (error) throw new Error(error.message)
   return data
 }
 
-/**
- * DELETE: Menghapus master lapangan dengan validasi integritas referensial (Poin 12 Kisi-Kisi UKK)
- * Catatan: Mencegah penghapusan jika lapangan masih memiliki riwayat booking aktif
- */
+// DELETE: Hapus lapangan
 export async function deleteLapangan(id: number): Promise<void> {
-  // Validasi relasi database: cek apakah ada transaksi aktif pada lapangan ini
-  const { data: activeBookings, error: checkError } = await supabase
-    .from('bookings')
-    .select('id')
-    .eq('lapangan_id', id)
-    .neq('status', 'Batal')
-
-  if (checkError) throw new Error(`Gagal memeriksa riwayat booking: ${checkError.message}`)
-
-  if (activeBookings && activeBookings.length > 0) {
-    throw new Error(
-      'Lapangan tidak dapat dihapus karena masih memiliki transaksi booking aktif. Silakan ubah status lapangan menjadi Tutup.'
-    )
-  }
-
   const { error } = await supabase
     .from('lapangan')
     .delete()
     .eq('id', id)
 
-  if (error) throw new Error(`Gagal menghapus lapangan: ${error.message}`)
+  if (error) throw new Error(error.message)
 }
 
-// ============================================================================
-// 2. TRANSAKSI BOOKING & LOGIKA ANTI-BENTROK (TABEL `bookings` - Kriteria 3 & 4)
-// ============================================================================
+// ----------------------------------------------------------------------------
+// 2. TRANSAKSI BOOKING & CEK JADWAL BENTROK
+// ----------------------------------------------------------------------------
 
-/**
- * VALIDASI JADWAL: Mengecek daftar slot jam yang sudah terisi pada tanggal & lapangan tertentu
- * Logika Bisnis: Mengabaikan status 'Batal' sehingga slot yang dibatalkan bisa dipesan kembali
- */
+// CEK BENTROK: Cari jam yang sudah dibooking pada tanggal & lapangan terpilih
 export async function getBookedSlots(lapanganId: number, tglMain: string): Promise<string[]> {
   const { data, error } = await supabase
     .from('bookings')
     .select('jam_slots')
     .eq('lapangan_id', lapanganId)
     .eq('tgl_main', tglMain)
-    .neq('status', 'Batal') // Slot yang dibatalkan tidak dianggap bentrok
+    .neq('status', 'Batal')
 
-  if (error) throw new Error(`Gagal memeriksa jadwal: ${error.message}`)
+  if (error) throw new Error(error.message)
 
-  // Gabungkan array jam_slots menjadi satu array datar (contoh: ['08:00', '09:00', '10:00'])
-  const allBooked = (data || []).flatMap((item: { jam_slots: string[] }) => item.jam_slots)
-  return allBooked
+  // Gabungkan array jam jadi 1 list (contoh: ['08:00', '09:00', '10:00'])
+  return (data || []).flatMap((item: { jam_slots: string[] }) => item.jam_slots)
 }
 
-/**
- * CREATE TRANSAKSI: Menyimpan data reservasi baru dari pemesan / kasir ke database
- */
+// CREATE: Simpan data pemesanan baru
 export async function createBooking(
   bookingData: Omit<Booking, 'id' | 'created_at'>
 ): Promise<Booking> {
@@ -123,31 +95,26 @@ export async function createBooking(
     .select()
     .single()
 
-  if (error) throw new Error(`Gagal membuat booking: ${error.message}`)
+  if (error) throw new Error(error.message)
   return data
 }
 
-// ============================================================================
-// 3. OPERASIONAL KASIR & MANAJEMEN TRANSAKSI (Kriteria 11, 13, 14 UKK)
-// ============================================================================
+// ----------------------------------------------------------------------------
+// 3. OPERASIONAL KASIR & PELUNASAN
+// ----------------------------------------------------------------------------
 
-/**
- * READ ALL (JOIN): Mengambil seluruh data transaksi kasir beserta relasi data lapangannya
- * Menggunakan relasi Foreign Key: bookings.lapangan_id -> lapangan.id
- */
+// READ ALL: Ambil semua transaksi booking + JOIN data lapangan
 export async function getAllBookings(): Promise<Booking[]> {
   const { data, error } = await supabase
     .from('bookings')
     .select('*, lapangan(*)')
     .order('created_at', { ascending: false })
 
-  if (error) throw new Error(`Gagal mengambil data kasir: ${error.message}`)
+  if (error) throw new Error(error.message)
   return (data as Booking[]) || []
 }
 
-/**
- * UPDATE STATUS: Memperbarui status transaksi (Pelunasan sisa bayar DP atau Pembatalan)
- */
+// UPDATE STATUS: Pelunasan sisa bayar atau ubah status transaksi
 export async function updateStatusBooking(
   bookingId: number,
   status: StatusBooking,
@@ -158,13 +125,10 @@ export async function updateStatusBooking(
     .update({ status, sisa_bayar: sisaBayar })
     .eq('id', bookingId)
 
-  if (error) throw new Error(`Gagal mengubah status: ${error.message}`)
+  if (error) throw new Error(error.message)
 }
 
-/**
- * SEARCH & FILTER (SQL LEVEL): Mencari dan menyaring transaksi berdasarkan kata kunci atau status
- * Poin 13 Kisi-Kisi UKK: Query efisien tanpa N+1 problem menggunakan operator .ilike dan .or
- */
+// SEARCH: Cari nama pemesan atau filter status di tabel kasir
 export async function searchBookings(
   keyword: string = '',
   status?: string
@@ -174,42 +138,20 @@ export async function searchBookings(
     .select('*, lapangan(*)')
     .order('created_at', { ascending: false })
 
-  // Filter 1: Status transaksi di level database
   if (status && status !== 'Semua') {
-    if (status === 'Belum Lunas') {
-      query = query.eq('status', 'Booked').gt('sisa_bayar', 0)
-    } else {
-      query = query.eq('status', status)
-    }
+    query = query.eq('status', status)
   }
 
-  // Filter 2: Kata kunci pencarian (Nama Penyewa, Nomor WhatsApp, atau No Invoice)
   if (keyword.trim()) {
-    const q = keyword.trim()
-    const numericPart = q.toLowerCase().startsWith('inv-') ? q.slice(4) : q
-    const isId = /^\d+$/.test(numericPart)
-
-    if (isId) {
-      query = query.or(`id.eq.${numericPart},nama_penyewa.ilike.%${q}%,no_hp.ilike.%${q}%`)
-    } else {
-      query = query.or(`nama_penyewa.ilike.%${q}%,no_hp.ilike.%${q}%`)
-    }
+    query = query.ilike('nama_penyewa', `%${keyword.trim()}%`)
   }
 
   const { data, error } = await query
-
-  if (error) throw new Error(`Gagal mencari data booking: ${error.message}`)
+  if (error) throw new Error(error.message)
   return (data as Booking[]) || []
 }
 
-// ============================================================================
-// 4. WEBSOCKET REALTIME (SINKRONISASI JADWAL LIVE)
-// ============================================================================
-
-/**
- * REALTIME LISTENER: Berlangganan perubahan data tabel bookings via WebSocket
- * Setiap ada transaksi baru / pelunasan, UI langsung update otomatis tanpa reload
- */
+// REALTIME LISTENER: Update otomatis jika data database berubah
 export function subscribeToBookings(onUpdate: () => void) {
   const channel = supabase
     .channel('bookings-realtime-sync')
