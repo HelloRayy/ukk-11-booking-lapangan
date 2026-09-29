@@ -1,11 +1,11 @@
 {
-  "0": "CourtScheduleGrid.tsx",
+  "0": "components/reservation/types.ts",
   "1": "BlancaDifference.tsx",
   "2": "react",
   "3": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
-  "4": "dependencies",
+  "4": "scheduleConfig.ts",
   "5": "cn",
-  "6": "DashboardOverview.tsx",
+  "6": "devDependencies",
   "7": "ref_ui_dialog",
   "8": "useBlancaLocations.ts",
   "9": "compilerOptions",
@@ -14,14 +14,12 @@
   "12": "compilerOptions",
   "13": "@playwright/test",
   "14": "BlancaTechnology.tsx",
+  "15": "costCalculation.ts",
   "18": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
   "20": "Data Flow Diagram (DFD) Lengkap - UKK RPL / PPLG",
-  "21": "api.ts",
-  "22": "CashierFilterBar.tsx",
-  "23": "CashierHeader.tsx",
+  "21": "CourtScheduleGrid.tsx",
   "24": "tsconfig.json",
   "25": "2. Rencana Anggaran Biaya (RAB) Operasional Sistem",
-  "26": "BlancaFaq.tsx",
   "27": "Entity Relationship Diagram (ERD) - UKK RPL / PPLG",
   "28": "Spesifikasi Standar Kebutuhan Proyek UKK (Rekayasa Perangkat Lunak / PPLG)",
   "29": "Context Diagram (Diagram Konteks) Resmi UKK",
@@ -31,5 +29,5 @@
   "34": "PANDUAN PROYEK & ATURAN AI AGENT (ANTI OVER-ENGINEERING)",
   "35": "rules/graphify.md",
   "36": "workflows/graphify.md",
-  "38": "useBooking.ts"
+  "38": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis"
 }

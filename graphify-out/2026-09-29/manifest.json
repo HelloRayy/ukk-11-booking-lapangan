@@ -66,9 +66,9 @@
     "semantic_hash": "5c9c7cdd75ab0c9df6cdcd37782442a6"
   },
   "src/components/CashierPage.tsx": {
-    "mtime": 1790483028.352649,
-    "seen": 1790483050.3913057,
-    "ast_hash": "528a37e9f1df9bbf5289a64d5306b241",
+    "mtime": 1790648565.7495344,
+    "seen": 1790648626.58912,
+    "ast_hash": "69bcace0870d87d8a3cb858871e5f160",
     "semantic_hash": ""
   },
   "src/components/blanca/BlancaCta.tsx": {
@@ -359,53 +359,11 @@
     "ast_hash": "0e412e6e71239dcbd42f2b949bfb5011",
     "semantic_hash": "0e412e6e71239dcbd42f2b949bfb5011"
   },
-  "src/components/cashier/CashierFilterBar.tsx": {
-    "mtime": 1790144122.2153633,
-    "seen": 1790428398.431601,
-    "ast_hash": "08ed7e88479aac39c23b0a6d5d25b53e",
-    "semantic_hash": "08ed7e88479aac39c23b0a6d5d25b53e"
-  },
-  "src/components/cashier/CashierHeader.tsx": {
-    "mtime": 1790145170.5636818,
-    "seen": 1790428398.4316027,
-    "ast_hash": "6f4f436c79e4e8e40b8181491cf92729",
-    "semantic_hash": "6f4f436c79e4e8e40b8181491cf92729"
-  },
-  "src/components/cashier/CashierStats.tsx": {
-    "mtime": 1790091525.3321426,
-    "seen": 1790428398.4316053,
-    "ast_hash": "8bb620f3c4a7276f178153e137d3f94c",
-    "semantic_hash": "8bb620f3c4a7276f178153e137d3f94c"
-  },
-  "src/components/cashier/CashierTable.tsx": {
-    "mtime": 1790144137.3254335,
-    "seen": 1790428398.4316068,
-    "ast_hash": "9ab20eb83b7080173ecc6edf4a647c5e",
-    "semantic_hash": "9ab20eb83b7080173ecc6edf4a647c5e"
-  },
-  "src/components/cashier/CashierTableRow.tsx": {
-    "mtime": 1790233796.2052214,
-    "seen": 1790428398.4316084,
-    "ast_hash": "de25252f9a4c66c8d2c0061e88ba9171",
-    "semantic_hash": "de25252f9a4c66c8d2c0061e88ba9171"
-  },
-  "src/components/cashier/CourtManagerModal.tsx": {
-    "mtime": 1790311523.899575,
-    "seen": 1790428398.43161,
-    "ast_hash": "a2bb6a66ca24feafad911abcc6c91ec8",
-    "semantic_hash": "a2bb6a66ca24feafad911abcc6c91ec8"
-  },
   "src/components/cashier/ManualBookingModal.tsx": {
     "mtime": 1790421757.5964859,
     "seen": 1790428398.4316113,
     "ast_hash": "0ee9447c0fd5366e61181e8cc26a7da3",
     "semantic_hash": "0ee9447c0fd5366e61181e8cc26a7da3"
-  },
-  "src/components/cashier/StatusBadge.tsx": {
-    "mtime": 1790086131.9869876,
-    "seen": 1790428398.431613,
-    "ast_hash": "a58a69eee00fbdf3f8ff4c2efa3d78e4",
-    "semantic_hash": "a58a69eee00fbdf3f8ff4c2efa3d78e4"
   },
   "src/components/cashier/dashboard-01/BookingDetailSheet.tsx": {
     "mtime": 1790483578.1041934,
@@ -431,47 +389,17 @@
     "ast_hash": "5fb6ad0545f34129a42fcbfee5e7646a",
     "semantic_hash": ""
   },
-  "src/components/cashier/dashboard-01/DashboardOverview.tsx": {
-    "mtime": 1790482862.9590266,
-    "seen": 1790482982.116556,
-    "ast_hash": "47399731f04519d52221dea7eeb1c8b2",
-    "semantic_hash": ""
-  },
   "src/components/cashier/dashboard-01/Header.tsx": {
-    "mtime": 1790481924.5005686,
-    "seen": 1790482042.786038,
-    "ast_hash": "06c09590dac4a64f26bb0eddc38eb7bd",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/dashboard-01/MetricCards.tsx": {
-    "mtime": 1790482848.989974,
-    "seen": 1790482982.1165636,
-    "ast_hash": "e6df361b7a1e0a84814c09e28f1bc0dd",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/dashboard-01/OverviewChart.tsx": {
-    "mtime": 1790439009.0795264,
-    "seen": 1790439877.6753879,
-    "ast_hash": "ceb18c263e666a0fb1b00e1ef5976215",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/dashboard-01/RecentBookings.tsx": {
-    "mtime": 1790438997.6974788,
-    "seen": 1790439877.6753955,
-    "ast_hash": "2ef92b43f2864a36a0b6c3a51060ad1a",
+    "mtime": 1790648586.841633,
+    "seen": 1790648626.5892987,
+    "ast_hash": "aaefcce5548e1cc7f4b7562295d67c5c",
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/Sidebar.tsx": {
-    "mtime": 1790482042.0211356,
-    "seen": 1790482042.7860425,
-    "ast_hash": "8d82a84dd815e3861058b68ab35ed39a",
+    "mtime": 1790648576.353584,
+    "seen": 1790648626.5893018,
+    "ast_hash": "4b422adad91913064da6c824aa2764e9",
     "semantic_hash": ""
-  },
-  "src/components/cashier/dashboard-01/mockData.ts": {
-    "mtime": 1790424488.7276697,
-    "seen": 1790428398.4316308,
-    "ast_hash": "b159e5ee1637ccb3062bf7fda3412e73",
-    "semantic_hash": "b159e5ee1637ccb3062bf7fda3412e73"
   },
   "src/components/cashier/hooks/useCashier.ts": {
     "mtime": 1790200215.3701456,
@@ -480,9 +408,9 @@
     "semantic_hash": "1cb23b8e4a222ad729066b40faac182d"
   },
   "src/components/reservation/ReservationPage.tsx": {
-    "mtime": 1790467710.1589255,
-    "seen": 1790467750.953662,
-    "ast_hash": "b07cae24653f6216ac4a85e4a63ae4e5",
+    "mtime": 1790648532.7993805,
+    "seen": 1790648626.5893078,
+    "ast_hash": "344e0dba31191ed587cf5241a53627c5",
     "semantic_hash": ""
   },
   "src/components/reservation/__mocks__/scheduleFixtures.ts": {
@@ -508,12 +436,6 @@
     "seen": 1790428398.431655,
     "ast_hash": "f6fbe5912e2628cbb9b62dfdac46ee1d",
     "semantic_hash": "f6fbe5912e2628cbb9b62dfdac46ee1d"
-  },
-  "src/components/reservation/components/ReservationSkeletonLoader.tsx": {
-    "mtime": 1790344795.1336627,
-    "seen": 1790428398.4316564,
-    "ast_hash": "ddbfdb1a309c03f93a0921f16e263e77",
-    "semantic_hash": "ddbfdb1a309c03f93a0921f16e263e77"
   },
   "src/components/reservation/components/RightPanelInspector.tsx": {
     "mtime": 1790399435.0174074,
@@ -666,22 +588,10 @@
     "semantic_hash": "d3585a383cd5e70099ca2e622075a5da"
   },
   "src/constants/operationalHours.ts": {
-    "mtime": 1790481328.1275241,
-    "seen": 1790481340.513347,
-    "ast_hash": "5f34da5ad6c45727d8b025e27cfe72bb",
+    "mtime": 1790647893.5853941,
+    "seen": 1790648626.5894215,
+    "ast_hash": "9753e2c126414634cbdc4d040627eef0",
     "semantic_hash": ""
-  },
-  "src/hooks/useBooking.ts": {
-    "mtime": 1790087694.021198,
-    "seen": 1790428398.431696,
-    "ast_hash": "a1f1f46653b7796115be3a5719404fae",
-    "semantic_hash": "a1f1f46653b7796115be3a5719404fae"
-  },
-  "src/hooks/useSchedule.ts": {
-    "mtime": 1790087674.4301207,
-    "seen": 1790428398.4316971,
-    "ast_hash": "247dfa19b30924cb7d31b04e8c2945d0",
-    "semantic_hash": "247dfa19b30924cb7d31b04e8c2945d0"
   },
   "src/kasir.tsx": {
     "mtime": 1790438936.6802227,
@@ -882,9 +792,9 @@
     "semantic_hash": ""
   },
   "belajar.html": {
-    "mtime": 1790647301.1917012,
-    "seen": 1790647332.4482741,
-    "ast_hash": "d9633fd57f10cfc15dca7b71cb916bf6",
+    "mtime": 1790648618.1527743,
+    "seen": 1790648626.5918758,
+    "ast_hash": "b50127016e640b759eb1666f335ceadf",
     "semantic_hash": ""
   },
   "blanca.html": {
@@ -1314,8 +1224,8 @@
     "semantic_hash": ""
   },
   "src/components/cashier/dashboard-01/CourtsManagementView.tsx": {
-    "mtime": 1790646326.685515,
-    "seen": 1790646367.4108176,
+    "mtime": 1790648371.749628,
+    "seen": 1790648626.5892882,
     "ast_hash": "e16bdd243a1c42d131846a3158652853",
     "semantic_hash": ""
   },

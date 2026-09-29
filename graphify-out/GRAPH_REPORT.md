@@ -1,27 +1,27 @@
 # Graph Report - ukk-11  (2026-09-29)
 
 ## Corpus Check
-- 129 files · ~652,376 words
+- 129 files · ~652,275 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 13 file(s) not represented in the graph (top: .woff2 4, .css 3, .avif 2)
 
 ## Summary
-- 619 nodes · 1092 edges · 31 communities (26 shown, 5 thin omitted)
+- 617 nodes · 1090 edges · 34 communities (29 shown, 5 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fe4c29c3`
+- Built from commit: `10b8f358`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- components/reservation/types.ts
+- CourtScheduleGrid.tsx
 - BlancaDifference.tsx
-- react
+- HeroBlancaPreview.tsx
 - 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai
-- scheduleConfig.ts
-- cn
+- CashierDatePicker.tsx
+- react
 - devDependencies
 - ref_ui_dialog
 - useBlancaLocations.ts
@@ -32,9 +32,12 @@
 - @playwright/test
 - BlancaTechnology.tsx
 - costCalculation.ts
+- HeaderNav.tsx
+- BlancaFaq.tsx
 - AGENTS.md - Panduan & Aturan AI Mentor UKK SMK
+- scheduleConfig.ts
 - Data Flow Diagram (DFD) Lengkap - UKK RPL / PPLG
-- CourtScheduleGrid.tsx
+- api.ts
 - tsconfig.json
 - 2. Rencana Anggaran Biaya (RAB) Operasional Sistem
 - Entity Relationship Diagram (ERD) - UKK RPL / PPLG
@@ -46,7 +49,7 @@
 - PANDUAN PROYEK & ATURAN AI AGENT (ANTI OVER-ENGINEERING)
 - rules/graphify.md
 - workflows/graphify.md
-- 7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis
+- Panduan Lengkap Belajar Codebase UKK RPL
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 39 edges
@@ -69,37 +72,37 @@
   PANDUAN_PENJELASAN_BACKEND_UKK.md → src/lib/api.ts
 - `Bagian 3: Operasional Kasir & Pelunasan` --references--> `getAllBookings()`  [INFERRED]
   PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md → src/lib/api.ts
-- `Q6: "Bagaimana rumus perhitungan DP dan pelunasan di aplikasi ini?"` --references--> `updateStatusBooking()`  [INFERRED]
-  PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md → src/lib/api.ts
+- `Q4: "Bagaimana rumus perhitungan DP 50% dan sisa bayar di sistem ini?"` --references--> `updateStatusBooking()`  [INFERRED]
+  PANDUAN_PENJELASAN_BACKEND_UKK.md → src/lib/api.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (31 total, 5 thin omitted)
+## Communities (34 total, 5 thin omitted)
 
-### Community 0 - "components/reservation/types.ts"
+### Community 0 - "CourtScheduleGrid.tsx"
 Cohesion: 0.08
-Nodes (39): BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard(), ActiveSelectionCardProps, BookedSlotCard(), BookedSlotCardProps, FloatingToast(), FloatingToastProps (+31 more)
+Nodes (49): CourtScheduleGrid(), BookingReceiptView(), BookingReceiptViewProps, ActiveSelectionCard(), ActiveSelectionCardProps, BookedSlotCard(), BookedSlotCardProps, FloatingToast() (+41 more)
 
 ### Community 1 - "BlancaDifference.tsx"
-Cohesion: 0.11
-Nodes (15): BlancaDifference(), BlancaFaq(), DifferenceCommunityStory(), DifferenceFeatures(), DifferenceHeading(), DifferenceVideoCard(), COMMUNITY_STORY, COURT_FEATURES (+7 more)
+Cohesion: 0.21
+Nodes (8): BlancaDifference(), DifferenceCommunityStory(), DifferenceFeatures(), DifferenceHeading(), DifferenceVideoCard(), COMMUNITY_STORY, COURT_FEATURES, CourtFeature
 
-### Community 2 - "react"
-Cohesion: 0.05
-Nodes (43): gsap, lenis, react, react-dom, src_assets_hero_video, src_components_blanca_blanca, BlancaCta(), BlancaCtaProps (+35 more)
+### Community 2 - "HeroBlancaPreview.tsx"
+Cohesion: 0.08
+Nodes (27): gsap, lenis, src_assets_hero_video, BlancaCta(), BlancaCtaProps, BlancaFooter(), CenterFlyingLogo(), CenterFlyingLogoProps (+19 more)
 
 ### Community 3 - "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai"
 Cohesion: 0.15
 Nodes (12): 1. Peta Arsitektur: "Frontend vs Backend di Aplikasi Ini", 1. `src/types/database.ts` (Model / Skema Data), 2. `src/lib/supabase.ts` (Inisialisasi Client), 2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang, 3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai, 4. Rangkuman Struktur Folder Proyek yang Rapi, Panduan & Strategi Menjelaskan Backend ke Penguji UKK, Q1: "Mana server backend kamu? Kok tidak pakai Express.js atau Laravel?" (+4 more)
 
-### Community 4 - "scheduleConfig.ts"
-Cohesion: 0.09
-Nodes (17): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, DAY_NAMES, MONTH_NAMES, ReservationNavbar(), ReservationNavbarProps (+9 more)
+### Community 4 - "CashierDatePicker.tsx"
+Cohesion: 0.15
+Nodes (9): CashierDatePicker(), CashierDatePickerProps, DAY_NAMES, MONTH_NAMES, DAY_NAMES, MONTH_NAMES, ReservationNavbar(), ReservationNavbarProps (+1 more)
 
-### Community 5 - "cn"
+### Community 5 - "react"
 Cohesion: 0.09
-Nodes (29): clsx, @radix-ui/react-checkbox, tailwind-merge, BookingDetailSheet(), BookingDetailSheetProps, Badge(), BadgeProps, Button (+21 more)
+Nodes (32): clsx, @radix-ui/react-checkbox, react, react-dom, tailwind-merge, src_components_blanca_blanca, BookingDetailSheet(), Badge() (+24 more)
 
 ### Community 6 - "devDependencies"
 Cohesion: 0.13
@@ -115,7 +118,7 @@ Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtension
 
 ### Community 10 - "package.json"
 Cohesion: 0.05
-Nodes (45): dependencies, clsx, gsap, leaflet, lenis, lucide-react, @radix-ui/react-checkbox, react (+37 more)
+Nodes (43): dependencies, clsx, gsap, leaflet, lenis, lucide-react, @radix-ui/react-checkbox, react (+35 more)
 
 ### Community 11 - "components.json"
 Cohesion: 0.12
@@ -133,25 +136,37 @@ Nodes (16): ref_child_process, ref_fs, ref_path, @playwright/test, pngjs, diffIm
 Cohesion: 0.23
 Nodes (9): BlancaTechnology(), TechnologyHeading(), TechnologySlideDetails(), TechnologySlideDetailsProps, TechnologySlideMedia(), TechnologySlideMediaProps, TECHNOLOGY_SLIDES, useTechnologySlider() (+1 more)
 
+### Community 16 - "HeaderNav.tsx"
+Cohesion: 0.19
+Nodes (10): DesktopNavLinks(), DesktopNavLinksProps, HeaderLogo(), HeaderLogoProps, MobileNavDrawer(), MobileNavDrawerProps, NAV_LINKS, NavLinkItem (+2 more)
+
+### Community 17 - "BlancaFaq.tsx"
+Cohesion: 0.27
+Nodes (7): BlancaFaq(), FaqAccordionItem(), FaqAccordionItemProps, FaqHeading(), FAQ_DATA, useFaqAccordion(), FaqItem
+
 ### Community 18 - "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK"
-Cohesion: 0.29
-Nodes (6): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:
+Cohesion: 0.25
+Nodes (7): 1. Aturan Mode Belajar Mandiri (Student-First Mentorship), 2. Aturan Koding & Standar Penilaian UKK, 3. Aturan Navigasi Codebase Cepat (Wajib Menggunakan Graphify), 4. Aturan Pengujian & Otomasi Browser (Wajib agent-browser Headless), 5. Aturan Git Commit & Push (Gaya Santai Khas Anak SMK), AGENTS.md - Panduan & Aturan AI Mentor UKK SMK, Standar Format Pesan Commit:
+
+### Community 19 - "scheduleConfig.ts"
+Cohesion: 0.25
+Nodes (8): BASE_OPERATIONAL_HOUR, DEFAULT_SLOT_HEIGHT, DAFTAR_JAM, isDevMode, jamSimulasi, menitSimulasi, OPERATIONAL_HOURS, TIME_SLOTS
 
 ### Community 20 - "Data Flow Diagram (DFD) Lengkap - UKK RPL / PPLG"
 Cohesion: 0.17
 Nodes (11): 1. DFD Level 0 (Diagram Konteks), 2. DFD Level 1 (Dekomposisi Proses Inti), 3. DFD Level 2: Proses 2.0 (Transaksi Booking), 4. DFD Level 2: Proses 3.0 (Pelunasan & Laporan Kasir), 5. Kamus Data (Data Dictionary) Resmi, 6. Cara Ekspor Diagram ke Figma & Laporan Word, 7. Bocoran Pertanyaan Penguji UKK Terkait DFD, A. Arus Data (Data Flows) (+3 more)
 
-### Community 21 - "CourtScheduleGrid.tsx"
-Cohesion: 0.10
-Nodes (41): 2. Aturan Koding & Standar Penilaian UKK, 3. `src/lib/api.ts` (API Controller & Query Builder), lucide-react, BookingsTable(), BookingsTableProps, TableInitialFilters, CourtScheduleGrid(), CourtScheduleGridProps (+33 more)
+### Community 21 - "api.ts"
+Cohesion: 0.07
+Nodes (49): 7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis, Q10: "Jika ada transaksi yang dibatalkan, apakah slot jamnya bisa dipesan orang lain?", Q1: "Mana server backend kamu? Mengapa tidak menggunakan Express.js atau Laravel?", Q2: "Bagaimana cara sistem kamu mencegah dua orang booking lapangan dan jam yang sama (bentrok jadwal)?", Q3: "Apa tipe relasi basis data yang kamu gunakan?", Q4: "Mengapa kolom nomor HP di database kamu bertipe string / varchar, bukan integer?", Q5: "Bagaimana cara menyimpan durasi booking yang lebih dari 1 jam?", Q6: "Bagaimana rumus perhitungan DP dan pelunasan di aplikasi ini?" (+41 more)
 
 ### Community 25 - "2. Rencana Anggaran Biaya (RAB) Operasional Sistem"
 Cohesion: 0.15
 Nodes (12): 1. "Mengapa menggunakan database Supabase dan hosting cloud, apa keuntungannya bagi anggaran biaya?", 1. Time Schedule (Jadwal Kerja Pengerjaan Proyek), 2. "Berapa lama waktu yang kamu butuhkan untuk mengerjakan proyek ini dari nol?", 2. Rencana Anggaran Biaya (RAB) Operasional Sistem, 3. Bocoran Pertanyaan Penguji UKK & Cara Jawabnya, 3. "Jika aplikasi ini dipakai betulan di lapangan badminton, apa biaya rutin yang harus dibayar setiap tahun?", A. Infrastruktur Cloud & Perangkat Lunak (Software & Cloud Hosting), Aplikasi Booking Lapangan Badminton (Blanca Badminton Arena) (+4 more)
 
 ### Community 27 - "Entity Relationship Diagram (ERD) - UKK RPL / PPLG"
-Cohesion: 0.17
-Nodes (11): 1. "Kenapa datanya dipisah jadi 3 tabel, kenapa nggak digabung jadi 1 tabel aja?", 1. Tautan Langsung Mermaid Live Editor, 2. "Apa itu Primary Key (PK) dan Foreign Key (FK) di diagram kamu?", 2. Kode Diagram Mermaid (Salin ke FigJam / Mermaid Live), 3. "Kardinalitas relasinya apa?", 3. Penjelasan Hubungan Relasi (Bahasa Santai & Mudah Dipahami), 4. Bocoran Pertanyaan Penguji UKK & Cara Jawabnya, A. Hubungan `LAPANGAN` ke `BOOKING` (1-ke-Banyak) (+3 more)
+Cohesion: 0.20
+Nodes (9): 1. Diagram ERD Resmi (Relasi 1-to-Many), 1. "Mengapa menggunakan 2 tabel dan tidak dijadikan 1 tabel saja?", 2. "Apa itu Primary Key dan Foreign Key di diagram kamu?", 2. Penjelasan Relasi Basis Data untuk Sidang UKK, 3. Bocoran Pertanyaan Penguji UKK Terkait ERD, 3. "Mengapa tidak ada tabel petugas/users?", Aplikasi Booking Lapangan Badminton & Kasir, Entity Relationship Diagram (ERD) - UKK RPL / PPLG (+1 more)
 
 ### Community 28 - "Spesifikasi Standar Kebutuhan Proyek UKK (Rekayasa Perangkat Lunak / PPLG)"
 Cohesion: 0.18
@@ -177,29 +192,29 @@ Nodes (6): 1. Prioritas Tinggi (High Priority), 2. Prioritas Menengah (Medium Pr
 Cohesion: 0.33
 Nodes (5): 1. Aturan Wajib Anti-Overengineering untuk AI Agent, 2. Struktur Data Standar (Pola 2 Tabel), 3. Konfigurasi Lingkungan (.env), 4. Cara Menjalankan Proyek, PANDUAN PROYEK & ATURAN AI AGENT (ANTI OVER-ENGINEERING)
 
-### Community 38 - "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis"
-Cohesion: 0.07
-Nodes (32): 1. Ringkasan Sistem & Arsitektur Proyek, 2. Struktur Direktori Proyek, 3. Skema Basis Data & Model Data, 4. Bedah Backend Controller: `src/lib/api.ts`, 5. Logika Bisnis & Perhitungan Biaya, 6. Alur Pengguna (User Flow), 7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis, A. Alur Pemesanan oleh Penyewa (+24 more)
+### Community 38 - "Panduan Lengkap Belajar Codebase UKK RPL"
+Cohesion: 0.11
+Nodes (18): 1. Ringkasan Sistem & Arsitektur Proyek, 2. Struktur Direktori Proyek, 3. Skema Basis Data & Model Data, 4. Bedah Backend Controller: `src/lib/api.ts`, 5. Logika Bisnis & Perhitungan Biaya, 6. Alur Pengguna (User Flow), A. Alur Pemesanan oleh Penyewa, A. Tabel `lapangan` (Master Data) (+10 more)
 
 ## Knowledge Gaps
-- **228 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+223 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 267 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **226 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+221 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 265 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `components/reservation/types.ts`, `BlancaDifference.tsx`, `scheduleConfig.ts`, `cn`, `useBlancaLocations.ts`, `package.json`, `BlancaTechnology.tsx`, `CourtScheduleGrid.tsx`?**
-  _High betweenness centrality (0.341) - this node is a cross-community bridge._
-- **Why does `lucide-react` connect `CourtScheduleGrid.tsx` to `components/reservation/types.ts`, `package.json`, `scheduleConfig.ts`, `cn`?**
+- **Why does `react` connect `react` to `CourtScheduleGrid.tsx`, `BlancaDifference.tsx`, `HeroBlancaPreview.tsx`, `CashierDatePicker.tsx`, `useBlancaLocations.ts`, `package.json`, `BlancaTechnology.tsx`, `HeaderNav.tsx`, `BlancaFaq.tsx`, `api.ts`?**
+  _High betweenness centrality (0.343) - this node is a cross-community bridge._
+- **Why does `lucide-react` connect `api.ts` to `CourtScheduleGrid.tsx`, `package.json`, `CashierDatePicker.tsx`, `react`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Why does `pngjs` connect `@playwright/test` to `package.json`?**
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
-  _228 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `components/reservation/types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07868852459016394 - nodes in this community are weakly interconnected._
-- **Should `BlancaDifference.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11375661375661375 - nodes in this community are weakly interconnected._
+  _226 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `CourtScheduleGrid.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.08288288288288288 - nodes in this community are weakly interconnected._
+- **Should `HeroBlancaPreview.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.07781649245063879 - nodes in this community are weakly interconnected._
 - **Should `react` be split into smaller, more focused modules?**
-  _Cohesion score 0.05174825174825175 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08562367864693446 - nodes in this community are weakly interconnected._
