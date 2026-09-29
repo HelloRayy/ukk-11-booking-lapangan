@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import Sidebar from './cashier/dashboard-01/Sidebar'
 import Header from './cashier/dashboard-01/Header'
-import DashboardOverview from './cashier/dashboard-01/DashboardOverview'
 import BookingsTable, { type TableInitialFilters } from './cashier/dashboard-01/BookingsTable'
 import CourtScheduleGrid from './cashier/dashboard-01/CourtScheduleGrid'
 import CourtsManagementView from './cashier/dashboard-01/CourtsManagementView'
@@ -10,7 +9,7 @@ import ManualBookingModal from './cashier/ManualBookingModal'
 import { useCashier } from './cashier/hooks/useCashier'
 
 export default function CashierPage() {
-  const [currentTab, setCurrentTab] = useState<'overview' | 'bookings' | 'schedule' | 'courts'>('schedule')
+  const [currentTab, setCurrentTab] = useState<'schedule' | 'bookings' | 'courts'>('schedule')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [manualModalDefaults, setManualModalDefaults] = useState<{
     courtId?: number
@@ -25,20 +24,6 @@ export default function CashierPage() {
     if (date) setInitialScheduleDate(date)
     if (bookingId) setInitialBookingId(bookingId)
     setCurrentTab('schedule')
-  }
-
-  const handleNavigateToUnpaid = () => {
-    setSelectedStatus('Belum Lunas')
-    setTableInitialFilters({
-      date: 'all',
-      status: 'Belum Lunas',
-      rowsPerPage: 10,
-      sortField: 'tgl_main',
-      sortOrder: 'asc',
-      onlyUpcoming: false,
-      timestamp: Date.now(),
-    })
-    setCurrentTab('bookings')
   }
 
   // Ambil state dan aksi riil Supabase dari custom hook useCashier
@@ -103,19 +88,8 @@ export default function CashierPage() {
         />
 
         <main className="flex-1 overflow-y-auto">
-          {currentTab === 'overview' ? (
-            /* Tab 1: Ringkasan Analitik */
-            <div className="p-6 max-w-7xl mx-auto">
-              <DashboardOverview
-                bookings={allBookings}
-                courts={courts}
-                loading={loading}
-                onNavigateToSchedule={handleNavigateToSchedule}
-                onNavigateToUnpaid={handleNavigateToUnpaid}
-              />
-            </div>
-          ) : currentTab === 'schedule' ? (
-            /* Tab 2: Visualisasi Matriks Kalender Lapangan Kasir */
+          {currentTab === 'schedule' ? (
+            /* Tab 1: Visualisasi Matriks Kalender Lapangan Kasir */
             <CourtScheduleGrid
               bookings={allBookings}
               courts={courts}

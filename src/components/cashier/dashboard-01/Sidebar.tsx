@@ -1,9 +1,9 @@
 // PERAN FILE: Komponen Sidebar Kasir dengan Gaya Dark Minimalist Selaras /reservasi
-import { LayoutDashboard, ReceiptText, Calendar, ArrowUpRight, ShieldCheck, CalendarDays, SlidersHorizontal } from 'lucide-react'
+import { ReceiptText, Calendar, ArrowUpRight, ShieldCheck, CalendarDays, SlidersHorizontal } from 'lucide-react'
 
 interface SidebarProps {
-  currentTab: 'overview' | 'bookings' | 'schedule' | 'courts'
-  onTabChange?: (tab: 'overview' | 'bookings' | 'schedule' | 'courts') => void
+  currentTab: 'bookings' | 'schedule' | 'courts'
+  onTabChange?: (tab: 'bookings' | 'schedule' | 'courts') => void
   onOpenCourtManager?: () => void
 }
 
@@ -24,25 +24,8 @@ export default function Sidebar({ currentTab, onTabChange, onOpenCourtManager }:
           </div>
         </div>
 
-        {/* 2. Menu Navigasi Kasir */}
+        {/* 2. Menu Navigasi Kasir (3 Tab Inti UKK) */}
         <nav className="space-y-1">
-          <button
-            type="button"
-            onClick={() => onTabChange?.('overview')}
-            className={`w-full flex items-center justify-between gap-2 py-2 px-2.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer outline-none select-none transition-colors group ${
-              currentTab === 'overview'
-                ? 'bg-zinc-900 text-zinc-100'
-                : 'text-zinc-400 hover:text-zinc-100'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <LayoutDashboard className={`w-4 h-4 shrink-0 transition-colors ${currentTab === 'overview' ? 'text-amber-400' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
-              <span>Overview</span>
-            </div>
-            {currentTab === 'overview' && (
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            )}
-          </button>
 
           {/* Tab 2: Jadwal Lapangan (Matriks Visual Kasir) */}
           <button

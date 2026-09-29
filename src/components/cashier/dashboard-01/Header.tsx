@@ -1,7 +1,7 @@
 import { Bell, Menu } from 'lucide-react'
 
 interface HeaderProps {
-  currentTab: 'overview' | 'bookings' | 'schedule' | 'courts'
+  currentTab: 'bookings' | 'schedule' | 'courts'
   onToggleMobileSidebar?: () => void
 }
 
@@ -28,9 +28,7 @@ export default function Header({
           </span>
           <span className="text-zinc-700">/</span>
           <span className="text-zinc-100 font-semibold tracking-tight">
-            {currentTab === 'overview'
-              ? 'Overview'
-              : currentTab === 'schedule'
+            {currentTab === 'schedule'
               ? 'Jadwal Lapangan'
               : currentTab === 'courts'
               ? 'Kelola Lapangan'

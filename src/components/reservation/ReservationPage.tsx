@@ -3,7 +3,6 @@ import ReservationNavbar from './components/ReservationNavbar'
 import ScheduleHeader from './components/ScheduleHeader'
 import ScheduleGrid from './components/ScheduleGrid'
 import RightPanelInspector from './components/RightPanelInspector'
-import ReservationSkeletonLoader from './components/ReservationSkeletonLoader'
 
 export default function ReservationPage() {
   const {
@@ -42,7 +41,10 @@ export default function ReservationPage() {
         {/* Kolom Utama: Tabel Kalender (Header Lapangan + Grid Jam) atau Skeleton Loader */}
         <div className="flex-1 flex flex-col overflow-x-auto overflow-y-hidden min-w-0 border-r border-[#262626] relative">
           {isLoading && courts.length === 0 ? (
-            <ReservationSkeletonLoader />
+            <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] gap-3 text-zinc-400">
+              <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-xs font-mono">Memuat jadwal lapangan...</p>
+            </div>
           ) : (
             <div className="min-w-[720px] sm:min-w-[780px] flex-1 flex flex-col h-full">
               <ScheduleHeader courts={courts} />
