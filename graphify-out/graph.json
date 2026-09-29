@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepickerprops",
+      "label": "CashierDatePickerProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "cashierdatepickerprops",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "src_components_reservation_components_bookingreceiptview_bookingreceiptviewprops",
       "label": "BookingReceiptViewProps",
       "_callable": true,
@@ -121,6 +134,19 @@
       "source_location": "L6"
     },
     {
+      "id": "src_components_reservation_components_reservationnavbar_reservationnavbarprops",
+      "label": "ReservationNavbarProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationnavbarprops",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L5"
+    },
+    {
       "id": "src_components_reservation_components_rightpanelinspector_rightpanelinspectorprops",
       "label": "RightPanelInspectorProps",
       "_callable": true,
@@ -171,19 +197,6 @@
       "norm_label": "scheduleheaderprops",
       "source_file": "src/components/reservation/components/ScheduleHeader.tsx",
       "source_location": "L4"
-    },
-    {
-      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
-      "label": "ReservationDataProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "reservationdataprops",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L8"
     },
     {
       "id": "src_components_reservation_hooks_useslotvalidation_slotvalidationprops",
@@ -534,7 +547,7 @@
       "file_type": "code",
       "norm_label": "reservationsidepanelprops",
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L7"
+      "source_location": "L6"
     },
     {
       "id": "src_components_blanca_reservation_reservationdrawer_reservationdrawerprops",
@@ -654,6 +667,19 @@
       "source_location": "L17"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata_reservationdataprops",
+      "label": "ReservationDataProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "reservationdataprops",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L8"
+    },
+    {
       "id": "src_types_database_booking",
       "label": "Booking",
       "_callable": true,
@@ -717,32 +743,6 @@
       "norm_label": "tipebayar",
       "source_file": "src/types/database.ts",
       "source_location": "L2"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepickerprops",
-      "label": "CashierDatePickerProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "cashierdatepickerprops",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_components_reservation_components_reservationnavbar_reservationnavbarprops",
-      "label": "ReservationNavbarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "reservationnavbarprops",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L5"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheetprops",
@@ -821,6 +821,42 @@
       "norm_label": "contactcarditem",
       "source_file": "src/components/blanca/locations/types.ts",
       "source_location": "L19"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker",
+      "label": "CashierDatePicker()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "cashierdatepicker()",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker_handleclickoutside",
+      "label": "handleClickOutside()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "handleclickoutside()",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker_handlekeydown",
+      "label": "handleKeyDown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "handlekeydown()",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L56"
     },
     {
       "id": "src_components_cashier_dashboard_01_courtschedulegrid_courtschedulegrid",
@@ -967,6 +1003,42 @@
       "source_location": "L16"
     },
     {
+      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar",
+      "label": "ReservationNavbar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationnavbar()",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar_handleclickoutside",
+      "label": "handleClickOutside()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "handleclickoutside()",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L42"
+    },
+    {
+      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar_handlekeydown",
+      "label": "handleKeyDown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "handlekeydown()",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L47"
+    },
+    {
       "id": "src_components_reservation_components_rightpanelinspector_rightpanelinspector",
       "label": "RightPanelInspector()",
       "_callable": true,
@@ -1039,6 +1111,18 @@
       "source_location": "L13"
     },
     {
+      "id": "src_components_reservation_reservationpage_reservationpage",
+      "label": "ReservationPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationpage()",
+      "source_file": "src/components/reservation/ReservationPage.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "src_components_reservation_utils_bookingmapper_mapdbbookingstoitems",
       "label": "mapDbBookingsToItems()",
       "_callable": true,
@@ -1049,6 +1133,18 @@
       "norm_label": "mapdbbookingstoitems()",
       "source_file": "src/components/reservation/utils/bookingMapper.ts",
       "source_location": "L29"
+    },
+    {
+      "id": "src_components_reservation_utils_formatters_formatdisplaydate",
+      "label": "formatDisplayDate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "formatdisplaydate()",
+      "source_file": "src/components/reservation/utils/formatters.ts",
+      "source_location": "L20"
     },
     {
       "id": "src_components_reservation_utils_formatters_formatrupiah",
@@ -1097,18 +1193,6 @@
       "norm_label": "gettodayisodate()",
       "source_file": "src/components/reservation/utils/formatters.ts",
       "source_location": "L35"
-    },
-    {
-      "id": "src_lib_api_createbooking",
-      "label": "createBooking()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "createbooking()",
-      "source_file": "src/lib/api.ts",
-      "source_location": "L89"
     },
     {
       "id": "src_components_blanca_blancadifference_blancadifference",
@@ -1169,42 +1253,6 @@
       "norm_label": "differencevideocard()",
       "source_file": "src/components/blanca/difference/components/DifferenceVideoCard.tsx",
       "source_location": "L4"
-    },
-    {
-      "id": "vite_config_configurepreviewserver",
-      "label": "configurePreviewServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "configurepreviewserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "vite_config_configureserver",
-      "label": "configureServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "configureserver()",
-      "source_file": "vite.config.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "vite_config_routemiddleware",
-      "label": "routeMiddleware()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "routemiddleware()",
-      "source_file": "vite.config.ts",
-      "source_location": "L6"
     },
     {
       "id": "scripts_capture_blanca_baseline_capture",
@@ -1325,6 +1373,42 @@
       "norm_label": "calculatebookingcost()",
       "source_file": "src/utils/costCalculation.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "vite_config_configurepreviewserver",
+      "label": "configurePreviewServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "configurepreviewserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "vite_config_configureserver",
+      "label": "configureServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "configureserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "vite_config_routemiddleware",
+      "label": "routeMiddleware()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "routemiddleware()",
+      "source_file": "vite.config.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_components_blanca_blancafaq_blancafaq",
@@ -1564,7 +1648,7 @@
       "file_type": "code",
       "norm_label": "reservationsidepanel()",
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L18"
+      "source_location": "L17"
     },
     {
       "id": "src_components_blanca_reservation_hooks_usereservationdrawer_usereservationdrawer",
@@ -1601,18 +1685,6 @@
       "norm_label": "cashierpage()",
       "source_file": "src/components/CashierPage.tsx",
       "source_location": "L11"
-    },
-    {
-      "id": "src_components_reservation_reservationpage_reservationpage",
-      "label": "ReservationPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "reservationpage()",
-      "source_file": "src/components/reservation/ReservationPage.tsx",
-      "source_location": "L7"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingstable_bookingstable",
@@ -1675,6 +1747,30 @@
       "source_location": "L5"
     },
     {
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodal",
+      "label": "ManualBookingModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "manualbookingmodal()",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_components_cashier_manualbookingmodal_manualbookingmodal_fetchavailability",
+      "label": "fetchAvailability()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "fetchavailability()",
+      "source_file": "src/components/cashier/ManualBookingModal.tsx",
+      "source_location": "L74"
+    },
+    {
       "id": "src_components_reservation_hooks_usereservationdata_usereservationdata",
       "label": "useReservationData()",
       "_callable": true,
@@ -1697,6 +1793,18 @@
       "norm_label": "initializedata()",
       "source_file": "src/components/reservation/hooks/useReservationData.ts",
       "source_location": "L22"
+    },
+    {
+      "id": "src_lib_api_createbooking",
+      "label": "createBooking()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "createbooking()",
+      "source_file": "src/lib/api.ts",
+      "source_location": "L89"
     },
     {
       "id": "src_lib_api_createlapangan",
@@ -1733,6 +1841,18 @@
       "norm_label": "getallbookings()",
       "source_file": "src/lib/api.ts",
       "source_location": "L107"
+    },
+    {
+      "id": "src_lib_api_getbookedslots",
+      "label": "getBookedSlots()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "getbookedslots()",
+      "source_file": "src/lib/api.ts",
+      "source_location": "L74"
     },
     {
       "id": "src_lib_api_getlapangan",
@@ -1829,126 +1949,6 @@
       "norm_label": "gettodayisodate()",
       "source_file": "src/utils/formatters.ts",
       "source_location": "L20"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker",
-      "label": "CashierDatePicker()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "cashierdatepicker()",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker_handleclickoutside",
-      "label": "handleClickOutside()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "handleclickoutside()",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L51"
-    },
-    {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_cashierdatepicker_handlekeydown",
-      "label": "handleKeyDown()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "handlekeydown()",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L56"
-    },
-    {
-      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar",
-      "label": "ReservationNavbar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "reservationnavbar()",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar_handleclickoutside",
-      "label": "handleClickOutside()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "handleclickoutside()",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L42"
-    },
-    {
-      "id": "src_components_reservation_components_reservationnavbar_reservationnavbar_handlekeydown",
-      "label": "handleKeyDown()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "handlekeydown()",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L47"
-    },
-    {
-      "id": "src_components_reservation_utils_formatters_formatdisplaydate",
-      "label": "formatDisplayDate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "CashierDatePicker.tsx",
-      "file_type": "code",
-      "norm_label": "formatdisplaydate()",
-      "source_file": "src/components/reservation/utils/formatters.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodal",
-      "label": "ManualBookingModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "code",
-      "norm_label": "manualbookingmodal()",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L27"
-    },
-    {
-      "id": "src_components_cashier_manualbookingmodal_manualbookingmodal_fetchavailability",
-      "label": "fetchAvailability()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "code",
-      "norm_label": "fetchavailability()",
-      "source_file": "src/components/cashier/ManualBookingModal.tsx",
-      "source_location": "L74"
-    },
-    {
-      "id": "src_lib_api_getbookedslots",
-      "label": "getBookedSlots()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "code",
-      "norm_label": "getbookedslots()",
-      "source_file": "src/lib/api.ts",
-      "source_location": "L74"
     },
     {
       "id": "src_components_cashier_dashboard_01_bookingdetailsheet_bookingdetailsheet",
@@ -2095,6 +2095,39 @@
       "source_location": "L38"
     },
     {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker",
+      "label": "CashierDatePicker.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "cashierdatepicker.tsx",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_day_names",
+      "label": "DAY_NAMES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "day_names",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_components_cashier_dashboard_01_cashierdatepicker_month_names",
+      "label": "MONTH_NAMES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "month_names",
+      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
+      "source_location": "L15"
+    },
+    {
       "id": "src_components_cashier_dashboard_01_courtschedulegrid",
       "label": "CourtScheduleGrid.tsx",
       "_origin": "ast",
@@ -2216,6 +2249,39 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_reservation_components_reservationnavbar",
+      "label": "ReservationNavbar.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "reservationnavbar.tsx",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_components_reservationnavbar_day_names",
+      "label": "DAY_NAMES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "day_names",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_components_reservation_components_reservationnavbar_month_names",
+      "label": "MONTH_NAMES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourtScheduleGrid.tsx",
+      "file_type": "code",
+      "norm_label": "month_names",
+      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_components_reservation_components_rightpanelinspector",
       "label": "RightPanelInspector.tsx",
       "_origin": "ast",
@@ -2258,17 +2324,6 @@
       "norm_label": "calendar_current_time",
       "source_file": "src/components/reservation/constants/scheduleConfig.ts",
       "source_location": "L27"
-    },
-    {
-      "id": "src_components_reservation_hooks_usereservationdata",
-      "label": "useReservationData.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "usereservationdata.ts",
-      "source_file": "src/components/reservation/hooks/useReservationData.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_components_reservation_hooks_usereservationschedule",
@@ -2335,17 +2390,6 @@
       "norm_label": "bookingmapper.ts",
       "source_file": "src/components/reservation/utils/bookingMapper.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
-      "label": "COURT_STYLE_MAP",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourtScheduleGrid.tsx",
-      "file_type": "code",
-      "norm_label": "court_style_map",
-      "source_file": "src/components/reservation/utils/bookingMapper.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_components_reservation_utils_formatters",
@@ -2480,171 +2524,6 @@
       "source_location": "L1"
     },
     {
-      "id": "package_devdependencies",
-      "label": "devDependencies",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "package_devdependencies_eslint",
-      "label": "eslint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint",
-      "source_file": "package.json",
-      "source_location": "L35"
-    },
-    {
-      "id": "package_devdependencies_eslint_js",
-      "label": "@eslint/js",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@eslint/js",
-      "source_file": "package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_hooks",
-      "label": "eslint-plugin-react-hooks",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-hooks",
-      "source_file": "package.json",
-      "source_location": "L36"
-    },
-    {
-      "id": "package_devdependencies_eslint_plugin_react_refresh",
-      "label": "eslint-plugin-react-refresh",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-refresh",
-      "source_file": "package.json",
-      "source_location": "L37"
-    },
-    {
-      "id": "package_devdependencies_globals",
-      "label": "globals",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "globals",
-      "source_file": "package.json",
-      "source_location": "L38"
-    },
-    {
-      "id": "package_devdependencies_playwright_test",
-      "label": "@playwright/test",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@playwright/test",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "package_devdependencies_pngjs",
-      "label": "pngjs",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "pngjs",
-      "source_file": "package.json",
-      "source_location": "L39"
-    },
-    {
-      "id": "package_devdependencies_types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "package_devdependencies_types_react",
-      "label": "@types/react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react",
-      "source_file": "package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "package.json",
-      "source_location": "L33"
-    },
-    {
-      "id": "package_devdependencies_typescript",
-      "label": "typescript",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "typescript",
-      "source_file": "package.json",
-      "source_location": "L40"
-    },
-    {
-      "id": "package_devdependencies_typescript_eslint",
-      "label": "typescript-eslint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "typescript-eslint",
-      "source_file": "package.json",
-      "source_location": "L41"
-    },
-    {
-      "id": "package_devdependencies_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "package_devdependencies_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -2667,61 +2546,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -2742,17 +2566,6 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
     },
     {
       "id": "ref_eslint",
@@ -2843,17 +2656,6 @@
       "source_location": "L26"
     },
     {
-      "id": "ref_tailwindcss_vite",
-      "label": "@tailwindcss/vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@tailwindcss/vite",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
       "id": "ref_types_leaflet",
       "label": "@types/leaflet",
       "_origin": "ast",
@@ -2918,28 +2720,6 @@
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
       "source_location": "L41"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L34"
     },
     {
       "id": "components",
@@ -3657,6 +3437,50 @@
       "source_location": "L16"
     },
     {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_tailwindcss_vite",
+      "label": "@tailwindcss/vite",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "@tailwindcss/vite",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "src_components_blanca_blancafaq",
       "label": "BlancaFaq.tsx",
       "_origin": "ast",
@@ -3756,6 +3580,18 @@
       "norm_label": "1. aturan mode belajar mandiri (student-first mentorship)",
       "source_file": "AGENTS.md",
       "source_location": "L7"
+    },
+    {
+      "id": "agents_2_aturan_koding_standar_penilaian_ukk",
+      "label": "2. Aturan Koding & Standar Penilaian UKK",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "AGENTS.md - Panduan & Aturan AI Mentor UKK SMK",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. aturan koding & standar penilaian ukk",
+      "source_file": "AGENTS.md",
+      "source_location": "L20"
     },
     {
       "id": "agents_3_aturan_navigasi_codebase_cepat_wajib_menggunakan_graphify",
@@ -4468,6 +4304,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_reservation_hooks_usereservationdata",
+      "label": "useReservationData.ts",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "usereservationdata.ts",
+      "source_file": "src/components/reservation/hooks/useReservationData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_reservation_utils_bookingmapper_court_style_map",
+      "label": "COURT_STYLE_MAP",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "court_style_map",
+      "source_file": "src/components/reservation/utils/bookingMapper.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "src_lib_api",
       "label": "api.ts",
       "_origin": "ast",
@@ -4545,76 +4403,16 @@
       "source_location": "L14"
     },
     {
-      "id": "agents_2_aturan_koding_standar_penilaian_ukk",
-      "label": "2. Aturan Koding & Standar Penilaian UKK",
+      "id": "panduan_lengkap_belajar_codebase_ukk_a_alur_pemesanan_oleh_penyewa",
+      "label": "A. Alur Pemesanan oleh Penyewa",
       "_origin": "ast",
       "community": 21,
       "community_name": "api.ts",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. aturan koding & standar penilaian ukk",
-      "source_file": "AGENTS.md",
-      "source_location": "L20"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_4_bedah_backend_controller_src_lib_api_ts",
-      "label": "4. Bedah Backend Controller: `src/lib/api.ts`",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. bedah backend controller: `src/lib/api.ts`",
+      "norm_label": "a. alur pemesanan oleh penyewa",
       "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L88"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_1_crud_master_lapangan",
-      "label": "Bagian 1: CRUD Master Lapangan",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "bagian 1: crud master lapangan",
-      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L92"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_2_transaksi_booking_cek_bentrok_jadwal",
-      "label": "Bagian 2: Transaksi Booking & Cek Bentrok Jadwal",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "bagian 2: transaksi booking & cek bentrok jadwal",
-      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L103"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_3_operasional_kasir_pelunasan",
-      "label": "Bagian 3: Operasional Kasir & Pelunasan",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "bagian 3: operasional kasir & pelunasan",
-      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L110"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_q6_bagaimana_rumus_perhitungan_dp_dan_pelunasan_di_aplikasi_ini",
-      "label": "Q6: \"Bagaimana rumus perhitungan DP dan pelunasan di aplikasi ini?\"",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q6: \"bagaimana rumus perhitungan dp dan pelunasan di aplikasi ini?\"",
-      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L193"
+      "source_location": "L154"
     },
     {
       "id": "panduan_penjelasan_backend_ukk_3_src_lib_api_ts_api_controller_query_builder",
@@ -4629,16 +4427,59 @@
       "source_location": "L50"
     },
     {
-      "id": "panduan_penjelasan_backend_ukk_q4_bagaimana_rumus_perhitungan_dp_50_dan_sisa_bayar_di_sistem_ini",
-      "label": "Q4: \"Bagaimana rumus perhitungan DP 50% dan sisa bayar di sistem ini?\"",
+      "id": "package_scripts",
+      "label": "scripts",
       "_origin": "ast",
-      "community": 21,
-      "community_name": "api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q4: \"bagaimana rumus perhitungan dp 50% dan sisa bayar di sistem ini?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L80"
+      "community": 22,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L10"
     },
     {
       "id": "tsconfig",
@@ -5250,70 +5091,169 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker",
-      "label": "CashierDatePicker.tsx",
+      "id": "package_devdependencies",
+      "label": "devDependencies",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "cashierdatepicker.tsx",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L1"
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L28"
     },
     {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_day_names",
-      "label": "DAY_NAMES",
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "day_names",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L20"
+      "norm_label": "eslint",
+      "source_file": "package.json",
+      "source_location": "L35"
     },
     {
-      "id": "src_components_cashier_dashboard_01_cashierdatepicker_month_names",
-      "label": "MONTH_NAMES",
+      "id": "package_devdependencies_eslint_js",
+      "label": "@eslint/js",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "month_names",
-      "source_file": "src/components/cashier/dashboard-01/CashierDatePicker.tsx",
-      "source_location": "L15"
+      "norm_label": "@eslint/js",
+      "source_file": "package.json",
+      "source_location": "L29"
     },
     {
-      "id": "src_components_reservation_components_reservationnavbar",
-      "label": "ReservationNavbar.tsx",
+      "id": "package_devdependencies_eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "reservationnavbar.tsx",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L1"
+      "norm_label": "eslint-plugin-react-hooks",
+      "source_file": "package.json",
+      "source_location": "L36"
     },
     {
-      "id": "src_components_reservation_components_reservationnavbar_day_names",
-      "label": "DAY_NAMES",
+      "id": "package_devdependencies_eslint_plugin_react_refresh",
+      "label": "eslint-plugin-react-refresh",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "day_names",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L16"
+      "norm_label": "eslint-plugin-react-refresh",
+      "source_file": "package.json",
+      "source_location": "L37"
     },
     {
-      "id": "src_components_reservation_components_reservationnavbar_month_names",
-      "label": "MONTH_NAMES",
+      "id": "package_devdependencies_globals",
+      "label": "globals",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CashierDatePicker.tsx",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "month_names",
-      "source_file": "src/components/reservation/components/ReservationNavbar.tsx",
-      "source_location": "L11"
+      "norm_label": "globals",
+      "source_file": "package.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "package_devdependencies_playwright_test",
+      "label": "@playwright/test",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@playwright/test",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "package_devdependencies_pngjs",
+      "label": "pngjs",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "pngjs",
+      "source_file": "package.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/node",
+      "source_file": "package.json",
+      "source_location": "L31"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "package.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "package.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "package_devdependencies_typescript_eslint",
+      "label": "typescript-eslint",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript-eslint",
+      "source_file": "package.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "package_devdependencies_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "package_devdependencies_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L34"
     },
     {
       "id": "flowchart_ukk",
@@ -5804,6 +5744,18 @@
       "source_location": "L58"
     },
     {
+      "id": "panduan_lengkap_belajar_codebase_ukk_4_bedah_backend_controller_src_lib_api_ts",
+      "label": "4. Bedah Backend Controller: `src/lib/api.ts`",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. bedah backend controller: `src/lib/api.ts`",
+      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
+      "source_location": "L88"
+    },
+    {
       "id": "panduan_lengkap_belajar_codebase_ukk_5_logika_bisnis_perhitungan_biaya",
       "label": "5. Logika Bisnis & Perhitungan Biaya",
       "_origin": "ast",
@@ -5838,18 +5790,6 @@
       "norm_label": "7. bocoran 10 pertanyaan penguji ukk & cara jawab taktis",
       "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
       "source_location": "L174"
-    },
-    {
-      "id": "panduan_lengkap_belajar_codebase_ukk_a_alur_pemesanan_oleh_penyewa",
-      "label": "A. Alur Pemesanan oleh Penyewa",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "a. alur pemesanan oleh penyewa",
-      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
-      "source_location": "L154"
     },
     {
       "id": "panduan_lengkap_belajar_codebase_ukk_a_tabel_lapangan_master_data",
@@ -5922,6 +5862,42 @@
       "norm_label": "b. tech stack resmi",
       "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
       "source_location": "L14"
+    },
+    {
+      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_1_crud_master_lapangan",
+      "label": "Bagian 1: CRUD Master Lapangan",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "bagian 1: crud master lapangan",
+      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
+      "source_location": "L92"
+    },
+    {
+      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_2_transaksi_booking_cek_bentrok_jadwal",
+      "label": "Bagian 2: Transaksi Booking & Cek Bentrok Jadwal",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "bagian 2: transaksi booking & cek bentrok jadwal",
+      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
+      "source_location": "L103"
+    },
+    {
+      "id": "panduan_lengkap_belajar_codebase_ukk_bagian_3_operasional_kasir_pelunasan",
+      "label": "Bagian 3: Operasional Kasir & Pelunasan",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "bagian 3: operasional kasir & pelunasan",
+      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
+      "source_location": "L110"
     },
     {
       "id": "panduan_lengkap_belajar_codebase_ukk_c_diagram_arsitektur_3_lapis_3_tier_architecture",
@@ -6020,6 +5996,18 @@
       "source_location": "L190"
     },
     {
+      "id": "panduan_lengkap_belajar_codebase_ukk_q6_bagaimana_rumus_perhitungan_dp_dan_pelunasan_di_aplikasi_ini",
+      "label": "Q6: \"Bagaimana rumus perhitungan DP dan pelunasan di aplikasi ini?\"",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q6: \"bagaimana rumus perhitungan dp dan pelunasan di aplikasi ini?\"",
+      "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
+      "source_location": "L193"
+    },
+    {
       "id": "panduan_lengkap_belajar_codebase_ukk_q7_bagaimana_cara_kerja_query_pencarian_kasir_agar_tidak_lambat",
       "label": "Q7: \"Bagaimana cara kerja query pencarian kasir agar tidak lambat?\"",
       "_origin": "ast",
@@ -6054,150 +6042,6 @@
       "norm_label": "q9: \"apa keunggulan react 19 dan tailwind css v4 di proyek ini?\"",
       "source_file": "PANDUAN_LENGKAP_BELAJAR_CODEBASE_UKK.md",
       "source_location": "L202"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk",
-      "label": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "panduan_penjelasan_backend_ukk.md",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_1_peta_arsitektur_frontend_vs_backend_di_aplikasi_ini",
-      "label": "1. Peta Arsitektur: \"Frontend vs Backend di Aplikasi Ini\"",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. peta arsitektur: \"frontend vs backend di aplikasi ini\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_1_src_types_database_ts_model_skema_data",
-      "label": "1. `src/types/database.ts` (Model / Skema Data)",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. `src/types/database.ts` (model / skema data)",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L38"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_2_src_lib_supabase_ts_inisialisasi_client",
-      "label": "2. `src/lib/supabase.ts` (Inisialisasi Client)",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. `src/lib/supabase.ts` (inisialisasi client)",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L45"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_2_tiga_berkas_kunci_backend_yang_wajib_dibuka_saat_sidang",
-      "label": "2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. tiga berkas kunci backend yang wajib dibuka saat sidang",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_3_bocoran_5_pertanyaan_penguji_ukk_cara_jawab_santai",
-      "label": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. bocoran 5 pertanyaan penguji ukk & cara jawab santai",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L60"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_4_rangkuman_struktur_folder_proyek_yang_rapi",
-      "label": "4. Rangkuman Struktur Folder Proyek yang Rapi",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. rangkuman struktur folder proyek yang rapi",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L95"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_panduan_strategi_menjelaskan_backend_ke_penguji_ukk",
-      "label": "Panduan & Strategi Menjelaskan Backend ke Penguji UKK",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "panduan & strategi menjelaskan backend ke penguji ukk",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q1_mana_server_backend_kamu_kok_tidak_pakai_express_js_atau_laravel",
-      "label": "Q1: \"Mana server backend kamu? Kok tidak pakai Express.js atau Laravel?\"",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q1: \"mana server backend kamu? kok tidak pakai express.js atau laravel?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L62"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q2_bagaimana_cara_sistem_kamu_mencegah_dua_orang_booking_jam_yang_sama_bentrok_jadwal",
-      "label": "Q2: \"Bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q2: \"bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L68"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q3_bagaimana_relasi_antar_tabel_di_basis_data_kamu",
-      "label": "Q3: \"Bagaimana relasi antar tabel di basis data kamu?\"",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q3: \"bagaimana relasi antar tabel di basis data kamu?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L74"
-    },
-    {
-      "id": "panduan_penjelasan_backend_ukk_q5_apa_tipe_data_kolom_jam_dan_tanggal_di_database",
-      "label": "Q5: \"Apa tipe data kolom jam dan tanggal di database?\"",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "7. Bocoran 10 Pertanyaan Penguji UKK & Cara Jawab Taktis",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "q5: \"apa tipe data kolom jam dan tanggal di database?\"",
-      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
-      "source_location": "L89"
     },
     {
       "id": "package_dependencies",
@@ -6407,6 +6251,162 @@
       "norm_label": "tailwind-merge",
       "source_file": "package.json",
       "source_location": "L25"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk",
+      "label": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "panduan_penjelasan_backend_ukk.md",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_1_peta_arsitektur_frontend_vs_backend_di_aplikasi_ini",
+      "label": "1. Peta Arsitektur: \"Frontend vs Backend di Aplikasi Ini\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. peta arsitektur: \"frontend vs backend di aplikasi ini\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_1_src_types_database_ts_model_skema_data",
+      "label": "1. `src/types/database.ts` (Model / Skema Data)",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. `src/types/database.ts` (model / skema data)",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L38"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_2_src_lib_supabase_ts_inisialisasi_client",
+      "label": "2. `src/lib/supabase.ts` (Inisialisasi Client)",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. `src/lib/supabase.ts` (inisialisasi client)",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_2_tiga_berkas_kunci_backend_yang_wajib_dibuka_saat_sidang",
+      "label": "2. Tiga Berkas Kunci Backend yang Wajib Dibuka Saat Sidang",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. tiga berkas kunci backend yang wajib dibuka saat sidang",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_3_bocoran_5_pertanyaan_penguji_ukk_cara_jawab_santai",
+      "label": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. bocoran 5 pertanyaan penguji ukk & cara jawab santai",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_4_rangkuman_struktur_folder_proyek_yang_rapi",
+      "label": "4. Rangkuman Struktur Folder Proyek yang Rapi",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. rangkuman struktur folder proyek yang rapi",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L95"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_panduan_strategi_menjelaskan_backend_ke_penguji_ukk",
+      "label": "Panduan & Strategi Menjelaskan Backend ke Penguji UKK",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "panduan & strategi menjelaskan backend ke penguji ukk",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_q1_mana_server_backend_kamu_kok_tidak_pakai_express_js_atau_laravel",
+      "label": "Q1: \"Mana server backend kamu? Kok tidak pakai Express.js atau Laravel?\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q1: \"mana server backend kamu? kok tidak pakai express.js atau laravel?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L62"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_q2_bagaimana_cara_sistem_kamu_mencegah_dua_orang_booking_jam_yang_sama_bentrok_jadwal",
+      "label": "Q2: \"Bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q2: \"bagaimana cara sistem kamu mencegah dua orang booking jam yang sama (bentrok jadwal)?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L68"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_q3_bagaimana_relasi_antar_tabel_di_basis_data_kamu",
+      "label": "Q3: \"Bagaimana relasi antar tabel di basis data kamu?\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q3: \"bagaimana relasi antar tabel di basis data kamu?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L74"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_q4_bagaimana_rumus_perhitungan_dp_50_dan_sisa_bayar_di_sistem_ini",
+      "label": "Q4: \"Bagaimana rumus perhitungan DP 50% dan sisa bayar di sistem ini?\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q4: \"bagaimana rumus perhitungan dp 50% dan sisa bayar di sistem ini?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L80"
+    },
+    {
+      "id": "panduan_penjelasan_backend_ukk_q5_apa_tipe_data_kolom_jam_dan_tanggal_di_database",
+      "label": "Q5: \"Apa tipe data kolom jam dan tanggal di database?\"",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "3. Bocoran 5 Pertanyaan Penguji UKK & Cara Jawab Santai",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "q5: \"apa tipe data kolom jam dan tanggal di database?\"",
+      "source_file": "PANDUAN_PENJELASAN_BACKEND_UKK.md",
+      "source_location": "L89"
     },
     {
       "id": "leaflet",
@@ -6820,18 +6820,6 @@
       "type": "external"
     },
     {
-      "id": "ref_ui_checkbox",
-      "label": "ref_ui_checkbox",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_ui_checkbox",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_assets_hero_video",
       "label": "src_assets_hero_video",
       "_origin": "semantic",
@@ -6864,6 +6852,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_index",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_ui_checkbox",
+      "label": "ref_ui_checkbox",
+      "_origin": "semantic",
+      "community": 23,
+      "community_name": "ref_ui_checkbox",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_ui_checkbox",
       "source_file": "",
       "type": "external"
     },
@@ -7682,7 +7682,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L10",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11979,18 +11979,6 @@
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
       "source_location": "L4",
       "type_only": true,
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_blanca_reservation_components_reservationsidepanel",
-      "target": "ref_ui_checkbox",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -16419,7 +16407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -16430,7 +16418,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/blanca/reservation/components/ReservationSidePanel.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -18748,5 +18736,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "491417121e4b080307543590e0c65d4c058886a8"
+  "built_at_commit": "ba247c74be60aad0568c785099d326e8d7e894bc"
 }

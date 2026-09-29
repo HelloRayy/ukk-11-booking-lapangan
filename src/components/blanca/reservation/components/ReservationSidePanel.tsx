@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import type { CustomerInfo } from '../types'
-import { Checkbox } from '../../../ui/checkbox'
 
 interface ReservationSidePanelProps {
   isOpen: boolean
@@ -251,13 +250,14 @@ export default function ReservationSidePanel({
                     />
                   </div>
 
-                  {/* Checkbox Konfirmasi Kebenaran Data (shadcn UI Checkbox) */}
+                  {/* Checkbox Konfirmasi Kebenaran Data */}
                   <div className="flex items-center gap-3 pt-2 select-none group">
-                    <Checkbox
+                    <input
+                      type="checkbox"
                       id="confirm_checkbox"
                       checked={customerInfo.isConfirmed}
-                      onCheckedChange={(checked) => onUpdateField('isConfirmed', checked === true)}
-                      className="border-white/30 data-[state=checked]:bg-[#f2d953] data-[state=checked]:border-[#f2d953] data-[state=checked]:text-[#161616] focus-visible:ring-[#f2d953]"
+                      onChange={(e) => onUpdateField('isConfirmed', e.target.checked)}
+                      className="w-4 h-4 rounded border-white/30 bg-zinc-900 text-[#f2d953] accent-[#f2d953] focus:ring-[#f2d953] cursor-pointer"
                     />
                     <label
                       htmlFor="confirm_checkbox"
