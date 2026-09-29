@@ -8,11 +8,11 @@ Diagram ini menggambarkan susunan **2 tabel utama** di basis data Supabase (Post
 
 ---
 
-## 1. Diagram ERD Resmi (Relasi 1-to-Many)
+## 1. Diagram PDM / ERD Resmi (Relasi 1-to-Many)
 
 ```mermaid
 erDiagram
-    LAPANGAN ||--o{ BOOKING : "dipesan dalam"
+    LAPANGAN ||--o{ BOOKING : "membuat pesanan"
 
     LAPANGAN {
         int id PK "Nomor ID Lapangan"
@@ -23,7 +23,7 @@ erDiagram
 
     BOOKING {
         int id PK "Nomor Transaksi Unik"
-        int lapangan_id FK "Relasi ke Lapangan (One-to-Many)"
+        int lapangan_id FK "Relasi ke Lapangan (Foreign Key)"
         string nama_penyewa "Nama Pemesan"
         string no_hp "Nomor WhatsApp (Tipe String)"
         date tgl_main "Tanggal Main (YYYY-MM-DD)"
@@ -41,9 +41,11 @@ erDiagram
 
 ## 2. Penjelasan Relasi Basis Data untuk Sidang UKK
 
-### Hubungan `LAPANGAN` ke `BOOKING` (1-to-Many)
-- **Artinya**: 1 Lapangan fisik dapat disewa berulang kali untuk banyak transaksi pemesanan pada jam atau tanggal yang berbeda.
-- **Implementasi Kunci**: Pada tabel `BOOKING`, terdapat kolom `lapangan_id` (*Foreign Key*) yang terhubung langsung ke `id` (*Primary Key*) pada tabel `LAPANGAN`.
+### Kenapa Label Relasinya "Membuat Pesanan"?
+- **Alur Bisnis**: Satu baris data `LAPANGAN` dapat dipilih berulang kali oleh pelanggan untuk **membuat pesanan** (`BOOKING`) pada tanggal atau jam yang berbeda.
+- **Kardinalitas 1-to-Many (1:N)**:
+  - 1 Lapangan dapat memiliki banyak pesanan booking (`1 : M`).
+  - 1 Pesanan booking hanya merujuk pada 1 lapangan tertentu melalui kolom `lapangan_id` (*Foreign Key*).
 
 ---
 
@@ -59,3 +61,32 @@ erDiagram
 
 ### 3. "Mengapa tidak ada tabel petugas/users?"
 > **Jawaban**: *"Aplikasi berfokus pada arsitektur inti UKK (1 Master Data + 1 Transaksi Aktivitas). Operasional kasir dirancang terintegrasi langsung untuk efisiensi gelanggang tanpa birokrasi sesi login yang rumit, sehingga data transaksi langsung dikelola secara fungsional di dashboard kasir."*
+
+---
+
+## 4. Perbedaan ERD (Konseptual) vs PDM (Fisik)
+
+- **ERD (Entity Relationship Diagram)**:
+  - Bersifat konseptual/logis.
+  - Fokus pada nama entitas dan hubungan bisnis (misal: "Penyewa membuat Pesanan").
+  - Belum memuat tipe data teknis (`int`, `varchar`) atau penanda `PK`/`FK`.
+- **PDM (Physical Data Model)**:
+  - Bersifat fisik/teknis langsung sesuai struktur database asli.
+  - Menampilkan nama kolom presisi, tipe data database (`int`, `string`, `date`), serta penanda `PK` dan `FK`.
+  - Diagram di atas adalah **PDM** karena sudah mencantumkan tipe data dan kolom riil Supabase.
+
+---
+
+## 5. Perbandingan Relasi: 2 Tabel (Riil) vs 3 Tabel (Teori Sekolah)
+
+### Model 1: 2 Tabel (Proyek Kita - Efisien & Anti-Jebakan)
+- Relasi: `LAPANGAN` -> (membuat pesanan) -> `BOOKING`
+- Identitas pemesan langsung masuk ke kolom `nama_penyewa` & `no_hp`.
+
+### Model 2: 3 Tabel (Jika Penguji Mewajibkan Entitas Penyewa Terpisah)
+```mermaid
+erDiagram
+    PENYEWA ||--o{ BOOKING : "membuat pesanan"
+    LAPANGAN ||--o{ BOOKING : "disediakan untuk"
+```
+- **Catatan Sidang**: Jika penguji bertanya *"Siapa yang membuat pesanan?"*, jawab: *"Pelanggan langsung membuat pesanan di kasir dengan mencatat nama dan no WhatsApp ke tabel booking tanpa perlu register akun."*

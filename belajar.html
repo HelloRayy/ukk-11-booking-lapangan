@@ -119,6 +119,10 @@
         <span class="w-5 h-5 rounded-full bg-zinc-800 text-zinc-400 text-xs flex items-center justify-center mono">5</span>
         Bocoran Kuis Sidang Penguji (8 Soal)
       </button>
+      <button onclick="switchTab('pdm-erd')" id="tab-btn-pdm-erd" class="tab-button px-4 py-2.5 border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 transition flex items-center gap-2">
+        <span class="w-5 h-5 rounded-full bg-zinc-800 text-zinc-400 text-xs flex items-center justify-center mono">6</span>
+        Diagram PDM / ERD Database
+      </button>
     </nav>
 
     <!-- ==================================================================== -->
@@ -562,6 +566,175 @@
       </div>
     </section>
 
+    <!-- ==================================================================== -->
+    <!-- TAB 6: DIAGRAM PDM / ERD DATABASE -->
+    <!-- ==================================================================== -->
+    <section id="tab-pdm-erd" class="hidden space-y-6">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-8 shadow-xl">
+        <div class="border-b border-zinc-800 pb-4">
+          <span class="text-xs uppercase mono tracking-widest text-emerald-400 font-bold">Struktur Basis Data & PDM</span>
+          <h2 class="text-2xl font-bold text-zinc-100 mt-1">
+            Diagram PDM (Physical Data Model) & Relasi "Membuat Pesanan"
+          </h2>
+          <p class="text-sm text-zinc-400 mt-1">
+            Diagram ini adalah PDM fisik resmi 2 tabel di Supabase yang terhubung 100% dengan kode <span class="mono text-emerald-300">src/types/database.ts</span>.
+          </p>
+        </div>
+
+        <!-- VISUAL DIAGRAM INTERAKTIF -->
+        <div class="bg-zinc-950 border border-zinc-800/80 rounded-2xl p-6 space-y-6">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+            
+            <!-- TABEL 1: LAPANGAN -->
+            <div class="w-full lg:w-72 bg-zinc-900/90 border-2 border-emerald-500/40 rounded-xl overflow-hidden shadow-lg">
+              <div class="bg-emerald-950/80 border-b border-emerald-500/30 px-4 py-2.5 flex justify-between items-center">
+                <span class="font-bold text-emerald-400 text-sm mono">LAPANGAN</span>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded mono">Master Data</span>
+              </div>
+              <div class="divide-y divide-zinc-800/60 text-xs font-mono p-1">
+                <div class="flex justify-between items-center px-3 py-1.5 text-amber-300 bg-amber-500/10 rounded">
+                  <span>id</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-zinc-500 text-[10px]">int</span>
+                    <span class="px-1.5 py-0.2 bg-amber-400/20 text-amber-300 font-bold text-[9px] rounded">PK</span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>nama_lapangan</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>tarif_per_jam</span>
+                  <span class="text-zinc-500 text-[10px]">int</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>status</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RELASI KONEKTOR: 1 to M (MEMBUAT PESANAN) -->
+            <div class="flex flex-col items-center justify-center px-4 py-3 bg-zinc-900 border border-zinc-700/60 rounded-xl text-center space-y-1.5 max-w-xs shadow-inner">
+              <span class="text-[10px] mono text-zinc-400 uppercase tracking-widest font-semibold">Relasi 1 : M (One to Many)</span>
+              <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                <span>1</span>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-blue-500"></div>
+                <span>M</span>
+              </div>
+              <div class="inline-block px-3 py-1 bg-emerald-500/20 border border-emerald-500/40 rounded-full text-emerald-300 text-xs font-bold">
+                "membuat pesanan"
+              </div>
+              <p class="text-[10px] text-zinc-400 leading-relaxed mt-1">
+                1 Lapangan dapat dipilih berulang kali oleh penyewa untuk <strong>membuat pesanan</strong> booking.
+              </p>
+            </div>
+
+            <!-- TABEL 2: BOOKING -->
+            <div class="w-full lg:w-80 bg-zinc-900/90 border-2 border-blue-500/40 rounded-xl overflow-hidden shadow-lg">
+              <div class="bg-blue-950/80 border-b border-blue-500/30 px-4 py-2.5 flex justify-between items-center">
+                <span class="font-bold text-blue-400 text-sm mono">BOOKING</span>
+                <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded mono">Transaksi</span>
+              </div>
+              <div class="divide-y divide-zinc-800/60 text-xs font-mono p-1 max-h-72 overflow-y-auto">
+                <div class="flex justify-between items-center px-3 py-1.5 text-amber-300 bg-amber-500/10 rounded">
+                  <span>id</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-zinc-500 text-[10px]">int</span>
+                    <span class="px-1.5 py-0.2 bg-amber-400/20 text-amber-300 font-bold text-[9px] rounded">PK</span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-blue-300 bg-blue-500/10 rounded">
+                  <span>lapangan_id</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-zinc-500 text-[10px]">int</span>
+                    <span class="px-1.5 py-0.2 bg-blue-400/20 text-blue-300 font-bold text-[9px] rounded">FK</span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>nama_penyewa</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>no_hp</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>tgl_main</span>
+                  <span class="text-zinc-500 text-[10px]">date</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>jam_slots</span>
+                  <span class="text-zinc-500 text-[10px]">string[]</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>durasi_jam</span>
+                  <span class="text-zinc-500 text-[10px]">int</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>total_bayar</span>
+                  <span class="text-zinc-500 text-[10px]">int</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>nominal_dibayar</span>
+                  <span class="text-zinc-500 text-[10px]">int</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>sisa_bayar</span>
+                  <span class="text-zinc-500 text-[10px]">int</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>tipe_bayar</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+                <div class="flex justify-between items-center px-3 py-1.5 text-zinc-300">
+                  <span>status</span>
+                  <span class="text-zinc-500 text-[10px]">string</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3 KARTU PENJELASAN KRUSIAL SIDANG -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          
+          <div class="bg-zinc-950/70 border border-zinc-800 p-4 rounded-2xl space-y-2">
+            <span class="text-amber-400 font-bold mono block text-sm">1. Ini PDM, Bukan ERD Murni</span>
+            <p class="text-zinc-300 leading-relaxed">
+              <strong>ERD (Konseptual)</strong> hanya memuat nama entitas dan garis relasi bisnis tanpa tipe data.<br/>
+              <strong>PDM (Fisik)</strong> mencantumkan nama kolom persis di database, tipe data (<span class="mono text-zinc-400">int, string, date</span>), serta label <span class="mono text-amber-300">PK</span> dan <span class="mono text-blue-300">FK</span>. Diagram kita adalah PDM.
+            </p>
+          </div>
+
+          <div class="bg-zinc-950/70 border border-zinc-800 p-4 rounded-2xl space-y-2">
+            <span class="text-emerald-400 font-bold mono block text-sm">2. Arti Relasi "Membuat Pesanan"</span>
+            <p class="text-zinc-300 leading-relaxed">
+              Hubungan dari master <strong>LAPANGAN</strong> ke transaksi <strong>BOOKING</strong> adalah <em>1-to-Many</em>. Pelanggan memilih lapangan tertentu untuk <strong>membuat pesanan</strong>. Kuncinya ada di kolom <span class="mono text-blue-300">booking.lapangan_id</span>.
+            </p>
+          </div>
+
+          <div class="bg-zinc-950/70 border border-zinc-800 p-4 rounded-2xl space-y-2">
+            <span class="text-blue-400 font-bold mono block text-sm">3. Mengapa Tanpa Tabel Petugas?</span>
+            <p class="text-zinc-300 leading-relaxed">
+              Supabase kita hanya menggunakan 2 tabel riil. Tidak ada tabel petugas atau kolom <span class="mono text-zinc-400">petugas_id</span>. Kasir beroperasi langsung tanpa login rumit agar aman dari jebakan pertanyaan autentikasi dan token JWT.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- SKRIP JAWABAN JIKA PENGUJI NANYA MODEL 3 TABEL -->
+        <div class="bg-zinc-950 border border-zinc-800 p-5 rounded-2xl space-y-2">
+          <span class="text-xs uppercase mono text-zinc-500 font-bold">Skrip Sidang Penguji: Jika Ditanya "Siapa yang Membuat Pesanan?"</span>
+          <p class="text-sm text-zinc-300 italic">
+            "Pelanggan langsung membuat pesanan di sistem kasir/reservasi kami, Pak/Bu. Untuk efisiensi operasional gelanggang tanpa birokrasi pendaftaran akun, data penyewa (nama dan no WhatsApp) langsung dicatat di baris transaksi BOOKING. Jika ingin dipisah menjadi 3 tabel normalisasi, entitas PENYEWA tinggal ditarik keluar dengan relasi 1 Penyewa membuat Banyak Booking."
+          </p>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- ==================================================================== -->
@@ -572,7 +745,7 @@
     // 1. MANAJEMEN TAB UTAMA
     // ========================================================================
     function switchTab(tabId) {
-      const tabs = ['flowchart-sidang', 'step-by-step', 'kamus-file', 'simulator', 'kuis-sidang'];
+      const tabs = ['flowchart-sidang', 'step-by-step', 'kamus-file', 'simulator', 'kuis-sidang', 'pdm-erd'];
       tabs.forEach(t => {
         document.getElementById(`tab-${t}`).classList.add('hidden');
         const btn = document.getElementById(`tab-btn-${t}`);
