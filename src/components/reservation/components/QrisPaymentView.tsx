@@ -88,42 +88,11 @@ export default function QrisPaymentView({
           </div>
 
           <div className="w-40 h-40 bg-white p-1 rounded-lg flex items-center justify-center">
-            <svg viewBox="0 0 100 100" className="w-full h-full" shapeRendering="crispEdges">
-              <rect width="100" height="100" fill="white" />
-              <rect x="5" y="5" width="30" height="30" fill="black" />
-              <rect x="10" y="10" width="20" height="20" fill="white" />
-              <rect x="15" y="15" width="10" height="10" fill="black" />
-
-              <rect x="65" y="5" width="30" height="30" fill="black" />
-              <rect x="70" y="10" width="20" height="20" fill="white" />
-              <rect x="75" y="15" width="10" height="10" fill="black" />
-
-              <rect x="5" y="65" width="30" height="30" fill="black" />
-              <rect x="10" y="70" width="20" height="20" fill="white" />
-              <rect x="15" y="75" width="10" height="10" fill="black" />
-
-              <rect x="40" y="15" width="5" height="5" fill="black" />
-              <rect x="50" y="15" width="5" height="5" fill="black" />
-              <rect x="15" y="40" width="5" height="5" fill="black" />
-              <rect x="15" y="50" width="5" height="5" fill="black" />
-
-              <rect x="42" y="32" width="6" height="6" fill="black" />
-              <rect x="52" y="32" width="6" height="6" fill="black" />
-              <rect x="62" y="32" width="6" height="6" fill="black" />
-              <rect x="42" y="42" width="6" height="6" fill="black" />
-              <rect x="48" y="48" width="6" height="6" fill="black" />
-              <rect x="58" y="42" width="6" height="6" fill="black" />
-              <rect x="68" y="42" width="6" height="6" fill="black" />
-              <rect x="42" y="52" width="6" height="6" fill="black" />
-              <rect x="52" y="62" width="6" height="6" fill="black" />
-              <rect x="62" y="52" width="6" height="6" fill="black" />
-              <rect x="72" y="62" width="6" height="6" fill="black" />
-              <rect x="42" y="72" width="6" height="6" fill="black" />
-              <rect x="52" y="82" width="6" height="6" fill="black" />
-              <rect x="62" y="72" width="6" height="6" fill="black" />
-              <rect x="72" y="82" width="6" height="6" fill="black" />
-              <rect x="82" y="72" width="6" height="6" fill="black" />
-            </svg>
+            <img
+              src="/assets/QR_Code_Example.svg.webp"
+              alt="QRIS Blanca Arena"
+              className="w-full h-full object-contain"
+            />
           </div>
 
           <div className="w-full text-center mt-2 pt-1.5 border-t border-gray-100">

@@ -7,7 +7,7 @@
 // 2. Set Status Lapangan: Aktif (Enable) <-> Tutup (Disable)
 // ============================================================================
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Lapangan, StatusLapangan } from '../../../types/database'
 import { createLapangan, updateLapangan, deleteLapangan } from '../../../lib/api'
 import { formatRupiah } from '../../../utils/formatters'
@@ -16,7 +16,7 @@ import { Plus, Trash2, Power, Layers, Pencil, X } from 'lucide-react'
 interface CourtsManagementViewProps {
   courts: Lapangan[]
   loading: boolean
-  onCourtsUpdated: () => void
+  onCourtsUpdated: () => void | Promise<void>
 }
 
 export default function CourtsManagementView({
@@ -24,6 +24,13 @@ export default function CourtsManagementView({
   loading,
   onCourtsUpdated,
 }: CourtsManagementViewProps) {
+  // State Lokal Lapangan (Optimistic UI Update Seketika)
+  const [localCourts, setLocalCourts] = useState<Lapangan[]>(courts)
+
+  useEffect(() => {
+    setLocalCourts(courts)
+  }, [courts])
+
   // 1. State Form Tambah Lapangan Baru
   const [nama, setNama] = useState('')
   const [tarif, setTarif] = useState<number>(50000)
@@ -103,11 +110,16 @@ export default function CourtsManagementView({
   // 3. Aksi UPDATE STATUS: Toggle Aktif (Enable) <-> Tutup (Disable)
   const handleToggleStatus = async (court: Lapangan) => {
     const statusBaru: StatusLapangan = court.status === 'Aktif' ? 'Tutup' : 'Aktif'
+    // Optimistic UI update seketika
+    setLocalCourts((prev) =>
+      prev.map((c) => (c.id === court.id ? { ...c, status: statusBaru } : c))
+    )
     try {
       setErrorMsg(null)
       await updateLapangan(court.id, { status: statusBaru })
-      onCourtsUpdated()
+      await onCourtsUpdated()
     } catch (err: any) {
+      setLocalCourts(courts)
       setErrorMsg(err.message || 'Gagal mengubah status lapangan.')
     }
   }
@@ -119,7 +131,7 @@ export default function CourtsManagementView({
     try {
       setErrorMsg(null)
       await deleteLapangan(id)
-      onCourtsUpdated()
+      await onCourtsUpdated()
     } catch (err: any) {
       setErrorMsg(err.message || 'Gagal menghapus lapangan.')
     }
@@ -140,13 +152,13 @@ export default function CourtsManagementView({
         </div>
         <div className="flex items-center gap-3 text-sm">
           <span className="px-3 py-1 bg-zinc-800 rounded-lg text-zinc-300">
-            Total: <strong>{courts.length}</strong>
+            Total: <strong>{localCourts.length}</strong>
           </span>
           <span className="px-3 py-1 bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 rounded-lg">
-            Aktif: <strong>{courts.filter((c) => c.status === 'Aktif').length}</strong>
+            Aktif: <strong>{localCourts.filter((c) => c.status === 'Aktif').length}</strong>
           </span>
           <span className="px-3 py-1 bg-rose-950/60 border border-rose-800/40 text-rose-400 rounded-lg">
-            Tutup: <strong>{courts.filter((c) => c.status === 'Tutup').length}</strong>
+            Tutup: <strong>{localCourts.filter((c) => c.status === 'Tutup').length}</strong>
           </span>
         </div>
       </div>
@@ -234,14 +246,14 @@ export default function CourtsManagementView({
                   Memuat data lapangan...
                 </td>
               </tr>
-            ) : courts.length === 0 ? (
+            ) : localCourts.length === 0 ? (
               <tr>
                 <td colSpan={5} className="py-8 text-center text-zinc-500">
                   Belum ada data lapangan.
                 </td>
               </tr>
             ) : (
-              courts.map((court) => {
+              localCourts.map((court) => {
                 const isAktif = court.status === 'Aktif'
                 return (
                   <tr key={court.id} className="hover:bg-zinc-800/40 transition">

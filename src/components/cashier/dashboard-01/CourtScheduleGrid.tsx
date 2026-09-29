@@ -86,10 +86,11 @@ export default function CourtScheduleGrid({
   // State Pencarian Jadwal Lapangan (Search Bar)
   const [searchQuery, setSearchQuery] = useState('')
 
-  // Mapping courts Lapangan[] ke Court[] 1:1
+  // Mapping courts Lapangan[] ke Court[] 1:1 (Hanya tampilkan lapangan berstatus 'Aktif' di grid jadwal kasir)
   const mappedCourts: Court[] = useMemo(() => {
     if (courts && courts.length > 0) {
-      return courts.map((c) => ({
+      const activeCourts = courts.filter((c) => c.status === 'Aktif')
+      return activeCourts.map((c) => ({
         id: c.id,
         name: c.nama_lapangan,
         type: c.nama_lapangan.toLowerCase().includes('futsal') ? 'Vinyl Flooring' : 'Panoramic Glass',
@@ -97,12 +98,7 @@ export default function CourtScheduleGrid({
         pricePerHour: c.tarif_per_jam,
       }))
     }
-    return [
-      { id: 1, name: 'Court 1', type: 'Panoramic Glass', image: '/assets/courts/court-1.webp', pricePerHour: 50000 },
-      { id: 2, name: 'Court 2', type: 'Pro Championship', image: '/assets/courts/court-2.webp', pricePerHour: 50000 },
-      { id: 3, name: 'Court 3', type: 'VIP Indoor AC', image: '/assets/courts/court-3.webp', pricePerHour: 50000 },
-      { id: 4, name: 'Court 4', type: 'Training Ground', image: '/assets/courts/court-4.webp', pricePerHour: 100000 },
-    ]
+    return []
   }, [courts])
 
   // Mapping DbBooking[] ke BookingItem[] 1:1
@@ -763,7 +759,7 @@ export default function CourtScheduleGrid({
                   <div className="p-4 rounded-2xl bg-[#1c1c1c] border border-[#2e2e2e] flex flex-col items-center justify-center relative overflow-hidden">
                     <div className="relative p-2.5 bg-white rounded-xl shadow-lg">
                       <img
-                        src="/assets/quiz-button.png"
+                        src="/assets/QR_Code_Example.svg.webp"
                         alt="QRIS Pelunasan"
                         className="w-40 h-40 object-contain"
                       />
