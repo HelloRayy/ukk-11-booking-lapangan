@@ -36,9 +36,10 @@ export function useReservationData({ selectedDate }: ReservationDataProps) {
 
         if (!isMounted) return
 
-        // Format data lapangan
+        // Format data lapangan (Hanya tampilkan lapangan berstatus 'Aktif' untuk booking)
         if (dbCourts && dbCourts.length > 0) {
-          const mapped: Court[] = dbCourts.map((c) => ({
+          const activeCourts = dbCourts.filter((c) => c.status === 'Aktif')
+          const mapped: Court[] = activeCourts.map((c) => ({
             id: c.id,
             name: c.nama_lapangan,
             type: COURT_STYLE_MAP[c.id]?.type || 'Standard Court',
