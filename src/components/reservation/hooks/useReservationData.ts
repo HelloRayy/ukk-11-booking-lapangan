@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import type { Court, BookingItem } from '../types'
 import type { Booking as DbBooking } from '../../../types/database'
 import { getLapangan, getAllBookings, subscribeToBookings } from '../../../lib/api'
-import { FIXTURE_COURTS } from '../__mocks__/scheduleFixtures'
 import { COURT_STYLE_MAP, mapDbBookingsToItems } from '../utils/bookingMapper'
 
 interface ReservationDataProps {
@@ -50,7 +49,7 @@ export function useReservationData({ selectedDate }: ReservationDataProps) {
           }))
           setCourts(mapped)
         } else {
-          setCourts(FIXTURE_COURTS)
+          setCourts([])
         }
 
         if (dbBookings && dbBookings.length > 0) {
@@ -58,7 +57,7 @@ export function useReservationData({ selectedDate }: ReservationDataProps) {
         }
       } catch (err) {
         console.warn('Gagal menginisialisasi jadwal reservasi:', err)
-        if (isMounted) setCourts(FIXTURE_COURTS)
+        if (isMounted) setCourts([])
       } finally {
         if (isMounted) setIsLoading(false)
       }
