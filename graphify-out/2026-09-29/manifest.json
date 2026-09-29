@@ -786,16 +786,16 @@
     "semantic_hash": ""
   },
   "src/lib/api.ts": {
-    "mtime": 1790397558.0249395,
-    "seen": 1790428398.4317,
-    "ast_hash": "aa158ec61d005e8c7e814c700368fcf6",
-    "semantic_hash": "aa158ec61d005e8c7e814c700368fcf6"
+    "mtime": 1790646038.7064352,
+    "seen": 1790646053.5145557,
+    "ast_hash": "a2709d4243c41e20292fd2dba5288262",
+    "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
-    "mtime": 1789982020.0398033,
-    "seen": 1790428398.4317014,
-    "ast_hash": "958670aaba1bd769e706cea0591a3f62",
-    "semantic_hash": "958670aaba1bd769e706cea0591a3f62"
+    "mtime": 1790621567.0051687,
+    "seen": 1790646053.5145621,
+    "ast_hash": "4aa1fb1174a7e0af8b7b9d4c51b4644a",
+    "semantic_hash": ""
   },
   "src/lib/utils.ts": {
     "mtime": 1790483503.0938268,
@@ -978,9 +978,9 @@
     "semantic_hash": ""
   },
   "DFD_UKK.md": {
-    "mtime": 1790299501.3244,
-    "seen": 1790439877.675794,
-    "ast_hash": "b93a05391b7731d3c5738ff2bf354ed2",
+    "mtime": 1790484382.7415023,
+    "seen": 1790646053.5146258,
+    "ast_hash": "dcebfb6d988b6778e3e2e0b0caf8b500",
     "semantic_hash": ""
   },
   "ERD_UKK.md": {
@@ -1014,9 +1014,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789980153.8050807,
-    "seen": 1790439877.6758122,
-    "ast_hash": "b81d7c798d385d9081eafb0ab843e15c",
+    "mtime": 1790621751.4628727,
+    "seen": 1790646053.514647,
+    "ast_hash": "c8ea7c0497889876a14fc1709fc9173b",
     "semantic_hash": ""
   },
   "STRUKTUR_LAPORAN_UKK.md": {
@@ -1479,6 +1479,24 @@
     "mtime": 1790481599.7028837,
     "seen": 1790481700.7360106,
     "ast_hash": "5f6fee8da5f4fcd43651c3bd105526da",
+    "semantic_hash": ""
+  },
+  "DFD_CODE.txt": {
+    "mtime": 1790504133.227279,
+    "seen": 1790646053.5146217,
+    "ast_hash": "bd7c1432d66d00748c8e505d81fcb1d2",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/FR.IA.04A. Junior Programmer.pdf": {
+    "mtime": 1790601267.734355,
+    "seen": 1790646053.5146792,
+    "ast_hash": "4d905a0a6e5c75b9ac5c27615704b3ef",
+    "semantic_hash": ""
+  },
+  "gambar-ukk/WhatsApp Ptt 2026-09-28 at 15.57.09.ogg": {
+    "mtime": 1790601182.0890026,
+    "seen": 1790646053.514904,
+    "ast_hash": "d4496b2cff49396f0286a3b53836d45d",
     "semantic_hash": ""
   }
 }
