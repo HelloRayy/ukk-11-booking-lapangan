@@ -858,10 +858,10 @@
     "semantic_hash": "f9cb81ddcea69ffdab672fc8c48dca66"
   },
   "vite.config.ts": {
-    "mtime": 1790438268.4389446,
-    "seen": 1790439877.6757772,
-    "ast_hash": "0879161c3da5129a047bbb9d446688c6",
-    "semantic_hash": "0879161c3da5129a047bbb9d446688c6"
+    "mtime": 1790646473.418086,
+    "seen": 1790646522.5196872,
+    "ast_hash": "4c1421de8c97c049798122b4a0eba8d9",
+    "semantic_hash": ""
   },
   "public/assets/blanca/difference-video.mp4": {
     "mtime": 1790482929.412407,
@@ -1032,9 +1032,9 @@
     "semantic_hash": ""
   },
   "belajar.html": {
-    "mtime": 1790003372.2238064,
-    "seen": 1790439877.67584,
-    "ast_hash": "c2669d20678003ddd621188c0b63df20",
+    "mtime": 1790646512.4302378,
+    "seen": 1790646522.519724,
+    "ast_hash": "81d541edf1afae10d4817345043036df",
     "semantic_hash": ""
   },
   "blanca.html": {

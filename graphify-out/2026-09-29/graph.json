@@ -2754,7 +2754,7 @@
       "file_type": "code",
       "norm_label": "configurepreviewserver()",
       "source_file": "vite.config.ts",
-      "source_location": "L33"
+      "source_location": "L35"
     },
     {
       "id": "vite_config_configureserver",
@@ -2766,7 +2766,7 @@
       "file_type": "code",
       "norm_label": "configureserver()",
       "source_file": "vite.config.ts",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "vite_config_routemiddleware",
@@ -26178,7 +26178,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vite.config.ts",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -26189,7 +26189,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vite.config.ts",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -26302,7 +26302,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "vite.config.ts",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -26314,7 +26314,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "vite.config.ts",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -26571,5 +26571,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cec5072169a53d7db23fd8863a1bf5385a410bad"
+  "built_at_commit": "615f637457435f768f0e6ef4854fec17b563fb38"
 }

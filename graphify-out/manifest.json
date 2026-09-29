@@ -59,12 +59,6 @@
     "ast_hash": "e92d4534e10d5966e80e677d7d869277",
     "semantic_hash": "e92d4534e10d5966e80e677d7d869277"
   },
-  "src/App.tsx": {
-    "mtime": 1790086156.2070897,
-    "seen": 1790428398.4315104,
-    "ast_hash": "1629aead4e2a9f8c723deebeb6c397bd",
-    "semantic_hash": "1629aead4e2a9f8c723deebeb6c397bd"
-  },
   "src/blanca.tsx": {
     "mtime": 1790011105.1904905,
     "seen": 1790428398.4315124,
@@ -76,12 +70,6 @@
     "seen": 1790483050.3913057,
     "ast_hash": "528a37e9f1df9bbf5289a64d5306b241",
     "semantic_hash": ""
-  },
-  "src/components/CustomerBookingPage.tsx": {
-    "mtime": 1790087707.9322531,
-    "seen": 1790428398.4315155,
-    "ast_hash": "ff277b5026ca0672c5ad052960788809",
-    "semantic_hash": "ff277b5026ca0672c5ad052960788809"
   },
   "src/components/blanca/BlancaCta.tsx": {
     "mtime": 1790354537.8020415,
@@ -371,30 +359,6 @@
     "ast_hash": "0e412e6e71239dcbd42f2b949bfb5011",
     "semantic_hash": "0e412e6e71239dcbd42f2b949bfb5011"
   },
-  "src/components/booking/CostSummary.tsx": {
-    "mtime": 1790010759.634987,
-    "seen": 1790428398.4315882,
-    "ast_hash": "e2c1395e61a409bb1604b7bf7892af22",
-    "semantic_hash": "e2c1395e61a409bb1604b7bf7892af22"
-  },
-  "src/components/booking/CourtSelector.tsx": {
-    "mtime": 1790008477.468542,
-    "seen": 1790428398.4315968,
-    "ast_hash": "b8590903d9486d0e48f5e5ca79d5f3fa",
-    "semantic_hash": "b8590903d9486d0e48f5e5ca79d5f3fa"
-  },
-  "src/components/booking/CustomerForm.tsx": {
-    "mtime": 1790001987.4364567,
-    "seen": 1790428398.4315987,
-    "ast_hash": "7251faf985af45ad364fbefd10ca6056",
-    "semantic_hash": "7251faf985af45ad364fbefd10ca6056"
-  },
-  "src/components/booking/TimeSlotGrid.tsx": {
-    "mtime": 1790087839.0017707,
-    "seen": 1790428398.4315999,
-    "ast_hash": "c0071ec0f7a75af1653cab73bb837555",
-    "semantic_hash": "c0071ec0f7a75af1653cab73bb837555"
-  },
   "src/components/cashier/CashierFilterBar.tsx": {
     "mtime": 1790144122.2153633,
     "seen": 1790428398.431601,
@@ -514,66 +478,6 @@
     "seen": 1790428398.431632,
     "ast_hash": "1cb23b8e4a222ad729066b40faac182d",
     "semantic_hash": "1cb23b8e4a222ad729066b40faac182d"
-  },
-  "src/components/cashier/overview/OverviewPanel.tsx": {
-    "mtime": 1790307431.1421883,
-    "seen": 1790428398.431635,
-    "ast_hash": "995edfd5e0aa8807bcdeedc9363e30f5",
-    "semantic_hash": "995edfd5e0aa8807bcdeedc9363e30f5"
-  },
-  "src/components/cashier/overview/components/BookedByHourCard.tsx": {
-    "mtime": 1790144979.9637022,
-    "seen": 1790428398.4316366,
-    "ast_hash": "6e36d867669ff6d5de12f948983d9ed2",
-    "semantic_hash": "6e36d867669ff6d5de12f948983d9ed2"
-  },
-  "src/components/cashier/overview/components/BookingStatusCard.tsx": {
-    "mtime": 1790144996.9627895,
-    "seen": 1790428398.431638,
-    "ast_hash": "434e99cdcbaa232c152a12327b649347",
-    "semantic_hash": "434e99cdcbaa232c152a12327b649347"
-  },
-  "src/components/cashier/overview/components/CourtScheduleCard.tsx": {
-    "mtime": 1790144853.843054,
-    "seen": 1790428398.4316392,
-    "ast_hash": "e6d4850412cb8163dbb369594558bb85",
-    "semantic_hash": "e6d4850412cb8163dbb369594558bb85"
-  },
-  "src/components/cashier/overview/components/CourtStatisticCard.tsx": {
-    "mtime": 1790307436.8931944,
-    "seen": 1790428398.4316413,
-    "ast_hash": "209a1f414117da3a4254613fd8f546b7",
-    "semantic_hash": "209a1f414117da3a4254613fd8f546b7"
-  },
-  "src/components/cashier/overview/components/MostBookedDayCard.tsx": {
-    "mtime": 1790144819.3578768,
-    "seen": 1790428398.4316425,
-    "ast_hash": "21a20b447b6ced6a28006fbe8e884a79",
-    "semantic_hash": "21a20b447b6ced6a28006fbe8e884a79"
-  },
-  "src/components/cashier/overview/components/TodoListCard.tsx": {
-    "mtime": 1790144838.4129746,
-    "seen": 1790428398.431644,
-    "ast_hash": "d415800796278a4e193ea050399744e1",
-    "semantic_hash": "d415800796278a4e193ea050399744e1"
-  },
-  "src/components/cashier/overview/components/UtilizationRateCard.tsx": {
-    "mtime": 1790144829.4019284,
-    "seen": 1790428398.4316454,
-    "ast_hash": "b71e0c2eb7696ee85a4643975129b20c",
-    "semantic_hash": "b71e0c2eb7696ee85a4643975129b20c"
-  },
-  "src/components/cashier/overview/data/overviewMockData.ts": {
-    "mtime": 1790398741.277296,
-    "seen": 1790428398.4316468,
-    "ast_hash": "f116f8971bb2cbdba1101735cfa052de",
-    "semantic_hash": "f116f8971bb2cbdba1101735cfa052de"
-  },
-  "src/components/cashier/overview/types.ts": {
-    "mtime": 1790144782.453687,
-    "seen": 1790428398.4316483,
-    "ast_hash": "85951bbffa5b6d1f1075cb519f49021d",
-    "semantic_hash": "85951bbffa5b6d1f1075cb519f49021d"
   },
   "src/components/reservation/ReservationPage.tsx": {
     "mtime": 1790467710.1589255,
@@ -803,12 +707,6 @@
     "ast_hash": "19f0d51632388dfbb7a8ceb4aad66335",
     "semantic_hash": ""
   },
-  "src/main.tsx": {
-    "mtime": 1789980153.7850804,
-    "seen": 1790428398.431704,
-    "ast_hash": "787e5a07efeb2bf6209d5937195f2f68",
-    "semantic_hash": "787e5a07efeb2bf6209d5937195f2f68"
-  },
   "src/reservation.tsx": {
     "mtime": 1790086172.636159,
     "seen": 1790428398.4317057,
@@ -858,9 +756,9 @@
     "semantic_hash": "f9cb81ddcea69ffdab672fc8c48dca66"
   },
   "vite.config.ts": {
-    "mtime": 1790646473.418086,
-    "seen": 1790646522.5196872,
-    "ast_hash": "4c1421de8c97c049798122b4a0eba8d9",
+    "mtime": 1790647140.532992,
+    "seen": 1790647163.9593267,
+    "ast_hash": "548d4d60d3a34b1bd15120827ab3c981",
     "semantic_hash": ""
   },
   "public/assets/blanca/difference-video.mp4": {
@@ -898,54 +796,6 @@
     "seen": 1790428398.4317262,
     "ast_hash": "e4be9a73429cb2073b102c5a69fb24dc",
     "semantic_hash": "e4be9a73429cb2073b102c5a69fb24dc"
-  },
-  "src/components/cashier/clean/CleanBookingsView.tsx": {
-    "mtime": 1790438163.9916914,
-    "seen": 1790439877.6753235,
-    "ast_hash": "5ea4adfe2c5a3c55a380c8e84b919d29",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanCourtManagerModal.tsx": {
-    "mtime": 1790438209.4098015,
-    "seen": 1790439877.675327,
-    "ast_hash": "cc54d3f7da8a5a6427f898349ab91c0b",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanHeader.tsx": {
-    "mtime": 1790438135.3476217,
-    "seen": 1790439877.6753297,
-    "ast_hash": "43c5a2ac3044d88e053753f4e1712a08",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanOverviewView.tsx": {
-    "mtime": 1790438174.4177165,
-    "seen": 1790439877.6753325,
-    "ast_hash": "109d0c6843dfc217aa98d8fe66f40b11",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanPaymentModal.tsx": {
-    "mtime": 1790438193.568763,
-    "seen": 1790439877.675336,
-    "ast_hash": "d9e8d641020eab90e42cbbdcb3bfde21",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanReceiptModal.tsx": {
-    "mtime": 1790438199.9297786,
-    "seen": 1790439877.675339,
-    "ast_hash": "11b8668a74bf5420c07086c4e1bd447a",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanScheduleView.tsx": {
-    "mtime": 1790438150.5176587,
-    "seen": 1790439877.6753426,
-    "ast_hash": "7265c2487512390c68e84b79c93ebcdd",
-    "semantic_hash": ""
-  },
-  "src/components/cashier/clean/CleanWalkinModal.tsx": {
-    "mtime": 1790438187.0517473,
-    "seen": 1790439877.6753478,
-    "ast_hash": "2aa488ca49591931dcedf756c11f92ea",
-    "semantic_hash": ""
   },
   "src/utils/formatters.ts": {
     "mtime": 1790438100.2585366,
@@ -1053,12 +903,6 @@
     "mtime": 1790438933.8092105,
     "seen": 1790439877.6758497,
     "ast_hash": "be17fbbc8a537a6bd4b057e089fe5ec7",
-    "semantic_hash": ""
-  },
-  "prototype.html": {
-    "mtime": 1790088822.6757672,
-    "seen": 1790439877.675852,
-    "ast_hash": "cff96fe24548465b3ff3af9dec550876",
     "semantic_hash": ""
   },
   "reservasi.html": {
