@@ -3,336 +3,949 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peta Belajar Visual UKK RPL - Booking Lapangan Badminton</title>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <title>Laboratorium Belajar Mandiri Codebase UKK RPL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .active-step { border-color: #2563eb; background-color: #eff6ff; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .code-font { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 p-4 md:p-8 antialiased">
-  <div class="max-w-5xl mx-auto space-y-8">
-    
-    <!-- Header -->
-    <header class="bg-white border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<body class="bg-zinc-950 text-zinc-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-black">
+  <div class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+
+    <!-- Header Atas -->
+    <header class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
-        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Modul Belajar Mandiri UKK SMK</span>
-        <h1 class="text-2xl md:text-3xl font-black mt-2">Peta Alur Data & Hubungan Seluruh File</h1>
-        <p class="text-gray-500 text-sm mt-1">Aplikasi Booking Lapangan Badminton (React 19 + TypeScript + Supabase)</p>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-800/50 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+          Modul Praktik & Sidang UKK SMK
+        </div>
+        <h1 class="text-2xl md:text-3xl font-black mt-2 tracking-tight">
+          Laboratorium Belajar Codebase Satu Per Satu
+        </h1>
+        <p class="text-zinc-400 text-sm mt-1">
+          Pahami alur data, CRUD utama, logika enable/disable status lapangan, dan cara menjawab pertanyaan penguji.
+        </p>
       </div>
-      <a href="http://localhost:5173" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition shadow-sm">
-        Buka Aplikasi Web &rarr;
-      </a>
+      <div class="flex flex-wrap gap-2">
+        <a href="/reservasi" target="_blank" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold rounded-xl border border-zinc-700 transition">
+          Buka Reservasi &rarr;
+        </a>
+        <a href="/kasir" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl shadow-lg transition">
+          Buka Kasir &rarr;
+        </a>
+      </div>
     </header>
 
     <!-- Navigasi Tab Belajar -->
-    <div class="flex border-b border-gray-200 gap-2">
-      <button onclick="pindahTab('simulator')" id="btn-tab-simulator" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-blue-600 text-blue-600">
-        1. Simulator Estafet Data (Interaktif)
+    <nav class="flex border-b border-zinc-800 gap-2 overflow-x-auto pb-1 text-sm font-medium">
+      <button onclick="switchTab('step-by-step')" id="tab-btn-step-by-step" class="tab-button px-4 py-2.5 border-b-2 border-emerald-500 text-emerald-400 font-bold transition">
+        1. Belajar Langkah Demi Langkah (Step-by-Step)
       </button>
-      <button onclick="pindahTab('arsitektur')" id="btn-tab-arsitektur" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-gray-900">
-        2. Pohon File & Kamus Peran
+      <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="tab-button px-4 py-2.5 border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 transition">
+        2. Mini Sandbox & Logika Interaktif
       </button>
-      <button onclick="pindahTab('sidang')" id="btn-tab-sidang" class="tab-btn font-bold text-sm py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-gray-900">
-        3. Kisi-Kisi Sidang Penguji UKK
+      <button onclick="switchTab('kamus-file')" id="tab-btn-kamus-file" class="tab-button px-4 py-2.5 border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 transition">
+        3. Peta Direktori & Kamus Peran File
       </button>
-    </div>
+      <button onclick="switchTab('kuis-sidang')" id="tab-btn-kuis-sidang" class="tab-button px-4 py-2.5 border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 transition">
+        4. Simulasi Kuis Tanya Jawab Penguji
+      </button>
+    </nav>
 
-    <!-- TAB 1: SIMULATOR ESTAFET DATA -->
-    <section id="konten-simulator" class="space-y-6">
-      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
-        <h2 class="text-lg font-bold flex items-center gap-2">
-          <span class="w-6 h-6 bg-blue-600 text-white rounded-full inline-flex items-center justify-center text-xs">A</span>
-          Klik Langkah di Bawah untuk Melihat File Mana yang Bekerja:
-        </h2>
-
-        <!-- Step Buttons -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
-          <button onclick="pilihStep(1)" id="step-btn-1" class="step-btn p-3 border rounded-xl text-left active-step transition">
-            <div class="text-xs text-gray-400 font-mono">LANGKAH 1</div>
-            <div class="font-bold text-sm mt-1">Pilih Court</div>
+    <!-- TAB 1: STEP-BY-STEP LEARNING -->
+    <section id="tab-step-by-step" class="space-y-6">
+      <!-- Stepper Selector Buttons -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 sm:p-6 shadow-sm">
+        <div class="text-xs uppercase font-bold text-zinc-400 tracking-wider mb-3">
+          Pilih Langkah yang Ingin Kamu Bedah:
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+          <button onclick="setStep(1)" id="step-nav-1" class="step-nav-btn p-3 rounded-xl border text-left transition bg-emerald-950/60 border-emerald-500 text-emerald-300">
+            <span class="block text-[10px] font-mono text-emerald-400 uppercase">Tahap 1</span>
+            <span class="block text-xs font-bold mt-1">Skema Data</span>
           </button>
-          <button onclick="pilihStep(2)" id="step-btn-2" class="step-btn p-3 border rounded-xl text-left transition">
-            <div class="text-xs text-gray-400 font-mono">LANGKAH 2</div>
-            <div class="font-bold text-sm mt-1">Pilih Tanggal</div>
+          <button onclick="setStep(2)" id="step-nav-2" class="step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700">
+            <span class="block text-[10px] font-mono text-zinc-500 uppercase">Tahap 2</span>
+            <span class="block text-xs font-bold mt-1">Backend API</span>
           </button>
-          <button onclick="pilihStep(3)" id="step-btn-3" class="step-btn p-3 border rounded-xl text-left transition">
-            <div class="text-xs text-gray-400 font-mono">LANGKAH 3</div>
-            <div class="font-bold text-sm mt-1">Pilih Jam</div>
+          <button onclick="setStep(3)" id="step-nav-3" class="step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700">
+            <span class="block text-[10px] font-mono text-zinc-500 uppercase">Tahap 3</span>
+            <span class="block text-xs font-bold mt-1">CRUD & Toggle</span>
           </button>
-          <button onclick="pilihStep(4)" id="step-btn-4" class="step-btn p-3 border rounded-xl text-left transition">
-            <div class="text-xs text-gray-400 font-mono">LANGKAH 4</div>
-            <div class="font-bold text-sm mt-1">Hitung Biaya</div>
+          <button onclick="setStep(4)" id="step-nav-4" class="step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700">
+            <span class="block text-[10px] font-mono text-zinc-500 uppercase">Tahap 4</span>
+            <span class="block text-xs font-bold mt-1">Anti-Bentrok</span>
           </button>
-          <button onclick="pilihStep(5)" id="step-btn-5" class="step-btn p-3 border rounded-xl text-left transition">
-            <div class="text-xs text-gray-400 font-mono">LANGKAH 5</div>
-            <div class="font-bold text-sm mt-1">Isi Form</div>
+          <button onclick="setStep(5)" id="step-nav-5" class="step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700">
+            <span class="block text-[10px] font-mono text-zinc-500 uppercase">Tahap 5</span>
+            <span class="block text-xs font-bold mt-1">Rumus DP 50%</span>
           </button>
-          <button onclick="pilihStep(6)" id="step-btn-6" class="step-btn p-3 border rounded-xl text-left transition bg-green-50">
-            <div class="text-xs text-green-600 font-mono">DATABASE</div>
-            <div class="font-bold text-sm mt-1">Masuk Supabase</div>
-          </button>
-          <button onclick="pilihStep(7)" id="step-btn-7" class="step-btn p-3 border rounded-xl text-left transition bg-yellow-50">
-            <div class="text-xs text-yellow-600 font-mono">KASIR</div>
-            <div class="font-bold text-sm mt-1">Pelunasan DP</div>
+          <button onclick="setStep(6)" id="step-nav-6" class="step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700">
+            <span class="block text-[10px] font-mono text-zinc-500 uppercase">Tahap 6</span>
+            <span class="block text-xs font-bold mt-1">Kasir Pelunasan</span>
           </button>
         </div>
       </div>
 
-      <!-- Detail Step Aktif -->
-      <div id="detail-step" class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
-        <!-- Akan diisi javascript -->
+      <!-- Detail Card Step Aktif -->
+      <div id="step-detail-card" class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-6 shadow-sm">
+        <!-- Konten diisi lewat JS renderStepDetail() -->
+      </div>
+
+      <!-- Navigasi Sebelumnya / Selanjutnya -->
+      <div class="flex justify-between items-center pt-2">
+        <button onclick="prevStep()" id="btn-prev-step" class="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 rounded-xl text-xs font-semibold transition disabled:opacity-30 disabled:pointer-events-none">
+          &larr; Langkah Sebelumnya
+        </button>
+        <span id="step-indicator-text" class="text-xs text-zinc-500 font-mono">
+          Langkah 1 dari 6
+        </span>
+        <button onclick="nextStep()" id="btn-next-step" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold transition">
+          Langkah Selanjutnya &rarr;
+        </button>
       </div>
     </section>
 
-    <!-- TAB 2: POHON FILE -->
-    <section id="konten-arsitektur" class="hidden space-y-6">
-      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
-        <h2 class="text-lg font-bold">Struktur Lengkap Proyek (100% Bahasa Indonesia)</h2>
-        <p class="text-sm text-gray-500">Semua file memiliki satu tanggung jawab yang jelas (Single Responsibility Principle).</p>
-        
-        <div class="grid md:grid-cols-2 gap-4 pt-2">
-          
-          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
-            <div class="font-bold text-blue-700 border-b pb-2">Komponen Halaman & Layout (`src/`)</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/App.tsx</span> (44 baris)
-                <p class="text-gray-500 text-xs">Pintu gerbang aplikasi. Hanya mengatur tombol pemindah tab: Menu Pemesan vs Menu Kasir.</p>
+    <!-- TAB 2: MINI SANDBOX & LOGIKA INTERAKTIF -->
+    <section id="tab-simulator" class="hidden space-y-6">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
+        <div>
+          <h2 class="text-lg font-bold text-zinc-100 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            Simulasi Interaktif: CRUD Lapangan, Toggle Status, Booking, & Pelunasan
+          </h2>
+          <p class="text-sm text-zinc-400 mt-1">
+            Uji coba aksi nyata di bawah ini untuk melihat bagaimana data berubah dan komponen mana yang terpicu.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- SISI KIRI: KASIR KELOLA LAPANGAN -->
+          <div class="space-y-4 border border-zinc-800 bg-zinc-950/60 p-4 rounded-xl">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                1. Sisi Kasir / Admin (CourtsManagementView)
+              </span>
+              <span class="text-[11px] text-zinc-500 font-mono">src/components/cashier/dashboard-01/</span>
+            </div>
+
+            <!-- Form Tambah Lapangan Mini -->
+            <div class="space-y-2">
+              <span class="text-xs text-zinc-400 font-medium">Tambah Lapangan Baru:</span>
+              <div class="flex gap-2">
+                <input id="sim-input-nama" type="text" placeholder="Nama Lapangan" value="Court 3 - Vinyl" class="flex-1 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-lg text-xs text-zinc-200">
+                <input id="sim-input-tarif" type="number" placeholder="Tarif" value="60000" class="w-24 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-lg text-xs text-zinc-200">
+                <button onclick="simTambahLapangan()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition">
+                  Tambah
+                </button>
               </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/components/HalamanPemesan.tsx</span>
-                <p class="text-gray-500 text-xs">Wadah yang menyusun Langkah 1 sampai 5 pemesanan.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/components/HalamanKasir.tsx</span>
-                <p class="text-gray-500 text-xs">Wadah menu kasir yang memuat tabel transaksi dan aksi pelunasan.</p>
+            </div>
+
+            <!-- Daftar Lapangan Mini -->
+            <div class="space-y-2">
+              <span class="text-xs text-zinc-400 font-medium">Daftar Lapangan & Toggle Status:</span>
+              <div id="sim-court-list" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                <!-- Diisi via renderSimCourts() -->
               </div>
             </div>
           </div>
 
-          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
-            <div class="font-bold text-green-700 border-b pb-2">Komponen 5 Langkah Pemesan (`src/components/`)</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">PilihLapangan.tsx</span> (Langkah 1)
-                <p class="text-gray-500 text-xs">Tombol pilihan Court 1, 2, 3 beserta tarif per jam.</p>
+          <!-- SISI KANAN: RESERVASI PUBLIK -->
+          <div class="space-y-4 border border-zinc-800 bg-zinc-950/60 p-4 rounded-xl">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">
+                2. Sisi Pelanggan (Reservasi Publik)
+              </span>
+              <span class="text-[11px] text-zinc-500 font-mono">src/components/reservation/</span>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs text-zinc-400 mb-1">Pilih Lapangan Aktif (Yang Tutup Tidak Muncul):</label>
+                <select id="sim-select-court" onchange="simPilihCourt()" class="w-full bg-zinc-900 border border-zinc-700 px-3 py-2 rounded-lg text-xs text-zinc-200">
+                  <!-- Diisi via renderSimCourtOptions() -->
+                </select>
               </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">GridJam.tsx</span> (Langkah 3)
-                <p class="text-gray-500 text-xs">Kotak jam 08:00 - 21:00. Tombol otomatis terkunci jika sudah dibooking atau sudah lewat jamnya.</p>
+
+              <div>
+                <label class="block text-xs text-zinc-400 mb-1">Pilih Slot Jam Main (Otomatis Dikunci Jika Terisi):</label>
+                <div id="sim-slot-grid" class="grid grid-cols-4 gap-1.5">
+                  <!-- Diisi via renderSimSlots() -->
+                </div>
               </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">RingkasanBiaya.tsx</span> (Langkah 4)
-                <p class="text-gray-500 text-xs">Tampilan durasi main, total biaya rupiah, dan nominal DP 50%.</p>
+
+              <div class="p-3 bg-zinc-900 rounded-lg border border-zinc-800 space-y-1 text-xs">
+                <div class="flex justify-between text-zinc-400">
+                  <span>Durasi: <strong id="sim-durasi-text" class="text-zinc-200">0 Jam</strong></span>
+                  <span>Total: <strong id="sim-total-text" class="text-emerald-400">Rp 0</strong></span>
+                </div>
+                <div class="flex justify-between text-zinc-400">
+                  <span>DP 50%: <strong id="sim-dp-text" class="text-blue-400">Rp 0</strong></span>
+                  <span>Sisa Bayar: <strong id="sim-sisa-text" class="text-amber-400">Rp 0</strong></span>
+                </div>
               </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">FormPemesan.tsx</span> (Langkah 5)
-                <p class="text-gray-500 text-xs">Form input nama, nomor HP, radio DP/Lunas, dan tombol simpan.</p>
+
+              <div class="flex gap-2">
+                <input id="sim-nama-penyewa" type="text" placeholder="Nama Pemesan" value="Budi Santoso" class="flex-1 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-lg text-xs text-zinc-200">
+                <button onclick="simBuatBooking()" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition">
+                  Pesan (DP 50%)
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
-            <div class="font-bold text-orange-700 border-b pb-2">Komponen Modul Kasir (`src/components/`)</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">TabelKasir.tsx</span>
-                <p class="text-gray-500 text-xs">Wadah tabel, judul laporan, tombol Refresh, dan tombol Cetak Rekap.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">BarisKasir.tsx</span>
-                <p class="text-gray-500 text-xs">Menampilkan satu baris transaksi dan tombol aksi Lunasi / Batal.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">BadgeStatus.tsx</span>
-                <p class="text-gray-500 text-xs">Label warna: Hijau untuk Lunas, Kuning untuk Booked, Merah untuk Batal.</p>
-              </div>
+        <!-- SISI BAWAH: TABEL KASIR & LIVE CODE TRACER -->
+        <div class="grid lg:grid-cols-2 gap-6 pt-2">
+          <!-- Tabel Transaksi Kasir Mini -->
+          <div class="border border-zinc-800 bg-zinc-950/60 p-4 rounded-xl space-y-3">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                3. Tabel Kasir & Aksi Pelunasan (BookingsTable)
+              </span>
+              <span class="text-[11px] text-zinc-500 font-mono">src/components/cashier/dashboard-01/</span>
+            </div>
+
+            <div id="sim-booking-list" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+              <!-- Diisi via renderSimBookings() -->
             </div>
           </div>
 
-          <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
-            <div class="font-bold text-purple-700 border-b pb-2">Otak Logika, Rumus & Database (`src/hooks, utils, lib`)</div>
-            <div class="space-y-2 text-sm">
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/hooks/usePemesanan.ts</span>
-                <p class="text-gray-500 text-xs">Otak data pemesanan. Mengelola state court, tanggal, jam, dan kirim booking.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/hooks/useJadwal.ts</span>
-                <p class="text-gray-500 text-xs">Menarik jadwal yang sudah dibooking dari Supabase agar tidak nabrak.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/utils/hitungBiaya.ts</span>
-                <p class="text-gray-500 text-xs">Rumus matematika: total = durasi x tarif, DP = 50% x total, sisa = total - DP.</p>
-              </div>
-              <div class="p-2 bg-white rounded border">
-                <span class="font-mono font-bold text-black">src/lib/api.ts</span>
-                <p class="text-gray-500 text-xs">Kumpulan perintah Supabase: getLapangan, getBookedSlots, createBooking, updateStatusBooking.</p>
-              </div>
+          <!-- Console Tracer Log -->
+          <div class="border border-zinc-800 bg-zinc-950 p-4 rounded-xl space-y-2">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+              <span class="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Live Console Tracer (Alur File & Database)
+              </span>
+              <button onclick="simClearLog()" class="text-[10px] text-zinc-500 hover:text-zinc-300">
+                Bersihkan Log
+              </button>
+            </div>
+            <div id="sim-tracer-log" class="code-font text-xs space-y-1.5 h-52 overflow-y-auto text-zinc-300 p-2 bg-black/60 rounded-lg">
+              <div class="text-zinc-500">// Simulator siap. Silakan klik tombol di atas untuk melacak alur eksekusi kode.</div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- TAB 3: KISI-KISI SIDANG PENGUJI -->
-    <section id="konten-sidang" class="hidden space-y-6">
-      <div class="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
-        <h2 class="text-lg font-bold">Bocoran Tanya Jawab Penguji UKK</h2>
-        <p class="text-sm text-gray-500">Hafalkan pola jawaban ini agar kamu percaya diri saat disidang penguji industri.</p>
+    <!-- TAB 3: PETA DIREKTORI & KAMUS FILE -->
+    <section id="tab-kamus-file" class="hidden space-y-6">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-6">
+        <div>
+          <h2 class="text-lg font-bold text-zinc-100">Kamus Lengkap File & Tanggung Jawab (Single Responsibility)</h2>
+          <p class="text-sm text-zinc-400 mt-1">Setiap berkas memiliki 1 tugas spesifik agar kodingan rapi dan bersih sesuai standar UKK.</p>
+        </div>
 
-        <div class="space-y-4">
-          <div class="border rounded-xl p-4">
-            <div class="font-bold text-red-600 text-sm">TANYA 1: "Bagaimana cara sistem mencegah jadwal bentrok jika 2 orang pesan di jam yang sama?"</div>
-            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
-              <span class="font-semibold text-gray-900">Jawab:</span> "Di file <code class="bg-gray-200 px-1 rounded">useJadwal.ts</code>, fungsi <code class="bg-gray-200 px-1 rounded">getBookedSlots</code> mengambil seluruh jam yang sudah dipesan di lapangan dan tanggal tersebut dari Supabase. Kemudian di <code class="bg-gray-200 px-1 rounded">GridJam.tsx</code>, tombol jam dicocokkan menggunakan <code class="bg-gray-200 px-1 rounded">jamTerisi.includes(jam)</code>. Jika jam itu sudah ada di database, tombol otomatis diberi atribut <code class="bg-gray-200 px-1 rounded">disabled</code> sehingga tidak bisa diklik lagi."
+        <div class="grid md:grid-cols-2 gap-4 text-xs">
+          <!-- Card Database -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-emerald-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/types/database.ts
+            </div>
+            <p class="text-zinc-300">
+              <strong>Model / Skema Data:</strong> Mendefinisikan tipe data TypeScript untuk tabel <code class="text-emerald-300">lapangan</code> dan <code class="text-emerald-300">bookings</code>.
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Kolom kunci: <span class="text-zinc-200">jam_slots (string[]), status ('Aktif' | 'Tutup'), no_hp (string)</span>.
             </div>
           </div>
 
-          <div class="border rounded-xl p-4">
-            <div class="font-bold text-red-600 text-sm">TANYA 2: "Coba ubah aturan uang muka DP dari 50% menjadi 30% sekarang juga!" (Live Code Challenge)</div>
-            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
-              <span class="font-semibold text-gray-900">Jawab & Aksi:</span> "Buka file <code class="bg-gray-200 px-1 rounded font-bold">src/utils/hitungBiaya.ts</code>. Ubah baris <code class="bg-gray-200 px-1 rounded">const nominalDP = totalBayar * 0.5</code> menjadi <code class="bg-gray-200 px-1 rounded font-bold">const nominalDP = totalBayar * 0.3</code> lalu simpan file. Angka DP di browser otomatis berubah ke 30%."
+          <!-- Card API Layer -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-blue-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/lib/api.ts
+            </div>
+            <p class="text-zinc-300">
+              <strong>Controller Backend:</strong> Mengeksekusi query SQL langsung ke Supabase (CRUD Lapangan, Cek Bentrok Jam, dan Pelunasan Kasir).
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Fungsi kunci: <span class="text-zinc-200">getLapangan, createLapangan, updateLapangan, getBookedSlots, createBooking, getAllBookings, updateStatusBooking</span>.
             </div>
           </div>
 
-          <div class="border rounded-xl p-4">
-            <div class="font-bold text-red-600 text-sm">TANYA 3: "Bagaimana alur pelunasan sisa bayar saat penyewa hanya bayar DP di awal?"</div>
-            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
-              <span class="font-semibold text-gray-900">Jawab:</span> "Saat pesan DP, transaksi tersimpan dengan status 'Booked' dan mencatat kolom 'sisa_bayar' sebesar 50%. Saat penyewa tiba di GOR, kasir membuka tab Menu Kasir (<code class="bg-gray-200 px-1 rounded">HalamanKasir.tsx</code>) dan menekan tombol 'Lunasi'. Sistem menjalankan <code class="bg-gray-200 px-1 rounded">updateStatusBooking(id, 'Lunas', 0)</code> yang mengubah status jadi Lunas dan mengosongkan sisa bayar menjadi 0."
+          <!-- Card CourtsManagementView -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-amber-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/components/cashier/dashboard-01/CourtsManagementView.tsx
+            </div>
+            <p class="text-zinc-300">
+              <strong>Kelola Master Lapangan:</strong> Halaman kasir untuk menambah data lapangan, menghapus lapangan, dan melakukan toggle status Aktif (Enable) <-> Tutup (Disable).
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Aksi kunci: <span class="text-zinc-200">handleToggleStatus() memanggil updateLapangan(id, { status: 'Tutup' | 'Aktif' })</span>.
             </div>
           </div>
 
-          <div class="border rounded-xl p-4">
-            <div class="font-bold text-red-600 text-sm">TANYA 4: "Kenapa kodingannya dipecah menjadi banyak file dan komponen?"</div>
-            <div class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border">
-              <span class="font-semibold text-gray-900">Jawab:</span> "Untuk mematuhi prinsip Clean Code (Separation of Concerns). Logika data dipisah ke dalam Custom Hook (<code class="bg-gray-200 px-1 rounded">usePemesanan</code>), rumus matematika dipisah ke utilitas (<code class="bg-gray-200 px-1 rounded">hitungBiaya</code>), dan komponen antarmuka murni menyusun layout. Ini membuat kode mudah di-maintain, mudah di-test, dan tidak menumpuk dalam satu file raksasa."
+          <!-- Card BookingsTable -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-purple-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/components/cashier/dashboard-01/BookingsTable.tsx
+            </div>
+            <p class="text-zinc-300">
+              <strong>Tabel Kasir & Pelunasan:</strong> Menampilkan seluruh transaksi, kotak pencarian nama, filter status, dan tombol aksi "Lunasi" (mengubah sisa bayar jadi Rp 0).
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Aksi kunci: <span class="text-zinc-200">onLunasi() memanggil updateStatusBooking(id, 'Lunas', 0)</span>.
             </div>
           </div>
+
+          <!-- Card useReservationData -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-cyan-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/components/reservation/hooks/useReservationData.ts
+            </div>
+            <p class="text-zinc-300">
+              <strong>Hook Reservasi Publik:</strong> Mengambil data lapangan dan booking. Memfilter lapangan yang berstatus Aktif saja sehingga lapangan 'Tutup' otomatis tidak bisa dibooking.
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Logika kunci: <span class="text-zinc-200">const activeCourts = dbCourts.filter(c => c.status === 'Aktif')</span>.
+            </div>
+          </div>
+
+          <!-- Card Cost Calculation -->
+          <div class="p-4 bg-zinc-950 border border-zinc-800 rounded-xl space-y-2">
+            <div class="font-bold text-rose-400 font-mono border-b border-zinc-800/80 pb-1">
+              src/utils/costCalculation.ts
+            </div>
+            <p class="text-zinc-300">
+              <strong>Kalkulator Biaya:</strong> Menghitung total sewa dari durasi x tarif, serta membagi tagihan DP 50% dan sisa pelunasan.
+            </p>
+            <div class="p-2 bg-zinc-900 rounded font-mono text-[11px] text-zinc-400">
+              Rumus: <span class="text-zinc-200">total = durasi * tarif, DP = total * 0.5, sisa = total - DP</span>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: KUIS SIDANG PENGUJI -->
+    <section id="tab-kuis-sidang" class="hidden space-y-6">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-6">
+        <div>
+          <h2 class="text-lg font-bold text-zinc-100">Uji Pemahaman: Simulasi Kuis Pertanyaan Penguji UKK</h2>
+          <p class="text-sm text-zinc-400 mt-1">Coba jawab 5 soal berikut secara mandiri untuk mengukur kesiapanmu sebelum sidang.</p>
+        </div>
+
+        <div id="quiz-container" class="space-y-6">
+          <!-- Diisi via renderQuiz() -->
         </div>
       </div>
     </section>
 
   </div>
 
+  <!-- SCRIPT LOGIKA BELAJAR & SIMULATOR -->
   <script>
-    const dataSteps = {
-      1: {
-        judul: "Langkah 1: Pelanggan Memilih Court",
-        fileUtama: "src/components/PilihLapangan.tsx",
-        dipanggilDi: "src/components/HalamanPemesan.tsx",
-        penjelasan: "Pengguna mengklik salah satu tombol court (misal Court 1). Fungsi `onSelect(id)` dipanggil. State `selectedLapangan` di hook `usePemesanan.ts` terisi ID lapangan dan tarif per jamnya dicatat (misal Rp 50.000).",
-        inputData: "Props: `lapangan` (daftar court dari Supabase), `selectedId` (court yang aktif).",
-        outputData: "Menghasilkan ID lapangan yang dipilih (misal: `1`)."
+    // ========================================================================
+    // 1. MANAJEMEN TAB UTAMA
+    // ========================================================================
+    function switchTab(tabId) {
+      const tabs = ['step-by-step', 'simulator', 'kamus-file', 'kuis-sidang'];
+      tabs.forEach(t => {
+        document.getElementById(`tab-${t}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${t}`);
+        btn.classList.remove('border-emerald-500', 'text-emerald-400');
+        btn.classList.add('border-transparent', 'text-zinc-400');
+      });
+
+      document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('border-transparent', 'text-zinc-400');
+      activeBtn.classList.add('border-emerald-500', 'text-emerald-400');
+    }
+
+    // ========================================================================
+    // 2. KONTEN & STEPPER STEP-BY-STEP (6 TAHAP)
+    // ========================================================================
+    const stepsData = [
+      {
+        step: 1,
+        title: "Tahap 1: Skema Database & Model Data",
+        file: "src/types/database.ts",
+        summary: "Mendefinisikan bentuk tabel 'lapangan' dan 'bookings' di PostgreSQL Supabase.",
+        why: "Sebelum koding fitur apa pun, kita harus tahu bentuk data kita. Di UKK, ada 2 tabel utama: tabel master 'lapangan' dan tabel transaksi 'bookings'.",
+        codeSnippet: `// Model Lapangan (Master Data)
+export interface Lapangan {
+  id: number
+  nama_lapangan: string
+  tarif_per_jam: number
+  status: 'Aktif' | 'Tutup' // Untuk fitur enable/disable
+}
+
+// Model Transaksi Booking
+export interface Booking {
+  id: number
+  lapangan_id: number // Foreign Key ke tabel lapangan
+  nama_penyewa: string
+  no_hp: string       // String agar angka 0 di depan tidak hilang
+  tgl_main: string    // Format YYYY-MM-DD
+  jam_slots: string[] // Array text PostgreSQL, contoh: ['09:00', '10:00']
+  total_bayar: number
+  nominal_dibayar: number
+  sisa_bayar: number
+  tipe_bayar: 'Lunas' | 'DP'
+  status: 'Booked' | 'Lunas' | 'Batal'
+}`,
+        sidangPoint: "Penguji sering bertanya: 'Kenapa nomor HP tipe datanya string?'. Jawab: 'Karena kalau integer, angka 0 di awal nomor telepon Indonesia (0812...) akan otomatis terpotong menjadi 812...'"
       },
-      2: {
-        judul: "Langkah 2: Pelanggan Menentukan Tanggal",
-        fileUtama: "Tag input tanggal di src/components/HalamanPemesan.tsx",
-        dipanggilDi: "src/components/HalamanPemesan.tsx",
-        penjelasan: "Pengguna memilih tanggal main lewat kalender HTML. Nilai tanggal disimpan ke state `selectedDate` (format YYYY-MM-DD).",
-        inputData: "Pilihan kalender pengguna (misal: 2026-09-22).",
-        outputData: "State `selectedDate` terisi string tanggal."
+      {
+        step: 2,
+        title: "Tahap 2: Backend Service Layer (Query Supabase)",
+        file: "src/lib/api.ts",
+        summary: "File controller yang mengeksekusi perintah SQL secara langsung dan modular.",
+        why: "Kita tidak perlu server Express terpisah. File api.ts ini menghubungkan aplikasi React kita langsung ke database Supabase via query builder.",
+        codeSnippet: `// 1. Ambil data lapangan
+export async function getLapangan(): Promise<Lapangan[]> {
+  const { data, error } = await supabase.from('lapangan').select('*').order('id')
+  if (error) throw new Error(error.message)
+  return data || []
+}
+
+// 2. Ubah status lapangan (Aktif / Tutup)
+export async function updateLapangan(id: number, lapanganData: any) {
+  const { data, error } = await supabase.from('lapangan').update(lapanganData).eq('id', id)
+  if (error) throw new Error(error.message)
+}
+
+// 3. Pelunasan kasir (Update status jadi Lunas dan sisa_bayar jadi 0)
+export async function updateStatusBooking(bookingId: number, status: string, sisaBayar: number = 0) {
+  const { error } = await supabase.from('bookings').update({ status, sisa_bayar: sisaBayar }).eq('id', bookingId)
+  if (error) throw new Error(error.message)
+}`,
+        sidangPoint: "Penguji bertanya: 'Mana controller backend kamu?'. Jawab: 'Dipusatkan di berkas src/lib/api.ts yang berfungsi sebagai API controller dan service repository layer.'"
       },
-      3: {
-        judul: "Langkah 3: Pelanggan Memilih Jam Main",
-        fileUtama: "src/components/GridJam.tsx & src/hooks/useJadwal.ts",
-        dipanggilDi: "src/components/HalamanPemesan.tsx",
-        penjelasan: "Kombinasi ID lapangan (Langkah 1) dan tanggal (Langkah 2) memicu hook `useJadwal.ts` untuk bertanya ke Supabase: 'Jam berapa saja yang sudah dibooking?'. Jam yang sudah ada di database dimasukkan ke `jamTerisi` dan tombolnya otomatis dikunci (`disabled`). Jam yang diklik pengguna dimasukkan ke array `jamDipilih`.",
-        inputData: "Props: `jamTerisi` (dari Supabase), `jamDipilih` (pilihan user).",
-        outputData: "Array `jamDipilih` (misal: `['09:00', '10:00']`) dan `durasiJam = 2`."
+      {
+        step: 3,
+        title: "Tahap 3: CRUD Master Lapangan & Toggle Status Enable/Disable",
+        file: "src/components/cashier/dashboard-01/CourtsManagementView.tsx",
+        summary: "Menambah lapangan baru dan mengubah status operasional (Aktif <-> Tutup).",
+        why: "Penguji ingin melihat apakah kamu paham konsep update status. Saat lapangan sedang dicat atau rusak, kasir cukup menekan satu tombol untuk menonaktifkannya.",
+        codeSnippet: `// Fungsi Toggle Status Aktif <-> Tutup
+const handleToggleStatus = async (court: Lapangan) => {
+  // Jika sedang Aktif, ubah jadi Tutup. Jika Tutup, ubah jadi Aktif.
+  const statusBaru: StatusLapangan = court.status === 'Aktif' ? 'Tutup' : 'Aktif'
+  try {
+    await updateLapangan(court.id, { status: statusBaru })
+    onCourtsUpdated() // Tarik ulang data terbaru ke layar
+  } catch (err) {
+    alert('Gagal update status')
+  }
+}`,
+        sidangPoint: "Poin Penilaian UKK: Siswa mampu mendemonstrasikan perubahan status data secara dinamis tanpa perlu me-reload seluruh halaman web."
       },
-      4: {
-        judul: "Langkah 4: Hitung Biaya Otomatis",
-        fileUtama: "src/utils/hitungBiaya.ts & src/components/RingkasanBiaya.tsx",
-        dipanggilDi: "src/hooks/usePemesanan.ts",
-        penjelasan: "Fungsi `hitungBiayaBooking(durasiJam, tarif)` menghitung secara matematika: totalBayar = 2 jam x 50.000 = 100.000, nominalDP = 50.000 (50%), sisaBayar = 50.000. Komponen `RingkasanBiaya.tsx` langsung menampilkannya di layar dengan format titik ribuan Rupiah.",
-        inputData: "Input: `durasiJam` (2), `tarifPerJam` (50000).",
-        outputData: "Objek: `{ totalBayar: 100000, nominalDP: 50000, sisaBayar: 50000 }`."
+      {
+        step: 4,
+        title: "Tahap 4: Otomatisasi Lapangan Tutup & Anti-Bentrok Jadwal",
+        file: "src/components/reservation/hooks/useReservationData.ts & src/lib/api.ts",
+        summary: "Menyaring lapangan yang aktif saja dan mengunci jam yang sudah dipesan.",
+        why: "Sistem cerdas harus mencegah penyewa memilih lapangan yang sedang tutup atau jam yang sudah dipegang orang lain.",
+        codeSnippet: `// 1. Filter Lapangan Aktif di useReservationData.ts
+const activeCourts = dbCourts.filter((c) => c.status === 'Aktif')
+setCourts(activeCourts) // Lapangan berstatus 'Tutup' otomatis tidak tampil!
+
+// 2. Fungsi Anti-Bentrok di api.ts
+export async function getBookedSlots(lapanganId: number, tglMain: string): Promise<string[]> {
+  const { data } = await supabase
+    .from('bookings')
+    .select('jam_slots')
+    .eq('lapangan_id', lapanganId)
+    .eq('tgl_main', tglMain)
+    .neq('status', 'Batal') // Abaikan transaksi yang batal
+
+  // Gabungkan semua jam menjadi list datar: ['08:00', '09:00']
+  return (data || []).flatMap(item => item.jam_slots)
+}`,
+        sidangPoint: "Penguji bertanya: 'Bagaimana cara sistem mencegah 2 orang memesan jam yang sama?'. Jawab: 'Fungsi getBookedSlots memeriksa slot jam terisi di tanggal tersebut, lalu tombol jam di frontend diberi atribut disabled.'"
       },
-      5: {
-        judul: "Langkah 5: Isi Form & Klik Booking",
-        fileUtama: "src/components/FormPemesan.tsx",
-        dipanggilDi: "src/components/HalamanPemesan.tsx",
-        penjelasan: "Pelanggan memasukkan nama, nomor HP, dan memilih radio 'Bayar DP 50%' atau 'Bayar Lunas'. Komponen melakukan validasi: nama tidak boleh kosong, no HP tidak boleh kosong, dan harus sudah pilih jam. Jika lolos, fungsi `onKirimData()` dipanggil.",
-        inputData: "State lokal: `nama`, `noHp`, `tipeBayar`.",
-        outputData: "Paket data pemesan yang siap ditembak ke database."
+      {
+        step: 5,
+        title: "Tahap 5: Rumus Hitung Biaya DP 50% vs Lunas",
+        file: "src/utils/costCalculation.ts",
+        summary: "Logika matematika perhitungan total tarif, uang muka DP, dan sisa bayar.",
+        why: "Memisahkan rumus matematika ke dalam file utils agar kode bersih, modular, dan mudah diuji secara terpisah.",
+        codeSnippet: `export function calculateBookingCost(durationHours: number, ratePerHour: number) {
+  const totalCost = durationHours * ratePerHour // Contoh: 2 jam * Rp 50.000 = Rp 100.000
+  const downPayment = totalCost * 0.5            // DP 50% = Rp 50.000
+  const remainingCost = totalCost - downPayment // Sisa pelunasan = Rp 50.000
+
+  return {
+    totalBayar: totalCost,
+    nominalDP: downPayment,
+    sisaBayar: remainingCost
+  }
+}`,
+        sidangPoint: "Live Coding Challenge: 'Coba ubah aturan DP jadi 30% sekarang juga!'. Aksi: Cukup buka costCalculation.ts dan ubah totalCost * 0.5 menjadi totalCost * 0.3."
       },
-      6: {
-        judul: "Langkah 6: Data Masuk ke Database Supabase",
-        fileUtama: "src/lib/api.ts (fungsi createBooking)",
-        dipanggilDi: "src/hooks/usePemesanan.ts (fungsi kirimBooking)",
-        penjelasan: "Fungsi `createBooking()` menyatukan data Langkah 1 sampai Langkah 5 menjadi 1 baris SQL INSERT ke tabel `bookings` di Supabase. Status awal disimpan sebagai 'Booked' (jika DP) atau 'Lunas' (jika bayar penuh).",
-        inputData: "Objek transaksi lengkap.",
-        outputData: "1 baris data baru tersimpan di tabel Supabase."
-      },
-      7: {
-        judul: "Langkah 7: Kasir Melakukan Pelunasan / Pembatalan",
-        fileUtama: "src/components/HalamanKasir.tsx & TabelKasir.tsx & BarisKasir.tsx",
-        dipanggilDi: "src/App.tsx (saat tab Menu Kasir diklik)",
-        penjelasan: "Kasir membuka tab Menu Kasir. Seluruh data booking ditarik via `getAllBookings()`. Kasir menekan tombol hijau 'Lunasi'. Fungsi `updateStatusBooking(id, 'Lunas', 0)` dipanggil. Status berubah jadi Lunas, sisa bayar jadi 0, dan tombol Lunasi hilang dari layar.",
-        inputData: "ID booking transaksi.",
-        outputData: "Data di Supabase diperbarui, kasir bisa klik 'Cetak Rekap'."
+      {
+        step: 6,
+        title: "Tahap 6: Operasional Kasir & Pelunasan Transaksi",
+        file: "src/components/cashier/dashboard-01/BookingsTable.tsx",
+        summary: "Mencari transaksi, memfilter status, dan melunasi sisa tagihan.",
+        why: "Ketika pelanggan datang ke gelanggang untuk bermain, kasir menekan tombol 'Lunasi' untuk menutup kekurangan pembayaran.",
+        codeSnippet: `// Tombol Lunasi di BookingsTable.tsx
+<button
+  onClick={() => onLunasi(b.id)}
+  className="bg-emerald-600 px-2.5 py-1.5 rounded-lg text-xs font-medium"
+>
+  Lunasi
+</button>
+
+// Yang dijalankan di useCashier.ts:
+const handleLunasi = async (id: number) => {
+  // Update status transaksi menjadi 'Lunas' dan kosongkan sisa_bayar menjadi 0
+  await updateStatusBooking(id, 'Lunas', 0)
+  loadDataKasir() // Refresh tabel
+}`,
+        sidangPoint: "Penguji bertanya: 'Apa yang terjadi di database saat kasir menekan tombol Lunasi?'. Jawab: 'Kolom status diubah menjadi Lunas dan sisa_bayar di-update menjadi Rp 0.'"
       }
-    };
+    ];
 
-    function pilihStep(step) {
-      document.querySelectorAll('.step-btn').forEach(btn => btn.classList.remove('active-step'));
-      const activeBtn = document.getElementById(`step-btn-${step}`);
-      if (activeBtn) activeBtn.classList.add('active-step');
+    let currentStep = 1;
 
-      const data = dataSteps[step];
-      const container = document.getElementById('detail-step');
+    function setStep(stepNum) {
+      currentStep = stepNum;
+      for (let i = 1; i <= 6; i++) {
+        const btn = document.getElementById(`step-nav-${i}`);
+        if (i === stepNum) {
+          btn.className = "step-nav-btn p-3 rounded-xl border text-left transition bg-emerald-950/60 border-emerald-500 text-emerald-300";
+          btn.querySelector('span:first-child').className = "block text-[10px] font-mono text-emerald-400 uppercase";
+        } else {
+          btn.className = "step-nav-btn p-3 rounded-xl border text-left transition bg-zinc-950/50 border-zinc-800 text-zinc-400 hover:border-zinc-700";
+          btn.querySelector('span:first-child').className = "block text-[10px] font-mono text-zinc-500 uppercase";
+        }
+      }
+      renderStepDetail();
+    }
+
+    function prevStep() {
+      if (currentStep > 1) setStep(currentStep - 1);
+    }
+
+    function nextStep() {
+      if (currentStep < 6) setStep(currentStep + 1);
+    }
+
+    function renderStepDetail() {
+      const data = stepsData[currentStep - 1];
+      document.getElementById('step-indicator-text').innerText = `Langkah ${currentStep} dari 6`;
+      document.getElementById('btn-prev-step').disabled = currentStep === 1;
+      document.getElementById('btn-next-step').disabled = currentStep === 6;
+
+      const container = document.getElementById('step-detail-card');
       container.innerHTML = `
-        <div class="border-b pb-3">
-          <span class="text-xs font-mono font-bold text-blue-600 uppercase">LANGKAH ${step} DARI 7</span>
-          <h3 class="text-xl font-bold mt-1 text-gray-900">${data.judul}</h3>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="space-y-3">
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-zinc-800 pb-3">
             <div>
-              <div class="text-xs font-semibold text-gray-500 uppercase">Berkas yang Bekerja:</div>
-              <div class="font-mono text-sm font-bold text-blue-700 bg-blue-50 p-2 rounded mt-1 border border-blue-200">${data.fileUtama}</div>
+              <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">${data.file}</span>
+              <h3 class="text-xl font-bold text-zinc-100 mt-0.5">${data.title}</h3>
             </div>
-            <div>
-              <div class="text-xs font-semibold text-gray-500 uppercase">Penjelasan Bahasa Manusia:</div>
-              <p class="text-sm text-gray-700 mt-1 leading-relaxed">${data.penjelasan}</p>
-            </div>
+            <span class="px-2.5 py-1 bg-zinc-800 text-zinc-300 rounded text-xs font-mono">Tahap ${data.step}/6</span>
           </div>
 
-          <div class="space-y-3 bg-gray-50 p-4 rounded-xl border">
-            <div>
-              <div class="text-xs font-semibold text-gray-500 uppercase">Masukan Data (Input):</div>
-              <div class="font-mono text-xs text-gray-800 bg-white p-2 rounded border mt-1">${data.inputData}</div>
-            </div>
-            <div>
-              <div class="text-xs font-semibold text-gray-500 uppercase">Keluaran Data (Output):</div>
-              <div class="font-mono text-xs text-green-700 bg-white p-2 rounded border mt-1">${data.outputData}</div>
-            </div>
+          <p class="text-sm text-zinc-300">${data.summary}</p>
+
+          <div class="bg-zinc-950/80 border border-zinc-800/80 p-4 rounded-xl space-y-2">
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Kenapa Kodenya Dibuat Begini?</span>
+            <p class="text-xs text-zinc-300 leading-relaxed">${data.why}</p>
+          </div>
+
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Potongan Kode Kunci (Asli dari Proyek):</span>
+            <pre class="code-font text-xs bg-black/80 border border-zinc-800 p-4 rounded-xl overflow-x-auto text-emerald-300 leading-relaxed"><code>${escapeHtml(data.codeSnippet)}</code></pre>
+          </div>
+
+          <div class="p-4 bg-emerald-950/40 border border-emerald-800/60 rounded-xl space-y-1.5">
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Bocoran Sidang Penguji UKK:</span>
+            <p class="text-xs text-zinc-200 leading-relaxed font-medium">${data.sidangPoint}</p>
           </div>
         </div>
       `;
     }
 
-    function pindahTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('border-blue-600', 'text-blue-600');
-        btn.classList.add('border-transparent', 'text-gray-500');
-      });
-      document.getElementById(`btn-tab-${tab}`).classList.remove('border-transparent', 'text-gray-500');
-      document.getElementById(`btn-tab-${tab}`).classList.add('border-blue-600', 'text-blue-600');
-
-      document.getElementById('konten-simulator').classList.add('hidden');
-      document.getElementById('konten-arsitektur').classList.add('hidden');
-      document.getElementById('konten-sidang').classList.add('hidden');
-
-      document.getElementById(`konten-${tab}`).classList.remove('hidden');
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    // inisialisasi awal
-    pilihStep(1);
+    // ========================================================================
+    // 3. LOGIKA MINI SANDBOX / SIMULATOR
+    // ========================================================================
+    let simCourts = [
+      { id: 1, nama_lapangan: 'Court 1 - Karpet Vinyl', tarif_per_jam: 50000, status: 'Aktif' },
+      { id: 2, nama_lapangan: 'Court 2 - Kayu Parket', tarif_per_jam: 75000, status: 'Aktif' }
+    ];
+
+    let simBookings = [
+      { id: 101, lapangan_id: 1, nama_penyewa: 'Ahmad Fauzi', jam_slots: ['08:00', '09:00'], total_bayar: 100000, sisa_bayar: 50000, status: 'Booked' }
+    ];
+
+    let simSelectedCourtId = 1;
+    let simSelectedSlots = [];
+
+    function addTraceLog(action, file, query) {
+      const logBox = document.getElementById('sim-tracer-log');
+      const time = new Date().toLocaleTimeString('id-ID');
+      const item = document.createElement('div');
+      item.className = "border-l-2 border-emerald-500 pl-2 py-0.5 space-y-0.5";
+      item.innerHTML = `
+        <div class="text-[10px] text-zinc-400 font-mono">[${time}] <strong class="text-emerald-300">${action}</strong> di <span class="text-blue-400">${file}</span></div>
+        <div class="text-[11px] text-zinc-300 bg-zinc-900/80 px-2 py-1 rounded font-mono">${query}</div>
+      `;
+      logBox.appendChild(item);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function simClearLog() {
+      document.getElementById('sim-tracer-log').innerHTML = '<div class="text-zinc-500">// Log dibersihkan.</div>';
+    }
+
+    function renderSimCourts() {
+      const container = document.getElementById('sim-court-list');
+      container.innerHTML = simCourts.map(c => `
+        <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs">
+          <div>
+            <div class="font-bold text-zinc-200">${c.nama_lapangan}</div>
+            <div class="text-zinc-400 text-[11px]">Rp ${c.tarif_per_jam.toLocaleString()}/jam - Status: 
+              <span class="${c.status === 'Aktif' ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'}">${c.status}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="simToggleCourtStatus(${c.id})" class="px-2 py-1 rounded border text-[11px] font-medium transition ${c.status === 'Aktif' ? 'bg-zinc-800 border-zinc-700 text-zinc-300 hover:text-rose-300' : 'bg-emerald-950 border-emerald-800 text-emerald-300'}">
+              ${c.status === 'Aktif' ? 'Nonaktifkan' : 'Aktifkan'}
+            </button>
+            <button onclick="simHapusCourt(${c.id})" class="p-1 text-zinc-400 hover:text-rose-400">Hapus</button>
+          </div>
+        </div>
+      `).join('');
+
+      renderSimCourtOptions();
+    }
+
+    function renderSimCourtOptions() {
+      const select = document.getElementById('sim-select-court');
+      // FILTER LAPANGAN AKTIF SAJA (Sesuai useReservationData.ts)
+      const activeCourts = simCourts.filter(c => c.status === 'Aktif');
+      if (activeCourts.length === 0) {
+        select.innerHTML = '<option value="">Semua lapangan sedang TUTUP</option>';
+        simSelectedCourtId = null;
+      } else {
+        select.innerHTML = activeCourts.map(c => `
+          <option value="${c.id}" ${c.id === simSelectedCourtId ? 'selected' : ''}>
+            ${c.nama_lapangan} (Rp ${c.tarif_per_jam.toLocaleString()}/jam)
+          </option>
+        `).join('');
+        if (!activeCourts.some(c => c.id === simSelectedCourtId)) {
+          simSelectedCourtId = activeCourts[0].id;
+        }
+      }
+      renderSimSlots();
+    }
+
+    function simPilihCourt() {
+      const select = document.getElementById('sim-select-court');
+      simSelectedCourtId = Number(select.value);
+      simSelectedSlots = [];
+      addTraceLog(
+        "Pilih Lapangan Publik",
+        "useReservationSchedule.ts",
+        `State selectedCourt diubah ke ID: ${simSelectedCourtId}`
+      );
+      renderSimSlots();
+    }
+
+    function simToggleCourtStatus(id) {
+      const court = simCourts.find(c => c.id === id);
+      if (!court) return;
+      const next = court.status === 'Aktif' ? 'Tutup' : 'Aktif';
+      court.status = next;
+
+      addTraceLog(
+        "Toggle Status Lapangan",
+        "CourtsManagementView.tsx -> api.ts",
+        `UPDATE lapangan SET status = '${next}' WHERE id = ${id}`
+      );
+
+      renderSimCourts();
+    }
+
+    function simTambahLapangan() {
+      const nama = document.getElementById('sim-input-nama').value.trim();
+      const tarif = Number(document.getElementById('sim-input-tarif').value);
+      if (!nama) return alert('Nama lapangan harus diisi');
+
+      const newId = simCourts.length > 0 ? Math.max(...simCourts.map(c => c.id)) + 1 : 1;
+      simCourts.push({ id: newId, nama_lapangan: nama, tarif_per_jam: tarif, status: 'Aktif' });
+
+      addTraceLog(
+        "Tambah Lapangan Baru",
+        "CourtsManagementView.tsx -> api.ts",
+        `INSERT INTO lapangan (nama_lapangan, tarif_per_jam, status) VALUES ('${nama}', ${tarif}, 'Aktif')`
+      );
+
+      document.getElementById('sim-input-nama').value = '';
+      renderSimCourts();
+    }
+
+    function simHapusCourt(id) {
+      simCourts = simCourts.filter(c => c.id !== id);
+      addTraceLog(
+        "Hapus Lapangan",
+        "CourtsManagementView.tsx -> api.ts",
+        `DELETE FROM lapangan WHERE id = ${id}`
+      );
+      renderSimCourts();
+    }
+
+    const availableHours = ['08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
+
+    function renderSimSlots() {
+      const grid = document.getElementById('sim-slot-grid');
+      if (!simSelectedCourtId) {
+        grid.innerHTML = '<div class="col-span-4 text-xs text-rose-400 py-4 text-center">Tidak ada lapangan aktif yang dapat dipesan.</div>';
+        updateSimCalculation();
+        return;
+      }
+
+      // Ambil jam yang sudah dibooking di lapangan ini (getBookedSlots)
+      const bookedHours = simBookings
+        .filter(b => b.lapangan_id === simSelectedCourtId && b.status !== 'Batal')
+        .flatMap(b => b.jam_slots);
+
+      grid.innerHTML = availableHours.map(hour => {
+        const isBooked = bookedHours.includes(hour);
+        const isSelected = simSelectedSlots.includes(hour);
+
+        if (isBooked) {
+          return `
+            <button disabled class="p-2 bg-zinc-900 border border-zinc-800 text-zinc-600 rounded text-xs font-mono line-through cursor-not-allowed" title="Sudah Dibooking">
+              ${hour}
+            </button>
+          `;
+        }
+
+        return `
+          <button onclick="simToggleSlot('${hour}')" class="p-2 rounded text-xs font-mono font-medium transition border ${isSelected ? 'bg-blue-600 border-blue-500 text-white shadow-sm' : 'bg-zinc-900 border-zinc-700 text-zinc-300 hover:border-zinc-500'}">
+            ${hour}
+          </button>
+        `;
+      }).join('');
+
+      updateSimCalculation();
+    }
+
+    function simToggleSlot(hour) {
+      if (simSelectedSlots.includes(hour)) {
+        simSelectedSlots = simSelectedSlots.filter(h => h !== hour);
+      } else {
+        simSelectedSlots.push(hour);
+        simSelectedSlots.sort();
+      }
+
+      addTraceLog(
+        "Pilih Slot Jam",
+        "ScheduleGrid.tsx",
+        `Array jam_slots: [${simSelectedSlots.map(h => `'${h}'`).join(', ')}]`
+      );
+
+      renderSimSlots();
+    }
+
+    function updateSimCalculation() {
+      const court = simCourts.find(c => c.id === simSelectedCourtId);
+      const rate = court ? court.tarif_per_jam : 0;
+      const duration = simSelectedSlots.length;
+      const total = duration * rate;
+      const dp = total * 0.5;
+      const sisa = total - dp;
+
+      document.getElementById('sim-durasi-text').innerText = `${duration} Jam`;
+      document.getElementById('sim-total-text').innerText = `Rp ${total.toLocaleString()}`;
+      document.getElementById('sim-dp-text').innerText = `Rp ${dp.toLocaleString()}`;
+      document.getElementById('sim-sisa-text').innerText = `Rp ${sisa.toLocaleString()}`;
+    }
+
+    function simBuatBooking() {
+      if (!simSelectedCourtId) return alert('Pilih lapangan terlebih dahulu.');
+      if (simSelectedSlots.length === 0) return alert('Pilih minimal 1 slot jam.');
+      const nama = document.getElementById('sim-nama-penyewa').value.trim() || 'Penyewa Anonim';
+
+      const court = simCourts.find(c => c.id === simSelectedCourtId);
+      const total = simSelectedSlots.length * court.tarif_per_jam;
+      const dp = total * 0.5;
+      const sisa = total - dp;
+      const newId = 100 + simBookings.length + 1;
+
+      simBookings.unshift({
+        id: newId,
+        lapangan_id: simSelectedCourtId,
+        nama_penyewa: nama,
+        jam_slots: [...simSelectedSlots],
+        total_bayar: total,
+        sisa_bayar: sisa,
+        status: 'Booked'
+      });
+
+      addTraceLog(
+        "Simpan Transaksi Booking",
+        "RightPanelInspector.tsx -> api.ts",
+        `INSERT INTO bookings (lapangan_id, nama_penyewa, jam_slots, total_bayar, sisa_bayar, status) VALUES (${simSelectedCourtId}, '${nama}', ARRAY[...], ${total}, ${sisa}, 'Booked')`
+      );
+
+      simSelectedSlots = [];
+      renderSimSlots();
+      renderSimBookings();
+    }
+
+    function renderSimBookings() {
+      const container = document.getElementById('sim-booking-list');
+      if (simBookings.length === 0) {
+        container.innerHTML = '<div class="text-zinc-500 text-xs py-4 text-center">Belum ada transaksi booking.</div>';
+        return;
+      }
+
+      container.innerHTML = simBookings.map(b => {
+        const court = simCourts.find(c => c.id === b.lapangan_id);
+        const courtName = court ? court.nama_lapangan : `Lapangan #${b.lapangan_id}`;
+        return `
+          <div class="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs flex justify-between items-center gap-2">
+            <div>
+              <div class="font-bold text-zinc-200">INV-${b.id} &bull; ${b.nama_penyewa}</div>
+              <div class="text-zinc-400 text-[11px]">${courtName} &bull; Jam: ${b.jam_slots.join(', ')}</div>
+              <div class="text-zinc-300 text-[11px] font-mono">
+                Total: Rp ${b.total_bayar.toLocaleString()} | Sisa: 
+                <span class="${b.sisa_bayar > 0 ? 'text-amber-400 font-bold' : 'text-emerald-400 font-bold'}">Rp ${b.sisa_bayar.toLocaleString()}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              ${b.status === 'Booked' ? `
+                <button onclick="simLunasiBooking(${b.id})" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-[11px] font-bold transition">
+                  Lunasi
+                </button>
+              ` : `
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800/60">Lunas</span>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function simLunasiBooking(id) {
+      const b = simBookings.find(item => item.id === id);
+      if (!b) return;
+      b.status = 'Lunas';
+      b.sisa_bayar = 0;
+
+      addTraceLog(
+        "Aksi Pelunasan Kasir",
+        "BookingsTable.tsx -> api.ts",
+        `UPDATE bookings SET status = 'Lunas', sisa_bayar = 0 WHERE id = ${id}`
+      );
+
+      renderSimBookings();
+    }
+
+    // ========================================================================
+    // 4. KUIS SIMULASI SIDANG UKK
+    // ========================================================================
+    const quizQuestions = [
+      {
+        question: "1. Apa fungsi dari kolom status pada tabel 'lapangan' di database?",
+        options: [
+          "Untuk membedakan jenis lapangan apakah vinyl atau rumput sintetis.",
+          "Untuk fitur enable/disable operasional lapangan ('Aktif' atau 'Tutup').",
+          "Untuk mengecek apakah penyewa sudah membayar lunas atau DP 50%.",
+          "Untuk menghitung diskon sewa per jam."
+        ],
+        correct: 1,
+        explanation: "Benar! Kolom status ('Aktif' | 'Tutup') berfungsi sebagai saklar enable/disable. Lapangan yang diset 'Tutup' otomatis disaring keluar dari halaman reservasi publik."
+      },
+      {
+        question: "2. Mengapa kolom nomor HP pada tabel bookings bertipe string (bukan integer)?",
+        options: [
+          "Karena nomor telepon tidak bisa dihitung menggunakan rumus matematika penjumlahan.",
+          "Karena di bahasa pemrograman TypeScript tidak ada tipe data integer.",
+          "Agar angka 0 paling awal pada format nomor Indonesia (08...) tidak terhapus oleh sistem.",
+          "Agar ukuran database Supabase menjadi lebih hemat memori."
+        ],
+        correct: 2,
+        explanation: "Tepat sekali! Jika nomor HP disimpan sebagai integer, nilai '081234' akan dianggap sebagai angka 81234 (angka 0 terpotong)."
+      },
+      {
+        question: "3. Bagaimana logika fungsi getBookedSlots() dalam mencegah jadwal bentrok?",
+        options: [
+          "Menghapus seluruh slot jam yang ada di database setiap jam 12 malam.",
+          "Mengambil jam yang sudah dipesan di tanggal tersebut dari tabel bookings, lalu menonaktifkan tombolnya di frontend.",
+          "Mengirim notifikasi SMS ke penyewa bahwa jam tersebut sudah diambil orang lain.",
+          "Membuat tabel database baru untuk setiap jam sewa."
+        ],
+        correct: 1,
+        explanation: "Benar! Sistem memeriksa tabel bookings untuk tanggal dan lapangan terkait. Jam yang sudah tercatat dikembalikan sebagai array lalu tombolnya di-disable."
+      },
+      {
+        question: "4. Di mana letak berkas controller backend tempat query database Supabase dijalankan?",
+        options: [
+          "src/components/CashierPage.tsx",
+          "src/utils/costCalculation.ts",
+          "src/lib/api.ts",
+          "src/types/database.ts"
+        ],
+        correct: 2,
+        explanation: "Benar! Seluruh fungsi CRUD dan query builder ke PostgreSQL Supabase dipusatkan di file src/lib/api.ts."
+      },
+      {
+        question: "5. Apa yang terjadi pada kolom sisa_bayar saat kasir menekan tombol 'Lunasi'?",
+        options: [
+          "Nilai sisa_bayar berkurang sebesar 50%.",
+          "Nilai sisa_bayar di-update menjadi 0 dan status transaksi berubah menjadi 'Lunas'.",
+          "Baris data transaksi langsung dihapus dari database Supabase.",
+          "Sistem membuat baris baru di tabel lapangan."
+        ],
+        correct: 1,
+        explanation: "Tepat! Tombol Lunasi memanggil updateStatusBooking(id, 'Lunas', 0) yang mengubah status menjadi Lunas dan mencatat sisa kekurangan menjadi Rp 0."
+      }
+    ];
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      container.innerHTML = quizQuestions.map((q, idx) => `
+        <div class="p-5 bg-zinc-950 border border-zinc-800 rounded-xl space-y-3">
+          <div class="font-bold text-sm text-zinc-100">${q.question}</div>
+          <div class="space-y-2">
+            ${q.options.map((opt, optIdx) => `
+              <label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-zinc-800/80 hover:bg-zinc-900 cursor-pointer text-xs transition">
+                <input type="radio" name="quiz-q-${idx}" value="${optIdx}" onchange="checkAnswer(${idx}, ${optIdx})" class="accent-emerald-500">
+                <span class="text-zinc-300">${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="quiz-feedback-${idx}" class="hidden p-3 rounded-lg text-xs"></div>
+        </div>
+      `).join('');
+    }
+
+    function checkAnswer(qIdx, selectedOpt) {
+      const q = quizQuestions[qIdx];
+      const feedback = document.getElementById(`quiz-feedback-${qIdx}`);
+      feedback.classList.remove('hidden');
+
+      if (selectedOpt === q.correct) {
+        feedback.className = "p-3 rounded-lg text-xs bg-emerald-950/70 border border-emerald-800/70 text-emerald-300";
+        feedback.innerHTML = `<strong>Jawaban Benar!</strong> &bull; ${q.explanation}`;
+      } else {
+        feedback.className = "p-3 rounded-lg text-xs bg-rose-950/70 border border-rose-800/70 text-rose-300";
+        feedback.innerHTML = `<strong>Kurang Tepat.</strong> &bull; ${q.explanation}`;
+      }
+    }
+
+    // Inisialisasi awal saat halaman dibuka
+    window.addEventListener('DOMContentLoaded', () => {
+      renderStepDetail();
+      renderSimCourts();
+      renderSimBookings();
+      renderQuiz();
+    });
   </script>
 </body>
 </html>

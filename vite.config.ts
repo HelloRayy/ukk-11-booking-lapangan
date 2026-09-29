@@ -15,6 +15,8 @@ const routeMiddleware = (req: any, _res: any, next: () => void) => {
       req.url = '/kasir.html' + query
     } else if (urlPath === '/prototype') {
       req.url = '/prototype.html' + query
+    } else if (urlPath === '/belajar') {
+      req.url = '/belajar.html' + query
     }
   }
   next()
@@ -42,6 +44,7 @@ export default defineConfig({
         reservasi: resolve(__dirname, 'reservasi.html'),
         kasir: resolve(__dirname, 'kasir.html'),
         prototype: resolve(__dirname, 'prototype.html'),
+        belajar: resolve(__dirname, 'belajar.html'),
       },
     },
   },
